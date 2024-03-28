@@ -7,7 +7,7 @@
   },
   "display": {
     "announce_to_chat": false,
-    "background": "vampirism:textures/block/dark_stone_tiles.png",
+    "background": "vampiresdelight:textures/block/dark_stone_small_bricks.png",
     "description": {
       "translate": "vampiresdelight.advancement.root.desc"
     },

@@ -7,6 +7,7 @@ import net.grid.vampiresdelight.common.registry.VDAdvancements;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDPotions;
+import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.Advancement;
@@ -40,15 +41,10 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
                     .display(VDItems.DARK_STONE_STOVE.get(),
                             VDTextUtils.getTranslation("advancement.root"),
                             VDTextUtils.getTranslation("advancement.root.desc"),
-                            new ResourceLocation("vampirism:textures/block/dark_stone_tiles.png"),
+                            new ResourceLocation("vampiresdelight:textures/block/dark_stone_small_bricks.png"),
                             FrameType.TASK, false, false, false)
                     .addCriterion("seeds", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[]{}))
                     .save(consumer, getNameId("main/root"));
-
-            // Eating Branch
-            Advancement disgusting = getAdvancement(vampiresDelight, ModItems.HUMAN_HEART.get(), "consume_disgusting_food", FrameType.TASK, true, true, false)
-                    .addCriterion("disgusting_food", new PlayerTrigger.TriggerInstance(VDAdvancements.DISGUSTING_FOOD_CONSUMED.getId(), ContextAwarePredicate.ANY))
-                    .save(consumer, getNameId("main/consume_disgusting_food"));
 
             // Exploring Branch
             Advancement theBestPresentForAMan = getAdvancement(vampiresDelight, Items.SPLASH_POTION, "get_clothes_dissolving_potion", FrameType.CHALLENGE, true, true, true)
@@ -61,6 +57,16 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
                     .requirements(RequirementsStrategy.OR)
                     .save(consumer, getNameId("main/get_clothes_dissolving_potion"));
 
+            // Eating Branch
+            Advancement disgusting = getAdvancement(vampiresDelight, ModItems.HUMAN_HEART.get(), "consume_disgusting_food", FrameType.TASK, true, true, false)
+                    .addCriterion("disgusting_food", new PlayerTrigger.TriggerInstance(VDAdvancements.DISGUSTING_FOOD_CONSUMED.getId(), ContextAwarePredicate.ANY))
+                    .save(consumer, getNameId("main/consume_disgusting_food"));
+
+            // Hunter Branch
+            Advancement messiahOfHumanity = getAdvancement(vampiresDelight, VDItems.WILD_GARLIC.get(), "get_garlic", FrameType.TASK, true, false, false)
+                    .addCriterion("garlic", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ITEM_GARLIC.get()))
+                    .save(consumer, getNameId("main/get_garlic"));
+
             // Vampire Branch
             Advancement yourBestFriend = getAdvancement(vampiresDelight, ModBlocks.VAMPIRE_ORCHID.get().asItem(), "get_vampire_orchid", FrameType.TASK, true, false, false)
                     .addCriterion("vampire_orchid", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.VAMPIRE_ORCHID.get()))
@@ -70,22 +76,17 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
                     .addCriterion("vampire_orchid", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(VDBlocks.VAMPIRE_ORCHID_CROP.get()))
                     .save(consumer, getNameId("main/plant_vampire_orchid_crop"));
 
-            Advancement bloodWineTastesTheSameAsIRemember = getAdvancement(yourBestFriend, VDItems.BLOOD_WINE_BOTTLE.get(), "get_blood_wine_bottle", FrameType.TASK, true, true, false)
-                    .addCriterion("blood_wine_bottle", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.BLOOD_WINE_BOTTLE.get()))
-                    .save(consumer, getNameId("main/get_blood_wine_bottle"));
-
-            Advancement winesServed = getAdvancement(yourBestFriend, VDItems.WINE_GLASS.get(), "pour_blood_wine", FrameType.TASK, true, false, false)
+            Advancement bloodWineTastesTheSameAsIRemember = getAdvancement(yourBestFriend, VDItems.WINE_GLASS.get(), "pour_blood_wine", FrameType.TASK, true, false, false)
                     .addCriterion("pour_blood_wine", new PlayerTrigger.TriggerInstance(VDAdvancements.BLOOD_WINE_POURED.getId(), ContextAwarePredicate.ANY))
                     .save(consumer, getNameId("main/pour_blood_wine"));
+
+            Advancement savingGoods = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.OAK_WINE_SHELF.get(), "get_wine_shelf", FrameType.TASK, true, false, false)
+                    .addCriterion("wine_shelf", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(VDTags.WINE_SHELF).build()))
+                    .save(consumer, getNameId("main/get_wine_shelf"));
 
             Advancement funnyCutsOfChildren = getAdvancement(yourBestFriend, VDItems.HUMAN_EYE.get(), "get_human_eye", FrameType.TASK, true, true, false)
                     .addCriterion("human_eye", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.HUMAN_EYE.get()))
                     .save(consumer, getNameId("main/get_human_eye"));
-
-            // Hunter Branch
-            Advancement messiahOfHumanity = getAdvancement(vampiresDelight, VDItems.WILD_GARLIC.get(), "get_garlic", FrameType.TASK, true, false, false)
-                    .addCriterion("garlic", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ITEM_GARLIC.get()))
-                    .save(consumer, getNameId("main/get_garlic"));
         }
 
         protected static Advancement.Builder getAdvancement(Advancement parent, ItemLike display, String name, FrameType frame, boolean showToast, boolean announceToChat, boolean hidden) {

@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.data;
 import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
+import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
 import net.grid.vampiresdelight.common.tag.VDTags;
@@ -35,11 +36,6 @@ public class VDBlockTags extends BlockTagsProvider {
     }
 
     private void registerModTags() {
-        tag(VDTags.COOLERS)
-                .addTag(BlockTags.ICE).add(
-                Blocks.WATER
-        );
-
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> {
             String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
             if (name.contains("orchid"))
@@ -47,6 +43,11 @@ public class VDBlockTags extends BlockTagsProvider {
 
             tag(BlockTags.CANDLE_CAKES).add(block);
         });
+
+        tag(VDTags.COOLERS)
+                .addTag(BlockTags.ICE).add(
+                        Blocks.WATER
+                );
     }
 
     protected void registerBlockMineables() {

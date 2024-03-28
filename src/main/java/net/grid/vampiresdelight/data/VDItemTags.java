@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.data;
 import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
 import net.grid.vampiresdelight.common.tag.VDForgeTags;
@@ -73,6 +74,8 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.SNOW_WHITE_ICE_CREAM.get());
         tag(VDTags.MINION_VAMPIRE_FOOD)
                 .add(VDItems.ORCHID_COOKIE.get());
+
+        WineShelfBlock.getAllShelves().forEach(item -> tag(VDTags.WINE_SHELF).add(item));
     }
 
     private void registerVampirismTags() {

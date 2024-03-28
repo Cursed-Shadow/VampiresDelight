@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.common.effect;
 
 import com.google.common.collect.ImmutableSet;
 import net.grid.vampiresdelight.common.VDConfiguration;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.effect.MobEffect;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import vectorwing.farmersdelight.common.registry.ModParticleTypes;
 
 public class ClothesDissolvingEffect extends MobEffect {
     private static final ImmutableSet<ArmorMaterial> FULLY_BREAKABLE_ARMOR = ImmutableSet.of(
@@ -52,23 +54,33 @@ public class ClothesDissolvingEffect extends MobEffect {
                 }
             }
         }
+
+        if (livingEntity.level().isClientSide()) {
+            int amount = livingEntity.getRandom().nextInt(3, 8);
+            addParticlesAroundEntity(ModParticleTypes.STEAM.get(), livingEntity, amount);
+        }
+    }
+
+    private void addParticlesAroundEntity(ParticleOptions pParticleOption, LivingEntity livingEntity, int amount) {
+        for(int i = 0; i <= amount; ++i) {
+            double d0 = livingEntity.getRandom().nextGaussian() * 0.015D;
+            double d1 = livingEntity.getRandom().nextGaussian() * 0.015D;
+            double d2 = livingEntity.getRandom().nextGaussian() * 0.015D;
+            livingEntity.level().addParticle(pParticleOption, livingEntity.getRandomX(1.0D), livingEntity.getRandomY() - 0.5D, livingEntity.getRandomZ(1.0D), d0, d1, d2);
+        }
     }
 
     public int getDamagePerTick(ItemStack stack) {
         int maxDamage = stack.getMaxDamage();
 
-        int damagePerTick;
-
         if (stack.getItem() instanceof ArmorItem armorItem) {
             if (FULLY_BREAKABLE_ARMOR.contains(armorItem.getMaterial()))
-                damagePerTick = maxDamage / 15;
+                return maxDamage / 15;
             else
-                damagePerTick = maxDamage / 70;
+                return maxDamage / 70;
         } else {
-            damagePerTick = maxDamage / 80;
+            return maxDamage / 80;
         }
-
-        return damagePerTick;
     }
 
     @Override

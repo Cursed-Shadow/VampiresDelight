@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.block;
 
 import de.teamlapen.lib.lib.util.UtilLib;
+import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.entity.WineShelfBlockEntity;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.minecraft.core.BlockPos;
@@ -10,6 +11,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -27,11 +29,14 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("deprecation")
 public class WineShelfBlock extends BaseEntityBlock {
@@ -225,33 +230,6 @@ public class WineShelfBlock extends BaseEntityBlock {
             shape = Shapes.or(shape, Shapes.box(0.4375, 0.625, 0.875, 0.5625, 1, 1));
         }
 
-        /*
-        if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(0))) {
-            shape = Shapes.or(shape, Shapes.box(0.59375, 0.625, 0.375, 0.90625, 0.9375, 1));
-            shape = Shapes.or(shape, Shapes.box(0.6875, 0.71875, 0.125, 0.8125, 0.84375, 0.375));
-            shape = Shapes.or(shape, Shapes.box(0.65625, 0.6875, 0.0625, 0.84375, 0.875, 0.125));
-            shape = Shapes.or(shape, Shapes.box(0.6875, 0.71875, 0, 0.8125, 0.84375, 0.0625));
-        }
-        if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(1))) {
-            shape = Shapes.or(shape, Shapes.box(0.09375, 0.625, 0.375, 0.40625, 0.9375, 1));
-            shape = Shapes.or(shape, Shapes.box(0.1875, 0.71875, 0.125, 0.3125, 0.84375, 0.375));
-            shape = Shapes.or(shape, Shapes.box(0.15625, 0.6875, 0.0625, 0.34375, 0.875, 0.125));
-            shape = Shapes.or(shape, Shapes.box(0.1875, 0.71875, 0, 0.3125, 0.84375, 0.0625));
-        }
-        if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(2))) {
-            shape = Shapes.or(shape, Shapes.box(0.59375, 0.125, 0.375, 0.90625, 0.4375, 1));
-            shape = Shapes.or(shape, Shapes.box(0.6875, 0.21875, 0.125, 0.8125, 0.34375, 0.375));
-            shape = Shapes.or(shape, Shapes.box(0.65625, 0.1875, 0.0625, 0.84375, 0.375, 0.125));
-            shape = Shapes.or(shape, Shapes.box(0.6875, 0.21875, 0, 0.8125, 0.34375, 0.0625));
-        }
-        if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(3))) {
-            shape = Shapes.or(shape, Shapes.box(0.09375, 0.125, 0.375, 0.40625, 0.4375, 1));
-            shape = Shapes.or(shape, Shapes.box(0.1875, 0.21875, 0.125, 0.3125, 0.34375, 0.375));
-            shape = Shapes.or(shape, Shapes.box(0.15625, 0.1875, 0.0625, 0.34375, 0.375, 0.125));
-            shape = Shapes.or(shape, Shapes.box(0.1875, 0.21875, 0, 0.3125, 0.34375, 0.0625));
-        }
-         */
-
         return shape;
     }
 
@@ -282,5 +260,9 @@ public class WineShelfBlock extends BaseEntityBlock {
                 return 0;
             }
         }
+    }
+
+    public static Iterable<Item> getAllShelves() {
+        return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block) != null && VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getNamespace()) && block instanceof WineShelfBlock).map(Block::asItem).collect(Collectors.toList());
     }
 }
