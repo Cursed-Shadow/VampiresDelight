@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.common.item;
 
 import net.grid.vampiresdelight.common.registry.VDAdvancements;
-import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.nbt.CompoundTag;
@@ -31,12 +30,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
  */
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class BloodWineBottleItem extends Item {
+public class PourableBottleItem extends Item {
+    private final Item serving;
+    private final Item servingContainer;
 
-    public static final int SERVINGS = 4;
-
-    public BloodWineBottleItem(Properties properties) {
-        super(properties.defaultDurability(SERVINGS).setNoRepair());
+    public PourableBottleItem(Properties properties, int servings, Item serving, Item servingContainer) {
+        super(properties.defaultDurability(servings).setNoRepair());
+        this.serving = serving;
+        this.servingContainer = servingContainer;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class BloodWineBottleItem extends Item {
         }
 
         ItemStack bottle = player.getItemInHand(offHand);
-        if (bottle.getItem() == Items.GLASS_BOTTLE) {
+        if (bottle.getItem() == servingContainer) {
             ItemStack itemUsed = bottle.copy();
             ItemStack toPour = itemUsed.split(1);
             player.startUsingItem(mainHand);
@@ -82,7 +83,7 @@ public class BloodWineBottleItem extends Item {
         ItemEntity pickUp = null;
         for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, aabb)) {
             if (!itemEntity.isAlive() && itemEntity.position().distanceTo(player.position()) > 3 && !itemEntity.isAlive() &&
-                    itemEntity.getItem().getItem() != Items.GLASS_BOTTLE)
+                    itemEntity.getItem().getItem() != servingContainer)
                 continue;
             pickUp = itemEntity;
             break;
@@ -112,13 +113,13 @@ public class BloodWineBottleItem extends Item {
         CompoundTag compoundTag = itemStack.getOrCreateTag();
         if (compoundTag.contains("Pouring")) {
             if (player instanceof FakePlayer) {
-                player.drop(new ItemStack(VDItems.WINE_GLASS.get()), false, false);
+                player.drop(new ItemStack(serving), false, false);
             } else {
-                player.getInventory().placeItemBackInInventory(new ItemStack(VDItems.WINE_GLASS.get()));
+                player.getInventory().placeItemBackInInventory(new ItemStack(serving));
             }
             compoundTag.remove("Pouring");
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
-            if (itemStack.getDamageValue() > 3) itemStack = new ItemStack(Items.GLASS_BOTTLE);
+            if (itemStack.getDamageValue() > 3) itemStack = new ItemStack(servingContainer);
             VDAdvancements.BLOOD_WINE_POURED.trigger((ServerPlayer) player);
         }
 
@@ -156,7 +157,7 @@ public class BloodWineBottleItem extends Item {
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
         ItemStack item = itemStack.copy();
         item.setDamageValue(item.getDamageValue() + 1);
-        if (item.getDamageValue() > 3) return new ItemStack(Items.GLASS_BOTTLE);
+        if (item.getDamageValue() > 3) return new ItemStack(servingContainer);
         return item;
     }
 

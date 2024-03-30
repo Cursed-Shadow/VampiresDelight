@@ -32,7 +32,7 @@ public class VDFoodValues {
 
     // Drinks
     public static final FoodProperties WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
-            .nutrition(5).saturationMod(0.6f)
+            .nutrition(7).saturationMod(0.8f)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300), 1.0F).build();
     public static final FoodProperties WINE_GLASS_HUMAN = (new FoodProperties.Builder()).alwaysEat()
@@ -47,7 +47,7 @@ public class VDFoodValues {
     public static final FoodProperties BLOOD_SYRUP = (new FoodProperties.Builder())
             .nutrition(5).alwaysEat().build();
     public static final FoodProperties MULLED_WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
-            .nutrition(6).saturationMod(0.6f)
+            .nutrition(8).saturationMod(0.9f)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 4800), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300), 1.0F).build();

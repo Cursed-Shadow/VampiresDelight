@@ -5,6 +5,7 @@ import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.VDFoodValues;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -92,7 +93,7 @@ public class ConsumableCakeBlock extends CakeBlock {
                 player.eat(level, sliceStack);
 
             if (Helper.isVampire(player)) {
-                VDHelper.addFoodEffects(vampireFood, level, player);
+                VDEntityUtils.addFoodEffects(vampireFood, level, player);
             }
 
             int i = state.getValue(BITES);

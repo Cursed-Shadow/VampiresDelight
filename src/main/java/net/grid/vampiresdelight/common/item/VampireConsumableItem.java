@@ -6,6 +6,7 @@ import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
@@ -91,7 +92,7 @@ public class VampireConsumableItem extends Item {
         level.playSound(null, consumer.getX(), consumer.getY(), consumer.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
 
         if (Helper.isVampire(consumer)) {
-            VDHelper.addFoodEffects(vampireFood, level, consumer);
+            VDEntityUtils.addFoodEffects(vampireFood, level, consumer);
         }
 
         if (!stack.isEdible()) {

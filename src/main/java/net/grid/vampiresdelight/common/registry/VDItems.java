@@ -120,10 +120,10 @@ public class VDItems {
             () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_HUMAN), VDFoodValues.GRILLED_BAT_VAMPIRE));
     public static final RegistryObject<Item> COOKED_BAT_CHOPS = ITEMS.register("cooked_bat_chops",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_CHOPS_HUMAN), VDFoodValues.GRILLED_BAT_CHOPS_VAMPIRE));
-    public static final RegistryObject<Item> BLOOD_WINE_BOTTLE = ITEMS.register("blood_wine_bottle",
-            () -> new BloodWineBottleItem(basicItem()));
     public static final RegistryObject<Item> WINE_GLASS = ITEMS.register("wine_glass",
             () -> new VampireDrinkableItem(drinkItem(VDFoodValues.WINE_GLASS_HUMAN), VDFoodValues.WINE_GLASS_VAMPIRE));
+    public static final RegistryObject<Item> BLOOD_WINE_BOTTLE = ITEMS.register("blood_wine_bottle",
+            () -> new PourableBottleItem(basicItem(), 3, VDItems.WINE_GLASS.get(), Items.GLASS_BOTTLE));
     public static final RegistryObject<Item> MULLED_WINE_GLASS = ITEMS.register("mulled_wine_glass",
             () -> new VampireDrinkableItem(drinkItem(VDFoodValues.MULLED_WINE_GLASS_HUMAN), VDFoodValues.MULLED_WINE_GLASS_VAMPIRE));
     public static final RegistryObject<Item> BLOOD_PIE = ITEMS.register("blood_pie",

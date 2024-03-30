@@ -4,6 +4,7 @@ import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -67,7 +68,7 @@ public class VampireDrinkableItem extends VampireConsumableItem {
             ((IVampire) consumer).drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(stack));
         } else if (!Helper.isVampire(consumer))
             //consumer.eat(level, stack);
-            VDHelper.eatFood(level, consumer, stack, Helper.isHunter(consumer) && hunterFood != null ? hunterFood : stack.getFoodProperties(consumer));
+            VDEntityUtils.eatFood(level, consumer, stack, Helper.isHunter(consumer) && hunterFood != null ? hunterFood : stack.getFoodProperties(consumer));
 
         if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {
             stack.shrink(1);
@@ -76,7 +77,7 @@ public class VampireDrinkableItem extends VampireConsumableItem {
         level.playSound(null, consumer.getX(), consumer.getY(), consumer.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
 
         if (Helper.isVampire(consumer)) {
-            VDHelper.addFoodEffects(vampireFood, level, consumer);
+            VDEntityUtils.addFoodEffects(vampireFood, level, consumer);
         }
 
         if (!stack.isEdible()) {

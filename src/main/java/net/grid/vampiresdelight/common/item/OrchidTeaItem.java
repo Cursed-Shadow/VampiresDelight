@@ -5,6 +5,7 @@ import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.effects.SanguinareEffect;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
@@ -45,7 +46,7 @@ public class OrchidTeaItem extends VampireDrinkableItem {
                 }
             } else {
                 // This line is used for werewolves, or other addon fractions
-                VDHelper.addFoodEffects(defaultFood, level, consumer);
+                VDEntityUtils.addFoodEffects(defaultFood, level, consumer);
             }
         }
     }
