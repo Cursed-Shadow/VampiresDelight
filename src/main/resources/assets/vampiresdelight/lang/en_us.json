@@ -123,6 +123,8 @@
   "vampiresdelight.tooltip.orchid_tea": "Infects With Sanguinare",
   "vampiresdelight.tooltip.cursed_cupcake": "Clears Garlic Effect",
 
+  "vampiresdelight.text.planted_on": "Must be planted on ",
+
   "itemGroup.vampiresdelight": "Vampire's Delight",
 
   "vampiresdelight.container.recipe_book.fermentable": "Showing Fermentable",

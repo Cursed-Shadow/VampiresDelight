@@ -6,14 +6,18 @@ import net.grid.vampiresdelight.common.block.ConsumableCakeBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDTags;
+import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -82,5 +86,14 @@ public class PlayerInteractEventHandler {
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
         }
+    }
+
+    @SubscribeEvent
+    public static void onWrongPlantSoilClicked(PlayerInteractEvent.RightClickBlock event) {
+        Item item = event.getEntity().getItemInHand(event.getHand()).getItem();
+        Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
+
+        if (item == VDItems.ORCHID_SEEDS.get() && (block == Blocks.FARMLAND || block == vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get()))
+            event.getEntity().displayClientMessage(VDTextUtils.getTranslation("text.planted_on").append(Component.translatable(VDBlocks.CURSED_FARMLAND.get().getDescriptionId())), true);
     }
 }
