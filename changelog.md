@@ -1,19 +1,26 @@
 # Changelog
 
-## 0.0.1.3
+## 0.1.0
 
 ### Additions
-- Added **Brewing Barrel** (test only);
+- Added **Dark Stone Stove**;
 - Added **Blood Wine**;
+- Added **Wine Shelves**;
 - Added **Wine Glass**;
 - Added **Tricolor Dango**;
 - Added **Sugared Berries**;
+- Added several new effects and hunter potions for them;
+- And more;
 
 ### Updates
 - Several texture updates;
 - **Farmer Villagers** now buy **Garlic**;
 - **Wandering Traders** now sell **Orchid Seeds**, **Orchid Petals**, **Garlic**, and **Cursed Earth**;
 - Vampire food tooltip now shows custom fraction tooltips;
+- All vampire food recipes now require blood syrup instead of blood bottles;
+- Nourishment hunger overlay now works for blood bar as well;
+- Rebalanced food values for all food;
+- And more;
 
 ### Fixes
 - Fix vampire bite crashing game;

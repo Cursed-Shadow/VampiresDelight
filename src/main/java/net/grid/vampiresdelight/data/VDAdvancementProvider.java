@@ -37,6 +37,7 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
     public static class VDAdvancementGenerator implements AdvancementGenerator {
         @Override
         public void generate(HolderLookup.Provider registries, Consumer<Advancement> consumer, ExistingFileHelper existingFileHelper) {
+            /*
             Advancement vampiresDelight = Advancement.Builder.advancement()
                     .display(VDItems.DARK_STONE_STOVE.get(),
                             VDTextUtils.getTranslation("advancement.root"),
@@ -87,6 +88,7 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
             Advancement funnyCutsOfChildren = getAdvancement(yourBestFriend, VDItems.HUMAN_EYE.get(), "get_human_eye", FrameType.TASK, true, true, false)
                     .addCriterion("human_eye", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.HUMAN_EYE.get()))
                     .save(consumer, getNameId("main/get_human_eye"));
+             */
         }
 
         protected static Advancement.Builder getAdvancement(Advancement parent, ItemLike display, String name, FrameType frame, boolean showToast, boolean announceToChat, boolean hidden) {
