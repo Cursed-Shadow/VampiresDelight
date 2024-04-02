@@ -208,7 +208,10 @@ public class BrewingBarrelRecipe implements Recipe<RecipeWrapper> {
         @Override
         public BrewingBarrelRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
             String groupIn = buffer.readUtf();
-            BrewingBarrelRecipeBookTab tabIn = BrewingBarrelRecipeBookTab.findByName(buffer.readUtf());
+            BrewingBarrelRecipeBookTab tabIn = null;
+            if (buffer.readBoolean()) {
+                tabIn = BrewingBarrelRecipeBookTab.findByName(buffer.readUtf());
+            }
             int i = buffer.readVarInt();
             NonNullList<Ingredient> inputItemsIn = NonNullList.withSize(i, Ingredient.EMPTY);
 
@@ -226,6 +229,12 @@ public class BrewingBarrelRecipe implements Recipe<RecipeWrapper> {
         @Override
         public void toNetwork(FriendlyByteBuf buffer, BrewingBarrelRecipe recipe) {
             buffer.writeUtf(recipe.group);
+            if (recipe.tab != null) {
+                buffer.writeBoolean(true);
+                buffer.writeUtf(recipe.tab.name);
+            } else {
+                buffer.writeBoolean(false);
+            }
             buffer.writeVarInt(recipe.inputItems.size());
 
             for (Ingredient ingredient : recipe.inputItems) {
