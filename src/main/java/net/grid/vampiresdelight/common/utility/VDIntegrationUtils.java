@@ -10,13 +10,19 @@ public class VDIntegrationUtils {
         return ModList.get().isLoaded(string);
     }
 
-    public static boolean doesModItemExist(ResourceLocation resourceLocation) {
+    public static boolean doesItemExist(ResourceLocation resourceLocation) {
         return ForgeRegistries.ITEMS.getValue(resourceLocation) != null;
     }
 
     public static Item getModItem(ResourceLocation resourceLocation) {
         return ForgeRegistries.ITEMS.getValue(resourceLocation);
     }
+
+    public static boolean doesEnchantmentExist(ResourceLocation resourceLocation) {
+        return ForgeRegistries.ENCHANTMENTS.getValue(resourceLocation) != null;
+    }
+
+    // As Markiplier once said - later
 
     // Werewolves
     public static final String WEREWOLVES = "werewolves";
