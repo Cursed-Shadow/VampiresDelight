@@ -1,0 +1,6 @@
+{
+  "parent": "vampiresdelight:block/template_single_face",
+  "textures": {
+    "texture": "vampiresdelight:block/black_mushroom_stem"
+  }
+}

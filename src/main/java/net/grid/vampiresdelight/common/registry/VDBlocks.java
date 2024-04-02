@@ -3,10 +3,7 @@ package net.grid.vampiresdelight.common.registry;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.*;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CandleCakeBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -79,6 +76,10 @@ public class VDBlocks {
     // Farming
     public static final RegistryObject<Block> CURSED_FARMLAND = BLOCKS.register("cursed_farmland",
             () -> new CursedFarmlandBlock(Block.Properties.copy(Blocks.FARMLAND).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final RegistryObject<Block> BLACK_MUSHROOM_BLOCK = BLOCKS.register("black_mushroom_block",
+            () -> new HugeMushroomBlock(Block.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BLACK)));
+    public static final RegistryObject<Block> BLACK_MUSHROOM_STEM  = BLOCKS.register("black_mushroom_stem",
+            () -> new HugeMushroomBlock(Block.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.TERRACOTTA_GRAY)));
 
     // Pastries
     public static final RegistryObject<Block> BLOOD_PIE = BLOCKS.register("blood_pie",

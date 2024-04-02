@@ -35,7 +35,9 @@ public class VDItemModels extends ItemModelProvider {
                 VDItems.ORCHID_TEA.get(),
                 VDItems.WINE_GLASS.get(),
                 VDItems.MULLED_WINE_GLASS.get(),
-                VDItems.SPIRIT_LANTERN.get());
+                VDItems.SPIRIT_LANTERN.get(),
+                VDItems.BLACK_MUSHROOM_BLOCK.get(),
+                VDItems.BLACK_MUSHROOM_STEM.get());
         takeAll(items, specialItems.toArray(new Item[0])).forEach(items::remove);
 
         // Blocks with special item sprites

@@ -46,6 +46,8 @@ public class VDCreativeTabs {
 
                         // Farming
                         output.accept(VDItems.WILD_GARLIC.get());
+                        //output.accept(VDItems.BLACK_MUSHROOM_BLOCK.get());
+                        //output.accept(VDItems.BLACK_MUSHROOM_STEM.get());
                         output.accept(VDItems.ORCHID_SEEDS.get());
 
                         // Foodstuffs

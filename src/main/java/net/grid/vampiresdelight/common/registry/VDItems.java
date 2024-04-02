@@ -85,7 +85,11 @@ public class VDItems {
 
     // Farming
     public static final RegistryObject<Item> CURSED_FARMLAND = ITEMS.register("cursed_farmland",
-            () -> new BlockItem(VDBlocks.CURSED_FARMLAND.get(), new Item.Properties()));
+            () -> new BlockItem(VDBlocks.CURSED_FARMLAND.get(), basicItem()));
+    public static final RegistryObject<Item> BLACK_MUSHROOM_BLOCK = ITEMS.register("black_mushroom_block",
+            () -> new BlockItem(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), basicItem()));
+    public static final RegistryObject<Item> BLACK_MUSHROOM_STEM = ITEMS.register("black_mushroom_stem",
+            () -> new BlockItem(VDBlocks.BLACK_MUSHROOM_STEM.get(), basicItem()));
     public static final RegistryObject<Item> ORCHID_SEEDS = ITEMS.register("orchid_seeds",
             () -> new ItemNameBlockItem(VDBlocks.VAMPIRE_ORCHID_CROP.get(), basicItem()));
 
