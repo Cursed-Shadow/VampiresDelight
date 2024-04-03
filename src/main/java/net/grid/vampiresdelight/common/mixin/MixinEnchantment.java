@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.core.ModItems;
-import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;

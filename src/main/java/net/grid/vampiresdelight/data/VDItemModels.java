@@ -35,9 +35,7 @@ public class VDItemModels extends ItemModelProvider {
                 VDItems.ORCHID_TEA.get(),
                 VDItems.WINE_GLASS.get(),
                 VDItems.MULLED_WINE_GLASS.get(),
-                VDItems.SPIRIT_LANTERN.get(),
-                VDItems.BLACK_MUSHROOM_BLOCK.get(),
-                VDItems.BLACK_MUSHROOM_STEM.get());
+                VDItems.SPIRIT_LANTERN.get());
         takeAll(items, specialItems.toArray(new Item[0])).forEach(items::remove);
 
         // Blocks with special item sprites
@@ -52,6 +50,11 @@ public class VDItemModels extends ItemModelProvider {
         Set<Item> flatBlockItems = Sets.newHashSet(
                 VDItems.WILD_GARLIC.get());
         takeAll(items, flatBlockItems.toArray(new Item[0])).forEach(item -> itemGeneratedModel(item, resourceBlock(itemName(item))));
+
+        Set<Item> inventoryBlockItems = Sets.newHashSet(
+                VDItems.BLACK_MUSHROOM_BLOCK.get(),
+                VDItems.BLACK_MUSHROOM_STEM.get());
+        takeAll(items, inventoryBlockItems.toArray(new Item[0])).forEach(item -> blockBasedModel(item, "_inventory"));
 
         // Blocks whose items look alike
         takeAll(items, i -> i instanceof BlockItem).forEach(item -> blockBasedModel(item, ""));

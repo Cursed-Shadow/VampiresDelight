@@ -1,25 +1,11 @@
 package net.grid.vampiresdelight.common.utility;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class VDIntegrationUtils {
     public boolean isModLoaded(String string) {
         return ModList.get().isLoaded(string);
-    }
-
-    public static boolean doesItemExist(ResourceLocation resourceLocation) {
-        return ForgeRegistries.ITEMS.getValue(resourceLocation) != null;
-    }
-
-    public static Item getModItem(ResourceLocation resourceLocation) {
-        return ForgeRegistries.ITEMS.getValue(resourceLocation);
-    }
-
-    public static boolean doesEnchantmentExist(ResourceLocation resourceLocation) {
-        return ForgeRegistries.ENCHANTMENTS.getValue(resourceLocation) != null;
     }
 
     // As Markiplier once said - later

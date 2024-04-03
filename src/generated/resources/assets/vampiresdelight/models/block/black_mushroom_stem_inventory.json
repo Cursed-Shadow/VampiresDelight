@@ -1,5 +1,5 @@
 {
-  "parent": "vampiresdelight:block/cube_all",
+  "parent": "minecraft:block/cube_all",
   "textures": {
     "all": "vampiresdelight:block/black_mushroom_stem"
   }

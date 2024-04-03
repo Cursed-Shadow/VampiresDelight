@@ -6,10 +6,14 @@ import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
 import net.grid.vampiresdelight.common.block.DarkStoneStoveBlock;
 import net.grid.vampiresdelight.common.block.VampireOrchidCropBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.HugeMushroomBlock;
+import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -19,6 +23,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Block;
 import vectorwing.farmersdelight.common.block.*;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class VDBlockStates extends BlockStateProvider {
@@ -74,6 +79,9 @@ public class VDBlockStates extends BlockStateProvider {
                 .texture("east", resourceBlock(orchidBag + "_side"))
                 .texture("west", resourceBlock(orchidBag + "_side")));
 
+        this.hugeBlackMushroomBlock((HugeMushroomBlock) VDBlocks.BLACK_MUSHROOM_BLOCK.get());
+        this.hugeBlackMushroomBlock((HugeMushroomBlock) VDBlocks.BLACK_MUSHROOM_STEM.get());
+
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> this.candleCakeBlock((ConsumableCandleCakeBlock) block));
         this.cakeBlock((ConsumableCakeBlock) VDBlocks.ORCHID_CAKE.get());
     }
@@ -117,6 +125,27 @@ public class VDBlockStates extends BlockStateProvider {
                             .rotationY(((int) state.getValue(FeastBlock.FACING).toYRot() + DEFAULT_ANGLE_OFFSET) % 360)
                             .build();
                 });
+    }
+
+    public void hugeBlackMushroomBlock(HugeMushroomBlock block) {
+        for (boolean boolValue : new boolean[]{true, false}) {
+            for (Map.Entry<Direction, BooleanProperty> entry : PipeBlock.PROPERTY_BY_DIRECTION.entrySet()) {
+                int xRot = 0;
+                int yRot = 0;
+                switch (entry.getKey()) {
+                    case EAST -> yRot = 90;
+                    case SOUTH -> yRot = 180;
+                    case WEST -> yRot = 270;
+                    case UP -> xRot = 270;
+                    case DOWN -> xRot = 90;
+                    default -> {
+                    }
+                }
+                getMultipartBuilder(block).part()
+                        .modelFile((boolValue) ? existingModel(blockName(block)) : existingModel("black_mushroom_block_inside")).rotationX(xRot).rotationY(yRot).uvLock(boolValue).addModel()
+                        .condition(entry.getValue(), boolValue).end();
+            }
+        }
     }
 
     private void cakeBlock(ConsumableCakeBlock block) {

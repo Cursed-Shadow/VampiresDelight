@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.data.loot;
 
 import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
+import net.grid.vampiresdelight.common.registry.VDItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -44,6 +45,10 @@ public class VDBlockLootTables extends BlockLootSubProvider {
         dropSelf(VDBlocks.DARK_SPRUCE_WINE_SHELF.get());
 
         dropOther(VDBlocks.CURSED_FARMLAND.get(), ModBlocks.CURSED_EARTH.get());
+
+        // Note: change this to black mushroom when it's added
+        createMushroomBlockDrop(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), VDItems.RICE_BREAD.get());
+        dropWhenSilkTouch(VDBlocks.BLACK_MUSHROOM_STEM.get());
 
         dropSelf(VDBlocks.SPIRIT_LANTERN.get());
     }

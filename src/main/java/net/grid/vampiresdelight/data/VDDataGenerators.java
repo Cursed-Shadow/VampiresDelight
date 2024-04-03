@@ -39,6 +39,7 @@ public class VDDataGenerators {
                 new LootTableProvider.SubProviderEntry(VDChestLootTables::new, LootContextParamSets.CHEST)
         )));
 
+        generator.addProvider(event.includeClient(), new VDBlockModels(output, helper));
         VDBlockStates blockStates = new VDBlockStates(output, helper);
         generator.addProvider(event.includeClient(), blockStates);
         generator.addProvider(event.includeClient(), new VDItemModels(output, blockStates.models().existingFileHelper));
