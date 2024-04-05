@@ -1,0 +1,7 @@
+{
+  "parent": "vampiresdelight:block/template_wine_shelf",
+  "textures": {
+    "particle": "minecraft:block/crimson_planks",
+    "texture": "vampiresdelight:block/crimson_wine_shelf"
+  }
+}

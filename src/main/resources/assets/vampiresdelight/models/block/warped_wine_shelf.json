@@ -1,7 +1,0 @@
-{
-	"parent": "vampiresdelight:block/template_wine_shelf",
-  	"textures": {
-		"body": "vampiresdelight:block/warped_wine_shelf",
-		"particle": "block/warped_planks"
-	}
-}

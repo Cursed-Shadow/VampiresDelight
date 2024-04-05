@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.common.registry;
 
+import de.teamlapen.lib.lib.util.UtilLib;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.*;
 import net.minecraft.world.effect.MobEffects;
@@ -80,6 +81,10 @@ public class VDBlocks {
             () -> new HugeMushroomBlock(Block.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BLACK)));
     public static final RegistryObject<Block> BLACK_MUSHROOM_STEM  = BLOCKS.register("black_mushroom_stem",
             () -> new HugeMushroomBlock(Block.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.TERRACOTTA_GRAY)));
+    public static final RegistryObject<Block> BLACK_MUSHROOM = BLOCKS.register("black_mushroom",
+            () -> new BlackMushroomBlock(Block.Properties.copy(Blocks.RED_MUSHROOM).mapColor(MapColor.TERRACOTTA_BLACK).sound(SoundType.FUNGUS)));
+    public static final RegistryObject<Block> POTTED_BLACK_MUSHROOM = BLOCKS.register("potted_black_mushroom",
+            () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLACK_MUSHROOM, Block.Properties.of().noCollission().isViewBlocking(UtilLib::never).pushReaction(PushReaction.DESTROY).instabreak()));
 
     // Pastries
     public static final RegistryObject<Block> BLOOD_PIE = BLOCKS.register("blood_pie",

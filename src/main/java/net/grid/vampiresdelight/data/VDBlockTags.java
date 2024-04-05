@@ -70,7 +70,8 @@ public class VDBlockTags extends BlockTagsProvider {
                 VDBlocks.DARK_SPRUCE_WINE_SHELF.get(),
                 VDBlocks.BREWING_BARREL.get(),
                 VDBlocks.BLACK_MUSHROOM_BLOCK.get(),
-                VDBlocks.BLACK_MUSHROOM_STEM.get()
+                VDBlocks.BLACK_MUSHROOM_STEM.get(),
+                VDBlocks.BLACK_MUSHROOM.get()
         );
         tag(ModTags.MINEABLE_WITH_KNIFE)
                 .addTag(VDTags.DROPS_ORCHID_CAKE_SLICE)
@@ -88,10 +89,14 @@ public class VDBlockTags extends BlockTagsProvider {
     }
 
     protected void registerMinecraftTags() {
-        tag(net.minecraft.tags.BlockTags.CROPS).add(
+        tag(BlockTags.CROPS).add(
                 ModBlocks.GARLIC.get());
-        tag(net.minecraft.tags.BlockTags.SMALL_FLOWERS).add(
+        tag(BlockTags.SMALL_FLOWERS).add(
                 VDBlocks.WILD_GARLIC.get());
+        tag(BlockTags.FLOWER_POTS)
+                .add(VDBlocks.POTTED_BLACK_MUSHROOM.get());
+        tag(BlockTags.SWORD_EFFICIENT)
+                .add(VDBlocks.POTTED_BLACK_MUSHROOM.get());
     }
 
     private void registerFarmersDelightTags() {

@@ -90,6 +90,8 @@ public class VDItems {
             () -> new BlockItem(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), basicItem()));
     public static final RegistryObject<Item> BLACK_MUSHROOM_STEM = ITEMS.register("black_mushroom_stem",
             () -> new BlockItem(VDBlocks.BLACK_MUSHROOM_STEM.get(), basicItem()));
+    public static final RegistryObject<Item> BLACK_MUSHROOM = ITEMS.register("black_mushroom",
+            () -> new BlockItem(VDBlocks.BLACK_MUSHROOM.get(), basicItem()));
     public static final RegistryObject<Item> ORCHID_SEEDS = ITEMS.register("orchid_seeds",
             () -> new ItemNameBlockItem(VDBlocks.VAMPIRE_ORCHID_CROP.get(), basicItem()));
 

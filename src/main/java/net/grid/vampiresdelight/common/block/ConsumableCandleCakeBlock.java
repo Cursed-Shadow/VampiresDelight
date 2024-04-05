@@ -3,7 +3,6 @@ package net.grid.vampiresdelight.common.block;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -28,7 +27,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -37,8 +35,6 @@ import java.util.stream.Collectors;
 /**
  * Credits to the Neapolitan mod
  */
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
     protected static final VoxelShape CAKE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);

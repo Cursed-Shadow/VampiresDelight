@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.data;
 
+import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.ConsumableCakeBlock;
 import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
@@ -81,6 +82,8 @@ public class VDBlockStates extends BlockStateProvider {
 
         this.hugeBlackMushroomBlock((HugeMushroomBlock) VDBlocks.BLACK_MUSHROOM_BLOCK.get());
         this.hugeBlackMushroomBlock((HugeMushroomBlock) VDBlocks.BLACK_MUSHROOM_STEM.get());
+        this.plantBlock(VDBlocks.BLACK_MUSHROOM.get());
+        this.pottedPlantBlock(VDBlocks.POTTED_BLACK_MUSHROOM.get(), VDBlocks.BLACK_MUSHROOM.get());
 
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> this.candleCakeBlock((ConsumableCandleCakeBlock) block));
         this.cakeBlock((ConsumableCakeBlock) VDBlocks.ORCHID_CAKE.get());
@@ -96,6 +99,17 @@ public class VDBlockStates extends BlockStateProvider {
         } else {
             this.simpleBlock(block, models().cross(blockName(block), resourceBlock(blockName(block))).renderType("cutout"));
         }
+    }
+
+    public void plantBlock(Block block) {
+        this.simpleBlock(block, models()
+                .cross(blockName(block), resourceBlock(blockName(block))).renderType("cutout"));
+    }
+
+    public void pottedPlantBlock(Block pottedBlock, Block plantBlock) {
+        simpleBlock(pottedBlock, models()
+                .withExistingParent(blockName(pottedBlock), "minecraft:block/flower_pot_cross")
+                .texture("plant", resourceBlock(blockName(plantBlock))).renderType("cutout"));
     }
 
     public void cabinetBlock(Block block, String woodType) {

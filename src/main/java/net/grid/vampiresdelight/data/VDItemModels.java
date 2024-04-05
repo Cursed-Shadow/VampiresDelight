@@ -48,7 +48,8 @@ public class VDItemModels extends ItemModelProvider {
         takeAll(items, spriteBlockItems.toArray(new Item[0])).forEach(item -> withExistingParent(itemName(item), GENERATED).texture("layer0", resourceItem(itemName(item))));
 
         Set<Item> flatBlockItems = Sets.newHashSet(
-                VDItems.WILD_GARLIC.get());
+                VDItems.WILD_GARLIC.get(),
+                VDItems.BLACK_MUSHROOM.get());
         takeAll(items, flatBlockItems.toArray(new Item[0])).forEach(item -> itemGeneratedModel(item, resourceBlock(itemName(item))));
 
         Set<Item> inventoryBlockItems = Sets.newHashSet(

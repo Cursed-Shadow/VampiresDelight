@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.BlockModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -21,10 +22,39 @@ public class VDBlockModels extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
+        // Wine shelves
+        // Note: Cursed and dark spruce shelves can't be generated for some reason.
+        wineShelfBlock(VDBlocks.OAK_WINE_SHELF.get(), Blocks.OAK_PLANKS);
+        wineShelfBlock(VDBlocks.SPRUCE_WINE_SHELF.get(), Blocks.SPRUCE_PLANKS);
+        wineShelfBlock(VDBlocks.BIRCH_WINE_SHELF.get(), Blocks. BIRCH_PLANKS);
+        wineShelfBlock(VDBlocks.JUNGLE_WINE_SHELF.get(), Blocks.JUNGLE_PLANKS);
+        wineShelfBlock(VDBlocks.ACACIA_WINE_SHELF.get(), Blocks.ACACIA_PLANKS);
+        wineShelfBlock(VDBlocks.DARK_OAK_WINE_SHELF.get(), Blocks.DARK_OAK_PLANKS);
+        wineShelfBlock(VDBlocks.MANGROVE_WINE_SHELF.get(), Blocks.MANGROVE_PLANKS);
+        wineShelfBlock(VDBlocks.CHERRY_WINE_SHELF.get(), Blocks.CHERRY_PLANKS);
+        wineShelfBlock(VDBlocks.BAMBOO_WINE_SHELF.get(), Blocks.BAMBOO_PLANKS);
+        wineShelfBlock(VDBlocks.CRIMSON_WINE_SHELF.get(), Blocks.CRIMSON_PLANKS);
+        wineShelfBlock(VDBlocks.WARPED_WINE_SHELF.get(), Blocks.WARPED_PLANKS);
+
         // Huge black mushroom blocks
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_BLOCK.get());
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_STEM.get());
         hugeBlackMushroomBlock("black_mushroom_block_inside", false);
+    }
+
+    private void wineShelfBlock(Block shelfBlock, Block woodTypee) {
+        ResourceLocation shelfTexture = resourceBlock(blockName(shelfBlock));
+        ResourceLocation woodTypeTexture = new ResourceLocation("block/" + blockName(woodTypee));;
+        String name = blockName(shelfBlock);
+
+        // Shelf body
+        withExistingParent(name, "vampiresdelight:block/template_wine_shelf")
+                .texture("texture", shelfTexture)
+                .texture("particle", woodTypeTexture);
+        // Shelf support
+        withExistingParent(name + "_support", "vampiresdelight:block/template_wine_shelf_support")
+                .texture("texture", shelfTexture)
+                .texture("particle", woodTypeTexture);
     }
 
     private void hugeBlackMushroomBlock(String name, ResourceLocation texture, boolean needsInventoryVersion) {

@@ -46,9 +46,11 @@ public class VDBlockLootTables extends BlockLootSubProvider {
 
         dropOther(VDBlocks.CURSED_FARMLAND.get(), ModBlocks.CURSED_EARTH.get());
 
-        // Note: change this to black mushroom when it's added
-        createMushroomBlockDrop(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), VDItems.RICE_BREAD.get());
+        add(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), block ->
+                createMushroomBlockDrop(block, VDItems.BLACK_MUSHROOM.get()));
         dropWhenSilkTouch(VDBlocks.BLACK_MUSHROOM_STEM.get());
+        dropPottedContents(VDBlocks.POTTED_BLACK_MUSHROOM.get());
+        dropSelf(VDBlocks.BLACK_MUSHROOM.get());
 
         dropSelf(VDBlocks.SPIRIT_LANTERN.get());
     }
