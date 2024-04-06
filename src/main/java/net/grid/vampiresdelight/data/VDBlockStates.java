@@ -1,16 +1,12 @@
 package net.grid.vampiresdelight.data;
 
-import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.block.ConsumableCakeBlock;
-import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
-import net.grid.vampiresdelight.common.block.DarkStoneStoveBlock;
-import net.grid.vampiresdelight.common.block.VampireOrchidCropBlock;
+import net.grid.vampiresdelight.common.block.*;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.HugeMushroomBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -19,6 +15,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Block;
@@ -80,13 +77,15 @@ public class VDBlockStates extends BlockStateProvider {
                 .texture("east", resourceBlock(orchidBag + "_side"))
                 .texture("west", resourceBlock(orchidBag + "_side")));
 
-        this.hugeBlackMushroomBlock((HugeMushroomBlock) VDBlocks.BLACK_MUSHROOM_BLOCK.get());
-        this.hugeBlackMushroomBlock((HugeMushroomBlock) VDBlocks.BLACK_MUSHROOM_STEM.get());
+        this.hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_BLOCK.get());
+        this.hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_STEM.get());
         this.plantBlock(VDBlocks.BLACK_MUSHROOM.get());
         this.pottedPlantBlock(VDBlocks.POTTED_BLACK_MUSHROOM.get(), VDBlocks.BLACK_MUSHROOM.get());
 
+        WineShelfBlock.getAllShelveBlocks().forEach(this::wineShelfBlock);
+
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> this.candleCakeBlock((ConsumableCandleCakeBlock) block));
-        this.cakeBlock((ConsumableCakeBlock) VDBlocks.ORCHID_CAKE.get());
+        this.cakeBlock(VDBlocks.ORCHID_CAKE.get());
     }
 
     public void wildCropBlock(Block block) {
@@ -141,7 +140,7 @@ public class VDBlockStates extends BlockStateProvider {
                 });
     }
 
-    public void hugeBlackMushroomBlock(HugeMushroomBlock block) {
+    public void hugeBlackMushroomBlock(Block block) {
         for (boolean boolValue : new boolean[]{true, false}) {
             for (Map.Entry<Direction, BooleanProperty> entry : PipeBlock.PROPERTY_BY_DIRECTION.entrySet()) {
                 int xRot = 0;
@@ -162,7 +161,7 @@ public class VDBlockStates extends BlockStateProvider {
         }
     }
 
-    private void cakeBlock(ConsumableCakeBlock block) {
+    private void cakeBlock(Block block) {
         getVariantBuilder(block)
                 .forAllStates(state -> {
                             int bites = state.getValue(ConsumableCakeBlock.BITES);
@@ -196,6 +195,40 @@ public class VDBlockStates extends BlockStateProvider {
         Function<BlockState, ModelFile> function = blockState -> blockState.getValue(BlockStateProperties.LIT) ? candleCakeLit : candleCake;
 
         this.getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(function.apply(state)).build());
+    }
+
+    public void wineShelfBlock(Block block) {
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block);
+        int[] rotations = {270, 0, 90, 180};
+        Direction[] directions = {Direction.WEST, Direction.NORTH, Direction.EAST, Direction.SOUTH};
+
+        ModelFile baseModel = existingModel(blockName(block));
+        ModelFile supportModel = existingModel(blockName(block) + "_support");
+
+        for (int i = 0; i < rotations.length; i++) {
+            int rotation = rotations[i];
+            Direction direction = directions[i];
+
+            builder.part().modelFile(baseModel).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction).end();
+
+            builder.part().modelFile(supportModel).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction)
+                    .condition(WineShelfBlock.HAS_UPPER_SUPPORT, true).end();
+
+            builder.part().modelFile(existingModel("blood_wine_bottle_slot_top_left")).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction)
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_0_OCCUPIED, true).end();
+            builder.part().modelFile(existingModel("blood_wine_bottle_slot_top_right")).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction)
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_1_OCCUPIED, true).end();
+            builder.part().modelFile(existingModel("blood_wine_bottle_slot_bottom_left")).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction)
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_2_OCCUPIED, true).end();
+            builder.part().modelFile(existingModel("blood_wine_bottle_slot_bottom_right")).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction)
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_3_OCCUPIED, true).end();
+        }
     }
 
     private ResourceLocation withSuffix(ResourceLocation resourceLocation, String suffix) {

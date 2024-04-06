@@ -69,6 +69,6 @@ public class HugeBlackMushroomFeature extends AbstractHugeMushroomFeature {
 
     @Override
     protected int getTreeHeight(RandomSource pRandom) {
-        return pRandom.nextInt(3) + 4;
+        return pRandom.nextInt(2) + 4;
     }
 }

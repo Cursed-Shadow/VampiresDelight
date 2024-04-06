@@ -262,7 +262,11 @@ public class WineShelfBlock extends BaseEntityBlock {
         }
     }
 
-    public static Iterable<Item> getAllShelves() {
+    public static Iterable<Item> getAllShelfItems() {
         return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block) != null && VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getNamespace()) && block instanceof WineShelfBlock).map(Block::asItem).collect(Collectors.toList());
+    }
+
+    public static Iterable<Block> getAllShelveBlocks() {
+        return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block) != null && VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getNamespace()) && block instanceof WineShelfBlock).collect(Collectors.toList());
     }
 }

@@ -49,12 +49,12 @@ public class VDBlockModels extends BlockModelProvider {
 
         // Shelf body
         withExistingParent(name, "vampiresdelight:block/template_wine_shelf")
-                .texture("texture", shelfTexture)
-                .texture("particle", woodTypeTexture);
+                .texture("particle", woodTypeTexture)
+                .texture("body", shelfTexture);
         // Shelf support
         withExistingParent(name + "_support", "vampiresdelight:block/template_wine_shelf_support")
-                .texture("texture", shelfTexture)
-                .texture("particle", woodTypeTexture);
+                .texture("particle", woodTypeTexture)
+                .texture("body", shelfTexture);
     }
 
     private void hugeBlackMushroomBlock(String name, ResourceLocation texture, boolean needsInventoryVersion) {

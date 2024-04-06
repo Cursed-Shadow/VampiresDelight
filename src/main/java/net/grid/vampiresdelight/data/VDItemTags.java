@@ -75,7 +75,7 @@ public class VDItemTags extends ItemTagsProvider {
         tag(VDTags.MINION_VAMPIRE_FOOD)
                 .add(VDItems.ORCHID_COOKIE.get());
 
-        WineShelfBlock.getAllShelves().forEach(item -> tag(VDTags.WINE_SHELF).add(item));
+        WineShelfBlock.getAllShelfItems().forEach(item -> tag(VDTags.WINE_SHELF).add(item));
     }
 
     private void registerVampirismTags() {

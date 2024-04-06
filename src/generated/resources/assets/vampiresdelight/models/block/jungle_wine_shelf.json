@@ -1,7 +1,7 @@
 {
   "parent": "vampiresdelight:block/template_wine_shelf",
   "textures": {
-    "particle": "minecraft:block/jungle_planks",
-    "texture": "vampiresdelight:block/jungle_wine_shelf"
+    "body": "vampiresdelight:block/jungle_wine_shelf",
+    "particle": "minecraft:block/jungle_planks"
   }
 }
