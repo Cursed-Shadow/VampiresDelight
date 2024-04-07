@@ -101,7 +101,7 @@ public class VDFoodValues {
             .nutrition(7).saturationMod(0.6f).fast()
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, BRIEF_DURATION), 1.0F).build();
     public static final FoodProperties PURE_SORBET = (new FoodProperties.Builder())
-            .nutrition(16).saturationMod(0.8f).fast().alwaysEat()
+            .nutrition(10).saturationMod(0.8f).fast().alwaysEat()
             .effect(() -> new MobEffectInstance(VDEffects.FOG_VISION.get(), MEDIUM_DURATION), 1.0F).build();
     public static final FoodProperties TRICOLOR_DANGO = (new FoodProperties.Builder())
             .nutrition(13).saturationMod(1.4f).fast().build();
@@ -153,5 +153,11 @@ public class VDFoodValues {
     // Feast Portions
     public static final FoodProperties WEIRD_JELLY = (new FoodProperties.Builder())
             .nutrition(7).saturationMod(0.8f).fast().alwaysEat()
-            .effect(() -> new MobEffectInstance(de.teamlapen.vampirism.core.ModEffects.SUNSCREEN.get(), BRIEF_DURATION), 1.0F).build();
+            .effect(() -> {
+                if (VDConfiguration.REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST.get()) {
+                    return new MobEffectInstance(MobEffects.JUMP, BRIEF_DURATION);
+                } else {
+                    return new MobEffectInstance(de.teamlapen.vampirism.core.ModEffects.SUNSCREEN.get(), BRIEF_DURATION);
+                }
+            }, 1.0F).build();
 }
