@@ -101,7 +101,7 @@ public class VDFoodValues {
             .nutrition(7).saturationMod(0.6f).fast()
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, BRIEF_DURATION), 1.0F).build();
     public static final FoodProperties PURE_SORBET = (new FoodProperties.Builder())
-            .nutrition(16).saturationMod(0.8f).fast().alwaysEat()
+            .nutrition(10).saturationMod(0.8f).fast().alwaysEat()
             .effect(() -> new MobEffectInstance(VDEffects.FOG_VISION.get(), MEDIUM_DURATION), 1.0F).build();
     public static final FoodProperties TRICOLOR_DANGO = (new FoodProperties.Builder())
             .nutrition(13).saturationMod(1.4f).fast().build();
