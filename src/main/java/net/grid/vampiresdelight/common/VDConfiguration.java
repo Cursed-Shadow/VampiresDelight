@@ -15,6 +15,7 @@ public class VDConfiguration {
     public static ForgeConfigSpec.BooleanValue ENABLE_RECIPE_BOOK_BREWING_BARREL;
 
     public static final String CATEGORY_EFFECTS = "effects";
+    public static ForgeConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
     public static ForgeConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
 
     public static final String CATEGORY_WORLD = "world";
@@ -45,6 +46,8 @@ public class VDConfiguration {
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Effects").push(CATEGORY_EFFECTS);
+        REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST = COMMON_BUILDER.comment("Should the weird jelly sunscreen effect be replaced with Jump Boost?")
+                .define("replaceWeirdJellySunscreenWithJumpboost", false);
         ARMOR_DISSOLVES_FULLY = COMMON_BUILDER.comment("Should 'weak' armor such as leather and chain dissolve fully because of Clothes Dissolving effect?")
                 .define("armorDissolvesFully", true);
         COMMON_BUILDER.pop();

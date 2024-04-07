@@ -150,5 +150,11 @@ public class VDFoodValues {
     // Feast Portions
     public static final FoodProperties WEIRD_JELLY = (new FoodProperties.Builder())
             .nutrition(7).saturationMod(0.8f).fast().alwaysEat()
-            .effect(() -> new MobEffectInstance(de.teamlapen.vampirism.core.ModEffects.SUNSCREEN.get(), BRIEF_DURATION), 1.0F).build();
+            .effect(() -> {
+                if (VDConfiguration.REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST.get()) {
+                    return new MobEffectInstance(MobEffects.JUMP, BRIEF_DURATION);
+                } else {
+                    return new MobEffectInstance(de.teamlapen.vampirism.core.ModEffects.SUNSCREEN.get(), BRIEF_DURATION);
+                }
+            }, 1.0F).build();
 }
