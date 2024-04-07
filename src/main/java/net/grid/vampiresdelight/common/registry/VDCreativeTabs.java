@@ -24,6 +24,7 @@ public class VDCreativeTabs {
                         // Blocks
                         output.accept(VDItems.DARK_STONE_STOVE.get());
                         //output.accept(VDItems.BREWING_BARREL.get());
+                        output.accept(VDItems.ALCHEMICAL_COCKTAIL.get());
                         output.accept(VDItems.GARLIC_CRATE.get());
                         output.accept(VDItems.ORCHID_BAG.get());
                         output.accept(VDItems.DARK_SPRUCE_CABINET.get());
@@ -45,9 +46,10 @@ public class VDCreativeTabs {
                         output.accept(VDItems.SPIRIT_LANTERN.get());
 
                         // Farming
+                        output.accept(VDItems.BLACK_MUSHROOM_BLOCK.get());
+                        output.accept(VDItems.BLACK_MUSHROOM_STEM.get());
+                        output.accept(VDItems.BLACK_MUSHROOM.get());
                         output.accept(VDItems.WILD_GARLIC.get());
-                        //output.accept(VDItems.BLACK_MUSHROOM_BLOCK.get());
-                        //output.accept(VDItems.BLACK_MUSHROOM_STEM.get());
                         output.accept(VDItems.ORCHID_SEEDS.get());
 
                         // Foodstuffs
@@ -92,6 +94,7 @@ public class VDCreativeTabs {
                         output.accept(VDItems.HARDTACK.get());
 
                         // Soups and Stews
+                        output.accept(VDItems.BLACK_MUSHROOM_SOUP.get());
                         output.accept(VDItems.GARLIC_SOUP.get());
                         output.accept(VDItems.BORSCHT.get());
 

@@ -31,13 +31,13 @@ public class BlessingEffect extends MobEffect {
     @Override
     public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
         if (!Helper.isVampire(entity)) {
-            resistUnholySpirits(entity.level(), entity, entity.getX(), entity.getY(), entity.getZ(), amplifier);
+            resistUnholySpirits(entity.level(), entity.getX(), entity.getY(), entity.getZ(), amplifier);
         } else {
             entity.removeEffect(VDEffects.BLESSING.get());
         }
     }
 
-    public static void resistUnholySpirits(final LevelAccessor world, @NotNull LivingEntity user, final double x, final double y, final double z, int amplifier) {
+    public static void resistUnholySpirits(final LevelAccessor world, final double x, final double y, final double z, int amplifier) {
         Vec3 center = new Vec3(x, y, z);
         List<LivingEntity> unsortedEntityFound = world.getEntitiesOfClass(LivingEntity.class, new AABB(center, center).inflate(5.0 * (amplifier + 1)), e -> true);
         List<LivingEntity> sortedEntitiesFound = unsortedEntityFound.stream().sorted(Comparator.comparingDouble(t -> t.distanceToSqr(center))).toList();

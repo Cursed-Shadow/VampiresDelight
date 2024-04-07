@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "vampiresdelight:black_mushroom"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "vampiresdelight:black_mushroom_soup"
+  }
+}

@@ -56,12 +56,12 @@ public class HugeBlackMushroomFeature extends AbstractHugeMushroomFeature {
     }
 
     @Override
-    protected int getTreeRadiusForHeight(int p_65094_, int p_65095_, int pFoliageRadius, int pY) {
+    protected int getTreeRadiusForHeight(int k1, int k, int foliageRadius, int height) {
         int i = 0;
-        if (pY < p_65095_ && pY >= p_65095_ - 3) {
-            i = pFoliageRadius;
-        } else if (pY == p_65095_) {
-            i = pFoliageRadius;
+        if (height < k && height >= k - 3) {
+            i = foliageRadius;
+        } else if (height == k) {
+            i = foliageRadius;
         }
 
         return i;

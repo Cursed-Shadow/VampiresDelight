@@ -8,12 +8,14 @@ import net.grid.vampiresdelight.client.recipebook.BrewingBarrelRecipeBookTab;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDForgeTags;
 import net.grid.vampiresdelight.data.builder.BrewingBarrelRecipeBuilder;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
@@ -82,7 +84,15 @@ public class VDCookingRecipes {
     }
 
     private static void cookMeals(Consumer<FinishedRecipe> consumer) {
-        CookingPotRecipeBuilder.cookingPotRecipe(VDItems.GARLIC_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
+        CookingPotRecipeBuilder.cookingPotRecipe(VDItems.BLACK_MUSHROOM_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
+                .addIngredient(VDItems.BLACK_MUSHROOM.get())
+                .addIngredient(Items.POTATO)
+                .addIngredient(Items.CARROT)
+                .addIngredient(ForgeTags.VEGETABLES_ONION)
+                .unlockedByAnyIngredient(VDItems.BLACK_MUSHROOM.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(consumer, itemLocationCooking(VDItems.BLACK_MUSHROOM_SOUP.get()));
+        CookingPotRecipeBuilder.cookingPotRecipe(VDItems.GARLIC_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BREAD)
                 .addIngredient(ForgeTags.RAW_CHICKEN)
                 .addIngredient(VDForgeTags.VEGETABLES_GARLIC)
                 .addIngredient(ForgeTags.VEGETABLES)

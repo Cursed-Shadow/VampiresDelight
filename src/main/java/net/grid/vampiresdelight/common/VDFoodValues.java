@@ -136,16 +136,19 @@ public class VDFoodValues {
             .nutrition(6).saturationMod(0.9f).build();
 
     // Bowl Foods
+    public static final FoodProperties BLACK_MUSHROOM_SOUP = (new FoodProperties.Builder())
+            .nutrition(12).saturationMod(0.8f)
+            .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), MEDIUM_DURATION), 1.0F).build();
     public static final FoodProperties GARLIC_SOUP = (new FoodProperties.Builder())
-            .nutrition(12).saturationMod(0.6f)
+            .nutrition(15).saturationMod(0.9f)
             .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), MEDIUM_DURATION), 1.0F).build();
     public static final FoodProperties BORSCHT = (new FoodProperties.Builder())
-            .nutrition(15).saturationMod(0.9f)
+            .nutrition(16).saturationMod(0.9f)
             .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), MEDIUM_DURATION), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, SHORT_DURATION), 1.0F).build();
 
     // Plated Foods
-
+    // :p
 
     // Feast Portions
     public static final FoodProperties WEIRD_JELLY = (new FoodProperties.Builder())
