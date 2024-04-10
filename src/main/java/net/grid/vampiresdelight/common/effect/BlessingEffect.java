@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.common.effect;
 
 import de.teamlapen.vampirism.entity.GhostEntity;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDEffects;
 import net.grid.vampiresdelight.common.registry.VDParticleTypes;
 import net.grid.vampiresdelight.common.registry.VDSounds;
@@ -47,7 +48,7 @@ public class BlessingEffect extends MobEffect {
             double entityY = livingEntity.getY();
             double entityZ = livingEntity.getZ();
 
-            if (livingEntity instanceof Phantom || livingEntity instanceof GhostEntity) {
+            if (livingEntity instanceof Phantom || (livingEntity instanceof GhostEntity && VDConfiguration.BLESSING_HELPS_AGAINST_GHOSTS.get())) {
                 if (!livingEntity.getEntityData().isEmpty()) {
                     livingEntity.remove(Entity.RemovalReason.DISCARDED);
 

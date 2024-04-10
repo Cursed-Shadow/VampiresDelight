@@ -404,6 +404,13 @@ public class VDCraftingRecipes {
                 .requires(ForgeTags.CROPS_TOMATO)
                 .unlockedBy("has_human_eye", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.HUMAN_EYE.get()))
                 .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.BAT_TACO.get())
+                .requires(ForgeTags.BREAD)
+                .requires(VDForgeTags.COOKED_BAT)
+                .requires(ForgeTags.SALAD_INGREDIENTS)
+                .requires(ForgeTags.CROPS_TOMATO)
+                .unlockedBy("has_cooked_bat", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.COOKED_BAT.get(), VDItems.COOKED_BAT_CHOPS.get()))
+                .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.HARDTACK.get())
                 .requires(Items.WHEAT)
                 .requires(Items.WHEAT)

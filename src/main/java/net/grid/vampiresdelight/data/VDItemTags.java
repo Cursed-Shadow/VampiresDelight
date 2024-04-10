@@ -63,7 +63,9 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.BLOOD_SAUSAGE.get())
                 .add(VDItems.BLOOD_HOT_DOG.get())
                 .add(VDItems.ORCHID_CAKE.get())
-                .add(VDItems.ORCHID_CAKE_SLICE.get());
+                .add(VDItems.ORCHID_CAKE_SLICE.get())
+                .add(VDItems.BLACK_MUSHROOM_SOUP.get())
+                .add(VDItems.ORCHID_CURRY.get());
         tag(VDTags.HUNTER_FOOD)
                 .add(ModItems.GARLIC_BREAD.get())
                 .add(VDItems.BORSCHT.get())

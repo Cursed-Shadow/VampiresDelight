@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.data.loot;
 
 import de.teamlapen.vampirism.core.ModBlocks;
+import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -30,19 +31,7 @@ public class VDBlockLootTables extends BlockLootSubProvider {
         dropNamedContainer(VDBlocks.DARK_SPRUCE_CABINET.get());
         dropNamedContainer(VDBlocks.CURSED_SPRUCE_CABINET.get());
 
-        dropSelf(VDBlocks.OAK_WINE_SHELF.get());
-        dropSelf(VDBlocks.SPRUCE_WINE_SHELF.get());
-        dropSelf(VDBlocks.BIRCH_WINE_SHELF.get());
-        dropSelf(VDBlocks.JUNGLE_WINE_SHELF.get());
-        dropSelf(VDBlocks.ACACIA_WINE_SHELF.get());
-        dropSelf(VDBlocks.DARK_OAK_WINE_SHELF.get());
-        dropSelf(VDBlocks.MANGROVE_WINE_SHELF.get());
-        dropSelf(VDBlocks.CHERRY_WINE_SHELF.get());
-        dropSelf(VDBlocks.BAMBOO_WINE_SHELF.get());
-        dropSelf(VDBlocks.CRIMSON_WINE_SHELF.get());
-        dropSelf(VDBlocks.WARPED_WINE_SHELF.get());
-        dropSelf(VDBlocks.CURSED_SPRUCE_WINE_SHELF.get());
-        dropSelf(VDBlocks.DARK_SPRUCE_WINE_SHELF.get());
+        WineShelfBlock.getAllShelveBlocks().forEach(this::dropSelf);
 
         dropOther(VDBlocks.CURSED_FARMLAND.get(), ModBlocks.CURSED_EARTH.get());
 

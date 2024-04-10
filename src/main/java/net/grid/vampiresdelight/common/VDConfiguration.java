@@ -16,6 +16,8 @@ public class VDConfiguration {
 
     public static final String CATEGORY_EFFECTS = "effects";
     public static ForgeConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
+    public static ForgeConfigSpec.BooleanValue BAT_MEAT_WITHERS_HUMANS;
+    public static ForgeConfigSpec.BooleanValue BLESSING_HELPS_AGAINST_GHOSTS;
     public static ForgeConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
 
     public static final String CATEGORY_WORLD = "world";
@@ -46,8 +48,12 @@ public class VDConfiguration {
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Effects").push(CATEGORY_EFFECTS);
-        REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST = COMMON_BUILDER.comment("Should the weird jelly sunscreen effect be replaced with Jump Boost?")
+        REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST = COMMON_BUILDER.comment("Should the weird jelly Sunscreen effect be replaced with Jump Boost?")
                 .define("replaceWeirdJellySunscreenWithJumpboost", false);
+        BAT_MEAT_WITHERS_HUMANS = COMMON_BUILDER.comment("Should the bat meat and food made of it have chance of giving Wither effect when eaten by humans?")
+                .define("batMeatWithersHumans", true);
+        BLESSING_HELPS_AGAINST_GHOSTS = COMMON_BUILDER.comment("Should the blessing effect banish ghosts just like phantoms?")
+                .define("blessingHelpsAgainstGhosts", true);
         ARMOR_DISSOLVES_FULLY = COMMON_BUILDER.comment("Should 'weak' armor such as leather and chain dissolve fully because of Clothes Dissolving effect?")
                 .define("armorDissolvesFully", true);
         COMMON_BUILDER.pop();

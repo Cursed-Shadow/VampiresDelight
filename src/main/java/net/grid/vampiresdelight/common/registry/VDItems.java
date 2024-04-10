@@ -8,6 +8,7 @@ import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.FoodValues;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.FuelBlockItem;
 
@@ -172,16 +173,22 @@ public class VDItems {
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.EYE_CROISSANT));
     public static final RegistryObject<Item> BAGEL_SANDWICH = ITEMS.register("bagel_sandwich",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.BAGEL_SANDWICH));
+    public static final RegistryObject<Item> BAT_TACO = ITEMS.register("bat_taco",
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.BAT_TACO_HUMAN), VDFoodValues.BAT_TACO));
     public static final RegistryObject<Item> HARDTACK = ITEMS.register("hardtack",
             () -> new HardtackItem(bowlFoodItem(VDFoodValues.HARDTACK)));
 
     // Soups and Stews
     public static final RegistryObject<Item> BLACK_MUSHROOM_SOUP = ITEMS.register("black_mushroom_soup",
-            () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.BLACK_MUSHROOM_SOUP));
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.BLACK_MUSHROOM_SOUP));
     public static final RegistryObject<Item> GARLIC_SOUP = ITEMS.register("garlic_soup",
             () -> new HunterConsumableItem(foodItem(VDFoodValues.GARLIC_SOUP), true));
     public static final RegistryObject<Item> BORSCHT = ITEMS.register("borscht",
             () -> new HunterConsumableItem(bowlFoodItem(VDFoodValues.BORSCHT), true));
+
+    // Plated Meals
+    public static final RegistryObject<Item> ORCHID_CURRY = ITEMS.register("orchid_curry",
+            () -> new VampireConsumableItem(bowlFoodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_CURRY));
 
     // Feasts
     public static final RegistryObject<Item> WEIRD_JELLY_BLOCK = ITEMS.register("weird_jelly_block",
