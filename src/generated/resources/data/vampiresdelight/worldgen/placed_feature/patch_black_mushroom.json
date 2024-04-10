@@ -2,12 +2,8 @@
   "feature": "vampiresdelight:patch_black_mushroom",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 4
-    },
-    {
       "type": "minecraft:rarity_filter",
-      "chance": 8
+      "chance": 6
     },
     {
       "type": "minecraft:in_square"

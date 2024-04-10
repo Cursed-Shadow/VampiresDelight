@@ -16,7 +16,7 @@ public class VDPlacedFeatures {
 
     public static void createPlacedFeatures(BootstapContext<PlacedFeature> context) {
         register(context, PATCH_BLACK_MUSHROOM, VDConfiguredFeatures.PATCH_BLACK_MUSHROOM,
-                List.of(CountPlacement.of(4), RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
     }
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {
@@ -25,9 +25,5 @@ public class VDPlacedFeatures {
 
     public static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, ResourceKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(feature), modifiers));
-    }
-
-    public static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, ResourceKey<ConfiguredFeature<?, ?>> feature, PlacementModifier... modifiers) {
-        register(context, key, feature, List.of(modifiers));
     }
 }
