@@ -2,11 +2,8 @@ package net.grid.vampiresdelight.common.utility;
 
 import com.google.common.collect.ImmutableSet;
 import de.teamlapen.vampirism.util.Helper;
-import de.teamlapen.vampirism.world.VampirismWorld;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.common.PlantType;
 
 import java.util.Objects;
@@ -14,10 +11,6 @@ import java.util.Objects;
 public class VDHelper {
     // Plant type for plants that grow on cursed soil
     public static final PlantType CURSED_PLANT_TYPE = PlantType.get("vampiresdelight_cursed");
-
-    public static boolean isBlockInVampireFogArea(BlockPos pos, Level level) {
-        return VampirismWorld.getOpt(level).map(vh -> vh.isInsideArtificialVampireFogArea(pos)).orElse(false);
-    }
 
     public static boolean isHuman(Entity entity) {
         return !Helper.isVampire(entity) && !Helper.isHunter(entity);

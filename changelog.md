@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.1
+
+### Additions
+- Added **Orchid Curry**;
+- Added **Bat Taco**;
+- Added **Black Mushroom**:
+  - Spawns in vampire forest;
+  - Can grow huge if bonemealed;
+- Added **Black Mushroom Soup**;
+- Added new configs:
+    - `replaceWeirdJellySunscreenWithJumpboost`. `false` by default (Thanks, Zin!);
+    - `blessingHelpsAgainstGhosts`. `true` by default;
+    - `batMeatWithersHumans`. `true` by default;
+
+### Updates
+- Tweaked food values for some foods;
+
+### Fixes
+- Fixed decoding exception with not encoded brewing barrel recipe tab which resulted in the servers not working (Thanks, Cheaterpaul!);
+- Fixed config indentation (Thanks, Zin!);
+- Fixed Farmer's Bliss incompatibility;
+
 ## 0.1.0
 
 ### Additions
