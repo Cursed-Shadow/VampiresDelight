@@ -16,7 +16,7 @@ public class VDPlacedFeatures {
 
     public static void createPlacedFeatures(BootstapContext<PlacedFeature> context) {
         register(context, PATCH_BLACK_MUSHROOM, VDConfiguredFeatures.PATCH_BLACK_MUSHROOM,
-                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
+                List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
     }
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {

@@ -46,9 +46,9 @@ public class VDCreativeTabs {
                         output.accept(VDItems.SPIRIT_LANTERN.get());
 
                         // Farming
-                        //output.accept(VDItems.BLACK_MUSHROOM_BLOCK.get());
-                        //output.accept(VDItems.BLACK_MUSHROOM_STEM.get());
-                        //output.accept(VDItems.BLACK_MUSHROOM.get());
+                        output.accept(VDItems.BLACK_MUSHROOM_BLOCK.get());
+                        output.accept(VDItems.BLACK_MUSHROOM_STEM.get());
+                        output.accept(VDItems.BLACK_MUSHROOM.get());
                         output.accept(VDItems.WILD_GARLIC.get());
                         output.accept(VDItems.ORCHID_SEEDS.get());
 
@@ -95,7 +95,7 @@ public class VDCreativeTabs {
                         output.accept(VDItems.HARDTACK.get());
 
                         // Soups and Stews
-                        //output.accept(VDItems.BLACK_MUSHROOM_SOUP.get());
+                        output.accept(VDItems.BLACK_MUSHROOM_SOUP.get());
                         output.accept(VDItems.GARLIC_SOUP.get());
                         output.accept(VDItems.BORSCHT.get());
 
