@@ -176,7 +176,7 @@ public class VDItems {
     public static final RegistryObject<Item> BAT_TACO = ITEMS.register("bat_taco",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.BAT_TACO_HUMAN), VDFoodValues.BAT_TACO));
     public static final RegistryObject<Item> HARDTACK = ITEMS.register("hardtack",
-            () -> new HardtackItem(bowlFoodItem(VDFoodValues.HARDTACK)));
+            () -> new HardtackItem(foodItem(VDFoodValues.HARDTACK)));
 
     // Soups and Stews
     public static final RegistryObject<Item> BLACK_MUSHROOM_SOUP = ITEMS.register("black_mushroom_soup",
