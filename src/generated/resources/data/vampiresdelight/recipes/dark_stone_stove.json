@@ -6,7 +6,7 @@
       "item": "minecraft:campfire"
     },
     "d": {
-      "tag": "vampirism:dark_stone"
+      "item": "vampirism:dark_stone_bricks"
     },
     "i": {
       "tag": "forge:ingots/iron"

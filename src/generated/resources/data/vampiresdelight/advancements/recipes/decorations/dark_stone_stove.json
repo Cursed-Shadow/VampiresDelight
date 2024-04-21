@@ -13,6 +13,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_dark_stone_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vampirism:dark_stone_bricks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "vampiresdelight:dark_stone_stove"
@@ -22,6 +34,7 @@
   },
   "requirements": [
     [
+      "has_dark_stone_bricks",
       "has_campfire",
       "has_the_recipe"
     ]

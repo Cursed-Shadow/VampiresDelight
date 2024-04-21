@@ -63,8 +63,9 @@ public class VDCraftingRecipes {
                 .pattern("d d")
                 .pattern("dCd")
                 .define('i', Tags.Items.INGOTS_IRON)
-                .define('d', ModTags.Items.DARK_STONE)
+                .define('d', ModBlocks.DARK_STONE_BRICKS.get())
                 .define('C', Blocks.CAMPFIRE)
+                .unlockedBy("has_dark_stone_bricks", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.DARK_STONE_BRICKS.get()))
                 .unlockedBy("has_campfire", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CAMPFIRE))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, VDBlocks.DARK_SPRUCE_CABINET.get())
