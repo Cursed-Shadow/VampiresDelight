@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.2
+
+### Additions
+- Added new config:
+  - `alchemicalCocktailBurnsGround`. `true` by default;
+
+### Updates
+- **Wild Garlic** now gives Garlic effect to vampires when inside;
+- Tweaked **Black Mushroom** to spawn more frequently;
+
+### Fixes
+- Fixed Hardtack giving bowl after being eaten;
+
 ## 0.1.1
 
 ### Additions
