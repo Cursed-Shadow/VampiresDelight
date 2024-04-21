@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.entity;
 
 import de.teamlapen.vampirism.core.ModBlocks;
+import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDEntityTypes;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -12,7 +13,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -88,7 +88,9 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile implements
         }
     }
 
-    public void setOnFire(HitResult result) {
+    private void setOnFire(HitResult result) {
+        if (!VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get()) return;
+
         BlockPos blockPos = BlockPos.containing(result.getLocation());
         for (int dx = -1; dx < 3; dx++) {
             for (int dy = -2; dy < 2; dy++) {

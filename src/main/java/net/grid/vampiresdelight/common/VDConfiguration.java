@@ -14,6 +14,9 @@ public class VDConfiguration {
     public static final String CATEGORY_RECIPE_BOOK = "recipe_book";
     public static ForgeConfigSpec.BooleanValue ENABLE_RECIPE_BOOK_BREWING_BARREL;
 
+    public static final String CATEGORY_ITEMS = "items";
+    public static ForgeConfigSpec.BooleanValue ALCHEMICAL_COCKTAIL_BURNS_GROUND;
+
     public static final String CATEGORY_EFFECTS = "effects";
     public static ForgeConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
     public static ForgeConfigSpec.BooleanValue BAT_MEAT_WITHERS_HUMANS;
@@ -45,6 +48,11 @@ public class VDConfiguration {
         COMMON_BUILDER.comment("Recipe book").push(CATEGORY_RECIPE_BOOK);
         ENABLE_RECIPE_BOOK_BREWING_BARREL = COMMON_BUILDER.comment("Should the Brewing Barrel have a Recipe Book available on its interface?")
                 .define("enableRecipeBookBrewingBarrel", true);
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.comment("Items").push(CATEGORY_ITEMS);
+        ALCHEMICAL_COCKTAIL_BURNS_GROUND = COMMON_BUILDER.comment("Should the Alchemical Cocktail burn ground when thrown? Recommended to set this to \"false\" on servers with claims.")
+                .define("alchemicalCocktailBurnsGround", true);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Effects").push(CATEGORY_EFFECTS);

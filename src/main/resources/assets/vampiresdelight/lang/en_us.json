@@ -130,6 +130,7 @@
 
   "vampiresdelight.tooltip.orchid_tea": "Infects With Sanguinare",
   "vampiresdelight.tooltip.cursed_cupcake": "Clears Garlic Effect",
+  "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Cannot burn the ground due to this server's settings",
 
   "vampiresdelight.text.planted_on": "Must be planted on ",
 
