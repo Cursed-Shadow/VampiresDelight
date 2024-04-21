@@ -92,7 +92,7 @@ public class VDBlocks {
 
     // Wild Crops
     public static final RegistryObject<Block> WILD_GARLIC = BLOCKS.register("wild_garlic",
-            () -> new WildCropBlock(MobEffects.BLINDNESS, 8, Block.Properties.copy(Blocks.TALL_GRASS)));
+            () -> new WildGarlicBlock(MobEffects.BLINDNESS, 8, Block.Properties.copy(Blocks.TALL_GRASS)));
 
     // Crops
     public static final RegistryObject<Block> VAMPIRE_ORCHID_CROP = BLOCKS.register("vampire_orchid_crop",
