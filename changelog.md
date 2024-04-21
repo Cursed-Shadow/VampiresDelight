@@ -9,6 +9,7 @@
 ### Updates
 - **Wild Garlic** now gives Garlic effect to vampires when inside;
 - Tweaked **Black Mushroom** to spawn more frequently;
+- **Vampire Orchid Crop** now grows only in dark areas with maximum light level of 12 or in vampire fog;
 
 ### Fixes
 - Fixed Hardtack giving bowl after being eaten;

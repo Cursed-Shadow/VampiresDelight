@@ -1,6 +1,8 @@
 package net.grid.vampiresdelight.common.block;
 
 import de.teamlapen.vampirism.core.ModBlocks;
+import de.teamlapen.vampirism.util.Helper;
+import de.teamlapen.vampirism.world.VampirismWorld;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDHelper;
@@ -45,7 +47,7 @@ public class VampireOrchidCropBlock extends CropBlock {
     @Override
     public void randomTick(BlockState blockState, ServerLevel worldIn, BlockPos pos, RandomSource randomSource) {
         if (!worldIn.isAreaLoaded(pos, 1)) return;
-        if (worldIn.getRawBrightness(pos, 0) >= 9) {
+        if (worldIn.getRawBrightness(pos, 0) <= 12 || isPosInArtificalVampireFogArea(pos, worldIn) || Helper.isPosInVampireBiome(pos, worldIn)) {
             int i = this.getAge(blockState);
             if (i < this.getMaxAge()) {
                 float f = getGrowthSpeed(this, worldIn, pos);
@@ -55,6 +57,10 @@ public class VampireOrchidCropBlock extends CropBlock {
                 }
             }
         }
+    }
+
+    private static boolean isPosInArtificalVampireFogArea(BlockPos pos, Level level) {
+        return VampirismWorld.getOpt(level).map(vh -> vh.isInsideArtificialVampireFogArea(pos)).orElse(false);
     }
 
     protected static float getGrowthSpeed(Block block, BlockGetter blockGetter, BlockPos pos) {
