@@ -99,7 +99,7 @@
   "item.vampiresdelight.snow_white_ice_cream": "Белоснежное мороженое",
 
   "effect.vampiresdelight.blessing": "Благословение",
-  "effect.vampiresdelight.blessing.0.desc": "Защищает от злых духов, например фантомов.",
+  "effect.vampiresdelight.blessing.description": "Защищает от злых духов, например фантомов.",
 
   "item.minecraft.potion.effect.blessing": "Зелье благословения",
   "item.minecraft.splash_potion.effect.blessing": "Взрывное зелье благословения",
@@ -108,7 +108,7 @@
   "oil.vampiresdelight.blessing": "Благословляющее",
 
   "effect.vampiresdelight.clothes_dissolving": "Растворение одежды",
-  "effect.vampiresdelight.clothes_dissolving.0.desc": "Растворяет броню, которую носит игрок или моб.",
+  "effect.vampiresdelight.clothes_dissolving.description": "Растворяет броню, которую носит игрок или моб.",
 
   "item.minecraft.potion.effect.clothes_dissolving": "Зелье растворения одежды",
   "item.minecraft.splash_potion.effect.clothes_dissolving": "Взрывное зелье растворения одежды",
@@ -117,7 +117,7 @@
   "oil.vampiresdelight.clothes_dissolving": "Растворяющее одежду",
 
   "effect.vampiresdelight.fog_vision": "Туманное зрение",
-  "effect.vampiresdelight.fog_vision.0.desc": "Позволяет видеть дальше сквозь вампирский туман.",
+  "effect.vampiresdelight.fog_vision.description": "Позволяет видеть дальше сквозь вампирский туман.",
 
   "item.minecraft.potion.effect.fog_vision": "Зелье туманного зрения",
   "item.minecraft.splash_potion.effect.fog_vision": "Взрывное зелье туманного зрения",

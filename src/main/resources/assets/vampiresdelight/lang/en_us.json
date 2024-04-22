@@ -99,7 +99,7 @@
   "item.vampiresdelight.snow_white_ice_cream": "Snow-White Ice Cream",
 
   "effect.vampiresdelight.blessing": "Blessing",
-  "effect.vampiresdelight.blessing.0.desc": "Protects from evil spirits such as phantoms.",
+  "effect.vampiresdelight.blessing.description": "Protects from evil spirits such as phantoms.",
 
   "item.minecraft.potion.effect.blessing": "Potion of Blessing",
   "item.minecraft.splash_potion.effect.blessing": "Splash Potion of Blessing",
@@ -108,7 +108,7 @@
   "oil.vampiresdelight.blessing": "Blessing",
 
   "effect.vampiresdelight.clothes_dissolving": "Clothes Dissolving",
-  "effect.vampiresdelight.clothes_dissolving.0.desc": "Dissolves armor worn by player or mob.",
+  "effect.vampiresdelight.clothes_dissolving.description": "Dissolves armor worn by player or mob.",
 
   "item.minecraft.potion.effect.clothes_dissolving": "Potion of Clothes Dissolving",
   "item.minecraft.splash_potion.effect.clothes_dissolving": "Splash Potion of Clothes Dissolving",
@@ -117,7 +117,7 @@
   "oil.vampiresdelight.clothes_dissolving": "Clothes Dissolving",
 
   "effect.vampiresdelight.fog_vision": "Fog Vision",
-  "effect.vampiresdelight.fog_vision.0.desc": "Allows to see farther in vampire fog.",
+  "effect.vampiresdelight.fog_vision.description": "Allows to see farther in vampire fog.",
 
   "item.minecraft.potion.effect.fog_vision": "Potion of Fog Vision",
   "item.minecraft.splash_potion.effect.fog_vision": "Splash Potion of Fog Vision",
