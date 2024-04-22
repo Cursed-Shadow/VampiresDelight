@@ -16,6 +16,10 @@
 ### Fixes
 - Fixed Hardtack giving bowl after being eaten;
 
+### Translations
+- Added:
+  - ru_RU (Thanks, DimensionPainter!);
+
 ## 0.1.1
 
 ### Additions

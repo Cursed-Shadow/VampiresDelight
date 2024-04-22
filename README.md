@@ -36,6 +36,10 @@
 
 - [Fluffy_Nuar](https://github.com/fluffy-nuar) (Design ideas)
 
+### Translators
+
+- ru_RU - DimensionPainter
+
 ### Credits
 
 - [Vectorwing](https://github.com/vectorwing) (Farmer's Delight developer)
