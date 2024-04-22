@@ -21,7 +21,7 @@ public class VampireBiteEnchantment extends Enchantment {
 
     public static void healFromDamage(LivingEntity user, int level, float damage) {
         RandomSource randomSource = user.getRandom();
-        if (randomSource.nextInt(5) < 3 && user instanceof Player player) {
+        if (randomSource.nextInt(10 + level) < 4 + level && user instanceof Player player) {
             player.heal((float) level / 30 * damage);
         }
     }
