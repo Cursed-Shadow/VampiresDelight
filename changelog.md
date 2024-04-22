@@ -10,6 +10,8 @@
 - **Wild Garlic** now gives Garlic effect to vampires when inside;
 - Tweaked **Black Mushroom** to spawn more frequently;
 - **Vampire Orchid Crop** now grows only in dark areas with maximum light level of 12 or in vampire fog;
+- The damage **Clothes Dissolving** effect deals to armor can now be reduced by Unbreaking enchantment;
+- **Clothes Dissolving** potion is now dungeon only, and can't be crafted;
 
 ### Fixes
 - Fixed Hardtack giving bowl after being eaten;

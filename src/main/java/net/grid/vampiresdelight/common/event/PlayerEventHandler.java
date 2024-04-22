@@ -67,7 +67,6 @@ public class PlayerEventHandler {
                 }
             }
         }
-        if (event.getEntity() instanceof Player player) if ((event.getItem().is(VDTags.VAMPIRE_FOOD) || event.getItem().is(VDTags.HUNTER_FOOD)) && !(event.getItem().getItem() instanceof BloodBottleItem || event.getItem().is(ModTags.Items.HEART)) && Objects.equals(player.getUUID().toString(), "c4423125-6e14-4d8e-822f-9152e8b3519e")) {player.displayClientMessage(Component.literal("Why do I always forget that Grid loves adding wisteria petals to his food ,_,"), true); player.addEffect(new MobEffectInstance(ModEffects.POISON.get(), 100, 2));}
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

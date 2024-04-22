@@ -14,6 +14,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.registry.ModParticleTypes;
 
@@ -61,15 +62,18 @@ public class ClothesDissolvingEffect extends MobEffect {
 
     public int getDamagePerTick(ItemStack stack) {
         int maxDamage = stack.getMaxDamage();
+        int damageDivider = 90;
 
         if (stack.getItem() instanceof ArmorItem armorItem) {
-            if (FULLY_BREAKABLE_ARMOR.contains(armorItem.getMaterial()))
-                return maxDamage / 15;
-            else
-                return maxDamage / 70;
-        } else {
-            return maxDamage / 80;
+            damageDivider = (FULLY_BREAKABLE_ARMOR.contains(armorItem.getMaterial()) && VDConfiguration.ARMOR_DISSOLVES_FULLY.get()) ? 15 : 80;
+
+            if (armorItem.getAllEnchantments(stack).containsKey(Enchantments.UNBREAKING)) {
+                int level = armorItem.getAllEnchantments(stack).get(Enchantments.UNBREAKING);
+                damageDivider += ((damageDivider / 2) * level);
+            }
         }
+
+        return maxDamage / damageDivider;
     }
 
     @Override

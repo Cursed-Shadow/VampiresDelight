@@ -12,7 +12,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.common.util.NonNullSupplier;
@@ -34,8 +33,8 @@ public class VDPotions {
     public static final RegistryObject<HunterPotion> LONG_STRONG_BLESSING = POTIONS.register("long_strong_blessing",
             () -> new HunterPotion("blessing", new MobEffectInstance(VDEffects.BLESSING.get(), 4800, 1)));
 
-    public static final RegistryObject<HunterPotion> CLOTHES_DISSOLVING = POTIONS.register("clothes_dissolving",
-            () -> new HunterPotion(null, new MobEffectInstance(VDEffects.CLOTHES_DISSOLVING.get(), 600)));
+    public static final RegistryObject<Potion> CLOTHES_DISSOLVING = POTIONS.register("clothes_dissolving",
+            () -> new Potion(new MobEffectInstance(VDEffects.CLOTHES_DISSOLVING.get(), 600)));
 
     public static final RegistryObject<HunterPotion> FOG_VISION = POTIONS.register("fog_vision",
             () -> new HunterPotion(null, new MobEffectInstance(VDEffects.FOG_VISION.get(), 3600)));
@@ -54,8 +53,6 @@ public class VDPotions {
         strong(BLESSING, STRONG_BLESSING);
         veryDurable(LONG_BLESSING, VERY_LONG_BLESSING);
         veryStrong(VERY_LONG_BLESSING, LONG_STRONG_BLESSING);
-
-        master(CLOTHES_DISSOLVING, () -> Ingredient.of(Blocks.WITHER_SKELETON_SKULL), 64, 64);
 
         master(FOG_VISION, () -> Ingredient.of(ModBlocks.VAMPIRE_ORCHID.get()), 16, 8);
         durable(FOG_VISION, LONG_FOG_VISION);
