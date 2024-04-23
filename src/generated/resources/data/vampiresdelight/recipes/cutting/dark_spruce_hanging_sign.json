@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "vampirism:dark_spruce_hanging_sign"
+    }
+  ],
+  "result": [
+    {
+      "item": "vampirism:dark_spruce_planks"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "action": "axe_dig"
+  }
+}

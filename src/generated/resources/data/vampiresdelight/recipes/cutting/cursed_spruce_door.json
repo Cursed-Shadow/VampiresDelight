@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "vampirism:cursed_spruce_door"
+    }
+  ],
+  "result": [
+    {
+      "item": "vampirism:cursed_spruce_planks"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "action": "axe_dig"
+  }
+}

@@ -152,10 +152,10 @@ public class VDCookingRecipes {
                 .build(consumer);
     }
 
-    public static ResourceLocation itemLocationCooking(Item item) {
+    private static ResourceLocation itemLocationCooking(Item item) {
         return new ResourceLocation(VampiresDelight.MODID + ":cooking/" + ForgeRegistries.ITEMS.getKey(item).getPath());
     }
-    public static ResourceLocation blockLocationCooking(Block block) {
+    private static ResourceLocation blockLocationCooking(Block block) {
         return new ResourceLocation(VampiresDelight.MODID + ":cooking/" + ForgeRegistries.BLOCKS.getKey(block).getPath());
     }
 }

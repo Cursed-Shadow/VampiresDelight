@@ -3,10 +3,6 @@ package net.grid.vampiresdelight.data.recipe;
 import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.core.ModTags;
-import de.teamlapen.vampirism.data.recipebuilder.AlchemyTableRecipeBuilder;
-import de.teamlapen.vampirism.data.recipebuilder.ShapedWeaponTableRecipeBuilder;
-import de.teamlapen.vampirism.data.recipebuilder.ShapelessWeaponTableRecipeBuilder;
-import de.teamlapen.vampirism.util.NBTIngredient;
 import net.grid.vampiresdelight.common.registry.*;
 import net.grid.vampiresdelight.common.tag.VDForgeTags;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -14,23 +10,14 @@ import net.grid.vampiresdelight.VampiresDelight;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
-import org.jetbrains.annotations.NotNull;
-import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -38,21 +25,13 @@ import java.util.stream.Stream;
 @MethodsReturnNonnullByDefault
 public class VDCraftingRecipes {
     public static void register(Consumer<FinishedRecipe> consumer) {
-        // Crafting
         recipesBlocks(consumer);
         recipesMaterials(consumer);
         recipesFoodstuffs(consumer);
         recipesPouring(consumer);
         recipesFoodBlocks(consumer);
         recipesCraftedMeals(consumer);
-        // Cutting
-        cuttingAnimalItems(consumer);
-        cuttingFoods(consumer);
-        cuttingFlowers(consumer);
-        // Vampirism
-        recipesWeaponTable(consumer);
-        recipesAlchemyTable(consumer);
-        // Other
+
         SpecialRecipeBuilder.special(VDRecipeSerializers.BARREL_POURING.get()).save(consumer, "barrel_pouring");
     }
 
@@ -419,78 +398,5 @@ public class VDCraftingRecipes {
                 .requires(Items.WHEAT)
                 .unlockedBy("has_wheat", InventoryChangeTrigger.TriggerInstance.hasItems(Items.WHEAT))
                 .save(consumer);
-    }
-
-    // Cutting
-    private static void cuttingAnimalItems(Consumer<FinishedRecipe> consumer) {
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModItems.HUMAN_HEART.get()), Ingredient.of(ForgeTags.TOOLS_KNIVES), VDItems.HEART_PIECES.get(), 2)
-                .build(consumer, itemLocationCutting(ModItems.HUMAN_HEART.get()));
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(VDItems.RAW_BAT.get()), Ingredient.of(ForgeTags.TOOLS_KNIVES), VDItems.RAW_BAT_CHOPS.get(), 2)
-                .build(consumer, itemLocationCutting(VDItems.RAW_BAT.get()));
-    }
-
-    private static void cuttingFoods(Consumer<FinishedRecipe> consumer) {
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(VDItems.BLOOD_PIE.get()), Ingredient.of(ForgeTags.TOOLS_KNIVES), VDItems.BLOOD_PIE_SLICE.get(), 4)
-                .build(consumer, itemLocationCutting(VDItems.BLOOD_PIE.get()));
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(VDItems.ORCHID_CAKE.get()), Ingredient.of(ForgeTags.TOOLS_KNIVES), VDItems.ORCHID_CAKE_SLICE.get(), 7)
-                .build(consumer, itemLocationCutting(VDItems.ORCHID_CAKE.get()));
-    }
-
-    private static void cuttingFlowers(Consumer<FinishedRecipe> consumer) {
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(VDItems.WILD_GARLIC.get()), Ingredient.of(ForgeTags.TOOLS_KNIVES), ModItems.ITEM_GARLIC.get(), 1)
-                .addResult(Items.LIGHT_GRAY_DYE, 2)
-                .addResultWithChance(Items.GREEN_DYE, 0.25F)
-                .build(consumer, itemLocationCutting(VDItems.WILD_GARLIC.get()));
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModBlocks.VAMPIRE_ORCHID.get()), Ingredient.of(ForgeTags.TOOLS_KNIVES), VDItems.ORCHID_PETALS.get(), 2)
-                .addResultWithChance(VDItems.ORCHID_SEEDS.get(), 0.7F, 2)
-                .addResultWithChance(ModBlocks.CURSED_ROOTS.get(), 0.30F, 1)
-                .build(consumer, blockLocationCutting(ModBlocks.VAMPIRE_ORCHID.get()));
-    }
-
-    // Vampirism
-    private static void recipesWeaponTable(Consumer<FinishedRecipe> consumer) {
-        ShapelessWeaponTableRecipeBuilder.shapelessWeaponTable(RecipeCategory.COMBAT, VDItems.ALCHEMICAL_COCKTAIL.get())
-                .requires(Items.GLASS_BOTTLE)
-                .requires(ModItems.ITEM_ALCHEMICAL_FIRE.get(), 2)
-                .unlockedBy("has_alchemical_fire", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ITEM_ALCHEMICAL_FIRE.get()))
-                .save(consumer);
-        ShapedWeaponTableRecipeBuilder.shapedWeaponTable(RecipeCategory.COMBAT, VDBlocks.SPIRIT_LANTERN.get())
-                .pattern(" gg ")
-                .pattern("gssg")
-                .pattern("gssg")
-                .pattern(" gg ")
-                .define('g', Items.GOLD_NUGGET)
-                .define('s', ModItems.SOUL_ORB_VAMPIRE.get())
-                .unlockedBy("has_vampire_soul", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SOUL_ORB_VAMPIRE.get()))
-                .save(consumer);
-    }
-
-    private static void recipesAlchemyTable(Consumer<FinishedRecipe> consumer) {
-        AlchemyTableRecipeBuilder
-                .builder(VDOils.BLESSING)
-                .bloodOilIngredient()
-                .input(potion(VDPotions.BLESSING.get(), VDPotions.STRONG_BLESSING.get(), VDPotions.LONG_BLESSING.get()))
-                .build(consumer, new ResourceLocation(VampiresDelight.MODID, "blessing_oil"));
-        AlchemyTableRecipeBuilder
-                .builder(VDOils.CLOTHES_DISSOLVING)
-                .bloodOilIngredient()
-                .input(potion(VDPotions.CLOTHES_DISSOLVING.get()))
-                .build(consumer, new ResourceLocation(VampiresDelight.MODID, "clothes_dissolving_oil"));
-        AlchemyTableRecipeBuilder
-                .builder(VDOils.FOG_VISION)
-                .bloodOilIngredient()
-                .input(potion(VDPotions.FOG_VISION.get(), VDPotions.STRONG_FOG_VISION.get(), VDPotions.LONG_FOG_VISION.get()))
-                .build(consumer, new ResourceLocation(VampiresDelight.MODID, "fog_vision_oil"));
-    }
-
-    private static @NotNull Ingredient potion(Potion @NotNull ... potion) {
-        return new NBTIngredient(Arrays.stream(potion).map(p -> PotionUtils.setPotion(new ItemStack(Items.POTION, 1), p)).toArray(ItemStack[]::new));
-    }
-
-    public static ResourceLocation itemLocationCutting(Item item) {
-        return new ResourceLocation(VampiresDelight.MODID + ":cutting/" + Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath());
-    }
-    public static ResourceLocation blockLocationCutting(Block block) {
-        return new ResourceLocation(VampiresDelight.MODID + ":cutting/" + Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getPath());
     }
 }

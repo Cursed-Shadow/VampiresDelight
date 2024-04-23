@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "vampirism:armor_of_swiftness_chest_ultimate"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "minecraft:leather"
+    }
+  ],
+  "tool": {
+    "tag": "forge:shears"
+  }
+}

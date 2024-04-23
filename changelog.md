@@ -5,6 +5,11 @@
 ### Additions
 - Added new config:
   - `alchemicalCocktailBurnsGround`. `true` by default;
+- Added new cutting recipes:
+  - Stripping Dark and Cursed Spruce Logs;
+  - Salvaging Dark and Cursed Spruce furniture;
+  - Breaking Dark Stone into Cobbled Dark Stone;
+  - Cutting Armor of Swiftness into leather;
 
 ### Updates
 - **Wild Garlic** now gives Garlic effect to vampires when inside;
