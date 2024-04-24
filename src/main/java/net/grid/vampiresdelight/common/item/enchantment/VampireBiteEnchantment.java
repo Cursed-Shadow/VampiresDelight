@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.item.enchantment;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDEnchantments;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -21,8 +22,17 @@ public class VampireBiteEnchantment extends Enchantment {
 
     public static void healFromDamage(LivingEntity user, int level, float damage) {
         RandomSource randomSource = user.getRandom();
-        if (randomSource.nextInt(10 + level) < 4 + level && user instanceof Player player) {
-            player.heal((float) level / 30 * damage);
+        int chance = switch (level) {
+            case 1 -> VDConfiguration.VAMPIRE_BITE_HEALING_CHANCE_1.get();
+            case 2 -> VDConfiguration.VAMPIRE_BITE_HEALING_CHANCE_2.get();
+            case 3 -> VDConfiguration.VAMPIRE_BITE_HEALING_CHANCE_3.get();
+            default -> 40;
+        };
+
+        if (randomSource.nextInt(100) <= chance && user instanceof Player player) {
+            float healAmount = (float) level / 30 * damage;
+            if (healAmount > 3) healAmount = 3;
+            player.heal(healAmount);
         }
     }
 
@@ -35,7 +45,8 @@ public class VampireBiteEnchantment extends Enchantment {
                 int enchantmentLevel = EnchantmentHelper.getItemEnchantmentLevel(VDEnchantments.VAMPIRE_BITE.get(), weapon);
                 Level level = event.getEntity().getCommandSenderWorld();
                 if (!level.isClientSide) {
-                    healFromDamage(player, enchantmentLevel, event.getAmount());
+                    float damage = event.getAmount() % event.getEntity().getHealth();
+                    healFromDamage(player, enchantmentLevel, damage);
                 }
             }
         }

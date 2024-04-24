@@ -23,6 +23,11 @@ public class VDConfiguration {
     public static ForgeConfigSpec.BooleanValue BLESSING_HELPS_AGAINST_GHOSTS;
     public static ForgeConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
 
+    public static final String CATEGORY_ENCHANTMENTS = "enchantments";
+    public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
+    public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
+    public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
+
     public static final String CATEGORY_WORLD = "world";
     public static ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
 
@@ -64,6 +69,15 @@ public class VDConfiguration {
                 .define("blessingHelpsAgainstGhosts", true);
         ARMOR_DISSOLVES_FULLY = COMMON_BUILDER.comment("Should 'weak' armor such as leather and chain dissolve fully because of Clothes Dissolving effect?")
                 .define("armorDissolvesFully", true);
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.comment("Enchantments").push(CATEGORY_ENCHANTMENTS);
+        VAMPIRE_BITE_HEALING_CHANCE_1 = COMMON_BUILDER.comment("With what chance should Vampire Bite enchantment regenerate health?.")
+                .defineInRange("vampireBiteChanceLevel1", 20, 1, 100);
+        VAMPIRE_BITE_HEALING_CHANCE_2 = COMMON_BUILDER
+                .defineInRange("vampireBiteChanceLevel2", 25, 1, 100);
+        VAMPIRE_BITE_HEALING_CHANCE_3 = COMMON_BUILDER
+                .defineInRange("vampireBiteChanceLevel3", 30, 1, 100);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("World generation").push(CATEGORY_WORLD);
