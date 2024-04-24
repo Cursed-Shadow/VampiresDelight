@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -16,8 +17,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 public class VampireBiteEnchantment extends Enchantment {
-    public VampireBiteEnchantment(Rarity rarity) {
-        super(rarity, VDEnchantments.VAMPIRE_SWORD, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    public VampireBiteEnchantment(Rarity rarity, EnchantmentCategory category) {
+        super(rarity, category, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     public static void healFromDamage(LivingEntity user, int level, float damage) {
@@ -59,7 +60,7 @@ public class VampireBiteEnchantment extends Enchantment {
 
     @Override
     public int getMinCost(int enchantmentLevel) {
-        return 15 + (enchantmentLevel - 1) * 12;
+        return enchantmentLevel * 30;
     }
 
     @Override
@@ -70,5 +71,15 @@ public class VampireBiteEnchantment extends Enchantment {
     @Override
     public boolean isTreasureOnly() {
         return true;
+    }
+
+    @Override
+    public boolean isTradeable() {
+        return false;
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return false;
     }
 }

@@ -15,5 +15,5 @@ public class VDEnchantments {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, VampiresDelight.MODID);
 
     public static final RegistryObject<Enchantment> VAMPIRE_BITE = ENCHANTMENTS.register("vampire_bite",
-            () -> new VampireBiteEnchantment(Enchantment.Rarity.RARE));
+            () -> new VampireBiteEnchantment(Enchantment.Rarity.VERY_RARE, VAMPIRE_SWORD));
 }
