@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.core.ModItems;
+import net.grid.vampiresdelight.common.VDConfiguration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -18,10 +19,8 @@ public class MixinEnchantment {
         ResourceLocation resourceLocation = new ResourceLocation(FarmersDelight.MODID, "backstabbing");
         if (ForgeRegistries.ENCHANTMENTS.getValue(resourceLocation) != null)
             if (((Object) this == ForgeRegistries.ENCHANTMENTS.getValue(resourceLocation)))
-                if (stack.is(ModItems.HUNTER_AXE_NORMAL.get())
-                        || stack.is(ModItems.HUNTER_AXE_ENHANCED.get())
-                        || stack.is(ModItems.HUNTER_AXE_ULTIMATE.get())
-                        || stack.is(ModItems.STAKE.get()))
-                    cir.setReturnValue(true);
+                if (VDConfiguration.BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON.get())
+                    if (stack.is(ModItems.HUNTER_AXE_NORMAL.get()) || stack.is(ModItems.HUNTER_AXE_ENHANCED.get()) || stack.is(ModItems.HUNTER_AXE_ULTIMATE.get()) || stack.is(ModItems.STAKE.get()))
+                        cir.setReturnValue(true);
     }
 }

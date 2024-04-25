@@ -24,6 +24,7 @@ public class VDConfiguration {
     public static ForgeConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
 
     public static final String CATEGORY_ENCHANTMENTS = "enchantments";
+    public static ForgeConfigSpec.BooleanValue BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON;
     public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
     public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
     public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
@@ -72,6 +73,8 @@ public class VDConfiguration {
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Enchantments").push(CATEGORY_ENCHANTMENTS);
+        BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON = COMMON_BUILDER.comment("Should it be possible to apply Backstabbing enchantment to some hunter axes and stakes?")
+                .define("backstabbingCanBeAppliedToHunterWeapon", true);
         VAMPIRE_BITE_HEALING_CHANCE_1 = COMMON_BUILDER.comment("With what chance should Vampire Bite enchantment regenerate health?.")
                 .defineInRange("vampireBiteChanceLevel1", 20, 1, 100);
         VAMPIRE_BITE_HEALING_CHANCE_2 = COMMON_BUILDER

@@ -42,12 +42,13 @@ public class VillagerEventHandler {
     public static void onWandererTrades(WandererTradesEvent event) {
         if (VDConfiguration.WANDERING_TRADER_SELLS_VAMPIRISM_ITEMS.get()) {
             List<VillagerTrades.ItemListing> trades = event.getGenericTrades();
-            trades.add(itemForEmeraldTrade(ModBlocks.VAMPIRE_ORCHID.get(), 3, 1, 12));
+            trades.add(itemForEmeraldTrade(ModBlocks.VAMPIRE_ORCHID.get(), 1, 1, 12));
             trades.add(itemForEmeraldTrade(VDItems.ORCHID_SEEDS.get(), 2, 1, 12));
-            trades.add(itemForEmeraldTrade(VDItems.ORCHID_PETALS.get(), 2, 3, 12));
+            trades.add(itemForEmeraldTrade(VDItems.ORCHID_PETALS.get(), 1, 2, 12));
             trades.add(itemForEmeraldTrade(ModItems.ITEM_GARLIC.get(), 1, 1, 12));
-            trades.add(itemForEmeraldTrade(ModBlocks.CURSED_EARTH.get(), 2, 1, 12));
+            trades.add(itemForEmeraldTrade(ModBlocks.CURSED_EARTH.get(), 1, 1, 12));
             trades.add(itemForEmeraldTrade(ModBlocks.CURSED_ROOTS.get(), 1, 1, 12));
+            trades.add(itemForEmeraldTrade(VDItems.BLACK_MUSHROOM.get(), 1, 2, 12));
         }
     }
 

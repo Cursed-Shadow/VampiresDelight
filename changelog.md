@@ -3,8 +3,12 @@
 ## 0.1.2
 
 ### Additions
-- Added new config:
+- Added new configs:
   - `alchemicalCocktailBurnsGround`. `true` by default;
+  - `backstabbingCanBeAppliedToHunterWeapon`. `true` by default;
+  - `vampireBiteChanceLevel1`. `20` by default;
+  - `vampireBiteChanceLevel2`. `25` by default;
+  - `vampireBiteChanceLevel3`. `30` by default;
 - Added new cutting recipes:
   - Stripping Dark and Cursed Spruce Logs;
   - Salvaging Dark and Cursed Spruce furniture;
@@ -17,6 +21,8 @@
 - **Vampire Orchid Crop** now grows only in dark areas with maximum light level of 12 or in vampire fog;
 - The damage **Clothes Dissolving** effect deals to armor can now be reduced by Unbreaking enchantment;
 - **Clothes Dissolving** potion is now creative only, and can't be crafted;
+- Wandering traders now sell **Black Mushrooms**;
+- Recalculated **Vampire Bite** enchantment's healing values. Level 1 now has 20% to healing, level 2 has 25%, and level 3 has 30% (can be configured). Max healing value is now 2 hearts;
 
 ### Fixes
 - Fixed Hardtack giving bowl after being eaten;
