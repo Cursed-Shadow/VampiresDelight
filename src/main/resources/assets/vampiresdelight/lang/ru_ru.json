@@ -30,6 +30,23 @@
   "block.vampiresdelight.cursed_spruce_wine_shelf": "Винная полка из проклятого дерева",
   "block.vampiresdelight.dark_spruce_wine_shelf": "Винная полка из тёмного дерева",
 
+  "block.vampiresdelight.white_bar_stool": "Белая барный стул",
+  "block.vampiresdelight.orange_bar_stool": "Оранжевая барный стул",
+  "block.vampiresdelight.magenta_bar_stool": "Пурпурная барный стул",
+  "block.vampiresdelight.light_blue_bar_stool": "Голубая Blue барный стул",
+  "block.vampiresdelight.yellow_bar_stool": "Жёлтая барный стул",
+  "block.vampiresdelight.lime_bar_stool": "Лаймовая барный стул",
+  "block.vampiresdelight.pink_bar_stool": "Розовая барный стул",
+  "block.vampiresdelight.gray_bar_stool": "Серая барный стул",
+  "block.vampiresdelight.light_gray_bar_stool": "Светло-серая барный стул",
+  "block.vampiresdelight.cyan_bar_stool": "Бирюзовая барный стул",
+  "block.vampiresdelight.purple_bar_stool": "Фиолетовая барный стул",
+  "block.vampiresdelight.blue_bar_stool": "Синяя барный стул",
+  "block.vampiresdelight.brown_bar_stool": "Коричневая барный стул",
+  "block.vampiresdelight.green_bar_stool": "Зелёная барный стул",
+  "block.vampiresdelight.red_bar_stool": "Красная барный стул",
+  "block.vampiresdelight.black_bar_stool": "Чёрная барный стул",
+
   "item.vampiresdelight.alchemical_cocktail": "Алхимический коктейль",
 
   "item.vampiresdelight.sugared_berries": "Засахаренные ягоды",

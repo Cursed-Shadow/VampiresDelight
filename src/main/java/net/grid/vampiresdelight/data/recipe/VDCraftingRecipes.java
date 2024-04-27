@@ -26,6 +26,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -101,6 +102,8 @@ public class VDCraftingRecipes {
         barStoolRecipe(VDBlocks.GREEN_BAR_STOOL.get(), Blocks.GREEN_WOOL, consumer);
         barStoolRecipe(VDBlocks.RED_BAR_STOOL.get(), Blocks.RED_WOOL, consumer);
         barStoolRecipe(VDBlocks.BLACK_BAR_STOOL.get(), Blocks.BLACK_WOOL, consumer);
+
+        colorBlockWithDye(List.of(VDItems.BLACK_BAR_STOOL.get(), VDItems.BLUE_BAR_STOOL.get(), VDItems.BROWN_BAR_STOOL.get(), VDItems.CYAN_BAR_STOOL.get(), VDItems.GRAY_BAR_STOOL.get(), VDItems.GREEN_BAR_STOOL.get(), VDItems.LIGHT_BLUE_BAR_STOOL.get(), VDItems.LIGHT_GRAY_BAR_STOOL.get(), VDItems.LIME_BAR_STOOL.get(), VDItems.MAGENTA_BAR_STOOL.get(), VDItems.ORANGE_BAR_STOOL.get(), VDItems.PINK_BAR_STOOL.get(), VDItems.PURPLE_BAR_STOOL.get(), VDItems.RED_BAR_STOOL.get(), VDItems.YELLOW_BAR_STOOL.get(), VDItems.WHITE_BAR_STOOL.get()), consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, VDItems.GARLIC_CRATE.get(), 1)
                 .pattern("###")
@@ -336,7 +339,7 @@ public class VDCraftingRecipes {
     }
 
     private static void wineShelfRecipe(Block wineShelfBlock, Block slabBlock, Block planksBlock, Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, wineShelfBlock)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, wineShelfBlock)
                 .pattern("SSS")
                 .pattern(" P ")
                 .pattern("SSS")
@@ -347,7 +350,7 @@ public class VDCraftingRecipes {
     }
 
     private static void barStoolRecipe(Block barStoolBlock, Block woolBlock, Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, barStoolBlock)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, barStoolBlock)
                 .pattern("W")
                 .pattern("F")
                 .pattern("F")
@@ -356,6 +359,20 @@ public class VDCraftingRecipes {
                 .unlockedBy(hasBlock(woolBlock), has(woolBlock))
                 .save(consumer);
     }
+
+    private static void colorBlockWithDye(List<Item> pDyeableItems, Consumer<FinishedRecipe> consumer) {
+        for (int i = 0; i < DYES.size(); ++i) {
+            Item dyeItem = DYES.get(i);
+            Item dyeableItem = pDyeableItems.get(i);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, dyeableItem)
+                    .requires(dyeItem)
+                    .requires(Ingredient.of(pDyeableItems.stream().filter(item -> !item.equals(dyeableItem)).map(ItemStack::new)))
+                    .unlockedBy("has_needed_dye", has(dyeItem))
+                    .save(consumer, new ResourceLocation(VampiresDelight.MODID, "dye_" + itemName(dyeableItem)));
+        }
+    }
+
+    public static List<Item> DYES = List.of(Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE);
 
     private static InventoryChangeTrigger.TriggerInstance has(ItemLike pItemLike) {
         return inventoryTrigger(ItemPredicate.Builder.item().of(pItemLike).build());

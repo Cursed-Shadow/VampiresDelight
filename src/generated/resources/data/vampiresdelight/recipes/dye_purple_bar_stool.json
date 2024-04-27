@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:purple_dye"
+    },
+    [
+      {
+        "item": "vampiresdelight:black_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:blue_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:brown_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:cyan_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:gray_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:green_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:light_blue_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:light_gray_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:lime_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:magenta_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:orange_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:pink_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:red_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:yellow_bar_stool"
+      },
+      {
+        "item": "vampiresdelight:white_bar_stool"
+      }
+    ]
+  ],
+  "result": {
+    "item": "vampiresdelight:purple_bar_stool"
+  }
+}
