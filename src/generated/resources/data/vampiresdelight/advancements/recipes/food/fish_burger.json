@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vampirism:item_garlic"
-            ]
+            "tag": "forge:vegetables/garlic"
           }
         ]
       },

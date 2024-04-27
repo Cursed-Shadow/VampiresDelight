@@ -74,6 +74,38 @@ public class VDItems {
             () -> new FuelBlockItem(VDBlocks.CURSED_SPRUCE_WINE_SHELF.get(), basicItem(), 300));
     public static final RegistryObject<Item> DARK_SPRUCE_WINE_SHELF = ITEMS.register("dark_spruce_wine_shelf",
             () -> new FuelBlockItem(VDBlocks.DARK_SPRUCE_WINE_SHELF.get(), basicItem(), 300));
+    public static final RegistryObject<Item> WHITE_BAR_STOOL = ITEMS.register("white_bar_stool",
+            () -> new BlockItem(VDBlocks.WHITE_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> ORANGE_BAR_STOOL = ITEMS.register("orange_bar_stool",
+            () -> new BlockItem(VDBlocks.ORANGE_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> MAGENTA_BAR_STOOL = ITEMS.register("magenta_bar_stool",
+            () -> new BlockItem(VDBlocks.MAGENTA_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> LIGHT_BLUE_BAR_STOOL = ITEMS.register("light_blue_bar_stool",
+            () -> new BlockItem(VDBlocks.LIGHT_BLUE_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> YELLOW_BAR_STOOL = ITEMS.register("yellow_bar_stool",
+            () -> new BlockItem(VDBlocks.YELLOW_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> LIME_BAR_STOOL = ITEMS.register("lime_bar_stool",
+            () -> new BlockItem(VDBlocks.LIME_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> PINK_BAR_STOOL = ITEMS.register("pink_bar_stool",
+            () -> new BlockItem(VDBlocks.PINK_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> GRAY_BAR_STOOL = ITEMS.register("gray_bar_stool",
+            () -> new BlockItem(VDBlocks.GRAY_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> LIGHT_GRAY_BAR_STOOL = ITEMS.register("light_gray_bar_stool",
+            () -> new BlockItem(VDBlocks.LIGHT_GRAY_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> CYAN_BAR_STOOL = ITEMS.register("cyan_bar_stool",
+            () -> new BlockItem(VDBlocks.CYAN_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> PURPLE_BAR_STOOL = ITEMS.register("purple_bar_stool",
+            () -> new BlockItem(VDBlocks.PURPLE_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> BLUE_BAR_STOOL = ITEMS.register("blue_bar_stool",
+            () -> new BlockItem(VDBlocks.BLUE_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> BROWN_BAR_STOOL = ITEMS.register("brown_bar_stool",
+            () -> new BlockItem(VDBlocks.BROWN_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> GREEN_BAR_STOOL = ITEMS.register("green_bar_stool",
+            () -> new BlockItem(VDBlocks.GREEN_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> RED_BAR_STOOL = ITEMS.register("red_bar_stool",
+            () -> new BlockItem(VDBlocks.RED_BAR_STOOL.get(), basicItem()));
+    public static final RegistryObject<Item> BLACK_BAR_STOOL = ITEMS.register("black_bar_stool",
+            () -> new BlockItem(VDBlocks.BLACK_BAR_STOOL.get(), basicItem()));
     public static final RegistryObject<Item> WILD_GARLIC = ITEMS.register("wild_garlic",
             () -> new BlockItem(VDBlocks.WILD_GARLIC.get(), basicItem()));
 

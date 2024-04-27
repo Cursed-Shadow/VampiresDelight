@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "W": {
+      "item": "minecraft:orange_wool"
+    }
+  },
+  "pattern": [
+    "W",
+    "F",
+    "F"
+  ],
+  "result": {
+    "item": "vampiresdelight:orange_bar_stool"
+  },
+  "show_notification": true
+}

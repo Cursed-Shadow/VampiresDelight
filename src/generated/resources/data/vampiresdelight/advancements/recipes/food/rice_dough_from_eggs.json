@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "farmersdelight:rice"
-            ]
+            "tag": "forge:crops/rice"
           }
         ]
       },

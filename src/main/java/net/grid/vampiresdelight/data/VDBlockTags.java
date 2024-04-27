@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.data;
 
 import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.block.BarStoolBlock;
 import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
 import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
@@ -55,24 +56,15 @@ public class VDBlockTags extends BlockTagsProvider {
                 VDBlocks.GARLIC_CRATE.get(),
                 VDBlocks.DARK_SPRUCE_CABINET.get(),
                 VDBlocks.CURSED_SPRUCE_CABINET.get(),
-                VDBlocks.OAK_WINE_SHELF.get(),
-                VDBlocks.SPRUCE_WINE_SHELF.get(),
-                VDBlocks.BIRCH_WINE_SHELF.get(),
-                VDBlocks.JUNGLE_WINE_SHELF.get(),
-                VDBlocks.ACACIA_WINE_SHELF.get(),
-                VDBlocks.DARK_OAK_WINE_SHELF.get(),
-                VDBlocks.MANGROVE_WINE_SHELF.get(),
-                VDBlocks.CHERRY_WINE_SHELF.get(),
-                VDBlocks.BAMBOO_WINE_SHELF.get(),
-                VDBlocks.CRIMSON_WINE_SHELF.get(),
-                VDBlocks.WARPED_WINE_SHELF.get(),
-                VDBlocks.CURSED_SPRUCE_WINE_SHELF.get(),
-                VDBlocks.DARK_SPRUCE_WINE_SHELF.get(),
                 VDBlocks.BREWING_BARREL.get(),
                 VDBlocks.BLACK_MUSHROOM_BLOCK.get(),
                 VDBlocks.BLACK_MUSHROOM_STEM.get(),
                 VDBlocks.BLACK_MUSHROOM.get()
         );
+
+        WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(BlockTags.MINEABLE_WITH_AXE).add(block));
+        BarStoolBlock.getBarStoolBlocks().forEach(block -> tag(BlockTags.MINEABLE_WITH_AXE).add(block));
+
         tag(ModTags.MINEABLE_WITH_KNIFE)
                 .addTag(VDTags.DROPS_ORCHID_CAKE_SLICE)
                 .add(

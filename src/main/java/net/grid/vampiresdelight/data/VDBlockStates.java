@@ -6,6 +6,7 @@ import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -37,6 +38,10 @@ public class VDBlockStates extends BlockStateProvider {
 
     public ResourceLocation resourceBlock(String path) {
         return new ResourceLocation(VampiresDelight.MODID, "block/" + path);
+    }
+
+    public ModelFile existingModel(Block block) {
+        return new ModelFile.ExistingModelFile(resourceBlock(blockName(block)), models().existingFileHelper);
     }
 
     public ModelFile existingModel(String path) {
@@ -83,6 +88,7 @@ public class VDBlockStates extends BlockStateProvider {
         this.pottedPlantBlock(VDBlocks.POTTED_BLACK_MUSHROOM.get(), VDBlocks.BLACK_MUSHROOM.get());
 
         WineShelfBlock.getAllShelveBlocks().forEach(this::wineShelfBlock);
+        BarStoolBlock.getBarStoolBlocks().forEach(block -> this.simpleBlock(block, existingModel(block)));
 
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> this.candleCakeBlock((ConsumableCandleCakeBlock) block));
         this.cakeBlock(VDBlocks.ORCHID_CAKE.get());

@@ -30,6 +30,7 @@ public class VDCreativeTabs {
                         output.accept(VDItems.DARK_SPRUCE_CABINET.get());
                         output.accept(VDItems.CURSED_SPRUCE_CABINET.get());
                         output.accept(VDItems.CURSED_FARMLAND.get());
+
                         output.accept(VDItems.OAK_WINE_SHELF.get());
                         output.accept(VDItems.SPRUCE_WINE_SHELF.get());
                         output.accept(VDItems.BIRCH_WINE_SHELF.get());
@@ -43,6 +44,24 @@ public class VDCreativeTabs {
                         output.accept(VDItems.WARPED_WINE_SHELF.get());
                         output.accept(VDItems.CURSED_SPRUCE_WINE_SHELF.get());
                         output.accept(VDItems.DARK_SPRUCE_WINE_SHELF.get());
+
+                        output.accept(VDItems.WHITE_BAR_STOOL.get());
+                        output.accept(VDItems.ORANGE_BAR_STOOL.get());
+                        output.accept(VDItems.MAGENTA_BAR_STOOL.get());
+                        output.accept(VDItems.LIGHT_BLUE_BAR_STOOL.get());
+                        output.accept(VDItems.YELLOW_BAR_STOOL.get());
+                        output.accept(VDItems.LIME_BAR_STOOL.get());
+                        output.accept(VDItems.PINK_BAR_STOOL.get());
+                        output.accept(VDItems.GRAY_BAR_STOOL.get());
+                        output.accept(VDItems.LIGHT_GRAY_BAR_STOOL.get());
+                        output.accept(VDItems.CYAN_BAR_STOOL.get());
+                        output.accept(VDItems.PURPLE_BAR_STOOL.get());
+                        output.accept(VDItems.BLUE_BAR_STOOL.get());
+                        output.accept(VDItems.BROWN_BAR_STOOL.get());
+                        output.accept(VDItems.GREEN_BAR_STOOL.get());
+                        output.accept(VDItems.RED_BAR_STOOL.get());
+                        output.accept(VDItems.BLACK_BAR_STOOL.get());
+
                         output.accept(VDItems.SPIRIT_LANTERN.get());
 
                         // Farming

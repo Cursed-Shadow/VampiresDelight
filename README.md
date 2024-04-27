@@ -38,7 +38,7 @@
 
 ### Translators
 
-- ru_RU - DimensionPainter
+- ru-RU - DimensionPainter
 
 ### Credits
 

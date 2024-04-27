@@ -1,10 +1,12 @@
 package net.grid.vampiresdelight.data;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.block.BarStoolBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.BlockModelProvider;
@@ -36,6 +38,9 @@ public class VDBlockModels extends BlockModelProvider {
         wineShelfBlock(VDBlocks.CRIMSON_WINE_SHELF.get(), Blocks.CRIMSON_PLANKS);
         wineShelfBlock(VDBlocks.WARPED_WINE_SHELF.get(), Blocks.WARPED_PLANKS);
 
+        // Bar Stools
+        BarStoolBlock.getBarStoolBlocks().forEach(this::barStoolBlock);
+
         // Huge black mushroom blocks
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_BLOCK.get());
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_STEM.get());
@@ -55,6 +60,14 @@ public class VDBlockModels extends BlockModelProvider {
         withExistingParent(name + "_support", "vampiresdelight:block/template_wine_shelf_support")
                 .texture("particle", woodTypeTexture)
                 .texture("body", shelfTexture);
+    }
+
+    private void barStoolBlock(Block barStool) {
+        ResourceLocation seatTexture = resourceBlock(blockName(barStool) + "_seat");
+        String name = blockName(barStool);
+
+        withExistingParent(name, "vampiresdelight:block/template_bar_stool")
+                .texture("seat", seatTexture);
     }
 
     private void hugeBlackMushroomBlock(String name, ResourceLocation texture, boolean needsInventoryVersion) {

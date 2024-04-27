@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "W": {
+      "item": "minecraft:black_wool"
+    }
+  },
+  "pattern": [
+    "W",
+    "F",
+    "F"
+  ],
+  "result": {
+    "item": "vampiresdelight:black_bar_stool"
+  },
+  "show_notification": true
+}

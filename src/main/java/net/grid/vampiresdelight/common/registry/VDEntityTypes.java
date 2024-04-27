@@ -17,5 +17,4 @@ public class VDEntityTypes {
                     .clientTrackingRange(4)
                     .updateInterval(10)
                     .build("alchemical_cocktail")));
-
 }

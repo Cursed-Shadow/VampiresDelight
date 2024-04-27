@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.data.loot;
 
 import de.teamlapen.vampirism.core.ModBlocks;
+import net.grid.vampiresdelight.common.block.BarStoolBlock;
 import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
@@ -32,6 +33,7 @@ public class VDBlockLootTables extends BlockLootSubProvider {
         dropNamedContainer(VDBlocks.CURSED_SPRUCE_CABINET.get());
 
         WineShelfBlock.getAllShelveBlocks().forEach(this::dropSelf);
+        BarStoolBlock.getBarStoolBlocks().forEach(this::dropSelf);
 
         dropOther(VDBlocks.CURSED_FARMLAND.get(), ModBlocks.CURSED_EARTH.get());
 

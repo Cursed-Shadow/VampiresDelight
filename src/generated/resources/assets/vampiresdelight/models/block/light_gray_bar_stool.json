@@ -1,0 +1,6 @@
+{
+  "parent": "vampiresdelight:block/template_bar_stool",
+  "textures": {
+    "seat": "vampiresdelight:block/light_gray_bar_stool_seat"
+  }
+}
