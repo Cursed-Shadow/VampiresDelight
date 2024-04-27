@@ -176,15 +176,17 @@
   "vampiresdelight.advancement.get_vampire_orchid.desc": "Find Vampire Orchid in vampire forest or buy it from wandering trader.",
   "vampiresdelight.advancement.plant_vampire_orchid_crop": "Both Beauty and Health",
   "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Plant vampire orchid seeds on cursed farmland. To make one, plow cursed earth or grass with hoe.",
+
   "vampiresdelight.advancement.pour_blood_wine": "Blood Wine Tastes the Same as I Remember",
   "vampiresdelight.advancement.pour_blood_wine.desc": "Pour blood wine into glass bottle using your bare hands.",
   "vampiresdelight.advancement.get_wine_shelf": "Local Bar",
   "vampiresdelight.advancement.get_wine_shelf.desc": "Craft Wine Shelf to store blood wine. To place wine bottles into it, click on it with bottle in hand.",
+
   "vampiresdelight.advancement.get_human_eye": "Funny Cuts of Children",
   "vampiresdelight.advancement.get_human_eye.desc": "Scavenge human eye from any human-like creature such as villager and hunter using Knife.",
 
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "The Best Present for Any Man",
-  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Find a Clothes Dissolving Potion in any vampire dungeon, or brew it yourself.",
+  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Get a Clothes Dissolving Potion somehow.",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Disgusting Food Consumed",
 
