@@ -25,9 +25,11 @@ public class VDConfiguration {
 
     public static final String CATEGORY_ENCHANTMENTS = "enchantments";
     public static ForgeConfigSpec.BooleanValue BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON;
+    public static ForgeConfigSpec.DoubleValue VAMPIRE_BITE_MAX_HEALING_VALUE;
     public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
     public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
     public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
+    public static ForgeConfigSpec.BooleanValue DISABLE_VAMPIRE_BITE;
 
     public static final String CATEGORY_WORLD = "world";
     public static ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
@@ -75,12 +77,16 @@ public class VDConfiguration {
         COMMON_BUILDER.comment("Enchantments").push(CATEGORY_ENCHANTMENTS);
         BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON = COMMON_BUILDER.comment("Should it be possible to apply Backstabbing enchantment to some hunter axes and stakes?")
                 .define("backstabbingCanBeAppliedToHunterWeapon", true);
-        VAMPIRE_BITE_HEALING_CHANCE_1 = COMMON_BUILDER.comment("With what chance should Vampire Bite enchantment regenerate health?.")
+        VAMPIRE_BITE_MAX_HEALING_VALUE = COMMON_BUILDER.comment("What should be the maximum amount of hearts that Vampire Bite enchantment should heal?")
+                .defineInRange("vampireBiteMaxHealingValue", 1.5, 0.5, 10.0);
+        VAMPIRE_BITE_HEALING_CHANCE_1 = COMMON_BUILDER.comment("With what chance should Vampire Bite enchantment regenerate health?")
                 .defineInRange("vampireBiteChanceLevel1", 20, 1, 100);
         VAMPIRE_BITE_HEALING_CHANCE_2 = COMMON_BUILDER
                 .defineInRange("vampireBiteChanceLevel2", 25, 1, 100);
         VAMPIRE_BITE_HEALING_CHANCE_3 = COMMON_BUILDER
                 .defineInRange("vampireBiteChanceLevel3", 30, 1, 100);
+        DISABLE_VAMPIRE_BITE = COMMON_BUILDER.comment("Should Vampire Bite enchantment be disabled?").comment("It won't be removed from the game, but it'll be impossible to apply it to tools and it won't heal the player.")
+                .define("disableVampireBite", false);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("World generation").push(CATEGORY_WORLD);

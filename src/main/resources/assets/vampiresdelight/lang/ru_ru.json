@@ -27,8 +27,8 @@
   "block.vampiresdelight.bamboo_wine_shelf": "Бамбуковая винная полка",
   "block.vampiresdelight.crimson_wine_shelf": "Багряная винная полка",
   "block.vampiresdelight.warped_wine_shelf": "Искажённая винная полка",
-  "block.vampiresdelight.cursed_spruce_wine_shelf": "Винная полка из проклятого дерева",
   "block.vampiresdelight.dark_spruce_wine_shelf": "Винная полка из тёмного дерева",
+  "block.vampiresdelight.cursed_spruce_wine_shelf": "Винная полка из проклятого дерева",
 
   "block.vampiresdelight.white_bar_stool": "Белая барный стул",
   "block.vampiresdelight.orange_bar_stool": "Оранжевая барный стул",
@@ -80,7 +80,7 @@
   "item.vampiresdelight.tricolor_dango": "Трёхцветное данго",
   "item.vampiresdelight.blood_wine_bottle": "Бутылка кровавого вина",
   "item.vampiresdelight.wine_glass": "Бокал вина",
-  "item.vampiresdelight.mulled_wine_glass": "Кружка кровавого глинтвейна",
+  "item.vampiresdelight.mulled_wine_glass": "Глинтвейн",
   "item.vampiresdelight.cursed_cupcake": "Проклятый кекс",
 
   "block.vampiresdelight.blood_pie": "Кровяной пирог",
@@ -149,7 +149,7 @@
   "vampiresdelight.tooltip.cursed_cupcake": "Очищает от эффекта чеснока",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не может поджигать землю из-за настроек сервера",
 
-  "vampiresdelight.text.planted_on": "Должно быть посажено на ",
+  "vampiresdelight.text.planted_on": "Должно быть посажено на проклятую пашню",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",
 

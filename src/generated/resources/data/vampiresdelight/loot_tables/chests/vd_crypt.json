@@ -14,12 +14,11 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:book",
-          "weight": 3
+          "name": "minecraft:book"
         },
         {
           "type": "minecraft:empty",
-          "weight": 5
+          "weight": 9
         }
       ],
       "rolls": 1.0

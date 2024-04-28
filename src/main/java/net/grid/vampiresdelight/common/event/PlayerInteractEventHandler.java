@@ -8,7 +8,6 @@ import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -94,6 +93,6 @@ public class PlayerInteractEventHandler {
         Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
 
         if (item == VDItems.ORCHID_SEEDS.get() && (block == Blocks.FARMLAND || block == vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get()))
-            event.getEntity().displayClientMessage(VDTextUtils.getTranslation("text.planted_on").append(Component.translatable(VDBlocks.CURSED_FARMLAND.get().getDescriptionId())), true);
+            event.getEntity().displayClientMessage(VDTextUtils.getTranslation("text.planted_on"), true);
     }
 }

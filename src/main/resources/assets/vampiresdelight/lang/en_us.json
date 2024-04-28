@@ -27,8 +27,8 @@
   "block.vampiresdelight.bamboo_wine_shelf": "Bamboo Wine Shelf",
   "block.vampiresdelight.crimson_wine_shelf": "Crimson Wine Shelf",
   "block.vampiresdelight.warped_wine_shelf": "Warped Wine Shelf",
-  "block.vampiresdelight.cursed_spruce_wine_shelf": "Cursed Spruce Wine Shelf",
   "block.vampiresdelight.dark_spruce_wine_shelf": "Dark Spruce Wine Shelf",
+  "block.vampiresdelight.cursed_spruce_wine_shelf": "Cursed Spruce Wine Shelf",
 
   "block.vampiresdelight.white_bar_stool": "White Bar Stool",
   "block.vampiresdelight.orange_bar_stool": "Orange Bar Stool",
@@ -149,7 +149,7 @@
   "vampiresdelight.tooltip.cursed_cupcake": "Clears Garlic Effect",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Cannot burn the ground due to this server's settings",
 
-  "vampiresdelight.text.planted_on": "Must be planted on ",
+  "vampiresdelight.text.planted_on": "Must be planted on Cursed Farmland",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",
 

@@ -27,12 +27,13 @@ public class VampireBiteEnchantment extends Enchantment {
             case 1 -> VDConfiguration.VAMPIRE_BITE_HEALING_CHANCE_1.get();
             case 2 -> VDConfiguration.VAMPIRE_BITE_HEALING_CHANCE_2.get();
             case 3 -> VDConfiguration.VAMPIRE_BITE_HEALING_CHANCE_3.get();
-            default -> 40;
+            default -> 20;
         };
+        int maxHealingValue = (int) (VDConfiguration.VAMPIRE_BITE_MAX_HEALING_VALUE.get() * 2);
 
         if (randomSource.nextInt(100) <= chance && user instanceof Player player) {
             float healAmount = (float) level / 30 * damage;
-            if (healAmount > 3) healAmount = 3;
+            if (healAmount > maxHealingValue) healAmount = maxHealingValue;
             player.heal(healAmount);
         }
     }
@@ -46,8 +47,8 @@ public class VampireBiteEnchantment extends Enchantment {
                 int enchantmentLevel = EnchantmentHelper.getItemEnchantmentLevel(VDEnchantments.VAMPIRE_BITE.get(), weapon);
                 Level level = event.getEntity().getCommandSenderWorld();
                 if (!level.isClientSide) {
-                    float damage = event.getAmount() % event.getEntity().getHealth();
-                    healFromDamage(player, enchantmentLevel, damage);
+                    if (!VDConfiguration.DISABLE_VAMPIRE_BITE.get())
+                        healFromDamage(player, enchantmentLevel, event.getAmount());
                 }
             }
         }
@@ -81,5 +82,10 @@ public class VampireBiteEnchantment extends Enchantment {
     @Override
     public boolean isDiscoverable() {
         return false;
+    }
+
+    @Override
+    public boolean canEnchant(ItemStack pStack) {
+        return !VDConfiguration.DISABLE_VAMPIRE_BITE.get() && super.canEnchant(pStack);
     }
 }
