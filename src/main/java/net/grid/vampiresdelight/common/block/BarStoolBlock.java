@@ -60,12 +60,16 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         BlockState blockAbove = pLevel.getBlockState(pPos.above());
-        if (blockAbove.isAir() || blockAbove.is(BlockTags.BUTTONS) || blockAbove.is(BlockTags.TRAPDOORS)) {
+        if (isClickedOnSeat(pPos, pHit) && (blockAbove.isAir() || blockAbove.is(BlockTags.BUTTONS) || blockAbove.is(BlockTags.TRAPDOORS))) {
             startSitting(pPlayer, pLevel, pPos, 0.75);
             return InteractionResult.SUCCESS;
         }
 
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+    }
+
+    private static boolean isClickedOnSeat(BlockPos pPos, BlockHitResult pHit) {
+        return pHit.getLocation().y() >= pPos.getY() + 0.8125;
     }
 
     // Modified Vampirism's SitHandler
