@@ -17,6 +17,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -60,7 +61,7 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         BlockState blockAbove = pLevel.getBlockState(pPos.above());
-        if (isClickedOnSeat(pPos, pHit) && (blockAbove.isAir() || blockAbove.is(BlockTags.BUTTONS) || blockAbove.is(BlockTags.TRAPDOORS))) {
+        if (isClickedOnSeat(pPos, pHit) && (blockAbove.isAir() || blockAbove.is(BlockTags.BUTTONS) || blockAbove.is(BlockTags.TRAPDOORS) || blockAbove.is(Blocks.END_ROD))) {
             startSitting(pPlayer, pLevel, pPos, 0.75);
             return InteractionResult.SUCCESS;
         }

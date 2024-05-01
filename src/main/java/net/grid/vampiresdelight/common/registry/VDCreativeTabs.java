@@ -4,10 +4,7 @@ import net.grid.vampiresdelight.VampiresDelight;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -128,10 +125,4 @@ public class VDCreativeTabs {
                         output.accept(VDItems.WEIRD_JELLY.get());
                     })
                     .build());
-
-    @SubscribeEvent
-    public static void addItemsToCreativeTab(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.COMBAT)
-            event.accept(VDItems.ALCHEMICAL_COCKTAIL);
-    }
 }
