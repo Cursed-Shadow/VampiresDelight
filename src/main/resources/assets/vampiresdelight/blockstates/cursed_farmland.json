@@ -7,6 +7,6 @@
     "moisture=4": { "model": "vampiresdelight:block/cursed_farmland" },
     "moisture=5": { "model": "vampiresdelight:block/cursed_farmland" },
     "moisture=6": { "model": "vampiresdelight:block/cursed_farmland" },
-    "moisture=7": { "model": "vampiresdelight:block/cursed_farmland" }
+    "moisture=7": { "model": "vampiresdelight:block/cursed_farmland_moist" }
   }
 }

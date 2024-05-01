@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.3
+
+### Additions
+- Added new configs:
+  - `vampireBiteMaxHealingValue`. `1.5` by default;
+  - `disableVampireBite` `false` by default;
+- Added **Bar Stools**;
+- Added advancements (*WIP*);
+
+### Updates
+- Removed **Alchemical Fire** from vanilla combat creative tab;
+- Added JEI ingredient information for **Black Mushroom**;
+- **Black Stone Stove** is now considered as campfire cooking recipe catalyst in JEI;
+
+### Translations
+- Added:
+  - uk_UA;
+- Corrected:
+  - ru_RU;
+
 ## 0.1.2
 
 ### Additions
