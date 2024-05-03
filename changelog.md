@@ -13,6 +13,7 @@
 - Removed **Alchemical Fire** from vanilla combat creative tab;
 - Added JEI ingredient information for **Black Mushroom**;
 - **Black Stone Stove** is now considered as campfire cooking recipe catalyst in JEI;
+- **Cursed Farmland** now can get moistened;
 
 ### Translations
 - Added:
