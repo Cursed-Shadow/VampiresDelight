@@ -1,74 +1,103 @@
 package net.grid.vampiresdelight.common.world.feature;
 
 import com.mojang.serialization.Codec;
+import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.AbstractHugeMushroomFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.BiPredicate;
 
+/**
+ * Credit: Biomes O' Plenty
+ * <a href="https://github.com/Glitchfiend/BiomesOPlenty">...</a>
+ */
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class HugeBlackMushroomFeature extends AbstractHugeMushroomFeature {
-    public HugeBlackMushroomFeature(Codec<HugeMushroomFeatureConfiguration> codec) {
-        super(codec);
+public class HugeBlackMushroomFeature extends Feature<NoneFeatureConfiguration> {
+    protected BiPredicate<WorldGenLevel, BlockPos> replace = ((worldGenLevel, blockPos) -> TreeFeature.isAirOrLeaves(worldGenLevel, blockPos) || worldGenLevel.getBlockState(blockPos).getBlock() instanceof BushBlock);
+    protected BiPredicate<WorldGenLevel, BlockPos> placeOn = ((worldGenLevel, blockPos) -> worldGenLevel.getBlockState(blockPos).getBlock() == Blocks.GRASS_BLOCK || worldGenLevel.getBlockState(blockPos).getBlock() == Blocks.MYCELIUM);
+
+    public HugeBlackMushroomFeature(Codec<NoneFeatureConfiguration> pCodec) {
+        super(pCodec);
     }
 
     @Override
-    protected void makeCap(LevelAccessor level, RandomSource random, BlockPos pos, int treeHeight, BlockPos.MutableBlockPos mutablePos, HugeMushroomFeatureConfiguration config) {
-        for(int i = treeHeight - 3; i <= treeHeight; ++i) {
-            int j = i < treeHeight ? config.foliageRadius : config.foliageRadius - 1;
-            int k = config.foliageRadius - 2;
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
+        WorldGenLevel worldLevel = pContext.level();
+        RandomSource randomSource = pContext.random();
+        BlockPos originPos = pContext.origin();
 
-            for(int l = -j; l <= j; ++l) {
-                for(int i1 = -j; i1 <= j; ++i1) {
-                    boolean flag = l == -j;
-                    boolean flag1 = l == j;
-                    boolean flag2 = i1 == -j;
-                    boolean flag3 = i1 == j;
-                    boolean flag4 = flag || flag1;
-                    boolean flag5 = flag2 || flag3;
+        BlockState mushroomStem = VDBlocks.BLACK_MUSHROOM_STEM.get().defaultBlockState();
+        BlockState mushroomCap = VDBlocks.BLACK_MUSHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false);
 
-                    if (i >= treeHeight || flag4 != flag5) {
-                        mutablePos.setWithOffset(pos, l, i, i1);
-                        if (!level.getBlockState(mutablePos).isSolidRender(level, mutablePos)) {
-                            BlockState blockstate = config.capProvider.getState(random, pos);
-                            if (blockstate.hasProperty(HugeMushroomBlock.WEST) && blockstate.hasProperty(HugeMushroomBlock.EAST) && blockstate.hasProperty(HugeMushroomBlock.NORTH) && blockstate.hasProperty(HugeMushroomBlock.SOUTH) && blockstate.hasProperty(HugeMushroomBlock.UP)) {
-                                blockstate = blockstate
-                                        .setValue(HugeMushroomBlock.UP, i >= treeHeight - 1)
-                                        .setValue(HugeMushroomBlock.WEST, l < -k)
-                                        .setValue(HugeMushroomBlock.EAST, l > k)
-                                        .setValue(HugeMushroomBlock.NORTH, i1 < -k)
-                                        .setValue(HugeMushroomBlock.SOUTH, i1 > k);
-                            }
+        int stemHeight = 4 + randomSource.nextInt(3);
+        int lowestPartHeight = randomSource.nextInt(2);
+        int middlePartHeight = 1 + randomSource.nextInt(2);
+        int topPartHeight = 3;
 
-                            this.setBlock(level, mutablePos, blockstate);
-                        }
-                    }
-                }
-            }
+        while (originPos.getY() >= worldLevel.getMinBuildHeight() + 1 && this.replace.test(worldLevel, originPos))
+            originPos = originPos.below();
+
+        // Abandoned if the mushroom can't be placed on this block or there isn't enough space
+        if (!(this.placeOn.test(worldLevel, originPos.offset(0, 0, 0)) ||
+                this.checkSpace(worldLevel, originPos.above())))
+            return false;
+
+        BlockPos pos = originPos.above();
+
+        for (int height = 0; height < stemHeight; height++)
+            this.setBlock(worldLevel, pos.above(height), mushroomStem);
+
+        BlockPos highestPos = pos.offset(0, stemHeight, 0);
+
+        // Makes the lowest cap part
+        for (int x = -1; x <= 1; x++)
+            for (int z = -1; z <= 1; z++)
+                for (int height = 0; height <= lowestPartHeight; height++)
+                    this.setBlock(worldLevel, highestPos.offset(x, height, z), mushroomCap);
+        highestPos = highestPos.above(lowestPartHeight);
+
+        // Makes the middle cap part
+        for (int height = 0; height <= middlePartHeight; height++) {
+            this.setBlock(worldLevel, highestPos.offset(0, height + 1, 0), mushroomCap);
+            this.setBlock(worldLevel, highestPos.offset(1, height + 1, 0), mushroomCap);
+            this.setBlock(worldLevel, highestPos.offset(-1, height + 1, 0), mushroomCap);
+            this.setBlock(worldLevel, highestPos.offset(0, height + 1, 1), mushroomCap);
+            this.setBlock(worldLevel, highestPos.offset(0, height + 1, -1), mushroomCap);
         }
+        highestPos = highestPos.above(middlePartHeight);
+
+        // Makes the top cap part
+        for (int height = 1; height <= topPartHeight; height++)
+            this.setBlock(worldLevel, highestPos.above(height), mushroomCap);
+
+        return true;
     }
 
-    @Override
-    protected int getTreeRadiusForHeight(int k1, int k, int foliageRadius, int height) {
-        int i = 0;
-        if (height < k && height >= k - 3) {
-            i = foliageRadius;
-        } else if (height == k) {
-            i = foliageRadius;
-        }
-
-        return i;
+    public void setBlock(WorldGenLevel world, BlockPos pos, BlockState state)
+    {
+        if (this.replace.test(world, pos))
+            super.setBlock(world, pos, state);
     }
 
-    @Override
-    protected int getTreeHeight(RandomSource pRandom) {
-        return pRandom.nextInt(2) + 4;
+    public boolean checkSpace(WorldGenLevel world, BlockPos pos)
+    {
+        for (int y = 0; y <= 15; y++)
+            for (int x = -2; x <= 2; x++)
+                for (int z = -2; z <= 2; z++)
+                    if (pos.offset(x, y, z).getY() >= 255 || !this.replace.test(world, pos.offset(x, y, z)))
+                        return false;
+        return true;
     }
 }

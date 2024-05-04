@@ -9,11 +9,10 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
@@ -22,13 +21,7 @@ public class VDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_BLACK_MUSHROOM = registerKey("patch_black_mushroom");
 
     public static void createConfiguredFeatures(BootstapContext<ConfiguredFeature<?, ?>> context) {
-        register(context, HUGE_BLACK_MUSHROOM, VDFeatures.HUGE_BLACK_MUSHROOM.get(),
-                new HugeMushroomFeatureConfiguration(
-                        BlockStateProvider.simple(VDBlocks.BLACK_MUSHROOM_BLOCK.get().defaultBlockState()
-                                .setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)),
-                        BlockStateProvider.simple(VDBlocks.BLACK_MUSHROOM_STEM.get().defaultBlockState()
-                                .setValue(HugeMushroomBlock.UP, Boolean.FALSE)
-                                .setValue(HugeMushroomBlock.DOWN, Boolean.FALSE)), 2));
+        register(context, HUGE_BLACK_MUSHROOM, VDFeatures.HUGE_BLACK_MUSHROOM.get(), NoneFeatureConfiguration.INSTANCE);
 
         register(context, PATCH_BLACK_MUSHROOM, Feature.RANDOM_PATCH, FeatureUtils.simpleRandomPatchConfiguration(
                 8, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(VDBlocks.BLACK_MUSHROOM.get())))));

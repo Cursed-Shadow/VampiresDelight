@@ -14,6 +14,8 @@
 - Added JEI ingredient information for **Black Mushroom**;
 - **Black Stone Stove** is now considered as campfire cooking recipe catalyst in JEI;
 - **Cursed Farmland** now can get moistened;
+- **Black Mushroom** blocks are now darker;
+- Changed **Huge Black Mushroom** form;
 
 ### Translations
 - Added:
