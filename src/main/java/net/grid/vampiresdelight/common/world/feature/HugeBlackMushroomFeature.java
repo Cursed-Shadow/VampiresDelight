@@ -41,10 +41,10 @@ public class HugeBlackMushroomFeature extends Feature<NoneFeatureConfiguration> 
         BlockState mushroomStem = VDBlocks.BLACK_MUSHROOM_STEM.get().defaultBlockState();
         BlockState mushroomCap = VDBlocks.BLACK_MUSHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false);
 
-        int stemHeight = 4 + randomSource.nextInt(3);
+        int stemHeight = 2 + randomSource.nextInt(3);
         int lowestPartHeight = randomSource.nextInt(2);
         int middlePartHeight = 1 + randomSource.nextInt(2);
-        int topPartHeight = 3;
+        int topPartHeight = 2 + randomSource.nextInt(2);
 
         while (originPos.getY() >= worldLevel.getMinBuildHeight() + 1 && this.replace.test(worldLevel, originPos))
             originPos = originPos.below();
@@ -60,6 +60,28 @@ public class HugeBlackMushroomFeature extends Feature<NoneFeatureConfiguration> 
             this.setBlock(worldLevel, pos.above(height), mushroomStem);
 
         BlockPos highestPos = pos.offset(0, stemHeight, 0);
+
+        // Makes curvy cap part
+        // South
+        this.setBlock(worldLevel, highestPos.offset(-1, -1, 2), mushroomCap.setValue(HugeMushroomBlock.NORTH, false));
+        this.setBlock(worldLevel, highestPos.offset(0, -1, 2), mushroomCap.setValue(HugeMushroomBlock.NORTH, false));
+        this.setBlock(worldLevel, highestPos.offset(1, -1, 2), mushroomCap.setValue(HugeMushroomBlock.NORTH, false));
+        this.setBlock(worldLevel, highestPos.offset(0, 0, 2), mushroomCap.setValue(HugeMushroomBlock.NORTH, false));
+        // Easy
+        this.setBlock(worldLevel, highestPos.offset(2, -1, -1), mushroomCap.setValue(HugeMushroomBlock.WEST, false));
+        this.setBlock(worldLevel, highestPos.offset(2, -1, 0), mushroomCap.setValue(HugeMushroomBlock.WEST, false));
+        this.setBlock(worldLevel, highestPos.offset(2, -1, 1), mushroomCap.setValue(HugeMushroomBlock.WEST, false));
+        this.setBlock(worldLevel, highestPos.offset(2, 0, 0), mushroomCap.setValue(HugeMushroomBlock.WEST, false));
+        // North
+        this.setBlock(worldLevel, highestPos.offset(-1, -1, -2), mushroomCap.setValue(HugeMushroomBlock.SOUTH, false));
+        this.setBlock(worldLevel, highestPos.offset(0, -1, -2), mushroomCap.setValue(HugeMushroomBlock.SOUTH, false));
+        this.setBlock(worldLevel, highestPos.offset(1, -1, -2), mushroomCap.setValue(HugeMushroomBlock.SOUTH, false));
+        this.setBlock(worldLevel, highestPos.offset(0, 0, -2), mushroomCap.setValue(HugeMushroomBlock.SOUTH, false));
+        // West
+        this.setBlock(worldLevel, highestPos.offset(-2, -1, -1), mushroomCap.setValue(HugeMushroomBlock.EAST, false));
+        this.setBlock(worldLevel, highestPos.offset(-2, -1, 0), mushroomCap.setValue(HugeMushroomBlock.EAST, false));
+        this.setBlock(worldLevel, highestPos.offset(-2, -1, 1), mushroomCap.setValue(HugeMushroomBlock.EAST, false));
+        this.setBlock(worldLevel, highestPos.offset(-2, 0, 0), mushroomCap.setValue(HugeMushroomBlock.EAST, false));
 
         // Makes the lowest cap part
         for (int x = -1; x <= 1; x++)
@@ -85,15 +107,13 @@ public class HugeBlackMushroomFeature extends Feature<NoneFeatureConfiguration> 
         return true;
     }
 
-    public void setBlock(WorldGenLevel world, BlockPos pos, BlockState state)
-    {
+    public void setBlock(WorldGenLevel world, BlockPos pos, BlockState state) {
         if (this.replace.test(world, pos))
             super.setBlock(world, pos, state);
     }
 
-    public boolean checkSpace(WorldGenLevel world, BlockPos pos)
-    {
-        for (int y = 0; y <= 15; y++)
+    public boolean checkSpace(WorldGenLevel world, BlockPos pos) {
+        for (int y = 0; y <= 13; y++)
             for (int x = -2; x <= 2; x++)
                 for (int z = -2; z <= 2; z++)
                     if (pos.offset(x, y, z).getY() >= 255 || !this.replace.test(world, pos.offset(x, y, z)))
