@@ -1,12 +1,12 @@
 package net.grid.vampiresdelight.common.world.feature;
 
 import com.mojang.serialization.Codec;
+import de.teamlapen.vampirism.core.ModTags;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +26,7 @@ import java.util.function.BiPredicate;
 @ParametersAreNonnullByDefault
 public class HugeBlackMushroomFeature extends Feature<NoneFeatureConfiguration> {
     protected BiPredicate<WorldGenLevel, BlockPos> replace = ((worldGenLevel, blockPos) -> TreeFeature.isAirOrLeaves(worldGenLevel, blockPos) || worldGenLevel.getBlockState(blockPos).getBlock() instanceof BushBlock);
-    protected BiPredicate<WorldGenLevel, BlockPos> placeOn = ((worldGenLevel, blockPos) -> worldGenLevel.getBlockState(blockPos).getBlock() == Blocks.GRASS_BLOCK || worldGenLevel.getBlockState(blockPos).getBlock() == Blocks.MYCELIUM);
+    protected BiPredicate<WorldGenLevel, BlockPos> placeOn = ((worldGenLevel, blockPos) -> worldGenLevel.getBlockState(blockPos).is(ModTags.Blocks.CURSED_EARTH));
 
     public HugeBlackMushroomFeature(Codec<NoneFeatureConfiguration> pCodec) {
         super(pCodec);

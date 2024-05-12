@@ -16,6 +16,10 @@
 - **Cursed Farmland** now can get moistened;
 - **Black Mushroom** blocks are now darker;
 - Changed **Huge Black Mushroom** form;
+- Added **Cooking Pot** with Campfire to **Hunter Camps**;
+
+### Fixes
+- Clothes Dissolving oil no longer spawns at hunter outpost alchemy chests;
 
 ### Translations
 - Added:

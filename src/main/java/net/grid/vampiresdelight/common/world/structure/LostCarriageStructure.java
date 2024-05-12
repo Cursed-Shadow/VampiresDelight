@@ -18,7 +18,9 @@ public class LostCarriageStructure extends StructureEx {
 
     @Override
     protected @NotNull Optional<GenerationStub> findGenerationPoint(@NotNull GenerationContext pContext) {
-        return onSurface(pContext, (builder, pos) -> LostCarriagePieces.addPieces(pContext.structureTemplateManager(), builder, pContext.random(), pos));
+        return onSurface(pContext, (builder, pos) ->
+                LostCarriagePieces.addPieces(pContext.structureTemplateManager(), builder, pContext.random(), pos)
+        );
     }
 
     @Override
