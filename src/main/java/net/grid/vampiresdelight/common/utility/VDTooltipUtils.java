@@ -17,7 +17,6 @@ public class VDTooltipUtils {
     public static void addFactionFoodToolTips(@NotNull List<Component> tooltip, @Nullable Player player, IPlayableFaction<?> foodFaction) {
         assert player != null;
 
-        // TODO: FIX BAT
         if (!Helper.isVampire(player) && !VDConfiguration.HUNTER_TOOLTIPS_FOR_EVERYONE.get()) {
             if (!Objects.equals(foodFaction, VReference.VAMPIRE_FACTION))
                 return;
