@@ -36,6 +36,7 @@ public class VampireConsumableItem extends Item {
     private final boolean hasFoodEffectTooltip;
     private final boolean hasHumanFoodEffectTooltip;
     private final boolean hasCustomTooltip;
+    private final boolean hasFactionTooltip;
 
     public VampireConsumableItem(Properties properties, FoodProperties vampireFood) {
         super(properties);
@@ -43,6 +44,7 @@ public class VampireConsumableItem extends Item {
         this.hasFoodEffectTooltip = true;
         this.hasHumanFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
+        this.hasFactionTooltip = true;
     }
 
     public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip) {
@@ -51,14 +53,7 @@ public class VampireConsumableItem extends Item {
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasHumanFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
-    }
-
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
-        super(properties);
-        this.vampireFood = vampireFood;
-        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasHumanFoodEffectTooltip = false;
-        this.hasCustomTooltip = hasCustomTooltip;
+        this.hasFactionTooltip = true;
     }
 
     public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip) {
@@ -67,6 +62,16 @@ public class VampireConsumableItem extends Item {
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
+        this.hasFactionTooltip = true;
+    }
+
+    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip, boolean hasFactionTooltip) {
+        super(properties);
+        this.vampireFood = vampireFood;
+        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
+        this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
+        this.hasCustomTooltip = hasCustomTooltip;
+        this.hasFactionTooltip = hasFactionTooltip;
     }
 
     @NotNull
@@ -149,6 +154,7 @@ public class VampireConsumableItem extends Item {
             }
         }
 
-        VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
+        if (this.hasFactionTooltip)
+            VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
     }
 }

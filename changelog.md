@@ -6,6 +6,8 @@
 - Added new configs:
   - `vampireBiteMaxHealingValue`. `1.5` by default;
   - `disableVampireBite` `false` by default;
+  - `correctAppleSkinTooltips` `true` by default;
+  - `hideAppleSkinHumanFoodTooltipsForVampires` `true` by default;
 - Added **Bar Stools**;
 - Added advancements (*WIP*);
 
@@ -17,9 +19,11 @@
 - **Black Mushroom** blocks are now darker;
 - Changed **Huge Black Mushroom** form;
 - Added **Cooking Pot** with Campfire to **Hunter Camps**;
+- Added **Apple Skin** compatibility (*WIP*);
 
 ### Fixes
 - Clothes Dissolving oil no longer spawns at hunter outpost alchemy chests;
+- Food made of **Bat** is no longer marked as vampire faction only;
 
 ### Translations
 - Added:

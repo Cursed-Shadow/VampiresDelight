@@ -35,10 +35,13 @@ public class VDConfiguration {
     public static ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
 
     // CLIENT
-    public static final String CATEGORY_CLIENT = "client";
+    public static final String CATEGORY_TOOLTIPS = "tooltips";
     public static ForgeConfigSpec.BooleanValue COLORED_TOOLTIPS;
     public static ForgeConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
-    public static ForgeConfigSpec.BooleanValue SPECIAL_APPLE_SKIN_TOOLTIP;
+
+    public static final String CATEGORY_APPLESKIN = "appleskin";
+    public static ForgeConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
+    public static ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES;
 
 
     static {
@@ -99,14 +102,20 @@ public class VDConfiguration {
 
         // CLIENT
         ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
-        CLIENT_BUILDER.comment("Client settings").push(CATEGORY_CLIENT);
+        CLIENT_BUILDER.comment("Client settings").push("client");
 
+        CLIENT_BUILDER.comment("Tooltips").push(CATEGORY_TOOLTIPS);
         COLORED_TOOLTIPS = CLIENT_BUILDER.comment("Should the mod change the color of tooltips?")
                 .define("coloredTooltips", true);
-        HUNTER_TOOLTIPS_FOR_EVERYONE = CLIENT_BUILDER.comment("Hunter food tooltips and color be shown for all fractions? (Only shown to vampires by default)")
+        HUNTER_TOOLTIPS_FOR_EVERYONE = CLIENT_BUILDER.comment("Should hunter food tooltips and tooltip's color be shown to all fractions? (Only shown to vampires by default)")
                 .define("hunterTooltipsForEveryone", false);
-        SPECIAL_APPLE_SKIN_TOOLTIP = CLIENT_BUILDER.comment("Hides AppleSkin food tooltips if you're a Vampire. You'll be shown blood values instead")
-                .define("specialAppleSkinTooltip", true);
+        CLIENT_BUILDER.pop();
+
+        CLIENT_BUILDER.comment("AppleSkin").push(CATEGORY_APPLESKIN);
+        CORRECT_APPLE_SKIN_TOOLTIPS = CLIENT_BUILDER.comment("Should AppleSkin tooltips' food values be fixed depending on player's race? (In case the player is a vampire, it'll show blood values for vampire food)")
+                .define("correctAppleSkinTooltips", true);
+        HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES = CLIENT_BUILDER.comment("Should AppleSkin tooltips be hidden for human food if the player is a vampire?")
+                .define("hideAppleSkinHumanFoodTooltipsForVampires", true);
 
         CLIENT_BUILDER.pop();
         CLIENT_CONFIG = CLIENT_BUILDER.build();

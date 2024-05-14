@@ -1,9 +1,12 @@
 package net.grid.vampiresdelight.common.utility;
 
 import com.google.common.collect.ImmutableSet;
+import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.PlantType;
 
 import java.util.Objects;
@@ -28,4 +31,8 @@ public class VDHelper {
     private static final ImmutableSet<String> DEBUGGERS_UUID = ImmutableSet.of(
             "052ef844-4947-452c-867d-902c8fa1cd94" // GridExpert
     );
+
+    public static boolean isItemOfVampireFoodClass(Item item) {
+        return item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem;
+    }
 }

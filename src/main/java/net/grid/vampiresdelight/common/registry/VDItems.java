@@ -151,13 +151,13 @@ public class VDItems {
     public static final RegistryObject<Item> BLOOD_BAGEL = ITEMS.register("blood_bagel",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.BLOOD_BAGEL));
     public static final RegistryObject<Item> RAW_BAT = ITEMS.register("raw_bat",
-            () -> new VampireConsumableItem(foodItem(VDFoodValues.RAW_BAT), VDFoodValues.RAW_BAT));
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.RAW_BAT), VDFoodValues.RAW_BAT, true, false, false, false));
     public static final RegistryObject<Item> RAW_BAT_CHOPS = ITEMS.register("raw_bat_chops",
-            () -> new VampireConsumableItem(foodItem(VDFoodValues.RAW_BAT_CHOPS), VDFoodValues.RAW_BAT_CHOPS));
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.RAW_BAT_CHOPS), VDFoodValues.RAW_BAT_CHOPS, true, false, false, false));
     public static final RegistryObject<Item> COOKED_BAT = ITEMS.register("cooked_bat",
-            () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_HUMAN), VDFoodValues.GRILLED_BAT_VAMPIRE));
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_HUMAN), VDFoodValues.GRILLED_BAT_VAMPIRE, true, false, false, false));
     public static final RegistryObject<Item> COOKED_BAT_CHOPS = ITEMS.register("cooked_bat_chops",
-            () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_CHOPS_HUMAN), VDFoodValues.GRILLED_BAT_CHOPS_VAMPIRE));
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_CHOPS_HUMAN), VDFoodValues.GRILLED_BAT_CHOPS_VAMPIRE, true, false, false, false));
     public static final RegistryObject<Item> WINE_GLASS = ITEMS.register("wine_glass",
             () -> new VampireDrinkableItem(drinkItem(VDFoodValues.WINE_GLASS_HUMAN), VDFoodValues.WINE_GLASS_VAMPIRE));
     public static final RegistryObject<Item> BLOOD_WINE_BOTTLE = ITEMS.register("blood_wine_bottle",
@@ -205,7 +205,7 @@ public class VDItems {
     public static final RegistryObject<Item> BAGEL_SANDWICH = ITEMS.register("bagel_sandwich",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.BAGEL_SANDWICH));
     public static final RegistryObject<Item> BAT_TACO = ITEMS.register("bat_taco",
-            () -> new VampireConsumableItem(foodItem(VDFoodValues.BAT_TACO_HUMAN), VDFoodValues.BAT_TACO));
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.BAT_TACO_HUMAN), VDFoodValues.BAT_TACO, true, false, false, false));
     public static final RegistryObject<Item> HARDTACK = ITEMS.register("hardtack",
             () -> new HardtackItem(foodItem(VDFoodValues.HARDTACK)));
 

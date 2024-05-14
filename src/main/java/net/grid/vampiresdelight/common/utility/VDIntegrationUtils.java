@@ -1,19 +1,17 @@
 package net.grid.vampiresdelight.common.utility;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.LoadingModList;
 
 public class VDIntegrationUtils {
-    public boolean isModLoaded(String string) {
+    public static boolean isModPresent(String string) {
         return ModList.get().isLoaded(string);
     }
 
-    // As Markiplier once said - later
+    public static boolean isLoadingModPresent(String string) {
+        return LoadingModList.get().getModFileById(string) != null;
+    }
 
-    // Werewolves
     public static final String WEREWOLVES = "werewolves";
-
-    public static final ResourceLocation LIVER = new ResourceLocation(WEREWOLVES, "liver");
-    public static final ResourceLocation CRACKED_BONE = new ResourceLocation(WEREWOLVES, "cracked_bone");
-    public static final ResourceLocation WOLF_BERRIES = new ResourceLocation(WEREWOLVES, "wolf_berries");
+    public static final String APPLESKIN = "appleskin";
 }

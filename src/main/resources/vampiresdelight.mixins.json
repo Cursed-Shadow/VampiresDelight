@@ -3,14 +3,17 @@
   "package": "net.grid.vampiresdelight.common.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "vampiresdelight.refmap.json",
+  "plugin": "net.grid.vampiresdelight.common.mixin.plugin.VDMixinConfigPlugin",
   "mixins": [
     "MixinEnchantment",
+    "MixinFoodHelper",
     "MixinHunterCampPieces",
     "MixinRenderHandler",
     "MixinSetOilFunction",
     "VampireMinionsEatSweetsMixin",
     "accessor.BloodStatsAccessor",
-    "accessor.StructurePieceAccessor"
+    "accessor.StructurePieceAccessor",
+    "accessor.VampirismItemBloodFoodItemAccessor"
   ],
   "client": [
   ],

@@ -79,7 +79,13 @@ public class VDFoodValues {
             }, 0.4F).build();
     public static final FoodProperties RAW_BAT_CHOPS = (new FoodProperties.Builder())
             .nutrition(1).saturationMod(0.3f).meat().fast()
-            .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600), 0.4F).build();
+            .effect(() -> {
+                if (VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get()) {
+                    return new MobEffectInstance(MobEffects.WITHER, FLEETING_DURATION);
+                } else {
+                    return null;
+                }
+            }, 0.2F).build();
     public static final FoodProperties GRILLED_BAT_HUMAN = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.5f).meat()
             .effect(() -> {
@@ -93,7 +99,14 @@ public class VDFoodValues {
             .nutrition(6).saturationMod(0.5f).meat().build();
     public static final FoodProperties GRILLED_BAT_CHOPS_HUMAN = (new FoodProperties.Builder())
             .nutrition(3).saturationMod(0.2f).meat().fast()
-            .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 400), 0.1F).build();
+            .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 400), 0.1F)
+            .effect(() -> {
+                if (VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get()) {
+                    return new MobEffectInstance(MobEffects.WITHER, FLEETING_DURATION);
+                } else {
+                    return null;
+                }
+            }, 0.1F).build();
     public static final FoodProperties GRILLED_BAT_CHOPS_VAMPIRE = (new FoodProperties.Builder())
             .nutrition(3).saturationMod(0.2f).meat().fast().build();
 
