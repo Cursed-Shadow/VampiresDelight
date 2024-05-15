@@ -2,12 +2,8 @@ package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
-import de.teamlapen.vampirism.api.entity.vampire.IVampire;
-import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
-import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
@@ -33,6 +29,7 @@ import java.util.Objects;
 
 public class VampireConsumableItem extends Item {
     private final FoodProperties vampireFood;
+    private final FoodProperties hunterFood;
     private final boolean hasFoodEffectTooltip;
     private final boolean hasHumanFoodEffectTooltip;
     private final boolean hasCustomTooltip;
@@ -41,36 +38,50 @@ public class VampireConsumableItem extends Item {
     public VampireConsumableItem(Properties properties, FoodProperties vampireFood) {
         super(properties);
         this.vampireFood = vampireFood;
+        this.hunterFood = null;
         this.hasFoodEffectTooltip = true;
-        this.hasHumanFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
+        this.hasHumanFoodEffectTooltip = false;
+        this.hasFactionTooltip = true;
+    }
+
+    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, FoodProperties hunterFood) {
+        super(properties);
+        this.vampireFood = vampireFood;
+        this.hunterFood = hunterFood;
+        this.hasFoodEffectTooltip = true;
+        this.hasCustomTooltip = false;
+        this.hasHumanFoodEffectTooltip = false;
         this.hasFactionTooltip = true;
     }
 
     public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip) {
         super(properties);
         this.vampireFood = vampireFood;
+        this.hunterFood = null;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasHumanFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
+        this.hasHumanFoodEffectTooltip = false;
         this.hasFactionTooltip = true;
     }
 
     public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip) {
         super(properties);
         this.vampireFood = vampireFood;
+        this.hunterFood = null;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
+        this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
         this.hasFactionTooltip = true;
     }
 
     public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip, boolean hasFactionTooltip) {
         super(properties);
         this.vampireFood = vampireFood;
+        this.hunterFood = null;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
+        this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
         this.hasFactionTooltip = hasFactionTooltip;
     }
 
@@ -81,24 +92,9 @@ public class VampireConsumableItem extends Item {
             this.affectConsumer(stack, level, consumer);
         }
 
-        if (consumer instanceof Player player) {
-            // Don't shrink stack before retrieving food
-            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(stack)));
-        }
-        if (consumer instanceof IVampire) {
-            ((IVampire) consumer).drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(stack));
-        } else if (!Helper.isVampire(consumer))
-            consumer.eat(level, stack);
-        
-        if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {
-            stack.shrink(1);
-        }
+        VDEntityUtils.consumeBloodFood(stack, level, consumer, vampireFood, hunterFood);
 
         level.playSound(null, consumer.getX(), consumer.getY(), consumer.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
-
-        if (Helper.isVampire(consumer)) {
-            VDEntityUtils.addFoodEffects(vampireFood, level, consumer);
-        }
 
         if (!stack.isEdible()) {
             Player player = consumer instanceof Player ? (Player) consumer : null;
@@ -123,6 +119,10 @@ public class VampireConsumableItem extends Item {
 
     public FoodProperties getVampireFood() {
         return vampireFood;
+    }
+
+    public FoodProperties getHunterFood() {
+        return hunterFood;
     }
 
     /**
@@ -154,7 +154,7 @@ public class VampireConsumableItem extends Item {
             }
         }
 
-        if (this.hasFactionTooltip)
+        if (hasFactionTooltip)
             VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
     }
 }

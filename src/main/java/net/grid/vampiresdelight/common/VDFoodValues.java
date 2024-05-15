@@ -168,8 +168,10 @@ public class VDFoodValues {
                     return null;
                 }
             }, 0.2F).build();
-    public static final FoodProperties HARDTACK = (new FoodProperties.Builder())
+    public static final FoodProperties HARDTACK_HUMAN = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.9f).build();
+    public static final FoodProperties HARDTACK_HUNTER = (new FoodProperties.Builder())
+            .nutrition(8).saturationMod(1.0f).build();
 
     // Bowl Foods
     public static final FoodProperties BLACK_MUSHROOM_SOUP = (new FoodProperties.Builder())

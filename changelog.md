@@ -20,6 +20,7 @@
 - Changed **Huge Black Mushroom** form;
 - Added **Cooking Pot** with Campfire to **Hunter Camps**;
 - Added **Apple Skin** compatibility (*WIP*);
+- **Hardtack** no longer gives Saturation effect, but restores more hunger for hunters;
 
 ### Fixes
 - Clothes Dissolving oil no longer spawns at hunter outpost alchemy chests;

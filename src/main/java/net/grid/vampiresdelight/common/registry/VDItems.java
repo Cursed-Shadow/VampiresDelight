@@ -171,7 +171,7 @@ public class VDItems {
 
     // Sweets
     public static final RegistryObject<Item> PURE_SORBET = ITEMS.register("pure_sorbet",
-            () -> new PureSorbetItem(foodItem(VDFoodValues.PURE_SORBET)));
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.PURE_SORBET), VDFoodValues.PURE_SORBET, true, false, true, false));
     public static final RegistryObject<Item> ORCHID_COOKIE = ITEMS.register("orchid_cookie",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_COOKIE));
     public static final RegistryObject<Item> ORCHID_ECLAIR = ITEMS.register("orchid_eclair",
@@ -207,7 +207,7 @@ public class VDItems {
     public static final RegistryObject<Item> BAT_TACO = ITEMS.register("bat_taco",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.BAT_TACO_HUMAN), VDFoodValues.BAT_TACO, true, false, false, false));
     public static final RegistryObject<Item> HARDTACK = ITEMS.register("hardtack",
-            () -> new HardtackItem(foodItem(VDFoodValues.HARDTACK)));
+            () -> new HardtackItem(foodItem(VDFoodValues.HARDTACK_HUMAN), VDFoodValues.HARDTACK_HUNTER));
 
     // Soups and Stews
     public static final RegistryObject<Item> BLACK_MUSHROOM_SOUP = ITEMS.register("black_mushroom_soup",

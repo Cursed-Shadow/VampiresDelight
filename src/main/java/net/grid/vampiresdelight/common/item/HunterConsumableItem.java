@@ -4,9 +4,11 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.core.ModEffects;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -28,33 +30,49 @@ import vectorwing.farmersdelight.common.utility.TextUtils;
 import java.util.List;
 
 public class HunterConsumableItem extends Item {
+    private final FoodProperties hunterFood;
     private final boolean hasFoodEffectTooltip;
     private final boolean hasCustomTooltip;
+    private final boolean containsGarlic;
 
     public HunterConsumableItem(Properties properties) {
         super(properties);
+        this.hunterFood = null;
         this.hasFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
+        this.containsGarlic = true;
     }
 
     public HunterConsumableItem(Properties properties, boolean hasFoodEffectTooltip) {
         super(properties);
+        this.hunterFood = null;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = false;
+        this.containsGarlic = true;
     }
 
     public HunterConsumableItem(Properties properties, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
         super(properties);
+        this.hunterFood = null;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
+        this.containsGarlic = true;
     }
+
+    public HunterConsumableItem(Properties properties, FoodProperties hunterFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean containsGarlic) {
+        super(properties);
+        this.hunterFood = hunterFood;
+        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
+        this.hasCustomTooltip = hasCustomTooltip;
+        this.containsGarlic = containsGarlic;
+    }
+
     @NotNull
     @Override
     public ItemStack finishUsingItem(@NotNull ItemStack stack, @NotNull Level level, @NotNull LivingEntity consumer) {
         if (!level.isClientSide) {
-            if (consumer.hasEffect(ModEffects.SANGUINARE.get())) {
-                consumer.removeEffect(ModEffects.SANGUINARE.get());
-            }
+            if (containsGarlic)
+                VDEntityUtils.cureEffect(ModEffects.SANGUINARE.get(), consumer);
 
             this.affectConsumer(stack, level, consumer);
         }
@@ -62,7 +80,14 @@ public class HunterConsumableItem extends Item {
         ItemStack containerStack = stack.getCraftingRemainingItem();
 
         if (stack.isEdible()) {
-            super.finishUsingItem(stack, level, consumer);
+            if (hunterFood == null)
+                super.finishUsingItem(stack, level, consumer);
+            else {
+                VDEntityUtils.eatFood(level, consumer, stack, Helper.isHunter(consumer) ? hunterFood : stack.getFoodProperties(consumer));
+
+                if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player))
+                    stack.shrink(1);
+            }
         } else {
             Player player = consumer instanceof Player ? (Player) consumer : null;
             if (player instanceof ServerPlayer) {
@@ -92,6 +117,10 @@ public class HunterConsumableItem extends Item {
      * Override this to apply changes to the consumer (e.g. curing effects).
      */
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
+    }
+
+    public boolean doesContainGarlic() {
+        return containsGarlic;
     }
 
     @Override

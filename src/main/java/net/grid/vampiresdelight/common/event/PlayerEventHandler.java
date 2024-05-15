@@ -1,27 +1,16 @@
 package net.grid.vampiresdelight.common.event;
 
 import de.teamlapen.vampirism.api.EnumStrength;
-import de.teamlapen.vampirism.api.entity.vampire.IVampire;
-import de.teamlapen.vampirism.core.ModEffects;
-import de.teamlapen.vampirism.core.ModTags;
-import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
-import de.teamlapen.vampirism.items.BloodBottleItem;
-import de.teamlapen.vampirism.items.GarlicBreadItem;
-import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
-import de.teamlapen.vampirism.util.DamageHandler;
+import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.item.HunterConsumableItem;
 import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.grid.vampiresdelight.common.registry.VDAdvancements;
-import net.grid.vampiresdelight.common.registry.VDEffects;
 import net.grid.vampiresdelight.common.registry.VDStats;
 import net.grid.vampiresdelight.common.tag.VDTags;
-import net.minecraft.network.chat.Component;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,50 +24,48 @@ import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
-import java.util.Objects;
-
 @Mod.EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerEventHandler {
     @SubscribeEvent
     public static void onItemUse(LivingEntityUseItemEvent.@NotNull Finish event) {
-        if (Helper.isVampire(event.getEntity())) {
-            if (!event.getEntity().getCommandSenderWorld().isClientSide) {
-                Item item = event.getItem().getItem();
-                if (item instanceof HunterConsumableItem) {
-                    if (event.getEntity() instanceof IVampire) {
-                        DamageHandler.affectVampireGarlicDirect((IVampire) event.getEntity(), EnumStrength.MEDIUM);
-                    } else if (event.getEntity() instanceof Player player) {
-                        VampirePlayer.getOpt((Player) event.getEntity()).ifPresent(vampire -> DamageHandler.affectVampireGarlicDirect(vampire, EnumStrength.MEDIUM));
-                        player.awardStat(VDStats.disgusting_food_consumed);
-                        VDAdvancements.DISGUSTING_FOOD_CONSUMED.trigger((ServerPlayer) player);
+        ItemStack itemStack = event.getItem();
+        Item item = itemStack.getItem();
+        LivingEntity livingEntity = event.getEntity();
+
+        if (!livingEntity.getCommandSenderWorld().isClientSide) {
+            if (Helper.isVampire(livingEntity)) {
+                if (item instanceof HunterConsumableItem hunterConsumableItem) {
+                    if (hunterConsumableItem.doesContainGarlic()) {
+                        VDEntityUtils.affectVampireEntityWithGarlic(livingEntity, EnumStrength.MEDIUM);
+                        disgustingFoodConsumed(livingEntity);
                     }
                 }
-                if (item instanceof GarlicBreadItem && event.getEntity() instanceof Player player) {
-                    player.awardStat(VDStats.disgusting_food_consumed);
-                    VDAdvancements.DISGUSTING_FOOD_CONSUMED.trigger((ServerPlayer) player);
+
+                if (item == ModItems.GARLIC_BREAD.get()) {
+                    disgustingFoodConsumed(livingEntity);
+                }
+            } else {
+                if (item instanceof VampireConsumableItem && itemStack.is(VDTags.VAMPIRE_FOOD)) {
+                    disgustingFoodConsumed(livingEntity);
                 }
             }
-        } else {
-            if (!event.getEntity().getCommandSenderWorld().isClientSide) {
-                Item item = event.getItem().getItem();
-                if ((item instanceof VampirismItemBloodFoodItem || item instanceof VampireConsumableItem) && event.getEntity() instanceof Player player) {
-                    player.awardStat(VDStats.disgusting_food_consumed);
-                    VDAdvancements.DISGUSTING_FOOD_CONSUMED.trigger((ServerPlayer) player);
-                }
-            }
+        }
+    }
+
+    private static void disgustingFoodConsumed(LivingEntity livingEntity) {
+        if (livingEntity instanceof Player player) {
+            player.awardStat(VDStats.disgusting_food_consumed);
+            VDAdvancements.DISGUSTING_FOOD_CONSUMED.trigger((ServerPlayer) player);
         }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onFoodEaten(final MobEffectEvent.Applicable event) {
         LivingEntity consumer = event.getEntity();
-        InteractionHand hand = consumer.getUsedItemHand();
-        ItemStack itemInHand = consumer.getItemInHand(hand);
-        if (Helper.isVampire(consumer) && itemInHand.getItem() instanceof ConsumableItem) {
-            MobEffect effect = event.getEffectInstance().getEffect();
-            if (effect != VDEffects.FOG_VISION.get()) {
-                event.setResult(Event.Result.DENY);
-            }
+        ItemStack itemInHand = consumer.getItemInHand(consumer.getUsedItemHand());
+        Item item = itemInHand.getItem();
+        if (Helper.isVampire(consumer) && item instanceof ConsumableItem) {
+            event.setResult(Event.Result.DENY);
         }
     }
 }

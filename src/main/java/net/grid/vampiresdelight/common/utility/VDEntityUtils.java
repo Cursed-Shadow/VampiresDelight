@@ -1,9 +1,18 @@
 package net.grid.vampiresdelight.common.utility;
 
 import com.mojang.datafixers.util.Pair;
+import de.teamlapen.vampirism.api.EnumStrength;
+import de.teamlapen.vampirism.api.entity.vampire.IVampire;
+import de.teamlapen.vampirism.core.ModEffects;
+import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
+import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
+import de.teamlapen.vampirism.util.DamageHandler;
+import de.teamlapen.vampirism.util.Helper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -34,6 +43,38 @@ public class VDEntityUtils {
         }
 
         return foodItem;
+    }
+
+    public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer, FoodProperties vampireFood, FoodProperties hunterFood) {
+        if (consumer instanceof Player player) {
+            // Don't shrink stack before retrieving food
+            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(stack)));
+        }
+        if (consumer instanceof IVampire) {
+            ((IVampire) consumer).drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(stack));
+        } else if (!Helper.isVampire(consumer))
+            eatFood(level, consumer, stack, Helper.isHunter(consumer) && hunterFood != null ? hunterFood : stack.getFoodProperties(consumer));
+
+        if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {
+            stack.shrink(1);
+        }
+
+        if (Helper.isVampire(consumer)) {
+            addFoodEffects(vampireFood, level, consumer);
+        }
+    }
+
+    public static void cureEffect(MobEffect mobEffect, LivingEntity entity) {
+        if (entity.hasEffect(mobEffect))
+            entity.removeEffect(mobEffect);
+    }
+
+    public static void affectVampireEntityWithGarlic(LivingEntity livingEntity, EnumStrength strength) {
+        if (livingEntity instanceof IVampire) {
+            DamageHandler.affectVampireGarlicDirect((IVampire) livingEntity, strength);
+        } else if (livingEntity instanceof Player player) {
+            VampirePlayer.getOpt(player).ifPresent(vampire -> DamageHandler.affectVampireGarlicDirect(vampire, strength));
+        }
     }
 
     public static void addParticlesAroundEntity(ParticleOptions pParticleOption, LivingEntity livingEntity, int amount, double speedMultiplier, double yOffset) {

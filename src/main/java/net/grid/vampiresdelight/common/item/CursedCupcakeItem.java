@@ -4,6 +4,7 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.core.ModEffects;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
@@ -32,9 +33,7 @@ public class CursedCupcakeItem extends VampireConsumableItem {
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
         if (Helper.isVampire(consumer)) {
             consumer.heal(5.0F);
-            if (consumer.hasEffect(ModEffects.GARLIC.get())) {
-                consumer.removeEffect(ModEffects.GARLIC.get());
-            }
+            VDEntityUtils.cureEffect(ModEffects.GARLIC.get(), consumer);
         }
     }
 
