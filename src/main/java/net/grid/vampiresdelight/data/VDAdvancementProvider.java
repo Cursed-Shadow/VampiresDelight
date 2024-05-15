@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.data;
 import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDAdvancements;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
@@ -76,13 +77,15 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
                     .addCriterion("vampire_orchid", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(VDBlocks.VAMPIRE_ORCHID_CROP.get()))
                     .save(consumer, getNameId("main/plant_vampire_orchid_crop"));
 
-            Advancement bloodWineTastesTheSameAsIRemember = getAdvancement(yourBestFriend, VDItems.WINE_GLASS.get(), "pour_blood_wine", FrameType.TASK, true, false, false)
+            Advancement bloodWineTastesTheSameAsIRemember = getAdvancement(yourBestFriend, VDItems.WINE_GLASS.get(), "pour_blood_wine", FrameType.TASK, true, true, false)
                     .addCriterion("pour_blood_wine", new PlayerTrigger.TriggerInstance(VDAdvancements.BLOOD_WINE_POURED.getId(), ContextAwarePredicate.ANY))
                     .save(consumer, getNameId("main/pour_blood_wine"));
 
-            Advancement localBar = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.OAK_WINE_SHELF.get(), "get_wine_shelf", FrameType.TASK, true, false, false)
-                    .addCriterion("wine_shelf", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(VDTags.WINE_SHELF).build()))
-                    .save(consumer, getNameId("main/get_wine_shelf"));
+            Advancement localBar = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.DARK_SPRUCE_WINE_SHELF.get(), "get_wine_shelf", FrameType.TASK, true, false, false)
+                    .addCriterion("wine_shelf", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
+                            LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(WineShelfBlock.getAllShelveBlocks()).build()),
+                            ItemPredicate.Builder.item().of(VDItems.BLOOD_WINE_BOTTLE.get())))
+                    .save(consumer, getNameId("main/place_blood_wine_bottle_on_shelf"));
 
             Advancement funnyCutsOfChildren = getAdvancement(yourBestFriend, VDItems.HUMAN_EYE.get(), "get_human_eye", FrameType.TASK, true, true, false)
                     .addCriterion("human_eye", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.HUMAN_EYE.get()))

@@ -1,0 +1,63 @@
+{
+  "parent": "vampiresdelight:main/pour_blood_wine",
+  "criteria": {
+    "wine_shelf": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "vampiresdelight:oak_wine_shelf",
+                  "vampiresdelight:spruce_wine_shelf",
+                  "vampiresdelight:birch_wine_shelf",
+                  "vampiresdelight:jungle_wine_shelf",
+                  "vampiresdelight:acacia_wine_shelf",
+                  "vampiresdelight:dark_oak_wine_shelf",
+                  "vampiresdelight:mangrove_wine_shelf",
+                  "vampiresdelight:cherry_wine_shelf",
+                  "vampiresdelight:bamboo_wine_shelf",
+                  "vampiresdelight:crimson_wine_shelf",
+                  "vampiresdelight:warped_wine_shelf",
+                  "vampiresdelight:cursed_spruce_wine_shelf",
+                  "vampiresdelight:dark_spruce_wine_shelf"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "vampiresdelight:blood_wine_bottle"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "vampiresdelight.advancement.get_wine_shelf.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "vampiresdelight:dark_oak_wine_shelf"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "vampiresdelight.advancement.get_wine_shelf"
+    }
+  },
+  "requirements": [
+    [
+      "wine_shelf"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
