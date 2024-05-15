@@ -6,6 +6,8 @@
 - Added new configs:
   - `vampireBiteMaxHealingValue`. `1.5` by default;
   - `disableVampireBite` `false` by default;
+  - `generateCookingPotInHunterCamp`  `true` by default;
+  - `cookingPotInHunterCampSpawnChance`  `25` by default;
   - `correctAppleSkinTooltips` `true` by default;
   - `hideAppleSkinHumanFoodTooltipsForVampires` `true` by default;
 - Added **Bar Stools**;
@@ -21,6 +23,7 @@
 - Added **Cooking Pot** with Campfire to **Hunter Camps**;
 - Added **Apple Skin** compatibility (*WIP*);
 - **Hardtack** no longer gives Saturation effect, but restores more hunger for hunters;
+- Hunter npcs and players wearing hunter armor boots are now able to walk on **Powder Snow**;
 
 ### Fixes
 - Clothes Dissolving oil no longer spawns at hunter outpost alchemy chests;

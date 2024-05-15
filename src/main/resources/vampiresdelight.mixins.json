@@ -8,6 +8,7 @@
     "MixinEnchantment",
     "MixinFoodHelper",
     "MixinHunterCampPieces",
+    "MixinPowderSnowBlock",
     "MixinRenderHandler",
     "MixinSetOilFunction",
     "VampireMinionsEatSweetsMixin",

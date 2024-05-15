@@ -34,6 +34,7 @@ public class VDDataGenerators {
         generator.addProvider(event.includeServer(), new VDRegistrySets(output, lookupProvider));
         generator.addProvider(event.includeServer(), new VDItemTags(output, lookupProvider, blockTags.contentsGetter(), helper));
         generator.addProvider(event.includeServer(), new VDBiomeTags(output, lookupProvider, helper));
+        generator.addProvider(event.includeServer(), new VDEntityTags(output, lookupProvider, helper));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, VDLootTables.getLootTables(), List.of(
                 new LootTableProvider.SubProviderEntry(VDBlockLootTables::new, LootContextParamSets.BLOCK),
                 new LootTableProvider.SubProviderEntry(VDChestLootTables::new, LootContextParamSets.CHEST)

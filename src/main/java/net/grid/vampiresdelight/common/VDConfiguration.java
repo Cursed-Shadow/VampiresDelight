@@ -33,6 +33,8 @@ public class VDConfiguration {
 
     public static final String CATEGORY_WORLD = "world";
     public static ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
+    public static ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_IN_HUNTER_CAMP;
+    public static ForgeConfigSpec.IntValue COOKING_POT_IN_HUNTER_CAMP_CHANCE;
 
     // CLIENT
     public static final String CATEGORY_TOOLTIPS = "tooltips";
@@ -95,6 +97,10 @@ public class VDConfiguration {
         COMMON_BUILDER.comment("World generation").push(CATEGORY_WORLD);
         GENERATE_VD_CHEST_LOOT = COMMON_BUILDER.comment("Should this mod add some of its items as extra chest loot across Minecraft and Vampirism structures?")
                 .define("generateVDChestLoot", true);
+        GENERATE_COOKING_POT_IN_HUNTER_CAMP = COMMON_BUILDER.comment("Should a Cooking Pot on a Campfire be generated in hunter camps?")
+                .define("generateCookingPotInHunterCamp", true);
+        COOKING_POT_IN_HUNTER_CAMP_CHANCE = COMMON_BUILDER.comment("With what chance should a Cooking Pot on a Campfire be generated in hunter camps?")
+                .defineInRange("cookingPotInHunterCampSpawnChance", 25, 1, 100);
         COMMON_BUILDER.pop();
 
         COMMON_CONFIG = COMMON_BUILDER.build();

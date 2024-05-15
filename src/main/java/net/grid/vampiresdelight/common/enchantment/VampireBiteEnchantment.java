@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.common.item.enchantment;
+package net.grid.vampiresdelight.common.enchantment;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;

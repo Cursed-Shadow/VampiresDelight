@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.world.gen.structure.huntercamp.HunterCampPieces;
+import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.mixin.accessor.StructurePieceAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -28,7 +29,7 @@ public class MixinHunterCampPieces {
 
     @Inject(at = @At("TAIL"), method = "postProcess(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/core/BlockPos;)V", remap = false)
     public void placeCookingPot(WorldGenLevel worldIn, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource random, BoundingBox structureBoundingBoxIn, ChunkPos chunkPos, BlockPos blockPos, CallbackInfo ci) {
-        if (random.nextInt(1) == 0) {
+        if (random.nextInt(100) <= VDConfiguration.COOKING_POT_IN_HUNTER_CAMP_CHANCE.get() && VDConfiguration.GENERATE_COOKING_POT_IN_HUNTER_CAMP.get()) {
             ((StructurePieceAccessor) this).vampiresdelight$placeBlock(worldIn, Blocks.CAMPFIRE.defaultBlockState(), advanced ? 1 : 3, 0, advanced ? 3 : 1, structureBoundingBoxIn);
             ((StructurePieceAccessor) this).vampiresdelight$placeBlock(worldIn, ModBlocks.COOKING_POT.get().defaultBlockState().setValue(CookingPotBlock.SUPPORT, CookingPotSupport.TRAY), advanced ? 1 : 3, 1, advanced ? 3 : 1, structureBoundingBoxIn);
         }
