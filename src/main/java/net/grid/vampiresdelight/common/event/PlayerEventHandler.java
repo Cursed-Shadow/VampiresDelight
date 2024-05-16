@@ -6,7 +6,7 @@ import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.item.HunterConsumableItem;
 import net.grid.vampiresdelight.common.item.VampireConsumableItem;
-import net.grid.vampiresdelight.common.registry.VDAdvancements;
+import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDStats;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
@@ -55,7 +55,7 @@ public class PlayerEventHandler {
     private static void disgustingFoodConsumed(LivingEntity livingEntity) {
         if (livingEntity instanceof Player player) {
             player.awardStat(VDStats.disgusting_food_consumed);
-            VDAdvancements.DISGUSTING_FOOD_CONSUMED.trigger((ServerPlayer) player);
+            VDAdvancementTriggers.DISGUSTING_FOOD_CONSUMED.trigger((ServerPlayer) player);
         }
     }
 

@@ -5,7 +5,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.resources.ResourceLocation;
 
-public class VDAdvancements {
+public class VDAdvancementTriggers {
     public static final PlayerTrigger DISGUSTING_FOOD_CONSUMED = new PlayerTrigger(new ResourceLocation(VampiresDelight.MODID, "disgusting_food_consumed"));
     public static final PlayerTrigger BLOOD_WINE_POURED = new PlayerTrigger(new ResourceLocation(VampiresDelight.MODID, "blood_wine_poured"));
 

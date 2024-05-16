@@ -2,7 +2,7 @@
   "block.vampiresdelight.dark_stone_stove": "Плита з темного каменю",
   "block.vampiresdelight.brewing_barrel": "Бродильна бочка",
   "block.vampiresdelight.garlic_crate": "Ящик часнику",
-  "block.vampiresdelight.orchid_bag": "Мішок орхідеї",
+  "block.vampiresdelight.orchid_bag": "Мішок пелюсток орхідеї",
   "block.vampiresdelight.wild_garlic": "Дикий часник",
   "block.vampiresdelight.cursed_farmland": "Прокляте рілля",
   "block.vampiresdelight.vampire_orchid_crop": "Зростаюча вампірська орхідея",
@@ -85,7 +85,7 @@
 
   "block.vampiresdelight.blood_pie": "Кривавий пиріг",
   "item.vampiresdelight.blood_pie_slice": "Шматок кривавого пирога",
-  "block.vampiresdelight.weird_jelly_block": "Чудернацький желе",
+  "block.vampiresdelight.weird_jelly_block": "Чудернацьке желе",
   "item.vampiresdelight.weird_jelly": "Тарілка чудернацького желе",
 
   "block.vampiresdelight.orchid_cake": "Орхідеєвий торт",
@@ -176,6 +176,8 @@
   "vampiresdelight.advancement.get_vampire_orchid.desc": "Знайдіть вампірську орхідею в вампірському лісі або купіть її у мандрівного крамарю.",
   "vampiresdelight.advancement.plant_vampire_orchid_crop": "Краса і користь",
   "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Посадіть насіння вампірської орхідеї на прокляте рілля. Щоб отримати її, зоріть прокляту землю або траву мотикою.",
+  "vampiresdelight.advancement.get_orchid_tea": "Чай зі смаком халапеньйо",
+  "vampiresdelight.advancement.get_orchid_tea.desc": "Зваріть орхідеєвий чай. Він може заразити Sanguinare, якщо його вип'є людина. Трошечки пікантний.",
 
   "vampiresdelight.advancement.pour_blood_wine": "Смак кривавого вина ніяк не змінився...",
   "vampiresdelight.advancement.pour_blood_wine.desc": "Налийте кров'яне вино в скляну пляшку голими руками.",

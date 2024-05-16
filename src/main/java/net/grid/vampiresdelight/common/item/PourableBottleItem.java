@@ -1,6 +1,6 @@
 package net.grid.vampiresdelight.common.item;
 
-import net.grid.vampiresdelight.common.registry.VDAdvancements;
+import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.nbt.CompoundTag;
@@ -120,7 +120,7 @@ public class PourableBottleItem extends Item {
             compoundTag.remove("Pouring");
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
             if (itemStack.getDamageValue() > 3) itemStack = new ItemStack(servingContainer);
-            VDAdvancements.BLOOD_WINE_POURED.trigger((ServerPlayer) player);
+            VDAdvancementTriggers.BLOOD_WINE_POURED.trigger((ServerPlayer) player);
         }
 
         return itemStack;

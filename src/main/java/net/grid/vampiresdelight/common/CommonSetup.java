@@ -1,7 +1,7 @@
 package net.grid.vampiresdelight.common;
 
 import net.grid.vampiresdelight.common.entity.AlchemicalCocktailEntity;
-import net.grid.vampiresdelight.common.registry.VDAdvancements;
+import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDPotions;
 import net.grid.vampiresdelight.common.registry.VDStats;
@@ -24,7 +24,7 @@ public class CommonSetup {
         });
 
         registerModIntegrations();
-        VDAdvancements.register();
+        VDAdvancementTriggers.register();
     }
 
     public static void registerDispenserBehaviors() {

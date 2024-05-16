@@ -4,11 +4,10 @@ import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.WineShelfBlock;
-import net.grid.vampiresdelight.common.registry.VDAdvancements;
+import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDPotions;
-import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.Advancement;
@@ -30,8 +29,8 @@ import java.util.function.Consumer;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class VDAdvancementProvider extends ForgeAdvancementProvider {
-    public VDAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
+public class VDAdvancements extends ForgeAdvancementProvider {
+    public VDAdvancements(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
         super(output, registries, existingFileHelper, List.of(new VDAdvancementGenerator()));
     }
 
@@ -60,7 +59,7 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
 
             // Eating Branch
             Advancement disgusting = getAdvancement(vampiresDelight, ModItems.HUMAN_HEART.get(), "consume_disgusting_food", FrameType.TASK, true, true, false)
-                    .addCriterion("disgusting_food", new PlayerTrigger.TriggerInstance(VDAdvancements.DISGUSTING_FOOD_CONSUMED.getId(), ContextAwarePredicate.ANY))
+                    .addCriterion("disgusting_food", new PlayerTrigger.TriggerInstance(VDAdvancementTriggers.DISGUSTING_FOOD_CONSUMED.getId(), ContextAwarePredicate.ANY))
                     .save(consumer, getNameId("main/consume_disgusting_food"));
 
             // Hunter Branch
@@ -77,8 +76,12 @@ public class VDAdvancementProvider extends ForgeAdvancementProvider {
                     .addCriterion("vampire_orchid", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(VDBlocks.VAMPIRE_ORCHID_CROP.get()))
                     .save(consumer, getNameId("main/plant_vampire_orchid_crop"));
 
+            Advancement putPepperInTea = getAdvancement(bothBeautyAndHealth, VDItems.ORCHID_TEA.get(), "get_orchid_tea", FrameType.TASK, true, false, false)
+                    .addCriterion("orchid_tea", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.ORCHID_TEA.get()))
+                    .save(consumer, getNameId("main/get_orchid_tea"));
+
             Advancement bloodWineTastesTheSameAsIRemember = getAdvancement(yourBestFriend, VDItems.WINE_GLASS.get(), "pour_blood_wine", FrameType.TASK, true, true, false)
-                    .addCriterion("pour_blood_wine", new PlayerTrigger.TriggerInstance(VDAdvancements.BLOOD_WINE_POURED.getId(), ContextAwarePredicate.ANY))
+                    .addCriterion("pour_blood_wine", new PlayerTrigger.TriggerInstance(VDAdvancementTriggers.BLOOD_WINE_POURED.getId(), ContextAwarePredicate.ANY))
                     .save(consumer, getNameId("main/pour_blood_wine"));
 
             Advancement localBar = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.DARK_SPRUCE_WINE_SHELF.get(), "get_wine_shelf", FrameType.TASK, true, false, false)
