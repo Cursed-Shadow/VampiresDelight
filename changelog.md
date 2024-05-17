@@ -18,9 +18,9 @@
 - Added JEI ingredient information for **Black Mushroom**;
 - **Black Stone Stove** is now considered as campfire cooking recipe catalyst in JEI;
 - **Cursed Farmland** now can get moistened;
-- **Black Mushroom** blocks are now darker;
-- Changed **Huge Black Mushroom** form;
-- Added **Cooking Pot** with Campfire to **Hunter Camps**;
+- **Black Mushroom** blocks are now a bit darker;
+- The shape of the **Huge Black Mushroom** is now different from the Huge Red Mushroom's one;
+- **Cooking Pot** on a Campfire now spawns in **Hunter Camps**;
 - Added **Apple Skin** compatibility (*WIP*);
 - **Hardtack** no longer gives Saturation effect, but restores more hunger for hunters;
 - Hunter npcs and players wearing hunter armor boots are now able to walk on **Powder Snow**;
