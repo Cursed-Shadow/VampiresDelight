@@ -8,6 +8,7 @@ import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDPotions;
+import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.Advancement;
@@ -86,7 +87,7 @@ public class VDAdvancements extends ForgeAdvancementProvider {
 
             Advancement localBar = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.DARK_SPRUCE_WINE_SHELF.get(), "get_wine_shelf", FrameType.TASK, true, false, false)
                     .addCriterion("wine_shelf", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
-                            LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(WineShelfBlock.getAllShelveBlocks()).build()),
+                            LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(VDTags.WINE_SHELF).build()),
                             ItemPredicate.Builder.item().of(VDItems.BLOOD_WINE_BOTTLE.get())))
                     .save(consumer, getNameId("main/place_blood_wine_bottle_on_shelf"));
 

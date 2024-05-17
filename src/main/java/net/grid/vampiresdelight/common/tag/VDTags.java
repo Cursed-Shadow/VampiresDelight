@@ -18,7 +18,7 @@ public class VDTags {
     // Vampire and Hunter food that can be fed to minions.
     public static final TagKey<Item> MINION_VAMPIRE_FOOD = modItemTag("minion_vampire_food");
     // All Wine Shelves.
-    public static final TagKey<Item> WINE_SHELF = modItemTag("wine_shelf");
+    public static final TagKey<Block> WINE_SHELF = modBlockTag("wine_shelf");
 
     // Orchid cake variants that drop the cake slice when sliced by a knife.
     public static final TagKey<Block> DROPS_ORCHID_CAKE_SLICE = modBlockTag("drops_orchid_cake_slice");

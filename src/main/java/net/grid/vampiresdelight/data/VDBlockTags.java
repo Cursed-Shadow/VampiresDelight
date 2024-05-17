@@ -37,6 +37,8 @@ public class VDBlockTags extends BlockTagsProvider {
     }
 
     private void registerModTags() {
+        WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(VDTags.WINE_SHELF).add(block));
+
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> {
             String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
             if (name.contains("orchid"))
