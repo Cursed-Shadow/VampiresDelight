@@ -19,7 +19,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: "${mappings_version}-${mc_version}"
+    mappings channel: "${mappings_channel}", version: "${mappings_version}-${mc_version}"
     runs {
         client {
             workingDirectory project.file('run')
@@ -142,23 +142,6 @@ dependencies {
     implementation fg.deobf("curse.maven:farmers-delight-398521:${farmersdelight_version}")
     implementation fg.deobf("de.teamlapen.vampirism:Vampirism:${mc_version}-${vampirism_version}")
 
-    /*
-    // Werewolves
-    compileOnly "de.teamlapen.werewolves:Werewolves:${mc_version}-${werewolves_version}"
-    if (include_werewolves.toBoolean())
-        runtimeOnly "de.teamlapen.werewolves:Werewolves:${mc_version}-${werewolves_version}"
-
-    // GuideAPI (required by Werewolves)
-    compileOnly "de.maxanier.guideapi:Guide-API-VP:${mc_version}-${guideapi_version}"
-    if (include_werewolves.toBoolean())
-        runtimeOnly "de.maxanier.guideapi:Guide-API-VP:${mc_version}-${guideapi_version}"
-     */
-
-    // Create
-    //implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
-    //implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
-    //implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
-
     // AppleSkin
     compileOnly fg.deobf("squeek.appleskin:appleskin-forge:mc1.20.1-${appleskin_version}:api")
     compileOnly fg.deobf("squeek.appleskin:appleskin-forge:mc1.20.1-${appleskin_version}")
@@ -171,8 +154,50 @@ dependencies {
 
     runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
 
+    /*
+    // Werewolves
+    compileOnly "de.teamlapen.werewolves:Werewolves:${mc_version}-${werewolves_version}"
+    if (include_werewolves.toBoolean())
+        runtimeOnly "de.teamlapen.werewolves:Werewolves:${mc_version}-${werewolves_version}"
+
+    // GuideAPI (required by Werewolves)
+    compileOnly "de.maxanier.guideapi:Guide-API-VP:${mc_version}-${guideapi_version}"
+    if (include_werewolves.toBoolean())
+        runtimeOnly "de.maxanier.guideapi:Guide-API-VP:${mc_version}-${guideapi_version}"
+
+    // Create
+    implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
+    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
+    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+     */
+
     // Apply Mixin AP
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+processResources {
+    var replaceProperties = [
+            mod_version: mod_version,
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_display_name: mod_display_name,
+            mod_license: mod_license,
+
+            forge_version: forge_version,
+            forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+
+            mc_version: mc_version,
+            mc_version_range: mc_version_range,
+
+            vampirism_version_range: vampirism_version_range,
+            farmersdelight_version_range: farmersdelight_version_range
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties + [project: project]
+    }
 }
 
 jar {
