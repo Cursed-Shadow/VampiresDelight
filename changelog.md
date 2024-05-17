@@ -32,6 +32,7 @@
 ### Translations
 - Added:
   - uk_UA;
+  - en_GB;
 - Corrected:
   - ru_RU;
 
