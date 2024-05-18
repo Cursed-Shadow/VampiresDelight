@@ -4,12 +4,19 @@
 
 ### Additions
 - Added new configs:
-  - `vampireBiteMaxHealingValue`. `1.5` by default;
-  - `disableVampireBite` `false` by default;
-  - `generateCookingPotInHunterCamp`  `true` by default;
-  - `cookingPotInHunterCampSpawnChance`  `25` by default;
-  - `correctAppleSkinTooltips` `true` by default;
-  - `hideAppleSkinHumanFoodTooltipsForVampires` `true` by default;
+  - `vampireBiteMaxHealingValue`:
+    - `1.5` by default;
+  - `disableVampireBite`:
+    - `false` by default;
+  - `generateCookingPotInHunterCamp`:
+    - `true` by default;
+  - `cookingPotInHunterCampSpawnChance`:
+    - `25` by default;
+    - Range: from `0` to `100`;
+  - `correctAppleSkinTooltips`:
+    - `true` by default;
+  - `hideAppleSkinHumanFoodTooltipsForVampires`:
+    - `true` by default;
 - Added **Bar Stools**;
 - Added advancements (*WIP*);
 
@@ -40,11 +47,19 @@
 
 ### Additions
 - Added new configs:
-  - `alchemicalCocktailBurnsGround`. `true` by default;
-  - `backstabbingCanBeAppliedToHunterWeapon`. `true` by default;
-  - `vampireBiteChanceLevel1`. `20` by default;
-  - `vampireBiteChanceLevel2`. `25` by default;
-  - `vampireBiteChanceLevel3`. `30` by default;
+  - `alchemicalCocktailBurnsGround`:
+    - `true` by default;
+  - `backstabbingCanBeAppliedToHunterWeapon`:
+    - `true` by default;
+  - `vampireBiteChanceLevel1`:
+    - `20` by default;
+    - Range: from `0` to `100`;
+  - `vampireBiteChanceLevel2`:
+    - `25` by default;
+    - Range: from `0` to `100`;
+  - `vampireBiteChanceLevel3`:
+    - `30` by default;
+    - Range: from `0` to `100`;
 - Added new cutting recipes:
   - Stripping Dark and Cursed Spruce Logs;
   - Salvaging Dark and Cursed Spruce furniture;
