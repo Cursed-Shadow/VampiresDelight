@@ -1,12 +1,15 @@
 package net.grid.vampiresdelight.common.mixin.plugin;
 
+import com.google.common.collect.ImmutableMap;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class VDMixinConfigPlugin implements IMixinConfigPlugin {
     @Override
@@ -19,16 +22,16 @@ public class VDMixinConfigPlugin implements IMixinConfigPlugin {
         return null;
     }
 
-    private static final List<String> APPLESKIN_MIXINS = List.of(
-            "net.grid.vampiresdelight.common.mixin.MixinFoodHelper"
+    private static final Supplier<Boolean> TRUE = () -> true;
+
+    private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
+            "net.grid.vampiresdelight.common.mixin.MixinFoodHelper", () -> VDIntegrationUtils.isLoadingModPresent(VDIntegrationUtils.APPLESKIN)
+
     );
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (APPLESKIN_MIXINS.contains(mixinClassName) && !VDIntegrationUtils.isLoadingModPresent(VDIntegrationUtils.APPLESKIN))
-            return false;
-
-        return true;
+        return CONDITIONS.getOrDefault(mixinClassName, TRUE).get();
     }
 
     @Override

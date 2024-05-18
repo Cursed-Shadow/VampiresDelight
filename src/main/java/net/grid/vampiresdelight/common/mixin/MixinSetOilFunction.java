@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SetOilFunction.class)
 public class MixinSetOilFunction {
-    @Inject(at = @At("TAIL"), method = "run(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;)Lnet/minecraft/world/item/ItemStack;", remap = false, cancellable = true)
+    @Inject(at = @At("TAIL"), method = "run(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;)Lnet/minecraft/world/item/ItemStack;", cancellable = true)
     public void checkOilBeforeRun(ItemStack pStack, LootContext pContext, CallbackInfoReturnable<ItemStack> cir) {
         if (OilUtils.getOil(pStack) instanceof EffectWeaponOil effectOil)
             if (effectOil.getEffect() == VDEffects.CLOTHES_DISSOLVING.get())
