@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.4
+
+### Updates
+- **Lost Carriages** no longer have grass floor;
+
+### Fixes
+- Game no longer crashes because of oil function mixin and hunter camp structure mixin while loading;
+
 ## 0.1.3
 
 ### Additions
@@ -31,12 +39,10 @@
 - Added **Apple Skin** compatibility (*WIP*);
 - **Hardtack** no longer gives Saturation effect, but restores more hunger for hunters;
 - Hunter npcs and players wearing hunter armor boots are now able to walk on **Powder Snow**;
-- **Lost Carriages** no longer have grass floor;
 
 ### Fixes
 - Clothes Dissolving oil no longer spawns at hunter outpost alchemy chests;
 - Food made of **Bat** is no longer marked as vampire faction only;
-- Game no longer crashes because of oil function mixin and hunter camp structure mixin while loading;
 
 ### Translations
 - Added:
