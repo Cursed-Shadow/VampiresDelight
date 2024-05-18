@@ -124,14 +124,14 @@
   "item.minecraft.tipped_arrow.effect.blessing": "Стріла благословення",
   "oil.vampiresdelight.blessing": "Благословляюче",
 
-  "effect.vampiresdelight.clothes_dissolving": "Розчинення одягу",
-  "effect.vampiresdelight.clothes_dissolving.description": "Завдає шкоду броні, одягненій на гравця або моба.",
+  "effect.vampiresdelight.clothes_dissolving": "Розчинення броні",
+  "effect.vampiresdelight.clothes_dissolving.description": "Завдає шкоду броні та одягу, одягненій на гравця або моба.",
 
-  "item.minecraft.potion.effect.clothes_dissolving": "Зілля розчинення одягу",
-  "item.minecraft.splash_potion.effect.clothes_dissolving": "Вибухове зілля розчинення одягу",
-  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Осідальне зілля розчинення одягу",
-  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стріла розчинення одягу",
-  "oil.vampiresdelight.clothes_dissolving": "Розчиняюче одяг",
+  "item.minecraft.potion.effect.clothes_dissolving": "Зілля розчинення броні",
+  "item.minecraft.splash_potion.effect.clothes_dissolving": "Вибухове зілля розчинення броні",
+  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Осідальне зілля розчинення броні",
+  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стріла розчинення броні",
+  "oil.vampiresdelight.clothes_dissolving": "Розчиняюче броню",
 
   "effect.vampiresdelight.fog_vision": "Туманне бачення",
   "effect.vampiresdelight.fog_vision.description": "Дозволяє бачити далі крізь вампірський туман.",
@@ -188,7 +188,7 @@
   "vampiresdelight.advancement.get_human_eye.desc": "За допомогою ножа виколупуйте людське око з будь-якої людиноподібної істоти, наприклад, селянина чи мисливця.",
 
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Найкращий подарунок для будь-якого чоловіка",
-  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Дістаньте зілля розчинення одягу якимось чином.",
+  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Дістаньте зілля, що розчиняє броню й одяг, та пізнайте сенс життя.",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Спожито огидної їжі",
 

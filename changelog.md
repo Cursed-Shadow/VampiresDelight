@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+### Updates
+- Renamed **Clothes Dissolving** effect to **Armor Dissolving** in order to avoid unnecessary questions;
+
 ## 0.1.4
 
 ### Updates

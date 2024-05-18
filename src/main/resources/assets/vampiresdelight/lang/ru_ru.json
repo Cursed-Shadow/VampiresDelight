@@ -124,14 +124,14 @@
   "item.minecraft.tipped_arrow.effect.blessing": "Стрела благословения",
   "oil.vampiresdelight.blessing": "Благословляющее",
 
-  "effect.vampiresdelight.clothes_dissolving": "Растворение одежды",
-  "effect.vampiresdelight.clothes_dissolving.description": "Растворяет броню, которую носит игрок или моб.",
+  "effect.vampiresdelight.clothes_dissolving": "Растворение брони",
+  "effect.vampiresdelight.clothes_dissolving.description": "Растворяет броню и одежку, которую носит игрок или моб.",
 
-  "item.minecraft.potion.effect.clothes_dissolving": "Зелье растворения одежды",
-  "item.minecraft.splash_potion.effect.clothes_dissolving": "Взрывное зелье растворения одежды",
-  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Оседающее зелье растворения одежды",
-  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стрела растворения одежды",
-  "oil.vampiresdelight.clothes_dissolving": "Растворяющее одежду",
+  "item.minecraft.potion.effect.clothes_dissolving": "Зелье растворения брони",
+  "item.minecraft.splash_potion.effect.clothes_dissolving": "Взрывное зелье растворения брони",
+  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Оседающее зелье растворения брони",
+  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стрела растворения брони",
+  "oil.vampiresdelight.clothes_dissolving": "Растворяющее броню",
 
   "effect.vampiresdelight.fog_vision": "Туманное зрение",
   "effect.vampiresdelight.fog_vision.description": "Позволяет видеть дальше сквозь вампирский туман.",
@@ -188,7 +188,7 @@
   "vampiresdelight.advancement.get_human_eye.desc": "Вырежьте человеческий глаз человекоподобного существа, вроде жителя или охотника на вампиров.",
 
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Лучший подарок для любого мужчины",
-  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Достаньте зелье растворения одежды каким-то образом.",
+  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Добудьте зелье, растворяющее броню и одежду, и познайте смысл жизни.",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Мерзкая пища съедена",
 

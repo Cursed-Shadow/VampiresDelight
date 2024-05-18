@@ -124,14 +124,14 @@
   "item.minecraft.tipped_arrow.effect.blessing": "Arrow of Blessing",
   "oil.vampiresdelight.blessing": "Blessing",
 
-  "effect.vampiresdelight.clothes_dissolving": "Clothes Dissolving",
-  "effect.vampiresdelight.clothes_dissolving.description": "Dissolves armor worn by player or mob.",
+  "effect.vampiresdelight.clothes_dissolving": "Armor Dissolving",
+  "effect.vampiresdelight.clothes_dissolving.description": "Dissolves armor and clothes worn by player or mob.",
 
-  "item.minecraft.potion.effect.clothes_dissolving": "Potion of Clothes Dissolving",
-  "item.minecraft.splash_potion.effect.clothes_dissolving": "Splash Potion of Clothes Dissolving",
-  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Lingering Potion of Clothes Dissolving",
-  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Arrow of Clothes Dissolving",
-  "oil.vampiresdelight.clothes_dissolving": "Clothes Dissolving",
+  "item.minecraft.potion.effect.clothes_dissolving": "Potion of Armor Dissolving",
+  "item.minecraft.splash_potion.effect.clothes_dissolving": "Splash Potion of Armor Dissolving",
+  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Lingering Potion of Armor Dissolving",
+  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Arrow of Armor Dissolving",
+  "oil.vampiresdelight.clothes_dissolving": "Armor Dissolving",
 
   "effect.vampiresdelight.fog_vision": "Fog Vision",
   "effect.vampiresdelight.fog_vision.description": "Allows to see farther in vampire fog.",
@@ -188,7 +188,7 @@
   "vampiresdelight.advancement.get_human_eye.desc": "Scavenge human eye from any human-like creature such as villager and hunter using Knife.",
 
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "The Best Present for Any Man",
-  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Get a Clothes Dissolving Potion somehow.",
+  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtain a potion that dissolves armor and clothes and learn the sense of life.",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Disgusting Food Consumed",
 
