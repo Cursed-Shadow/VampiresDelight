@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.common.registry;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDFoodValues;
 import net.grid.vampiresdelight.common.item.*;
+import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
@@ -10,6 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.FuelBlockItem;
+import vectorwing.farmersdelight.common.item.KnifeItem;
 
 public class VDItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, VampiresDelight.MODID);
@@ -112,6 +114,8 @@ public class VDItems {
 
 
     // Tools/Non-food
+    public static final RegistryObject<Item> SILVER_KNIFE = ITEMS.register("silver_knife",
+            () -> new KnifeItem(VDIntegrationUtils.SILVER_ITEM_TIER, 0.5F, -2.0F, basicItem()));
     public static final RegistryObject<Item> ALCHEMICAL_COCKTAIL = ITEMS.register("alchemical_cocktail",
             () -> new AlchemicalCocktailItem(basicItem().stacksTo(8)));
 

@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.registry;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,7 +22,6 @@ public class VDCreativeTabs {
                         // Blocks
                         output.accept(VDItems.DARK_STONE_STOVE.get());
                         //output.accept(VDItems.BREWING_BARREL.get());
-                        output.accept(VDItems.ALCHEMICAL_COCKTAIL.get());
                         output.accept(VDItems.GARLIC_CRATE.get());
                         output.accept(VDItems.ORCHID_BAG.get());
                         output.accept(VDItems.DARK_SPRUCE_CABINET.get());
@@ -60,6 +60,10 @@ public class VDCreativeTabs {
                         output.accept(VDItems.PINK_BAR_STOOL.get());
 
                         output.accept(VDItems.SPIRIT_LANTERN.get());
+
+                        // Tools
+                        if (werewolvesLoaded()) output.accept(VDItems.SILVER_KNIFE.get());
+                        output.accept(VDItems.ALCHEMICAL_COCKTAIL.get());
 
                         // Farming
                         output.accept(VDItems.BLACK_MUSHROOM_BLOCK.get());
@@ -125,4 +129,8 @@ public class VDCreativeTabs {
                         output.accept(VDItems.WEIRD_JELLY.get());
                     })
                     .build());
+
+    private static boolean werewolvesLoaded() {
+        return VDIntegrationUtils.isModPresent(VDIntegrationUtils.WEREWOLVES);
+    }
 }

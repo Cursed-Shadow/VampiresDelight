@@ -63,7 +63,8 @@ public class VDItemModels extends ItemModelProvider {
         // Handheld items
         Set<Item> handheldItems = Sets.newHashSet(
                 VDItems.TRICOLOR_DANGO.get(),
-                VDItems.EYES_ON_STICK.get()
+                VDItems.EYES_ON_STICK.get(),
+                VDItems.SILVER_KNIFE.get()
         );
         takeAll(items, handheldItems.toArray(new Item[0])).forEach(item -> itemHandheldModel(item, resourceItem(itemName(item))));
 

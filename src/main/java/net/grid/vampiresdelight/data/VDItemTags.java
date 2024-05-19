@@ -81,6 +81,9 @@ public class VDItemTags extends ItemTagsProvider {
     }
 
     private void registerFarmersDelightTags() {
+        tag(ModTags.KNIVES)
+                .add(VDItems.SILVER_KNIFE.get());
+
         tag(ModTags.WOODEN_CABINETS)
                 .add(VDItems.DARK_SPRUCE_CABINET.get())
                 .add(VDItems.CURSED_SPRUCE_CABINET.get());
@@ -99,9 +102,15 @@ public class VDItemTags extends ItemTagsProvider {
 
         tag(ForgeTags.VEGETABLES).addTags(VDForgeTags.VEGETABLES_GARLIC);
         tag(VDForgeTags.VEGETABLES_GARLIC).add(ModItems.ITEM_GARLIC.get());
+
+        tag(ForgeTags.TOOLS_KNIVES)
+                .add(VDItems.SILVER_KNIFE.get());
     }
 
     public void registerCompatibilityTags() {
+        tag(VDCompatibilityTags.SILVER_TOOL)
+                .add(VDItems.SILVER_KNIFE.get());
+
         tag(VDCompatibilityTags.CREATE_UPRIGHT_ON_BELT)
                 .add(VDItems.ORCHID_TEA.get())
                 .add(VDItems.WINE_GLASS.get())

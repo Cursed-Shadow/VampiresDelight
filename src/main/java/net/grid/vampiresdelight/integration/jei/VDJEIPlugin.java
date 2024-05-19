@@ -14,14 +14,17 @@ import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.integration.jei.category.VDJEIPouringRecipeCategory;
 import net.grid.vampiresdelight.integration.jei.resource.VDJEIPouringRecipe;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
+import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
+import java.util.List;
 
 @JeiPlugin
 @ParametersAreNonnullByDefault
@@ -44,11 +47,16 @@ public class VDJEIPlugin implements IModPlugin {
 
         registerSingleIngredientInfo(VDItems.HUMAN_EYE.get(), registration);
         registerSingleIngredientInfo(VDItems.BLACK_MUSHROOM.get(), registration);
+        registerSingleIngredientInfo(VDItems.SILVER_KNIFE.get(), TextUtils.getTranslation("jei.info.knife"), registration);
         registerMultipleIngredientInfo(List.of(new ItemStack(VDItems.WILD_GARLIC.get()), new ItemStack(ModItems.ITEM_GARLIC.get())), registration);
     }
 
     private static void registerSingleIngredientInfo(Item item, IRecipeRegistration registration) {
         registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, VDTextUtils.getTranslation("jei.info." + ForgeRegistries.ITEMS.getKey(item).getPath()));
+    }
+
+    private static void registerSingleIngredientInfo(Item item, MutableComponent translation, IRecipeRegistration registration) {
+        registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, translation);
     }
 
     /**
