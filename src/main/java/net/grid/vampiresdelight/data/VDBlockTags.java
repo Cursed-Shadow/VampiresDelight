@@ -98,6 +98,9 @@ public class VDBlockTags extends BlockTagsProvider {
                 VDBlocks.WILD_GARLIC.get());
         tag(ModTags.STRAW_BLOCKS).add(
                 VDBlocks.ORCHID_BAG.get());
+        tag(ModTags.TRAY_HEAT_SOURCES).add(
+                ModBlocks.FIRE_PLACE.get()
+        );
         tag(ModTags.HEAT_SOURCES).add(
                 VDBlocks.DARK_STONE_STOVE.get()
         );

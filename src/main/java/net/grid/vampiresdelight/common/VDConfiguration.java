@@ -34,6 +34,7 @@ public class VDConfiguration {
     public static final String CATEGORY_WORLD = "world";
     public static ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
     public static ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_IN_HUNTER_CAMP;
+    public static ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_NEAR_HUNTER_CAMP;
     public static ForgeConfigSpec.IntValue COOKING_POT_IN_HUNTER_CAMP_CHANCE;
 
     // CLIENT
@@ -99,8 +100,10 @@ public class VDConfiguration {
                 .define("generateVDChestLoot", true);
         GENERATE_COOKING_POT_IN_HUNTER_CAMP = COMMON_BUILDER.comment("Should a Cooking Pot on a Campfire be generated in hunter camps?")
                 .define("generateCookingPotInHunterCamp", true);
+        GENERATE_COOKING_POT_NEAR_HUNTER_CAMP = COMMON_BUILDER.comment("Should a Cooking Pot be generated on the campfire near hunter camps? By default it's generated on the fireplace in the middle of it.")
+                .define("generateCookingPotNearHunterCamp", false);
         COOKING_POT_IN_HUNTER_CAMP_CHANCE = COMMON_BUILDER.comment("With what chance should a Cooking Pot on a Campfire be generated in hunter camps?")
-                .defineInRange("cookingPotInHunterCampSpawnChance", 25, 1, 100);
+                .defineInRange("cookingPotInHunterCampSpawnChance", 20, 1, 100);
         COMMON_BUILDER.pop();
 
         COMMON_CONFIG = COMMON_BUILDER.build();
