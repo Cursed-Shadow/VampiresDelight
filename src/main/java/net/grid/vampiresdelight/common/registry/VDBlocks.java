@@ -104,7 +104,7 @@ public class VDBlocks {
 
     // Pastries
     public static final RegistryObject<Block> BLOOD_PIE = BLOCKS.register("blood_pie",
-            () -> new BloodPieBlock(Block.Properties.copy(Blocks.CAKE), VDItems.BLOOD_PIE_SLICE));
+            () -> new VampirePieBlock(Block.Properties.copy(Blocks.CAKE), VDItems.BLOOD_PIE_SLICE));
 
     // Wild Crops
     public static final RegistryObject<Block> WILD_GARLIC = BLOCKS.register("wild_garlic",
