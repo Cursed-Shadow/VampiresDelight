@@ -21,6 +21,7 @@ import vectorwing.farmersdelight.common.block.PieBlock;
 
 import java.util.function.Supplier;
 
+// TODO: rewrite this
 public class BloodPieBlock extends PieBlock {
     public BloodPieBlock(Properties properties, Supplier<Item> pieSlice) {
         super(properties, pieSlice);

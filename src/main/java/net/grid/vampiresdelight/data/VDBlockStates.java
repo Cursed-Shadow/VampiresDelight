@@ -6,7 +6,6 @@ import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,6 +19,7 @@ import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Block;
+import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.block.*;
 
 import java.util.Map;
@@ -72,6 +72,8 @@ public class VDBlockStates extends BlockStateProvider {
 
         this.feastBlock((FeastBlock) VDBlocks.WEIRD_JELLY_BLOCK.get());
 
+        this.crateBlock(VDBlocks.GARLIC_CRATE.get(), "garlic");
+
         String orchidBag = blockName(VDBlocks.ORCHID_BAG.get());
         this.simpleBlock(VDBlocks.ORCHID_BAG.get(), models().withExistingParent(orchidBag, "cube")
                 .texture("particle", resourceBlock(orchidBag + "_top"))
@@ -81,6 +83,8 @@ public class VDBlockStates extends BlockStateProvider {
                 .texture("south", resourceBlock(orchidBag + "_side_tied"))
                 .texture("east", resourceBlock(orchidBag + "_side"))
                 .texture("west", resourceBlock(orchidBag + "_side")));
+
+        this.pieBlock(VDBlocks.BLOOD_PIE.get());
 
         this.hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_BLOCK.get());
         this.hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_STEM.get());
@@ -104,6 +108,14 @@ public class VDBlockStates extends BlockStateProvider {
         } else {
             this.simpleBlock(block, models().cross(blockName(block), resourceBlock(blockName(block))).renderType("cutout"));
         }
+    }
+
+    public void crateBlock(Block block, String cropName) {
+        this.simpleBlock(block,
+                models().cubeBottomTop(blockName(block),
+                        resourceBlock(cropName + "_crate_side"),
+                        new ResourceLocation(FarmersDelight.MODID, "block/crate_bottom"),
+                        resourceBlock(cropName + "_crate_top")));
     }
 
     public void plantBlock(Block block) {
@@ -144,6 +156,19 @@ public class VDBlockStates extends BlockStateProvider {
                             .rotationY(((int) state.getValue(FeastBlock.FACING).toYRot() + DEFAULT_ANGLE_OFFSET) % 360)
                             .build();
                 });
+    }
+
+    public void pieBlock(Block block) {
+        getVariantBuilder(block)
+                .forAllStates(state -> {
+                            int bites = state.getValue(PieBlock.BITES);
+                            String suffix = bites > 0 ? "_slice" + bites : "";
+                            return ConfiguredModel.builder()
+                                    .modelFile(existingModel(blockName(block) + suffix))
+                                    .rotationY(((int) state.getValue(PieBlock.FACING).toYRot() + DEFAULT_ANGLE_OFFSET) % 360)
+                                    .build();
+                        }
+                );
     }
 
     public void hugeBlackMushroomBlock(Block block) {

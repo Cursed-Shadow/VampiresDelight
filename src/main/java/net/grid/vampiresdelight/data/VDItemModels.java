@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import vectorwing.farmersdelight.data.ItemModels;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -30,13 +31,18 @@ public class VDItemModels extends ItemModelProvider {
         Set<Item> items = ForgeRegistries.ITEMS.getValues().stream().filter(i -> VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(i)).getNamespace()))
                 .collect(Collectors.toSet());
 
-        // Items that use its own model in models/item (mostly because runData cannot locate farmersdelight:item/mug)
+        // Items that use its own model in models/item
         Set<Item> specialItems = Sets.newHashSet(
-                VDItems.ORCHID_TEA.get(),
                 VDItems.WINE_GLASS.get(),
-                VDItems.MULLED_WINE_GLASS.get(),
                 VDItems.SPIRIT_LANTERN.get());
         takeAll(items, specialItems.toArray(new Item[0])).forEach(items::remove);
+
+        // Items that should be held like a mug
+        Set<Item> mugItems = Sets.newHashSet(
+                VDItems.ORCHID_TEA.get(),
+                VDItems.MULLED_WINE_GLASS.get()
+        );
+        takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));
 
         // Blocks with special item sprites
         Set<Item> spriteBlockItems = Sets.newHashSet(
@@ -83,6 +89,10 @@ public class VDItemModels extends ItemModelProvider {
 
     public void itemGeneratedModel(Item item, ResourceLocation texture) {
         withExistingParent(itemName(item), GENERATED).texture("layer0", texture);
+    }
+
+    public void itemMugModel(Item item, ResourceLocation texture) {
+        withExistingParent(itemName(item), ItemModels.MUG).texture("layer0", texture);
     }
 
     private String itemName(Item item) {

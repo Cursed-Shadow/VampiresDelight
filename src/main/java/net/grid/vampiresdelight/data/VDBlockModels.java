@@ -1,17 +1,21 @@
 package net.grid.vampiresdelight.data;
 
+import de.teamlapen.vampirism.REFERENCE;
+import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.BarStoolBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.BlockModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import vectorwing.farmersdelight.FarmersDelight;
+
+import java.util.Objects;
 
 public class VDBlockModels extends BlockModelProvider {
     public VDBlockModels(PackOutput output,  ExistingFileHelper existingFileHelper) {
@@ -24,8 +28,10 @@ public class VDBlockModels extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
+        // Pies
+        pieBlock(VDBlocks.BLOOD_PIE.get());
+
         // Wine shelves
-        // Note: Cursed and dark spruce shelves can't be generated for some reason.
         wineShelfBlock(VDBlocks.OAK_WINE_SHELF.get(), Blocks.OAK_PLANKS);
         wineShelfBlock(VDBlocks.SPRUCE_WINE_SHELF.get(), Blocks.SPRUCE_PLANKS);
         wineShelfBlock(VDBlocks.BIRCH_WINE_SHELF.get(), Blocks. BIRCH_PLANKS);
@@ -37,6 +43,8 @@ public class VDBlockModels extends BlockModelProvider {
         wineShelfBlock(VDBlocks.BAMBOO_WINE_SHELF.get(), Blocks.BAMBOO_PLANKS);
         wineShelfBlock(VDBlocks.CRIMSON_WINE_SHELF.get(), Blocks.CRIMSON_PLANKS);
         wineShelfBlock(VDBlocks.WARPED_WINE_SHELF.get(), Blocks.WARPED_PLANKS);
+        wineShelfBlock(VDBlocks.CURSED_SPRUCE_WINE_SHELF.get(), ModBlocks.CURSED_SPRUCE_PLANKS.get(), REFERENCE.MODID);
+        wineShelfBlock(VDBlocks.DARK_SPRUCE_WINE_SHELF.get(), ModBlocks.DARK_SPRUCE_PLANKS.get(), REFERENCE.MODID);
 
         // Bar Stools
         BarStoolBlock.getBarStoolBlocks().forEach(this::barStoolBlock);
@@ -47,9 +55,41 @@ public class VDBlockModels extends BlockModelProvider {
         hugeBlackMushroomBlock("black_mushroom_block_inside", false);
     }
 
-    private void wineShelfBlock(Block shelfBlock, Block woodTypee) {
+    private void pieBlock(Block pieBlock) {
+        String pieBlockName = blockName(pieBlock);
+
+        pieBlockPart(pieBlockName, "");
+        pieBlockPart(pieBlockName, "_slice1");
+        pieBlockPart(pieBlockName, "_slice2");
+        pieBlockPart(pieBlockName, "_slice3");
+    }
+
+    private void pieBlockPart(String pieBlockName, String suffix) {
+        ResourceLocation topTexture = resourceBlock(pieBlockName + "_top");
+        ResourceLocation innerTexture = resourceBlock(pieBlockName + "_inner");
+
+        if (Objects.equals(suffix, ""))
+            withExistingParent(pieBlockName + suffix, "farmersdelight:block/pie" + suffix)
+                    .texture("particle", topTexture)
+                    .texture("bottom", new ResourceLocation(FarmersDelight.MODID, "block/pie_bottom"))
+                    .texture("side", new ResourceLocation(FarmersDelight.MODID, "block/pie_side"))
+                    .texture("top", topTexture);
+        else
+            withExistingParent(pieBlockName + suffix, "farmersdelight:block/pie" + suffix)
+                    .texture("particle", topTexture)
+                    .texture("bottom", new ResourceLocation(FarmersDelight.MODID, "block/pie_bottom"))
+                    .texture("inner", innerTexture)
+                    .texture("side", new ResourceLocation(FarmersDelight.MODID, "block/pie_side"))
+                    .texture("top", topTexture);
+    }
+
+    private void wineShelfBlock(Block shelfBlock, Block woodType) {
+        wineShelfBlock(shelfBlock, woodType, "minecraft");
+    }
+
+    private void wineShelfBlock(Block shelfBlock, Block woodType, String nameSpace) {
         ResourceLocation shelfTexture = resourceBlock(blockName(shelfBlock));
-        ResourceLocation woodTypeTexture = new ResourceLocation("block/" + blockName(woodTypee));;
+        ResourceLocation woodTypeTexture = new ResourceLocation(nameSpace, "block/" + blockName(woodType));;
         String name = blockName(shelfBlock);
 
         // Shelf body
@@ -75,7 +115,8 @@ public class VDBlockModels extends BlockModelProvider {
                 .texture("texture", texture)
                 .texture("particle", texture)
                 .element().from(0, 0, 0).to(16, 16, 0).face(Direction.NORTH).texture("#texture").cullface(Direction.NORTH);
-        if (needsInventoryVersion) cubeAll(name + "_inventory", texture);
+        if (needsInventoryVersion)
+            cubeAll(name + "_inventory", texture);
     }
 
     private void hugeBlackMushroomBlock(Block block) {
