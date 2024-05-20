@@ -5,6 +5,7 @@ import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,117 +21,122 @@ public class VDCreativeTabs {
                     .icon(() -> new ItemStack(VDBlocks.DARK_STONE_STOVE.get()))
                     .displayItems((displayParams, output) -> {
                         // Blocks
-                        output.accept(VDItems.DARK_STONE_STOVE.get());
-                        //output.accept(VDItems.BREWING_BARREL.get());
-                        output.accept(VDItems.GARLIC_CRATE.get());
-                        output.accept(VDItems.ORCHID_BAG.get());
-                        output.accept(VDItems.DARK_SPRUCE_CABINET.get());
-                        output.accept(VDItems.CURSED_SPRUCE_CABINET.get());
-                        output.accept(VDItems.CURSED_FARMLAND.get());
+                        add(VDItems.DARK_STONE_STOVE.get(), output);
+                        //add(VDItems.BREWING_BARREL.get(), output);
+                        add(VDItems.GARLIC_CRATE.get(), output);
+                        add(VDItems.ORCHID_BAG.get(), output);
+                        add(VDItems.DARK_SPRUCE_CABINET.get(), output);
+                        add(VDItems.CURSED_SPRUCE_CABINET.get(), output);
+                        add(VDItems.CURSED_FARMLAND.get(), output);
 
-                        output.accept(VDItems.OAK_WINE_SHELF.get());
-                        output.accept(VDItems.SPRUCE_WINE_SHELF.get());
-                        output.accept(VDItems.BIRCH_WINE_SHELF.get());
-                        output.accept(VDItems.JUNGLE_WINE_SHELF.get());
-                        output.accept(VDItems.ACACIA_WINE_SHELF.get());
-                        output.accept(VDItems.DARK_OAK_WINE_SHELF.get());
-                        output.accept(VDItems.MANGROVE_WINE_SHELF.get());
-                        output.accept(VDItems.CHERRY_WINE_SHELF.get());
-                        output.accept(VDItems.BAMBOO_WINE_SHELF.get());
-                        output.accept(VDItems.CRIMSON_WINE_SHELF.get());
-                        output.accept(VDItems.WARPED_WINE_SHELF.get());
-                        output.accept(VDItems.CURSED_SPRUCE_WINE_SHELF.get());
-                        output.accept(VDItems.DARK_SPRUCE_WINE_SHELF.get());
+                        add(VDItems.OAK_WINE_SHELF.get(), output);
+                        add(VDItems.SPRUCE_WINE_SHELF.get(), output);
+                        add(VDItems.BIRCH_WINE_SHELF.get(), output);
+                        add(VDItems.JUNGLE_WINE_SHELF.get(), output);
+                        add(VDItems.ACACIA_WINE_SHELF.get(), output);
+                        add(VDItems.DARK_OAK_WINE_SHELF.get(), output);
+                        add(VDItems.MANGROVE_WINE_SHELF.get(), output);
+                        add(VDItems.CHERRY_WINE_SHELF.get(), output);
+                        add(VDItems.BAMBOO_WINE_SHELF.get(), output);
+                        add(VDItems.CRIMSON_WINE_SHELF.get(), output);
+                        add(VDItems.WARPED_WINE_SHELF.get(), output);
+                        add(VDItems.CURSED_SPRUCE_WINE_SHELF.get(), output);
+                        add(VDItems.DARK_SPRUCE_WINE_SHELF.get(), output);
 
-                        output.accept(VDItems.WHITE_BAR_STOOL.get());
-                        output.accept(VDItems.LIGHT_GRAY_BAR_STOOL.get());
-                        output.accept(VDItems.GRAY_BAR_STOOL.get());
-                        output.accept(VDItems.BLACK_BAR_STOOL.get());
-                        output.accept(VDItems.BROWN_BAR_STOOL.get());
-                        output.accept(VDItems.RED_BAR_STOOL.get());
-                        output.accept(VDItems.ORANGE_BAR_STOOL.get());
-                        output.accept(VDItems.YELLOW_BAR_STOOL.get());
-                        output.accept(VDItems.LIME_BAR_STOOL.get());
-                        output.accept(VDItems.GREEN_BAR_STOOL.get());
-                        output.accept(VDItems.CYAN_BAR_STOOL.get());
-                        output.accept(VDItems.LIGHT_BLUE_BAR_STOOL.get());
-                        output.accept(VDItems.BLUE_BAR_STOOL.get());
-                        output.accept(VDItems.PURPLE_BAR_STOOL.get());
-                        output.accept(VDItems.MAGENTA_BAR_STOOL.get());
-                        output.accept(VDItems.PINK_BAR_STOOL.get());
+                        add(VDItems.WHITE_BAR_STOOL.get(), output);
+                        add(VDItems.LIGHT_GRAY_BAR_STOOL.get(), output);
+                        add(VDItems.GRAY_BAR_STOOL.get(), output);
+                        add(VDItems.BLACK_BAR_STOOL.get(), output);
+                        add(VDItems.BROWN_BAR_STOOL.get(), output);
+                        add(VDItems.RED_BAR_STOOL.get(), output);
+                        add(VDItems.ORANGE_BAR_STOOL.get(), output);
+                        add(VDItems.YELLOW_BAR_STOOL.get(), output);
+                        add(VDItems.LIME_BAR_STOOL.get(), output);
+                        add(VDItems.GREEN_BAR_STOOL.get(), output);
+                        add(VDItems.CYAN_BAR_STOOL.get(), output);
+                        add(VDItems.LIGHT_BLUE_BAR_STOOL.get(), output);
+                        add(VDItems.BLUE_BAR_STOOL.get(), output);
+                        add(VDItems.PURPLE_BAR_STOOL.get(), output);
+                        add(VDItems.MAGENTA_BAR_STOOL.get(), output);
+                        add(VDItems.PINK_BAR_STOOL.get(), output);
 
-                        output.accept(VDItems.SPIRIT_LANTERN.get());
+                        add(VDItems.SPIRIT_LANTERN.get(), output);
 
                         // Tools
-                        if (werewolvesLoaded()) output.accept(VDItems.SILVER_KNIFE.get());
-                        output.accept(VDItems.ALCHEMICAL_COCKTAIL.get());
+                        add(VDItems.SILVER_KNIFE.get(), VDIntegrationUtils.WEREWOLVES, output);
+                        add(VDItems.ALCHEMICAL_COCKTAIL.get(), output);
 
                         // Farming
-                        output.accept(VDItems.BLACK_MUSHROOM_BLOCK.get());
-                        output.accept(VDItems.BLACK_MUSHROOM_STEM.get());
-                        output.accept(VDItems.BLACK_MUSHROOM.get());
-                        output.accept(VDItems.WILD_GARLIC.get());
-                        output.accept(VDItems.ORCHID_SEEDS.get());
+                        add(VDItems.BLACK_MUSHROOM_BLOCK.get(), output);
+                        add(VDItems.BLACK_MUSHROOM_STEM.get(), output);
+                        add(VDItems.BLACK_MUSHROOM.get(), output);
+                        add(VDItems.WILD_GARLIC.get(), output);
+                        add(VDItems.ORCHID_SEEDS.get(), output);
 
                         // Foodstuffs
-                        output.accept(VDItems.GRILLED_GARLIC.get());
-                        output.accept(VDItems.BLOOD_SYRUP.get());
-                        output.accept(VDItems.ORCHID_TEA.get());
-                        output.accept(VDItems.ORCHID_PETALS.get());
-                        output.accept(VDItems.SUGARED_BERRIES.get());
-                        output.accept(VDItems.RICE_DOUGH.get());
-                        output.accept(VDItems.RICE_BREAD.get());
-                        output.accept(VDItems.BLOOD_DOUGH.get());
-                        output.accept(VDItems.BLOOD_BAGEL.get());
-                        output.accept(VDItems.HEART_PIECES.get());
-                        output.accept(VDItems.HUMAN_EYE.get());
-                        output.accept(VDItems.RAW_BAT.get());
-                        output.accept(VDItems.RAW_BAT_CHOPS.get());
-                        output.accept(VDItems.COOKED_BAT.get());
-                        output.accept(VDItems.COOKED_BAT_CHOPS.get());
-                        output.accept(VDItems.BLOOD_WINE_BOTTLE.get());
-                        output.accept(VDItems.WINE_GLASS.get());
-                        output.accept(VDItems.MULLED_WINE_GLASS.get());
-                        output.accept(VDItems.BLOOD_PIE.get());
-                        output.accept(VDItems.BLOOD_PIE_SLICE.get());
+                        add(VDItems.GRILLED_GARLIC.get(), output);
+                        add(VDItems.BLOOD_SYRUP.get(), output);
+                        add(VDItems.ORCHID_TEA.get(), output);
+                        add(VDItems.ORCHID_PETALS.get(), output);
+                        add(VDItems.SUGARED_BERRIES.get(), output);
+                        add(VDItems.RICE_DOUGH.get(), output);
+                        add(VDItems.RICE_BREAD.get(), output);
+                        add(VDItems.BLOOD_DOUGH.get(), output);
+                        add(VDItems.BLOOD_BAGEL.get(), output);
+                        add(VDItems.HEART_PIECES.get(), output);
+                        add(VDItems.HUMAN_EYE.get(), output);
+                        add(VDItems.RAW_BAT.get(), output);
+                        add(VDItems.RAW_BAT_CHOPS.get(), output);
+                        add(VDItems.COOKED_BAT.get(), output);
+                        add(VDItems.COOKED_BAT_CHOPS.get(), output);
+                        add(VDItems.BLOOD_WINE_BOTTLE.get(), output);
+                        add(VDItems.WINE_GLASS.get(), output);
+                        add(VDItems.MULLED_WINE_GLASS.get(), output);
+                        add(VDItems.BLOOD_PIE.get(), output);
+                        add(VDItems.BLOOD_PIE_SLICE.get(), output);
 
                         // Sweets
-                        output.accept(VDItems.PURE_SORBET.get());
-                        output.accept(VDItems.ORCHID_COOKIE.get());
-                        output.accept(VDItems.ORCHID_ECLAIR.get());
-                        output.accept(VDItems.ORCHID_ICE_CREAM.get());
-                        output.accept(VDItems.TRICOLOR_DANGO.get());
-                        output.accept(VDItems.CURSED_CUPCAKE.get());
-                        output.accept(VDItems.DARK_ICE_CREAM.get());
-                        output.accept(VDItems.SNOW_WHITE_ICE_CREAM.get());
+                        add(VDItems.PURE_SORBET.get(), output);
+                        add(VDItems.ORCHID_COOKIE.get(), output);
+                        add(VDItems.ORCHID_ECLAIR.get(), output);
+                        add(VDItems.ORCHID_ICE_CREAM.get(), output);
+                        add(VDItems.TRICOLOR_DANGO.get(), output);
+                        add(VDItems.CURSED_CUPCAKE.get(), output);
+                        add(VDItems.DARK_ICE_CREAM.get(), output);
+                        add(VDItems.SNOW_WHITE_ICE_CREAM.get(), output);
 
                         // Basic Meals
-                        output.accept(VDItems.BLOOD_SAUSAGE.get());
-                        output.accept(VDItems.BLOOD_HOT_DOG.get());
-                        output.accept(VDItems.EYES_ON_STICK.get());
-                        output.accept(VDItems.EYE_CROISSANT.get());
-                        output.accept(VDItems.BAGEL_SANDWICH.get());
-                        output.accept(VDItems.BAT_TACO.get());
-                        output.accept(VDItems.FISH_BURGER.get());
-                        output.accept(VDItems.HARDTACK.get());
+                        add(VDItems.BLOOD_SAUSAGE.get(), output);
+                        add(VDItems.BLOOD_HOT_DOG.get(), output);
+                        add(VDItems.EYES_ON_STICK.get(), output);
+                        add(VDItems.EYE_CROISSANT.get(), output);
+                        add(VDItems.BAGEL_SANDWICH.get(), output);
+                        add(VDItems.BAT_TACO.get(), output);
+                        add(VDItems.FISH_BURGER.get(), output);
+                        add(VDItems.HARDTACK.get(), output);
 
                         // Soups and Stews
-                        output.accept(VDItems.BLACK_MUSHROOM_SOUP.get());
-                        output.accept(VDItems.GARLIC_SOUP.get());
-                        output.accept(VDItems.BORSCHT.get());
+                        add(VDItems.BLACK_MUSHROOM_SOUP.get(), output);
+                        add(VDItems.GARLIC_SOUP.get(), output);
+                        add(VDItems.BORSCHT.get(), output);
 
                         // Plated Foods
-                        output.accept(VDItems.ORCHID_CURRY.get());
+                        add(VDItems.ORCHID_CURRY.get(), output);
 
                         // Feasts
-                        output.accept(VDItems.ORCHID_CAKE.get());
-                        output.accept(VDItems.ORCHID_CAKE_SLICE.get());
-                        output.accept(VDItems.WEIRD_JELLY_BLOCK.get());
-                        output.accept(VDItems.WEIRD_JELLY.get());
+                        add(VDItems.ORCHID_CAKE.get(), output);
+                        add(VDItems.ORCHID_CAKE_SLICE.get(), output);
+                        add(VDItems.WEIRD_JELLY_BLOCK.get(), output);
+                        add(VDItems.WEIRD_JELLY.get(), output);
                     })
                     .build());
 
-    private static boolean werewolvesLoaded() {
-        return VDIntegrationUtils.isModPresent(VDIntegrationUtils.WEREWOLVES);
+    private static void add(Item item, String requiredMod, CreativeModeTab.Output output) {
+        if (VDIntegrationUtils.isModPresent(requiredMod))
+            add(item, output);
+    }
+
+    private static void add(Item item, CreativeModeTab.Output output) {
+        output.accept(item);
     }
 }

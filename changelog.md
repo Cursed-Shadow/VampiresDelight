@@ -2,6 +2,11 @@
 
 ## 0.1.5
 
+### Additions
+- Added new configs:
+  - `generateCookingPotNearHunterCamp`:
+    - `false` by default;
+
 ### Updates
 - Renamed **Clothes Dissolving** effect to **Armor Dissolving** in order to avoid unnecessary questions;
 
