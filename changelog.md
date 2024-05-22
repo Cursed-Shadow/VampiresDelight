@@ -3,16 +3,36 @@
 ## 0.1.5
 
 ### Additions
+- Added new food:
+  - **Orchid Cream Soup**;
+- Added **Werewolves** integration items:
+  - **Silver Knife**;
+  - **Wolf Berry Cookie**;
 - Added new configs:
   - `generateCookingPotNearHunterCamp`:
     - `false` by default;
+- Added configs for configuring faction food tooltip colors:
+  - `vampireFoodTooltipStartColor`:
+    - `124, 40, 124` by default;
+  - `vampireFoodTooltipEndColor`:
+    - `50, 0, 70` by default;
+  - `hunterFoodTooltipStartColor`:
+    - `65, 65, 220` by default;
+  - `hunterFoodTooltipEndColor`:
+    - `30, 30, 90` by default;
+  - `werewolfFoodTooltipStartColor`:
+    - `250, 135, 0` by default;
+  - `werewolfFoodTooltipEndColor`:
+    - `115, 45, 0` by default;
 
 ### Updates
 - Renamed **Clothes Dissolving** effect to just **Dissolving** in order to avoid unnecessary questions;
+- Tweaked config file appearance;
 
 ### Fixes
 - Fixed food not nourishing humans;
 - Fixed not being able to eat **Orchid Cake** with candle;
+- Fixed **Black Mushroom Soup** not giving bowl after eaten;
 
 ## 0.1.4
 

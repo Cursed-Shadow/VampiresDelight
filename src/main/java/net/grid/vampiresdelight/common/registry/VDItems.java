@@ -217,8 +217,10 @@ public class VDItems {
             () -> new HardtackItem(foodItem(VDFoodValues.HARDTACK_HUMAN), VDFoodValues.HARDTACK_HUNTER));
 
     // Soups and Stews
+    public static final RegistryObject<Item> ORCHID_CREAM_SOUP = ITEMS.register("orchid_cream_soup",
+            () -> new VampireConsumableItem(bowlFoodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.ORCHID_CREAM_SOUP));
     public static final RegistryObject<Item> BLACK_MUSHROOM_SOUP = ITEMS.register("black_mushroom_soup",
-            () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.BLACK_MUSHROOM_SOUP));
+            () -> new VampireConsumableItem(bowlFoodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.BLACK_MUSHROOM_SOUP));
     public static final RegistryObject<Item> GARLIC_SOUP = ITEMS.register("garlic_soup",
             () -> new HunterConsumableItem(foodItem(VDFoodValues.GARLIC_SOUP), true));
     public static final RegistryObject<Item> BORSCHT = ITEMS.register("borscht",

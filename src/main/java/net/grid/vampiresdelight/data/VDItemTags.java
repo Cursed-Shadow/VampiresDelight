@@ -63,7 +63,8 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.ORCHID_CAKE.get())
                 .add(VDItems.ORCHID_CAKE_SLICE.get())
                 .add(VDItems.BLACK_MUSHROOM_SOUP.get())
-                .add(VDItems.ORCHID_CURRY.get());
+                .add(VDItems.ORCHID_CURRY.get())
+                .add(VDItems.ORCHID_CREAM_SOUP.get());
         tag(VDTags.HUNTER_FOOD)
                 .add(ModItems.GARLIC_BREAD.get())
                 .add(VDItems.BORSCHT.get())

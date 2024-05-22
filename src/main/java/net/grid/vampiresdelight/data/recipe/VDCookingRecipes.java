@@ -84,6 +84,15 @@ public class VDCookingRecipes {
     }
 
     private static void cookMeals(Consumer<FinishedRecipe> consumer) {
+        CookingPotRecipeBuilder.cookingPotRecipe(VDItems.ORCHID_CREAM_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
+                .addIngredient(VDItems.ORCHID_PETALS.get())
+                .addIngredient(ForgeTags.SALAD_INGREDIENTS)
+                .addIngredient(ForgeTags.VEGETABLES_ONION)
+                .addIngredient(Items.POTATO)
+                .addIngredient(ForgeTags.MILK)
+                .unlockedByAnyIngredient(VDItems.ORCHID_PETALS.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(consumer, itemLocationCooking(VDItems.ORCHID_CREAM_SOUP.get()));
         CookingPotRecipeBuilder.cookingPotRecipe(VDItems.BLACK_MUSHROOM_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
                 .addIngredient(VDItems.BLACK_MUSHROOM.get())
                 .addIngredient(Items.POTATO)

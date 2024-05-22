@@ -174,6 +174,9 @@ public class VDFoodValues {
             .nutrition(8).saturationMod(1.0f).build();
 
     // Bowl Foods
+    public static final FoodProperties ORCHID_CREAM_SOUP = (new FoodProperties.Builder())
+            .nutrition(14).saturationMod(0.75f)
+            .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), LONG_DURATION, 0), 1.0F).build();
     public static final FoodProperties BLACK_MUSHROOM_SOUP = (new FoodProperties.Builder())
             .nutrition(12).saturationMod(0.7f)
             .effect(() -> new MobEffectInstance(ModEffects.COMFORT.get(), MEDIUM_DURATION), 1.0F).build();

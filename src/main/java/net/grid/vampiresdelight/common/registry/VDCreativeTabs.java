@@ -117,6 +117,7 @@ public class VDCreativeTabs {
                         add(VDItems.HARDTACK.get(), output);
 
                         // Soups and Stews
+                        add(VDItems.ORCHID_CREAM_SOUP.get(), output);
                         add(VDItems.BLACK_MUSHROOM_SOUP.get(), output);
                         add(VDItems.GARLIC_SOUP.get(), output);
                         add(VDItems.BORSCHT.get(), output);
