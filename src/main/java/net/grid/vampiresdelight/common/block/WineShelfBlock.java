@@ -166,6 +166,7 @@ public class WineShelfBlock extends BaseEntityBlock {
         }
     }
 
+    // TODO: add sounds for wine shelves
     private static void addBottle(Level level, BlockPos pos, Player player, WineShelfBlockEntity blockEntity, ItemStack bottleStack, int slot) {
         if (!level.isClientSide) {
             player.awardStat(Stats.ITEM_USED.get(bottleStack.getItem()));
@@ -260,10 +261,6 @@ public class WineShelfBlock extends BaseEntityBlock {
                 return 0;
             }
         }
-    }
-
-    public static Iterable<Item> getAllShelfItems() {
-        return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block) != null && VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getNamespace()) && block instanceof WineShelfBlock).map(Block::asItem).collect(Collectors.toList());
     }
 
     public static Iterable<Block> getAllShelveBlocks() {
