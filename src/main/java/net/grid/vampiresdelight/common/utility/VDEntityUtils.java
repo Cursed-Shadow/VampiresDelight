@@ -11,6 +11,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -28,18 +29,20 @@ public class VDEntityUtils {
         }
     }
 
-    public static ItemStack eatFood(Level level, LivingEntity entity, ItemStack foodItem, FoodProperties foodProperties) {
+    public static void eatFood(Level level, LivingEntity entity, ItemStack foodItem, FoodProperties foodProperties) {
         if (foodItem.isEdible()) {
-            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), entity.getEatingSound(foodItem), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
+            if (entity instanceof Player player)
+                player.getFoodData().eat(foodProperties.getNutrition(), foodProperties.getSaturationModifier());
+
             addFoodEffects(foodProperties, level, entity);
+
+            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), entity.getEatingSound(foodItem), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
             if (!(entity instanceof Player) || !((Player) entity).getAbilities().instabuild) {
                 foodItem.shrink(1);
             }
 
             entity.gameEvent(GameEvent.EAT);
         }
-
-        return foodItem;
     }
 
     public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer, FoodProperties vampireFood, FoodProperties hunterFood) {
@@ -59,6 +62,20 @@ public class VDEntityUtils {
         if (Helper.isVampire(consumer)) {
             addFoodEffects(vampireFood, level, consumer);
         }
+    }
+
+    public static boolean hasPoison(FoodProperties foodProperties) {
+        if (foodProperties != null) {
+            for (Pair<MobEffectInstance, Float> effect : foodProperties.getEffects()) {
+                if (effect.getFirst() != null) {
+                    effect.getFirst().getEffect();
+                    if (effect.getFirst().getEffect() == MobEffects.POISON)
+                        return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public static void cureEffect(MobEffect mobEffect, LivingEntity entity) {

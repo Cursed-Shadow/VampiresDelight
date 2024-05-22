@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.PlantType;
 
+import java.io.File;
 import java.util.Objects;
 
 public class VDHelper {
@@ -34,5 +35,13 @@ public class VDHelper {
 
     public static boolean isItemOfVampireFoodClass(Item item) {
         return item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem;
+    }
+
+    /**
+     * Credit: WaterMedia
+     * <a href="https://github.com/SrRapero720/watermedia">...</a>
+     */
+    public static boolean isLauncherPirate() {
+        return VDIntegrationUtils.isModPresent("tlskincape") || new File("").toPath().toAbsolutePath().toString().contains("tlauncher");
     }
 }

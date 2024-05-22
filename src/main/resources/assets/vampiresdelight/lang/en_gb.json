@@ -8,16 +8,7 @@
   "block.vampiresdelight.gray_orchid_candle_cake": "Orchid Cake with Grey Candle",
   "block.vampiresdelight.light_gray_orchid_candle_cake": "Orchid Cake with Light Grey Candle",
 
-  "effect.vampiresdelight.clothes_dissolving": "Armour Dissolving",
-  "effect.vampiresdelight.clothes_dissolving.description": "Dissolves armour and clothes worn by player or mob.",
+  "item.vampiresdelight.wolf_berry_cookie": "Wolf Berry Biscuit",
 
-  "item.minecraft.potion.effect.clothes_dissolving": "Potion of Armour Dissolving",
-  "item.minecraft.splash_potion.effect.clothes_dissolving": "Splash Potion of Armour Dissolving",
-  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Lingering Potion of Armour Dissolving",
-  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Arrow of Armour Dissolving",
-  "oil.vampiresdelight.clothes_dissolving": "Armour Dissolving",
-
-  "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Plant vampire orchid seeds on cursed farmland. To make one, plough cursed earth or grass with hoe.",
-
-  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtain a potion that dissolves armour and clothes and learn the sense of life."
+  "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Plant vampire orchid seeds on cursed farmland. To make one, plough cursed earth or grass with hoe."
 }

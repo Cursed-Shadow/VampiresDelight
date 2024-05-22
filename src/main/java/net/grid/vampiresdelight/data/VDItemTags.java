@@ -10,6 +10,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -73,6 +74,8 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.SNOW_WHITE_ICE_CREAM.get());
         tag(VDTags.MINION_VAMPIRE_FOOD)
                 .add(VDItems.ORCHID_COOKIE.get());
+        tag(VDTags.WEREWOLF_FOOD)
+                .addOptionalTag(new ResourceLocation("werewolves:wolf_berries"));
     }
 
     private void registerVampirismTags() {
@@ -110,15 +113,20 @@ public class VDItemTags extends ItemTagsProvider {
     public void registerCompatibilityTags() {
         tag(VDCompatibilityTags.SILVER_TOOL)
                 .add(VDItems.SILVER_KNIFE.get());
+        tag(VDCompatibilityTags.MEAT)
+                .add(VDItems.WOLF_BERRY_COOKIE.get())
+                .addOptionalTag(new ResourceLocation("werewolves:wolf_berries"));
 
-        tag(VDCompatibilityTags.CREATE_UPRIGHT_ON_BELT)
+        tag(CompatibilityTags.CREATE_UPRIGHT_ON_BELT)
                 .add(VDItems.ORCHID_TEA.get())
+                .add(VDItems.MULLED_WINE_GLASS.get())
                 .add(VDItems.WINE_GLASS.get())
-                .add(VDItems.BLOOD_PIE.get());
+                .add(VDItems.BLOOD_PIE.get())
+                .add(VDItems.ORCHID_CAKE.get());
 
-        tag(VDCompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS)
+        tag(CompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS)
                 .add(ModItems.ITEM_GARLIC.get());
-        tag(VDCompatibilityTags.SERENE_SEASONS_SUMMER_CROPS)
+        tag(CompatibilityTags.SERENE_SEASONS_SUMMER_CROPS)
                 .add(ModItems.ITEM_GARLIC.get());
     }
 }

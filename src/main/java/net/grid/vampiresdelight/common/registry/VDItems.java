@@ -9,6 +9,7 @@ import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.FoodValues;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.FuelBlockItem;
 import vectorwing.farmersdelight.common.item.KnifeItem;
@@ -194,6 +195,8 @@ public class VDItems {
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_CAKE_SLICE, false));
     public static final RegistryObject<Item> SNOW_WHITE_ICE_CREAM = ITEMS.register("snow_white_ice_cream",
             () -> new HunterConsumableItem(foodItem(VDFoodValues.SNOW_WHITE_ICE_CREAM), true));
+    public static final RegistryObject<Item> WOLF_BERRY_COOKIE = ITEMS.register("wolf_berry_cookie",
+            () -> new WerewolfConsumableItem(foodItem(VDFoodValues.NASTY), FoodValues.COOKIES, false, false, false, false));
 
     // Basic Meals
     public static final RegistryObject<Item> FISH_BURGER = ITEMS.register("fish_burger",

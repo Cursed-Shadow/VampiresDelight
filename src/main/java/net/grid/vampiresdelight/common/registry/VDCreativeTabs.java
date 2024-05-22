@@ -104,6 +104,7 @@ public class VDCreativeTabs {
                         add(VDItems.CURSED_CUPCAKE.get(), output);
                         add(VDItems.DARK_ICE_CREAM.get(), output);
                         add(VDItems.SNOW_WHITE_ICE_CREAM.get(), output);
+                        add(VDItems.WOLF_BERRY_COOKIE.get(), VDIntegrationUtils.WEREWOLVES, output);
 
                         // Basic Meals
                         add(VDItems.BLOOD_SAUSAGE.get(), output);

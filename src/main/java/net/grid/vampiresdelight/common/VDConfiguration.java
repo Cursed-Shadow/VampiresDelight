@@ -1,6 +1,10 @@
 package net.grid.vampiresdelight.common;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraftforge.common.ForgeConfigSpec;
+
+import java.util.List;
+import java.util.function.Predicate;
 
 public class VDConfiguration {
     public static ForgeConfigSpec COMMON_CONFIG;
@@ -39,8 +43,15 @@ public class VDConfiguration {
 
     // CLIENT
     public static final String CATEGORY_TOOLTIPS = "tooltips";
-    public static ForgeConfigSpec.BooleanValue COLORED_TOOLTIPS;
     public static ForgeConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
+    public static ForgeConfigSpec.BooleanValue COLORED_TOOLTIPS;
+    public static final String CATEGORY_TOOLTIP_COLORS = "tooltip_colors";
+    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
+    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_END_COLOR;
+    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_START_COLOR;
+    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_END_COLOR;
+    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_START_COLOR;
+    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_END_COLOR;
 
     public static final String CATEGORY_APPLESKIN = "appleskin";
     public static ForgeConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
@@ -50,7 +61,7 @@ public class VDConfiguration {
     static {
         // COMMON
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
-        COMMON_BUILDER.comment("Common settings").push("common");
+        COMMON_BUILDER.comment("Common settings");
 
         COMMON_BUILDER.comment("Village").push(CATEGORY_VILLAGE);
         FARMERS_BUY_GARLIC = COMMON_BUILDER.comment("Should Farmers buy garlic? (May reduce chances of other trades appearing)")
@@ -111,13 +122,33 @@ public class VDConfiguration {
 
         // CLIENT
         ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
-        CLIENT_BUILDER.comment("Client settings").push("client");
+        CLIENT_BUILDER.comment("Client settings");
 
         CLIENT_BUILDER.comment("Tooltips").push(CATEGORY_TOOLTIPS);
         COLORED_TOOLTIPS = CLIENT_BUILDER.comment("Should the mod change the color of tooltips?")
                 .define("coloredTooltips", true);
         HUNTER_TOOLTIPS_FOR_EVERYONE = CLIENT_BUILDER.comment("Should hunter food tooltips and tooltip's color be shown to all fractions? (Only shown to vampires by default)")
                 .define("hunterTooltipsForEveryone", false);
+
+        CLIENT_BUILDER.comment("Colors of tooltips").push(CATEGORY_TOOLTIP_COLORS);
+        VAMPIRE_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER.comment("What color (rgb) should be used for vampire food tooltips as the start color? (The shade it starts with)")
+                .comment("Default: 124, 40, 124")
+                .defineList("vampireFoodTooltipStartColor", ImmutableList.of(124, 40, 124), new ConfigTypePredicate(Integer.class));
+        VAMPIRE_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER.comment("What color (rgb) should be used for vampire food tooltips as the end color? (The shade it ends with)")
+                .comment("Default: 50, 0, 70")
+                .defineList("vampireFoodTooltipEndColor", ImmutableList.of(50, 0, 70), new ConfigTypePredicate(Integer.class));
+        HUNTER_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER.comment("What color (rgb) should be used for hunter food tooltips as the start color? (The shade it starts with)")
+                .comment("Default: 65, 65, 220")
+                .defineList("hunterFoodTooltipStartColor", ImmutableList.of(65, 65, 220), new ConfigTypePredicate(Integer.class));
+        HUNTER_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER.comment("What color (rgb) should be used for hunter food tooltips as the end color? (The shade it ends with)")
+                .comment("Default: 30, 30, 90")
+                .defineList("hunterFoodTooltipEndColor", ImmutableList.of(30, 30, 90), new ConfigTypePredicate(Integer.class));
+        WEREWOLF_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER.comment("What color (rgb) should be used for werewolf food tooltips as the start color? (Werewolves mod only) (The shade it starts with)")
+                .comment("Default: 250, 135, 0")
+                .defineList("werewolfFoodTooltipStartColor", ImmutableList.of(250, 135, 0), new ConfigTypePredicate(Integer.class));
+        WEREWOLF_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER.comment("What color (rgb) should be used for werewolf food tooltips as the end color? (Werewolves mod only) (The shade it ends with)")
+                .comment("Default: 115, 45, 0")
+                .defineList("werewolfFoodTooltipEndColor", ImmutableList.of(115, 45, 0), new ConfigTypePredicate(Integer.class));
         CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.comment("AppleSkin").push(CATEGORY_APPLESKIN);
@@ -129,4 +160,12 @@ public class VDConfiguration {
         CLIENT_BUILDER.pop();
         CLIENT_CONFIG = CLIENT_BUILDER.build();
     }
+
+    // Needed for list configs in order not to make it create additional toml.bak files
+    private record ConfigTypePredicate(Class configType) implements Predicate<Object> {
+        @Override
+            public boolean test(Object o) {
+                return configType.isInstance(o);
+            }
+        }
 }

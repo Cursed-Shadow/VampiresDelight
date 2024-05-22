@@ -64,6 +64,7 @@ public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
         return SHAPE;
     }
 
+    // TODO: Candle cake can't be consumed while normal can be
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);

@@ -116,6 +116,8 @@
   "item.vampiresdelight.hardtack": "Галета",
   "item.vampiresdelight.snow_white_ice_cream": "Белоснежное мороженое",
 
+  "item.vampiresdelight.wolf_berry_cookie": "Печенье из волчьих ягод",
+
   "effect.vampiresdelight.blessing": "Благословение",
   "effect.vampiresdelight.blessing.description": "Защищает от злых духов, например фантомов.",
 
@@ -125,14 +127,14 @@
   "item.minecraft.tipped_arrow.effect.blessing": "Стрела благословения",
   "oil.vampiresdelight.blessing": "Благословляющее",
 
-  "effect.vampiresdelight.clothes_dissolving": "Растворение брони",
-  "effect.vampiresdelight.clothes_dissolving.description": "Растворяет броню и одежку, которую носит игрок или моб.",
+  "effect.vampiresdelight.clothes_dissolving": "Растворение",
+  "effect.vampiresdelight.clothes_dissolving.description": "Растворяет одежку, надетую на игрока или моба.",
 
-  "item.minecraft.potion.effect.clothes_dissolving": "Зелье растворения брони",
-  "item.minecraft.splash_potion.effect.clothes_dissolving": "Взрывное зелье растворения брони",
-  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Оседающее зелье растворения брони",
-  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стрела растворения брони",
-  "oil.vampiresdelight.clothes_dissolving": "Растворяющее броню",
+  "item.minecraft.potion.effect.clothes_dissolving": "Зелье растворения",
+  "item.minecraft.splash_potion.effect.clothes_dissolving": "Взрывное зелье растворения",
+  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Оседающее зелье растворения",
+  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стрела растворения",
+  "oil.vampiresdelight.clothes_dissolving": "Растворяющее",
 
   "effect.vampiresdelight.fog_vision": "Туманное зрение",
   "effect.vampiresdelight.fog_vision.description": "Позволяет видеть дальше сквозь вампирский туман.",
@@ -151,6 +153,7 @@
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не может поджигать землю из-за настроек сервера",
 
   "vampiresdelight.text.planted_on": "Должно быть посажено на проклятую пашню",
+  "vampiresdelight.text.pirated": "Только посмотрите на эту вкуснятину. А если бы вы скачали мод из официального ресурса, к примеру CurseForge или Modrinth, то автор мода смог бы и себе это позволить. Надеюсь на ваше понимание, пожалуйста, не надо пиратить",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",
 
@@ -189,7 +192,7 @@
   "vampiresdelight.advancement.get_human_eye.desc": "Вырежьте человеческий глаз человекоподобного существа, вроде жителя или охотника на вампиров.",
 
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Лучший подарок для любого мужчины",
-  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Добудьте зелье, растворяющее броню и одежду, и познайте смысл жизни.",
+  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Добудьте зелье, растворяющее одежду, и познайте смысл жизни. Не спрашивайте меня, как его достать, лучше спросите эльфа.",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Мерзкая пища съедена",
 

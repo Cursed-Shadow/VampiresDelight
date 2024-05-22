@@ -116,6 +116,8 @@
   "item.vampiresdelight.hardtack": "Галета",
   "item.vampiresdelight.snow_white_ice_cream": "Білосніжне морозиво",
 
+  "item.vampiresdelight.wolf_berry_cookie": "Вовче-ягідне печиво",
+
   "effect.vampiresdelight.blessing": "Благословення",
   "effect.vampiresdelight.blessing.description": "Захищає від злих духів, наприклад фантомів.",
 
@@ -125,14 +127,14 @@
   "item.minecraft.tipped_arrow.effect.blessing": "Стріла благословення",
   "oil.vampiresdelight.blessing": "Благословляюче",
 
-  "effect.vampiresdelight.clothes_dissolving": "Розчинення броні",
-  "effect.vampiresdelight.clothes_dissolving.description": "Завдає шкоду броні та одягу, одягненій на гравця або моба.",
+  "effect.vampiresdelight.clothes_dissolving": "Розчинення",
+  "effect.vampiresdelight.clothes_dissolving.description": "Розчиняє одяг на гравці або мобі.",
 
-  "item.minecraft.potion.effect.clothes_dissolving": "Зілля розчинення броні",
-  "item.minecraft.splash_potion.effect.clothes_dissolving": "Вибухове зілля розчинення броні",
-  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Осідальне зілля розчинення броні",
-  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стріла розчинення броні",
-  "oil.vampiresdelight.clothes_dissolving": "Розчиняюче броню",
+  "item.minecraft.potion.effect.clothes_dissolving": "Зілля розчинення",
+  "item.minecraft.splash_potion.effect.clothes_dissolving": "Вибухове зілля розчинення",
+  "item.minecraft.lingering_potion.effect.clothes_dissolving": "Осідальне зілля розчинення",
+  "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стріла розчинення",
+  "oil.vampiresdelight.clothes_dissolving": "Розчиняюче",
 
   "effect.vampiresdelight.fog_vision": "Туманне бачення",
   "effect.vampiresdelight.fog_vision.description": "Дозволяє бачити далі крізь вампірський туман.",
@@ -151,6 +153,7 @@
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не може палити землю через налаштування цього сервера",
 
   "vampiresdelight.text.planted_on": "Необхідно садити у прокляте рілля",
+  "vampiresdelight.text.pirated": "Тільки подивіться на цю смакоту. А якби ви завантажили мод з офіційного ресурсу, наприклад CurseForge або Modrinth, то автор мода зміг би і собі це дозволити. Сподіваюся на ваше розуміння, будь ласка, не треба піратити",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",
 
@@ -189,7 +192,7 @@
   "vampiresdelight.advancement.get_human_eye.desc": "За допомогою ножа виколупуйте людське око з будь-якої людиноподібної істоти, наприклад, селянина чи мисливця.",
 
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Найкращий подарунок для будь-якого чоловіка",
-  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Дістаньте зілля, що розчиняє броню й одяг, та пізнайте сенс життя.",
+  "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Дістаньте зілля, розчиняюче одяг, та пізнайте сенс життя. Не питайте мене, як його дістати, краще запитайте ельфа.",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Спожито огидної їжі",
 

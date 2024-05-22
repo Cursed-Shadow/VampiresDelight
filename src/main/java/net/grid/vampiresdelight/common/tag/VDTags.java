@@ -12,9 +12,11 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class VDTags {
-    // Vampire and Hunter food.
+    // Vampire and Hunter food (mostly for tooltips and such).
     public static final TagKey<Item> VAMPIRE_FOOD = modItemTag("vampire_food");
     public static final TagKey<Item> HUNTER_FOOD = modItemTag("hunter_food");
+    // Werewolf food. Made into a separate tag in order to define which food should be marked as werewolf-only.
+    public static final TagKey<Item> WEREWOLF_FOOD = modItemTag("werewolf_food");
     // Vampire and Hunter food that can be fed to minions.
     public static final TagKey<Item> MINION_VAMPIRE_FOOD = modItemTag("minion_vampire_food");
     // All Wine Shelves.

@@ -21,7 +21,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class AlchemicalCocktailItem extends Item implements IFactionExclusiveIte
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, @NotNull InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack heldStack = player.getItemInHand(hand);
 
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.random.nextFloat() * 0.4F + 0.8F));
@@ -52,13 +51,13 @@ public class AlchemicalCocktailItem extends Item implements IFactionExclusiveIte
     }
 
     @Override
-    public @Nullable IFaction<?> getExclusiveFaction(@NotNull ItemStack stack) {
+    public @Nullable IFaction<?> getExclusiveFaction(ItemStack stack) {
         return VReference.HUNTER_FACTION;
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
         if (!VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get()) {
             MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip.alchemical_cocktail.burn_land_disabled");
             tooltip.add(textEmpty.withStyle(ChatFormatting.GRAY));

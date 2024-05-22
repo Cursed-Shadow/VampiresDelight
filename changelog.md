@@ -8,7 +8,10 @@
     - `false` by default;
 
 ### Updates
-- Renamed **Clothes Dissolving** effect to **Armor Dissolving** in order to avoid unnecessary questions;
+- Renamed **Clothes Dissolving** effect to just **Dissolving** in order to avoid unnecessary questions;
+
+### Fixes
+- Fixed food not nourishing humans;
 
 ## 0.1.4
 

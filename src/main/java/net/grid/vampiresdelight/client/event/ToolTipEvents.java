@@ -8,8 +8,11 @@ import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
+import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
+import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
+import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -40,28 +43,40 @@ public class ToolTipEvents {
             return;
 
         ItemStack stack = event.getItemStack();
-        Color borderStartColor = null;
-        Color borderEndColor = null;
+
+        List<? extends Integer> vampireStartColors = VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR.get();
+        Color vampireStartColor = new Color(vampireStartColors.get(0), vampireStartColors.get(1), vampireStartColors.get(2));
+        List<? extends Integer> vampireEndColors = VDConfiguration.VAMPIRE_FOOD_TOOLTIP_END_COLOR.get();
+        Color vampireEndColor = new Color(vampireEndColors.get(0), vampireEndColors.get(1), vampireEndColors.get(2));
+
+        List<? extends Integer> hunterStartColors = VDConfiguration.HUNTER_FOOD_TOOLTIP_START_COLOR.get();
+        Color hunterStartColor = new Color(hunterStartColors.get(0), hunterStartColors.get(1), hunterStartColors.get(2));
+        List<? extends Integer> hunterEndColors = VDConfiguration.HUNTER_FOOD_TOOLTIP_END_COLOR.get();
+        Color hunterEndColor = new Color(hunterEndColors.get(0), hunterEndColors.get(1), hunterEndColors.get(2));
+
+        List<? extends Integer> werewolfStartColors = VDConfiguration.WEREWOLF_FOOD_TOOLTIP_START_COLOR.get();
+        Color werewolfStartColor = new Color(werewolfStartColors.get(0), werewolfStartColors.get(1), werewolfStartColors.get(2));
+        List<? extends Integer> werewolfEndColors = VDConfiguration.WEREWOLF_FOOD_TOOLTIP_END_COLOR.get();
+        Color werewolfEndColor = new Color(werewolfEndColors.get(0), werewolfEndColors.get(1), werewolfEndColors.get(2));
 
         if (stack.is(VDTags.VAMPIRE_FOOD)) {
-            borderStartColor = new Color(124, 40, 124);
-            borderEndColor = new Color(50, 0, 70);
-        } else if (stack.is(VDTags.HUNTER_FOOD) && Helper.isVampire(player)) {
-            borderStartColor = new Color(65, 65, 220);
-            borderEndColor = new Color(30, 30, 90);
+            setBorderColors(vampireStartColor, vampireEndColor, event);
+        } else if (stack.is(VDTags.HUNTER_FOOD) && (Helper.isVampire(player) || VDIntegrationUtils.isWerewolf(player))) {
+            setBorderColors(hunterStartColor, hunterEndColor, event);
+        } else if (stack.is(VDTags.WEREWOLF_FOOD)) {
+            setBorderColors(werewolfStartColor, werewolfEndColor, event);
         }
+    }
 
-        if(borderStartColor != null){
-            event.setBorderStart(borderStartColor.getRGB());
-        }
-        if(borderEndColor != null){
-            event.setBorderEnd(borderEndColor.getRGB());
-        }
+    public static void setBorderColors(Color borderStartColor, Color borderEndColor, RenderTooltipEvent.Color event) {
+        event.setBorderStart(borderStartColor.getRGB());
+        event.setBorderEnd(borderEndColor.getRGB());
     }
 
     @SubscribeEvent
     public static void addTooltipToVampirismFood(ItemTooltipEvent event) {
-        Item food = event.getItemStack().getItem();
+        ItemStack itemStack = event.getItemStack();
+        Item food = itemStack.getItem();
         List<Component> tooltip = event.getToolTip();
         if (food instanceof VampirismItemBloodFoodItem || food instanceof BloodBottleItem) {
             VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.VAMPIRE_FACTION);
@@ -70,13 +85,17 @@ public class ToolTipEvents {
             VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.HUNTER_FACTION);
         }
 
+        if (itemStack.is(VDItems.ORCHID_COOKIE.get()) && VDHelper.isLauncherPirate()) {
+            tooltip.add(VDTextUtils.getTranslation("text.pirated").withStyle(ChatFormatting.RED));
+        }
+
         if (food instanceof BloodBottleItem && Screen.hasShiftDown() && VDHelper.isDebugger(Objects.requireNonNull(event.getEntity()))) {
-            int blood = event.getItemStack().getDamageValue() * MULTIPLIER;
+            int blood = itemStack.getDamageValue() * MULTIPLIER;
             tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
         }
-        else if (event.getItemStack().isDamageableItem() && Screen.hasShiftDown() && VDHelper.isDebugger(Objects.requireNonNull(event.getEntity()))) {
-            int maxDamage = event.getItemStack().getMaxDamage();
-            int damage = event.getItemStack().getDamageValue();
+        else if (itemStack.isDamageableItem() && Screen.hasShiftDown() && VDHelper.isDebugger(Objects.requireNonNull(event.getEntity()))) {
+            int maxDamage = itemStack.getMaxDamage();
+            int damage = itemStack.getDamageValue();
             int durability = maxDamage - damage;
 
             tooltip.add(Component.literal("Max damage: " + maxDamage).withStyle(ChatFormatting.DARK_PURPLE));

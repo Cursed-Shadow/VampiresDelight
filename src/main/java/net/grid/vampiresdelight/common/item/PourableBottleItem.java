@@ -2,7 +2,6 @@ package net.grid.vampiresdelight.common.item;
 
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -23,13 +22,9 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 /**
  * Credits to the Create team for mechanic references
  */
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class PourableBottleItem extends Item {
     private final Item serving;
     private final Item servingContainer;

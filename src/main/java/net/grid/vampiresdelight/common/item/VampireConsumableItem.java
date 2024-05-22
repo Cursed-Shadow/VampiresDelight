@@ -19,7 +19,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
 import net.minecraft.network.chat.Component;
@@ -85,9 +84,8 @@ public class VampireConsumableItem extends Item {
         this.hasFactionTooltip = hasFactionTooltip;
     }
 
-    @NotNull
     @Override
-    public ItemStack finishUsingItem(@NotNull ItemStack stack, @NotNull Level level, @NotNull LivingEntity consumer) {
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity consumer) {
         if (!level.isClientSide) {
             this.affectConsumer(stack, level, consumer);
         }
@@ -133,7 +131,7 @@ public class VampireConsumableItem extends Item {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
         Player player = VampirismMod.proxy.getClientPlayer();
         assert player != null;
 

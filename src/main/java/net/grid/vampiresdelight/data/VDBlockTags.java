@@ -109,9 +109,9 @@ public class VDBlockTags extends BlockTagsProvider {
     private void registerCompatibilityTags() {
         tag(CompatibilityTags.CREATE_PASSIVE_BOILER_HEATERS).add(
                 VDBlocks.DARK_STONE_STOVE.get());
-        tag(VDCompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS_BLOCK).add(
+        tag(CompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS_BLOCK).add(
                 ModBlocks.GARLIC.get());
-        tag(VDCompatibilityTags.SERENE_SEASONS_SUMMER_CROPS_BLOCK).add(
+        tag(CompatibilityTags.SERENE_SEASONS_SUMMER_CROPS_BLOCK).add(
                 ModBlocks.GARLIC.get());
     }
 }
