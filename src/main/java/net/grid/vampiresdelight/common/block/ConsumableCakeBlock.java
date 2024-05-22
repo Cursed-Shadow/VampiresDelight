@@ -46,6 +46,7 @@ public class ConsumableCakeBlock extends CakeBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemstack = player.getItemInHand(hand);
         Item item = itemstack.getItem();
+
         if (itemstack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
             Block block = Block.byItem(item);
             if (block instanceof CandleBlock && ConsumableCandleCakeBlock.hasCandle(block, this)) {
@@ -97,6 +98,7 @@ public class ConsumableCakeBlock extends CakeBlock {
 
             int i = state.getValue(BITES);
             level.gameEvent(player, GameEvent.EAT, pos);
+
             if (i < 6) {
                 level.setBlock(pos, state.setValue(BITES, i + 1), 3);
             } else {

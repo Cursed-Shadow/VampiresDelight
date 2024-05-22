@@ -207,7 +207,7 @@ public class VDBlockStates extends BlockStateProvider {
     // Credits to the Neapolitan mod for candle cake code generation.
     public void candleCakeBlock(ConsumableCandleCakeBlock block) {
         Block candle = block.getCandleBlock();
-        Block cake = block.getCakeBlock().get();
+        Block cake = block.getCakeBlock();
 
         ModelFile candleCake = models().withExistingParent(blockName(block), "block/template_cake_with_candle")
                 .texture("candle", blockTexture(candle))

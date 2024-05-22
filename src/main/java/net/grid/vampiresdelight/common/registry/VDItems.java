@@ -190,13 +190,13 @@ public class VDItems {
     public static final RegistryObject<Item> DARK_ICE_CREAM = ITEMS.register("dark_ice_cream",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.DARK_ICE_CREAM));
     public static final RegistryObject<Item> ORCHID_CAKE = ITEMS.register("orchid_cake",
-            () -> new BlockItem(VDBlocks.ORCHID_CAKE.get(), basicItem()));
+            () -> new BlockItem(VDBlocks.ORCHID_CAKE.get(), basicItem().stacksTo(1)));
     public static final RegistryObject<Item> ORCHID_CAKE_SLICE = ITEMS.register("orchid_cake_slice",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_CAKE_SLICE, false));
     public static final RegistryObject<Item> SNOW_WHITE_ICE_CREAM = ITEMS.register("snow_white_ice_cream",
             () -> new HunterConsumableItem(foodItem(VDFoodValues.SNOW_WHITE_ICE_CREAM), true));
     public static final RegistryObject<Item> WOLF_BERRY_COOKIE = ITEMS.register("wolf_berry_cookie",
-            () -> new WerewolfConsumableItem(foodItem(VDFoodValues.NASTY), FoodValues.COOKIES, false, false, false, false));
+            () -> new WerewolfConsumableItem(foodItem(FoodValues.COOKIES), FoodValues.COOKIES, false, false, false, false));
 
     // Basic Meals
     public static final RegistryObject<Item> FISH_BURGER = ITEMS.register("fish_burger",

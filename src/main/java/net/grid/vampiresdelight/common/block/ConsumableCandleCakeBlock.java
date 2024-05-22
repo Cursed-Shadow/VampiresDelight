@@ -29,11 +29,10 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
- * Credits to the Neapolitan mod
+ * Credits to the Neapolitan and Just More Cakes mods
  */
 public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
@@ -43,15 +42,15 @@ public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
     private static final Map<Pair<Block, ConsumableCakeBlock>, ConsumableCandleCakeBlock> BY_CANDLE_AND_CAKE = Maps.newHashMap();
     private static final Iterable<Vec3> PARTICLE_OFFSETS = ImmutableList.of(new Vec3(0.5D, 1.0D, 0.5D));
 
-    private final Supplier<Block> cakeBlock;
+    private final ConsumableCakeBlock cakeBlock;
     private final Block candleBlock;
 
-    public ConsumableCandleCakeBlock(Properties properties, Supplier<Block> cakeBlock, Block candleBlock) {
+    public ConsumableCandleCakeBlock(Properties properties, ConsumableCakeBlock cakeBlock, Block candleBlock) {
         super(properties);
         this.cakeBlock = cakeBlock;
         this.candleBlock = candleBlock;
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, Boolean.FALSE));
-        BY_CANDLE_AND_CAKE.put(Pair.of(candleBlock, (ConsumableCakeBlock) cakeBlock.get()), this);
+        BY_CANDLE_AND_CAKE.put(Pair.of(candleBlock, cakeBlock), this);
     }
 
     @Override
@@ -64,29 +63,28 @@ public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
         return SHAPE;
     }
 
-    // TODO: Candle cake can't be consumed while normal can be
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (!itemstack.is(Items.FLINT_AND_STEEL) && !itemstack.is(Items.FIRE_CHARGE) && cakeBlock instanceof ConsumableCakeBlock consumableCakeBlock) {
-            if (candleHit(pHit) && pPlayer.getItemInHand(pHand).isEmpty() && pState.getValue(LIT)) {
-                extinguish(pPlayer, pState, pLevel, pPos);
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
-            } else {
-                InteractionResult interactionresult = consumableCakeBlock.consumeBite(pLevel, pPos, consumableCakeBlock.defaultBlockState(), pPlayer);
-                if (interactionresult.consumesAction()) {
-                    dropResources(pState, pLevel, pPos);
-                }
 
-                return interactionresult;
-            }
-        } else {
+        if (itemstack.is(Items.FLINT_AND_STEEL) || itemstack.is(Items.FIRE_CHARGE)) {
             return InteractionResult.PASS;
         }
+
+        if (candleHit(pHit) && pPlayer.getItemInHand(pHand).isEmpty() && pState.getValue(LIT)) {
+            extinguish(pPlayer, pState, pLevel, pPos);
+            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+        }
+
+        InteractionResult interactionresult = cakeBlock.consumeBite(pLevel, pPos, cakeBlock.defaultBlockState(), pPlayer);
+        if (interactionresult.consumesAction()) {
+            dropResources(pState, pLevel, pPos);
+        }
+        return interactionresult;
     }
 
     private static boolean candleHit(BlockHitResult pHit) {
-        return pHit.getLocation().y - (double)pHit.getBlockPos().getY() > 0.5D;
+        return pHit.getLocation().y - pHit.getBlockPos().getY() > 0.5D;
     }
 
     @Override
@@ -96,7 +94,7 @@ public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
-        return new ItemStack(cakeBlock.get());
+        return new ItemStack(cakeBlock);
     }
 
     @Override
@@ -136,7 +134,7 @@ public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
         return candleBlock;
     }
 
-    public Supplier<Block> getCakeBlock() {
+    public ConsumableCakeBlock getCakeBlock() {
         return cakeBlock;
     }
 

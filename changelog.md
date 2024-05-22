@@ -12,6 +12,7 @@
 
 ### Fixes
 - Fixed food not nourishing humans;
+- Fixed not being able to eat **Orchid Cake** with candle;
 
 ## 0.1.4
 
