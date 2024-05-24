@@ -10,12 +10,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
 public class VampireBiteEnchantment extends Enchantment {
     public VampireBiteEnchantment(Rarity rarity, EnchantmentCategory category) {
         super(rarity, category, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
@@ -44,7 +46,7 @@ public class VampireBiteEnchantment extends Enchantment {
         public static void onVampireBite(LivingHurtEvent event) {
             if (event.getSource().getEntity() instanceof Player player) {
                 ItemStack weapon = player.getMainHandItem();
-                int enchantmentLevel = EnchantmentHelper.getItemEnchantmentLevel(VDEnchantments.VAMPIRE_BITE.get(), weapon);
+                int enchantmentLevel = weapon.getEnchantmentLevel(VDEnchantments.VAMPIRE_BITE.get());
                 Level level = event.getEntity().getCommandSenderWorld();
                 if (!level.isClientSide) {
                     if (!VDConfiguration.DISABLE_VAMPIRE_BITE.get())

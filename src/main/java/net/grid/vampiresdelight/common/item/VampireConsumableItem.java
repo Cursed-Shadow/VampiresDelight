@@ -24,7 +24,6 @@ import vectorwing.farmersdelight.common.Configuration;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
-import java.util.Objects;
 
 public class VampireConsumableItem extends Item {
     private final FoodProperties vampireFood;
@@ -115,18 +114,23 @@ public class VampireConsumableItem extends Item {
         }
     }
 
-    public FoodProperties getVampireFood() {
-        return vampireFood;
-    }
+    @Override
+    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
+        if (entity == null) {
+            entity = VampirismMod.proxy.getClientPlayer();
+        }
 
-    public FoodProperties getHunterFood() {
-        return hunterFood;
+        return Helper.isVampire(entity) ? vampireFood : (Helper.isHunter(entity) && hunterFood != null ? hunterFood : super.getFoodProperties(stack, entity));
     }
 
     /**
      * Override this to apply changes to the consumer (e.g. curing effects).
      */
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
+    }
+
+    public FoodProperties getVampireFood() {
+        return vampireFood;
     }
 
     @Override
@@ -141,13 +145,12 @@ public class VampireConsumableItem extends Item {
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {
-                FoodProperties foodProperties = Helper.isVampire(player) ? vampireFood : Objects.requireNonNull(stack.getFoodProperties(player));
+                FoodProperties foodProperties = this.getFoodProperties(stack, player);
+                assert foodProperties != null;
+
                 if (!foodProperties.getEffects().isEmpty()) {
-                    if (Helper.isVampire(player))
-                        VDTextUtils.addFoodEffectTooltip(vampireFood, tooltip, 1.0F);
-                    else if (hasHumanFoodEffectTooltip) {
-                        VDTextUtils.addFoodEffectTooltip(Objects.requireNonNull(stack.getFoodProperties(player)), tooltip, 1.0F);
-                    }
+                    if (Helper.isVampire(player) || hasHumanFoodEffectTooltip)
+                        VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
                 }
             }
         }

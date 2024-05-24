@@ -12,20 +12,27 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class VDTags {
-    // Vampire and Hunter food (mostly for tooltips and such).
+    // Items
+
+    // Human food which must give the same nutrition to vampires. Doesn't make hunter food vampire-friendly, though.
+    // Used for compatibility in external mods and data pack. Empty by default.
+    public static final TagKey<Item> BLOOD_FOOD = modItemTag("blood_food");
+
+    // Factional food (mostly for colored tooltips and such). (Look into the code before using).
     public static final TagKey<Item> VAMPIRE_FOOD = modItemTag("vampire_food");
     public static final TagKey<Item> HUNTER_FOOD = modItemTag("hunter_food");
-    // Werewolf food. Made into a separate tag in order to define which food should be marked as werewolf-only.
     public static final TagKey<Item> WEREWOLF_FOOD = modItemTag("werewolf_food");
-    // Vampire and Hunter food that can be fed to minions.
     public static final TagKey<Item> MINION_VAMPIRE_FOOD = modItemTag("minion_vampire_food");
-    // All Wine Shelves.
+
+    // Blocks
+
+    // All Wine Shelves (for advancements).
     public static final TagKey<Block> WINE_SHELF = modBlockTag("wine_shelf");
 
-    // Orchid cake variants that drop the cake slice when sliced by a knife.
+    // Candle cake variants that drop the cake slice when sliced by a knife.
     public static final TagKey<Block> DROPS_ORCHID_CAKE_SLICE = modBlockTag("drops_orchid_cake_slice");
-    // Cold blocks brewing barrel won't work on.
-    public static final TagKey<Block> COOLERS = modBlockTag("coolers");
+
+    // Biomes
 
     // Biomes lost carriage spawns in.
     public static final TagKey<Biome> HAS_LOST_CARRIAGE = modBiomeTag("has_structure/lost_carriage");

@@ -39,13 +39,15 @@ public class VDFoodValues {
             .nutrition(1).saturationMod(0.1f)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 400), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 200), 1.0F).build();
+    public static final FoodProperties ORCHID_TEA_HUMAN = (new FoodProperties.Builder()).alwaysEat()
+            .effect(() -> new MobEffectInstance(MobEffects.POISON, 60), 1.0F).build();
     public static final FoodProperties ORCHID_TEA_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400), 1.0F).build();
-    public static final FoodProperties ORCHID_TEA_HUNTER = (new FoodProperties.Builder()).alwaysEat()
+    public static final FoodProperties ORCHID_TEA_IMMUNE = (new FoodProperties.Builder()).alwaysEat()
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 400), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 200), 1.0F).build();
     public static final FoodProperties BLOOD_SYRUP = (new FoodProperties.Builder())
-            .nutrition(5).alwaysEat().build();
+            .nutrition(9).alwaysEat().build();
     public static final FoodProperties MULLED_WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
             .nutrition(8).saturationMod(0.9f)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1.0F)

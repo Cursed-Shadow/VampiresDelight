@@ -6,12 +6,10 @@ import net.grid.vampiresdelight.common.block.BarStoolBlock;
 import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
 import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
-import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -46,11 +44,6 @@ public class VDBlockTags extends BlockTagsProvider {
 
             tag(BlockTags.CANDLE_CAKES).add(block);
         });
-
-        tag(VDTags.COOLERS)
-                .addTag(BlockTags.ICE).add(
-                        Blocks.WATER
-                );
     }
 
     protected void registerBlockMineables() {

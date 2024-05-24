@@ -48,6 +48,8 @@ public class VampiresDelight {
         VDMenuTypes.MENU_TYPES.register(eventBus);
         VDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
+        MinecraftForge.EVENT_BUS.addListener(VDCommands::onCommandsRegister);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 }

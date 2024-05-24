@@ -306,7 +306,7 @@ public class BrewingBarrelBlockEntity extends SyncedBlockEntity implements MenuP
     public boolean isTemperatureCold() {
         BlockState stateBelow = level.getBlockState(worldPosition.below());
 
-        if (stateBelow.is(VDTags.COOLERS)) return true;
+        //if (stateBelow.is(VDTags.COOLERS)) return true;
         if (level.getBiome(worldPosition).is(Tags.Biomes.IS_COLD)) return true;
 
         return false;

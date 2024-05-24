@@ -22,12 +22,9 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.FarmersDelight;
-import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 
 import java.util.EnumSet;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class BrewingBarrelRecipe implements Recipe<RecipeWrapper> {
     public static final int INPUT_SLOTS = 4;
 
@@ -160,7 +157,7 @@ public class BrewingBarrelRecipe implements Recipe<RecipeWrapper> {
         result = 31 * result + inputItems.hashCode();
         result = 31 * result + output.hashCode();
         result = 31 * result + container.hashCode();
-        result = 31 * result + (getExperience() != +0.0f ? Float.floatToIntBits(getExperience()) : 0);
+        result = 31 * result + (getExperience() != 0.0f ? Float.floatToIntBits(getExperience()) : 0);
         result = 31 * result + getBrewTime();
         return result;
     }
@@ -215,9 +212,7 @@ public class BrewingBarrelRecipe implements Recipe<RecipeWrapper> {
             int i = buffer.readVarInt();
             NonNullList<Ingredient> inputItemsIn = NonNullList.withSize(i, Ingredient.EMPTY);
 
-            for (int j = 0; j < inputItemsIn.size(); ++j) {
-                inputItemsIn.set(j, Ingredient.fromNetwork(buffer));
-            }
+            inputItemsIn.replaceAll(ignored -> Ingredient.fromNetwork(buffer));
 
             ItemStack outputIn = buffer.readItem();
             ItemStack container = buffer.readItem();

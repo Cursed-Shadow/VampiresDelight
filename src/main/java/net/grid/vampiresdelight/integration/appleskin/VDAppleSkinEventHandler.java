@@ -4,14 +4,9 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.VDConfiguration;
-import net.grid.vampiresdelight.common.VDFoodValues;
-import net.grid.vampiresdelight.common.item.HunterConsumableItem;
-import net.grid.vampiresdelight.common.item.VampireConsumableItem;
-import net.grid.vampiresdelight.common.item.WerewolfConsumableItem;
 import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItemAccessor;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
-import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -32,7 +27,7 @@ public class VDAppleSkinEventHandler {
             assert player != null;
 
             ItemStack itemStack = event.itemStack;
-            if (!(VDHelper.isItemOfVampireFoodClass(itemStack.getItem()) || itemStack.is(VDTags.VAMPIRE_FOOD)) && Helper.isVampire(player)) {
+            if (!(VDHelper.isItemOfVampireFoodClass(itemStack.getItem()) || itemStack.is(VDTags.VAMPIRE_FOOD)) && Helper.isVampire(player) && !itemStack.is(VDTags.BLOOD_FOOD)) {
                 event.setCanceled(true);
             }
         }
@@ -44,36 +39,11 @@ public class VDAppleSkinEventHandler {
             Player player = event.player;
             Item item = event.itemStack.getItem();
 
-            if (VDHelper.isItemOfVampireFoodClass(item) && Helper.isVampire(player)) {
-                FoodProperties foodProperties = VDFoodValues.NASTY;
-
-                if (item instanceof VampireConsumableItem vampireConsumableItem)
-                    foodProperties = vampireConsumableItem.getVampireFood();
-                if (item instanceof VampirismItemBloodFoodItem bloodFoodItem)
-                    foodProperties = ((VampirismItemBloodFoodItemAccessor) bloodFoodItem).getVampireFood();
+            if (item instanceof VampirismItemBloodFoodItem bloodFoodItem && Helper.isVampire(player)) {
+                FoodProperties foodProperties = ((VampirismItemBloodFoodItemAccessor) bloodFoodItem).getVampireFood();
 
                 event.defaultFoodValues = makeFoodValues(foodProperties);
                 event.modifiedFoodValues = makeFoodValues(foodProperties);
-            }
-
-            if (item instanceof HunterConsumableItem hunterConsumableItem && Helper.isHunter(player)) {
-                FoodProperties foodProperties = hunterConsumableItem.getHunterFood();
-
-                // It can actually be null, don't unwrap if
-                if (foodProperties != null) {
-                    event.defaultFoodValues = makeFoodValues(foodProperties);
-                    event.modifiedFoodValues = makeFoodValues(foodProperties);
-                }
-            }
-
-            if (item instanceof WerewolfConsumableItem werewolfConsumableItem && VDIntegrationUtils.isWerewolf(player)) {
-                FoodProperties foodProperties = werewolfConsumableItem.getWerewolfFood();
-
-                // It can actually be null, don't unwrap if
-                if (foodProperties != null) {
-                    event.defaultFoodValues = makeFoodValues(foodProperties);
-                    event.modifiedFoodValues = makeFoodValues(foodProperties);
-                }
             }
         }
     }

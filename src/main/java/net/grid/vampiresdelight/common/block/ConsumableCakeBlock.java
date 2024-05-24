@@ -4,9 +4,7 @@ import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.Helper;
-import net.grid.vampiresdelight.common.VDFoodValues;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -26,14 +24,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Supplier;
 
 /**
  * Credits to the Neapolitan mod
  */
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class ConsumableCakeBlock extends CakeBlock {
     private final Supplier<Item> cakeSlice;
 
@@ -82,18 +77,19 @@ public class ConsumableCakeBlock extends CakeBlock {
             player.awardStat(Stats.EAT_CAKE_SLICE);
 
             ItemStack sliceStack = this.getCakeSlice();
-            FoodProperties vampireFood = VDFoodValues.BLOOD_PIE_SLICE;
+            FoodProperties foodProperties = sliceStack.getFoodProperties(player);
+            assert foodProperties != null;
 
             // Don't shrink stack before retrieving food
-            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(sliceStack)));
+            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack)));
 
             if (player instanceof IVampire) {
-                ((IVampire) player).drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(sliceStack));
+                ((IVampire) player).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack));
             } else if (!Helper.isVampire(player))
                 player.eat(level, sliceStack);
 
             if (Helper.isVampire(player)) {
-                VDEntityUtils.addFoodEffects(vampireFood, level, player);
+                VDEntityUtils.addFoodEffects(foodProperties, level, player);
             }
 
             int i = state.getValue(BITES);

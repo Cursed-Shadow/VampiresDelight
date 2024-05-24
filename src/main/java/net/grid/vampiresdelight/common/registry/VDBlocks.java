@@ -15,7 +15,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vectorwing.farmersdelight.common.block.*;
 
-import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class VDBlocks {
@@ -104,7 +103,7 @@ public class VDBlocks {
 
     // Pastries
     public static final RegistryObject<Block> BLOOD_PIE = BLOCKS.register("blood_pie",
-            () -> new VampirePieBlock(Block.Properties.copy(Blocks.CAKE), VDItems.BLOOD_PIE_SLICE));
+            () -> new VampirePieBlock(Block.Properties.copy(Blocks.CAKE), VDItems.BLOOD_PIE_SLICE::get));
 
     // Wild Crops
     public static final RegistryObject<Block> WILD_GARLIC = BLOCKS.register("wild_garlic",
@@ -116,11 +115,11 @@ public class VDBlocks {
 
     // Feasts
     public static final RegistryObject<Block> WEIRD_JELLY_BLOCK = BLOCKS.register("weird_jelly_block",
-            () -> new WeirdJellyBlock(Block.Properties.copy(Blocks.SLIME_BLOCK), VDItems.WEIRD_JELLY, true));
+            () -> new WeirdJellyBlock(Block.Properties.copy(Blocks.SLIME_BLOCK), VDItems.WEIRD_JELLY::get, true));
 
     // Cakes
     public static final RegistryObject<Block> ORCHID_CAKE = BLOCKS.register("orchid_cake",
-            () -> new ConsumableCakeBlock(Block.Properties.copy(Blocks.CAKE).mapColor(MapColor.TERRACOTTA_PURPLE), VDItems.BLOOD_PIE_SLICE));
+            () -> new ConsumableCakeBlock(Block.Properties.copy(Blocks.CAKE).mapColor(MapColor.TERRACOTTA_PURPLE), VDItems.ORCHID_CAKE_SLICE::get));
     public static final RegistryObject<Block> ORCHID_CANDLE_CAKE = BLOCKS.register("orchid_candle_cake",
             () -> candleCakeBlock(Blocks.CANDLE, (ConsumableCakeBlock) ORCHID_CAKE.get(), MapColor.TERRACOTTA_PURPLE));
     public static final RegistryObject<Block> WHITE_ORCHID_CANDLE_CAKE = BLOCKS.register("white_orchid_candle_cake",

@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
-import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
@@ -24,7 +23,6 @@ import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
 
 import java.util.List;
-import java.util.Objects;
 
 public class WerewolfConsumableItem extends Item {
     private final FoodProperties werewolfFood;
@@ -69,14 +67,7 @@ public class WerewolfConsumableItem extends Item {
         ItemStack containerStack = stack.getCraftingRemainingItem();
 
         if (stack.isEdible()) {
-            if (werewolfFood == null)
-                super.finishUsingItem(stack, level, consumer);
-            else {
-                VDEntityUtils.eatFood(level, consumer, stack, VDIntegrationUtils.isWerewolf(consumer) ? werewolfFood : stack.getFoodProperties(consumer));
-
-                if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player))
-                    stack.shrink(1);
-            }
+            super.finishUsingItem(stack, level, consumer);
         } else {
             Player player = consumer instanceof Player ? (Player) consumer : null;
             if (player instanceof ServerPlayer) {
@@ -102,14 +93,19 @@ public class WerewolfConsumableItem extends Item {
         }
     }
 
+    @Override
+    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
+        if (entity == null) {
+            entity = VampirismMod.proxy.getClientPlayer();
+        }
+
+        return VDIntegrationUtils.isWerewolf(entity) && werewolfFood != null ? werewolfFood : super.getFoodProperties(stack, entity);
+    }
+
     /**
      * Override this to apply changes to the consumer (e.g. curing effects).
      */
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-    }
-
-    public FoodProperties getWerewolfFood() {
-        return werewolfFood;
     }
 
     @Override
@@ -124,13 +120,12 @@ public class WerewolfConsumableItem extends Item {
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {
-                FoodProperties foodProperties = VDIntegrationUtils.isWerewolf(player) ? werewolfFood : Objects.requireNonNull(stack.getFoodProperties(player));
+                FoodProperties foodProperties = this.getFoodProperties(stack, player);
+                assert foodProperties != null;
+
                 if (!foodProperties.getEffects().isEmpty()) {
-                    if (VDIntegrationUtils.isWerewolf(player))
-                        VDTextUtils.addFoodEffectTooltip(werewolfFood, tooltip, 1.0F);
-                    else if (hasHumanFoodEffectTooltip) {
-                        VDTextUtils.addFoodEffectTooltip(Objects.requireNonNull(stack.getFoodProperties(player)), tooltip, 1.0F);
-                    }
+                    if (VDIntegrationUtils.isWerewolf(player) || hasHumanFoodEffectTooltip)
+                        VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
                 }
             }
         }

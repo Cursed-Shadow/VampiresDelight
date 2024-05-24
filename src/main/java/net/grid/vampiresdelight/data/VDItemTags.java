@@ -11,6 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -77,6 +78,10 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.ORCHID_COOKIE.get());
         tag(VDTags.WEREWOLF_FOOD)
                 .addOptionalTag(new ResourceLocation("werewolves:wolf_berries"));
+        tag(VDTags.BLOOD_FOOD)
+                //.add(Items.BAKED_POTATO)
+                //.add(vectorwing.farmersdelight.common.registry.ModItems.CHICKEN_SOUP.get())
+        ;
     }
 
     private void registerVampirismTags() {
@@ -95,11 +100,15 @@ public class VDItemTags extends ItemTagsProvider {
 
     @SuppressWarnings("unchecked")
     private void registerForgeTags() {
-        tag(ForgeTags.BREAD).addTag((VDForgeTags.BREAD_RICE));
-        tag(VDForgeTags.BREAD_RICE).add(VDItems.RICE_BREAD.get());
+        tag(ForgeTags.BREAD)
+                .addTag((VDForgeTags.BREAD_RICE));
+        tag(VDForgeTags.BREAD_RICE)
+                .add(VDItems.RICE_BREAD.get());
 
-        tag(ForgeTags.DOUGH).add(VDItems.RICE_DOUGH.get());
-        tag(VDForgeTags.DOUGH_RICE).add(VDItems.RICE_DOUGH.get());
+        tag(ForgeTags.DOUGH)
+                .add(VDItems.RICE_DOUGH.get());
+        tag(VDForgeTags.DOUGH_RICE)
+                .add(VDItems.RICE_DOUGH.get());
 
         tag(VDForgeTags.COOKED_BAT).add(VDItems.COOKED_BAT.get(), VDItems.COOKED_BAT_CHOPS.get());
         tag(VDForgeTags.RAW_BAT).add(VDItems.RAW_BAT.get(), VDItems.RAW_BAT_CHOPS.get());

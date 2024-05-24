@@ -11,7 +11,6 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -52,10 +51,10 @@ public class WineShelfBlock extends BaseEntityBlock {
         VoxelShape shape;
 
         switch (state.getValue(HorizontalDirectionalBlock.FACING)) {
-            case EAST -> shape = UtilLib.rotateShape(makeShape(state.getValue(HAS_UPPER_SUPPORT), state), UtilLib.RotationAmount.NINETY);
-            case SOUTH -> shape = UtilLib.rotateShape(makeShape(state.getValue(HAS_UPPER_SUPPORT), state), UtilLib.RotationAmount.HUNDRED_EIGHTY);
-            case WEST -> shape = UtilLib.rotateShape(makeShape(state.getValue(HAS_UPPER_SUPPORT), state), UtilLib.RotationAmount.TWO_HUNDRED_SEVENTY);
-            default -> shape = makeShape(state.getValue(HAS_UPPER_SUPPORT), state);
+            case EAST -> shape = UtilLib.rotateShape(makeShape(state.getValue(HAS_UPPER_SUPPORT)), UtilLib.RotationAmount.NINETY);
+            case SOUTH -> shape = UtilLib.rotateShape(makeShape(state.getValue(HAS_UPPER_SUPPORT)), UtilLib.RotationAmount.HUNDRED_EIGHTY);
+            case WEST -> shape = UtilLib.rotateShape(makeShape(state.getValue(HAS_UPPER_SUPPORT)), UtilLib.RotationAmount.TWO_HUNDRED_SEVENTY);
+            default -> shape = makeShape(state.getValue(HAS_UPPER_SUPPORT));
         }
 
         return shape;
@@ -146,7 +145,6 @@ public class WineShelfBlock extends BaseEntityBlock {
                 case WEST -> Optional.of(new Vec2((float) d2, (float) d1));
                 case EAST -> Optional.of(new Vec2((float) (1.0D - d2), (float) d1));
                 case DOWN, UP -> Optional.empty();
-                default -> throw new IncompatibleClassChangeError();
             };
         }
     }
@@ -221,7 +219,7 @@ public class WineShelfBlock extends BaseEntityBlock {
         }
     }
 
-    public static @NotNull VoxelShape makeShape(boolean has_support, BlockState state) {
+    public static @NotNull VoxelShape makeShape(boolean has_support) {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.or(shape, Shapes.box(0, 0.5, 0, 1, 0.625, 1));
         shape = Shapes.or(shape, Shapes.box(0, 0, 0, 1, 0.125, 1));

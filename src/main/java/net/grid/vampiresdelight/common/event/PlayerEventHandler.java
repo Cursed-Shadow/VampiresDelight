@@ -27,7 +27,7 @@ import vectorwing.farmersdelight.common.item.ConsumableItem;
 @Mod.EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerEventHandler {
     @SubscribeEvent
-    public static void onItemUse(LivingEntityUseItemEvent.@NotNull Finish event) {
+    public static void checkDisgustingFood(LivingEntityUseItemEvent.@NotNull Finish event) {
         ItemStack itemStack = event.getItem();
         Item item = itemStack.getItem();
         LivingEntity livingEntity = event.getEntity();
@@ -59,12 +59,22 @@ public class PlayerEventHandler {
         }
     }
 
+    @SubscribeEvent
+    public static void onBloodFoodEaten(LivingEntityUseItemEvent.@NotNull Finish event) {
+        ItemStack itemStack = event.getItem();
+        LivingEntity livingEntity = event.getEntity();
+
+        if (itemStack.is(VDTags.BLOOD_FOOD) && Helper.isVampire(livingEntity)) {
+            VDEntityUtils.feedVampire(itemStack, event.getEntity().level(), livingEntity);
+        }
+    }
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onFoodEaten(final MobEffectEvent.Applicable event) {
         LivingEntity consumer = event.getEntity();
         ItemStack itemInHand = consumer.getItemInHand(consumer.getUsedItemHand());
         Item item = itemInHand.getItem();
-        if (Helper.isVampire(consumer) && item instanceof ConsumableItem) {
+        if (Helper.isVampire(consumer) && item instanceof ConsumableItem && !itemInHand.is(VDTags.BLOOD_FOOD)) {
             event.setResult(Event.Result.DENY);
         }
     }

@@ -50,14 +50,6 @@ public class HunterConsumableItem extends Item {
         this.containsGarlic = true;
     }
 
-    public HunterConsumableItem(Properties properties, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
-        super(properties);
-        this.hunterFood = null;
-        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasCustomTooltip = hasCustomTooltip;
-        this.containsGarlic = true;
-    }
-
     public HunterConsumableItem(Properties properties, FoodProperties hunterFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean containsGarlic) {
         super(properties);
         this.hunterFood = hunterFood;
@@ -78,14 +70,7 @@ public class HunterConsumableItem extends Item {
         ItemStack containerStack = stack.getCraftingRemainingItem();
 
         if (stack.isEdible()) {
-            if (hunterFood == null)
-                super.finishUsingItem(stack, level, consumer);
-            else {
-                VDEntityUtils.eatFood(level, consumer, stack, Helper.isHunter(consumer) ? hunterFood : stack.getFoodProperties(consumer));
-
-                if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player))
-                    stack.shrink(1);
-            }
+            super.finishUsingItem(stack, level, consumer);
         } else {
             Player player = consumer instanceof Player ? (Player) consumer : null;
             if (player instanceof ServerPlayer) {
@@ -111,14 +96,19 @@ public class HunterConsumableItem extends Item {
         }
     }
 
+    @Override
+    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
+        if (entity == null) {
+            entity = VampirismMod.proxy.getClientPlayer();
+        }
+
+        return Helper.isHunter(entity) && hunterFood != null ? hunterFood : super.getFoodProperties(stack, entity);
+    }
+
     /**
      * Override this to apply changes to the consumer (e.g. curing effects).
      */
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-    }
-
-    public FoodProperties getHunterFood() {
-        return hunterFood;
     }
 
     public boolean doesContainGarlic() {

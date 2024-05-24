@@ -4,8 +4,6 @@ import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.Helper;
-import net.grid.vampiresdelight.common.VDFoodValues;
-import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -33,18 +31,18 @@ public class VampirePieBlock extends PieBlock {
             return InteractionResult.PASS;
         } else {
             ItemStack stack = this.getPieSliceItem();
-            FoodProperties humanFood = stack.getItem().getFoodProperties();
-            FoodProperties vampireFood = (stack.getItem() instanceof VampireConsumableItem vampireConsumableItem) ? vampireConsumableItem.getVampireFood() : VDFoodValues.BLOOD_PIE_SLICE;
+            FoodProperties foodProperties = stack.getItem().getFoodProperties(stack, consumer);
+            assert foodProperties != null;
 
-            VampirePlayer.getOpt(consumer).ifPresent(v -> v.drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(stack)));
+            VampirePlayer.getOpt(consumer).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
 
             if (consumer instanceof IVampire) {
-                ((IVampire) consumer).drinkBlood(vampireFood.getNutrition(), vampireFood.getSaturationModifier(), new DrinkBloodContext(stack));
+                ((IVampire) consumer).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
             } else if (!Helper.isVampire(consumer))
-                VDEntityUtils.eatFood(level, consumer, stack, humanFood);
+                consumer.eat(level, stack);
 
             if (Helper.isVampire(consumer)) {
-                VDEntityUtils.addFoodEffects(vampireFood, level, consumer);
+                VDEntityUtils.addFoodEffects(foodProperties, level, consumer);
             }
 
             int bites = state.getValue(BITES);

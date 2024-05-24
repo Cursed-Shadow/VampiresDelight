@@ -5,6 +5,7 @@
   "refmap": "vampiresdelight.refmap.json",
   "plugin": "net.grid.vampiresdelight.common.mixin.plugin.VDMixinConfigPlugin",
   "mixins": [
+    "MixinConsumableItem",
     "MixinEnchantment",
     "MixinFoodHelper",
     "MixinHunterCampPiecesFireplace",
@@ -12,7 +13,6 @@
     "MixinPowderSnowBlock",
     "MixinRenderHandler",
     "MixinSetOilFunction",
-    "VampireMinionsEatSweetsMixin",
     "accessor.BloodStatsAccessor",
     "accessor.StructurePieceAccessor",
     "accessor.VampirismItemBloodFoodItemAccessor"

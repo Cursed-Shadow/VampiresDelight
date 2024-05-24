@@ -5,7 +5,7 @@
 ### Additions
 - Added new food:
   - **Orchid Cream Soup**;
-- Added **Werewolves** integration items:
+- Added **Werewolves** integration items (more to come later!):
   - **Silver Knife**;
   - **Wolf Berry Cookie**;
 - Added new configs:

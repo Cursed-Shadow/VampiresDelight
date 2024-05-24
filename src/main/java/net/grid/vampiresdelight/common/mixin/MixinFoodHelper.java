@@ -2,14 +2,10 @@ package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import de.teamlapen.vampirism.util.Helper;
-import net.grid.vampiresdelight.common.item.VampireConsumableItem;
-import net.grid.vampiresdelight.common.item.WerewolfConsumableItem;
 import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItemAccessor;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDHelper;
-import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -29,19 +25,11 @@ public class MixinFoodHelper {
     @Inject(at = @At("HEAD"), method = "isRotten(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z", remap = false, cancellable = true)
     private static void isVampireFood(ItemStack itemStack, Player player, CallbackInfoReturnable<Boolean> cir) {
         if (isFood(itemStack, player)) {
-            if ((VDHelper.isItemOfVampireFoodClass(itemStack.getItem()) || itemStack.is(VDTags.VAMPIRE_FOOD)) && Helper.isVampire(player)) {
+            if ((itemStack.getItem() instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD)) && Helper.isVampire(player)) {
                 FoodProperties foodProperties = null;
 
-                if (itemStack.getItem() instanceof VampireConsumableItem vampireConsumableItem)
-                    foodProperties = vampireConsumableItem.getVampireFood();
                 if (itemStack.getItem() instanceof VampirismItemBloodFoodItem bloodFoodItem)
                     foodProperties = ((VampirismItemBloodFoodItemAccessor) bloodFoodItem).getVampireFood();
-
-                cir.setReturnValue(VDEntityUtils.hasPoison(foodProperties));
-            }
-
-            if (itemStack.getItem() instanceof WerewolfConsumableItem werewolfConsumableItem && VDIntegrationUtils.isWerewolf(player)) {
-                FoodProperties foodProperties = werewolfConsumableItem.getWerewolfFood();
 
                 cir.setReturnValue(VDEntityUtils.hasPoison(foodProperties));
             }
