@@ -30,6 +30,8 @@ public class VDBlockEntityTypes {
                             VDBlocks.CRIMSON_WINE_SHELF.get(),
                             VDBlocks.WARPED_WINE_SHELF.get(),
                             VDBlocks.CURSED_SPRUCE_WINE_SHELF.get(),
-                            VDBlocks.DARK_SPRUCE_WINE_SHELF.get())
+                            VDBlocks.DARK_SPRUCE_WINE_SHELF.get(),
+                            VDBlocks.JACARANDA_WINE_SHELF.get(),
+                            VDBlocks.MAGIC_WINE_SHELF.get())
                     .build(null));
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "vampiresdelight:block/template_wine_shelf_support",
+  "textures": {
+    "body": "vampiresdelight:block/jacaranda_wine_shelf",
+    "particle": "werewolves:block/jacaranda_planks"
+  }
+}

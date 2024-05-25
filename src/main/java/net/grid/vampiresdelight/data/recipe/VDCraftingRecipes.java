@@ -85,6 +85,7 @@ public class VDCraftingRecipes {
         wineShelfRecipe(VDBlocks.WARPED_WINE_SHELF.get(), Blocks.WARPED_SLAB, Blocks.WARPED_PLANKS, consumer);
         wineShelfRecipe(VDBlocks.CURSED_SPRUCE_WINE_SHELF.get(), ModBlocks.CURSED_SPRUCE_SLAB.get(), ModBlocks.CURSED_SPRUCE_PLANKS.get(), consumer);
         wineShelfRecipe(VDBlocks.DARK_SPRUCE_WINE_SHELF.get(), ModBlocks.DARK_SPRUCE_SLAB.get(), ModBlocks.DARK_SPRUCE_PLANKS.get(), consumer);
+        // Werewolves wine shelves have to be made manually
 
         barStoolRecipe(VDBlocks.WHITE_BAR_STOOL.get(), Blocks.WHITE_WOOL, consumer);
         barStoolRecipe(VDBlocks.ORANGE_BAR_STOOL.get(), Blocks.ORANGE_WOOL, consumer);

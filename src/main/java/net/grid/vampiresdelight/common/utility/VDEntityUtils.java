@@ -27,44 +27,6 @@ public class VDEntityUtils {
         }
     }
 
-    /*
-    // TODO: make ww not able to consume hunter and such foods
-    public static void eatFood(Level level, LivingEntity entity, ItemStack foodItem, FoodProperties foodProperties, boolean addFoodEffects) {
-        if (foodItem.isEdible()) {
-            if (entity instanceof Player player) {
-                if (VDIntegrationUtils.isWerewolf(player) && VDIntegrationUtils.isModPresent(VDIntegrationUtils.WEREWOLVES))
-                    foodProperties = getModifiedWerewolfFood(foodProperties, player, foodItem);
-
-                player.getFoodData().eat(foodProperties.getNutrition(), foodProperties.getSaturationModifier());
-            }
-
-            if (addFoodEffects)
-                addFoodEffects(foodProperties, level, entity);
-
-            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), entity.getEatingSound(foodItem), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
-            if (!(entity instanceof Player) || !((Player) entity).getAbilities().instabuild) {
-                foodItem.shrink(1);
-            }
-
-            entity.gameEvent(GameEvent.EAT);
-        }
-    }
-
-    public static FoodProperties getModifiedWerewolfFood(FoodProperties foodProperties, Player player, ItemStack itemStack) {
-        Attribute foodGainAttribute = ForgeRegistries.ATTRIBUTES.getValue(VDIntegrationUtils.FOOD_GAIN);
-        if (foodGainAttribute == null) return foodProperties;
-
-        float foodConsumption = (float) player.getAttributeValue(foodGainAttribute);
-        
-        if (!VDIntegrationUtils.playerHasNotMeatSkill(player) && !(itemStack.is(VDCompatibilityTags.MEAT) || itemStack.is(VDTags.WEREWOLF_FOOD))) {
-            player.displayClientMessage(Component.translatable("text.werewolves.taste_not_right"), true);
-            return new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
-        } else {
-            return new FoodProperties.Builder().nutrition((int) (foodProperties.getNutrition() * foodConsumption)).saturationMod(foodProperties.getSaturationModifier() * foodConsumption).build();
-        }
-    }
-     */
-
     public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer, FoodProperties vampireFood, FoodProperties hunterFood) {
         feedVampire(stack, level, consumer);
         if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {

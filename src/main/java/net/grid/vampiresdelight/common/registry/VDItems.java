@@ -74,6 +74,10 @@ public class VDItems {
             () -> new FuelBlockItem(VDBlocks.CURSED_SPRUCE_WINE_SHELF.get(), basicItem(), 300));
     public static final RegistryObject<FuelBlockItem> DARK_SPRUCE_WINE_SHELF = ITEMS.register("dark_spruce_wine_shelf",
             () -> new FuelBlockItem(VDBlocks.DARK_SPRUCE_WINE_SHELF.get(), basicItem(), 300));
+    public static final RegistryObject<FuelBlockItem> JACARANDA_WINE_SHELF = ITEMS.register("jacaranda_wine_shelf",
+            () -> new FuelBlockItem(VDBlocks.JACARANDA_WINE_SHELF.get(), basicItem(), 300));
+    public static final RegistryObject<FuelBlockItem> MAGIC_WINE_SHELF = ITEMS.register("magic_wine_shelf",
+            () -> new FuelBlockItem(VDBlocks.MAGIC_WINE_SHELF.get(), basicItem(), 300));
     public static final RegistryObject<BlockItem> WHITE_BAR_STOOL = ITEMS.register("white_bar_stool",
             () -> new BlockItem(VDBlocks.WHITE_BAR_STOOL.get(), basicItem()));
     public static final RegistryObject<BlockItem> ORANGE_BAR_STOOL = ITEMS.register("orange_bar_stool",

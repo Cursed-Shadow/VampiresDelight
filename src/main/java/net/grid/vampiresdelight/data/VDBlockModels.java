@@ -45,6 +45,7 @@ public class VDBlockModels extends BlockModelProvider {
         wineShelfBlock(VDBlocks.WARPED_WINE_SHELF.get(), Blocks.WARPED_PLANKS);
         wineShelfBlock(VDBlocks.CURSED_SPRUCE_WINE_SHELF.get(), ModBlocks.CURSED_SPRUCE_PLANKS.get(), REFERENCE.MODID);
         wineShelfBlock(VDBlocks.DARK_SPRUCE_WINE_SHELF.get(), ModBlocks.DARK_SPRUCE_PLANKS.get(), REFERENCE.MODID);
+        // Werewolves wine shelves have to be made manually
 
         // Bar Stools
         BarStoolBlock.getBarStoolBlocks().forEach(this::barStoolBlock);

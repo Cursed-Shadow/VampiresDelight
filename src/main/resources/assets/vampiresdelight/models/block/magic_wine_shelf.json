@@ -1,0 +1,7 @@
+{
+  "parent": "vampiresdelight:block/template_wine_shelf",
+  "textures": {
+    "body": "vampiresdelight:block/magic_wine_shelf",
+    "particle": "werewolves:block/magic_planks"
+  }
+}

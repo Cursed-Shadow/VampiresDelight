@@ -42,6 +42,8 @@ public class VDCreativeTabs {
                         add(VDItems.WARPED_WINE_SHELF.get(), output);
                         add(VDItems.CURSED_SPRUCE_WINE_SHELF.get(), output);
                         add(VDItems.DARK_SPRUCE_WINE_SHELF.get(), output);
+                        add(VDItems.JACARANDA_WINE_SHELF.get(), VDIntegrationUtils.WEREWOLVES, output);
+                        add(VDItems.MAGIC_WINE_SHELF.get(), VDIntegrationUtils.WEREWOLVES, output);
 
                         add(VDItems.WHITE_BAR_STOOL.get(), output);
                         add(VDItems.LIGHT_GRAY_BAR_STOOL.get(), output);

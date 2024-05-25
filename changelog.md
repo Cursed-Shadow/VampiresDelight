@@ -11,7 +11,7 @@
 - Added new configs:
   - `generateCookingPotNearHunterCamp`:
     - `false` by default;
-- Added configs for configuring faction food tooltip colors:
+- Added new configs for configuring faction food tooltip colors:
   - `vampireFoodTooltipStartColor`:
     - `124, 40, 124` by default;
   - `vampireFoodTooltipEndColor`:
@@ -24,10 +24,16 @@
     - `250, 135, 0` by default;
   - `werewolfFoodTooltipEndColor`:
     - `115, 45, 0` by default;
+- Added new commands (mainly for testing purposes):
+  - `vampires-delight hungerBar`:
+    - `fill` - fills the food bar fully;
+    - `empty` - empties the hunger bar;
+    - `set` - fills the hunger bar by the entered value;
 
 ### Updates
 - Renamed **Clothes Dissolving** effect to just **Dissolving** in order to avoid unnecessary questions;
 - Tweaked config file appearance;
+- **Blood Syrup** now restores **4,5** blood drops;
 
 ### Fixes
 - Fixed food not nourishing humans;
