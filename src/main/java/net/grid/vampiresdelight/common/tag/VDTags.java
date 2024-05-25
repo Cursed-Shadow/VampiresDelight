@@ -21,7 +21,7 @@ public class VDTags {
     // Factional food (mostly for colored tooltips and such). (Look into the code before using).
     public static final TagKey<Item> VAMPIRE_FOOD = modItemTag("vampire_food");
     public static final TagKey<Item> HUNTER_FOOD = modItemTag("hunter_food");
-    public static final TagKey<Item> WEREWOLF_FOOD = modItemTag("werewolf_food");
+    public static final TagKey<Item> WEREWOLF_ONLY_FOOD = modItemTag("werewolf_only_food");
     public static final TagKey<Item> MINION_VAMPIRE_FOOD = modItemTag("minion_vampire_food");
 
     // Blocks

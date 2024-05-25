@@ -6,6 +6,8 @@ import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItem
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDHelper;
+import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -43,5 +45,8 @@ public class MixinFoodHelper {
 
         if (FOOD_CONTAINING_BAT.contains(itemStack.getItem()))
             cir.setReturnValue(false);
+
+        if (VDHelper.isRightItem(itemStack.getItem(), "werewolves:wolf_berries") && !VDIntegrationUtils.isWerewolf(player))
+            cir.setReturnValue(true);
     }
 }

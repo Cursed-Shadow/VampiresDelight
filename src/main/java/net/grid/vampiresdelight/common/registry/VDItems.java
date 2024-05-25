@@ -197,7 +197,7 @@ public class VDItems {
     public static final RegistryObject<HunterConsumableItem> SNOW_WHITE_ICE_CREAM = ITEMS.register("snow_white_ice_cream",
             () -> new HunterConsumableItem(foodItem(VDFoodValues.SNOW_WHITE_ICE_CREAM), true));
     public static final RegistryObject<WerewolfConsumableItem> WOLF_BERRY_COOKIE = ITEMS.register("wolf_berry_cookie",
-            () -> new WerewolfConsumableItem(foodItem(FoodValues.COOKIES), FoodValues.COOKIES, false, false, false, false));
+            () -> new WerewolfConsumableItem(foodItem(VDFoodValues.NASTY_POISON), FoodValues.COOKIES, false, false, false, false));
 
     // Basic Meals
     public static final RegistryObject<HunterConsumableItem> FISH_BURGER = ITEMS.register("fish_burger",

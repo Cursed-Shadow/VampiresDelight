@@ -63,7 +63,7 @@ public class ToolTipEvents {
             setBorderColors(vampireStartColor, vampireEndColor, event);
         } else if (stack.is(VDTags.HUNTER_FOOD) && (Helper.isVampire(player) || VDIntegrationUtils.isWerewolf(player))) {
             setBorderColors(hunterStartColor, hunterEndColor, event);
-        } else if (stack.is(VDTags.WEREWOLF_FOOD)) {
+        } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isRightItem(stack.getItem(), "werewolves:wolf_berries")) {
             setBorderColors(werewolfStartColor, werewolfEndColor, event);
         }
     }
@@ -85,7 +85,7 @@ public class ToolTipEvents {
             VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.HUNTER_FACTION);
         }
 
-        if (itemStack.is(VDItems.ORCHID_COOKIE.get()) && VDHelper.isLauncherPirate()) {
+        if ((itemStack.is(VDItems.ORCHID_COOKIE.get()) || itemStack.is(VDItems.WOLF_BERRY_COOKIE.get())) && VDHelper.isLauncherPirate()) {
             tooltip.add(VDTextUtils.getTranslation("text.pirated").withStyle(ChatFormatting.RED));
         }
 

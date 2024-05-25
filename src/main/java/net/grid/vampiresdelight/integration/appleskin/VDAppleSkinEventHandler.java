@@ -27,7 +27,7 @@ public class VDAppleSkinEventHandler {
             assert player != null;
 
             ItemStack itemStack = event.itemStack;
-            if (!(VDHelper.isItemOfVampireFoodClass(itemStack.getItem()) || itemStack.is(VDTags.VAMPIRE_FOOD)) && Helper.isVampire(player) && !itemStack.is(VDTags.BLOOD_FOOD)) {
+            if (Helper.isVampire(player) && !(VDHelper.isItemOfVampireFoodClass(itemStack.getItem()) || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.isRightItem(itemStack.getItem(), "werewolves:liver"))) {
                 event.setCanceled(true);
             }
         }

@@ -12,7 +12,7 @@ public class VDCompatibilityTags {
     // Werewolves
     public static final String WEREWOLVES = VDIntegrationUtils.WEREWOLVES;
     public static final TagKey<Item> SILVER_TOOL = externalItemTag(WEREWOLVES, "tools/silver");
-    public static final TagKey<Item> MEAT = externalItemTag(WEREWOLVES, "meat");
+    public static final TagKey<Item> WEREWOLF_FOOD = externalItemTag(WEREWOLVES, "werewolf_food");
 
     private static TagKey<Item> externalItemTag(String modId, String path) {
         return ItemTags.create(new ResourceLocation(modId, path));

@@ -11,7 +11,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -76,12 +75,9 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.SNOW_WHITE_ICE_CREAM.get());
         tag(VDTags.MINION_VAMPIRE_FOOD)
                 .add(VDItems.ORCHID_COOKIE.get());
-        tag(VDTags.WEREWOLF_FOOD)
-                .addOptionalTag(new ResourceLocation("werewolves:wolf_berries"));
-        tag(VDTags.BLOOD_FOOD)
-                //.add(Items.BAKED_POTATO)
-                //.add(vectorwing.farmersdelight.common.registry.ModItems.CHICKEN_SOUP.get())
-        ;
+        tag(VDTags.WEREWOLF_ONLY_FOOD)
+                .add(VDItems.WOLF_BERRY_COOKIE.get());
+        tag(VDTags.BLOOD_FOOD);
     }
 
     private void registerVampirismTags() {
@@ -123,9 +119,8 @@ public class VDItemTags extends ItemTagsProvider {
     public void registerCompatibilityTags() {
         tag(VDCompatibilityTags.SILVER_TOOL)
                 .add(VDItems.SILVER_KNIFE.get());
-        tag(VDCompatibilityTags.MEAT)
-                .add(VDItems.WOLF_BERRY_COOKIE.get())
-                .addOptionalTag(new ResourceLocation("werewolves:wolf_berries"));
+        tag(VDCompatibilityTags.WEREWOLF_FOOD)
+                .addTag(VDTags.WEREWOLF_ONLY_FOOD);
 
         tag(CompatibilityTags.CREATE_UPRIGHT_ON_BELT)
                 .add(VDItems.ORCHID_TEA.get())

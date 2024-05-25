@@ -8,6 +8,8 @@
 - Added **Werewolves** integration items (more to come later!):
   - **Silver Knife**;
   - **Wolf Berry Cookie**;
+  - **Jacaranda Wine Shelf**;
+  - **Magic Wine Shelf**;
 - Added new configs:
   - `generateCookingPotNearHunterCamp`:
     - `false` by default;
@@ -33,7 +35,9 @@
 ### Updates
 - Renamed **Clothes Dissolving** effect to just **Dissolving** in order to avoid unnecessary questions;
 - Tweaked config file appearance;
-- **Blood Syrup** now restores **4,5** blood drops;
+- Modified food values:
+  - **Blood Syrup**: `2,5` to `4,5` for vampires;
+  - **Orchid Cookie**: `1` to `1,5` for vampires;
 
 ### Fixes
 - Fixed food not nourishing humans;

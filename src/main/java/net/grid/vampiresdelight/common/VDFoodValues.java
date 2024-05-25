@@ -29,6 +29,9 @@ public class VDFoodValues {
             .nutrition(1).saturationMod(0.1f)
             .effect(() -> new MobEffectInstance(MobEffects.HUNGER, BRIEF_DURATION), 0.5F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, FLEETING_DURATION), 1.0F).build();
+    public static final FoodProperties NASTY_POISON = (new FoodProperties.Builder())
+            .nutrition(1).saturationMod(0.1f)
+            .effect(() -> new MobEffectInstance(MobEffects.POISON, 60), 1.0F).build();
 
     // Drinks
     public static final FoodProperties WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
@@ -114,7 +117,7 @@ public class VDFoodValues {
 
     // Sweets and desserts
     public static final FoodProperties ORCHID_COOKIE = (new FoodProperties.Builder())
-            .nutrition(2).saturationMod(0.4f).fast().build();
+            .nutrition(3).saturationMod(0.5f).fast().build();
     public static final FoodProperties ORCHID_ECLAIR = (new FoodProperties.Builder())
             .nutrition(8).saturationMod(0.7f).fast().build();
     public static final FoodProperties ORCHID_ICE_CREAM = (new FoodProperties.Builder())
