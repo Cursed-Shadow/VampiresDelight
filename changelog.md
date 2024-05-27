@@ -35,9 +35,12 @@
 ### Updates
 - Renamed **Clothes Dissolving** effect to just **Dissolving** in order to avoid unnecessary questions;
 - Tweaked config file appearance;
+- **Pure Sorbet**, **Orchid Ice Cream**, **Dark Ice Cream**, and **Snow-White Ice Cream** now clear fire from the consumer;
 - Modified food values:
   - **Blood Syrup**: `2,5` to `4,5` for vampires;
   - **Pure Sorbet**: `5` to `4`;
+  - **Snow_White Ice Cream**: `3,5` to `4`;
+  - **Weird Jelly**: effect duration: `30` to `60` seconds;
 
 ### Fixes
 - Fixed food not nourishing humans;

@@ -4,6 +4,7 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
@@ -89,6 +90,7 @@ public class VampireConsumableItem extends Item {
             this.affectConsumer(stack, level, consumer);
         }
 
+        // TODO: Make werewolves also get nasty affects from vampire food
         VDEntityUtils.consumeBloodFood(stack, level, consumer, vampireFood, hunterFood);
 
         level.playSound(null, consumer.getX(), consumer.getY(), consumer.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
