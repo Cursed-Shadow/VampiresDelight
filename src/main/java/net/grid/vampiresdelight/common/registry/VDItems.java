@@ -48,6 +48,10 @@ public class VDItems {
             () -> new FuelBlockItem(VDBlocks.DARK_SPRUCE_CABINET.get(), basicItem(), 300));
     public static final RegistryObject<FuelBlockItem> CURSED_SPRUCE_CABINET = ITEMS.register("cursed_spruce_cabinet",
             () -> new FuelBlockItem(VDBlocks.CURSED_SPRUCE_CABINET.get(), basicItem(), 300));
+    public static final RegistryObject<FuelBlockItem> JACARANDA_CABINET = ITEMS.register("jacaranda_cabinet",
+            () -> new FuelBlockItem(VDBlocks.JACARANDA_CABINET.get(), basicItem(), 300));
+    public static final RegistryObject<FuelBlockItem> MAGIC_CABINET = ITEMS.register("magic_cabinet",
+            () -> new FuelBlockItem(VDBlocks.MAGIC_CABINET.get(), basicItem(), 300));
     public static final RegistryObject<FuelBlockItem> OAK_WINE_SHELF = ITEMS.register("oak_wine_shelf",
             () -> new FuelBlockItem(VDBlocks.OAK_WINE_SHELF.get(), basicItem(), 300));
     public static final RegistryObject<FuelBlockItem> SPRUCE_WINE_SHELF = ITEMS.register("spruce_wine_shelf",

@@ -7,8 +7,10 @@
   "block.vampiresdelight.cursed_farmland": "Проклятая пашня",
   "block.vampiresdelight.vampire_orchid_crop": "Растущая вампирская орхидея",
   "block.vampiresdelight.spirit_lantern": "Фонарь духа",
-  "block.vampiresdelight.dark_spruce_cabinet": "Кладовая из тёмного дерева",
-  "block.vampiresdelight.cursed_spruce_cabinet": "Кладовая из проклятого дерева",
+  "block.vampiresdelight.dark_spruce_cabinet": "Кладовая из тёмной ели",
+  "block.vampiresdelight.cursed_spruce_cabinet": "Проклятая кладовая",
+  "block.vampiresdelight.jacaranda_cabinet": "Жакарандовая кладовая",
+  "block.vampiresdelight.magic_cabinet": "Магическая кладовая",
 
   "block.vampiresdelight.black_mushroom_block": "Блок чёрного гриба",
   "block.vampiresdelight.black_mushroom_stem": "Блок ножки чёрного гриба",
@@ -27,8 +29,8 @@
   "block.vampiresdelight.bamboo_wine_shelf": "Бамбуковая винная полка",
   "block.vampiresdelight.crimson_wine_shelf": "Багряная винная полка",
   "block.vampiresdelight.warped_wine_shelf": "Искажённая винная полка",
-  "block.vampiresdelight.dark_spruce_wine_shelf": "Винная полка из тёмного дерева",
-  "block.vampiresdelight.cursed_spruce_wine_shelf": "Винная полка из проклятого дерева",
+  "block.vampiresdelight.dark_spruce_wine_shelf": "Винная полка из тёмной ели",
+  "block.vampiresdelight.cursed_spruce_wine_shelf": "Проклятая винная полка",
   "block.vampiresdelight.jacaranda_wine_shelf": "Жакарандовая винная полка",
   "block.vampiresdelight.magic_wine_shelf": "Магическая винная полка",
 

@@ -45,6 +45,10 @@ public class VDBlocks {
             () -> new CabinetBlock(Block.Properties.copy(Blocks.BARREL)));
     public static final RegistryObject<CabinetBlock> CURSED_SPRUCE_CABINET = BLOCKS.register("cursed_spruce_cabinet",
             () -> new CabinetBlock(Block.Properties.copy(Blocks.BARREL)));
+    public static final RegistryObject<CabinetBlock> JACARANDA_CABINET = BLOCKS.register("jacaranda_cabinet",
+            () -> new CabinetBlock(Block.Properties.copy(Blocks.BARREL)));
+    public static final RegistryObject<CabinetBlock> MAGIC_CABINET = BLOCKS.register("magic_cabinet",
+            () -> new CabinetBlock(Block.Properties.copy(Blocks.BARREL)));
     public static final RegistryObject<WineShelfBlock> OAK_WINE_SHELF = BLOCKS.register("oak_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<WineShelfBlock> SPRUCE_WINE_SHELF = BLOCKS.register("spruce_wine_shelf",

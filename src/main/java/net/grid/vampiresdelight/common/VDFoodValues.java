@@ -117,7 +117,7 @@ public class VDFoodValues {
 
     // Sweets and desserts
     public static final FoodProperties ORCHID_COOKIE = (new FoodProperties.Builder())
-            .nutrition(3).saturationMod(0.5f).fast().build();
+            .nutrition(2).saturationMod(0.4f).fast().build();
     public static final FoodProperties ORCHID_ECLAIR = (new FoodProperties.Builder())
             .nutrition(8).saturationMod(0.7f).fast().build();
     public static final FoodProperties ORCHID_ICE_CREAM = (new FoodProperties.Builder())
@@ -131,7 +131,7 @@ public class VDFoodValues {
             .nutrition(7).saturationMod(0.6f).fast()
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, BRIEF_DURATION), 1.0F).build();
     public static final FoodProperties PURE_SORBET = (new FoodProperties.Builder())
-            .nutrition(10).saturationMod(0.8f).fast().alwaysEat()
+            .nutrition(8).saturationMod(0.8f).fast().alwaysEat()
             .effect(() -> new MobEffectInstance(VDEffects.FOG_VISION.get(), MEDIUM_DURATION), 1.0F).build();
     public static final FoodProperties TRICOLOR_DANGO = (new FoodProperties.Builder())
             .nutrition(12).saturationMod(1.4f).fast().build();
@@ -208,4 +208,8 @@ public class VDFoodValues {
                     return new MobEffectInstance(de.teamlapen.vampirism.core.ModEffects.SUNSCREEN.get(), BRIEF_DURATION);
                 }
             }, 1.0F).build();
+
+    // Other
+    public static final FoodProperties NONE = (new FoodProperties.Builder())
+            .nutrition(0).saturationMod(0).build();
 }

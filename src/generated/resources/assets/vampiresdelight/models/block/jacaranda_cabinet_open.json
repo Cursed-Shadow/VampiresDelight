@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "vampiresdelight:block/jacaranda_cabinet_front_open",
+    "side": "vampiresdelight:block/jacaranda_cabinet_side",
+    "top": "vampiresdelight:block/jacaranda_cabinet_top"
+  }
+}

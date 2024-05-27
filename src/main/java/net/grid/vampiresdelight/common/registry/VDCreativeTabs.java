@@ -27,7 +27,8 @@ public class VDCreativeTabs {
                         add(VDItems.ORCHID_BAG.get(), output);
                         add(VDItems.DARK_SPRUCE_CABINET.get(), output);
                         add(VDItems.CURSED_SPRUCE_CABINET.get(), output);
-                        add(VDItems.CURSED_FARMLAND.get(), output);
+                        add(VDItems.JACARANDA_CABINET.get(), VDIntegrationUtils.WEREWOLVES, output);
+                        add(VDItems.MAGIC_CABINET.get(), VDIntegrationUtils.WEREWOLVES, output);
 
                         add(VDItems.OAK_WINE_SHELF.get(), output);
                         add(VDItems.SPRUCE_WINE_SHELF.get(), output);
@@ -62,6 +63,7 @@ public class VDCreativeTabs {
                         add(VDItems.MAGENTA_BAR_STOOL.get(), output);
                         add(VDItems.PINK_BAR_STOOL.get(), output);
 
+                        add(VDItems.CURSED_FARMLAND.get(), output);
                         add(VDItems.SPIRIT_LANTERN.get(), output);
 
                         // Tools

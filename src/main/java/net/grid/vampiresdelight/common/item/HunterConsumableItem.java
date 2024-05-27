@@ -4,6 +4,7 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.core.ModEffects;
 import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.VDFoodValues;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
@@ -24,7 +25,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import vectorwing.farmersdelight.common.Configuration;
-import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import java.util.List;
 
@@ -102,7 +102,7 @@ public class HunterConsumableItem extends Item {
             entity = VampirismMod.proxy.getClientPlayer();
         }
 
-        return Helper.isHunter(entity) && hunterFood != null ? hunterFood : super.getFoodProperties(stack, entity);
+        return Helper.isHunter(entity) && hunterFood != null ? hunterFood : (Helper.isVampire(entity) ? VDFoodValues.NONE : super.getFoodProperties(stack, entity));
     }
 
     /**
@@ -127,7 +127,10 @@ public class HunterConsumableItem extends Item {
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {
-                TextUtils.addFoodEffectTooltip(stack, tooltip, 1.0F);
+                FoodProperties foodProperties = stack.getFoodProperties(player);
+                assert foodProperties != null;
+
+                VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
             }
         }
         if (Helper.isVampire(player)) VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.HUNTER_FACTION);

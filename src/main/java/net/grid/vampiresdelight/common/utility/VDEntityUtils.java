@@ -29,10 +29,10 @@ public class VDEntityUtils {
 
     public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer, FoodProperties vampireFood, FoodProperties hunterFood) {
         feedVampire(stack, level, consumer);
-        if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {
-            stack.shrink(1);
-        }
         if (Helper.isVampire(consumer)) {
+            if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {
+                stack.shrink(1);
+            }
             addFoodEffects(vampireFood, level, consumer);
         }
     }
@@ -40,11 +40,12 @@ public class VDEntityUtils {
     public static void feedVampire(ItemStack stack, Level level, LivingEntity consumer) {
         FoodProperties foodProperties = stack.getFoodProperties(consumer);
         assert foodProperties != null;
+        FoodProperties bloodFoodProperties = Helper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
         if (consumer instanceof Player player) {
-            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
+            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
         }
         if (consumer instanceof IVampire) {
-            ((IVampire) consumer).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
+            ((IVampire) consumer).drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
         } else if (!Helper.isVampire(consumer))
             consumer.eat(level, stack);
     }

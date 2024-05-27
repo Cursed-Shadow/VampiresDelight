@@ -52,6 +52,8 @@ public class VDBlockStates extends BlockStateProvider {
     protected void registerStatesAndModels() {
         this.cabinetBlock(VDBlocks.DARK_SPRUCE_CABINET.get(), "dark_spruce");
         this.cabinetBlock(VDBlocks.CURSED_SPRUCE_CABINET.get(), "cursed_spruce");
+        this.cabinetBlock(VDBlocks.JACARANDA_CABINET.get(), "jacaranda");
+        this.cabinetBlock(VDBlocks.MAGIC_CABINET.get(), "magic");
 
         this.wildCropBlock(VDBlocks.WILD_GARLIC.get());
 
@@ -70,7 +72,7 @@ public class VDBlockStates extends BlockStateProvider {
                 .partialState().with(VampireOrchidCropBlock.AGE, 0).modelForState().modelFile(models().getExistingFile(modLoc("vampire_orchid_crop_stage0"))).addModel()
                 .partialState().with(VampireOrchidCropBlock.AGE, 1).modelForState().modelFile(models().getExistingFile(modLoc("vampire_orchid_crop_stage1"))).addModel();
 
-        this.feastBlock((FeastBlock) VDBlocks.WEIRD_JELLY_BLOCK.get());
+        this.feastBlock(VDBlocks.WEIRD_JELLY_BLOCK.get());
 
         this.crateBlock(VDBlocks.GARLIC_CRATE.get(), "garlic");
 

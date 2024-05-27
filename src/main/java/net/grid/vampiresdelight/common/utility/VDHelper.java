@@ -39,7 +39,7 @@ public class VDHelper {
         return (location != null) ? location.getNamespace() : "";
     }
 
-    // I'm not proud of this. I'm sure there's a better way of doing this /:
+    // I'm not proud of this... I'm sure there's a better way of doing this /:
     public static boolean isRightItem(Item item, String name) {
         String predictedName = getItemModId(item) + ":" + getItemId(item);
         return Objects.equals(name, predictedName);

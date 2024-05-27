@@ -8,8 +8,8 @@
 - Added **Werewolves** integration items (more to come later!):
   - **Silver Knife**;
   - **Wolf Berry Cookie**;
-  - **Jacaranda Wine Shelf**;
-  - **Magic Wine Shelf**;
+  - **Jacaranda Cabinet and Wine Shelf**;
+  - **Magic Cabinet and Wine Shelf**;
 - Added new configs:
   - `generateCookingPotNearHunterCamp`:
     - `false` by default;
@@ -26,7 +26,7 @@
     - `250, 135, 0` by default;
   - `werewolfFoodTooltipEndColor`:
     - `115, 45, 0` by default;
-- Added new commands (mainly for testing purposes):
+- Added new commands (mostly for testing purposes):
   - `vampires-delight hungerBar`:
     - `fill` - fills the food bar fully;
     - `empty` - empties the hunger bar;
@@ -37,12 +37,14 @@
 - Tweaked config file appearance;
 - Modified food values:
   - **Blood Syrup**: `2,5` to `4,5` for vampires;
-  - **Orchid Cookie**: `1` to `1,5` for vampires;
+  - **Pure Sorbet**: `5` to `4`;
 
 ### Fixes
 - Fixed food not nourishing humans;
 - Fixed not being able to eat **Orchid Cake** with candle;
 - Fixed **Black Mushroom Soup** not giving bowl after eaten;
+- Fixed non-vampire player eating two vampire food items at a time;
+- Fixed non-vampire player being able to fill blood bottles after eating vampire food;
 
 ## 0.1.4
 

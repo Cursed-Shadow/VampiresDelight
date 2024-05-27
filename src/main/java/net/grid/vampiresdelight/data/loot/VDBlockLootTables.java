@@ -32,6 +32,8 @@ public class VDBlockLootTables extends BlockLootSubProvider {
 
         dropNamedContainer(VDBlocks.DARK_SPRUCE_CABINET.get());
         dropNamedContainer(VDBlocks.CURSED_SPRUCE_CABINET.get());
+        dropNamedContainer(VDBlocks.JACARANDA_CABINET.get());
+        dropNamedContainer(VDBlocks.MAGIC_CABINET.get());
 
         WineShelfBlock.getAllShelveBlocks().forEach(this::dropSelf);
         BarStoolBlock.getBarStoolBlocks().forEach(this::dropSelf);

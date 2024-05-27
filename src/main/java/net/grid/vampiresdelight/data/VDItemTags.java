@@ -10,7 +10,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -91,7 +90,9 @@ public class VDItemTags extends ItemTagsProvider {
 
         tag(ModTags.WOODEN_CABINETS)
                 .add(VDItems.DARK_SPRUCE_CABINET.get())
-                .add(VDItems.CURSED_SPRUCE_CABINET.get());
+                .add(VDItems.CURSED_SPRUCE_CABINET.get())
+                .add(VDItems.JACARANDA_CABINET.get())
+                .add(VDItems.MAGIC_CABINET.get());
     }
 
     @SuppressWarnings("unchecked")
@@ -120,7 +121,8 @@ public class VDItemTags extends ItemTagsProvider {
         tag(VDCompatibilityTags.SILVER_TOOL)
                 .add(VDItems.SILVER_KNIFE.get());
         tag(VDCompatibilityTags.WEREWOLF_FOOD)
-                .addTag(VDTags.WEREWOLF_ONLY_FOOD);
+                .addTag(VDTags.WEREWOLF_ONLY_FOOD)
+                .add(VDItems.PURE_SORBET.get());
 
         tag(CompatibilityTags.CREATE_UPRIGHT_ON_BELT)
                 .add(VDItems.ORCHID_TEA.get())

@@ -85,6 +85,8 @@ public class ToolTipEvents {
             VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.HUNTER_FACTION);
         }
 
+        //tooltip.add(Component.literal(VDIntegrationUtils.canWerewolfEatNotMeat(event.getEntity()) ? "yes" : "no"));
+
         if ((itemStack.is(VDItems.ORCHID_COOKIE.get()) || itemStack.is(VDItems.WOLF_BERRY_COOKIE.get())) && VDHelper.isLauncherPirate()) {
             tooltip.add(VDTextUtils.getTranslation("text.pirated").withStyle(ChatFormatting.RED));
         }

@@ -1,8 +1,11 @@
 package net.grid.vampiresdelight.common.utility;
 
 import de.teamlapen.vampirism.api.VampirismAPI;
+import de.teamlapen.vampirism.api.VampirismRegistries;
 import de.teamlapen.vampirism.api.entity.factions.IFaction;
+import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import net.grid.vampiresdelight.common.tag.VDForgeTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -11,6 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.LoadingModList;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 public class VDIntegrationUtils {
@@ -41,6 +45,16 @@ public class VDIntegrationUtils {
                         handler.getCurrentFaction().getFactionPlayerInterface().getSimpleName().equals("IWerewolfPlayer"))
                 .orElse(false);
     }
+
+    /*
+    public static boolean canWerewolfEatNotMeat(Player player) {
+        if (isWerewolf(player)) {
+            RegistryObject<ISkill<?>> NOT_MEAT = RegistryObject.create(new ResourceLocation(WEREWOLVES, "not_meat"), VampirismRegistries.SKILLS.get());
+            return VampirismAPI.getFactionPlayerHandler(player).map(s -> s.getCurrentFactionPlayer().get().getSkillHandler().isSkillEnabled(NOT_MEAT.get())).isPresent();
+        }
+        return false;
+    }
+     */
 
     public static final Tier SILVER_ITEM_TIER = new Tier() {
         @Override
