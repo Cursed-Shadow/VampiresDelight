@@ -8,6 +8,7 @@ import net.grid.vampiresdelight.common.VDFoodValues;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -118,8 +119,7 @@ public class HunterConsumableItem extends Item {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        Player player = VampirismMod.proxy.getClientPlayer();
-        assert player != null;
+        Player player = Minecraft.getInstance().player;
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
@@ -128,11 +128,13 @@ public class HunterConsumableItem extends Item {
             }
             if (this.hasFoodEffectTooltip) {
                 FoodProperties foodProperties = stack.getFoodProperties(player);
-                assert foodProperties != null;
 
-                VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
+                if (foodProperties != null)
+                    VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
             }
         }
-        if (Helper.isVampire(player)) VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.HUNTER_FACTION);
+
+        if (player != null && Helper.isVampire(player))
+            VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
     }
 }

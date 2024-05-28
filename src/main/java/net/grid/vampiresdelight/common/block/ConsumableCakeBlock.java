@@ -78,18 +78,19 @@ public class ConsumableCakeBlock extends CakeBlock {
 
             ItemStack sliceStack = this.getCakeSlice();
             FoodProperties foodProperties = sliceStack.getFoodProperties(player);
-            assert foodProperties != null;
 
-            // Don't shrink stack before retrieving food
-            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack)));
+            if (foodProperties != null) {
+                // Don't shrink stack before retrieving food
+                VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack)));
 
-            if (player instanceof IVampire) {
-                ((IVampire) player).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack));
-            } else if (!Helper.isVampire(player))
-                player.eat(level, sliceStack);
+                if (player instanceof IVampire) {
+                    ((IVampire) player).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack));
+                } else if (!Helper.isVampire(player))
+                    player.eat(level, sliceStack);
 
-            if (Helper.isVampire(player)) {
-                VDEntityUtils.addFoodEffects(foodProperties, level, player);
+                if (Helper.isVampire(player)) {
+                    VDEntityUtils.addFoodEffects(foodProperties, level, player);
+                }
             }
 
             int i = state.getValue(BITES);

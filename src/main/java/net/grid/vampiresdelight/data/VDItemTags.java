@@ -75,7 +75,8 @@ public class VDItemTags extends ItemTagsProvider {
         tag(VDTags.MINION_VAMPIRE_FOOD)
                 .add(VDItems.ORCHID_COOKIE.get());
         tag(VDTags.WEREWOLF_ONLY_FOOD)
-                .add(VDItems.WOLF_BERRY_COOKIE.get());
+                .add(VDItems.WOLF_BERRY_COOKIE.get())
+                .add(VDItems.WOLF_BERRY_ICE_CREAM.get());
         tag(VDTags.BLOOD_FOOD);
     }
 

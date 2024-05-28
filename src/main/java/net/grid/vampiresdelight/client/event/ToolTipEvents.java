@@ -1,6 +1,5 @@
 package net.grid.vampiresdelight.client.event;
 
-import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.items.BloodBottleItem;
 import de.teamlapen.vampirism.items.GarlicBreadItem;
@@ -15,6 +14,7 @@ import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -36,8 +36,7 @@ import static de.teamlapen.vampirism.items.BloodBottleFluidHandler.MULTIPLIER;
 public class ToolTipEvents {
     @SubscribeEvent
     public static void onTooltipColorEvent(RenderTooltipEvent.Color event) {
-        Player player = VampirismMod.proxy.getClientPlayer();
-        assert player != null;
+        Player player = Minecraft.getInstance().player;
 
         if (!VDConfiguration.COLORED_TOOLTIPS.get())
             return;
@@ -61,7 +60,7 @@ public class ToolTipEvents {
 
         if (stack.is(VDTags.VAMPIRE_FOOD)) {
             setBorderColors(vampireStartColor, vampireEndColor, event);
-        } else if (stack.is(VDTags.HUNTER_FOOD) && (Helper.isVampire(player) || VDIntegrationUtils.isWerewolf(player))) {
+        } else if (stack.is(VDTags.HUNTER_FOOD) && player != null && (Helper.isVampire(player) || VDIntegrationUtils.isWerewolf(player))) {
             setBorderColors(hunterStartColor, hunterEndColor, event);
         } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isRightItem(stack.getItem(), "werewolves:wolf_berries")) {
             setBorderColors(werewolfStartColor, werewolfEndColor, event);
@@ -78,14 +77,16 @@ public class ToolTipEvents {
         ItemStack itemStack = event.getItemStack();
         Item food = itemStack.getItem();
         List<Component> tooltip = event.getToolTip();
-        if (food instanceof VampirismItemBloodFoodItem || food instanceof BloodBottleItem) {
-            VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.VAMPIRE_FACTION);
-        }
-        if (food instanceof GarlicBreadItem) {
-            VDTooltipUtils.addFactionFoodToolTips(tooltip, VampirismMod.proxy.getClientPlayer(), VReference.HUNTER_FACTION);
-        }
 
-        //tooltip.add(Component.literal(VDIntegrationUtils.canWerewolfEatNotMeat(event.getEntity()) ? "yes" : "no"));
+        Player player = Minecraft.getInstance().player;
+        if (player != null) {
+            if (food instanceof VampirismItemBloodFoodItem || food instanceof BloodBottleItem) {
+                VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
+            }
+            if (food instanceof GarlicBreadItem) {
+                VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
+            }
+        }
 
         if ((itemStack.is(VDItems.ORCHID_COOKIE.get()) || itemStack.is(VDItems.WOLF_BERRY_COOKIE.get())) && VDHelper.isLauncherPirate()) {
             tooltip.add(VDTextUtils.getTranslation("text.pirated").withStyle(ChatFormatting.RED));

@@ -6,6 +6,7 @@ import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,19 +32,10 @@ public class WerewolfConsumableItem extends Item {
     private final boolean hasCustomTooltip;
     private final boolean hasFactionTooltip;
 
-    public WerewolfConsumableItem(Properties pProperties) {
-        super(pProperties);
-        this.werewolfFood = null;
-        this.hasFoodEffectTooltip = false;
-        this.hasCustomTooltip = false;
-        this.hasHumanFoodEffectTooltip = false;
-        this.hasFactionTooltip = true;
-    }
-
     public WerewolfConsumableItem(Properties pProperties, FoodProperties werewolfFood) {
         super(pProperties);
         this.werewolfFood = werewolfFood;
-        this.hasFoodEffectTooltip = false;
+        this.hasFoodEffectTooltip = true;
         this.hasCustomTooltip = false;
         this.hasHumanFoodEffectTooltip = false;
         this.hasFactionTooltip = true;
@@ -99,7 +91,7 @@ public class WerewolfConsumableItem extends Item {
             entity = VampirismMod.proxy.getClientPlayer();
         }
 
-        return VDIntegrationUtils.isWerewolf(entity) && werewolfFood != null ? werewolfFood : super.getFoodProperties(stack, entity);
+        return VDIntegrationUtils.isWerewolf(entity) ? werewolfFood : super.getFoodProperties(stack, entity);
     }
 
     /**
@@ -111,26 +103,24 @@ public class WerewolfConsumableItem extends Item {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        Player player = VampirismMod.proxy.getClientPlayer();
-        assert player != null;
+        Player player = Minecraft.getInstance().player;
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
-            if (this.hasFoodEffectTooltip) {
+            if (this.hasFoodEffectTooltip && player != null) {
                 FoodProperties foodProperties = this.getFoodProperties(stack, player);
-                assert foodProperties != null;
 
-                if (!foodProperties.getEffects().isEmpty()) {
+                if (foodProperties != null && !foodProperties.getEffects().isEmpty()) {
                     if (VDIntegrationUtils.isWerewolf(player) || hasHumanFoodEffectTooltip)
                         VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
                 }
             }
         }
 
-        if (hasFactionTooltip)
+        if (hasFactionTooltip && player != null)
             VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player);
     }
 }

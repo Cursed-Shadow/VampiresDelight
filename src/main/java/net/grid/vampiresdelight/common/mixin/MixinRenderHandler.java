@@ -22,8 +22,7 @@ public class MixinRenderHandler {
     @Inject(at = @At("TAIL"), method = "onClientTick(Lnet/minecraftforge/event/TickEvent$ClientTickEvent;)V", remap = false)
     public void onFogClientTick(TickEvent.@NotNull ClientTickEvent event, CallbackInfo ci) {
         Player player = Minecraft.getInstance().player;
-        assert player != null;
-        if (player.tickCount % 10 == 0) {
+        if (player != null && player.tickCount % 10 == 0) {
             if ((VampirismConfig.CLIENT.renderVampireForestFog.get() || VampirismConfig.SERVER.enforceRenderForestFog.get()) &&
                     (Helper.isEntityInArtificalVampireFogArea(player) || Helper.isEntityInVampireBiome(player))) {
                 vampireBiomeFogDistanceMultiplier += VDRenderUtils.getFogDistanceMultiplier(player);

@@ -8,6 +8,7 @@
 - Added **Werewolves** integration items (more to come later!):
   - **Silver Knife**;
   - **Wolf Berry Cookie**;
+  - **Wolf Berry Ice Cream**;
   - **Jacaranda Cabinet and Wine Shelf**;
   - **Magic Cabinet and Wine Shelf**;
 - Added new configs:
@@ -35,12 +36,14 @@
 ### Updates
 - Renamed **Clothes Dissolving** effect to just **Dissolving** in order to avoid unnecessary questions;
 - Tweaked config file appearance;
-- **Pure Sorbet**, **Orchid Ice Cream**, **Dark Ice Cream**, and **Snow-White Ice Cream** now clear fire from the consumer;
+- **Pure Sorbet**, **Orchid Ice Cream**, **Dark Ice Cream**, and **Snow-White Ice Cream** now clear fire from the consumer and can always be eaten;
+- **Cursed Cupcake** no longer heals player, but gives regeneration effect;
 - Modified food values:
   - **Blood Syrup**: `2,5` to `4,5` for vampires;
   - **Pure Sorbet**: `5` to `4`;
-  - **Snow_White Ice Cream**: `3,5` to `4`;
   - **Weird Jelly**: effect duration: `30` to `60` seconds;
+  - **Snow_White Ice Cream**: `3,5` to `4`;
+  - **Orchid Ice Cream** and **Borscht**: changed `absorption` effect to `resistance`;
 
 ### Fixes
 - Fixed food not nourishing humans;
@@ -48,6 +51,10 @@
 - Fixed **Black Mushroom Soup** not giving bowl after eaten;
 - Fixed non-vampire player eating two vampire food items at a time;
 - Fixed non-vampire player being able to fill blood bottles after eating vampire food;
+
+### Translations
+- Corrected:
+  - ru_RU;
 
 ## 0.1.4
 

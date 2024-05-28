@@ -32,17 +32,18 @@ public class VampirePieBlock extends PieBlock {
         } else {
             ItemStack stack = this.getPieSliceItem();
             FoodProperties foodProperties = stack.getItem().getFoodProperties(stack, consumer);
-            assert foodProperties != null;
 
-            VampirePlayer.getOpt(consumer).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
+            if (foodProperties != null) {
+                VampirePlayer.getOpt(consumer).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
 
-            if (consumer instanceof IVampire) {
-                ((IVampire) consumer).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
-            } else if (!Helper.isVampire(consumer))
-                consumer.eat(level, stack);
+                if (consumer instanceof IVampire) {
+                    ((IVampire) consumer).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
+                } else if (!Helper.isVampire(consumer))
+                    consumer.eat(level, stack);
 
-            if (Helper.isVampire(consumer)) {
-                VDEntityUtils.addFoodEffects(foodProperties, level, consumer);
+                if (Helper.isVampire(consumer)) {
+                    VDEntityUtils.addFoodEffects(foodProperties, level, consumer);
+                }
             }
 
             int bites = state.getValue(BITES);

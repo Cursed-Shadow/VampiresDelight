@@ -27,27 +27,31 @@ public class VDEntityUtils {
         }
     }
 
-    public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer, FoodProperties vampireFood, FoodProperties hunterFood) {
+    public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer) {
         feedVampire(stack, level, consumer);
         if (Helper.isVampire(consumer)) {
             if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {
                 stack.shrink(1);
             }
-            addFoodEffects(vampireFood, level, consumer);
+            FoodProperties foodProperties = stack.getFoodProperties(consumer);
+            if (foodProperties != null)
+                addFoodEffects(foodProperties, level, consumer);
         }
     }
 
     public static void feedVampire(ItemStack stack, Level level, LivingEntity consumer) {
         FoodProperties foodProperties = stack.getFoodProperties(consumer);
-        assert foodProperties != null;
-        FoodProperties bloodFoodProperties = Helper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
-        if (consumer instanceof Player player) {
-            VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
+
+        if (foodProperties != null) {
+            FoodProperties bloodFoodProperties = Helper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
+            if (consumer instanceof Player player) {
+                VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
+            }
+            if (consumer instanceof IVampire) {
+                ((IVampire) consumer).drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
+            } else if (!Helper.isVampire(consumer))
+                consumer.eat(level, stack);
         }
-        if (consumer instanceof IVampire) {
-            ((IVampire) consumer).drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
-        } else if (!Helper.isVampire(consumer))
-            consumer.eat(level, stack);
     }
 
     public static boolean hasPoison(FoodProperties foodProperties) {
