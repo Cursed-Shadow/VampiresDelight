@@ -51,6 +51,7 @@
 - Fixed **Black Mushroom Soup** not giving bowl after eaten;
 - Fixed non-vampire player eating two vampire food items at a time;
 - Fixed non-vampire player being able to fill blood bottles after eating vampire food;
+- Fixed showing **Nourishment** effect blood bar overlay to humans;
 
 ### Translations
 - Corrected:

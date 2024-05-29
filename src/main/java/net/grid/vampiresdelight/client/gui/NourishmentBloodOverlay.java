@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
+import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.mixin.accessor.BloodStatsAccessor;
 import net.minecraft.client.Minecraft;
@@ -36,7 +37,7 @@ public class NourishmentBloodOverlay {
             Minecraft mc = Minecraft.getInstance();
             ForgeGui gui = (ForgeGui) mc.gui;
             boolean isMounted = mc.player != null && mc.player.getVehicle() instanceof LivingEntity;
-            if (!isMounted && !mc.options.hideGui && gui.shouldDrawSurvivalElements()) {
+            if (!isMounted && !mc.options.hideGui && gui.shouldDrawSurvivalElements() && Helper.isVampire(mc.player)) {
                 renderNourishmentOverlay(gui, event.getGuiGraphics());
             }
         }
