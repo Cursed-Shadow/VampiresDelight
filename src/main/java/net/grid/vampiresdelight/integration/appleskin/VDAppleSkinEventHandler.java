@@ -1,12 +1,12 @@
 package net.grid.vampiresdelight.integration.appleskin;
 
+import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItemAccessor;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -23,7 +23,7 @@ public class VDAppleSkinEventHandler {
     @SubscribeEvent
     public void onPreTooltipEvent(TooltipOverlayEvent.Pre event) {
         if (VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES.get()) {
-            Player player = Minecraft.getInstance().player;
+            Player player = VampirismMod.proxy.getClientPlayer();
 
             ItemStack itemStack = event.itemStack;
             if (player != null && Helper.isVampire(player) && !(VDHelper.isItemOfVampireFoodClass(itemStack.getItem()) || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.isRightItem(itemStack.getItem(), "werewolves:liver"))) {

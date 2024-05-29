@@ -8,7 +8,6 @@ import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
@@ -53,7 +52,7 @@ public class OrchidTeaItem extends VampireDrinkableItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        Player player = Minecraft.getInstance().player;
+        Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (player != null && Helper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get()) {

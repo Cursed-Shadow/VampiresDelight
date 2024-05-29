@@ -8,7 +8,6 @@ import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -138,7 +137,7 @@ public class VampireConsumableItem extends Item {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        Player player = Minecraft.getInstance().player;
+        Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {

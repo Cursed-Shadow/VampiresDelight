@@ -16,7 +16,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +32,7 @@ import java.util.Random;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class AlchemicalCocktailEntity extends ThrowableItemProjectile implements ItemSupplier  {
+public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
     public AlchemicalCocktailEntity(EntityType<? extends AlchemicalCocktailEntity> entityType, Level level) {
         super(entityType, level);
     }
@@ -56,10 +55,10 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile implements
     public void handleEntityEvent(byte id) {
         ItemStack entityStack = new ItemStack(this.getDefaultItem());
         if (id == 3) {
-            ParticleOptions iparticledata = new ItemParticleOption(ParticleTypes.ITEM, entityStack);
+            ParticleOptions particleOptions = new ItemParticleOption(ParticleTypes.ITEM, entityStack);
 
             for (int i = 0; i < 12; ++i) {
-                this.level().addParticle(iparticledata, this.getX(), this.getY(), this.getZ(),
+                this.level().addParticle(particleOptions, this.getX(), this.getY(), this.getZ(),
                         ((double) this.random.nextFloat() * 2.0D - 1.0D) * 0.1F,
                         ((double) this.random.nextFloat() * 2.0D - 1.0D) * 0.1F + 0.1F,
                         ((double) this.random.nextFloat() * 2.0D - 1.0D) * 0.1F);
@@ -74,13 +73,14 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile implements
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), 0);
         entity.setSecondsOnFire(16);
         setOnFire(result);
+
         this.playSound(SoundEvents.GLASS_BREAK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
     }
 
     @Override
     protected void onHit(HitResult result) {
         super.onHit(result);
-        if (!this.level().isClientSide) {
+        if (!level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte) 3);
             setOnFire(result);
             this.playSound(SoundEvents.GLASS_BREAK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
@@ -89,19 +89,26 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile implements
     }
 
     private void setOnFire(HitResult result) {
-        if (!VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get()) return;
+        if (VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get() && !level().isClientSide) {
+            BlockPos blockPos = BlockPos.containing(result.getLocation());
+            int radius = 3;
 
-        BlockPos blockPos = BlockPos.containing(result.getLocation());
-        for (int dx = -1; dx < 3; dx++) {
-            for (int dy = -2; dy < 2; dy++) {
-                for (int dz = -1; dz < 3; dz++) {
-                    BlockPos pos = blockPos.offset(dx, dy, dz);
-                    BlockState blockState = this.level().getBlockState(pos);
-                    Random random = new Random();
-                    if (blockState.canBeReplaced() &&
-                            this.level().getBlockState(pos.below()).isFaceSturdy(this.level(), pos.below(), Direction.UP) &&
-                            random.nextInt(4) != 0) {
-                        this.level().setBlockAndUpdate(pos, ModBlocks.ALCHEMICAL_FIRE.get().defaultBlockState());
+            for (int dx = -radius; dx <= radius; dx++) {
+                for (int dz = -radius; dz <= radius; dz++) {
+                    double distance = Math.sqrt(dx * dx + dz * dz);
+                    if (distance > radius) continue;
+
+                    for (int dy = -2; dy < 2; dy++) {
+                        BlockPos pos = blockPos.offset(dx, dy, dz);
+                        BlockState blockState = level().getBlockState(pos);
+                        BlockState blockStateBelow = level().getBlockState(pos.below());
+
+                        Random random = new Random();
+                        double probability = (radius - distance) / radius;
+
+                        if (blockState.canBeReplaced() && blockStateBelow.isFaceSturdy(level(), pos.below(), Direction.UP) && random.nextDouble() < probability) {
+                            level().setBlockAndUpdate(pos, ModBlocks.ALCHEMICAL_FIRE.get().defaultBlockState());
+                        }
                     }
                 }
             }

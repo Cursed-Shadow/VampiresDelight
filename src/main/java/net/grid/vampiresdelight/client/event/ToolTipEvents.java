@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.client.event;
 
+import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.items.BloodBottleItem;
 import de.teamlapen.vampirism.items.GarlicBreadItem;
@@ -14,7 +15,6 @@ import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +36,7 @@ import static de.teamlapen.vampirism.items.BloodBottleFluidHandler.MULTIPLIER;
 public class ToolTipEvents {
     @SubscribeEvent
     public static void onTooltipColorEvent(RenderTooltipEvent.Color event) {
-        Player player = Minecraft.getInstance().player;
+        Player player = VampirismMod.proxy.getClientPlayer();
 
         if (!VDConfiguration.COLORED_TOOLTIPS.get())
             return;
@@ -78,7 +78,7 @@ public class ToolTipEvents {
         Item food = itemStack.getItem();
         List<Component> tooltip = event.getToolTip();
 
-        Player player = Minecraft.getInstance().player;
+        Player player = VampirismMod.proxy.getClientPlayer();
         if (player != null) {
             if (food instanceof VampirismItemBloodFoodItem || food instanceof BloodBottleItem) {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);

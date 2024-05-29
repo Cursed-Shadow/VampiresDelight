@@ -1,8 +1,8 @@
 package net.grid.vampiresdelight.common.mixin;
 
+import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.tag.VDTags;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +21,7 @@ import java.util.List;
 public class MixinConsumableItem {
     @Inject(method = "appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V", at = @At("HEAD"), cancellable = true)
     public void hideFoodTooltipsForVampires(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
-        Player player = Minecraft.getInstance().player;
+        Player player = VampirismMod.proxy.getClientPlayer();
         if (player != null)
             if (Helper.isVampire(player) && stack.getItem() instanceof ConsumableItem && !(stack.getItem() instanceof DrinkableItem) && !stack.is(VDTags.BLOOD_FOOD))
                 ci.cancel();

@@ -1,10 +1,10 @@
 package net.grid.vampiresdelight.common.mixin;
 
+import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.client.renderer.RenderHandler;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.utility.VDRenderUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +21,7 @@ public class MixinRenderHandler {
 
     @Inject(at = @At("TAIL"), method = "onClientTick(Lnet/minecraftforge/event/TickEvent$ClientTickEvent;)V", remap = false)
     public void onFogClientTick(TickEvent.@NotNull ClientTickEvent event, CallbackInfo ci) {
-        Player player = Minecraft.getInstance().player;
+        Player player = VampirismMod.proxy.getClientPlayer();
         if (player != null && player.tickCount % 10 == 0) {
             if ((VampirismConfig.CLIENT.renderVampireForestFog.get() || VampirismConfig.SERVER.enforceRenderForestFog.get()) &&
                     (Helper.isEntityInArtificalVampireFogArea(player) || Helper.isEntityInVampireBiome(player))) {
