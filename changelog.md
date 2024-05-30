@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+### Updates
+- **Alchemical Cocktail**'s splash now has a spherical form;
+- **Garlic Bread** can now be eaten by humans;
+
 ## 0.1.5
 
 ### Additions
