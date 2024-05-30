@@ -56,6 +56,11 @@ public class AlchemicalCocktailItem extends Item implements IFactionExclusiveIte
     }
 
     @Override
+    public int getMaxStackSize(ItemStack stack) {
+        return VDConfiguration.ALCHEMICAL_COCKTAIL_STACK_SIZE.get();
+    }
+
+    @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
         if (!VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get()) {

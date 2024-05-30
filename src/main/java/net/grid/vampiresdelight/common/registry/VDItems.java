@@ -123,7 +123,7 @@ public class VDItems {
     public static final RegistryObject<KnifeItem> SILVER_KNIFE = ITEMS.register("silver_knife",
             () -> new KnifeItem(VDIntegrationUtils.SILVER_ITEM_TIER, 0.5F, -2.0F, basicItem()));
     public static final RegistryObject<AlchemicalCocktailItem> ALCHEMICAL_COCKTAIL = ITEMS.register("alchemical_cocktail",
-            () -> new AlchemicalCocktailItem(basicItem().stacksTo(8)));
+            () -> new AlchemicalCocktailItem(basicItem()));
 
     // Farming
     public static final RegistryObject<BlockItem> CURSED_FARMLAND = ITEMS.register("cursed_farmland",

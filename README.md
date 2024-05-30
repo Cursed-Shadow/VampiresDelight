@@ -34,16 +34,14 @@
 
 - [Lunofe (Zin)](https://github.com/lunofe) (Code/Balance)
 
-- [Fluffy_Nuar](https://github.com/fluffy-nuar) (Design ideas)
+- [Fluffy_Nuar](https://github.com/fluffy-nuar) (Ideas)
 
 ### Translators
 
-- ru-RU - DimensionPainter
+- **ru-RU** - DimensionPainter
 
 ### Credits
 
-- [Vectorwing](https://github.com/vectorwing) (Farmer's Delight developer)
+- **Farmer's Delight** mod - [Vectorwing](https://github.com/vectorwing)
 
-- [Cheaterpaul](https://paube.de) (Vampirism developer)
-
-- [Maxanier](https://maxanier.de) (Vampirism developer)
+- **Vampirism** mod - [Maxanier](https://maxanier.de), [Cheaterpaul](https://paube.de)

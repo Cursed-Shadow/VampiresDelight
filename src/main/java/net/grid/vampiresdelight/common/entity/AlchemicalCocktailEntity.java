@@ -91,7 +91,7 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
     private void setOnFire(HitResult result) {
         if (VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get() && !level().isClientSide) {
             BlockPos blockPos = BlockPos.containing(result.getLocation());
-            int radius = 3;
+            int radius = VDConfiguration.ALCHEMICAL_COCKTAIL_SPLASH_RADIUS.get();
 
             for (int dx = -radius; dx <= radius; dx++) {
                 for (int dz = -radius; dz <= radius; dz++) {

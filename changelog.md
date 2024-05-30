@@ -14,6 +14,12 @@
 - Added new configs:
   - `generateCookingPotNearHunterCamp`:
     - `false` by default;
+  - `alchemicalCocktailSplashRadius`:
+    - `3` by default;
+    - Range: from `1` to `99`;
+  - `alchemicalCocktailStackSize`:
+    - `8` by default;
+    - Range: from `1` to `64`;
 - Added new configs for configuring faction food tooltip colors:
   - `vampireFoodTooltipStartColor`:
     - `124, 40, 124` by default;
@@ -32,12 +38,15 @@
     - `fill` - fills the food bar fully;
     - `empty` - empties the hunger bar;
     - `set` - fills the hunger bar by the entered value;
+- Added an item tag for data packs:
+  - `vampiresdelight:blood_food` - makes food restore blood bar for vampires. The value is the same as human food;
 
 ### Updates
 - Renamed **Clothes Dissolving** effect to just **Dissolving** in order to avoid unnecessary questions;
 - Tweaked config file appearance;
 - **Pure Sorbet**, **Orchid Ice Cream**, **Dark Ice Cream**, and **Snow-White Ice Cream** now clear fire from the consumer and can always be eaten;
 - **Cursed Cupcake** no longer heals player, but gives regeneration effect;
+- Changed **Alchemical Cocktail**'s splash form to be more organic;
 - Modified food values:
   - **Blood Syrup**: `2,5` to `4,5` for vampires;
   - **Pure Sorbet**: `5` to `4`;
@@ -52,6 +61,7 @@
 - Fixed non-vampire player eating two vampire food items at a time;
 - Fixed non-vampire player being able to fill blood bottles after eating vampire food;
 - Fixed showing **Nourishment** effect blood bar overlay to humans;
+- Fixed **Alchemical Cocktail** not working on servers;
 
 ### Translations
 - Corrected:

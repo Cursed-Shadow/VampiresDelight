@@ -20,6 +20,8 @@ public class VDConfiguration {
 
     public static final String CATEGORY_ITEMS = "items";
     public static ForgeConfigSpec.BooleanValue ALCHEMICAL_COCKTAIL_BURNS_GROUND;
+    public static ForgeConfigSpec.IntValue ALCHEMICAL_COCKTAIL_SPLASH_RADIUS;
+    public static ForgeConfigSpec.IntValue ALCHEMICAL_COCKTAIL_STACK_SIZE;
 
     public static final String CATEGORY_EFFECTS = "effects";
     public static ForgeConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
@@ -78,6 +80,10 @@ public class VDConfiguration {
         COMMON_BUILDER.comment("Items").push(CATEGORY_ITEMS);
         ALCHEMICAL_COCKTAIL_BURNS_GROUND = COMMON_BUILDER.comment("Should the Alchemical Cocktail burn ground when thrown? Recommended to set this to \"false\" on servers with claims.")
                 .define("alchemicalCocktailBurnsGround", true);
+        ALCHEMICAL_COCKTAIL_SPLASH_RADIUS = COMMON_BUILDER.comment("What should be the radius of Alchemical Cocktail fire splash?")
+                .defineInRange("alchemicalCocktailSplashRadius", 3, 1, 99);
+        ALCHEMICAL_COCKTAIL_STACK_SIZE = COMMON_BUILDER.comment("What should be the maximum stack size of the Alchemical Cocktail?")
+                .defineInRange("alchemicalCocktailStackSize", 8, 1, 64);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Effects").push(CATEGORY_EFFECTS);
