@@ -7,24 +7,21 @@ import net.grid.vampiresdelight.common.registry.VDItems;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -48,22 +45,6 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
     @Override
     protected Item getDefaultItem() {
         return VDItems.ALCHEMICAL_COCKTAIL.get();
-    }
-
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void handleEntityEvent(byte id) {
-        ItemStack entityStack = new ItemStack(this.getDefaultItem());
-        if (id == 3) {
-            ParticleOptions particleOptions = new ItemParticleOption(ParticleTypes.ITEM, entityStack);
-
-            for (int i = 0; i < 12; ++i) {
-                this.level().addParticle(particleOptions, this.getX(), this.getY(), this.getZ(),
-                        ((double) this.random.nextFloat() * 2.0D - 1.0D) * 0.1F,
-                        ((double) this.random.nextFloat() * 2.0D - 1.0D) * 0.1F + 0.1F,
-                        ((double) this.random.nextFloat() * 2.0D - 1.0D) * 0.1F);
-            }
-        }
     }
 
     @Override
@@ -91,10 +72,10 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
     private void setOnFire(HitResult result) {
         if (VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get() && !level().isClientSide) {
             BlockPos blockPos = BlockPos.containing(result.getLocation());
-            int radius = VDConfiguration.ALCHEMICAL_COCKTAIL_SPLASH_RADIUS.get();
+            double radius = VDConfiguration.ALCHEMICAL_COCKTAIL_SPLASH_RADIUS.get();
 
-            for (int dx = -radius; dx <= radius; dx++) {
-                for (int dz = -radius; dz <= radius; dz++) {
+            for (int dx = (int) -Math.ceil(radius); dx <= radius; dx++) {
+                for (int dz = (int) -Math.ceil(radius); dz <= radius; dz++) {
                     double distance = Math.sqrt(dx * dx + dz * dz);
                     if (distance > radius) continue;
 
@@ -106,13 +87,19 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
                         Random random = new Random();
                         double probability = (radius - distance) / radius;
 
-                        if (blockState.canBeReplaced() && blockStateBelow.isFaceSturdy(level(), pos.below(), Direction.UP) && random.nextDouble() < probability) {
+                        //level().setBlockAndUpdate(pos, Blocks.EMERALD_BLOCK.defaultBlockState());
+                        if (blockState.canBeReplaced() && isProperBlockBelow(blockStateBelow, pos.below(), level()) && random.nextDouble() < probability) {
                             level().setBlockAndUpdate(pos, ModBlocks.ALCHEMICAL_FIRE.get().defaultBlockState());
                         }
                     }
                 }
             }
         }
+    }
+
+    private static boolean isProperBlockBelow(BlockState blockStateBelow, BlockPos posBelow, Level level) {
+        Block blockBelow = blockStateBelow.getBlock();
+        return blockStateBelow.isFaceSturdy(level, posBelow, Direction.UP) || blockStateBelow.is(BlockTags.LEAVES) || blockBelow instanceof StairBlock;
     }
 
     @Override
@@ -122,6 +109,6 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
 
     @Override
     protected float getGravity() {
-        return 0.05F;
+        return 0.1F;
     }
 }
