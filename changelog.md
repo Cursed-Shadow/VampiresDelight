@@ -1,10 +1,13 @@
 # Changelog
 
-## 0.1.6
+## 0.1.5b
 
 ### Updates
 - **Alchemical Cocktail**'s splash now has a spherical form;
 - **Garlic Bread** can now be eaten by humans;
+
+### Fixes
+- Fixed vampire food item not giving effects and leftover item (bowl/glass bottle);
 
 ## 0.1.5
 

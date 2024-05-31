@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.common.event;
 
 import de.teamlapen.vampirism.api.EnumStrength;
 import de.teamlapen.vampirism.core.ModItems;
+import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.item.HunterConsumableItem;
@@ -45,7 +46,7 @@ public class PlayerEventHandler {
                     disgustingFoodConsumed(livingEntity);
                 }
             } else {
-                if (item instanceof VampireConsumableItem && itemStack.is(VDTags.VAMPIRE_FOOD)) {
+                if (item instanceof VampireConsumableItem && itemStack.is(VDTags.VAMPIRE_FOOD) || item instanceof VampirismItemBloodFoodItem) {
                     disgustingFoodConsumed(livingEntity);
                 }
             }

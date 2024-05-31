@@ -29,13 +29,16 @@ public class VDEntityUtils {
 
     public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer) {
         feedVampire(stack, level, consumer);
+
         if (Helper.isVampire(consumer)) {
+            FoodProperties foodProperties = stack.getFoodProperties(consumer);
+            if (foodProperties != null) {
+                addFoodEffects(foodProperties, level, consumer);
+            }
+
             if (consumer instanceof Player player && !player.isCreative() || !(consumer instanceof Player)) {
                 stack.shrink(1);
             }
-            FoodProperties foodProperties = stack.getFoodProperties(consumer);
-            if (foodProperties != null)
-                addFoodEffects(foodProperties, level, consumer);
         }
     }
 
