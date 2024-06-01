@@ -84,21 +84,30 @@ public class VDEntityUtils {
         }
     }
 
-    public static void addParticlesAroundEntity(ParticleOptions pParticleOption, LivingEntity livingEntity, int amount, double speedMultiplier, double yOffset) {
+    public static void addParticlesAroundEntity(ParticleOptions particle, LivingEntity livingEntity, int amount, double speedMultiplier, double yOffset) {
         for (int i = 0; i <= amount; i++) {
             double d0 = livingEntity.getRandom().nextGaussian() * speedMultiplier;
             double d1 = livingEntity.getRandom().nextGaussian() * speedMultiplier;
             double d2 = livingEntity.getRandom().nextGaussian() * speedMultiplier;
-            livingEntity.level().addParticle(pParticleOption, livingEntity.getRandomX(1.0D), livingEntity.getRandomY() + yOffset, livingEntity.getRandomZ(1.0D), d0, d1, d2);
+            livingEntity.level().addParticle(particle, livingEntity.getRandomX(1.0D), livingEntity.getRandomY() + yOffset, livingEntity.getRandomZ(1.0D), d0, d1, d2);
         }
     }
 
-    public static void addBlessingParticlesAroundEntity(ParticleOptions particleOptions, LivingEntity livingEntity, int amount) {
+    public static void addParticlesAroundEntity(ParticleOptions particle, LivingEntity livingEntity, int amount) {
+        for (int i = 0; i <= amount; i++) {
+            double d0 = livingEntity.getRandom().nextGaussian() * 0.02D;
+            double d1 = livingEntity.getRandom().nextGaussian() * 0.02D;
+            double d2 = livingEntity.getRandom().nextGaussian() * 0.02D;
+            livingEntity.level().addParticle(particle, livingEntity.getRandomX(1.0D), livingEntity.getRandomY() + 0.5D, livingEntity.getRandomZ(1.0D), d0, d1, d2);
+        }
+    }
+
+    public static void addBlessingParticlesAroundEntity(ParticleOptions particle, LivingEntity livingEntity, int amount) {
         for (int i = 0; i < amount; i++) {
             double x = livingEntity.getX() + (2.0F * livingEntity.getRandom().nextFloat() - 1.0F) * 0.65;
             double y = livingEntity.getY() + 0.1 + livingEntity.getRandom().nextFloat() * 0.8;
             double z = livingEntity.getZ() + (2.0F * livingEntity.getRandom().nextFloat() - 1.0F) * 0.65;
-            livingEntity.level().addParticle(particleOptions, x, y, z, 0.0, 0.0, 0.0);
+            livingEntity.level().addParticle(particle, x, y, z, 0.0, 0.0, 0.0);
         }
     }
 }

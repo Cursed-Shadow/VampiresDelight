@@ -1,14 +1,12 @@
 package net.grid.vampiresdelight.client.particle;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
-import javax.annotation.ParametersAreNonnullByDefault;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class BlessingParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 
@@ -52,11 +50,12 @@ public class BlessingParticle extends TextureSheetParticle {
         return this.quadSize * Mth.clamp(((float)this.age + pScaleFactor) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
     }
 
-    public static class Factory implements ParticleProvider<SimpleParticleType>
+    @OnlyIn(Dist.CLIENT)
+    public static class Provider implements ParticleProvider<SimpleParticleType>
     {
         private final SpriteSet spriteSet;
 
-        public Factory(SpriteSet sprite) {
+        public Provider(SpriteSet sprite) {
             this.spriteSet = sprite;
         }
 
