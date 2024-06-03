@@ -42,8 +42,6 @@ public class VDItems {
             () -> new BlockItem(VDBlocks.GARLIC_CRATE.get(), basicItem()));
     public static final RegistryObject<BlockItem> ORCHID_BAG = ITEMS.register("orchid_bag",
             () -> new BlockItem(VDBlocks.ORCHID_BAG.get(), basicItem()));
-    public static final RegistryObject<BlockItem> SPIRIT_LANTERN = ITEMS.register("spirit_lantern",
-            () -> new BlockItem(VDBlocks.SPIRIT_LANTERN.get(), basicItem()));
     public static final RegistryObject<FuelBlockItem> DARK_SPRUCE_CABINET = ITEMS.register("dark_spruce_cabinet",
             () -> new FuelBlockItem(VDBlocks.DARK_SPRUCE_CABINET.get(), basicItem(), 300));
     public static final RegistryObject<FuelBlockItem> CURSED_SPRUCE_CABINET = ITEMS.register("cursed_spruce_cabinet",
@@ -116,8 +114,12 @@ public class VDItems {
             () -> new BlockItem(VDBlocks.BLACK_BAR_STOOL.get(), basicItem()));
     public static final RegistryObject<BlockItem> WILD_GARLIC = ITEMS.register("wild_garlic",
             () -> new BlockItem(VDBlocks.WILD_GARLIC.get(), basicItem()));
-
-
+    public static final RegistryObject<BlockItem> CURSED_FARMLAND = ITEMS.register("cursed_farmland",
+            () -> new BlockItem(VDBlocks.CURSED_FARMLAND.get(), basicItem()));
+    public static final RegistryObject<Item> BLOODY_SOIL = ITEMS.register("bloody_soil",
+            () -> new BlockItem(VDBlocks.BLOODY_SOIL.get(), basicItem()));
+    public static final RegistryObject<BlockItem> SPIRIT_LANTERN = ITEMS.register("spirit_lantern",
+            () -> new BlockItem(VDBlocks.SPIRIT_LANTERN.get(), basicItem()));
 
     // Tools/Non-food
     public static final RegistryObject<KnifeItem> SILVER_KNIFE = ITEMS.register("silver_knife",
@@ -126,8 +128,6 @@ public class VDItems {
             () -> new AlchemicalCocktailItem(basicItem()));
 
     // Farming
-    public static final RegistryObject<BlockItem> CURSED_FARMLAND = ITEMS.register("cursed_farmland",
-            () -> new BlockItem(VDBlocks.CURSED_FARMLAND.get(), basicItem()));
     public static final RegistryObject<BlockItem> BLACK_MUSHROOM_BLOCK = ITEMS.register("black_mushroom_block",
             () -> new BlockItem(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), basicItem()));
     public static final RegistryObject<BlockItem> BLACK_MUSHROOM_STEM = ITEMS.register("black_mushroom_stem",

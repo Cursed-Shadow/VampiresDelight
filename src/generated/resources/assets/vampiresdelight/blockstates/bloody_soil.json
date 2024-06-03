@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "vampiresdelight:block/bloody_soil"
+      },
+      {
+        "model": "vampiresdelight:block/bloody_soil",
+        "y": 90
+      },
+      {
+        "model": "vampiresdelight:block/bloody_soil",
+        "y": 180
+      },
+      {
+        "model": "vampiresdelight:block/bloody_soil",
+        "y": 270
+      }
+    ]
+  }
+}

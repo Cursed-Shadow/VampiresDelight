@@ -1,8 +1,8 @@
 package net.grid.vampiresdelight.common.block;
 
 import de.teamlapen.vampirism.api.VReference;
-import de.teamlapen.vampirism.core.ModTags;
-import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.tag.VDTags;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.world.VDConfiguredFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -27,11 +27,11 @@ public class BlackMushroomBlock extends MushroomBlock {
         BlockPos blockPos = pos.below();
         BlockState blockState = levelReader.getBlockState(blockPos);
 
-        if (blockState.is(ModTags.Blocks.CURSED_EARTH)) {
+        if (blockState.is(VDTags.BLACK_MUSHROOM_GROW_BLOCK)) {
             return true;
         } else {
             return (levelReader.getRawBrightness(pos, 0) < 13
-                    || Helper.isPosInVampireBiome(pos, (LevelAccessor) levelReader))
+                    || VDHelper.isPosInVampireBiome(pos, (LevelAccessor) levelReader))
                     && blockState.canSustainPlant(levelReader, blockPos, net.minecraft.core.Direction.UP, this);
         }
     }

@@ -2,8 +2,8 @@ package net.grid.vampiresdelight.integration.appleskin;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.VDConfiguration;
+import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItemAccessor;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
@@ -26,7 +26,8 @@ public class VDAppleSkinEventHandler {
             Player player = VampirismMod.proxy.getClientPlayer();
 
             ItemStack itemStack = event.itemStack;
-            if (player != null && Helper.isVampire(player) && !(VDHelper.isItemOfVampireFoodClass(itemStack.getItem()) || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.isRightItem(itemStack.getItem(), "werewolves:liver"))) {
+            Item item = itemStack.getItem();
+            if (player != null && VDHelper.isVampire(player) && !(item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.doesMatch(itemStack.getItem(), "werewolves:liver"))) {
                 event.setCanceled(true);
             }
         }
@@ -38,7 +39,7 @@ public class VDAppleSkinEventHandler {
             Player player = event.player;
             Item item = event.itemStack.getItem();
 
-            if (item instanceof VampirismItemBloodFoodItem bloodFoodItem && Helper.isVampire(player)) {
+            if (item instanceof VampirismItemBloodFoodItem bloodFoodItem && VDHelper.isVampire(player)) {
                 FoodProperties foodProperties = ((VampirismItemBloodFoodItemAccessor) bloodFoodItem).getVampireFood();
 
                 event.defaultFoodValues = makeFoodValues(foodProperties);

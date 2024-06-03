@@ -2,8 +2,8 @@ package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
@@ -125,7 +125,7 @@ public class VampireConsumableItem extends Item {
             entity = VampirismMod.proxy.getClientPlayer();
         }
 
-        return Helper.isVampire(entity) ? vampireFood : (Helper.isHunter(entity) && hunterFood != null ? hunterFood : super.getFoodProperties(stack, entity));
+        return VDHelper.isVampire(entity) ? vampireFood : (VDHelper.isHunter(entity) && hunterFood != null ? hunterFood : super.getFoodProperties(stack, entity));
     }
 
     /**
@@ -152,7 +152,7 @@ public class VampireConsumableItem extends Item {
                 FoodProperties foodProperties = this.getFoodProperties(stack, player);
 
                 if (foodProperties != null && !foodProperties.getEffects().isEmpty()) {
-                    if (player != null && (Helper.isVampire(player) || hasHumanFoodEffectTooltip))
+                    if (player != null && (VDHelper.isVampire(player) || hasHumanFoodEffectTooltip))
                         VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
                 }
             }

@@ -1,6 +1,5 @@
 package net.grid.vampiresdelight.common.item;
 
-import de.teamlapen.vampirism.util.Helper;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
@@ -17,6 +16,6 @@ public class VampireIceCreamItem extends VampireConsumableItem {
 
     @Override
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-        if (Helper.isVampire(consumer)) consumer.clearFire();
+        consumer.clearFire();
     }
 }

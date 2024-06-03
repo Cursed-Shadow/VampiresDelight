@@ -98,7 +98,7 @@ public class VDBlocks {
 
     // Farming
     public static final RegistryObject<CursedFarmlandBlock> CURSED_FARMLAND = BLOCKS.register("cursed_farmland",
-            () -> new CursedFarmlandBlock(Block.Properties.copy(Blocks.FARMLAND).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_BROWN)));
+            () -> new CursedFarmlandBlock(Block.Properties.copy(Blocks.FARMLAND).strength(0.6f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_BROWN)));
     public static final RegistryObject<HugeMushroomBlock> BLACK_MUSHROOM_BLOCK = BLOCKS.register("black_mushroom_block",
             () -> new HugeMushroomBlock(Block.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BLACK)));
     public static final RegistryObject<HugeMushroomBlock> BLACK_MUSHROOM_STEM  = BLOCKS.register("black_mushroom_stem",
@@ -107,6 +107,10 @@ public class VDBlocks {
             () -> new BlackMushroomBlock(Block.Properties.copy(Blocks.RED_MUSHROOM).mapColor(MapColor.TERRACOTTA_BLACK).sound(SoundType.FUNGUS)));
     public static final RegistryObject<FlowerPotBlock> POTTED_BLACK_MUSHROOM = BLOCKS.register("potted_black_mushroom",
             () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLACK_MUSHROOM, Block.Properties.of().noCollission().isViewBlocking(UtilLib::never).pushReaction(PushReaction.DESTROY).instabreak()));
+
+    // Composting
+    public static final RegistryObject<RichSoilBlock> BLOODY_SOIL = BLOCKS.register("bloody_soil",
+            () -> new RichSoilBlock(Block.Properties.copy(Blocks.DIRT).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_BROWN).randomTicks()));
 
     // Pastries
     public static final RegistryObject<VampirePieBlock> BLOOD_PIE = BLOCKS.register("blood_pie",

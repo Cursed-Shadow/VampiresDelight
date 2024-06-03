@@ -3,9 +3,9 @@ package net.grid.vampiresdelight.common.item;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.core.ModEffects;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.VDFoodValues;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.world.entity.LivingEntity;
@@ -102,7 +102,7 @@ public class HunterConsumableItem extends Item {
             entity = VampirismMod.proxy.getClientPlayer();
         }
 
-        return Helper.isHunter(entity) && hunterFood != null ? hunterFood : (Helper.isVampire(entity) ? VDFoodValues.NONE : super.getFoodProperties(stack, entity));
+        return VDHelper.isHunter(entity) && hunterFood != null ? hunterFood : (VDHelper.isVampire(entity) ? VDFoodValues.NONE : super.getFoodProperties(stack, entity));
     }
 
     /**
@@ -133,7 +133,7 @@ public class HunterConsumableItem extends Item {
             }
         }
 
-        if (player != null && Helper.isVampire(player))
+        if (player != null && VDHelper.isVampire(player))
             VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
     }
 }

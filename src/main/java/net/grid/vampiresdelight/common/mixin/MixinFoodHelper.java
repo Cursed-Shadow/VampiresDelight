@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItemAccessor;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDTags;
@@ -27,7 +26,7 @@ public class MixinFoodHelper {
     @Inject(at = @At("HEAD"), method = "isRotten(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z", remap = false, cancellable = true)
     private static void isVampireFood(ItemStack itemStack, Player player, CallbackInfoReturnable<Boolean> cir) {
         if (isFood(itemStack, player)) {
-            if ((itemStack.getItem() instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD)) && Helper.isVampire(player)) {
+            if ((itemStack.getItem() instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD)) && VDHelper.isVampire(player)) {
                 FoodProperties foodProperties = null;
 
                 if (itemStack.getItem() instanceof VampirismItemBloodFoodItem bloodFoodItem)
@@ -46,7 +45,7 @@ public class MixinFoodHelper {
         if (FOOD_CONTAINING_BAT.contains(itemStack.getItem()))
             cir.setReturnValue(false);
 
-        if (VDHelper.isRightItem(itemStack.getItem(), "werewolves:wolf_berries") && !VDIntegrationUtils.isWerewolf(player))
+        if (VDHelper.doesMatch(itemStack.getItem(), "werewolves:wolf_berries") && !VDIntegrationUtils.isWerewolf(player))
             cir.setReturnValue(true);
     }
 }

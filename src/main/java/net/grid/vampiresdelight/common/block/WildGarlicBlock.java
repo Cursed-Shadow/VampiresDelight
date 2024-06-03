@@ -4,7 +4,7 @@ import de.teamlapen.vampirism.api.EnumStrength;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.util.DamageHandler;
-import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
@@ -20,7 +20,7 @@ public class WildGarlicBlock extends WildCropBlock {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (Helper.isVampire(entity)) {
+        if (VDHelper.isVampire(entity)) {
             if (entity instanceof Player) {
                 VReference.VAMPIRE_FACTION.getPlayerCapability((Player) entity).ifPresent(vamp -> DamageHandler.affectVampireGarlicDirect(vamp, EnumStrength.WEAK));
             } else if (entity instanceof IVampire) {

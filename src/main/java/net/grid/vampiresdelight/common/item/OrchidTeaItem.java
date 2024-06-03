@@ -4,7 +4,7 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.effects.SanguinareEffect;
-import de.teamlapen.vampirism.util.Helper;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
@@ -33,7 +33,7 @@ public class OrchidTeaItem extends VampireDrinkableItem {
 
     @Override
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-        if (Helper.canBecomeVampire((Player) consumer) && !VampirismConfig.SERVER.disableFangInfection.get()) {
+        if (VDHelper.canBecomeVampire((Player) consumer) && !VampirismConfig.SERVER.disableFangInfection.get()) {
             SanguinareEffect.addRandom(consumer, true);
         }
     }
@@ -44,8 +44,8 @@ public class OrchidTeaItem extends VampireDrinkableItem {
             entity = VampirismMod.proxy.getClientPlayer();
         }
 
-        return Helper.isVampire(entity) ? getVampireFood() :
-                (entity instanceof Player player && Helper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get() ?
+        return VDHelper.isVampire(entity) ? getVampireFood() :
+                (entity instanceof Player player && VDHelper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get() ?
                         super.getFoodProperties(stack, entity) : defaultFood);
     }
 
@@ -55,7 +55,7 @@ public class OrchidTeaItem extends VampireDrinkableItem {
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
-            if (player != null && Helper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get()) {
+            if (player != null && VDHelper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get()) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             } else {

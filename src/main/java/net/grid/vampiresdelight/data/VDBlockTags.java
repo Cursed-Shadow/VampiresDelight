@@ -44,6 +44,10 @@ public class VDBlockTags extends BlockTagsProvider {
 
             tag(BlockTags.CANDLE_CAKES).add(block);
         });
+
+        tag(VDTags.BLACK_MUSHROOM_GROW_BLOCK)
+                .addTag(de.teamlapen.vampirism.core.ModTags.Blocks.CURSED_EARTH)
+                .add(VDBlocks.BLOODY_SOIL.get());
     }
 
     protected void registerBlockMineables() {
@@ -74,7 +78,8 @@ public class VDBlockTags extends BlockTagsProvider {
                 VDBlocks.SPIRIT_LANTERN.get()
         );
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
-                VDBlocks.CURSED_FARMLAND.get());
+                VDBlocks.CURSED_FARMLAND.get(),
+                VDBlocks.BLOODY_SOIL.get());
     }
 
     protected void registerMinecraftTags() {

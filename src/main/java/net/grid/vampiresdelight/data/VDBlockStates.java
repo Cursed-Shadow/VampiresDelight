@@ -50,6 +50,8 @@ public class VDBlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        this.simpleBlock(VDBlocks.BLOODY_SOIL.get(), cubeRandomRotation(VDBlocks.BLOODY_SOIL.get(), ""));
+
         this.cabinetBlock(VDBlocks.DARK_SPRUCE_CABINET.get(), "dark_spruce");
         this.cabinetBlock(VDBlocks.CURSED_SPRUCE_CABINET.get(), "cursed_spruce");
         this.cabinetBlock(VDBlocks.JACARANDA_CABINET.get(), "jacaranda");
@@ -98,6 +100,11 @@ public class VDBlockStates extends BlockStateProvider {
 
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> this.candleCakeBlock((ConsumableCandleCakeBlock) block));
         this.cakeBlock(VDBlocks.ORCHID_CAKE.get());
+    }
+
+    public ConfiguredModel[] cubeRandomRotation(Block block, String suffix) {
+        String formattedName = blockName(block) + (suffix.isEmpty() ? "" : "_" + suffix);
+        return ConfiguredModel.allYRotations(models().cubeAll(formattedName, resourceBlock(formattedName)), 0, false);
     }
 
     public void wildCropBlock(Block block) {

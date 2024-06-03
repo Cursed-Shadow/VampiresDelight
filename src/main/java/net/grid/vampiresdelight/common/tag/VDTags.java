@@ -32,6 +32,9 @@ public class VDTags {
     // Candle cake variants that drop the cake slice when sliced by a knife.
     public static final TagKey<Block> DROPS_ORCHID_CAKE_SLICE = modBlockTag("drops_orchid_cake_slice");
 
+    // Blocks black mushroom can grow on.
+    public static final TagKey<Block> BLACK_MUSHROOM_GROW_BLOCK = modBlockTag("black_mushroom_grow_block");
+
     // Biomes
 
     // Biomes lost carriage spawns in.

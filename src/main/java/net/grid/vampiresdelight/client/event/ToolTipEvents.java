@@ -5,7 +5,6 @@ import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.items.BloodBottleItem;
 import de.teamlapen.vampirism.items.GarlicBreadItem;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDItems;
@@ -27,6 +26,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.awt.*;
+import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
@@ -60,9 +60,9 @@ public class ToolTipEvents {
 
         if (stack.is(VDTags.VAMPIRE_FOOD)) {
             setBorderColors(vampireStartColor, vampireEndColor, event);
-        } else if (stack.is(VDTags.HUNTER_FOOD) && player != null && (Helper.isVampire(player) || VDIntegrationUtils.isWerewolf(player))) {
+        } else if (stack.is(VDTags.HUNTER_FOOD) && player != null && (VDHelper.isVampire(player) || VDIntegrationUtils.isWerewolf(player))) {
             setBorderColors(hunterStartColor, hunterEndColor, event);
-        } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isRightItem(stack.getItem(), "werewolves:wolf_berries")) {
+        } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.doesMatch(stack.getItem(), "werewolves:wolf_berries")) {
             setBorderColors(werewolfStartColor, werewolfEndColor, event);
         }
     }
@@ -77,8 +77,8 @@ public class ToolTipEvents {
         ItemStack itemStack = event.getItemStack();
         Item food = itemStack.getItem();
         List<Component> tooltip = event.getToolTip();
-
         Player player = VampirismMod.proxy.getClientPlayer();
+
         if (player != null) {
             if (food instanceof VampirismItemBloodFoodItem || food instanceof BloodBottleItem) {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
@@ -86,24 +86,27 @@ public class ToolTipEvents {
             if (food instanceof GarlicBreadItem) {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
             }
+
+            if (Screen.hasShiftDown() && (Objects.equals(player.getUUID().toString(), "052ef844-4947-452c-867d-902c8fa1cd94") || Objects.equals(player.getGameProfile().getName(), "Dev"))) {
+                if (food instanceof BloodBottleItem) {
+                    int blood = itemStack.getDamageValue() * MULTIPLIER;
+                    tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
+                }
+                else if (itemStack.isDamageableItem()) {
+                    int maxDamage = itemStack.getMaxDamage();
+                    int damage = itemStack.getDamageValue();
+                    int durability = maxDamage - damage;
+
+                    tooltip.add(Component.literal("Max damage: " + maxDamage).withStyle(ChatFormatting.DARK_PURPLE));
+                    tooltip.add(Component.literal("Damage: " + damage).withStyle(ChatFormatting.DARK_PURPLE));
+                    tooltip.add(Component.literal("Durability: " + durability).withStyle(ChatFormatting.DARK_PURPLE));
+                }
+            }
         }
 
-        if ((itemStack.is(VDItems.ORCHID_COOKIE.get()) || itemStack.is(VDItems.WOLF_BERRY_COOKIE.get())) && VDHelper.isLauncherPirate()) {
+        if ((itemStack.is(VDItems.ORCHID_COOKIE.get()) || itemStack.is(VDItems.WOLF_BERRY_COOKIE.get())) &&
+                (VDIntegrationUtils.isModPresent("tlskincape") || new File("").toPath().toAbsolutePath().toString().contains("tlauncher"))) {
             tooltip.add(VDTextUtils.getTranslation("text.pirated").withStyle(ChatFormatting.RED));
-        }
-
-        if (food instanceof BloodBottleItem && Screen.hasShiftDown() && VDHelper.isDebugger(Objects.requireNonNull(event.getEntity()))) {
-            int blood = itemStack.getDamageValue() * MULTIPLIER;
-            tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
-        }
-        else if (itemStack.isDamageableItem() && Screen.hasShiftDown() && VDHelper.isDebugger(Objects.requireNonNull(event.getEntity()))) {
-            int maxDamage = itemStack.getMaxDamage();
-            int damage = itemStack.getDamageValue();
-            int durability = maxDamage - damage;
-
-            tooltip.add(Component.literal("Max damage: " + maxDamage).withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.literal("Damage: " + damage).withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.literal("Durability: " + durability).withStyle(ChatFormatting.DARK_PURPLE));
         }
     }
 }

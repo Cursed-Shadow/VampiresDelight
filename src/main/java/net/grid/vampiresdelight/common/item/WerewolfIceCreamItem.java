@@ -1,6 +1,5 @@
 package net.grid.vampiresdelight.common.item;
 
-import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
@@ -13,6 +12,6 @@ public class WerewolfIceCreamItem extends WerewolfConsumableItem {
 
     @Override
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-        if (VDIntegrationUtils.isWerewolf(consumer)) consumer.clearFire();
+        consumer.clearFire();
     }
 }

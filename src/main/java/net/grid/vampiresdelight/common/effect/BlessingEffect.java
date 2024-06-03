@@ -1,12 +1,12 @@
 package net.grid.vampiresdelight.common.effect;
 
 import de.teamlapen.vampirism.entity.GhostEntity;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDEffects;
 import net.grid.vampiresdelight.common.registry.VDParticleTypes;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.effect.MobEffect;
@@ -31,7 +31,7 @@ public class BlessingEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
-        if (!Helper.isVampire(entity)) {
+        if (!VDHelper.isVampire(entity)) {
             resistUnholySpirits(entity.level(), entity.getX(), entity.getY(), entity.getZ(), amplifier);
         } else {
             entity.removeEffect(VDEffects.BLESSING.get());

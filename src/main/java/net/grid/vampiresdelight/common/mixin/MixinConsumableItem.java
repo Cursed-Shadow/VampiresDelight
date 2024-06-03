@@ -1,8 +1,8 @@
 package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.VampirismMod;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.tag.VDTags;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -23,7 +23,7 @@ public class MixinConsumableItem {
     public void hideFoodTooltipsForVampires(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
         Player player = VampirismMod.proxy.getClientPlayer();
         if (player != null)
-            if (Helper.isVampire(player) && stack.getItem() instanceof ConsumableItem && !(stack.getItem() instanceof DrinkableItem) && !stack.is(VDTags.BLOOD_FOOD))
+            if (VDHelper.isVampire(player) && stack.getItem() instanceof ConsumableItem && !(stack.getItem() instanceof DrinkableItem) && !stack.is(VDTags.BLOOD_FOOD))
                 ci.cancel();
     }
 }

@@ -3,19 +3,25 @@ package net.grid.vampiresdelight.common.utility;
 import de.teamlapen.vampirism.api.VampirismAPI;
 import de.teamlapen.vampirism.api.VampirismRegistries;
 import de.teamlapen.vampirism.api.entity.factions.IFaction;
+import de.teamlapen.vampirism.api.entity.factions.IFactionPlayerHandler;
 import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
+import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
 import net.grid.vampiresdelight.common.tag.VDForgeTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.LoadingModList;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class VDIntegrationUtils {
     public static boolean isModPresent(String string) {
@@ -31,6 +37,15 @@ public class VDIntegrationUtils {
     public static final String APPLESKIN = "appleskin";
 
     // Werewolves
+    private static IFaction<?> werewolfFaction = null;
+
+    public static IFaction<?> werewolfFaction() {
+        if (werewolfFaction == null) {
+            werewolfFaction = VampirismAPI.factionRegistry().getFactionByID(new ResourceLocation(WEREWOLVES, "werewolf"));
+        }
+        return werewolfFaction;
+    }
+
     public static boolean isWerewolf(Entity entity) {
         if (entity instanceof Player player && isWerewolf(player))
             return true;
@@ -40,21 +55,34 @@ public class VDIntegrationUtils {
     }
 
     public static boolean isWerewolf(Player player) {
-        return VampirismAPI.getFactionPlayerHandler(player).map(handler ->
-                handler.getCurrentFaction() != null &&
-                        handler.getCurrentFaction().getFactionPlayerInterface().getSimpleName().equals("IWerewolfPlayer"))
-                .orElse(false);
+        IFaction<?> werewolf = werewolfFaction();
+        return werewolf != null && VampirismAPI.getFactionPlayerHandler(player).map(h -> werewolf.equals(h.getCurrentFaction())).orElse(false);
     }
 
-    /*
-    public static boolean canWerewolfEatNotMeat(Player player) {
-        if (isWerewolf(player)) {
-            RegistryObject<ISkill<?>> NOT_MEAT = RegistryObject.create(new ResourceLocation(WEREWOLVES, "not_meat"), VampirismRegistries.SKILLS.get());
-            return VampirismAPI.getFactionPlayerHandler(player).map(s -> s.getCurrentFactionPlayer().get().getSkillHandler().isSkillEnabled(NOT_MEAT.get())).isPresent();
+    public static boolean hasSkill(Player player, ResourceLocation skillId) {
+        LazyOptional<IFactionPlayerHandler> playerHandler = player.isAlive() ? VampirismAPI.getFactionPlayerHandler(player) : LazyOptional.empty();
+        ISkill<?> requiredSkill = VampirismRegistries.SKILLS.get().getValue(skillId);
+        if (requiredSkill != null) {
+            return playerHandler.map(IFactionPlayerHandler::getCurrentFactionPlayer).flatMap(p -> p.map(d-> d.getSkillHandler().isSkillEnabled(requiredSkill))).orElse(false);
+        } else {
+            return false;
         }
-        return false;
     }
-     */
+
+    public static ResourceLocation NOT_MEAT = new ResourceLocation(VDIntegrationUtils.WEREWOLVES, "not_meat");
+
+    public static boolean isWerewolfVegetarian(Player player) {
+        return hasSkill(player, NOT_MEAT);
+    }
+
+    public static boolean isMeat(@Nullable LivingEntity entity, ItemStack stack) {
+        FoodProperties foodProperties = stack.getFoodProperties(entity);
+        return stack.isEdible() && foodProperties != null && (foodProperties.isMeat() || stack.is(VDCompatibilityTags.WEREWOLF_FOOD)); //|| WerewolvesConfig.SERVER.isCustomMeatItems(stack.getItem()));
+    }
+
+    public static boolean canWerewolfEatFood(LivingEntity entity, ItemStack stack) {
+        return isMeat(entity, stack) || !(entity instanceof Player player) || !isWerewolf(player) || isWerewolfVegetarian(player);
+    }
 
     public static final Tier SILVER_ITEM_TIER = new Tier() {
         @Override

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.6
+
+### Updates
+- Made ice cream items also clear fire for other factions' members;
+
 ## 0.1.5b
 
 ### Updates

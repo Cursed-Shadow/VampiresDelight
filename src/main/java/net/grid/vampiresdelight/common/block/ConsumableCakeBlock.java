@@ -3,8 +3,8 @@ package net.grid.vampiresdelight.common.block;
 import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -85,10 +85,10 @@ public class ConsumableCakeBlock extends CakeBlock {
 
                 if (player instanceof IVampire) {
                     ((IVampire) player).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack));
-                } else if (!Helper.isVampire(player))
+                } else if (!VDHelper.isVampire(player))
                     player.eat(level, sliceStack);
 
-                if (Helper.isVampire(player)) {
+                if (VDHelper.isVampire(player)) {
                     VDEntityUtils.addFoodEffects(foodProperties, level, player);
                 }
             }

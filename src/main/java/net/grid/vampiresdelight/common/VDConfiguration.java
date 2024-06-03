@@ -18,6 +18,9 @@ public class VDConfiguration {
     public static final String CATEGORY_RECIPE_BOOK = "recipe_book";
     public static ForgeConfigSpec.BooleanValue ENABLE_RECIPE_BOOK_BREWING_BARREL;
 
+    public static final String CATEGORY_BLOCKS = "blocks";
+    public static ForgeConfigSpec.DoubleValue BLOODY_SOIL_BOOST_CHANCE;
+
     public static final String CATEGORY_ITEMS = "items";
     public static ForgeConfigSpec.BooleanValue ALCHEMICAL_COCKTAIL_BURNS_GROUND;
     public static ForgeConfigSpec.DoubleValue ALCHEMICAL_COCKTAIL_SPLASH_RADIUS;
@@ -75,6 +78,11 @@ public class VDConfiguration {
         COMMON_BUILDER.comment("Recipe book").push(CATEGORY_RECIPE_BOOK);
         ENABLE_RECIPE_BOOK_BREWING_BARREL = COMMON_BUILDER.comment("Should the Brewing Barrel have a Recipe Book available on its interface?")
                 .define("enableRecipeBookBrewingBarrel", true);
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.comment("Blocks").push(CATEGORY_BLOCKS);
+        BLOODY_SOIL_BOOST_CHANCE = COMMON_BUILDER.comment("How often (in percentage) should Bloody Soil succeed in boosting a plant's growth at each random tick? Set it to 0.0 to disable this.")
+                .defineInRange("bloodySoilBoostChance", 0.2, 0.0, 1.0);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Items").push(CATEGORY_ITEMS);

@@ -6,7 +6,6 @@ import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.DamageHandler;
-import de.teamlapen.vampirism.util.Helper;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -30,7 +29,7 @@ public class VDEntityUtils {
     public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer) {
         feedVampire(stack, level, consumer);
 
-        if (Helper.isVampire(consumer)) {
+        if (VDHelper.isVampire(consumer)) {
             FoodProperties foodProperties = stack.getFoodProperties(consumer);
             if (foodProperties != null) {
                 addFoodEffects(foodProperties, level, consumer);
@@ -46,13 +45,13 @@ public class VDEntityUtils {
         FoodProperties foodProperties = stack.getFoodProperties(consumer);
 
         if (foodProperties != null) {
-            FoodProperties bloodFoodProperties = Helper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
+            FoodProperties bloodFoodProperties = VDHelper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
             if (consumer instanceof Player player) {
                 VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
             }
             if (consumer instanceof IVampire) {
                 ((IVampire) consumer).drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
-            } else if (!Helper.isVampire(consumer))
+            } else if (!VDHelper.isVampire(consumer))
                 consumer.eat(level, stack);
         }
     }

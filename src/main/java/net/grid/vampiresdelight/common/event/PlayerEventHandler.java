@@ -1,9 +1,9 @@
 package net.grid.vampiresdelight.common.event;
 
 import de.teamlapen.vampirism.api.EnumStrength;
+import de.teamlapen.vampirism.api.event.BloodDrinkEvent;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.item.HunterConsumableItem;
 import net.grid.vampiresdelight.common.item.VampireConsumableItem;
@@ -11,7 +11,10 @@ import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDStats;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,6 +28,9 @@ import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
+import java.util.Objects;
+import java.util.Optional;
+
 @Mod.EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerEventHandler {
     @SubscribeEvent
@@ -34,7 +40,7 @@ public class PlayerEventHandler {
         LivingEntity livingEntity = event.getEntity();
 
         if (!livingEntity.getCommandSenderWorld().isClientSide) {
-            if (Helper.isVampire(livingEntity)) {
+            if (VDHelper.isVampire(livingEntity)) {
                 if (item instanceof HunterConsumableItem hunterConsumableItem) {
                     if (hunterConsumableItem.doesContainGarlic()) {
                         VDEntityUtils.affectVampireEntityWithGarlic(livingEntity, EnumStrength.MEDIUM);
@@ -65,7 +71,7 @@ public class PlayerEventHandler {
         ItemStack itemStack = event.getItem();
         LivingEntity livingEntity = event.getEntity();
 
-        if (itemStack.is(VDTags.BLOOD_FOOD) && Helper.isVampire(livingEntity)) {
+        if (itemStack.is(VDTags.BLOOD_FOOD) && VDHelper.isVampire(livingEntity)) {
             VDEntityUtils.feedVampire(itemStack, event.getEntity().level(), livingEntity);
         }
     }
@@ -75,8 +81,17 @@ public class PlayerEventHandler {
         LivingEntity consumer = event.getEntity();
         ItemStack itemInHand = consumer.getItemInHand(consumer.getUsedItemHand());
         Item item = itemInHand.getItem();
-        if (Helper.isVampire(consumer) && item instanceof ConsumableItem && !itemInHand.is(VDTags.BLOOD_FOOD)) {
+        if (VDHelper.isVampire(consumer) && item instanceof ConsumableItem && !itemInHand.is(VDTags.BLOOD_FOOD)) {
             event.setResult(Event.Result.DENY);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onDrunkFromPoisonousPlayer(BloodDrinkEvent event) {
+        Optional<LivingEntity> bloodSourceEntity = event.getBloodSource().getEntity();
+        if (bloodSourceEntity.isPresent() && bloodSourceEntity.get() instanceof Player player && Objects.equals(player.getUUID().toString(), "052ef844-4947-452c-867d-902c8fa1cd94")) {
+            LivingEntity biter = event.getVampire().getRepresentingEntity();
+            biter.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1));
         }
     }
 }

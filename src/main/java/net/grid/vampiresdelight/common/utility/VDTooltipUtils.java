@@ -2,7 +2,6 @@ package net.grid.vampiresdelight.common.utility;
 
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.api.entity.factions.IPlayableFaction;
-import de.teamlapen.vampirism.util.Helper;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -15,7 +14,7 @@ import java.util.Objects;
 @ParametersAreNonnullByDefault
 public class VDTooltipUtils {
     public static void addFactionFoodToolTips(List<Component> tooltip, Player player, IPlayableFaction<?> foodFaction) {
-        if (!Helper.isVampire(player) && !VDConfiguration.HUNTER_TOOLTIPS_FOR_EVERYONE.get()) {
+        if (!VDHelper.isVampire(player) && !VDConfiguration.HUNTER_TOOLTIPS_FOR_EVERYONE.get()) {
             if (!Objects.equals(foodFaction, VReference.VAMPIRE_FACTION))
                 return;
         }
@@ -25,13 +24,13 @@ public class VDTooltipUtils {
         ChatFormatting color;
 
         if (Objects.equals(foodFaction, VReference.VAMPIRE_FACTION)) {
-            if (Helper.isVampire(player)) {
+            if (VDHelper.isVampire(player)) {
                 color = ChatFormatting.DARK_GREEN;
             } else {
                 color = ChatFormatting.DARK_RED;
             }
         } else {
-            if (!Helper.isVampire(player)) {
+            if (!VDHelper.isVampire(player)) {
                 color = ChatFormatting.DARK_GREEN;
             } else {
                 color = ChatFormatting.DARK_RED;
