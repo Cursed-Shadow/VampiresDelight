@@ -2,6 +2,12 @@
 
 ## 0.1.6
 
+### Additions
+- Added new food:
+  - **Daisy Tea**;
+- Added **Botany Pots** compatibility tags:
+  - **Vampire Orchid (flower and crop), Cursed Roots, Wild Garlic, and Black Mushroom** can now be grown in pots;
+
 ### Updates
 - Made ice cream items also clear fire for other factions' members;
 
