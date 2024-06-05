@@ -56,7 +56,8 @@
   "item.vampiresdelight.alchemical_cocktail": "Алхимический коктейль",
 
   "item.vampiresdelight.sugared_berries": "Засахаренные ягоды",
-  "item.vampiresdelight.pure_sorbet": "Чистый сорбет",
+  "item.vampiresdelight.daisy_tea": "Ромашковый чай",
+  "item.vampiresdelight.pure_sorbet": "Чистокровный сорбет",
   "item.vampiresdelight.rice_dough": "Рисовое тесто",
   "item.vampiresdelight.rice_bread": "Рисовый хлеб",
   "item.vampiresdelight.raw_bat": "Сырая летучая мышь",
@@ -155,6 +156,7 @@
   "enchantment.vampiresdelight.vampire_bite": "Вампирский укус",
   "enchantment.vampiresdelight.vampire_bite.desc": "Лечит игрока пропорционально нанесённому урону.",
 
+  "vampiresdelight.tooltip.daisy_tea": "Лечит слабость, слепоту,\nтошноту и медлительность",
   "vampiresdelight.tooltip.orchid_tea": "Заражает сангвинаре вампирис",
   "vampiresdelight.tooltip.cursed_cupcake": "Очищает от эффекта чеснока",
   "vampiresdelight.tooltip.spirit_lantern": "Позволяет игроку видеть немного дальше сквозь вампирский туман, при ношении в руке",

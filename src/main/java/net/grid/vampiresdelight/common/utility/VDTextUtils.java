@@ -1,66 +1,53 @@
 package net.grid.vampiresdelight.common.utility;
 
 
+import com.mojang.datafixers.util.Pair;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import org.jetbrains.annotations.NotNull;
+import net.minecraftforge.common.ForgeI18n;
 
-import java.util.Map;
 import java.util.List;
 
 public class VDTextUtils {
-    /**
-     * Syntactic sugar for custom translation keys. Always prefixed with the mod's ID in lang files (e.g. vampiresdelight.your.key.here).
-     */
     public static MutableComponent getTranslation(String key, Object... args) {
         return Component.translatable(VampiresDelight.MODID + "." + key, args);
     }
 
-    /**
-     * An alternate version of TextUtils.addFoodEffectTooltip, that uses FoodProperties instead of ItemStack.
-     */
-    @OnlyIn(Dist.CLIENT)
-    public static void addFoodEffectTooltip(@NotNull FoodProperties foodStats, List<Component> lores, float durationFactor) {
-        List<Pair<MobEffectInstance, Float>> effectList = foodStats.getEffects();
-        List<Pair<Attribute, AttributeModifier>> attributeList = Lists.newArrayList();
-        if (!effectList.isEmpty()) {
-            for (Pair<MobEffectInstance, Float> effectPair : effectList) {
-                MobEffectInstance instance = effectPair.getFirst();
-                MutableComponent iformattabletextcomponent = Component.translatable(instance.getDescriptionId());
-                MobEffect effect = instance.getEffect();
-                Map<Attribute, AttributeModifier> attributeMap = effect.getAttributeModifiers();
-                if (!attributeMap.isEmpty()) {
-                    for (Map.Entry<Attribute, AttributeModifier> entry : attributeMap.entrySet()) {
-                        AttributeModifier rawModifier = entry.getValue();
-                        AttributeModifier modifier = new AttributeModifier(rawModifier.getName(), effect.getAttributeModifierValue(instance.getAmplifier(), rawModifier), rawModifier.getOperation());
-                        attributeList.add(new Pair<>(entry.getKey(), modifier));
-                    }
-                }
+    public static void addSplitTooltip(String key, List<Component> tooltip, ChatFormatting style) {
+        String full = ForgeI18n.getPattern(VampiresDelight.MODID + "." + key);
+        for (String part : full.split("\n")) {
+            tooltip.add(Component.literal(part).withStyle(style));
+        }
+    }
 
-                if (instance.getAmplifier() > 0) {
-                    iformattabletextcomponent = Component.translatable("potion.withAmplifier", iformattabletextcomponent, Component.translatable("potion.potency." + instance.getAmplifier()));
-                }
+    public static void addFoodEffectTooltip(ItemStack item, LivingEntity consumer, List<Component> tooltip) {
+        FoodProperties foodProperties = item.getItem().getFoodProperties(item, consumer);
+        if (foodProperties == null) return;
 
-                if (instance.getDuration() > 20) {
-                    iformattabletextcomponent = Component.translatable("potion.withDuration", iformattabletextcomponent, MobEffectUtil.formatDuration(instance, durationFactor));
-                }
+        List<Pair<MobEffectInstance, Float>> effectList = foodProperties.getEffects();
 
-                lores.add(iformattabletextcomponent.withStyle(effect.getCategory().getTooltipFormatting()));
+        for (Pair<MobEffectInstance, Float> effectPair : effectList) {
+            MobEffectInstance instance = effectPair.getFirst();
+            MutableComponent iformattabletextcomponent = Component.translatable(instance.getDescriptionId());
+            MobEffect effect = instance.getEffect();
+
+            if (instance.getAmplifier() > 0) {
+                iformattabletextcomponent = Component.translatable("potion.withAmplifier", iformattabletextcomponent, Component.translatable("potion.potency." + instance.getAmplifier()));
             }
+
+            if (instance.getDuration() > 20) {
+                iformattabletextcomponent = Component.translatable("potion.withDuration", iformattabletextcomponent, MobEffectUtil.formatDuration(instance, 1.0F));
+            }
+
+            tooltip.add(iformattabletextcomponent.withStyle(effect.getCategory().getTooltipFormatting()));
         }
     }
 }

@@ -110,11 +110,8 @@ public class WerewolfConsumableItem extends Item {
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip && player != null) {
-                FoodProperties foodProperties = this.getFoodProperties(stack, player);
-
-                if (foodProperties != null && !foodProperties.getEffects().isEmpty()) {
-                    if (VDIntegrationUtils.isWerewolf(player) || hasHumanFoodEffectTooltip)
-                        VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
+                if (VDIntegrationUtils.isWerewolf(player) || hasHumanFoodEffectTooltip) {
+                    VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
                 }
             }
         }

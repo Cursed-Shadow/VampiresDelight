@@ -149,11 +149,8 @@ public class VampireConsumableItem extends Item {
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {
-                FoodProperties foodProperties = this.getFoodProperties(stack, player);
-
-                if (foodProperties != null && !foodProperties.getEffects().isEmpty()) {
-                    if (player != null && (VDHelper.isVampire(player) || hasHumanFoodEffectTooltip))
-                        VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
+                if (player != null && (VDHelper.isVampire(player) || hasHumanFoodEffectTooltip)) {
+                    VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
                 }
             }
         }

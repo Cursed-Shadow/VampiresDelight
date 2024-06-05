@@ -29,6 +29,9 @@ public class VDItems {
     public static Item.Properties drinkItem(FoodProperties food) {
         return new Item.Properties().food(food).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
     }
+    public static Item.Properties drinkItem() {
+        return new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).stacksTo(16);
+    }
 
 
     // The neutral items go first, then the vampire and hunter ones
@@ -140,6 +143,8 @@ public class VDItems {
     // Foodstuffs
     public static final RegistryObject<HunterConsumableItem> GRILLED_GARLIC = ITEMS.register("grilled_garlic",
             () -> new HunterConsumableItem(foodItem(VDFoodValues.GRILLED_GARLIC)));
+    public static final RegistryObject<DaisyTeaItem> DAISY_TEA = ITEMS.register("daisy_tea",
+            () -> new DaisyTeaItem(drinkItem()));
     public static final RegistryObject<VampireDrinkableItem> BLOOD_SYRUP = ITEMS.register("blood_syrup",
             () -> new VampireDrinkableItem(drinkItem(VDFoodValues.NASTY), VDFoodValues.BLOOD_SYRUP));
     public static final RegistryObject<OrchidTeaItem> ORCHID_TEA = ITEMS.register("orchid_tea",

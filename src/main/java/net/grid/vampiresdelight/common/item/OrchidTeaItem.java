@@ -59,11 +59,7 @@ public class OrchidTeaItem extends VampireDrinkableItem {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             } else {
-                FoodProperties foodProperties = this.getFoodProperties(stack, player);
-
-                if (foodProperties != null && !foodProperties.getEffects().isEmpty()) {
-                    VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
-                }
+                VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
             }
         }
 

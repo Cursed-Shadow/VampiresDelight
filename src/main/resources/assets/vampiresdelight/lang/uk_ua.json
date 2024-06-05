@@ -56,6 +56,7 @@
   "item.vampiresdelight.alchemical_cocktail": "Алхімічний коктейль",
 
   "item.vampiresdelight.sugared_berries": "Зацукровані ягоди",
+  "item.vampiresdelight.daisy_tea": "Ромашковий чай",
   "item.vampiresdelight.pure_sorbet": "Чистий сорбет",
   "item.vampiresdelight.rice_dough": "Рисове тісто",
   "item.vampiresdelight.rice_bread": "Рисовий хліб",
@@ -155,6 +156,7 @@
   "enchantment.vampiresdelight.vampire_bite": "Укус вампіра",
   "enchantment.vampiresdelight.vampire_bite.desc": "Лікує гравця пропорційно до кількості завданої шкоди.",
 
+  "vampiresdelight.tooltip.daisy_tea": "Лікує слабкість, сліпоту,\nповільність і нудоту",
   "vampiresdelight.tooltip.orchid_tea": "Заражає сангвінаре вампіріс",
   "vampiresdelight.tooltip.cursed_cupcake": "Знімає ефект часнику",
   "vampiresdelight.tooltip.spirit_lantern": "Дозволяє гравцеві бачити трохи далі крізь вампірський туман, при триманні у руці",

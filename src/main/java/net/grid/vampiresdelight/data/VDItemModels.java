@@ -39,6 +39,7 @@ public class VDItemModels extends ItemModelProvider {
 
         // Items that should be held like a mug
         Set<Item> mugItems = Sets.newHashSet(
+                VDItems.DAISY_TEA.get(),
                 VDItems.ORCHID_TEA.get(),
                 VDItems.MULLED_WINE_GLASS.get()
         );

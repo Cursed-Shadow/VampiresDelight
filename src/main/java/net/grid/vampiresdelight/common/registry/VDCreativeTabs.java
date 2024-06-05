@@ -80,6 +80,7 @@ public class VDCreativeTabs {
 
                         // Foodstuffs
                         add(VDItems.GRILLED_GARLIC.get(), output);
+                        add(VDItems.DAISY_TEA.get(), output);
                         add(VDItems.BLOOD_SYRUP.get(), output);
                         add(VDItems.ORCHID_TEA.get(), output);
                         add(VDItems.ORCHID_PETALS.get(), output);

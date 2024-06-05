@@ -44,6 +44,12 @@ public class VDCookingRecipes {
     }
 
     private static void cookMiscellaneous(Consumer<FinishedRecipe> consumer) {
+        CookingPotRecipeBuilder.cookingPotRecipe(VDItems.DAISY_TEA.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
+                .addIngredient(Items.OXEYE_DAISY)
+                .addIngredient(Items.OXEYE_DAISY)
+                .unlockedByItems("has_oxeye_daisy", Items.OXEYE_DAISY)
+                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+                .build(consumer, itemLocationCooking(VDItems.DAISY_TEA.get()));
         CookingPotRecipeBuilder.cookingPotRecipe(VDItems.ORCHID_TEA.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
                 .addIngredient(ForgeTags.MILK)
                 .addIngredient(VDItems.ORCHID_PETALS.get())

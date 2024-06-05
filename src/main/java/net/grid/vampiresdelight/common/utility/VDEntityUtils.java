@@ -16,8 +16,9 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import java.util.List;
+
 public class VDEntityUtils {
-    // Applies food effect to living entity from food properties
     public static void addFoodEffects(FoodProperties foodProperties, Level level, LivingEntity entity) {
         for (Pair<MobEffectInstance, Float> pair : foodProperties.getEffects()) {
             if (!level.isClientSide && pair.getFirst() != null && level.random.nextFloat() < pair.getSecond()) {
@@ -71,8 +72,28 @@ public class VDEntityUtils {
     }
 
     public static void cureEffect(MobEffect mobEffect, LivingEntity entity) {
-        if (entity.hasEffect(mobEffect))
+        if (entity.hasEffect(mobEffect)){
             entity.removeEffect(mobEffect);
+        }
+    }
+
+    public static void cureMultipleEffects(List<MobEffect> mobEffects, LivingEntity entity) {
+        mobEffects.forEach(effect -> {
+            if (entity.hasEffect(effect)) {
+                entity.removeEffect(effect);
+            }
+        });
+    }
+
+    public static boolean canConsumeHumanDrinks(LivingEntity consumer) {
+        if (VDHelper.isVampire(consumer)) {
+            return false;
+        }
+        // Werewolf players with "not_meat" skill can consume human drinks
+        if (VDIntegrationUtils.isWerewolf(consumer)) {
+            return consumer instanceof Player player && VDIntegrationUtils.isWerewolfVegetarian(player);
+        }
+        return true;
     }
 
     public static void affectVampireEntityWithGarlic(LivingEntity livingEntity, EnumStrength strength) {

@@ -126,6 +126,7 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.PURE_SORBET.get());
 
         tag(CompatibilityTags.CREATE_UPRIGHT_ON_BELT)
+                .add(VDItems.DAISY_TEA.get())
                 .add(VDItems.ORCHID_TEA.get())
                 .add(VDItems.MULLED_WINE_GLASS.get())
                 .add(VDItems.WINE_GLASS.get())

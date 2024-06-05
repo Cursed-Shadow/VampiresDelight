@@ -126,10 +126,7 @@ public class HunterConsumableItem extends Item {
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {
-                FoodProperties foodProperties = stack.getFoodProperties(player);
-
-                if (foodProperties != null)
-                    VDTextUtils.addFoodEffectTooltip(foodProperties, tooltip, 1.0F);
+                VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
             }
         }
 
