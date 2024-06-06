@@ -10,6 +10,8 @@
 
 ### Updates
 - Made ice cream items also clear fire for other factions' members;
+- **Vampire Bite** books now spawn more often in vampire dungeons;
+- The chance of **Cooking Pot** spawning at hunter camps is not higher;
 
 ## 0.1.5b
 

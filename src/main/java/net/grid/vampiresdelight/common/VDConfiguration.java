@@ -127,8 +127,8 @@ public class VDConfiguration {
                 .define("generateCookingPotInHunterCamp", true);
         GENERATE_COOKING_POT_NEAR_HUNTER_CAMP = COMMON_BUILDER.comment("Should a Cooking Pot be generated on the campfire near hunter camps? By default it's generated on the fireplace in the middle of it.")
                 .define("generateCookingPotNearHunterCamp", false);
-        COOKING_POT_IN_HUNTER_CAMP_CHANCE = COMMON_BUILDER.comment("With what chance should a Cooking Pot on a Campfire be generated in hunter camps?")
-                .defineInRange("cookingPotInHunterCampSpawnChance", 20, 1, 100);
+        COOKING_POT_IN_HUNTER_CAMP_CHANCE = COMMON_BUILDER.comment("With what chance should a Cooking Pot on a Campfire be generated in hunter camps? It doesn't mean that it'll spawn with this chance in every camp, but the ones with crafting table or hunter table.")
+                .defineInRange("cookingPotInHunterCampSpawnChance", 60, 1, 100);
         COMMON_BUILDER.pop();
 
         COMMON_CONFIG = COMMON_BUILDER.build();

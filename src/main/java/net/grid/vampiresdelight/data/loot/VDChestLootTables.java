@@ -52,7 +52,7 @@ public class VDChestLootTables implements LootTableSubProvider {
                 //.withPool(clothesDissolvingLoot())
         );
         output.accept(new ResourceLocation(VampiresDelight.MODID, "chests/vd_vampire_hut"), LootTable.lootTable()
-                .withPool(vampiresBiteBookLoot(1, 6))
+                .withPool(vampiresBiteBookLoot(1, 3))
                 //.withPool(clothesDissolvingLoot())
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 8))
                         .add(LootItem.lootTableItem(VDItems.ORCHID_COOKIE.get()).setWeight(10))
@@ -68,11 +68,11 @@ public class VDChestLootTables implements LootTableSubProvider {
                 )
         );
         output.accept(new ResourceLocation(VampiresDelight.MODID, "chests/vd_altar"), LootTable.lootTable()
-                .withPool(vampiresBiteBookLoot(2, 5))
+                .withPool(vampiresBiteBookLoot(1, 2))
                 //.withPool(clothesDissolvingLoot())
         );
         output.accept(new ResourceLocation(VampiresDelight.MODID, "chests/vd_crypt"), LootTable.lootTable()
-                .withPool(vampiresBiteBookLoot(1, 9))
+                .withPool(vampiresBiteBookLoot(1, 4))
                 //.withPool(clothesDissolvingLoot())
         );
         output.accept(new ResourceLocation(VampiresDelight.MODID, "chests/vd_hunter_outpost_tent"), LootTable.lootTable()
