@@ -20,7 +20,7 @@ public class VDBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, VampiresDelight.MODID);
 
-    private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
+    public static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 

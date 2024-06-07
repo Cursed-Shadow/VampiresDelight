@@ -87,7 +87,7 @@ public class ToolTipEvents {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
             }
 
-            if (Screen.hasShiftDown() && (Objects.equals(player.getUUID().toString(), "052ef844-4947-452c-867d-902c8fa1cd94") || Objects.equals(player.getGameProfile().getName(), "Dev"))) {
+            if (Screen.hasShiftDown() && Objects.equals(player.getGameProfile().getName(), "Dev")) {
                 if (food instanceof BloodBottleItem) {
                     int blood = itemStack.getDamageValue() * MULTIPLIER;
                     tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
@@ -108,5 +108,12 @@ public class ToolTipEvents {
                 (VDIntegrationUtils.isModPresent("tlskincape") || new File("").toPath().toAbsolutePath().toString().contains("tlauncher"))) {
             tooltip.add(VDTextUtils.getTranslation("text.pirated").withStyle(ChatFormatting.RED));
         }
+
+        /*
+        ResourceLocation id = new ResourceLocation(VDIntegrationUtils.WEREWOLVES, "wolf_berries");
+        tooltip.add(Component.literal((VDHelper.matches(itemStack.getItem(), id)) ? "yep" : "nope"));
+        tooltip.add(Component.literal(String.valueOf(RegUtil.id(itemStack.getItem()))));
+        tooltip.add(Component.literal(String.valueOf(id)));
+         */
     }
 }

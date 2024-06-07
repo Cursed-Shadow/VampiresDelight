@@ -13,6 +13,9 @@
 - **Vampire Bite** books now spawn more often in vampire dungeons;
 - The chance of **Cooking Pot** spawning at hunter camps is not higher;
 
+### Fixes
+- Non-vegetarian werewolves and vampires no longer can drink human drinks like Melon Juice and Hot Cocoa (they still can drink milk bottle);
+
 ## 0.1.5b
 
 ### Updates

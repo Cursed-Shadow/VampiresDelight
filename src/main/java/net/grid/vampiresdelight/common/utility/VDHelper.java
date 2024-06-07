@@ -27,4 +27,9 @@ public class VDHelper extends Helper {
         String predictedName = getItemModId(item) + ":" + getItemId(item);
         return Objects.equals(name, predictedName);
     }
+
+    // TODO: test this (it doesn't work yet)
+    //public static boolean matches(Item item, ResourceLocation id) {
+        //return RegUtil.id(item) == id;
+    //}
 }
