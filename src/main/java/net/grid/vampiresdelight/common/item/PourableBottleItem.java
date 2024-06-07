@@ -2,7 +2,11 @@ package net.grid.vampiresdelight.common.item;
 
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
+import net.grid.vampiresdelight.common.utility.VDTextUtils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
@@ -21,6 +25,9 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 /**
  * Credits to the Create team for mechanic references
@@ -114,7 +121,7 @@ public class PourableBottleItem extends Item {
             }
             compoundTag.remove("Pouring");
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
-            if (itemStack.getDamageValue() > 3) itemStack = new ItemStack(servingContainer);
+            if (itemStack.getDamageValue() >= itemStack.getMaxDamage()) itemStack = new ItemStack(servingContainer);
             VDAdvancementTriggers.BLOOD_WINE_POURED.trigger((ServerPlayer) player);
         }
 
@@ -159,5 +166,12 @@ public class PourableBottleItem extends Item {
     @Override
     public boolean hasCraftingRemainingItem(ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        int servings = pStack.getMaxDamage() - pStack.getDamageValue();
+        MutableComponent tooltip = (servings == 1) ? VDTextUtils.getTranslation("tooltip." + this + ".single_serving") : VDTextUtils.getTranslation("tooltip." + this + ".multiple_servings", servings);
+        pTooltipComponents.add(tooltip.withStyle(ChatFormatting.GRAY));
     }
 }

@@ -7,6 +7,7 @@ import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItemAccessor;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
+import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -22,12 +23,13 @@ import squeek.appleskin.api.food.FoodValues;
 public class VDAppleSkinEventHandler {
     @SubscribeEvent
     public void onPreTooltipEvent(TooltipOverlayEvent.Pre event) {
-        if (VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES.get()) {
-            Player player = VampirismMod.proxy.getClientPlayer();
+        Player player = VampirismMod.proxy.getClientPlayer();
+        ItemStack itemStack = event.itemStack;
+        Item item = itemStack.getItem();
 
-            ItemStack itemStack = event.itemStack;
-            Item item = itemStack.getItem();
-            if (player != null && VDHelper.isVampire(player) && !(item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.doesMatch(itemStack.getItem(), "werewolves:liver"))) {
+        if (player != null) {
+            if ((VDHelper.isVampire(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES.get() && !(item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.LIVER))) ||
+                    (VDIntegrationUtils.isWerewolf(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES.get() && !VDIntegrationUtils.canWerewolfEatFood(player, itemStack))) {
                 event.setCanceled(true);
             }
         }

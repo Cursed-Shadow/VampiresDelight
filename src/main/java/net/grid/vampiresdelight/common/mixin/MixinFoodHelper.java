@@ -45,7 +45,7 @@ public class MixinFoodHelper {
         if (FOOD_CONTAINING_BAT.contains(itemStack.getItem()))
             cir.setReturnValue(false);
 
-        if (VDHelper.doesMatch(itemStack.getItem(), "werewolves:wolf_berries") && !VDIntegrationUtils.isWerewolf(player))
+        if (VDHelper.isSame(itemStack.getItem(), VDIntegrationUtils.WOLF_BERRIES) && !VDIntegrationUtils.isWerewolf(player))
             cir.setReturnValue(true);
     }
 }

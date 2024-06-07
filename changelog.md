@@ -7,14 +7,22 @@
   - **Daisy Tea**;
 - Added **Botany Pots** compatibility tags:
   - **Vampire Orchid (flower and crop), Cursed Roots, Wild Garlic, and Black Mushroom** can now be grown in pots;
+- Added new configs:
+  - `hideAppleSkinHumanFoodTooltipsForWerewolves`:
+    - `true` by default;
 
 ### Updates
 - Made ice cream items also clear fire for other factions' members;
 - **Vampire Bite** books now spawn more often in vampire dungeons;
 - The chance of **Cooking Pot** spawning at hunter camps is not higher;
+- AppleSkin non-meat food tooltips are now hidden for werewolves without "Not Meat" skill;
+- Added faction food tooltip to **Wolf Berries**;
+- **Blood Wine Bottle** now has a tooltip displaying the amount of servings it contains;
 
 ### Fixes
-- Non-vegetarian werewolves and vampires no longer can drink human drinks like Melon Juice and Hot Cocoa (they still can drink milk bottle);
+- Werewolves without "Not Meat" skill and vampires no longer can drink human drinks like Melon Juice and Hot Cocoa (they still can drink milk bottle) (Thanks, Cheaterpaul!);
+- Fixed being able to pour wine from **Blood Wine Bottle** into more than 3 glasses;
+- "Disgusting" advancement is now also given after eating werewolf food while being non-werewolf;
 
 ## 0.1.5b
 

@@ -2,10 +2,12 @@ package net.grid.vampiresdelight.common.utility;
 
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.api.entity.factions.IPlayableFaction;
+import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.ForgeI18n;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -13,6 +15,13 @@ import java.util.Objects;
 
 @ParametersAreNonnullByDefault
 public class VDTooltipUtils {
+    public static void addSplitTooltip(String key, List<Component> tooltip, ChatFormatting style) {
+        String full = ForgeI18n.getPattern(VampiresDelight.MODID + "." + key);
+        for (String part : full.split("\n")) {
+            tooltip.add(Component.literal(part).withStyle(style));
+        }
+    }
+
     public static void addFactionFoodToolTips(List<Component> tooltip, Player player, IPlayableFaction<?> foodFaction) {
         if (!VDHelper.isVampire(player) && !VDConfiguration.HUNTER_TOOLTIPS_FOR_EVERYONE.get()) {
             if (!Objects.equals(foodFaction, VReference.VAMPIRE_FACTION))

@@ -4,10 +4,7 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.core.ModEffects;
 import net.grid.vampiresdelight.common.VDFoodValues;
-import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDHelper;
-import net.grid.vampiresdelight.common.utility.VDTextUtils;
-import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
+import net.grid.vampiresdelight.common.utility.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -120,7 +117,7 @@ public class HunterConsumableItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
         Player player = VampirismMod.proxy.getClientPlayer();
 
-        if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+        if (Configuration.FOOD_EFFECT_TOOLTIP.get() && VDEntityUtils.canConsumeHumanFood(player)) {
             if (this.hasCustomTooltip) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));

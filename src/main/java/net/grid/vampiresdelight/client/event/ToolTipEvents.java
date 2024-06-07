@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.client.event;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
+import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.items.BloodBottleItem;
 import de.teamlapen.vampirism.items.GarlicBreadItem;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
@@ -30,8 +31,6 @@ import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
-import static de.teamlapen.vampirism.items.BloodBottleFluidHandler.MULTIPLIER;
-
 @Mod.EventBusSubscriber(modid = VampiresDelight.MODID, value = Dist.CLIENT)
 public class ToolTipEvents {
     @SubscribeEvent
@@ -42,6 +41,7 @@ public class ToolTipEvents {
             return;
 
         ItemStack stack = event.getItemStack();
+        Item item = stack.getItem();
 
         List<? extends Integer> vampireStartColors = VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR.get();
         Color vampireStartColor = new Color(vampireStartColors.get(0), vampireStartColors.get(1), vampireStartColors.get(2));
@@ -60,9 +60,9 @@ public class ToolTipEvents {
 
         if (stack.is(VDTags.VAMPIRE_FOOD)) {
             setBorderColors(vampireStartColor, vampireEndColor, event);
-        } else if (stack.is(VDTags.HUNTER_FOOD) && player != null && (VDHelper.isVampire(player) || VDIntegrationUtils.isWerewolf(player))) {
+        } else if (stack.is(VDTags.HUNTER_FOOD) && player != null && VDHelper.isVampire(player)) {
             setBorderColors(hunterStartColor, hunterEndColor, event);
-        } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.doesMatch(stack.getItem(), "werewolves:wolf_berries")) {
+        } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
             setBorderColors(werewolfStartColor, werewolfEndColor, event);
         }
     }
@@ -73,23 +73,24 @@ public class ToolTipEvents {
     }
 
     @SubscribeEvent
-    public static void addTooltipToVampirismFood(ItemTooltipEvent event) {
+    public static void addVDTooltips(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
-        Item food = itemStack.getItem();
+        Item item = itemStack.getItem();
         List<Component> tooltip = event.getToolTip();
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (player != null) {
-            if (food instanceof VampirismItemBloodFoodItem || food instanceof BloodBottleItem) {
+            if (item instanceof VampirismItemBloodFoodItem || item instanceof BloodBottleItem) {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
-            }
-            if (food instanceof GarlicBreadItem) {
+            } else if (item instanceof GarlicBreadItem) {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
+            } else if (VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
+                VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player);
             }
 
             if (Screen.hasShiftDown() && Objects.equals(player.getGameProfile().getName(), "Dev")) {
-                if (food instanceof BloodBottleItem) {
-                    int blood = itemStack.getDamageValue() * MULTIPLIER;
+                if (itemStack.is(ModItems.BLOOD_BOTTLE.get())) {
+                    int blood = itemStack.getDamageValue() * VReference.FOOD_TO_FLUID_BLOOD;
                     tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
                 }
                 else if (itemStack.isDamageableItem()) {
@@ -97,23 +98,14 @@ public class ToolTipEvents {
                     int damage = itemStack.getDamageValue();
                     int durability = maxDamage - damage;
 
-                    tooltip.add(Component.literal("Max damage: " + maxDamage).withStyle(ChatFormatting.DARK_PURPLE));
-                    tooltip.add(Component.literal("Damage: " + damage).withStyle(ChatFormatting.DARK_PURPLE));
-                    tooltip.add(Component.literal("Durability: " + durability).withStyle(ChatFormatting.DARK_PURPLE));
+                    tooltip.add(Component.literal("Durability: " + durability + "/" + maxDamage).withStyle(ChatFormatting.GOLD));
+                    tooltip.add(Component.literal("Damage: " + damage).withStyle(ChatFormatting.GOLD));
                 }
             }
         }
 
-        if ((itemStack.is(VDItems.ORCHID_COOKIE.get()) || itemStack.is(VDItems.WOLF_BERRY_COOKIE.get())) &&
-                (VDIntegrationUtils.isModPresent("tlskincape") || new File("").toPath().toAbsolutePath().toString().contains("tlauncher"))) {
+        if ((itemStack.is(VDItems.ORCHID_COOKIE.get()) || itemStack.is(VDItems.WOLF_BERRY_COOKIE.get())) && (VDIntegrationUtils.isModPresent("tlskincape") || new File("").toPath().toAbsolutePath().toString().contains("tlauncher"))) {
             tooltip.add(VDTextUtils.getTranslation("text.pirated").withStyle(ChatFormatting.RED));
         }
-
-        /*
-        ResourceLocation id = new ResourceLocation(VDIntegrationUtils.WEREWOLVES, "wolf_berries");
-        tooltip.add(Component.literal((VDHelper.matches(itemStack.getItem(), id)) ? "yep" : "nope"));
-        tooltip.add(Component.literal(String.valueOf(RegUtil.id(itemStack.getItem()))));
-        tooltip.add(Component.literal(String.valueOf(id)));
-         */
     }
 }

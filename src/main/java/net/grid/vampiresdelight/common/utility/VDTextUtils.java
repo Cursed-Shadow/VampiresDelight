@@ -21,13 +21,6 @@ public class VDTextUtils {
         return Component.translatable(VampiresDelight.MODID + "." + key, args);
     }
 
-    public static void addSplitTooltip(String key, List<Component> tooltip, ChatFormatting style) {
-        String full = ForgeI18n.getPattern(VampiresDelight.MODID + "." + key);
-        for (String part : full.split("\n")) {
-            tooltip.add(Component.literal(part).withStyle(style));
-        }
-    }
-
     public static void addFoodEffectTooltip(ItemStack item, LivingEntity consumer, List<Component> tooltip) {
         FoodProperties foodProperties = item.getItem().getFoodProperties(item, consumer);
         if (foodProperties == null) return;

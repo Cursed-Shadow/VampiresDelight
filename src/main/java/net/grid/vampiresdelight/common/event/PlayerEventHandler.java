@@ -7,11 +7,13 @@ import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.item.HunterConsumableItem;
 import net.grid.vampiresdelight.common.item.VampireConsumableItem;
+import net.grid.vampiresdelight.common.item.WerewolfConsumableItem;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDStats;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
+import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -53,6 +55,11 @@ public class PlayerEventHandler {
                 }
             } else {
                 if (item instanceof VampireConsumableItem && itemStack.is(VDTags.VAMPIRE_FOOD) || item instanceof VampirismItemBloodFoodItem) {
+                    disgustingFoodConsumed(livingEntity);
+                }
+            }
+            if (!VDIntegrationUtils.isWerewolf(livingEntity)) {
+                if (item instanceof WerewolfConsumableItem && itemStack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
                     disgustingFoodConsumed(livingEntity);
                 }
             }

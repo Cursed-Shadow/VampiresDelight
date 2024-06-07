@@ -85,11 +85,11 @@ public class VDEntityUtils {
         });
     }
 
-    public static boolean canConsumeHumanDrinks(LivingEntity consumer) {
+    public static boolean canConsumeHumanFood(LivingEntity consumer) {
         if (VDHelper.isVampire(consumer)) {
             return false;
         }
-        // Werewolf players with "not_meat" skill can consume human drinks
+        // Werewolf players with "not_meat" skill can consume human food
         if (VDIntegrationUtils.isWerewolf(consumer)) {
             return consumer instanceof Player player && VDIntegrationUtils.isWerewolfVegetarian(player);
         }

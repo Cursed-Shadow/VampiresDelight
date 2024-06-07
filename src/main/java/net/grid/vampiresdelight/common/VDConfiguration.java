@@ -61,6 +61,7 @@ public class VDConfiguration {
     public static final String CATEGORY_APPLESKIN = "appleskin";
     public static ForgeConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
     public static ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES;
+    public static ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES;
 
 
     static {
@@ -170,6 +171,8 @@ public class VDConfiguration {
                 .define("correctAppleSkinTooltips", true);
         HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES = CLIENT_BUILDER.comment("Should AppleSkin tooltips be hidden for human food if the player is a vampire?")
                 .define("hideAppleSkinHumanFoodTooltipsForVampires", true);
+        HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES = CLIENT_BUILDER.comment("Should AppleSkin tooltips be hidden if the player is a werewolf for food they can't eat?")
+                .define("hideAppleSkinHumanFoodTooltipsForWerewolves", true);
 
         CLIENT_BUILDER.pop();
         CLIENT_CONFIG = CLIENT_BUILDER.build();

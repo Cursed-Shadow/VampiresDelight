@@ -2,7 +2,7 @@ package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDTextUtils;
+import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
@@ -32,7 +32,7 @@ public class DaisyTeaItem extends DrinkableItem {
 
     @Override
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-        if (VDEntityUtils.canConsumeHumanDrinks(consumer)) {
+        if (VDEntityUtils.canConsumeHumanFood(consumer)) {
             VDEntityUtils.cureMultipleEffects(CURABLE_EFFECTS, consumer);
         }
     }
@@ -41,8 +41,8 @@ public class DaisyTeaItem extends DrinkableItem {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
         Player player = VampirismMod.proxy.getClientPlayer();
 
-        if (Configuration.FOOD_EFFECT_TOOLTIP.get() && player != null && VDEntityUtils.canConsumeHumanDrinks(player)) {
-            VDTextUtils.addSplitTooltip("tooltip." + this, tooltip, ChatFormatting.BLUE);
+        if (Configuration.FOOD_EFFECT_TOOLTIP.get() && player != null && VDEntityUtils.canConsumeHumanFood(player)) {
+            VDTooltipUtils.addSplitTooltip("tooltip." + this, tooltip, ChatFormatting.BLUE);
         }
     }
 }
