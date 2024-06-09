@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.data;
 
+import de.teamlapen.vampirism.REFERENCE;
 import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDItems;
@@ -10,6 +11,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -29,6 +32,7 @@ public class VDItemTags extends ItemTagsProvider {
         this.registerVampirismTags();
         this.registerFarmersDelightTags();
         this.registerForgeTags();
+        this.registerMinecraftTags();
         this.registerCompatibilityTags();
     }
 
@@ -116,6 +120,12 @@ public class VDItemTags extends ItemTagsProvider {
 
         tag(ForgeTags.TOOLS_KNIVES)
                 .add(VDItems.SILVER_KNIFE.get());
+    }
+
+    public void registerMinecraftTags() {
+        tag(ItemTags.BOOKSHELF_BOOKS)
+                .add(ModItems.VAMPIRE_BOOK.get())
+                .addOptional(new ResourceLocation("guideapi_vp", "vampirism-guidebook"));
     }
 
     public void registerCompatibilityTags() {

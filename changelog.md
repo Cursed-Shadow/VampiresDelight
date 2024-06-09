@@ -12,12 +12,13 @@
     - `true` by default;
 
 ### Updates
+- **Blood Wine Bottle** now has a tooltip displaying the amount of servings it contains;
 - Made ice cream items also clear fire for other factions' members;
-- **Vampire Bite** books now spawn more often in vampire dungeons;
+- **Vampire Books** can now be put in **Chiseled Bookshelf**;
+- **Vampire Bite** enchantment books now spawn more often in vampire dungeons;
 - The chance of **Cooking Pot** spawning at hunter camps is not higher;
 - AppleSkin non-meat food tooltips are now hidden for werewolves without "Not Meat" skill;
 - Added faction food tooltip to **Wolf Berries**;
-- **Blood Wine Bottle** now has a tooltip displaying the amount of servings it contains;
 
 ### Fixes
 - Werewolves without "Not Meat" skill and vampires no longer can drink human drinks like Melon Juice and Hot Cocoa (they still can drink milk bottle) (Thanks, Cheaterpaul!);
