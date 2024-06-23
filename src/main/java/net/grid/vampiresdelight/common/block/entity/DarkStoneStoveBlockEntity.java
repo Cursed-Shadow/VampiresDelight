@@ -35,7 +35,7 @@ public class DarkStoneStoveBlockEntity extends SyncedBlockEntity {
     private final ItemStackHandler inventory;
     private final int[] cookingTimes;
     private final int[] cookingTimesTotal;
-    private ResourceLocation[] lastRecipeIDs;
+    private final ResourceLocation[] lastRecipeIDs;
 
     public DarkStoneStoveBlockEntity(BlockPos pos, BlockState state) {
         super(VDBlockEntityTypes.DARK_STONE_STOVE.get(), pos, state);

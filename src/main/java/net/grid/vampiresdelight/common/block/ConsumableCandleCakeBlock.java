@@ -34,6 +34,7 @@ import java.util.stream.Collectors;
 /**
  * Credits to the Neapolitan and Just More Cakes mods
  */
+@SuppressWarnings("deprecation")
 public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
     protected static final VoxelShape CAKE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);

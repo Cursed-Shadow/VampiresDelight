@@ -42,6 +42,7 @@ import vectorwing.farmersdelight.common.utility.MathUtils;
 
 import java.util.Optional;
 
+@SuppressWarnings("deprecation")
 public class DarkStoneStoveBlock extends BaseEntityBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;

@@ -20,6 +20,7 @@ import net.minecraftforge.common.PlantType;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.common.utility.MathUtils;
 
+@SuppressWarnings("deprecation")
 public class BloodySoilBlock extends Block {
     public BloodySoilBlock(Properties pProperties) {
         super(pProperties);

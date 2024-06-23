@@ -27,6 +27,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.PlantType;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("deprecation")
 public class CursedFarmlandBlock extends FarmBlock {
     public CursedFarmlandBlock(Properties properties) {
         super(properties);

@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -46,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("deprecation")
 public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -91,7 +93,8 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     private static boolean isPlayerInRange(@NotNull Player pPlayer, BlockPos pPos) {
         Vec3 playerPos = pPlayer.position();
         Vec3 blockPos = new Vec3(pPos.getX(), pPos.getY(), pPos.getZ());
-        double blockReachDistance = pPlayer.getAttribute(ForgeMod.BLOCK_REACH.get()).getValue();
+        AttributeInstance blockReach = pPlayer.getAttribute(ForgeMod.BLOCK_REACH.get());
+        double blockReachDistance = (blockReach == null) ? 4.5D : blockReach.getValue();
 
         blockPos = blockPos.add(0.5D, 0.5D, 0.5D);
 

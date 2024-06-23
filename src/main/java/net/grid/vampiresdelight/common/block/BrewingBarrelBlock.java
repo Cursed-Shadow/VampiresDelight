@@ -51,6 +51,7 @@ import vectorwing.farmersdelight.common.utility.MathUtils;
 
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class BrewingBarrelBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty BREWING = BooleanProperty.create("brewing");

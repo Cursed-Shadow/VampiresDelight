@@ -21,6 +21,7 @@ import vectorwing.farmersdelight.common.block.FeastBlock;
 import java.util.function.Supplier;
 
 // Jelly is 85% transparent
+@SuppressWarnings("deprecation")
 public class WeirdJellyBlock extends FeastBlock {
     protected static final VoxelShape PLATE_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 1.0D, 14.0D);
     protected static final VoxelShape JELLY_SHAPE = Shapes.joinUnoptimized(PLATE_SHAPE, Block.box(3.0D, 1.0D, 3.0D, 13.0D, 8.0D, 13.0D), BooleanOp.OR);

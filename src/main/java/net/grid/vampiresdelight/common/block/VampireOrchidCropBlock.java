@@ -22,6 +22,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("deprecation")
 public class VampireOrchidCropBlock extends CropBlock {
     public VampireOrchidCropBlock(Properties properties) {
         super(properties);

@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import vectorwing.farmersdelight.common.block.WildCropBlock;
 
+@SuppressWarnings("deprecation")
 public class WildGarlicBlock extends WildCropBlock {
     public WildGarlicBlock(MobEffect suspiciousStewEffect, int effectDuration, Properties properties) {
         super(suspiciousStewEffect, effectDuration, properties);
