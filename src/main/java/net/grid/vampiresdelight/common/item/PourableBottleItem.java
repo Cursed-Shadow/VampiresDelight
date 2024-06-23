@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.common.item;
 
+import net.grid.vampiresdelight.client.extension.PourableItemExtension;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
@@ -23,14 +24,16 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
- * Credits to the Create team for mechanic references
+ * Credits to the Create mod for mechanic
  */
 public class PourableBottleItem extends Item {
     private final Item serving;
@@ -173,5 +176,10 @@ public class PourableBottleItem extends Item {
         int servings = pStack.getMaxDamage() - pStack.getDamageValue();
         MutableComponent tooltip = (servings == 1) ? VDTextUtils.getTranslation("tooltip." + this + ".single_serving") : VDTextUtils.getTranslation("tooltip." + this + ".multiple_servings", servings);
         pTooltipComponents.add(tooltip.withStyle(ChatFormatting.GRAY));
+    }
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        //consumer.accept(new PourableItemExtension());
     }
 }

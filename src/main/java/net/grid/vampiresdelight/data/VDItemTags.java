@@ -1,6 +1,5 @@
 package net.grid.vampiresdelight.data;
 
-import de.teamlapen.vampirism.REFERENCE;
 import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDItems;

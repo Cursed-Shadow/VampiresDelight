@@ -23,8 +23,7 @@ public class ClientSetupEvents {
     public static final ResourceLocation EMPTY_CONTAINER_SLOT_BOTTLE = new ResourceLocation(VampiresDelight.MODID, "item/empty_container_slot_bottle");
 
     @SubscribeEvent
-    public static void onRegisterRecipeBookCategories(RegisterRecipeBookCategoriesEvent event)
-    {
+    public static void onRegisterRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
         VDRecipeCategories.init(event);
     }
 

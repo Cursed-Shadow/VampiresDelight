@@ -29,7 +29,6 @@ import net.minecraftforge.fml.common.Mod;
 import java.awt.*;
 import java.io.File;
 import java.util.List;
-import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = VampiresDelight.MODID, value = Dist.CLIENT)
 public class ToolTipEvents {
@@ -88,7 +87,7 @@ public class ToolTipEvents {
                 VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player);
             }
 
-            if (Screen.hasShiftDown() && Objects.equals(player.getGameProfile().getName(), "Dev")) {
+            if (Screen.hasShiftDown() && VDHelper.isDev()) {
                 if (itemStack.is(ModItems.BLOOD_BOTTLE.get())) {
                     int blood = itemStack.getDamageValue() * VReference.FOOD_TO_FLUID_BLOOD;
                     tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
