@@ -25,6 +25,10 @@
 - Fixed being able to pour wine from **Blood Wine Bottle** into more than 3 glasses;
 - "Disgusting" advancement is now also given after eating werewolf food while being non-werewolf;
 
+### Translations
+- Added:
+  - fr_FR (Thanks, Cursed Shadow!);
+
 ## 0.1.5b
 
 ### Updates

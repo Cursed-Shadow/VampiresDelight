@@ -40,6 +40,8 @@
 
 - **ru-RU** - DimensionPainter
 
+- **fr-FR** - Cursed Shadow
+
 ### Credits
 
 - **Farmer's Delight** mod - [Vectorwing](https://github.com/vectorwing)
