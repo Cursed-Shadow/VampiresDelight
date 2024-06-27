@@ -10,11 +10,13 @@
     "MixinFoodHelper",
     "MixinHunterCampPiecesFireplace",
     "MixinHunterCampPiecesSpecialBlock",
+    "MixinLivingEntity",
     "MixinModPlayerEventHandler",
     "MixinPowderSnowBlock",
     "MixinRenderHandler",
     "MixinSetOilFunction",
     "accessor.BloodStatsAccessor",
+    "accessor.LivingEntityAccessor",
     "accessor.StructurePieceAccessor",
     "accessor.VampirismItemBloodFoodItemAccessor"
   ],

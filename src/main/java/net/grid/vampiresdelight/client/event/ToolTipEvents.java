@@ -88,17 +88,21 @@ public class ToolTipEvents {
             }
 
             if (Screen.hasShiftDown() && VDHelper.isDev()) {
-                if (itemStack.is(ModItems.BLOOD_BOTTLE.get())) {
-                    int blood = itemStack.getDamageValue() * VReference.FOOD_TO_FLUID_BLOOD;
-                    tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
-                }
-                else if (itemStack.isDamageableItem()) {
-                    int maxDamage = itemStack.getMaxDamage();
-                    int damage = itemStack.getDamageValue();
-                    int durability = maxDamage - damage;
+                try {
+                    if (itemStack.is(ModItems.BLOOD_BOTTLE.get())) {
+                        int blood = itemStack.getDamageValue() * VReference.FOOD_TO_FLUID_BLOOD;
+                        tooltip.add(Component.literal(blood + "/900").withStyle(ChatFormatting.YELLOW));
+                    }
+                    else if (itemStack.isDamageableItem()) {
+                        int maxDamage = itemStack.getMaxDamage();
+                        int damage = itemStack.getDamageValue();
+                        int durability = maxDamage - damage;
 
-                    tooltip.add(Component.literal("Durability: " + durability + "/" + maxDamage).withStyle(ChatFormatting.GOLD));
-                    tooltip.add(Component.literal("Damage: " + damage).withStyle(ChatFormatting.GOLD));
+                        tooltip.add(Component.literal("Durability: " + durability + "/" + maxDamage).withStyle(ChatFormatting.GOLD));
+                        tooltip.add(Component.literal("Damage: " + damage).withStyle(ChatFormatting.GOLD));
+                    }
+                } catch (NullPointerException e) {
+                    VampiresDelight.LOGGER.error("Failed to get the damage value of ItemStack", e);
                 }
             }
         }

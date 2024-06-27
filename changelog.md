@@ -16,7 +16,7 @@
 - Made ice cream items also clear fire for other factions' members;
 - **Vampire Books** can now be put in **Chiseled Bookshelf**;
 - **Vampire Bite** enchantment books now spawn more often in vampire dungeons;
-- The chance of **Cooking Pot** spawning at hunter camps is not higher;
+- The chance of **Cooking Pot** spawning at hunter camps is now higher;
 - AppleSkin non-meat food tooltips are now hidden for werewolves without "Not Meat" skill;
 - Added faction food tooltip to **Wolf Berries**;
 
@@ -28,6 +28,7 @@
 ### Translations
 - Added:
   - fr_FR (Thanks, Cursed Shadow!);
+  - fr_CA (Thanks, Cursed Shadow!);
 
 ## 0.1.5b
 

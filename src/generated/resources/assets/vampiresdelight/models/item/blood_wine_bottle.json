@@ -1,5 +1,13 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "vampiresdelight:item/blood_wine_bottle_pouring",
+      "predicate": {
+        "vampiresdelight:pouring": 0.01
+      }
+    }
+  ],
   "textures": {
     "layer0": "vampiresdelight:item/blood_wine_bottle"
   }

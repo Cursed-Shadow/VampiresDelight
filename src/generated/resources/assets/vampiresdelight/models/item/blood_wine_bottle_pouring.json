@@ -1,0 +1,6 @@
+{
+  "parent": "vampiresdelight:item/template_bottle_pouring",
+  "textures": {
+    "layer0": "vampiresdelight:item/blood_wine_bottle"
+  }
+}

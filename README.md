@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/modrinth/dt/vampires-delight?label=Modrinth%20Downloads" alt="Modrinth Downloads">
 </a>
 <br>
-<img src="https://i.imgur.com/IbpjAC7.png" width="50%">
+<img src="https://i.imgur.com/IbpjAC7.png" width="50%" alt="">
 
 ## Description
 
@@ -31,19 +31,16 @@
 ### Special thanks
 
 - [Cheaterpaul](https://paube.de) (Code)
-
 - [Lunofe (Zin)](https://github.com/lunofe) (Code/Balance)
-
 - [Fluffy_Nuar](https://github.com/fluffy-nuar) (Ideas)
 
 ### Translators
 
 - **ru-RU** - DimensionPainter
-
 - **fr-FR** - Cursed Shadow
+- **fr-CA** - Cursed Shadow
 
 ### Credits
 
 - **Farmer's Delight** mod - [Vectorwing](https://github.com/vectorwing)
-
 - **Vampirism** mod - [Maxanier](https://maxanier.de), [Cheaterpaul](https://paube.de)

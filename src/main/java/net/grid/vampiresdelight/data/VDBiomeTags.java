@@ -16,6 +16,7 @@ public class VDBiomeTags extends BiomeTagsProvider {
     public VDBiomeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, VampiresDelight.MODID, existingFileHelper);
     }
+
     @Override
     protected void addTags(HolderLookup.@NotNull Provider holderProvider) {
         registerModTags();

@@ -159,7 +159,7 @@
   "vampiresdelight.tooltip.daisy_tea": "Guérit la faiblesse, la cécité,\nLenteur et nausées",
   "vampiresdelight.tooltip.orchid_tea": "Infecte avec du sanguinare",
   "vampiresdelight.tooltip.cursed_cupcake": "Élimine l'effet de l'ailt",
-  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contient une portion de vin",
+  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contient %s portion de vin",
   "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Contient %s des portions de vin",
   "vampiresdelight.tooltip.spirit_lantern": "Permet au joueur de voir un peu plus loin dans le brouillard des vampires tout en tenant",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Impossible de brûler le sol à cause des paramètres de ce serveur",

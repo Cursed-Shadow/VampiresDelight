@@ -21,6 +21,7 @@ public class VDItemModels extends ItemModelProvider {
 
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
+    public static final ResourceLocation POURING = resourceItem("template_bottle_pouring");
 
     public VDItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, VampiresDelight.MODID, existingFileHelper);
@@ -41,17 +42,20 @@ public class VDItemModels extends ItemModelProvider {
         Set<Item> mugItems = Sets.newHashSet(
                 VDItems.DAISY_TEA.get(),
                 VDItems.ORCHID_TEA.get(),
-                VDItems.MULLED_WINE_GLASS.get()
-        );
+                VDItems.MULLED_WINE_GLASS.get());
         takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));
+
+        // Two models of items that are pourable
+        Set<Item> pouringItems = Sets.newHashSet(
+                VDItems.BLOOD_WINE_BOTTLE.get());
+        pouringItems.forEach(this::itemPouringModel);
 
         // Blocks with special item sprites
         Set<Item> spriteBlockItems = Sets.newHashSet(
                 VDItems.BLOOD_PIE.get(),
                 VDItems.ORCHID_SEEDS.get(),
                 VDItems.WEIRD_JELLY_BLOCK.get(),
-                VDItems.ORCHID_CAKE.get()
-        );
+                VDItems.ORCHID_CAKE.get());
         takeAll(items, spriteBlockItems.toArray(new Item[0])).forEach(item -> withExistingParent(itemName(item), GENERATED).texture("layer0", resourceItem(itemName(item))));
 
         Set<Item> flatBlockItems = Sets.newHashSet(
@@ -96,15 +100,26 @@ public class VDItemModels extends ItemModelProvider {
         withExistingParent(itemName(item), ItemModels.MUG).texture("layer0", texture);
     }
 
-    private String itemName(Item item) {
+    public void itemPouringModel(Item item) {
+        ResourceLocation texture = resourceItem(itemName(item));
+        withExistingParent(itemName(item), GENERATED).texture("layer0", texture)
+                .override().predicate(modLoc("pouring"), 0.01f).model(
+                        withExistingParent(itemName(item) + "_pouring", POURING).texture("layer0", texture));
+    }
+
+    private static String itemName(Item item) {
         return Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();
     }
 
-    public ResourceLocation resourceBlock(String path) {
-        return new ResourceLocation(VampiresDelight.MODID, "block/" + path);
+    private static ResourceLocation resourceBlock(String path) {
+        return modLocation("block/" + path);
     }
 
-    public ResourceLocation resourceItem(String path) {
-        return new ResourceLocation(VampiresDelight.MODID, "item/" + path);
+    private static ResourceLocation resourceItem(String path) {
+        return modLocation("item/" + path);
+    }
+
+    private static ResourceLocation modLocation(String path) {
+        return new ResourceLocation(VampiresDelight.MODID, path);
     }
 }

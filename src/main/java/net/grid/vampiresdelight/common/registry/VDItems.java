@@ -124,7 +124,7 @@ public class VDItems {
     public static final RegistryObject<BlockItem> SPIRIT_LANTERN = ITEMS.register("spirit_lantern",
             () -> new BlockItem(VDBlocks.SPIRIT_LANTERN.get(), basicItem()));
 
-    // Tools/Non-food
+    // Tools/Misc
     public static final RegistryObject<KnifeItem> SILVER_KNIFE = ITEMS.register("silver_knife",
             () -> new KnifeItem(VDIntegrationUtils.SILVER_ITEM_TIER, 0.5F, -2.0F, basicItem()));
     public static final RegistryObject<AlchemicalCocktailItem> ALCHEMICAL_COCKTAIL = ITEMS.register("alchemical_cocktail",

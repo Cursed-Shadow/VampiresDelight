@@ -12,7 +12,7 @@ logoFile="logo.png"
 logoBlur=false
 itemIcon = "vampiresdelight:dark_stone_stove"
 configBackground = "vampiresdelight:textures/block/dark_stone_small_bricks.png"
-credits="Cheaterpaul, Maxanier, Vectorwing, DimensionPainter"
+credits="${credits}"
 authors="GridExpert"
 description='''
 Makes Vampirism and Farmer's Delight more compatible

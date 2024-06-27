@@ -159,7 +159,7 @@
   "vampiresdelight.tooltip.daisy_tea": "Лікує слабкість, сліпоту,\nповільність і нудоту",
   "vampiresdelight.tooltip.orchid_tea": "Заражає сангвінаре вампіріс",
   "vampiresdelight.tooltip.cursed_cupcake": "Знімає ефект часнику",
-  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Містить одну порцію вина",
+  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Містить %s порцію вина",
   "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Містить %s порції вина",
   "vampiresdelight.tooltip.spirit_lantern": "Дозволяє гравцеві бачити трохи далі крізь вампірський туман, при триманні у руці",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не може палити землю через налаштування цього сервера",

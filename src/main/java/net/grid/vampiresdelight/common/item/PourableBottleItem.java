@@ -1,15 +1,14 @@
 package net.grid.vampiresdelight.common.item;
 
 import net.grid.vampiresdelight.client.extension.PourableItemExtension;
+import net.grid.vampiresdelight.common.mixin.accessor.LivingEntityAccessor;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
-import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -21,7 +20,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -34,8 +32,9 @@ import java.util.function.Consumer;
 
 /**
  * Credits to the Create mod for mechanic
+ * <a href="https://github.com/Creators-of-Create/Create">...</a>
  */
-public class PourableBottleItem extends Item {
+public class PourableBottleItem extends Item implements ICustomUseItem {
     private final Item serving;
     private final Item servingContainer;
 
@@ -81,7 +80,7 @@ public class PourableBottleItem extends Item {
         }
 
         HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
-        if (!(hitResult instanceof BlockHitResult)) return new InteractionResultHolder<>(InteractionResult.FAIL, itemStack);
+        //if (!(hitResult instanceof BlockHitResult)) return new InteractionResultHolder<>(InteractionResult.FAIL, itemStack);
 
         Vec3 POVHit = hitResult.getLocation();
         AABB aabb = new AABB(POVHit, POVHit).inflate(1f);
@@ -150,12 +149,7 @@ public class PourableBottleItem extends Item {
 
     @Override
     public @NotNull UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.DRINK;
-    }
-
-    @Override
-    public SoundEvent getDrinkingSound() {
-        return VDSounds.POURING.get();
+        return UseAnim.CUSTOM;
     }
 
     @Override
@@ -174,12 +168,28 @@ public class PourableBottleItem extends Item {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         int servings = pStack.getMaxDamage() - pStack.getDamageValue();
-        MutableComponent tooltip = (servings == 1) ? VDTextUtils.getTranslation("tooltip." + this + ".single_serving") : VDTextUtils.getTranslation("tooltip." + this + ".multiple_servings", servings);
+        MutableComponent tooltip = VDTextUtils.getTranslation("tooltip." + this + (servings == 1 ? ".single_serving" : ".multiple_servings"), servings);
         pTooltipComponents.add(tooltip.withStyle(ChatFormatting.GRAY));
     }
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        //consumer.accept(new PourableItemExtension());
+        consumer.accept(new PourableItemExtension());
+    }
+
+    @Override
+    public boolean hasCustomUseEffects() {
+        return true;
+    }
+
+    @Override
+    public boolean triggerUseEffects(ItemStack stack, LivingEntity entity, int amount) {
+        CompoundTag tag = stack.getOrCreateTag();
+        if (tag.contains("Pouring")) {
+            ItemStack toPour = ItemStack.of(tag.getCompound("Pouring"));
+            ((LivingEntityAccessor) entity).vampiresdelight$callSpawnItemParticles(toPour, 1);
+        }
+
+        return true;
     }
 }

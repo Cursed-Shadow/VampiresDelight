@@ -64,7 +64,7 @@ public class VDCreativeTabs {
                         add(VDItems.PINK_BAR_STOOL.get(), output);
 
                         add(VDItems.CURSED_FARMLAND.get(), output);
-                        add(VDItems.BLOODY_SOIL.get(), output);
+                        //add(VDItems.BLOODY_SOIL.get(), output);
                         add(VDItems.SPIRIT_LANTERN.get(), output);
 
                         // Tools
