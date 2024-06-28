@@ -59,7 +59,7 @@ public class BlessingEffect extends MobEffect {
                             livingEntity.getRandom().nextInt(18, 25) :
                             livingEntity.getRandom().nextInt(4, 10);
 
-                    VDEntityUtils.addBlessingParticlesAroundEntity(VDParticleTypes.BLESSING.get(), livingEntity, amount);
+                    VDEntityUtils.spawnBlessingParticlesAroundEntity(VDParticleTypes.BLESSING.get(), livingEntity, amount);
                 }
             }
         }

@@ -1,7 +1,7 @@
 package net.grid.vampiresdelight.common.mixin.plugin;
 
 import com.google.common.collect.ImmutableMap;
-import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
+import net.minecraftforge.fml.loading.LoadingModList;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -25,7 +25,7 @@ public class VDMixinConfigPlugin implements IMixinConfigPlugin {
     private static final Supplier<Boolean> TRUE = () -> true;
 
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
-            "net.grid.vampiresdelight.common.mixin.MixinFoodHelper", () -> VDIntegrationUtils.isLoadingModPresent(VDIntegrationUtils.APPLESKIN)
+            "net.grid.vampiresdelight.common.mixin.MixinFoodHelper", () -> LoadingModList.get().getModFileById("appleskin") != null
 
     );
 

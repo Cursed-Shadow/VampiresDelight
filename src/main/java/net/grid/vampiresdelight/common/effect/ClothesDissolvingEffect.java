@@ -56,7 +56,7 @@ public class ClothesDissolvingEffect extends MobEffect {
             }
         }
 
-        VDEntityUtils.addParticlesAroundEntity(ModParticleTypes.STEAM.get(), livingEntity,
+        VDEntityUtils.spawnParticlesAroundEntity(ModParticleTypes.STEAM.get(), livingEntity,
                 livingEntity.getRandom().nextInt(3, 8), 0.015D, -0.5D);
     }
 

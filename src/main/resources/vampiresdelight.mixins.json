@@ -16,7 +16,6 @@
     "MixinRenderHandler",
     "MixinSetOilFunction",
     "accessor.BloodStatsAccessor",
-    "accessor.LivingEntityAccessor",
     "accessor.StructurePieceAccessor",
     "accessor.VampirismItemBloodFoodItemAccessor"
   ],

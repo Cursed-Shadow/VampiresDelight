@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.6b
+
+### Fixes
+- Fixed game crushing on load because of incorrect mixin plugin setup;
+
 ## 0.1.6
 
 ### Additions

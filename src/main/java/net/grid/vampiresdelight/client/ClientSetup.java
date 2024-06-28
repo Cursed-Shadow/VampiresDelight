@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 public class ClientSetup {
     public static void init(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            //registerItemProperties();
+            registerItemProperties();
             MenuScreens.register(VDMenuTypes.BREWING_BARREL.get(), BrewingBarrelScreen::new);
         });
 

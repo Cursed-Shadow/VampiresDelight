@@ -12,6 +12,10 @@ public class VDSounds {
 
     public static final RegistryObject<SoundEvent> TRIANGLE = SOUNDS.register("triangle",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(VampiresDelight.MODID, "triangle")));
-    public static final RegistryObject<SoundEvent> POURING = SOUNDS.register("item.pouring",
-            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(VampiresDelight.MODID, "item.pouring")));
+    public static final RegistryObject<SoundEvent> POURING_FULL = SOUNDS.register("item.pouring_full",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(VampiresDelight.MODID, "item.pouring_full")));
+    public static final RegistryObject<SoundEvent> POURING_SHORT = SOUNDS.register("item.pouring_short",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(VampiresDelight.MODID, "item.pouring_short")));
+    public static final RegistryObject<SoundEvent> POURING_FINISH = SOUNDS.register("item.pouring_finish",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(VampiresDelight.MODID, "item.pouring_finish")));
 }

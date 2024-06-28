@@ -1,10 +1,13 @@
 package net.grid.vampiresdelight.common.item;
 
 import net.grid.vampiresdelight.client.extension.PourableItemExtension;
-import net.grid.vampiresdelight.common.mixin.accessor.LivingEntityAccessor;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
+import net.grid.vampiresdelight.common.registry.VDSounds;
+import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -125,6 +128,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
             if (itemStack.getDamageValue() >= itemStack.getMaxDamage()) itemStack = new ItemStack(servingContainer);
             VDAdvancementTriggers.BLOOD_WINE_POURED.trigger((ServerPlayer) player);
+            entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
         }
 
         return itemStack;
@@ -138,8 +142,35 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
         CompoundTag compoundTag = itemStack.getOrCreateTag();
         if (compoundTag.contains("Pouring")) {
             player.getInventory().placeItemBackInInventory(ItemStack.of(compoundTag.getCompound("Pouring")));
+            entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
             compoundTag.remove("Pouring");
         }
+    }
+
+    @Override
+    public boolean hasCustomUseEffects() {
+        return false;
+    }
+
+    @Override
+    public boolean triggerUseEffects(ItemStack stack, LivingEntity entity, int amount) {
+        CompoundTag tag = stack.getOrCreateTag();
+        if (tag.contains("Pouring") && entity.getTicksUsingItem() % 3 == 0) {
+            ItemStack toPour = ItemStack.of(tag.getCompound("Pouring"));
+            VDEntityUtils.spawnParticlesOnItemEntityHolding(new ItemParticleOption(ParticleTypes.ITEM, toPour), entity, 1);
+        }
+
+        /*
+        if (entity.getTicksUsingItem() % 3 == 0) {
+            VDEntityUtils.spawnParticlesOnItemEntityHolding(ParticleTypes.EFFECT, entity, 1);
+        }
+         */
+
+        if ((entity.getTicksUsingItem() - 6) % 7 == 0) {
+            entity.playSound(VDSounds.POURING_SHORT.get(), 1.2F, entity.getRandom().nextFloat() * 0.2F + 0.9F + ((float) entity.getTicksUsingItem() / 128));
+        }
+
+        return false;
     }
 
     @Override
@@ -148,8 +179,8 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     }
 
     @Override
-    public @NotNull UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.CUSTOM;
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
+        return true;
     }
 
     @Override
@@ -161,11 +192,6 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     }
 
     @Override
-    public boolean hasCraftingRemainingItem(ItemStack stack) {
-        return true;
-    }
-
-    @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         int servings = pStack.getMaxDamage() - pStack.getDamageValue();
         MutableComponent tooltip = VDTextUtils.getTranslation("tooltip." + this + (servings == 1 ? ".single_serving" : ".multiple_servings"), servings);
@@ -173,23 +199,12 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     }
 
     @Override
+    public @NotNull UseAnim getUseAnimation(ItemStack itemStack) {
+        return UseAnim.CUSTOM;
+    }
+
+    @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new PourableItemExtension());
-    }
-
-    @Override
-    public boolean hasCustomUseEffects() {
-        return true;
-    }
-
-    @Override
-    public boolean triggerUseEffects(ItemStack stack, LivingEntity entity, int amount) {
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("Pouring")) {
-            ItemStack toPour = ItemStack.of(tag.getCompound("Pouring"));
-            ((LivingEntityAccessor) entity).vampiresdelight$callSpawnItemParticles(toPour, 1);
-        }
-
-        return true;
     }
 }

@@ -19,17 +19,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.LoadingModList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class VDIntegrationUtils {
     public static boolean isModPresent(String string) {
         return ModList.get().isLoaded(string);
-    }
-
-    public static boolean isLoadingModPresent(String string) {
-        return LoadingModList.get().getModFileById(string) != null;
     }
 
     // Mod ids

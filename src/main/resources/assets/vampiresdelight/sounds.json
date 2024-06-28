@@ -6,9 +6,19 @@
       "vampiresdelight:triangle_3"
     ]
   },
-  "item.pouring": {
+  "item.pouring_full": {
     "sounds": [
-      "vampiresdelight:pouring"
+      "vampiresdelight:pouring_full"
+    ]
+  },
+  "item.pouring_short": {
+    "sounds": [
+      "vampiresdelight:pouring_short"
+    ]
+  },
+  "item.pouring_finish": {
+    "sounds": [
+      "vampiresdelight:pouring_finish"
     ]
   }
 }
