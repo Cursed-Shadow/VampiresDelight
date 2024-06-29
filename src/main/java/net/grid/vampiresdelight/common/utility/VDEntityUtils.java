@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import java.awt.*;
 import java.util.List;
 
 public class VDEntityUtils {
@@ -134,23 +135,20 @@ public class VDEntityUtils {
     }
 
     // LivingEntity.spawnItemParticlesAroundEntity but with configurable particle type
-    public static void spawnParticlesOnItemEntityHolding(ParticleOptions particle, LivingEntity livingEntity, int pAmount) {
-        for (int i = 0; i < pAmount; ++i) {
-            Vec3 vec3 = new Vec3(((double) livingEntity.getRandom().nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D);
-            vec3 = vec3.xRot(-livingEntity.getXRot() * ((float) Math.PI / 180F));
-            vec3 = vec3.yRot(-livingEntity.getYRot() * ((float) Math.PI / 180F));
-            double d0 = (double)(-livingEntity.getRandom().nextFloat()) * 0.6D - 0.3D;
-            Vec3 vec31 = new Vec3(((double) livingEntity.getRandom().nextFloat() - 0.5D) * 0.3D, d0, 0.6D);
-            vec31 = vec31.xRot(-livingEntity.getXRot() * ((float) Math.PI / 180F));
-            vec31 = vec31.yRot(-livingEntity.getYRot() * ((float) Math.PI / 180F));
-            vec31 = vec31.add(livingEntity.getX(), livingEntity.getEyeY(), livingEntity.getZ());
+    public static void spawnParticlesOnItemEntityHolding(ParticleOptions particleOptions, LivingEntity livingEntity, Color color) {
+        Vec3 vec3 = new Vec3(((double) livingEntity.getRandom().nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D);
+        vec3 = vec3.xRot(-livingEntity.getXRot() * ((float) Math.PI / 180F));
+        vec3 = vec3.yRot(-livingEntity.getYRot() * ((float) Math.PI / 180F));
+        double d0 = (double)(-livingEntity.getRandom().nextFloat()) * 0.6D - 0.3D;
+        Vec3 vec31 = new Vec3(((double) livingEntity.getRandom().nextFloat() - 0.5D) * 0.3D, d0, 0.6D);
+        vec31 = vec31.xRot(-livingEntity.getXRot() * ((float) Math.PI / 180F));
+        vec31 = vec31.yRot(-livingEntity.getYRot() * ((float) Math.PI / 180F));
+        vec31 = vec31.add(livingEntity.getX(), livingEntity.getEyeY(), livingEntity.getZ());
 
-            if (livingEntity.level() instanceof ServerLevel) {
-                ((ServerLevel) livingEntity.level()).sendParticles(particle, vec31.x, vec31.y, vec31.z, 1, vec3.x, vec3.y + 0.05D, vec3.z, 0.0D);
-            } else {
-                livingEntity.level().addParticle(particle, vec31.x, vec31.y, vec31.z, vec3.x, vec3.y + 0.05D, vec3.z);
-            }
+        if (livingEntity.level() instanceof ServerLevel) {
+            ((ServerLevel) livingEntity.level()).sendParticles(particleOptions, vec31.x, vec31.y, vec31.z, 1, vec3.x, vec3.y + 0.05D, vec3.z, 0.0D);
+        } else {
+            livingEntity.level().addParticle(particleOptions, vec31.x, vec31.y, vec31.z, vec3.x, vec3.y + 0.05D, vec3.z);
         }
-
     }
 }

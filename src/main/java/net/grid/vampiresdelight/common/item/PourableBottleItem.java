@@ -1,13 +1,12 @@
 package net.grid.vampiresdelight.common.item;
 
 import net.grid.vampiresdelight.client.extension.PourableItemExtension;
+import net.grid.vampiresdelight.client.particle.DrinkSplashOptions;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -30,6 +29,7 @@ import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -154,17 +154,21 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
 
     @Override
     public boolean triggerUseEffects(ItemStack stack, LivingEntity entity, int amount) {
+        /*
         CompoundTag tag = stack.getOrCreateTag();
         if (tag.contains("Pouring") && entity.getTicksUsingItem() % 3 == 0) {
             ItemStack toPour = ItemStack.of(tag.getCompound("Pouring"));
-            VDEntityUtils.spawnParticlesOnItemEntityHolding(new ItemParticleOption(ParticleTypes.ITEM, toPour), entity, 1);
+            VDEntityUtils.spawnParticlesOnItemEntityHolding(new ItemParticleOption(ParticleTypes.ITEM, toPour), entity);
         }
+         */
 
         /*
         if (entity.getTicksUsingItem() % 3 == 0) {
-            VDEntityUtils.spawnParticlesOnItemEntityHolding(ParticleTypes.EFFECT, entity, 1);
+            VDEntityUtils.spawnParticlesOnItemEntityHolding(ParticleTypes.EFFECT, entity);
         }
          */
+
+        //VDEntityUtils.spawnParticlesOnItemEntityHolding(new DrinkSplashOptions(new Color(112, 18, 27).getRGB()), entity);
 
         if ((entity.getTicksUsingItem() - 6) % 7 == 0) {
             entity.playSound(VDSounds.POURING_SHORT.get(), 1.2F, entity.getRandom().nextFloat() * 0.2F + 0.9F + ((float) entity.getTicksUsingItem() / 128));

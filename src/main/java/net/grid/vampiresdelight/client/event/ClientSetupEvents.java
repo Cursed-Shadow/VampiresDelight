@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.client.event;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.client.particle.BlessingParticle;
+import net.grid.vampiresdelight.client.particle.DrinkSplashParticle;
 import net.grid.vampiresdelight.client.recipebook.VDRecipeCategories;
 import net.grid.vampiresdelight.client.renderer.DarkStoneStoveRenderer;
 import net.grid.vampiresdelight.common.registry.VDBlockEntityTypes;
@@ -37,9 +38,11 @@ public class ClientSetupEvents {
         event.registerBlockEntityRenderer(VDBlockEntityTypes.DARK_STONE_STOVE.get(), DarkStoneStoveRenderer::new);
     }
 
+    @SuppressWarnings("deprecation")
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerParticles(RegisterParticleProvidersEvent event) {
         Minecraft.getInstance().particleEngine.register(VDParticleTypes.BLESSING.get(), BlessingParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(VDParticleTypes.DRINK_SPLASH.get(), DrinkSplashParticle.Provider::new);
     }
 
     /*
