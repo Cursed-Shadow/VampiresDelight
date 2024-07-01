@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.7
+
+### Additions
+- Added new blocks:
+  - **Bloody Soil**;
+  - **Bloody Soil Farmland**;
+
+### Translations
+- **New lines added**;
+- Fixed:
+  - uk_Ua;
+
 ## 0.1.6b
 
 ### Fixes
@@ -32,8 +44,8 @@
 
 ### Translations
 - Added:
-  - fr_FR (Thanks, Cursed Shadow!);
-  - fr_CA (Thanks, Cursed Shadow!);
+  - fr_Fr (Thanks, Cursed Shadow!);
+  - fr_Ca (Thanks, Cursed Shadow!);
 
 ## 0.1.5b
 
@@ -109,7 +121,7 @@
 
 ### Translations
 - Corrected:
-  - ru_RU;
+  - ru_Ru;
 
 ## 0.1.4
 
@@ -157,10 +169,10 @@
 
 ### Translations
 - Added:
-  - uk_UA;
-  - en_GB;
+  - uk_Ua;
+  - en_Gb;
 - Corrected:
-  - ru_RU;
+  - ru_Ru;
 
 ## 0.1.2
 
@@ -199,7 +211,7 @@
 
 ### Translations
 - Added:
-  - ru_RU (Thanks, DimensionPainter!);
+  - ru_Ru (Thanks, DimensionPainter!);
 
 ## 0.1.1
 

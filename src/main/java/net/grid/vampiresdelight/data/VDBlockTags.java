@@ -9,6 +9,7 @@ import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -38,9 +39,12 @@ public class VDBlockTags extends BlockTagsProvider {
         WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(VDTags.WINE_SHELF).add(block));
 
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> {
-            String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
-            if (name.contains("orchid"))
+            ResourceLocation key = ForgeRegistries.BLOCKS.getKey(block);
+            if (key != null) {
+                String name = key.getPath();
+                if (name.contains("orchid"))
                     tag(VDTags.DROPS_ORCHID_CAKE_SLICE).add(block);
+            }
 
             tag(BlockTags.CANDLE_CAKES).add(block);
         });
@@ -79,7 +83,9 @@ public class VDBlockTags extends BlockTagsProvider {
         );
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 VDBlocks.CURSED_FARMLAND.get(),
-                VDBlocks.BLOODY_SOIL.get());
+                VDBlocks.BLOODY_SOIL.get(),
+                VDBlocks.BLOODY_SOIL_FARMLAND.get()
+        );
     }
 
     protected void registerMinecraftTags() {
@@ -99,11 +105,9 @@ public class VDBlockTags extends BlockTagsProvider {
         tag(ModTags.STRAW_BLOCKS).add(
                 VDBlocks.ORCHID_BAG.get());
         tag(ModTags.TRAY_HEAT_SOURCES).add(
-                ModBlocks.FIRE_PLACE.get()
-        );
+                ModBlocks.FIRE_PLACE.get());
         tag(ModTags.HEAT_SOURCES).add(
-                VDBlocks.DARK_STONE_STOVE.get()
-        );
+                VDBlocks.DARK_STONE_STOVE.get());
     }
 
     private void registerCompatibilityTags() {

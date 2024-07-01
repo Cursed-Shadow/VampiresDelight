@@ -10,9 +10,11 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public record DrinkSplashOptions(int color) implements ParticleOptions {
+public class DrinkSplashOptions implements ParticleOptions {
+    protected final int color;
+
     public static final Codec<DrinkSplashOptions> CODEC = RecordCodecBuilder.create((instance) -> instance
-            .group(Codec.INT.fieldOf("color").forGetter((getter) -> getter.color))
+            .group(Codec.INT.fieldOf("color").forGetter((options) -> options.color))
             .apply(instance, DrinkSplashOptions::new));
 
     public static final ParticleOptions.Deserializer<DrinkSplashOptions> DESERIALIZER = new ParticleOptions.Deserializer<>() {
@@ -27,6 +29,10 @@ public record DrinkSplashOptions(int color) implements ParticleOptions {
         }
     };
 
+    public DrinkSplashOptions(int color) {
+        this.color = color;
+    }
+
     @Override
     public ParticleType<?> getType() {
         return VDParticleTypes.DRINK_SPLASH.get();
@@ -34,7 +40,7 @@ public record DrinkSplashOptions(int color) implements ParticleOptions {
 
     @Override
     public void writeToNetwork(FriendlyByteBuf pBuffer) {
-        pBuffer.writeVarInt(color);
+        pBuffer.writeVarInt(this.color);
     }
 
     @Override

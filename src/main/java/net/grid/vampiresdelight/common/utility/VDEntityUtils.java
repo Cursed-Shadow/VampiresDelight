@@ -18,7 +18,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import java.awt.*;
 import java.util.List;
 
 public class VDEntityUtils {
@@ -135,7 +134,7 @@ public class VDEntityUtils {
     }
 
     // LivingEntity.spawnItemParticlesAroundEntity but with configurable particle type
-    public static void spawnParticlesOnItemEntityHolding(ParticleOptions particleOptions, LivingEntity livingEntity, Color color) {
+    public static void spawnParticlesOnItemEntityHolding(ParticleOptions particleOptions, LivingEntity livingEntity) {
         Vec3 vec3 = new Vec3(((double) livingEntity.getRandom().nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D);
         vec3 = vec3.xRot(-livingEntity.getXRot() * ((float) Math.PI / 180F));
         vec3 = vec3.yRot(-livingEntity.getYRot() * ((float) Math.PI / 180F));

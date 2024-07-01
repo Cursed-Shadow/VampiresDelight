@@ -50,10 +50,14 @@ public class VDBlockModels extends BlockModelProvider {
         // Bar Stools
         BarStoolBlock.getBarStoolBlocks().forEach(this::barStoolBlock);
 
+        // Farmlands
+        farmlandBlock(VDBlocks.CURSED_FARMLAND.get(), ModBlocks.CURSED_EARTH.get(), false, true);
+        farmlandBlock(VDBlocks.BLOODY_SOIL_FARMLAND.get(), VDBlocks.BLOODY_SOIL.get(), true, false);
+
         // Huge black mushroom blocks
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_BLOCK.get());
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_STEM.get());
-        hugeBlackMushroomBlock("black_mushroom_block_inside", false);
+        hugeBlackMushroomBlock("black_mushroom_block_inside");
     }
 
     private void pieBlock(Block pieBlock) {
@@ -90,7 +94,7 @@ public class VDBlockModels extends BlockModelProvider {
 
     private void wineShelfBlock(Block shelfBlock, Block woodType, String nameSpace) {
         ResourceLocation shelfTexture = resourceBlock(blockName(shelfBlock));
-        ResourceLocation woodTypeTexture = new ResourceLocation(nameSpace, "block/" + blockName(woodType));;
+        ResourceLocation woodTypeTexture = new ResourceLocation(nameSpace, "block/" + blockName(woodType));
         String name = blockName(shelfBlock);
 
         // Shelf body
@@ -111,6 +115,21 @@ public class VDBlockModels extends BlockModelProvider {
                 .texture("seat", seatTexture);
     }
 
+    private void farmlandBlock(Block farmlandBlock, Block soilBlock, boolean needsSpecialSide, boolean vampirismSoilBlock) {
+        String name = blockName(farmlandBlock);
+        String soilBlockModId = vampirismSoilBlock ? REFERENCE.MODID : VampiresDelight.MODID;
+
+        withExistingParent(name, "farmersdelight:block/template_farmland_custom")
+                .texture("top", resourceBlock(blockName(farmlandBlock)))
+                .texture("bottom", resourceBlock(soilBlockModId, blockName(soilBlock)))
+                .texture("side", resourceBlock(soilBlockModId, blockName(soilBlock)));
+
+        withExistingParent(name + "_moist", "farmersdelight:block/template_farmland_custom")
+                .texture("top", resourceBlock(blockName(farmlandBlock) + "_moist"))
+                .texture("bottom", resourceBlock(soilBlockModId, blockName(soilBlock)))
+                .texture("side", resourceBlock(soilBlockModId, needsSpecialSide ? blockName(farmlandBlock) + "_moist_side" : blockName(soilBlock)));
+    }
+
     private void hugeBlackMushroomBlock(String name, ResourceLocation texture, boolean needsInventoryVersion) {
         getBuilder(name)
                 .texture("texture", texture)
@@ -124,11 +143,15 @@ public class VDBlockModels extends BlockModelProvider {
         hugeBlackMushroomBlock(blockName(block), resourceBlock(blockName(block)), true);
     }
 
-    private void hugeBlackMushroomBlock(String path, boolean needsInventoryVersion) {
-        hugeBlackMushroomBlock(path, resourceBlock(path), needsInventoryVersion);
+    private void hugeBlackMushroomBlock(String path) {
+        hugeBlackMushroomBlock(path, resourceBlock(path), false);
     }
 
     public ResourceLocation resourceBlock(String path) {
         return new ResourceLocation(VampiresDelight.MODID, "block/" + path);
+    }
+
+    public ResourceLocation resourceBlock(String namespace, String path) {
+        return new ResourceLocation(namespace, "block/" + path);
     }
 }

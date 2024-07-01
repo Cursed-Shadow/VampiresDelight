@@ -40,6 +40,7 @@ public class VDBlockLootTables extends BlockLootSubProvider {
 
         dropOther(VDBlocks.CURSED_FARMLAND.get(), ModBlocks.CURSED_EARTH.get());
         dropSelf(VDBlocks.BLOODY_SOIL.get());
+        dropOther(VDBlocks.BLOODY_SOIL_FARMLAND.get(), VDBlocks.BLOODY_SOIL.get());
 
         add(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), block ->
                 createMushroomBlockDrop(block, VDItems.BLACK_MUSHROOM.get()));

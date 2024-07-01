@@ -15,7 +15,6 @@ public class VDParticleTypes {
 
     public static final RegistryObject<SimpleParticleType> BLESSING = PARTICLE_TYPES.register("blessing",
             () -> new SimpleParticleType(true));
-    /*
     public static final RegistryObject<ParticleType<DrinkSplashOptions>> DRINK_SPLASH = PARTICLE_TYPES.register("drink_splashes",
             () -> new ParticleType<>(false, DrinkSplashOptions.DESERIALIZER) {
                 @Override
@@ -23,7 +22,8 @@ public class VDParticleTypes {
                     return DrinkSplashOptions.CODEC;
                 }
             });
-     */
+    /*
     public static final RegistryObject<SimpleParticleType> DRINK_SPLASH = PARTICLE_TYPES.register("drink_splashes",
             () -> new SimpleParticleType(true));
+     */
 }

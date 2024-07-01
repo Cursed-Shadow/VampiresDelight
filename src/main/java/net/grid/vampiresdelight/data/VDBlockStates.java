@@ -12,10 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Block;
@@ -31,10 +28,9 @@ public class VDBlockStates extends BlockStateProvider {
         super(output, VampiresDelight.MODID, existingFileHelper);
     }
 
-    private String blockName(Block block) {
+    public String blockName(Block block) {
         return ForgeRegistries.BLOCKS.getKey(block).getPath();
     }
-
 
     public ResourceLocation resourceBlock(String path) {
         return new ResourceLocation(VampiresDelight.MODID, "block/" + path);
@@ -77,16 +73,7 @@ public class VDBlockStates extends BlockStateProvider {
         this.feastBlock(VDBlocks.WEIRD_JELLY_BLOCK.get());
 
         this.crateBlock(VDBlocks.GARLIC_CRATE.get(), "garlic");
-
-        String orchidBag = blockName(VDBlocks.ORCHID_BAG.get());
-        this.simpleBlock(VDBlocks.ORCHID_BAG.get(), models().withExistingParent(orchidBag, "cube")
-                .texture("particle", resourceBlock(orchidBag + "_top"))
-                .texture("down", resourceBlock(orchidBag + "_bottom"))
-                .texture("up", resourceBlock(orchidBag + "_top"))
-                .texture("north", resourceBlock(orchidBag + "_side_tied"))
-                .texture("south", resourceBlock(orchidBag + "_side_tied"))
-                .texture("east", resourceBlock(orchidBag + "_side"))
-                .texture("west", resourceBlock(orchidBag + "_side")));
+        this.bagBlock(VDBlocks.ORCHID_BAG.get());
 
         this.pieBlock(VDBlocks.BLOOD_PIE.get());
 
@@ -94,6 +81,9 @@ public class VDBlockStates extends BlockStateProvider {
         this.hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_STEM.get());
         this.plantBlock(VDBlocks.BLACK_MUSHROOM.get());
         this.pottedPlantBlock(VDBlocks.POTTED_BLACK_MUSHROOM.get(), VDBlocks.BLACK_MUSHROOM.get());
+
+        this.farmlandBlock(VDBlocks.CURSED_FARMLAND.get());
+        this.farmlandBlock(VDBlocks.BLOODY_SOIL_FARMLAND.get());
 
         WineShelfBlock.getAllShelveBlocks().forEach(this::wineShelfBlock);
         BarStoolBlock.getBarStoolBlocks().forEach(block -> this.simpleBlock(block, existingModel(block)));
@@ -125,6 +115,18 @@ public class VDBlockStates extends BlockStateProvider {
                         resourceBlock(cropName + "_crate_side"),
                         new ResourceLocation(FarmersDelight.MODID, "block/crate_bottom"),
                         resourceBlock(cropName + "_crate_top")));
+    }
+
+    public void bagBlock(Block block) {
+        String name = blockName(block);
+        this.simpleBlock(block, models().withExistingParent(name, "cube")
+                .texture("particle", resourceBlock(name + "_top"))
+                .texture("down", resourceBlock(name + "_bottom"))
+                .texture("up", resourceBlock(name + "_top"))
+                .texture("north", resourceBlock(name + "_side_tied"))
+                .texture("south", resourceBlock(name + "_side_tied"))
+                .texture("east", resourceBlock(name + "_side"))
+                .texture("west", resourceBlock(name + "_side")));
     }
 
     public void plantBlock(Block block) {
@@ -201,16 +203,26 @@ public class VDBlockStates extends BlockStateProvider {
         }
     }
 
-    private void cakeBlock(Block block) {
+    public void farmlandBlock(Block block) {
         getVariantBuilder(block)
-                .forAllStates(state -> {
-                            int bites = state.getValue(ConsumableCakeBlock.BITES);
-                            String suffix = bites > 0 ? "_slice" + bites : "";
-                            return ConfiguredModel.builder()
-                                    .modelFile(existingModel(blockName(block) + suffix))
-                                    .build();
-                        }
-                );
+                .forAllStates(blockState -> {
+                    int moisture = blockState.getValue(BlockStateProperties.MOISTURE);
+                    String suffix = moisture >= 7 ? "_moist" : "";
+                    return ConfiguredModel.builder()
+                            .modelFile(existingModel(blockName(block) + suffix))
+                            .build();
+                });
+    }
+
+    public void cakeBlock(Block block) {
+        getVariantBuilder(block)
+                .forAllStates(blockState -> {
+                    int bites = blockState.getValue(ConsumableCakeBlock.BITES);
+                    String suffix = bites > 0 ? "_slice" + bites : "";
+                    return ConfiguredModel.builder()
+                            .modelFile(existingModel(blockName(block) + suffix))
+                            .build();
+                });
     }
 
     // Credits to the Neapolitan mod for candle cake code generation.
@@ -271,7 +283,7 @@ public class VDBlockStates extends BlockStateProvider {
         }
     }
 
-    private ResourceLocation withSuffix(ResourceLocation resourceLocation, String suffix) {
+    public ResourceLocation withSuffix(ResourceLocation resourceLocation, String suffix) {
         return new ResourceLocation(resourceLocation.getNamespace(), resourceLocation.getPath() + suffix);
     }
 }

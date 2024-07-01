@@ -108,8 +108,10 @@ public class VDBlocks {
             () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLACK_MUSHROOM, Block.Properties.of().noCollission().isViewBlocking(UtilLib::never).pushReaction(PushReaction.DESTROY).instabreak()));
 
     // Composting
-    public static final RegistryObject<RichSoilBlock> BLOODY_SOIL = BLOCKS.register("bloody_soil",
-            () -> new RichSoilBlock(Block.Properties.copy(Blocks.DIRT).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_BROWN).randomTicks()));
+    public static final RegistryObject<BloodySoilBlock> BLOODY_SOIL = BLOCKS.register("bloody_soil",
+            () -> new BloodySoilBlock(Block.Properties.copy(Blocks.DIRT).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_RED).randomTicks()));
+    public static final RegistryObject<BloodySoilFarmlandBlock> BLOODY_SOIL_FARMLAND = BLOCKS.register("bloody_soil_farmland",
+            () -> new BloodySoilFarmlandBlock(Block.Properties.copy(Blocks.FARMLAND).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_RED)));
 
     // Pastries
     public static final RegistryObject<VampirePieBlock> BLOOD_PIE = BLOCKS.register("blood_pie",

@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.grid.vampiresdelight.common.command.HungerBarCommand;
+import net.grid.vampiresdelight.common.command.PlantLineCommand;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -23,6 +24,7 @@ public class VDCommands {
             dispatcher.register(
                     LiteralArgumentBuilder.<CommandSourceStack>literal(s)
                             .then(HungerBarCommand.register())
+                            .then(PlantLineCommand.register(buildContext))
             );
         }
     }

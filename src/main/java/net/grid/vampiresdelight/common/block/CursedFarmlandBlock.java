@@ -73,7 +73,7 @@ public class CursedFarmlandBlock extends FarmBlock {
 
     private static boolean isNearWater(LevelReader levelReader, BlockPos pos) {
         BlockState state = levelReader.getBlockState(pos);
-        for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
+        for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
             if (state.canBeHydrated(levelReader, pos, levelReader.getFluidState(blockpos), blockpos)) {
                 return true;
             }

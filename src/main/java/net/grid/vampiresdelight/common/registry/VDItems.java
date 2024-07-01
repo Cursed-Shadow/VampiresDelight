@@ -121,6 +121,8 @@ public class VDItems {
             () -> new BlockItem(VDBlocks.CURSED_FARMLAND.get(), basicItem()));
     public static final RegistryObject<Item> BLOODY_SOIL = ITEMS.register("bloody_soil",
             () -> new BlockItem(VDBlocks.BLOODY_SOIL.get(), basicItem()));
+    public static final RegistryObject<Item> BLOODY_SOIL_FARMLAND = ITEMS.register("bloody_soil_farmland",
+            () -> new BlockItem(VDBlocks.BLOODY_SOIL_FARMLAND.get(), basicItem()));
     public static final RegistryObject<BlockItem> SPIRIT_LANTERN = ITEMS.register("spirit_lantern",
             () -> new BlockItem(VDBlocks.SPIRIT_LANTERN.get(), basicItem()));
 

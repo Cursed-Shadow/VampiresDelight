@@ -108,7 +108,7 @@ public class VampireOrchidCropBlock extends CropBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState blockState, BlockGetter block, BlockPos pos) {
-        return blockState.is(VDBlocks.CURSED_FARMLAND.get()) && !blockState.is(ModBlocks.CURSED_EARTH.get());
+        return blockState.is(VDBlocks.CURSED_FARMLAND.get()) || blockState.is(VDBlocks.BLOODY_SOIL_FARMLAND.get());
     }
 
     @Override
