@@ -18,8 +18,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.List;
-
 public class VDEntityUtils {
     public static void addFoodEffects(FoodProperties foodProperties, Level level, LivingEntity entity) {
         for (Pair<MobEffectInstance, Float> pair : foodProperties.getEffects()) {
@@ -79,12 +77,12 @@ public class VDEntityUtils {
         }
     }
 
-    public static void cureMultipleEffects(List<MobEffect> mobEffects, LivingEntity entity) {
-        mobEffects.forEach(effect -> {
+    public static void cureEffects(LivingEntity entity, MobEffect... mobEffects) {
+        for (MobEffect effect : mobEffects) {
             if (entity.hasEffect(effect)) {
                 entity.removeEffect(effect);
             }
-        });
+        }
     }
 
     public static boolean canConsumeHumanFood(LivingEntity consumer) {

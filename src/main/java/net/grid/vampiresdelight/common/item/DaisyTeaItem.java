@@ -1,12 +1,11 @@
 package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
+import net.grid.vampiresdelight.common.food.VDFoodFeatures;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,22 +18,13 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class DaisyTeaItem extends DrinkableItem {
-    public static List<MobEffect> CURABLE_EFFECTS = List.of(
-            MobEffects.MOVEMENT_SLOWDOWN,
-            MobEffects.WEAKNESS,
-            MobEffects.BLINDNESS,
-            MobEffects.CONFUSION
-    );
-
     public DaisyTeaItem(Properties properties) {
         super(properties, false, true);
     }
 
     @Override
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-        if (VDEntityUtils.canConsumeHumanFood(consumer)) {
-            VDEntityUtils.cureMultipleEffects(CURABLE_EFFECTS, consumer);
-        }
+        VDFoodFeatures.DAISY_TEA.execute(consumer);
     }
 
     @Override

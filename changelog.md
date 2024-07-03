@@ -7,6 +7,10 @@
   - **Bloody Soil**;
   - **Bloody Soil Farmland**;
 
+- ### Updates
+- Modified food values:
+  - **Snow_White Ice Cream**: `4` to `3,5`;
+
 ### Translations
 - **New lines added**;
 - Fixed:

@@ -3,7 +3,9 @@ package net.grid.vampiresdelight.common.item;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.config.VampirismConfig;
-import de.teamlapen.vampirism.effects.SanguinareEffect;
+import net.grid.vampiresdelight.common.food.VDFoodFeatures;
+import net.grid.vampiresdelight.common.food.VDFoodValues;
+import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
@@ -24,18 +26,8 @@ import vectorwing.farmersdelight.common.Configuration;
 import java.util.List;
 
 public class OrchidTeaItem extends VampireDrinkableItem {
-    private final FoodProperties defaultFood;
-
-    public OrchidTeaItem(Properties properties, FoodProperties vampireFood, FoodProperties defaultFood) {
-        super(properties, vampireFood, defaultFood);
-        this.defaultFood = defaultFood;
-    }
-
-    @Override
-    public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-        if (VDHelper.canBecomeVampire((Player) consumer) && !VampirismConfig.SERVER.disableFangInfection.get()) {
-            SanguinareEffect.addRandom(consumer, true);
-        }
+    public OrchidTeaItem() {
+        super(VDItems.drinkItem(VDFoodValues.ORCHID_TEA_HUMAN), VDFoodValues.ORCHID_TEA_VAMPIRE, VDFoodValues.ORCHID_TEA_IMMUNE, VDFoodFeatures.ORCHID_TEA);
     }
 
     @Override
@@ -45,8 +37,8 @@ public class OrchidTeaItem extends VampireDrinkableItem {
         }
 
         return VDHelper.isVampire(entity) ? getVampireFood() :
-                (entity instanceof Player player && VDHelper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get() ?
-                        super.getFoodProperties(stack, entity) : defaultFood);
+                (entity instanceof Player player && VDHelper.canBeInfectedFromItem(player) ?
+                        super.getFoodProperties(stack, entity) : getHunterFood());
     }
 
     @Override

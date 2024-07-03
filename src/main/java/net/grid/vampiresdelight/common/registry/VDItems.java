@@ -1,7 +1,8 @@
 package net.grid.vampiresdelight.common.registry;
 
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.VDFoodValues;
+import net.grid.vampiresdelight.common.food.VDFoodValues;
+import net.grid.vampiresdelight.common.food.VDFoodFeatures;
 import net.grid.vampiresdelight.common.item.*;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.food.FoodProperties;
@@ -150,7 +151,7 @@ public class VDItems {
     public static final RegistryObject<VampireDrinkableItem> BLOOD_SYRUP = ITEMS.register("blood_syrup",
             () -> new VampireDrinkableItem(drinkItem(VDFoodValues.NASTY), VDFoodValues.BLOOD_SYRUP));
     public static final RegistryObject<OrchidTeaItem> ORCHID_TEA = ITEMS.register("orchid_tea",
-            () -> new OrchidTeaItem(drinkItem(VDFoodValues.ORCHID_TEA_HUMAN), VDFoodValues.ORCHID_TEA_VAMPIRE, VDFoodValues.ORCHID_TEA_IMMUNE));
+            OrchidTeaItem::new);
     public static final RegistryObject<Item> ORCHID_PETALS = ITEMS.register("orchid_petals",
             () -> new Item(basicItem()));
     public static final RegistryObject<ConsumableItem> SUGARED_BERRIES = ITEMS.register("sugared_berries",
@@ -187,30 +188,30 @@ public class VDItems {
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.BLOOD_PIE_SLICE, false));
 
     // Sweets
-    public static final RegistryObject<VampireIceCreamItem> PURE_SORBET = ITEMS.register("pure_sorbet",
-            () -> new VampireIceCreamItem(foodItem(VDFoodValues.PURE_SORBET), VDFoodValues.PURE_SORBET, true, false, true, false));
+    public static final RegistryObject<VampireConsumableItem> PURE_SORBET = ITEMS.register("pure_sorbet",
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.PURE_SORBET), VDFoodValues.PURE_SORBET, VDFoodFeatures.ICE_CREAM, true, false, true, false));
     public static final RegistryObject<VampireConsumableItem> ORCHID_COOKIE = ITEMS.register("orchid_cookie",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_COOKIE));
     public static final RegistryObject<VampireConsumableItem> ORCHID_ECLAIR = ITEMS.register("orchid_eclair",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_ECLAIR));
-    public static final RegistryObject<VampireIceCreamItem> ORCHID_ICE_CREAM = ITEMS.register("orchid_ice_cream",
-            () -> new VampireIceCreamItem(bowlFoodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_ICE_CREAM));
+    public static final RegistryObject<VampireConsumableItem> ORCHID_ICE_CREAM = ITEMS.register("orchid_ice_cream",
+            () -> new VampireConsumableItem(bowlFoodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_ICE_CREAM, VDFoodFeatures.ICE_CREAM));
     public static final RegistryObject<VampireConsumableItem> TRICOLOR_DANGO = ITEMS.register("tricolor_dango",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.TRICOLOR_DANGO));
-    public static final RegistryObject<CursedCupcakeItem> CURSED_CUPCAKE = ITEMS.register("cursed_cupcake",
-            () -> new CursedCupcakeItem(foodItem(VDFoodValues.NASTY), VDFoodValues.CURSED_CUPCAKE));
-    public static final RegistryObject<VampireIceCreamItem> DARK_ICE_CREAM = ITEMS.register("dark_ice_cream",
-            () -> new VampireIceCreamItem(foodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.DARK_ICE_CREAM));
+    public static final RegistryObject<VampireConsumableItem> CURSED_CUPCAKE = ITEMS.register("cursed_cupcake",
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.CURSED_CUPCAKE, VDFoodFeatures.CURSED_CUPCAKE, true, true, false, true));
+    public static final RegistryObject<VampireConsumableItem> DARK_ICE_CREAM = ITEMS.register("dark_ice_cream",
+            () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.DARK_ICE_CREAM, VDFoodFeatures.ICE_CREAM));
     public static final RegistryObject<BlockItem> ORCHID_CAKE = ITEMS.register("orchid_cake",
             () -> new BlockItem(VDBlocks.ORCHID_CAKE.get(), basicItem().stacksTo(1)));
     public static final RegistryObject<VampireConsumableItem> ORCHID_CAKE_SLICE = ITEMS.register("orchid_cake_slice",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_CAKE_SLICE, false));
-    public static final RegistryObject<HunterIceCreamItem> SNOW_WHITE_ICE_CREAM = ITEMS.register("snow_white_ice_cream",
-            () -> new HunterIceCreamItem(foodItem(VDFoodValues.SNOW_WHITE_ICE_CREAM), true));
+    public static final RegistryObject<HunterConsumableItem> SNOW_WHITE_ICE_CREAM = ITEMS.register("snow_white_ice_cream",
+            () -> new HunterConsumableItem(foodItem(VDFoodValues.SNOW_WHITE_ICE_CREAM), VDFoodFeatures.ICE_CREAM, true));
     public static final RegistryObject<WerewolfConsumableItem> WOLF_BERRY_COOKIE = ITEMS.register("wolf_berry_cookie",
             () -> new WerewolfConsumableItem(foodItem(VDFoodValues.NASTY_POISON), FoodValues.COOKIES));
-    public static final RegistryObject<WerewolfIceCreamItem> WOLF_BERRY_ICE_CREAM = ITEMS.register("wolf_berry_ice_cream",
-            () -> new WerewolfIceCreamItem(bowlFoodItem(VDFoodValues.NASTY_POISON), VDFoodValues.WOLF_BERRY_ICE_CREAM));
+    public static final RegistryObject<WerewolfConsumableItem> WOLF_BERRY_ICE_CREAM = ITEMS.register("wolf_berry_ice_cream",
+            () -> new WerewolfConsumableItem(bowlFoodItem(VDFoodValues.NASTY_POISON), VDFoodValues.WOLF_BERRY_ICE_CREAM, VDFoodFeatures.ICE_CREAM));
 
     // Basic Meals
     public static final RegistryObject<HunterConsumableItem> FISH_BURGER = ITEMS.register("fish_burger",
@@ -227,8 +228,8 @@ public class VDItems {
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.BAGEL_SANDWICH));
     public static final RegistryObject<VampireConsumableItem> BAT_TACO = ITEMS.register("bat_taco",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.BAT_TACO_HUMAN), VDFoodValues.BAT_TACO, true, false, false, false));
-    public static final RegistryObject<HardtackItem> HARDTACK = ITEMS.register("hardtack",
-            () -> new HardtackItem(foodItem(VDFoodValues.HARDTACK_HUMAN), VDFoodValues.HARDTACK_HUNTER));
+    public static final RegistryObject<HunterConsumableItem> HARDTACK = ITEMS.register("hardtack",
+            () -> new HunterConsumableItem(foodItem(VDFoodValues.HARDTACK_HUMAN), VDFoodValues.HARDTACK_HUNTER, VDFoodFeatures.HARDTACK, false, false, false));
 
     // Soups and Stews
     public static final RegistryObject<VampireConsumableItem> ORCHID_CREAM_SOUP = ITEMS.register("orchid_cream_soup",

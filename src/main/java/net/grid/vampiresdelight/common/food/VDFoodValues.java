@@ -1,5 +1,6 @@
-package net.grid.vampiresdelight.common;
+package net.grid.vampiresdelight.common.food;
 
+import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -144,7 +145,7 @@ public class VDFoodValues {
             .nutrition(3).saturationMod(0.2f).fast().alwaysEat()
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, FLEETING_DURATION), 1.0F).build();
     public static final FoodProperties SNOW_WHITE_ICE_CREAM = (new FoodProperties.Builder())
-            .nutrition(8).saturationMod(0.6f).fast().alwaysEat()
+            .nutrition(7).saturationMod(0.5f).fast().alwaysEat()
             .effect(() -> new MobEffectInstance(VDEffects.BLESSING.get(), MEDIUM_DURATION), 1.0F).build();
     public static final FoodProperties WOLF_BERRY_ICE_CREAM = (new FoodProperties.Builder())
             .nutrition(7).saturationMod(0.5f).fast().alwaysEat()

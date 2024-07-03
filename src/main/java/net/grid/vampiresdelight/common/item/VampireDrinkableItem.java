@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.common.item;
 
+import net.grid.vampiresdelight.common.food.FoodFeatures;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -16,13 +17,13 @@ public class VampireDrinkableItem extends VampireConsumableItem {
         super(properties, vampireFood, true, false, false);
     }
 
-    public VampireDrinkableItem(Properties properties, FoodProperties vampireFood, FoodProperties hunterFood) {
-        super(properties, vampireFood, hunterFood);
+    public VampireDrinkableItem(Properties properties, FoodProperties vampireFood, FoodProperties hunterFood, FoodFeatures foodFeatures) {
+        super(properties, vampireFood, hunterFood, foodFeatures);
     }
 
     @Override
-    public int getUseDuration(ItemStack stack) {
-        return 32;
+    public int getUseDuration(ItemStack pStack) {
+        return (getFoodFeatures().getUseDuration() > 0) ? getFoodFeatures().getUseDuration() : 32;
     }
 
     @Override
