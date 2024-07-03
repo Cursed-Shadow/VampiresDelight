@@ -1,5 +1,13 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "vampiresdelight:item/alchemical_cocktail_metal_pipe",
+      "predicate": {
+        "vampiresdelight:metal_pipe": 0.01
+      }
+    }
+  ],
   "textures": {
     "layer0": "vampiresdelight:item/alchemical_cocktail"
   }

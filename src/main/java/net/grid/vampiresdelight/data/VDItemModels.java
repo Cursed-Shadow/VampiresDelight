@@ -50,6 +50,8 @@ public class VDItemModels extends ItemModelProvider {
                 VDItems.BLOOD_WINE_BOTTLE.get());
         pouringItems.forEach(this::itemPouringModel);
 
+        alchemicalCocktailModel(VDItems.ALCHEMICAL_COCKTAIL.get());
+
         // Blocks with special item sprites
         Set<Item> spriteBlockItems = Sets.newHashSet(
                 VDItems.BLOOD_PIE.get(),
@@ -105,6 +107,13 @@ public class VDItemModels extends ItemModelProvider {
         withExistingParent(itemName(item), GENERATED).texture("layer0", texture)
                 .override().predicate(modLoc("pouring"), 0.01f).model(
                         withExistingParent(itemName(item) + "_pouring", POURING).texture("layer0", texture));
+    }
+
+    public void alchemicalCocktailModel(Item item) {
+        ResourceLocation texture = resourceItem(itemName(item));
+        withExistingParent(itemName(item), GENERATED).texture("layer0", texture)
+                .override().predicate(modLoc("metal_pipe"), 0.01f).model(
+                        withExistingParent(itemName(item) + "_metal_pipe", GENERATED).texture("layer0", resourceItem("metal_pipe")));
     }
 
     private static String itemName(Item item) {

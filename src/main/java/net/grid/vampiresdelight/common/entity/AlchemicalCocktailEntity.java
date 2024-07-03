@@ -2,8 +2,10 @@ package net.grid.vampiresdelight.common.entity;
 
 import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.common.VDConfiguration;
+import net.grid.vampiresdelight.common.item.AlchemicalCocktailItem;
 import net.grid.vampiresdelight.common.registry.VDEntityTypes;
 import net.grid.vampiresdelight.common.registry.VDItems;
+import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -54,8 +56,7 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), 0);
         entity.setSecondsOnFire(16);
         setOnFire(result);
-
-        this.playSound(SoundEvents.GLASS_BREAK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+        playLandingSound();
     }
 
     @Override
@@ -64,7 +65,7 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         if (!level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte) 3);
             setOnFire(result);
-            this.playSound(SoundEvents.GLASS_BREAK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            playLandingSound();
             this.discard();
         }
     }
@@ -100,6 +101,18 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
     private static boolean isProperBlockBelow(BlockState blockStateBelow, BlockPos posBelow, Level level) {
         Block blockBelow = blockStateBelow.getBlock();
         return blockStateBelow.isFaceSturdy(level, posBelow, Direction.UP) || blockStateBelow.is(BlockTags.LEAVES) || blockBelow instanceof StairBlock;
+    }
+
+    private void playLandingSound() {
+        if (isMetalPipe()) {
+            this.playSound(VDSounds.METAL_PIPE.get(), 2.0F, this.random.nextFloat() * 0.1F + 1.0F);
+        } else {
+            this.playSound(SoundEvents.GLASS_BREAK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+        }
+    }
+
+    private boolean isMetalPipe() {
+        return AlchemicalCocktailItem.isMetalPipe(getItem());
     }
 
     @Override

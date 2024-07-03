@@ -5,6 +5,7 @@ import de.teamlapen.vampirism.api.entity.factions.IFaction;
 import de.teamlapen.vampirism.api.items.IFactionExclusiveItem;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.entity.AlchemicalCocktailEntity;
+import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -58,6 +59,10 @@ public class AlchemicalCocktailItem extends Item implements IFactionExclusiveIte
     @Override
     public int getMaxStackSize(ItemStack stack) {
         return VDConfiguration.ALCHEMICAL_COCKTAIL_STACK_SIZE.get();
+    }
+
+    public static boolean isMetalPipe(ItemStack stack) {
+        return stack.getHoverName().toString().toLowerCase().contains("metal pipe") && stack.getItem() == VDItems.ALCHEMICAL_COCKTAIL.get();
     }
 
     @Override

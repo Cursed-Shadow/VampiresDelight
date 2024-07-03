@@ -4,6 +4,7 @@ import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.client.event.HUDOverlayEvents;
 import net.grid.vampiresdelight.client.gui.BrewingBarrelScreen;
 import net.grid.vampiresdelight.client.gui.NourishmentBloodOverlay;
+import net.grid.vampiresdelight.common.item.AlchemicalCocktailItem;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDMenuTypes;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
@@ -35,5 +36,8 @@ public class ClientSetup {
         Stream.of(VDItems.BLOOD_WINE_BOTTLE.get())
                 .forEach(item -> ItemProperties.register(item, new ResourceLocation(VampiresDelight.MODID, "pouring"), (stack, level, entity, id) ->
                         entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F));
+
+        ItemProperties.register(VDItems.ALCHEMICAL_COCKTAIL.get(), new ResourceLocation(VampiresDelight.MODID, "metal_pipe"), (stack, level, entity, id) ->
+                AlchemicalCocktailItem.isMetalPipe(stack) ? 1.0F : 0.0F);
     }
 }

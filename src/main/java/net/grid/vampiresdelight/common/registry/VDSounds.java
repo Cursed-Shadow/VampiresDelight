@@ -10,6 +10,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class VDSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, VampiresDelight.MODID);
 
+    public static final RegistryObject<SoundEvent> METAL_PIPE = SOUNDS.register("metal_pipe",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(VampiresDelight.MODID, "metal_pipe")));
     public static final RegistryObject<SoundEvent> TRIANGLE = SOUNDS.register("triangle",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(VampiresDelight.MODID, "triangle")));
     public static final RegistryObject<SoundEvent> POURING_FULL = SOUNDS.register("item.pouring_full",
