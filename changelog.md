@@ -8,6 +8,7 @@
   - **Bloody Soil Farmland**;
 
 - ### Updates
+- Updated **Daisy Tea** texture;
 - Modified food values:
   - **Snow_White Ice Cream**: `4` to `3,5`;
 

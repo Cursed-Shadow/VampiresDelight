@@ -17,6 +17,7 @@ import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -104,6 +105,9 @@ public class ToolTipEvents {
                 } catch (NullPointerException e) {
                     VampiresDelight.LOGGER.error("Failed to get the damage value of ItemStack", e);
                 }
+
+                //tooltip.add(Component.literal("Color Test 1").withStyle(Style.EMPTY.withColor(new Color(66, 33, 133).getRGB()).withObfuscated(true)));
+                //tooltip.add(Component.literal("Color Test 2").withStyle(Style.EMPTY.withColor(new Color(90, 90, 200).getRGB()).withUnderlined(true)));
             }
         }
 
