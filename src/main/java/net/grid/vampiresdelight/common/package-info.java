@@ -1,6 +1,6 @@
-@ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-package net.grid.vampiresdelight.common.block.entity.container;
+@ParametersAreNonnullByDefault
+package net.grid.vampiresdelight.common;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

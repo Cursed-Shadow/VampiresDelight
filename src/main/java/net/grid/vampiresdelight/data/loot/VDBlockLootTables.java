@@ -25,7 +25,6 @@ public class VDBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(VDBlocks.DARK_STONE_STOVE.get());
-        dropSelf(VDBlocks.BREWING_BARREL.get());
 
         dropSelf(VDBlocks.GARLIC_CRATE.get());
         dropSelf(VDBlocks.ORCHID_BAG.get());

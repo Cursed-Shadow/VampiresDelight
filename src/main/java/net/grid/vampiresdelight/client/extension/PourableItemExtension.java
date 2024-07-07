@@ -42,7 +42,6 @@ public class PourableItemExtension implements IClientItemExtensions {
             float dZ = modifier * -0.2f;
 
             poseStack.translate(modifier * 0.3F, -0.4F, -0.4F);
-            //poseStack.translate(modifier * 0.3F, 0, 0);
 
             if (player.getUseItem() == itemInHand) {
                 poseStack.mulPose(Axis.YP.rotationDegrees(modifier * 15));

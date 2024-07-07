@@ -15,9 +15,6 @@ public class VDConfiguration {
     public static ForgeConfigSpec.BooleanValue FARMERS_BUY_GARLIC;
     public static ForgeConfigSpec.BooleanValue WANDERING_TRADER_SELLS_VAMPIRISM_ITEMS;
 
-    public static final String CATEGORY_RECIPE_BOOK = "recipe_book";
-    public static ForgeConfigSpec.BooleanValue ENABLE_RECIPE_BOOK_BREWING_BARREL;
-
     public static final String CATEGORY_BLOCKS = "blocks";
     public static ForgeConfigSpec.DoubleValue BLOODY_SOIL_BOOST_CHANCE;
 
@@ -74,11 +71,6 @@ public class VDConfiguration {
                 .define("farmersBuyGarlic", true);
         WANDERING_TRADER_SELLS_VAMPIRISM_ITEMS = COMMON_BUILDER.comment("Should the Wandering Trader sell some of vampirism's and this mod's items? (Including seeds and some blocks)")
                 .define("wanderingTraderSellsVampirismItems", true);
-        COMMON_BUILDER.pop();
-
-        COMMON_BUILDER.comment("Recipe book").push(CATEGORY_RECIPE_BOOK);
-        ENABLE_RECIPE_BOOK_BREWING_BARREL = COMMON_BUILDER.comment("Should the Brewing Barrel have a Recipe Book available on its interface?")
-                .define("enableRecipeBookBrewingBarrel", true);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Blocks").push(CATEGORY_BLOCKS);
@@ -179,6 +171,7 @@ public class VDConfiguration {
     }
 
     // Needed for list configs in order not to make it create additional toml.bak files
+    @SuppressWarnings("rawtypes")
     private record ConfigTypePredicate(Class configType) implements Predicate<Object> {
         @Override
             public boolean test(Object o) {

@@ -9,7 +9,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BannerPattern;
 
 public class VDTags {
     // Items
@@ -40,9 +39,6 @@ public class VDTags {
     // Biomes lost carriage spawns in.
     public static final TagKey<Biome> HAS_LOST_CARRIAGE = modBiomeTag("has_structure/lost_carriage");
 
-    // Banner Patterns
-
-    public static final TagKey<BannerPattern> PATTERN_FOR_AXE = modBannerPatternTag("pattern_for_axe");
 
 
     private static TagKey<Item> modItemTag(String path) {
@@ -55,9 +51,5 @@ public class VDTags {
 
     private static TagKey<Biome> modBiomeTag(String path) {
         return TagKey.create(Registries.BIOME, new ResourceLocation(VampiresDelight.MODID, path));
-    }
-
-    private static TagKey<BannerPattern> modBannerPatternTag(String path) {
-        return TagKey.create(Registries.BANNER_PATTERN, new ResourceLocation(VampiresDelight.MODID, path));
     }
 }

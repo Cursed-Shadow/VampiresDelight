@@ -4,7 +4,6 @@ import net.grid.vampiresdelight.client.ClientSetup;
 import net.grid.vampiresdelight.common.CommonSetup;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.*;
-import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -18,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 public class VampiresDelight {
     public static final String MODID = "vampiresdelight";
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final RecipeBookType RECIPE_TYPE_FERMENTING = RecipeBookType.create("FERMENTING");
+
     public VampiresDelight() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -42,10 +41,7 @@ public class VampiresDelight {
         VDSounds.SOUNDS.register(eventBus);
         VDEntityTypes.ENTITIES.register(eventBus);
         VDFeatures.FEATURES.register(eventBus);
-        VDRecipeSerializers.RECIPE_SERIALIZERS.register(eventBus);
-        VDRecipeTypes.RECIPE_TYPES.register(eventBus);
         VDBlockEntityTypes.TILES.register(eventBus);
-        VDMenuTypes.MENU_TYPES.register(eventBus);
         VDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.addListener(VDCommands::onCommandsRegister);

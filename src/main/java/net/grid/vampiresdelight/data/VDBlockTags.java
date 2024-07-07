@@ -61,7 +61,6 @@ public class VDBlockTags extends BlockTagsProvider {
                 VDBlocks.CURSED_SPRUCE_CABINET.get(),
                 VDBlocks.JACARANDA_CABINET.get(),
                 VDBlocks.MAGIC_CABINET.get(),
-                VDBlocks.BREWING_BARREL.get(),
                 VDBlocks.BLACK_MUSHROOM_BLOCK.get(),
                 VDBlocks.BLACK_MUSHROOM_STEM.get(),
                 VDBlocks.BLACK_MUSHROOM.get()

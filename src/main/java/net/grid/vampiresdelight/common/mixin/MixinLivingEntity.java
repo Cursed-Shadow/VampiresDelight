@@ -28,7 +28,7 @@ public abstract class MixinLivingEntity extends Entity {
     public abstract ItemStack getUseItem();
 
     @Inject(method = "shouldTriggerItemUseEffects()Z", at = @At("HEAD"), cancellable = true)
-    private void create$onShouldTriggerUseEffects(CallbackInfoReturnable<Boolean> cir) {
+    private void vampiresdelight$onShouldTriggerUseEffects(CallbackInfoReturnable<Boolean> cir) {
         Item usedItem = getUseItem().getItem();
         if (usedItem instanceof ICustomUseItem customUseItem) {
             Boolean result = customUseItem.hasCustomUseEffects();
@@ -37,7 +37,7 @@ public abstract class MixinLivingEntity extends Entity {
     }
 
     @Inject(method = "triggerItemUseEffects(Lnet/minecraft/world/item/ItemStack;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getUseAnimation()Lnet/minecraft/world/item/UseAnim;", ordinal = 0), cancellable = true)
-    private void create$onTriggerUseEffects(ItemStack stack, int amount, CallbackInfo ci) {
+    private void vampiresdelight$onTriggerUseEffects(ItemStack stack, int amount, CallbackInfo ci) {
         Item usedItem = stack.getItem();
         if (usedItem instanceof ICustomUseItem customUseItem) {
             if (customUseItem.triggerUseEffects(stack, (LivingEntity) (Object) this, amount)) {

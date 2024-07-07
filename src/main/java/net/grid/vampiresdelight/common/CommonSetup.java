@@ -56,11 +56,5 @@ public class CommonSetup {
         ComposterBlock.COMPOSTABLES.put(VDItems.WEIRD_JELLY_BLOCK.get(), 1.0F);
     }
 
-    public static void registerModIntegrations() {
-        /*
-        if (ModLoad.CREATE.isLoaded()) {
-            VDPotatoProjectileTypes.register();
-        }
-         */
-    }
+    public static void registerModIntegrations() {}
 }

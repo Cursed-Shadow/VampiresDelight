@@ -26,8 +26,6 @@ public class VDBlocks {
     // Workstations
     public static final RegistryObject<DarkStoneStoveBlock> DARK_STONE_STOVE = BLOCKS.register("dark_stone_stove",
             () -> new DarkStoneStoveBlock(Block.Properties.of().mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(2f, 10f).sound(SoundType.STONE).lightLevel(litBlockEmission(13))));
-    public static final RegistryObject<BrewingBarrelBlock> BREWING_BARREL = BLOCKS.register("brewing_barrel",
-            () -> new BrewingBarrelBlock(Block.Properties.copy(Blocks.BARREL)));
 
     // Crop Storage
     public static final RegistryObject<Block> GARLIC_CRATE = BLOCKS.register("garlic_crate",

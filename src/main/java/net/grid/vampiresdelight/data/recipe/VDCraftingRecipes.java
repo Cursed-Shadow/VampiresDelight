@@ -40,8 +40,6 @@ public class VDCraftingRecipes {
         recipesPouring(consumer);
         recipesFoodBlocks(consumer);
         recipesCraftedMeals(consumer);
-
-        SpecialRecipeBuilder.special(VDRecipeSerializers.BARREL_POURING.get()).save(consumer, "barrel_pouring");
     }
 
     private static void recipesBlocks(Consumer<FinishedRecipe> consumer) {

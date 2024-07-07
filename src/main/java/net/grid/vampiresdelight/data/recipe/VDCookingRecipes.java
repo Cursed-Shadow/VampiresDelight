@@ -4,18 +4,14 @@ import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.core.ModTags;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.client.recipebook.BrewingBarrelRecipeBookTab;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDForgeTags;
-import net.grid.vampiresdelight.data.builder.BrewingBarrelRecipeBuilder;
-import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
@@ -39,8 +35,6 @@ public class VDCookingRecipes {
         cookMiscellaneous(consumer);
         cookMeals(consumer);
         fermentingAlternatives(consumer);
-        // Fermenting
-        fermenting(consumer);
     }
 
     private static void cookMiscellaneous(Consumer<FinishedRecipe> consumer) {
@@ -154,17 +148,6 @@ public class VDCookingRecipes {
                 .unlockedByAnyIngredient(VDItems.BLOOD_SYRUP.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
                 .build(consumer, itemLocationCooking(VDItems.BLOOD_WINE_BOTTLE.get()));
-    }
-
-    private static void fermenting(Consumer<FinishedRecipe> consumer) {
-        BrewingBarrelRecipeBuilder.brewingBarrelRecipe(VDItems.BLOOD_WINE_BOTTLE.get(), 1, SLOW_FERMENTING, LARGE_EXP)
-                .addIngredient(ModItems.BLOOD_BOTTLE.get())
-                .addIngredient(ModItems.BLOOD_BOTTLE.get())
-                .addIngredient(ModItems.BLOOD_BOTTLE.get())
-                .addIngredient(Items.SUGAR)
-                .unlockedByAnyIngredient(ModItems.BLOOD_BOTTLE.get())
-                .setRecipeBookTab(BrewingBarrelRecipeBookTab.DRINKS)
-                .build(consumer);
     }
 
     private static ResourceLocation itemLocationCooking(Item item) {

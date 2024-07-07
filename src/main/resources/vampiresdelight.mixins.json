@@ -20,6 +20,7 @@
     "accessor.VampirismItemBloodFoodItemAccessor"
   ],
   "client": [
+    "MixinPlayerItemInHandLayer"
   ],
   "injectors": {
     "defaultRequire": 1

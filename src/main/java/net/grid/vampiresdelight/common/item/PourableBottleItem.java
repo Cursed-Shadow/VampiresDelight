@@ -27,7 +27,6 @@ import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -147,7 +146,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
 
     @Override
     public boolean hasCustomUseEffects() {
-        return false;
+        return true;
     }
 
     @Override
