@@ -13,6 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.data.ItemModels;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static vectorwing.farmersdelight.data.ItemModels.takeAll;
@@ -21,6 +22,7 @@ public class VDItemModels extends ItemModelProvider {
 
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
+    public static final ResourceLocation COCKTAIL = new ResourceLocation(VampiresDelight.MODID, "item/cocktail");
     public static final ResourceLocation POURING = resourceItem("template_bottle_pouring");
 
     public VDItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -34,7 +36,6 @@ public class VDItemModels extends ItemModelProvider {
 
         // Items that use its own model in models/item
         Set<Item> specialItems = Sets.newHashSet(
-                VDItems.WINE_GLASS.get(),
                 VDItems.SPIRIT_LANTERN.get());
         takeAll(items, specialItems.toArray(new Item[0])).forEach(items::remove);
 
@@ -44,6 +45,11 @@ public class VDItemModels extends ItemModelProvider {
                 VDItems.ORCHID_TEA.get(),
                 VDItems.MULLED_WINE_GLASS.get());
         takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));
+
+        // Items that should be held like a cocktail
+        Set<Item> cocktailItems = Sets.newHashSet(
+                VDItems.WINE_GLASS.get());
+        takeAll(items, cocktailItems.toArray(new Item[0])).forEach(item -> itemCocktailModel(item, resourceItem(itemName(item))));
 
         // Two models of items that are pourable
         Set<Item> pouringItems = Sets.newHashSet(
@@ -100,6 +106,10 @@ public class VDItemModels extends ItemModelProvider {
 
     public void itemMugModel(Item item, ResourceLocation texture) {
         withExistingParent(itemName(item), ItemModels.MUG).texture("layer0", texture);
+    }
+
+    public void itemCocktailModel(Item item, ResourceLocation texture) {
+        withExistingParent(itemName(item), COCKTAIL).texture("layer0", texture);
     }
 
     public void itemPouringModel(Item item) {

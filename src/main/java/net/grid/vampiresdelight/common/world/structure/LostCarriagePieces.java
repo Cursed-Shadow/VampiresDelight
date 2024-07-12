@@ -21,11 +21,7 @@ import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
 public class LostCarriagePieces {
     private static final ResourceLocation LOCATION_1 = new ResourceLocation(VampiresDelight.MODID, "lost_carriage_1");
     private static final ResourceLocation LOCATION_2 = new ResourceLocation(VampiresDelight.MODID, "lost_carriage_2");
@@ -128,7 +124,7 @@ public class LostCarriagePieces {
         }
          */
 
-        private static @NotNull StructurePlaceSettings makeSettings() {
+        private static StructurePlaceSettings makeSettings() {
             return (new StructurePlaceSettings()).setRotation(Rotation.NONE).setMirror(Mirror.NONE).addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
         }
     }

@@ -1,7 +1,7 @@
 package net.grid.vampiresdelight.common.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.grid.vampiresdelight.client.extension.IThirdPersonItemRenderExtension;
+import net.grid.vampiresdelight.client.extension.ICustomItemModelInHand;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.PlayerItemInHandLayer;
@@ -21,9 +21,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PlayerItemInHandLayer.class)
 public class MixinPlayerItemInHandLayer {
     @Inject(method = "renderArmWithItem", at = @At("HEAD"), cancellable = true)
-    private void vampiresdelight$renderArmWithItem(LivingEntity pLivingEntity, ItemStack pItemStack, ItemDisplayContext pDisplayContext, HumanoidArm pArm, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, CallbackInfo ci) {
-        if (pItemStack.getItem() instanceof IThirdPersonItemRenderExtension extension) {
-            extension.renderThirdPersonItem((HumanoidModel<?>) ((PlayerItemInHandLayer<?, ?>) (Object) this).getParentModel(), pLivingEntity, pItemStack, pDisplayContext, pArm, pPoseStack, pBuffer, pPackedLight);
+    public void vampiresdelight$renderArmWithItem(LivingEntity pLivingEntity, ItemStack pItemStack, ItemDisplayContext pDisplayContext, HumanoidArm pArm, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, CallbackInfo ci) {
+        if (pItemStack.getItem() instanceof ICustomItemModelInHand extension && extension.renderThirdPersonItem((HumanoidModel<?>) ((PlayerItemInHandLayer<?, ?>) (Object) this).getParentModel(), pLivingEntity, pItemStack, pDisplayContext, pArm, pPoseStack, pBuffer, pPackedLight)) {
             ci.cancel();
         }
     }
