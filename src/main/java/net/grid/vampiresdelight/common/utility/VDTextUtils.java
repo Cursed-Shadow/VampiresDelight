@@ -3,7 +3,6 @@ package net.grid.vampiresdelight.common.utility;
 
 import com.mojang.datafixers.util.Pair;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
@@ -12,7 +11,6 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.ForgeI18n;
 
 import java.util.List;
 

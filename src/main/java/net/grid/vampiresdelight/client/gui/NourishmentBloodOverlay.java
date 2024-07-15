@@ -29,7 +29,7 @@ public class NourishmentBloodOverlay {
         MinecraftForge.EVENT_BUS.register(new NourishmentBloodOverlay());
     }
 
-    static ResourceLocation BLOOD_BAR_ID = VDHelper.BLOOD_BAR_ELEMENT;
+    static final ResourceLocation BLOOD_BAR_ID = VDHelper.BLOOD_BAR_ELEMENT;
 
     @SubscribeEvent
     public void onRenderGuiOverlayPost(RenderGuiOverlayEvent.Post event) {

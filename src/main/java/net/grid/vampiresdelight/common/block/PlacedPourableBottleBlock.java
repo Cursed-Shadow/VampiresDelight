@@ -4,7 +4,6 @@ import net.grid.vampiresdelight.common.item.PourableBottleItem;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -35,7 +34,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.utility.MathUtils;
 
 import java.util.List;
 import java.util.function.Supplier;

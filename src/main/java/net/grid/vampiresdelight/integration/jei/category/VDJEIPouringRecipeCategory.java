@@ -39,13 +39,13 @@ public class VDJEIPouringRecipeCategory implements IRecipeCategory<VDJEIPouringR
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, VDJEIPouringRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 19, 12)
-                .addItemStack(recipe.getTool())
+                .addItemStack(recipe.tool())
                 .setSlotName("Bottle");
         builder.addSlot(RecipeIngredientRole.INPUT, 83, 12)
-                .addItemStack(recipe.getServingContainer())
+                .addItemStack(recipe.servingContainer())
                 .setSlotName("ServingContainer");
         builder.addSlot(RecipeIngredientRole.OUTPUT, 52, 31)
-                .addItemStack(recipe.getResult())
+                .addItemStack(recipe.result())
                 .setSlotName("Drink");
     }
 

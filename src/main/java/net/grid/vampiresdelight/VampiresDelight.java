@@ -44,8 +44,6 @@ public class VampiresDelight {
         VDBlockEntityTypes.TILES.register(eventBus);
         VDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
-        MinecraftForge.EVENT_BUS.addListener(VDCommands::onCommandsRegister);
-
         MinecraftForge.EVENT_BUS.register(this);
     }
 }

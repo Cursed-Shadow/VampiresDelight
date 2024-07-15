@@ -24,7 +24,6 @@ import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
-import java.util.List;
 
 @JeiPlugin
 @ParametersAreNonnullByDefault

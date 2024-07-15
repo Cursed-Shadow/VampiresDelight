@@ -1,29 +1,6 @@
 package net.grid.vampiresdelight.client.event;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import de.teamlapen.vampirism.REFERENCE;
-import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodData;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import org.lwjgl.opengl.GL11;
-import squeek.appleskin.ModConfig;
-import squeek.appleskin.api.food.FoodValues;
-import squeek.appleskin.helpers.FoodHelper;
-import squeek.appleskin.helpers.HungerHelper;
-import squeek.appleskin.helpers.TextureHelper;
 import squeek.appleskin.util.IntPoint;
 
 import java.util.Random;

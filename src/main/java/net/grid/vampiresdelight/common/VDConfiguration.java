@@ -7,58 +7,58 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class VDConfiguration {
-    public static ForgeConfigSpec COMMON_CONFIG;
-    public static ForgeConfigSpec CLIENT_CONFIG;
+    public static final ForgeConfigSpec COMMON_CONFIG;
+    public static final ForgeConfigSpec CLIENT_CONFIG;
 
     //COMMON
     public static final String CATEGORY_VILLAGE = "village";
-    public static ForgeConfigSpec.BooleanValue FARMERS_BUY_GARLIC;
-    public static ForgeConfigSpec.BooleanValue WANDERING_TRADER_SELLS_VAMPIRISM_ITEMS;
+    public static final ForgeConfigSpec.BooleanValue FARMERS_BUY_GARLIC;
+    public static final ForgeConfigSpec.BooleanValue WANDERING_TRADER_SELLS_VAMPIRISM_ITEMS;
 
     public static final String CATEGORY_BLOCKS = "blocks";
-    public static ForgeConfigSpec.DoubleValue BLOODY_SOIL_BOOST_CHANCE;
+    public static final ForgeConfigSpec.DoubleValue BLOODY_SOIL_BOOST_CHANCE;
 
     public static final String CATEGORY_ITEMS = "items";
-    public static ForgeConfigSpec.BooleanValue ALCHEMICAL_COCKTAIL_BURNS_GROUND;
-    public static ForgeConfigSpec.DoubleValue ALCHEMICAL_COCKTAIL_SPLASH_RADIUS;
-    public static ForgeConfigSpec.IntValue ALCHEMICAL_COCKTAIL_STACK_SIZE;
+    public static final ForgeConfigSpec.BooleanValue ALCHEMICAL_COCKTAIL_BURNS_GROUND;
+    public static final ForgeConfigSpec.DoubleValue ALCHEMICAL_COCKTAIL_SPLASH_RADIUS;
+    public static final ForgeConfigSpec.IntValue ALCHEMICAL_COCKTAIL_STACK_SIZE;
 
     public static final String CATEGORY_EFFECTS = "effects";
-    public static ForgeConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
-    public static ForgeConfigSpec.BooleanValue BAT_MEAT_WITHERS_HUMANS;
-    public static ForgeConfigSpec.BooleanValue BLESSING_HELPS_AGAINST_GHOSTS;
-    public static ForgeConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
+    public static final ForgeConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
+    public static final ForgeConfigSpec.BooleanValue BAT_MEAT_WITHERS_HUMANS;
+    public static final ForgeConfigSpec.BooleanValue BLESSING_HELPS_AGAINST_GHOSTS;
+    public static final ForgeConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
 
     public static final String CATEGORY_ENCHANTMENTS = "enchantments";
-    public static ForgeConfigSpec.BooleanValue BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON;
-    public static ForgeConfigSpec.DoubleValue VAMPIRE_BITE_MAX_HEALING_VALUE;
-    public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
-    public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
-    public static ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
-    public static ForgeConfigSpec.BooleanValue DISABLE_VAMPIRE_BITE;
+    public static final ForgeConfigSpec.BooleanValue BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON;
+    public static final ForgeConfigSpec.DoubleValue VAMPIRE_BITE_MAX_HEALING_VALUE;
+    public static final ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
+    public static final ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
+    public static final ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
+    public static final ForgeConfigSpec.BooleanValue DISABLE_VAMPIRE_BITE;
 
     public static final String CATEGORY_WORLD = "world";
-    public static ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
-    public static ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_IN_HUNTER_CAMP;
-    public static ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_NEAR_HUNTER_CAMP;
-    public static ForgeConfigSpec.IntValue COOKING_POT_IN_HUNTER_CAMP_CHANCE;
+    public static final ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
+    public static final ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_IN_HUNTER_CAMP;
+    public static final ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_NEAR_HUNTER_CAMP;
+    public static final ForgeConfigSpec.IntValue COOKING_POT_IN_HUNTER_CAMP_CHANCE;
 
     // CLIENT
     public static final String CATEGORY_TOOLTIPS = "tooltips";
-    public static ForgeConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
-    public static ForgeConfigSpec.BooleanValue COLORED_TOOLTIPS;
+    public static final ForgeConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
+    public static final ForgeConfigSpec.BooleanValue COLORED_TOOLTIPS;
     public static final String CATEGORY_TOOLTIP_COLORS = "tooltip_colors";
-    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
-    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_END_COLOR;
-    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_START_COLOR;
-    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_END_COLOR;
-    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_START_COLOR;
-    public static ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_END_COLOR;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_END_COLOR;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_START_COLOR;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_END_COLOR;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_START_COLOR;
+    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_END_COLOR;
 
     public static final String CATEGORY_APPLESKIN = "appleskin";
-    public static ForgeConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
-    public static ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES;
-    public static ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES;
+    public static final ForgeConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
+    public static final ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES;
+    public static final ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES;
 
 
     static {

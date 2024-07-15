@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+@SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = VampiresDelight.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class VDCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, VampiresDelight.MODID);
@@ -22,7 +23,6 @@ public class VDCreativeTabs {
                     .displayItems((displayParams, output) -> {
                         // Blocks
                         add(VDItems.DARK_STONE_STOVE.get(), output);
-                        //add(VDItems.BREWING_BARREL.get(), output);
                         add(VDItems.GARLIC_CRATE.get(), output);
                         add(VDItems.ORCHID_BAG.get(), output);
                         add(VDItems.DARK_SPRUCE_CABINET.get(), output);

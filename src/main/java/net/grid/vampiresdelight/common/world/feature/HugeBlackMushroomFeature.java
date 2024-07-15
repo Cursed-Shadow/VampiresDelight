@@ -25,8 +25,8 @@ import java.util.function.BiPredicate;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class HugeBlackMushroomFeature extends Feature<NoneFeatureConfiguration> {
-    protected BiPredicate<WorldGenLevel, BlockPos> replace = ((worldGenLevel, blockPos) -> TreeFeature.isAirOrLeaves(worldGenLevel, blockPos) || worldGenLevel.getBlockState(blockPos).getBlock() instanceof BushBlock);
-    protected BiPredicate<WorldGenLevel, BlockPos> placeOn = ((worldGenLevel, blockPos) -> worldGenLevel.getBlockState(blockPos).is(VDTags.BLACK_MUSHROOM_GROW_BLOCK));
+    protected final BiPredicate<WorldGenLevel, BlockPos> replace = ((worldGenLevel, blockPos) -> TreeFeature.isAirOrLeaves(worldGenLevel, blockPos) || worldGenLevel.getBlockState(blockPos).getBlock() instanceof BushBlock);
+    protected final BiPredicate<WorldGenLevel, BlockPos> placeOn = ((worldGenLevel, blockPos) -> worldGenLevel.getBlockState(blockPos).is(VDTags.BLACK_MUSHROOM_GROW_BLOCK));
 
     public HugeBlackMushroomFeature(Codec<NoneFeatureConfiguration> pCodec) {
         super(pCodec);

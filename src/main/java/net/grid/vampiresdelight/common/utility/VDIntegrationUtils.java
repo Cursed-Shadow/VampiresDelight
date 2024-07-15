@@ -64,10 +64,10 @@ public class VDIntegrationUtils {
         }
     }
 
-    public static ResourceLocation WOLF_BERRIES = new ResourceLocation(WEREWOLVES, "wolf_berries");
-    public static ResourceLocation LIVER = new ResourceLocation(WEREWOLVES, "liver");
+    public static final ResourceLocation WOLF_BERRIES = new ResourceLocation(WEREWOLVES, "wolf_berries");
+    public static final ResourceLocation LIVER = new ResourceLocation(WEREWOLVES, "liver");
 
-    public static ResourceLocation NOT_MEAT = new ResourceLocation(WEREWOLVES, "not_meat");
+    public static final ResourceLocation NOT_MEAT = new ResourceLocation(WEREWOLVES, "not_meat");
 
     public static boolean isWerewolfVegetarian(Player player) {
         return hasSkill(player, NOT_MEAT);
