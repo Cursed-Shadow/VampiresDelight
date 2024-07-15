@@ -6,6 +6,7 @@ import de.teamlapen.vampirism.api.items.IFactionExclusiveItem;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.entity.AlchemicalCocktailEntity;
 import net.grid.vampiresdelight.common.registry.VDItems;
+import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -15,6 +16,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -59,6 +61,15 @@ public class AlchemicalCocktailItem extends Item implements IFactionExclusiveIte
     @Override
     public int getMaxStackSize(ItemStack stack) {
         return VDConfiguration.ALCHEMICAL_COCKTAIL_STACK_SIZE.get();
+    }
+
+    @Override
+    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        if (isMetalPipe(pStack)) {
+            pTarget.playSound(VDSounds.METAL_PIPE.get(), 2.0F, pTarget.getRandom().nextFloat() * 0.1F + 1.0F);
+        }
+
+        return super.hurtEnemy(pStack, pTarget, pAttacker);
     }
 
     public static boolean isMetalPipe(ItemStack stack) {

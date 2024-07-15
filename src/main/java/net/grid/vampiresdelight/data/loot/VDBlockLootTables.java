@@ -57,6 +57,10 @@ public class VDBlockLootTables extends BlockLootSubProvider {
         add(block, this::createNameableBlockEntityTable);
     }
 
+    //protected void dropPlacedDrink(PlacedPourableBottleBlock bottleBlock) {
+        //this.add(bottleBlock, block -> );
+    //}
+
     @Override
     protected void add(@NotNull Block block, LootTable.@NotNull Builder builder) {
         this.generatedLootTables.add(block);

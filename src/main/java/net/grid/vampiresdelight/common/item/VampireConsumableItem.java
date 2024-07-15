@@ -2,7 +2,6 @@ package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
-import net.grid.vampiresdelight.common.food.FoodFeatures;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
@@ -24,87 +23,67 @@ import vectorwing.farmersdelight.common.Configuration;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
+import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 public class VampireConsumableItem extends Item {
     private final FoodProperties vampireFood;
     private final FoodProperties hunterFood;
-    private final FoodFeatures foodFeatures;
+    private final Consumer<LivingEntity> features;
     private final boolean hasFoodEffectTooltip;
     private final boolean hasHumanFoodEffectTooltip;
     private final boolean hasCustomTooltip;
     private final boolean hasFactionTooltip;
 
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood) {
+    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, @Nullable Consumer<LivingEntity> features) {
         super(properties);
         this.vampireFood = vampireFood;
         this.hunterFood = null;
-        this.foodFeatures = null;
+        this.features = features;
         this.hasFoodEffectTooltip = true;
         this.hasCustomTooltip = false;
         this.hasHumanFoodEffectTooltip = false;
         this.hasFactionTooltip = true;
     }
 
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, FoodFeatures foodFeatures) {
-        super(properties);
-        this.vampireFood = vampireFood;
-        this.hunterFood = null;
-        this.foodFeatures = foodFeatures;
-        this.hasFoodEffectTooltip = true;
-        this.hasCustomTooltip = false;
-        this.hasHumanFoodEffectTooltip = false;
-        this.hasFactionTooltip = true;
-    }
-
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, FoodProperties hunterFood, FoodFeatures foodFeatures) {
+    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, FoodProperties hunterFood, @Nullable Consumer<LivingEntity> features) {
         super(properties);
         this.vampireFood = vampireFood;
         this.hunterFood = hunterFood;
-        this.foodFeatures = foodFeatures;
+        this.features = features;
         this.hasFoodEffectTooltip = true;
         this.hasCustomTooltip = false;
         this.hasHumanFoodEffectTooltip = false;
         this.hasFactionTooltip = true;
     }
 
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip) {
+    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip) {
         super(properties);
         this.vampireFood = vampireFood;
         this.hunterFood = null;
-        this.foodFeatures = null;
+        this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = false;
         this.hasHumanFoodEffectTooltip = false;
         this.hasFactionTooltip = true;
     }
 
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip) {
+    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip) {
         super(properties);
         this.vampireFood = vampireFood;
         this.hunterFood = null;
-        this.foodFeatures = null;
+        this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
         this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
         this.hasFactionTooltip = true;
     }
 
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip, boolean hasFactionTooltip) {
+    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip, boolean hasFactionTooltip) {
         super(properties);
         this.vampireFood = vampireFood;
         this.hunterFood = null;
-        this.foodFeatures = null;
-        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasCustomTooltip = hasCustomTooltip;
-        this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
-        this.hasFactionTooltip = hasFactionTooltip;
-    }
-
-    public VampireConsumableItem(Properties properties, FoodProperties vampireFood, FoodFeatures foodFeatures, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip, boolean hasFactionTooltip) {
-        super(properties);
-        this.vampireFood = vampireFood;
-        this.hunterFood = null;
-        this.foodFeatures = foodFeatures;
+        this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
         this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
@@ -114,8 +93,8 @@ public class VampireConsumableItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity consumer) {
         if (!level.isClientSide) {
-            if (foodFeatures != null) {
-                foodFeatures.execute(consumer);
+            if (features != null) {
+                features.accept(consumer);
             }
 
             this.affectConsumer(stack, level, consumer);
@@ -161,11 +140,6 @@ public class VampireConsumableItem extends Item {
         return VDHelper.isVampire(entity) ? vampireFood : (VDHelper.isHunter(entity) && hunterFood != null ? hunterFood : super.getFoodProperties(stack, entity));
     }
 
-    @Override
-    public int getUseDuration(ItemStack pStack) {
-        return (foodFeatures.getUseDuration() > 0) ? foodFeatures.getUseDuration() : super.getUseDuration(pStack);
-    }
-
     /**
      * Override this to apply changes to the consumer (e.g. curing effects).
      */
@@ -178,10 +152,6 @@ public class VampireConsumableItem extends Item {
 
     public FoodProperties getHunterFood() {
         return hunterFood;
-    }
-
-    public FoodFeatures getFoodFeatures() {
-        return foodFeatures;
     }
 
     @Override

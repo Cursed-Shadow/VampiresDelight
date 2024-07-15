@@ -54,10 +54,8 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     public BarStoolBlock() {
         super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
 
-        BlockState blockstate = this.stateDefinition.any()
-                .setValue(WATERLOGGED, false);
-
-        this.registerDefaultState(blockstate);
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -78,8 +76,7 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     // Modified Vampirism's SitHandler
     public static void startSitting(@NotNull Player pPlayer, @NotNull Level pLevel, @NotNull BlockPos pPos, double offset) {
         if (!pLevel.isClientSide && !SitUtil.isPlayerSitting(pPlayer) && !pPlayer.isShiftKeyDown()) {
-            if (isPlayerInRange(pPlayer, pPos) && !SitUtil.isOccupied(pLevel, pPos))
-            {
+            if (isPlayerInRange(pPlayer, pPos) && !SitUtil.isOccupied(pLevel, pPos)) {
                 SitEntity sit = SitEntity.newEntity(pLevel, pPos, offset, pPlayer.position());
 
                 if (SitUtil.addSitEntity(pLevel, pPos, sit)) {

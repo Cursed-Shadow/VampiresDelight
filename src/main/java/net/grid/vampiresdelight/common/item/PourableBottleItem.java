@@ -3,17 +3,21 @@ package net.grid.vampiresdelight.common.item;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.block.PlacedPourableBottleBlock;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,7 +30,11 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -42,11 +50,13 @@ import java.util.function.Consumer;
  * <a href="https://github.com/Creators-of-Create/Create">...</a>
  */
 public class PourableBottleItem extends Item implements ICustomUseItem {
+    private final PlacedPourableBottleBlock placedBottleBlock;
     private final Item serving;
     private final Item servingContainer;
 
-    public PourableBottleItem(Properties properties, int servings, Item serving, Item servingContainer) {
+    public PourableBottleItem(Properties properties, PlacedPourableBottleBlock placedBottleBlock, Item serving, Item servingContainer, int servings) {
         super(properties.defaultDurability(servings).setNoRepair());
+        this.placedBottleBlock = placedBottleBlock;
         this.serving = serving;
         this.servingContainer = servingContainer;
     }
@@ -68,15 +78,42 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand mainHand) {
+        BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
         InteractionHand offHand = mainHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
         ItemStack itemStack = player.getItemInHand(mainHand);
+        ItemStack bottle = player.getItemInHand(offHand);
+
+        if (hitResult.getType() == HitResult.Type.BLOCK && player.isCrouching()) {
+            BlockPos blockPos = hitResult.getBlockPos();
+            BlockPos targetPos = player.isCrouching() ? blockPos.relative(hitResult.getDirection()) : blockPos;
+            BlockState targetState = level.getBlockState(targetPos);
+
+            if (targetState.canBeReplaced()) {
+                BlockState bottleBlockToPlace = placedBottleBlock.defaultBlockState();
+                level.setBlock(targetPos, bottleBlockToPlace, 3);
+
+                bottleBlockToPlace.getBlock().setPlacedBy(level, targetPos, bottleBlockToPlace, player, itemStack);
+                if (player instanceof ServerPlayer) {
+                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, targetPos, itemStack);
+                }
+
+                SoundType soundtype = bottleBlockToPlace.getSoundType(level, targetPos, player);
+                level.playSound(player, targetPos, soundtype.getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                level.gameEvent(GameEvent.BLOCK_PLACE, targetPos, GameEvent.Context.of(player, bottleBlockToPlace));
+
+                if (!player.getAbilities().instabuild) {
+                    itemStack.shrink(1);
+                }
+
+                return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemStack);
+            }
+        }
 
         if (itemStack.getOrCreateTag().contains("Pouring")) {
             player.startUsingItem(mainHand);
             return new InteractionResultHolder<>(InteractionResult.PASS, itemStack);
         }
 
-        ItemStack bottle = player.getItemInHand(offHand);
         if (bottle.getItem() == servingContainer) {
             ItemStack itemUsed = bottle.copy();
             ItemStack toPour = itemUsed.split(1);
@@ -86,12 +123,10 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
             return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemStack);
         }
 
-        HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
-        //if (!(hitResult instanceof BlockHitResult)) return new InteractionResultHolder<>(InteractionResult.FAIL, itemStack);
-
         Vec3 POVHit = hitResult.getLocation();
         AABB aabb = new AABB(POVHit, POVHit).inflate(1f);
         ItemEntity pickUp = null;
+
         for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, aabb)) {
             if (!itemEntity.isAlive() && itemEntity.position().distanceTo(player.position()) > 3 && !itemEntity.isAlive() &&
                     itemEntity.getItem().getItem() != servingContainer)
@@ -99,8 +134,8 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
             pickUp = itemEntity;
             break;
         }
-        if (pickUp != null) {
 
+        if (pickUp != null) {
             ItemStack pickedItem = pickUp.getItem().copy();
             ItemStack toPour = pickedItem.split(1);
             player.startUsingItem(mainHand);
@@ -113,6 +148,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
 
             return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemStack);
         }
+
         return new InteractionResultHolder<>(InteractionResult.FAIL, itemStack);
     }
 

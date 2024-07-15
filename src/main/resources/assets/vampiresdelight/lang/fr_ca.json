@@ -88,6 +88,7 @@
   "item.vampiresdelight.bagel_sandwich": "Sandwich au beigne",
   "item.vampiresdelight.tricolor_dango": "Dango tricolore",
   "item.vampiresdelight.blood_wine_bottle": "Bouteille de vin en sang",
+  "block.vampiresdelight.blood_wine_bottle_placed": "Placed Blood Wine Bottle",
   "item.vampiresdelight.wine_glass": "Verre de vin",
   "item.vampiresdelight.mulled_wine_glass": "Verre de vin chaud",
   "item.vampiresdelight.cursed_cupcake": "Petit gâteau corrumpu",
@@ -207,6 +208,7 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Le meilleur cadeau pour tout homme",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtenez une potion qui dissout les vêtements et apprenez le sens de la vie. Ne me demandez pas comment l'obtenir, demandez à un elfe.",
 
+  "vampiresdelight.subtitles.bottle_breaks": "Glass bottle shatters",
   "vampiresdelight.subtitles.metal_pipe": "Metal pipe falls",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Nourriture dégoûtante consommée",

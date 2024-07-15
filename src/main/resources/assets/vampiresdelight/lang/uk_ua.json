@@ -88,6 +88,7 @@
   "item.vampiresdelight.bagel_sandwich": "Бублик-сендвіч",
   "item.vampiresdelight.tricolor_dango": "Трикольоровий данго",
   "item.vampiresdelight.blood_wine_bottle": "Пляшка кривавого вина",
+  "block.vampiresdelight.blood_wine_bottle_placed": "Поставлена пляшка кривавого вина",
   "item.vampiresdelight.wine_glass": "Келих з вином",
   "item.vampiresdelight.mulled_wine_glass": "Глінтвейн",
   "item.vampiresdelight.cursed_cupcake": "Проклятий кекс",
@@ -207,6 +208,7 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Найкращий подарунок для будь-якого чоловіка",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Дістаньте зілля, розчиняюче одяг, та пізнайте сенс життя. Не питайте мене, як його дістати, краще запитайте ельфа.",
 
+  "vampiresdelight.subtitles.bottle_breaks": "Скляна пляшка розбивається",
   "vampiresdelight.subtitles.metal_pipe": "Металева труба падає",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Спожито огидної їжі",

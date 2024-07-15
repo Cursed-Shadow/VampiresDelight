@@ -88,6 +88,7 @@
   "item.vampiresdelight.bagel_sandwich": "Бублик-сендвич",
   "item.vampiresdelight.tricolor_dango": "Трёхцветное данго",
   "item.vampiresdelight.blood_wine_bottle": "Бутылка кровавого вина",
+  "block.vampiresdelight.blood_wine_bottle_placed": "Поставленная бутылка кровавого вина",
   "item.vampiresdelight.wine_glass": "Бокал вина",
   "item.vampiresdelight.mulled_wine_glass": "Глинтвейн",
   "item.vampiresdelight.cursed_cupcake": "Проклятый кекс",
@@ -207,6 +208,7 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Лучший подарок для любого мужчины",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Добудьте зелье, растворяющее одежду, и познайте смысл жизни. Не спрашивайте меня, как его достать, лучше спросите эльфа.",
 
+  "vampiresdelight.subtitles.bottle_breaks": "Стеклянная бутылка разбивается",
   "vampiresdelight.subtitles.metal_pipe": "Металлическая труба падает",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Мерзкая пища съедена",

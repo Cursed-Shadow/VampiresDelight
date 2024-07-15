@@ -24,7 +24,7 @@ public class DaisyTeaItem extends DrinkableItem {
 
     @Override
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-        VDFoodFeatures.DAISY_TEA.execute(consumer);
+        VDFoodFeatures.DAISY_TEA.accept(consumer);
     }
 
     @Override

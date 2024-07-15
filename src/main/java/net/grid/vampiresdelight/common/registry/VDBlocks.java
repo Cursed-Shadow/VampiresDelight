@@ -165,6 +165,10 @@ public class VDBlocks {
     public static final RegistryObject<ConsumableCandleCakeBlock> BLACK_ORCHID_CANDLE_CAKE = BLOCKS.register("black_orchid_candle_cake",
             () -> candleCakeBlock(Blocks.BLACK_CANDLE, ORCHID_CAKE.get(), MapColor.TERRACOTTA_PURPLE));
 
+    // Placed Drinks
+    public static final RegistryObject<PlacedPourableBottleBlock> BLOOD_WINE_BOTTLE_PLACED = BLOCKS.register("blood_wine_bottle_placed",
+            () -> new PlacedPourableBottleBlock(Block.Properties.copy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_PURPLE), VDItems.BLOOD_WINE_BOTTLE, PlacedPourableBottleBlock.BLOOD_WINE_SHAPE));
+
     public static ConsumableCandleCakeBlock candleCakeBlock(Block candleBlock, ConsumableCakeBlock cakeBlock, MapColor mapColor) {
         return new ConsumableCandleCakeBlock(Block.Properties.copy(Blocks.CAKE)
                 .mapColor(mapColor).lightLevel(litBlockEmission(3)), cakeBlock, candleBlock);

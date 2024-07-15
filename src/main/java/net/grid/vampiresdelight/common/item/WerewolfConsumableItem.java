@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
-import net.grid.vampiresdelight.common.food.FoodFeatures;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
@@ -24,39 +23,31 @@ import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
 
 import java.util.List;
+import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 public class WerewolfConsumableItem extends Item {
     private final FoodProperties werewolfFood;
-    private final FoodFeatures foodFeatures;
+    private final Consumer<LivingEntity> features;
     private final boolean hasFoodEffectTooltip;
     private final boolean hasHumanFoodEffectTooltip;
     private final boolean hasCustomTooltip;
     private final boolean hasFactionTooltip;
 
-    public WerewolfConsumableItem(Properties pProperties, FoodProperties werewolfFood) {
+    public WerewolfConsumableItem(Properties pProperties, FoodProperties werewolfFood, @Nullable Consumer<LivingEntity> features) {
         super(pProperties);
         this.werewolfFood = werewolfFood;
-        this.foodFeatures = null;
+        this.features = features;
         this.hasFoodEffectTooltip = true;
         this.hasCustomTooltip = false;
         this.hasHumanFoodEffectTooltip = false;
         this.hasFactionTooltip = true;
     }
 
-    public WerewolfConsumableItem(Properties pProperties, FoodProperties werewolfFood, FoodFeatures foodFeatures) {
+    public WerewolfConsumableItem(Properties pProperties, FoodProperties werewolfFood, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip, boolean hasFactionTooltip) {
         super(pProperties);
         this.werewolfFood = werewolfFood;
-        this.foodFeatures = foodFeatures;
-        this.hasFoodEffectTooltip = true;
-        this.hasCustomTooltip = false;
-        this.hasHumanFoodEffectTooltip = false;
-        this.hasFactionTooltip = true;
-    }
-
-    public WerewolfConsumableItem(Properties pProperties, FoodProperties werewolfFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasHumanFoodEffectTooltip, boolean hasFactionTooltip) {
-        super(pProperties);
-        this.werewolfFood = werewolfFood;
-        this.foodFeatures = null;
+        this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
         this.hasHumanFoodEffectTooltip = hasHumanFoodEffectTooltip;
@@ -66,8 +57,8 @@ public class WerewolfConsumableItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity consumer) {
         if (!level.isClientSide) {
-            if (foodFeatures != null) {
-                foodFeatures.execute(consumer);
+            if (features != null) {
+                features.accept(consumer);
             }
 
             this.affectConsumer(stack, level, consumer);
@@ -109,11 +100,6 @@ public class WerewolfConsumableItem extends Item {
         }
 
         return VDIntegrationUtils.isWerewolf(entity) ? werewolfFood : super.getFoodProperties(stack, entity);
-    }
-
-    @Override
-    public int getUseDuration(ItemStack pStack) {
-        return (foodFeatures.getUseDuration() > 0) ? foodFeatures.getUseDuration() : super.getUseDuration(pStack);
     }
 
     /**

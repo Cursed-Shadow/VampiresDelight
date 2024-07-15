@@ -72,6 +72,8 @@ public class VDBlockStates extends BlockStateProvider {
 
         this.feastBlock(VDBlocks.WEIRD_JELLY_BLOCK.get());
 
+        this.simpleBlock(VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get(), existingModel(VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get()));
+
         this.crateBlock(VDBlocks.GARLIC_CRATE.get(), "garlic");
         this.bagBlock(VDBlocks.ORCHID_BAG.get());
 

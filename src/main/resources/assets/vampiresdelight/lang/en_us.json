@@ -88,6 +88,7 @@
   "item.vampiresdelight.bagel_sandwich": "Bagel Sandwich",
   "item.vampiresdelight.tricolor_dango": "Tricolor Dango",
   "item.vampiresdelight.blood_wine_bottle": "Blood Wine Bottle",
+  "block.vampiresdelight.blood_wine_bottle_placed": "Placed Blood Wine Bottle",
   "item.vampiresdelight.wine_glass": "Wine Glass",
   "item.vampiresdelight.mulled_wine_glass": "Mulled Wine Glass",
   "item.vampiresdelight.cursed_cupcake": "Cursed Cupcake",
@@ -207,6 +208,7 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "The Best Present for Any Man",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtain a potion that dissolves clothes and learn the sense of life. Don't ask me how to get it, ask an elf.",
 
+  "vampiresdelight.subtitles.bottle_breaks": "Glass bottle shatters",
   "vampiresdelight.subtitles.metal_pipe": "Metal pipe falls",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Disgusting Food Consumed",

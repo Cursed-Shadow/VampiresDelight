@@ -1,4 +1,13 @@
 {
+  "block.bottle_breaks": {
+    "subtitle": "vampiresdelight.subtitles.bottle_breaks",
+    "sounds": [
+      "vampiresdelight:bottle_breaks_1",
+      "vampiresdelight:bottle_breaks_2",
+      "minecraft:random/glass2",
+      "minecraft:random/glass3"
+    ]
+  },
   "metal_pipe": {
     "subtitle": "vampiresdelight.subtitles.metal_pipe",
     "sounds": [

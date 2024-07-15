@@ -198,6 +198,7 @@ public class WineShelfBlock extends BaseEntityBlock {
         return new WineShelfBlockEntity(pos, state);
     }
 
+    @Override
     public void onRemove(BlockState state, @NotNull Level level, @NotNull BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockentity = level.getBlockEntity(pos);

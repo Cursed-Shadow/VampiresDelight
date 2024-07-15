@@ -4,7 +4,6 @@ import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.core.ModEffects;
 import net.grid.vampiresdelight.common.food.VDFoodValues;
-import net.grid.vampiresdelight.common.food.FoodFeatures;
 import net.grid.vampiresdelight.common.utility.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
@@ -25,54 +24,38 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import vectorwing.farmersdelight.common.Configuration;
 
 import java.util.List;
+import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 public class HunterConsumableItem extends Item {
     private final FoodProperties hunterFood;
-    private final FoodFeatures foodFeatures;
+    private final Consumer<LivingEntity> features;
     private final boolean hasFoodEffectTooltip;
     private final boolean hasCustomTooltip;
     private final boolean containsGarlic;
 
-    public HunterConsumableItem(Properties properties) {
+    public HunterConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
         super(properties);
         this.hunterFood = null;
-        this.foodFeatures = null;
+        this.features = features;
         this.hasFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
         this.containsGarlic = true;
     }
 
-    public HunterConsumableItem(Properties properties, boolean hasFoodEffectTooltip) {
+    public HunterConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip) {
         super(properties);
         this.hunterFood = null;
-        this.foodFeatures = null;
+        this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = false;
         this.containsGarlic = true;
     }
 
-    public HunterConsumableItem(Properties properties, FoodFeatures foodFeatures, boolean hasFoodEffectTooltip) {
-        super(properties);
-        this.hunterFood = null;
-        this.foodFeatures = foodFeatures;
-        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasCustomTooltip = false;
-        this.containsGarlic = true;
-    }
-
-    public HunterConsumableItem(Properties properties, FoodProperties hunterFood, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean containsGarlic) {
+    public HunterConsumableItem(Properties properties, FoodProperties hunterFood, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean containsGarlic) {
         super(properties);
         this.hunterFood = hunterFood;
-        this.foodFeatures = null;
-        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasCustomTooltip = hasCustomTooltip;
-        this.containsGarlic = containsGarlic;
-    }
-
-    public HunterConsumableItem(Properties properties, FoodProperties hunterFood, FoodFeatures foodFeatures, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean containsGarlic) {
-        super(properties);
-        this.hunterFood = hunterFood;
-        this.foodFeatures = foodFeatures;
+        this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
         this.containsGarlic = containsGarlic;
@@ -85,8 +68,8 @@ public class HunterConsumableItem extends Item {
                 VDEntityUtils.cureEffect(ModEffects.SANGUINARE.get(), consumer);
             }
 
-            if (foodFeatures != null) {
-                foodFeatures.execute(consumer);
+            if (features != null) {
+                features.accept(consumer);
             }
 
             this.affectConsumer(stack, level, consumer);
@@ -128,11 +111,6 @@ public class HunterConsumableItem extends Item {
         }
 
         return VDHelper.isHunter(entity) && hunterFood != null ? hunterFood : (VDHelper.isVampire(entity) ? VDFoodValues.NONE : super.getFoodProperties(stack, entity));
-    }
-
-    @Override
-    public int getUseDuration(ItemStack pStack) {
-        return (foodFeatures.getUseDuration() > 0) ? foodFeatures.getUseDuration() : super.getUseDuration(pStack);
     }
 
     /**
