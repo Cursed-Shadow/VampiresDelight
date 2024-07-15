@@ -27,6 +27,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -87,16 +88,15 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
             BlockPos blockPos = hitResult.getBlockPos();
             BlockPos targetPos = player.isCrouching() ? blockPos.relative(hitResult.getDirection()) : blockPos;
             BlockState targetState = level.getBlockState(targetPos);
+            BlockState bottleBlockToPlace = placedBottleBlock.getStateForPlacement(new BlockPlaceContext(level, player, mainHand, itemStack, hitResult));
 
-            if (targetState.canBeReplaced()) {
-                BlockState bottleBlockToPlace = placedBottleBlock.defaultBlockState();
+            if (targetState.canBeReplaced() && bottleBlockToPlace != null) {
                 level.setBlock(targetPos, bottleBlockToPlace, 3);
 
                 bottleBlockToPlace.getBlock().setPlacedBy(level, targetPos, bottleBlockToPlace, player, itemStack);
                 if (player instanceof ServerPlayer) {
                     CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, targetPos, itemStack);
                 }
-
                 SoundType soundtype = bottleBlockToPlace.getSoundType(level, targetPos, player);
                 level.playSound(player, targetPos, soundtype.getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                 level.gameEvent(GameEvent.BLOCK_PLACE, targetPos, GameEvent.Context.of(player, bottleBlockToPlace));

@@ -11,7 +11,10 @@
   - Shatters when hit with a projectile (Arrows, Snow Balls, etc.);
 
 - ### Updates
-- Updated **Daisy Tea** texture;
+- Updated textures and models:
+  - **Blood Wine Bottle**;
+  - **Blood Wine Glass**;
+  - **Daisy Tea**;
 - Modified food values:
   - **Snow_White Ice Cream**: `4` to `3,5`;
 

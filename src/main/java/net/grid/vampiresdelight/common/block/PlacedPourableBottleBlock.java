@@ -43,7 +43,10 @@ import java.util.stream.Stream;
 public class PlacedPourableBottleBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final IntegerProperty SERVINGS = IntegerProperty.create("servings", 0, 64);
-    public static final VoxelShape BLOOD_WINE_SHAPE = Stream.of(Block.box(5.5, 0, 5.5, 10.5, 10, 10.5), Block.box(6.5, 14, 6.5, 9.5, 15, 9.5), Block.box(7, 10, 7, 9, 16, 9)).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape BLOOD_WINE_SHAPE = Stream.of(
+            Block.box(5.5, 0, 5.5, 10.5, 11, 10.5),
+            Block.box(7, 11, 7, 9, 16, 9)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
     private final Supplier<PourableBottleItem> bottleItem;
     private final VoxelShape shape;
