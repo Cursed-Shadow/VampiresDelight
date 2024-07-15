@@ -89,7 +89,7 @@
   "item.vampiresdelight.tricolor_dango": "Tricolor Dango",
   "item.vampiresdelight.blood_wine_bottle": "Blood Wine Bottle",
   "block.vampiresdelight.blood_wine_bottle_placed": "Placed Blood Wine Bottle",
-  "item.vampiresdelight.wine_glass": "Wine Glass",
+  "item.vampiresdelight.blood_wine_glass": "Blood Wine Glass",
   "item.vampiresdelight.mulled_wine_glass": "Mulled Wine Glass",
   "item.vampiresdelight.cursed_cupcake": "Cursed Cupcake",
 
@@ -197,8 +197,8 @@
   "vampiresdelight.advancement.get_orchid_tea": "Tea with the taste of jalapeno",
   "vampiresdelight.advancement.get_orchid_tea.desc": "Brew some Orchid Tea. It can infect with Sanguinare if drunk by a human. Can be a little spicy.",
 
-  "vampiresdelight.advancement.pour_blood_wine": "Blood Wine Tastes the Same as I Remember",
-  "vampiresdelight.advancement.pour_blood_wine.desc": "Pour blood wine into glass bottle using your bare hands.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Blood Wine Tastes the Same as I Remember",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Pour blood wine into glass bottle using your bare hands.",
   "vampiresdelight.advancement.get_wine_shelf": "Local Bar",
   "vampiresdelight.advancement.get_wine_shelf.desc": "Craft Wine Shelf to store blood wine. To place wine bottles into it, click on it with bottle in hand.",
 

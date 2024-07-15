@@ -13,7 +13,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.data.ItemModels;
 
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static vectorwing.farmersdelight.data.ItemModels.takeAll;
@@ -48,7 +47,7 @@ public class VDItemModels extends ItemModelProvider {
 
         // Items that should be held like a cocktail
         Set<Item> cocktailItems = Sets.newHashSet(
-                VDItems.WINE_GLASS.get());
+                VDItems.BLOOD_WINE_GLASS.get());
         takeAll(items, cocktailItems.toArray(new Item[0])).forEach(item -> itemCocktailModel(item, resourceItem(itemName(item))));
 
         // Two models of items that are pourable

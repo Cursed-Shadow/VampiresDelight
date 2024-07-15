@@ -70,7 +70,7 @@ public class VDCookingRecipes {
                 .setRecipeBookTab(CookingPotRecipeBookTab.MISC)
                 .build(consumer, itemLocationCooking(VDItems.TRICOLOR_DANGO.get()));
         CookingPotRecipeBuilder.cookingPotRecipe(VDItems.MULLED_WINE_GLASS.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
-                .addIngredient(VDItems.WINE_GLASS.get())
+                .addIngredient(VDItems.BLOOD_WINE_GLASS.get())
                 .addIngredient(Ingredient.fromValues(Stream.of(
                         new Ingredient.ItemValue(new ItemStack(ModBlocks.CURSED_ROOTS.get())),
                         new Ingredient.ItemValue(new ItemStack(ModBlocks.CURSED_SPRUCE_SAPLING.get())),
@@ -78,7 +78,7 @@ public class VDCookingRecipes {
                         new Ingredient.ItemValue(new ItemStack(ModBlocks.DARK_SPRUCE_LEAVES.get()))
                 )))
                 .addIngredient(Items.SUGAR)
-                .unlockedByAnyIngredient(VDItems.WINE_GLASS.get())
+                .unlockedByAnyIngredient(VDItems.BLOOD_WINE_GLASS.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
                 .build(consumer, itemLocationCooking(VDItems.MULLED_WINE_GLASS.get()));
     }

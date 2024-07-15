@@ -1,6 +1,6 @@
 {
   "parent": "vampiresdelight:item/cocktail",
   "textures": {
-    "layer0": "vampiresdelight:item/wine_glass"
+    "layer0": "vampiresdelight:item/blood_wine_glass"
   }
 }

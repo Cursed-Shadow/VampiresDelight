@@ -42,7 +42,7 @@ public class CommonSetup {
         ComposterBlock.COMPOSTABLES.put(VDItems.ORCHID_SEEDS.get(), 0.3F);
 
         // 50% chance
-        ComposterBlock.COMPOSTABLES.put(VDItems.ORCHID_PETALS.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(VDItems.ORCHID_PETALS.get(), 0.5F);
 
         // 65% chance
         ComposterBlock.COMPOSTABLES.put(VDItems.WILD_GARLIC.get(), 0.65F);

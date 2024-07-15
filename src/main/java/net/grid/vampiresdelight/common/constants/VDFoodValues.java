@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.common.food;
+package net.grid.vampiresdelight.common.constants;
 
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDEffects;
@@ -36,11 +36,11 @@ public class VDFoodValues {
             .effect(() -> new MobEffectInstance(MobEffects.POISON, 60), 1.0F).build();
 
     // Drinks
-    public static final FoodProperties WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
+    public static final FoodProperties BLOOD_WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
             .nutrition(7).saturationMod(0.8f)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, MOMENT_DURATION, 1), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300), 1.0F).build();
-    public static final FoodProperties WINE_GLASS_HUMAN = (new FoodProperties.Builder()).alwaysEat()
+    public static final FoodProperties BLOOD_WINE_GLASS_HUMAN = (new FoodProperties.Builder()).alwaysEat()
             .nutrition(1).saturationMod(0.1f)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 400), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.HUNGER, MOMENT_DURATION), 1.0F).build();

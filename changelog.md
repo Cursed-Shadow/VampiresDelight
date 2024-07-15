@@ -6,6 +6,9 @@
 - Added new blocks:
   - **Bloody Soil**;
   - **Bloody Soil Farmland**;
+- **Blood Wine Bottle** can now be placed on the ground;
+  - Click with **Blood Wine Bottle** while crouching to place it;
+  - Shatters when hit with a projectile (Arrows, Snow Balls, etc.);
 
 - ### Updates
 - Updated **Daisy Tea** texture;
@@ -14,6 +17,7 @@
 
 ### Translations
 - **New lines added**;
+- Renamed **Wine Glass** to **Blood Wine Glass**;
 - Fixed:
   - uk_Ua;
 

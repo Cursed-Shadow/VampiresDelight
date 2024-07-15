@@ -19,6 +19,7 @@ public class MappingEventHandler {
     public static void fixItems(@NotNull MissingMappingsEvent.Mapping<Item> mapping) {
         switch (mapping.getKey().toString()) {
             case "vampiresdelight:eye_toast" -> mapping.remap(VDItems.EYE_CROISSANT.get());
+            case "vampiresdelight:wine_glass" -> mapping.remap(VDItems.BLOOD_WINE_GLASS.get());
         }
     }
 }

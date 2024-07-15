@@ -89,7 +89,7 @@
   "item.vampiresdelight.tricolor_dango": "Трикольоровий данго",
   "item.vampiresdelight.blood_wine_bottle": "Пляшка кривавого вина",
   "block.vampiresdelight.blood_wine_bottle_placed": "Поставлена пляшка кривавого вина",
-  "item.vampiresdelight.wine_glass": "Келих з вином",
+  "item.vampiresdelight.blood_wine_glass": "Келих кривавого вина",
   "item.vampiresdelight.mulled_wine_glass": "Глінтвейн",
   "item.vampiresdelight.cursed_cupcake": "Проклятий кекс",
 
@@ -197,8 +197,8 @@
   "vampiresdelight.advancement.get_orchid_tea": "Чай зі смаком халапеньйо",
   "vampiresdelight.advancement.get_orchid_tea.desc": "Зваріть орхідеєвий чай. Він може заразити Sanguinare, якщо його вип'є людина. Може бути трошечки пікантним.",
 
-  "vampiresdelight.advancement.pour_blood_wine": "Смак кривавого вина ніяк не змінився...",
-  "vampiresdelight.advancement.pour_blood_wine.desc": "Налийте кров'яне вино в скляну пляшку голими руками.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Смак кривавого вина ніяк не змінився...",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Налийте кров'яне вино в скляну пляшку голими руками.",
   "vampiresdelight.advancement.get_wine_shelf": "Місцевий бар",
   "vampiresdelight.advancement.get_wine_shelf.desc": "Створіть винна полиця для зберігання кривавого вина. Щоб поставити на неї пляшку вина, натисніть на неї з пляшкою в руці.",
 

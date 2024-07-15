@@ -51,7 +51,7 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.BLOOD_BAGEL.get())
                 .add(VDItems.HUMAN_EYE.get())
                 .add(VDItems.BLOOD_WINE_BOTTLE.get())
-                .add(VDItems.WINE_GLASS.get())
+                .add(VDItems.BLOOD_WINE_GLASS.get())
                 .add(VDItems.TRICOLOR_DANGO.get())
                 .add(VDItems.ORCHID_COOKIE.get())
                 .add(VDItems.BLOOD_SYRUP.get())
@@ -138,7 +138,7 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.DAISY_TEA.get())
                 .add(VDItems.ORCHID_TEA.get())
                 .add(VDItems.MULLED_WINE_GLASS.get())
-                .add(VDItems.WINE_GLASS.get())
+                .add(VDItems.BLOOD_WINE_GLASS.get())
                 .add(VDItems.BLOOD_PIE.get())
                 .add(VDItems.ORCHID_CAKE.get());
 

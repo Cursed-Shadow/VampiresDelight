@@ -3,7 +3,7 @@ package net.grid.vampiresdelight.common.item;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.core.ModEffects;
-import net.grid.vampiresdelight.common.food.VDFoodValues;
+import net.grid.vampiresdelight.common.constants.VDFoodValues;
 import net.grid.vampiresdelight.common.utility.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;

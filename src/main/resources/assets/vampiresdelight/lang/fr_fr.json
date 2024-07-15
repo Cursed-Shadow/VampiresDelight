@@ -89,7 +89,7 @@
   "item.vampiresdelight.tricolor_dango": "Dango tricolore",
   "item.vampiresdelight.blood_wine_bottle": "Bouteille de vin en sang",
   "block.vampiresdelight.blood_wine_bottle_placed": "Placed Blood Wine Bottle",
-  "item.vampiresdelight.wine_glass": "Verre de vin",
+  "item.vampiresdelight.blood_wine_glass": "Blood Wine Glass",
   "item.vampiresdelight.mulled_wine_glass": "Verre de vin chaud",
   "item.vampiresdelight.cursed_cupcake": "Petit gâteau corrumpu",
 
@@ -197,8 +197,8 @@
   "vampiresdelight.advancement.get_orchid_tea": "Thé au goût de jalapeno",
   "vampiresdelight.advancement.get_orchid_tea.desc": "Préparez du thé aux orchidées. Il peut infecter avec du Sanguinare s'il est bu par un humain. Peut être un peu épicé.",
 
-  "vampiresdelight.advancement.pour_blood_wine": "Le vin de sang a le même goût que dans mes souvenirs",
-  "vampiresdelight.advancement.pour_blood_wine.desc": "Versez le vin de sang dans une bouteille en verre à mains nues.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Le vin de sang a le même goût que dans mes souvenirs",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Versez le vin de sang dans une bouteille en verre à mains nues.",
   "vampiresdelight.advancement.get_wine_shelf": "Bar local",
   "vampiresdelight.advancement.get_wine_shelf.desc": "Créer une étagère à vin pour stocker le vin de sang. Pour y placer des bouteilles de vin, cliquez dessus avec la bouteille à la main.",
 

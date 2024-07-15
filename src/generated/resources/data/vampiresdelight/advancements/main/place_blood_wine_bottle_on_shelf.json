@@ -28,7 +28,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "translate": "vampiresdelight.advancement.get_wine_shelf.desc"
+      "translate": "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -37,7 +37,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "vampiresdelight.advancement.get_wine_shelf"
+      "translate": "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf"
     }
   },
   "requirements": [

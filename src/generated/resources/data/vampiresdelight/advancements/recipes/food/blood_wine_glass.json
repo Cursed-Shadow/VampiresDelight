@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vampiresdelight:wine_glass"
+        "recipe": "vampiresdelight:blood_wine_glass"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "vampiresdelight:wine_glass"
+      "vampiresdelight:blood_wine_glass"
     ]
   },
   "sends_telemetry_event": false

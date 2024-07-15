@@ -97,7 +97,7 @@ public class VDCreativeTabs {
                         add(VDItems.COOKED_BAT.get(), output);
                         add(VDItems.COOKED_BAT_CHOPS.get(), output);
                         add(VDItems.BLOOD_WINE_BOTTLE.get(), output);
-                        add(VDItems.WINE_GLASS.get(), output);
+                        add(VDItems.BLOOD_WINE_GLASS.get(), output);
                         add(VDItems.MULLED_WINE_GLASS.get(), output);
                         add(VDItems.BLOOD_PIE.get(), output);
                         add(VDItems.BLOOD_PIE_SLICE.get(), output);

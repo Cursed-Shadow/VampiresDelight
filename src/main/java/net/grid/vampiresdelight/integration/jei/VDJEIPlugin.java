@@ -41,7 +41,7 @@ public class VDJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         VDJEIPouringRecipe[] recipes = new VDJEIPouringRecipe[] {
-                new VDJEIPouringRecipe(new ItemStack(VDItems.BLOOD_WINE_BOTTLE.get()), new ItemStack(VDItems.WINE_GLASS.get()), new ItemStack(Items.GLASS_BOTTLE))
+                new VDJEIPouringRecipe(new ItemStack(VDItems.BLOOD_WINE_BOTTLE.get()), new ItemStack(VDItems.BLOOD_WINE_GLASS.get()), new ItemStack(Items.GLASS_BOTTLE))
         };
         registration.addRecipes(VDJEIRecipeTypes.POURING, new ArrayList<>(Arrays.asList(recipes)));
 

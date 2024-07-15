@@ -1,8 +1,8 @@
 package net.grid.vampiresdelight.common.registry;
 
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.food.VDFoodValues;
-import net.grid.vampiresdelight.common.food.VDFoodFeatures;
+import net.grid.vampiresdelight.common.constants.VDFoodValues;
+import net.grid.vampiresdelight.common.constants.VDFoodFeatures;
 import net.grid.vampiresdelight.common.item.*;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.food.FoodProperties;
@@ -174,10 +174,10 @@ public class VDItems {
             () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_HUMAN), VDFoodValues.GRILLED_BAT_VAMPIRE, null, true, false, false, false));
     public static final RegistryObject<VampireConsumableItem> COOKED_BAT_CHOPS = ITEMS.register("cooked_bat_chops",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_CHOPS_HUMAN), VDFoodValues.GRILLED_BAT_CHOPS_VAMPIRE, null, true, false, false, false));
-    public static final RegistryObject<VampireDrinkableItem> WINE_GLASS = ITEMS.register("wine_glass",
-            () -> new VampireDrinkableItem(drinkItem(VDFoodValues.WINE_GLASS_HUMAN), VDFoodValues.WINE_GLASS_VAMPIRE));
+    public static final RegistryObject<VampireDrinkableItem> BLOOD_WINE_GLASS = ITEMS.register("blood_wine_glass",
+            () -> new VampireDrinkableItem(drinkItem(VDFoodValues.BLOOD_WINE_GLASS_HUMAN), VDFoodValues.BLOOD_WINE_GLASS_VAMPIRE));
     public static final RegistryObject<PourableBottleItem> BLOOD_WINE_BOTTLE = ITEMS.register("blood_wine_bottle",
-            () -> new PourableBottleItem(basicItem(), VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get(), VDItems.WINE_GLASS.get(), Items.GLASS_BOTTLE, 3));
+            () -> new PourableBottleItem(basicItem(), VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get(), VDItems.BLOOD_WINE_GLASS.get(), Items.GLASS_BOTTLE, 3));
     public static final RegistryObject<VampireDrinkableItem> MULLED_WINE_GLASS = ITEMS.register("mulled_wine_glass",
             () -> new VampireDrinkableItem(drinkItem(VDFoodValues.MULLED_WINE_GLASS_HUMAN), VDFoodValues.MULLED_WINE_GLASS_VAMPIRE));
     public static final RegistryObject<BlockItem> BLOOD_PIE = ITEMS.register("blood_pie",

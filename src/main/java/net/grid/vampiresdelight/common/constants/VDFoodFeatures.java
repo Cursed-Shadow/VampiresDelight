@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.common.food;
+package net.grid.vampiresdelight.common.constants;
 
 import de.teamlapen.vampirism.core.ModEffects;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
