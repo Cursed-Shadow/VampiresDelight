@@ -4,9 +4,9 @@
   "block.vampiresdelight.garlic_crate": "Caisse d'ail",
   "block.vampiresdelight.orchid_bag": "Sac d'orchidée",
   "block.vampiresdelight.wild_garlic": "Ail sauvage",
-  "block.vampiresdelight.cursed_farmland": "Terre labourée Corrompue",
+  "block.vampiresdelight.cursed_farmland": "Terre labourée corrompue",
   "block.vampiresdelight.bloody_soil": "Terre ensanglanté",
-  "block.vampiresdelight.bloody_soil_farmland": "Bloody Soil Farmland",
+  "block.vampiresdelight.bloody_soil_farmland": "Terre labourée ensanglanté",
   "block.vampiresdelight.vampire_orchid_crop": "Orchidée vampire en pleine croissance",
   "block.vampiresdelight.spirit_lantern": "Lanterne spirituelle",
   "block.vampiresdelight.dark_spruce_cabinet": "Cabinet en sapin foncé",
@@ -89,8 +89,8 @@
   "item.vampiresdelight.bagel_sandwich": "Sandwich au beignet",
   "item.vampiresdelight.tricolor_dango": "Dango tricolore",
   "item.vampiresdelight.blood_wine_bottle": "Bouteille de vin en sang",
-  "block.vampiresdelight.blood_wine_bottle_placed": "Placed Blood Wine Bottle",
-  "item.vampiresdelight.blood_wine_glass": "Blood Wine Glass",
+  "block.vampiresdelight.blood_wine_bottle_placed": "Verre de vin de sang placé",
+  "item.vampiresdelight.blood_wine_glass": "Verre de vin de sang",
   "item.vampiresdelight.mulled_wine_glass": "Verre de vin chaud",
   "item.vampiresdelight.cursed_cupcake": "Petit gâteau corrumpu",
 
@@ -209,8 +209,8 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Le meilleur cadeau pour tout homme",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtenez une potion qui dissout les vêtements et apprenez le sens de la vie. Ne me demandez pas comment l'obtenir, demandez à un elfe.",
 
-  "vampiresdelight.subtitles.bottle_breaks": "Glass bottle shatters",
-  "vampiresdelight.subtitles.metal_pipe": "Metal pipe falls",
+  "vampiresdelight.subtitles.bottle_breaks": "Une bouteille en verre se brise",
+  "vampiresdelight.subtitles.metal_pipe": "Chutes de tuyaux métalliques",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Nourriture dégoûtante consommée",
 
