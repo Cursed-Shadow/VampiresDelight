@@ -6,11 +6,14 @@ import net.grid.vampiresdelight.common.block.entity.WineShelfBlockEntity;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -21,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec2;
@@ -40,11 +44,11 @@ import java.util.stream.Collectors;
 @SuppressWarnings("deprecation")
 public class WineShelfBlock extends BaseEntityBlock {
     public static final BooleanProperty HAS_UPPER_SUPPORT = BooleanProperty.create("has_upper_support");
-    public static final BooleanProperty WINE_SHELF_SLOT_0_OCCUPIED = BooleanProperty.create("slot_0_occupied");
-    public static final BooleanProperty WINE_SHELF_SLOT_1_OCCUPIED = BooleanProperty.create("slot_1_occupied");
-    public static final BooleanProperty WINE_SHELF_SLOT_2_OCCUPIED = BooleanProperty.create("slot_2_occupied");
-    public static final BooleanProperty WINE_SHELF_SLOT_3_OCCUPIED = BooleanProperty.create("slot_3_occupied");
-    public static final List<BooleanProperty> SLOT_OCCUPIED_PROPERTIES = List.of(WINE_SHELF_SLOT_0_OCCUPIED, WINE_SHELF_SLOT_1_OCCUPIED, WINE_SHELF_SLOT_2_OCCUPIED, WINE_SHELF_SLOT_3_OCCUPIED);
+    public static final EnumProperty<Slot> WINE_SHELF_SLOT_0 = EnumProperty.create("slot_0", Slot.class);
+    public static final EnumProperty<Slot> WINE_SHELF_SLOT_1 = EnumProperty.create("slot_1", Slot.class);
+    public static final EnumProperty<Slot> WINE_SHELF_SLOT_2 = EnumProperty.create("slot_2", Slot.class);
+    public static final EnumProperty<Slot> WINE_SHELF_SLOT_3 = EnumProperty.create("slot_3", Slot.class);
+    public static final List<EnumProperty<Slot>> SLOT_CONTENTS = List.of(WINE_SHELF_SLOT_0, WINE_SHELF_SLOT_1, WINE_SHELF_SLOT_2, WINE_SHELF_SLOT_3);
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
@@ -67,8 +71,8 @@ public class WineShelfBlock extends BaseEntityBlock {
                 .setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH)
                 .setValue(HAS_UPPER_SUPPORT, false);
 
-        for (BooleanProperty booleanproperty : SLOT_OCCUPIED_PROPERTIES) {
-            blockstate = blockstate.setValue(booleanproperty, Boolean.FALSE);
+        for (EnumProperty<Slot> enumProperty : SLOT_CONTENTS) {
+            blockstate = blockstate.setValue(enumProperty, Slot.EMPTY);
         }
 
         this.registerDefaultState(blockstate);
@@ -98,7 +102,7 @@ public class WineShelfBlock extends BaseEntityBlock {
     protected void createBlockStateDefinition(StateDefinition.@NotNull Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(HorizontalDirectionalBlock.FACING, HAS_UPPER_SUPPORT);
-        SLOT_OCCUPIED_PROPERTIES.forEach(builder::add);
+        SLOT_CONTENTS.forEach(builder::add);
     }
 
     @Override
@@ -110,7 +114,7 @@ public class WineShelfBlock extends BaseEntityBlock {
                 return InteractionResult.PASS;
             } else {
                 int i = getHitSlot(optional.get());
-                if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(i))) {
+                if (state.getValue(SLOT_CONTENTS.get(i)) != Slot.EMPTY) {
                     removeBottle(pLevel, pos, player, wineshelfblockentity, i);
                     return InteractionResult.sidedSuccess(pLevel.isClientSide);
                 } else {
@@ -259,6 +263,36 @@ public class WineShelfBlock extends BaseEntityBlock {
             } else {
                 return 0;
             }
+        }
+    }
+
+    public static Slot getSlotTypeForItem(Item item) {
+        for (Slot slot : Slot.values()) {
+            if (Objects.equals(slot.name, itemName(item))) {
+                return slot;
+            }
+        }
+        return Slot.EMPTY;
+    }
+
+    private static String itemName(Item item) {
+        ResourceLocation resourceLocation = ForgeRegistries.ITEMS.getKey(item);
+        return resourceLocation == null ? "" : resourceLocation.getPath();
+    }
+
+    public enum Slot implements StringRepresentable {
+        EMPTY("empty"),
+        BLOOD_WINE_BOTTLE("blood_wine_bottle");
+
+        private final String name;
+
+        Slot(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String getSerializedName() {
+            return name;
         }
     }
 

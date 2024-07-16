@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -34,10 +34,9 @@ public class WineShelfBlockEntity extends BlockEntity implements Container {
             this.lastInteractedSlot = slot;
             BlockState blockstate = this.getBlockState();
 
-            for(int i = 0; i < WineShelfBlock.SLOT_OCCUPIED_PROPERTIES.size(); ++i) {
-                boolean flag = !this.getItem(i).isEmpty();
-                BooleanProperty booleanproperty = WineShelfBlock.SLOT_OCCUPIED_PROPERTIES.get(i);
-                blockstate = blockstate.setValue(booleanproperty, flag);
+            for (int i = 0; i < WineShelfBlock.SLOT_CONTENTS.size(); ++i) {
+                EnumProperty<WineShelfBlock.Slot> enumProperty = WineShelfBlock.SLOT_CONTENTS.get(i);
+                blockstate = blockstate.setValue(enumProperty, WineShelfBlock.getSlotTypeForItem(this.getItem(i).getItem()));
             }
 
             Objects.requireNonNull(this.level).setBlock(this.worldPosition, blockstate, 3);

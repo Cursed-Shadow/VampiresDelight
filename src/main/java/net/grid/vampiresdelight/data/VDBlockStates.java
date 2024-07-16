@@ -272,16 +272,16 @@ public class VDBlockStates extends BlockStateProvider {
 
             builder.part().modelFile(existingModel("blood_wine_bottle_slot_top_left")).rotationY(rotation).addModel()
                     .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_0_OCCUPIED, true).end();
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_0, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
             builder.part().modelFile(existingModel("blood_wine_bottle_slot_top_right")).rotationY(rotation).addModel()
                     .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_1_OCCUPIED, true).end();
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_1, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
             builder.part().modelFile(existingModel("blood_wine_bottle_slot_bottom_left")).rotationY(rotation).addModel()
                     .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_2_OCCUPIED, true).end();
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_2, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
             builder.part().modelFile(existingModel("blood_wine_bottle_slot_bottom_right")).rotationY(rotation).addModel()
                     .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_3_OCCUPIED, true).end();
+                    .condition(WineShelfBlock.WINE_SHELF_SLOT_3, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
         }
     }
 

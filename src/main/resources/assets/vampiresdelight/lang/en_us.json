@@ -197,10 +197,10 @@
   "vampiresdelight.advancement.get_orchid_tea": "Tea with the taste of jalapeno",
   "vampiresdelight.advancement.get_orchid_tea.desc": "Brew some Orchid Tea. It can infect with Sanguinare if drunk by a human. Can be a little spicy.",
 
-  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Blood Wine Tastes the Same as I Remember",
-  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Pour blood wine into glass bottle using your bare hands.",
-  "vampiresdelight.advancement.get_wine_shelf": "Local Bar",
-  "vampiresdelight.advancement.get_wine_shelf.desc": "Craft Wine Shelf to store blood wine. To place wine bottles into it, click on it with bottle in hand.",
+  "vampiresdelight.advancement.pour_blood_wine": "Blood Wine Tastes the Same as I Remember",
+  "vampiresdelight.advancement.pour_blood_wine.desc": "Pour blood wine into glass bottle using your bare hands.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Local Bar",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Craft Wine Shelf to store blood wine. To place wine bottles into it, click on it with bottle in hand.",
 
   "vampiresdelight.advancement.get_human_eye": "Funny Cuts of Children",
   "vampiresdelight.advancement.get_human_eye.desc": "Scavenge human eye from any human-like creature such as villager and hunter using Knife.",

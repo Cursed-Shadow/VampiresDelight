@@ -197,10 +197,10 @@
   "vampiresdelight.advancement.get_orchid_tea": "Чай со вкусом халапеньо",
   "vampiresdelight.advancement.get_orchid_tea.desc": "Сварите орхидейный чай. Он может заразить сангвинаре, если его выпьет человек. Может быть слегка острым.",
 
-  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Вкус кровяного вина не изменился...",
-  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Налейте кровавое вино в бокал собственными руками.",
-  "vampiresdelight.advancement.get_wine_shelf": "Местный бар",
-  "vampiresdelight.advancement.get_wine_shelf.desc": "Создайте винную полку. Чтобы расположить её, нажмите бутылкой на её лицевую часть.",
+  "vampiresdelight.advancement.pour_blood_wine": "Вкус кровяного вина не изменился...",
+  "vampiresdelight.advancement.pour_blood_wine.desc": "Налейте кровавое вино в бокал собственными руками.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Местный бар",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Создайте винную полку. Чтобы расположить её, нажмите бутылкой на её лицевую часть.",
 
   "vampiresdelight.advancement.get_human_eye": "Смешная нарезка детей",
   "vampiresdelight.advancement.get_human_eye.desc": "Вырежьте человеческий глаз человекоподобного существа, вроде жителя или охотника на вампиров.",
