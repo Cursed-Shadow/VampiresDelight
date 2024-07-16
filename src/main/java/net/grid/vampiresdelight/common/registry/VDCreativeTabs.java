@@ -132,6 +132,7 @@ public class VDCreativeTabs {
 
                         // Plated Foods
                         add(VDItems.ORCHID_CURRY.get(), output);
+                        add(VDItems.BLACK_MUSHROOM_NOODLES.get(), output);
 
                         // Feasts
                         add(VDItems.ORCHID_CAKE.get(), output);

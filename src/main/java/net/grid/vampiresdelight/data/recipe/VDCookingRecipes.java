@@ -113,6 +113,15 @@ public class VDCookingRecipes {
                 .unlockedByAnyIngredient(VDItems.ORCHID_PETALS.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(consumer, itemLocationCooking(VDItems.ORCHID_CURRY.get()));
+        CookingPotRecipeBuilder.cookingPotRecipe(VDItems.BLACK_MUSHROOM_NOODLES.get(), 1, NORMAL_COOKING, MEDIUM_EXP)
+                .addIngredient(VDItems.BLACK_MUSHROOM.get())
+                .addIngredient(VDItems.BLACK_MUSHROOM.get())
+                .addIngredient(ForgeTags.PASTA)
+                .addIngredient(ForgeTags.VEGETABLES_ONION)
+                .addIngredient(ForgeTags.MILK)
+                .unlockedByAnyIngredient(VDItems.BLACK_MUSHROOM.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(consumer, itemLocationCooking(VDItems.BLACK_MUSHROOM_NOODLES.get()));
         CookingPotRecipeBuilder.cookingPotRecipe(VDItems.GARLIC_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BREAD)
                 .addIngredient(ForgeTags.RAW_CHICKEN)
                 .addIngredient(VDForgeTags.VEGETABLES_GARLIC)

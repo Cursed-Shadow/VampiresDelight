@@ -202,7 +202,10 @@ public class VDFoodValues {
     // Plated Foods
     public static final FoodProperties ORCHID_CURRY = (new FoodProperties.Builder())
             .nutrition(14).saturationMod(0.75f)
-            .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), SHORT_DURATION, 0), 1.0F).build();
+            .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), MEDIUM_DURATION, 0), 1.0F).build();
+    public static final FoodProperties BLACK_MUSHROOM_NOODLES = (new FoodProperties.Builder())
+            .nutrition(14).saturationMod(0.75f)
+            .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), LONG_DURATION, 0), 1.0F).build();
 
     // Feast Portions
     public static final FoodProperties WEIRD_JELLY = (new FoodProperties.Builder())

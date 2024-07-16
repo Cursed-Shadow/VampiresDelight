@@ -3,6 +3,8 @@
 ## 0.1.7
 
 ### Additions
+- Added new food:
+  - **Black Mushroom Noodles**;
 - Added new blocks:
   - **Bloody Soil**;
   - **Bloody Soil Farmland**;

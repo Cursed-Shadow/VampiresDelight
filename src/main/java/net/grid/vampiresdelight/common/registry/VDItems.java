@@ -242,6 +242,8 @@ public class VDItems {
     // Plated Meals
     public static final RegistryObject<VampireConsumableItem> ORCHID_CURRY = ITEMS.register("orchid_curry",
             () -> new VampireConsumableItem(bowlFoodItem(VDFoodValues.NASTY_BLINDNESS), VDFoodValues.ORCHID_CURRY, null));
+    public static final RegistryObject<VampireConsumableItem> BLACK_MUSHROOM_NOODLES = ITEMS.register("black_mushroom_noodles",
+            () -> new VampireConsumableItem(bowlFoodItem(VDFoodValues.NASTY_DARKNESS), VDFoodValues.BLACK_MUSHROOM_NOODLES, null));
 
     // Feasts
     public static final RegistryObject<BlockItem> WEIRD_JELLY_BLOCK = ITEMS.register("weird_jelly_block",
