@@ -4,9 +4,9 @@
   "block.vampiresdelight.garlic_crate": "Caisse d'ail",
   "block.vampiresdelight.orchid_bag": "Sac d'orchidée",
   "block.vampiresdelight.wild_garlic": "Ail sauvage",
-  "block.vampiresdelight.cursed_farmland": "Terre labourée Corrompue",
+  "block.vampiresdelight.cursed_farmland": "Terre labourée corrompue",
   "block.vampiresdelight.bloody_soil": "Terre ensanglanté",
-  "block.vampiresdelight.bloody_soil_farmland": "Bloody Soil Farmland",
+  "block.vampiresdelight.bloody_soil_farmland": "Terre labourée ensanglanté",
   "block.vampiresdelight.vampire_orchid_crop": "Orchidée vampire en pleine croissance",
   "block.vampiresdelight.spirit_lantern": "Lanterne spirituelle",
   "block.vampiresdelight.dark_spruce_cabinet": "Cabinet en sapin foncé",
@@ -19,7 +19,7 @@
   "block.vampiresdelight.black_mushroom": "Champignon noir",
   "block.vampiresdelight.potted_black_mushroom": "Champignon noir en pot",
   "item.vampiresdelight.black_mushroom_soup": "Soupe de champignon noir",
-  "item.vampiresdelight.black_mushroom_noodles": "Black Mushroom Noodles",
+  "item.vampiresdelight.black_mushroom_noodles": "Nouilles aux champignons noirs",
 
   "block.vampiresdelight.oak_wine_shelf": "Étagère à vin en chêne",
   "block.vampiresdelight.spruce_wine_shelf": "Étagère à vin en sapin",
@@ -89,8 +89,8 @@
   "item.vampiresdelight.bagel_sandwich": "Sandwich au beignet",
   "item.vampiresdelight.tricolor_dango": "Dango tricolore",
   "item.vampiresdelight.blood_wine_bottle": "Bouteille de vin en sang",
-  "block.vampiresdelight.blood_wine_bottle_placed": "Placed Blood Wine Bottle",
-  "item.vampiresdelight.blood_wine_glass": "Blood Wine Glass",
+  "block.vampiresdelight.blood_wine_bottle_placed": "Verre de vin de sang placé",
+  "item.vampiresdelight.blood_wine_glass": "Verre de vin de sang",
   "item.vampiresdelight.mulled_wine_glass": "Verre de vin chaud",
   "item.vampiresdelight.cursed_cupcake": "Petit gâteau corrumpu",
 
@@ -161,7 +161,7 @@
 
   "vampiresdelight.tooltip.daisy_tea": "Guérit la faiblesse, la cécité,\nLenteur et nausées",
   "vampiresdelight.tooltip.orchid_tea": "Infecte avec du sanguinare",
-  "vampiresdelight.tooltip.cursed_cupcake": "Élimine l'effet de l'ailt",
+  "vampiresdelight.tooltip.cursed_cupcake": "Élimine l'effet de l'ail",
   "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contient %s portion de vin",
   "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Contient %s des portions de vin",
   "vampiresdelight.tooltip.spirit_lantern": "Permet au joueur de voir un peu plus loin dans le brouillard des vampires tout en tenant",
@@ -209,8 +209,8 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Le meilleur cadeau pour tout homme",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtenez une potion qui dissout les vêtements et apprenez le sens de la vie. Ne me demandez pas comment l'obtenir, demandez à un elfe.",
 
-  "vampiresdelight.subtitles.bottle_breaks": "Glass bottle shatters",
-  "vampiresdelight.subtitles.metal_pipe": "Metal pipe falls",
+  "vampiresdelight.subtitles.bottle_breaks": "Une bouteille en verre se brise",
+  "vampiresdelight.subtitles.metal_pipe": "Chutes de tuyaux métalliques",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Nourriture dégoûtante consommée",
 
