@@ -9,7 +9,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.registry.VDBlocks;
+import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.integration.jei.VDJEIRecipeTypes;
 import net.grid.vampiresdelight.integration.jei.resource.VDJEIPouringRecipe;
@@ -33,7 +33,7 @@ public class VDJEIPouringRecipeCategory implements IRecipeCategory<VDJEIPouringR
         ResourceLocation texture = new ResourceLocation(VampiresDelight.MODID, "textures/gui/jei/pouring.png");
         background = helper.createDrawable(texture, 0, 0, 117, 57);
 
-        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get()));
+        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(VDItems.BLOOD_WINE_GLASS.get()));
     }
 
     @Override
