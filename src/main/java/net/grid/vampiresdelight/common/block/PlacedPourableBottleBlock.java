@@ -16,6 +16,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -43,7 +45,7 @@ import java.util.stream.Stream;
 public class PlacedPourableBottleBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final IntegerProperty SERVINGS = IntegerProperty.create("servings", 0, 64);
-    public static final VoxelShape BLOOD_WINE_SHAPE = Stream.of(
+    public static final VoxelShape SHAPE_1 = Stream.of(
             Block.box(5.5, 0, 5.5, 10.5, 11, 10.5),
             Block.box(7, 11, 7, 9, 16, 9)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
@@ -51,8 +53,8 @@ public class PlacedPourableBottleBlock extends Block implements SimpleWaterlogge
     private final Supplier<PourableBottleItem> bottleItem;
     private final VoxelShape shape;
 
-    public PlacedPourableBottleBlock(Properties properties, Supplier<PourableBottleItem> bottleItem, VoxelShape shape) {
-        super(properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY));
+    public PlacedPourableBottleBlock(MapColor mapColor, Supplier<PourableBottleItem> bottleItem, VoxelShape shape) {
+        super(Block.Properties.copy(Blocks.GLASS).mapColor(mapColor).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY));
         this.bottleItem = bottleItem;
         this.shape = shape;
 
@@ -79,6 +81,7 @@ public class PlacedPourableBottleBlock extends Block implements SimpleWaterlogge
             } else {
                 popResource(pLevel, pPos, itemStack);
             }
+            pLevel.playSound(null, pPos, pState.getBlock().getSoundType(pState, pLevel, pPos, pPlayer).getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
             pLevel.removeBlock(pPos, false);
 
             return InteractionResult.SUCCESS;
@@ -110,11 +113,6 @@ public class PlacedPourableBottleBlock extends Block implements SimpleWaterlogge
             pLevel.playSound(null, blockPos, VDSounds.BOTTLE_BREAKS.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             pLevel.destroyBlock(blockPos, true);
         }
-    }
-
-    @Override
-    public @Nullable PushReaction getPistonPushReaction(BlockState state) {
-        return PushReaction.DESTROY;
     }
 
     @Override

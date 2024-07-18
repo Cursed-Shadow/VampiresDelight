@@ -2,22 +2,18 @@ package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import net.grid.vampiresdelight.common.mixin.accessor.VampirismItemBloodFoodItemAccessor;
-import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import squeek.appleskin.helpers.FoodHelper;
-
-import java.util.List;
 
 import static squeek.appleskin.helpers.FoodHelper.isFood;
 
@@ -34,18 +30,14 @@ public class MixinFoodHelper {
 
                 cir.setReturnValue(VDEntityUtils.hasPoison(foodProperties));
             }
+
+            if (VDHelper.isSame(itemStack.getItem(), VDIntegrationUtils.WOLF_BERRIES) && !VDIntegrationUtils.isWerewolf(player)) {
+                cir.setReturnValue(true);
+            }
+
+            if (itemStack.is(VDTags.NOT_ROTTEN_FOOD)) {
+                cir.setReturnValue(false);
+            }
         }
-
-        List<Item> FOOD_CONTAINING_BAT = List.of(
-                VDItems.COOKED_BAT.get(),
-                VDItems.COOKED_BAT_CHOPS.get(),
-                VDItems.BAT_TACO.get()
-        );
-
-        if (FOOD_CONTAINING_BAT.contains(itemStack.getItem()))
-            cir.setReturnValue(false);
-
-        if (VDHelper.isSame(itemStack.getItem(), VDIntegrationUtils.WOLF_BERRIES) && !VDIntegrationUtils.isWerewolf(player))
-            cir.setReturnValue(true);
     }
 }

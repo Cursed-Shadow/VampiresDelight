@@ -23,6 +23,9 @@ public class VDTags {
     public static final TagKey<Item> WEREWOLF_ONLY_FOOD = modItemTag("werewolf_only_food");
     public static final TagKey<Item> MINION_VAMPIRE_FOOD = modItemTag("minion_vampire_food");
 
+    // Food that shouldn't be marked as rotten in AppleSkin food tooltip.
+    public static final TagKey<Item> NOT_ROTTEN_FOOD = modItemTag("not_rotten_food");
+
     // Blocks
 
     // All Wine Shelves (for advancements).

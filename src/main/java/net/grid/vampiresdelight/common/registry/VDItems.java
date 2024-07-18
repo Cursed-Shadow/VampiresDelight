@@ -174,16 +174,23 @@ public class VDItems {
             () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_HUMAN), VDFoodValues.GRILLED_BAT_VAMPIRE, null, true, false, false, false));
     public static final RegistryObject<VampireConsumableItem> COOKED_BAT_CHOPS = ITEMS.register("cooked_bat_chops",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.GRILLED_BAT_CHOPS_HUMAN), VDFoodValues.GRILLED_BAT_CHOPS_VAMPIRE, null, true, false, false, false));
-    public static final RegistryObject<VampireDrinkableItem> BLOOD_WINE_GLASS = ITEMS.register("blood_wine_glass",
-            () -> new VampireDrinkableItem(drinkItem(VDFoodValues.BLOOD_WINE_GLASS_HUMAN), VDFoodValues.BLOOD_WINE_GLASS_VAMPIRE));
-    public static final RegistryObject<PourableBottleItem> BLOOD_WINE_BOTTLE = ITEMS.register("blood_wine_bottle",
-            () -> new PourableBottleItem(basicItem(), VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get(), VDItems.BLOOD_WINE_GLASS.get(), Items.GLASS_BOTTLE, 3));
-    public static final RegistryObject<VampireDrinkableItem> MULLED_WINE_GLASS = ITEMS.register("mulled_wine_glass",
-            () -> new VampireDrinkableItem(drinkItem(VDFoodValues.MULLED_WINE_GLASS_HUMAN), VDFoodValues.MULLED_WINE_GLASS_VAMPIRE));
     public static final RegistryObject<BlockItem> BLOOD_PIE = ITEMS.register("blood_pie",
             () -> new BlockItem(VDBlocks.BLOOD_PIE.get(), basicItem()));
     public static final RegistryObject<VampireConsumableItem> BLOOD_PIE_SLICE = ITEMS.register("blood_pie_slice",
             () -> new VampireConsumableItem(foodItem(VDFoodValues.NASTY), VDFoodValues.BLOOD_PIE_SLICE, null, false));
+
+    // Alcoholic Drinks
+    public static final RegistryObject<DandelionBeerMugItem> DANDELION_BEER_MUG = ITEMS.register("dandelion_beer_mug",
+            () -> new DandelionBeerMugItem(drinkItem(VDFoodValues.DANDELION_BEER_MUG_HUMAN)));
+    public static final RegistryObject<PourableBottleItem> DANDELION_BEER_BOTTLE = ITEMS.register("dandelion_beer_bottle",
+            () -> new PourableBottleItem(basicItem(), VDBlocks.DANDELION_BEER_BOTTLE_PLACED.get(), VDItems.DANDELION_BEER_MUG.get(), Items.GLASS_BOTTLE, 3));
+    public static final RegistryObject<VampireDrinkableItem> BLOOD_WINE_GLASS = ITEMS.register("blood_wine_glass",
+            () -> new VampireDrinkableItem(drinkItem(VDFoodValues.BLOOD_WINE_GLASS_HUMAN), VDFoodValues.BLOOD_WINE_GLASS_VAMPIRE));
+
+    public static final RegistryObject<PourableBottleItem> BLOOD_WINE_BOTTLE = ITEMS.register("blood_wine_bottle",
+            () -> new PourableBottleItem(basicItem(), VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get(), VDItems.BLOOD_WINE_GLASS.get(), Items.GLASS_BOTTLE, 3));
+    public static final RegistryObject<VampireDrinkableItem> MULLED_WINE_GLASS = ITEMS.register("mulled_wine_glass",
+            () -> new VampireDrinkableItem(drinkItem(VDFoodValues.MULLED_WINE_GLASS_HUMAN), VDFoodValues.MULLED_WINE_GLASS_VAMPIRE));
 
     // Sweets
     public static final RegistryObject<VampireConsumableItem> PURE_SORBET = ITEMS.register("pure_sorbet",

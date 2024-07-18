@@ -58,6 +58,9 @@
   "item.vampiresdelight.alchemical_cocktail": "Алхимический коктейль",
 
   "item.vampiresdelight.sugared_berries": "Засахаренные ягоды",
+  "item.vampiresdelight.dandelion_beer_bottle": "Бутылка одуванчикового пива",
+  "block.vampiresdelight.dandelion_beer_bottle_placed": "Поставленная бутылка одуванчикового пива",
+  "item.vampiresdelight.dandelion_beer_mug": "Кружка одуванчикового пива",
   "item.vampiresdelight.daisy_tea": "Ромашковый чай",
   "item.vampiresdelight.pure_sorbet": "Чистокровный сорбет",
   "item.vampiresdelight.rice_dough": "Рисовое тесто",
@@ -162,12 +165,15 @@
   "vampiresdelight.tooltip.daisy_tea": "Лечит слабость, слепоту,\nтошноту и медлительность",
   "vampiresdelight.tooltip.orchid_tea": "Заражает сангвинаре вампирис",
   "vampiresdelight.tooltip.cursed_cupcake": "Очищает от эффекта чеснока",
-  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Содержит %s порцию вина",
-  "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Содержит %s порции вина",
   "vampiresdelight.tooltip.spirit_lantern": "Позволяет игроку видеть немного дальше сквозь вампирский туман, при ношении в руке",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не может поджигать землю из-за настроек сервера",
 
-  "vampiresdelight.text.planted_on": "Должно быть посажено на проклятую пашню",
+  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Содержит %s порцию вина",
+  "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Содержит %s порции вина",
+  "vampiresdelight.tooltip.dandelion_beer_bottle.single_serving": "Содержит %s порцию пива",
+  "vampiresdelight.tooltip.dandelion_beer_bottle.multiple_servings": "Содержит %s порции пива",
+
+  "vampiresdelight.text.planted_on": "Это должно быть посажено на проклятую пашню",
   "vampiresdelight.text.pirated": "Только посмотрите на эту вкуснятину. А если бы вы скачали мод из официального ресурса, к примеру CurseForge или Modrinth, то автор мода смог бы и себе это позволить. Надеюсь на ваше понимание, пожалуйста, не надо пиратить",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",

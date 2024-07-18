@@ -36,8 +36,12 @@ public class VDFoodValues {
             .effect(() -> new MobEffectInstance(MobEffects.POISON, 60), 1.0F).build();
 
     // Drinks
+    public static final FoodProperties DANDELION_BEER_MUG_HUMAN = (new FoodProperties.Builder()).alwaysEat()
+            .nutrition(4).saturationMod(0.3f)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, SHORT_DURATION), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300), 1.0F).build();
     public static final FoodProperties BLOOD_WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
-            .nutrition(7).saturationMod(0.8f)
+            .nutrition(7).saturationMod(0.6f)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, MOMENT_DURATION, 1), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300), 1.0F).build();
     public static final FoodProperties BLOOD_WINE_GLASS_HUMAN = (new FoodProperties.Builder()).alwaysEat()
@@ -54,7 +58,7 @@ public class VDFoodValues {
     public static final FoodProperties BLOOD_SYRUP = (new FoodProperties.Builder())
             .nutrition(9).alwaysEat().build();
     public static final FoodProperties MULLED_WINE_GLASS_VAMPIRE = (new FoodProperties.Builder()).alwaysEat()
-            .nutrition(8).saturationMod(0.9f)
+            .nutrition(8).saturationMod(0.7f)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, MOMENT_DURATION, 1), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 4800), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300), 1.0F).build();

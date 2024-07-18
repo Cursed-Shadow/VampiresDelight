@@ -42,7 +42,8 @@ public class VDItemModels extends ItemModelProvider {
         Set<Item> mugItems = Sets.newHashSet(
                 VDItems.DAISY_TEA.get(),
                 VDItems.ORCHID_TEA.get(),
-                VDItems.MULLED_WINE_GLASS.get());
+                VDItems.MULLED_WINE_GLASS.get(),
+                VDItems.DANDELION_BEER_MUG.get());
         takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));
 
         // Items that should be held like a cocktail
@@ -52,6 +53,7 @@ public class VDItemModels extends ItemModelProvider {
 
         // Two models of items that are pourable
         Set<Item> pouringItems = Sets.newHashSet(
+                VDItems.DANDELION_BEER_BOTTLE.get(),
                 VDItems.BLOOD_WINE_BOTTLE.get());
         pouringItems.forEach(this::itemPouringModel);
 

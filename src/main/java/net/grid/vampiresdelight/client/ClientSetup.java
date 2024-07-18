@@ -27,7 +27,7 @@ public class ClientSetup {
     }
 
     private static void registerItemProperties() {
-        Stream.of(VDItems.BLOOD_WINE_BOTTLE.get())
+        Stream.of(VDItems.DANDELION_BEER_BOTTLE.get(), VDItems.BLOOD_WINE_BOTTLE.get())
                 .forEach(item -> ItemProperties.register(item, new ResourceLocation(VampiresDelight.MODID, "pouring"), (stack, level, entity, id) ->
                         entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F));
 

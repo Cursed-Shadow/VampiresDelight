@@ -166,8 +166,10 @@ public class VDBlocks {
             () -> candleCakeBlock(Blocks.BLACK_CANDLE, ORCHID_CAKE.get(), MapColor.TERRACOTTA_PURPLE));
 
     // Placed Drinks
+    public static final RegistryObject<PlacedPourableBottleBlock> DANDELION_BEER_BOTTLE_PLACED = BLOCKS.register("dandelion_beer_bottle_placed",
+            () -> new PlacedPourableBottleBlock(MapColor.TERRACOTTA_BROWN, VDItems.DANDELION_BEER_BOTTLE, PlacedPourableBottleBlock.SHAPE_1));
     public static final RegistryObject<PlacedPourableBottleBlock> BLOOD_WINE_BOTTLE_PLACED = BLOCKS.register("blood_wine_bottle_placed",
-            () -> new PlacedPourableBottleBlock(Block.Properties.copy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_PURPLE), VDItems.BLOOD_WINE_BOTTLE, PlacedPourableBottleBlock.BLOOD_WINE_SHAPE));
+            () -> new PlacedPourableBottleBlock(MapColor.TERRACOTTA_PURPLE, VDItems.BLOOD_WINE_BOTTLE, PlacedPourableBottleBlock.SHAPE_1));
 
     public static ConsumableCandleCakeBlock candleCakeBlock(Block candleBlock, ConsumableCakeBlock cakeBlock, MapColor mapColor) {
         return new ConsumableCandleCakeBlock(Block.Properties.copy(Blocks.CAKE)

@@ -81,8 +81,13 @@ public class VDCreativeTabs {
 
                         // Foodstuffs
                         add(VDItems.GRILLED_GARLIC.get(), output);
+                        add(VDItems.DANDELION_BEER_BOTTLE.get(), output);
+                        add(VDItems.DANDELION_BEER_MUG.get(), output);
                         add(VDItems.DAISY_TEA.get(), output);
                         add(VDItems.BLOOD_SYRUP.get(), output);
+                        add(VDItems.BLOOD_WINE_BOTTLE.get(), output);
+                        add(VDItems.BLOOD_WINE_GLASS.get(), output);
+                        add(VDItems.MULLED_WINE_GLASS.get(), output);
                         add(VDItems.ORCHID_TEA.get(), output);
                         add(VDItems.ORCHID_PETALS.get(), output);
                         add(VDItems.SUGARED_BERRIES.get(), output);
@@ -96,9 +101,6 @@ public class VDCreativeTabs {
                         add(VDItems.RAW_BAT_CHOPS.get(), output);
                         add(VDItems.COOKED_BAT.get(), output);
                         add(VDItems.COOKED_BAT_CHOPS.get(), output);
-                        add(VDItems.BLOOD_WINE_BOTTLE.get(), output);
-                        add(VDItems.BLOOD_WINE_GLASS.get(), output);
-                        add(VDItems.MULLED_WINE_GLASS.get(), output);
                         add(VDItems.BLOOD_PIE.get(), output);
                         add(VDItems.BLOOD_PIE_SLICE.get(), output);
 

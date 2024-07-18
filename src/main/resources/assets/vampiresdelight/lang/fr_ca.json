@@ -58,6 +58,9 @@
   "item.vampiresdelight.alchemical_cocktail": "Cocktail alchimique",
 
   "item.vampiresdelight.sugared_berries": "Baies sucrées",
+  "item.vampiresdelight.dandelion_beer_bottle": "Dandelion Beer Bottle",
+  "block.vampiresdelight.dandelion_beer_bottle_placed": "Placed Dandelion Beer Bottle",
+  "item.vampiresdelight.dandelion_beer_mug": "Dandelion Beer Mug",
   "item.vampiresdelight.daisy_tea": "Thé de marguerite",
   "item.vampiresdelight.pure_sorbet": "Sorbet pur",
   "item.vampiresdelight.rice_dough": "Pâte de riz",
@@ -162,10 +165,13 @@
   "vampiresdelight.tooltip.daisy_tea": "Guérit la faiblesse, la cécité,\nLenteur et nausées",
   "vampiresdelight.tooltip.orchid_tea": "Infecte avec du sanguinare",
   "vampiresdelight.tooltip.cursed_cupcake": "Élimine l'effet de l'ail",
-  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contient %s portion de vin",
-  "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Contient %s des portions de vin",
   "vampiresdelight.tooltip.spirit_lantern": "Permet au joueur de voir un peu plus loin dans le brouillard des vampires tout en tenant",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Impossible de brûler le sol à cause des paramètres de ce serveur",
+
+  "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contient %s portion de vin",
+  "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Contient %s des portions de vin",
+  "vampiresdelight.tooltip.dandelion_beer_bottle.single_serving": "Contains %s serving of beer",
+  "vampiresdelight.tooltip.dandelion_beer_bottle.multiple_servings": "Contains %s servings of beer",
 
   "vampiresdelight.text.planted_on": "Doit être planté sur des terres labourée corrompue",
   "vampiresdelight.text.pirated": "Regardez cette chose délicieuse. Et si vous avez téléchargé le mod depuis la ressource officielle, par exemple CurseForge ou Modrinth, L'auteur du mod aurait pu se le permettre également. Merci de votre compréhension, s'il vous plaît, ne piratez pas le mod.",

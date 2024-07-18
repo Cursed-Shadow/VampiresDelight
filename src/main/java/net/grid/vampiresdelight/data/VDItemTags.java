@@ -81,6 +81,11 @@ public class VDItemTags extends ItemTagsProvider {
         tag(VDTags.WEREWOLF_ONLY_FOOD)
                 .add(VDItems.WOLF_BERRY_COOKIE.get())
                 .add(VDItems.WOLF_BERRY_ICE_CREAM.get());
+        tag(VDTags.NOT_ROTTEN_FOOD)
+                .add(VDItems.DANDELION_BEER_MUG.get())
+                .add(VDItems.COOKED_BAT.get())
+                .add(VDItems.COOKED_BAT_CHOPS.get())
+                .add(VDItems.BAT_TACO.get());
         tag(VDTags.BLOOD_FOOD);
     }
 

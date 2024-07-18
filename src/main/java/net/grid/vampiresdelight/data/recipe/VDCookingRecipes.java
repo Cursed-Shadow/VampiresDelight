@@ -148,6 +148,15 @@ public class VDCookingRecipes {
 
     // Temporary
     private static void fermentingAlternatives(Consumer<FinishedRecipe> consumer) {
+        CookingPotRecipeBuilder.cookingPotRecipe(VDItems.DANDELION_BEER_BOTTLE.get(), 1, SLOW_FERMENTING, LARGE_EXP, Items.GLASS_BOTTLE)
+                .addIngredient(Items.WHEAT)
+                .addIngredient(Items.WHEAT)
+                .addIngredient(Items.WHEAT)
+                .addIngredient(Items.DANDELION)
+                .addIngredient(Items.SUGAR)
+                .unlockedByAnyIngredient(Items.WHEAT, Items.DANDELION)
+                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+                .build(consumer, itemLocationCooking(VDItems.DANDELION_BEER_BOTTLE.get()));
         CookingPotRecipeBuilder.cookingPotRecipe(VDItems.BLOOD_WINE_BOTTLE.get(), 1, SLOW_FERMENTING, LARGE_EXP, Items.GLASS_BOTTLE)
                 .addIngredient(VDItems.BLOOD_SYRUP.get())
                 .addIngredient(VDItems.BLOOD_SYRUP.get())

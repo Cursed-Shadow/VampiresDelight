@@ -225,6 +225,11 @@ public class VDCraftingRecipes {
     }
 
     private static void recipesPouring(Consumer<FinishedRecipe> consumer) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.DANDELION_BEER_MUG.get(), 1)
+                .requires(VDItems.DANDELION_BEER_BOTTLE.get())
+                .requires(Items.GLASS_BOTTLE)
+                .unlockedBy(hasItem(VDItems.DANDELION_BEER_BOTTLE.get()), has(VDItems.DANDELION_BEER_BOTTLE.get()))
+                .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.BLOOD_WINE_GLASS.get(), 1)
                 .requires(VDItems.BLOOD_WINE_BOTTLE.get())
                 .requires(Items.GLASS_BOTTLE)
