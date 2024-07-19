@@ -271,19 +271,24 @@ public class VDBlockStates extends BlockStateProvider {
                     .condition(HorizontalDirectionalBlock.FACING, direction)
                     .condition(WineShelfBlock.HAS_UPPER_SUPPORT, true).end();
 
-            builder.part().modelFile(existingModel("blood_wine_bottle_slot_top_left")).rotationY(rotation).addModel()
-                    .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_0, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
-            builder.part().modelFile(existingModel("blood_wine_bottle_slot_top_right")).rotationY(rotation).addModel()
-                    .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_1, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
-            builder.part().modelFile(existingModel("blood_wine_bottle_slot_bottom_left")).rotationY(rotation).addModel()
-                    .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_2, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
-            builder.part().modelFile(existingModel("blood_wine_bottle_slot_bottom_right")).rotationY(rotation).addModel()
-                    .condition(HorizontalDirectionalBlock.FACING, direction)
-                    .condition(WineShelfBlock.WINE_SHELF_SLOT_3, WineShelfBlock.Slot.BLOOD_WINE_BOTTLE).end();
+            wineShelfPart("blood_wine_bottle", WineShelfBlock.Slot.WINE_BOTTLE, builder, rotation, direction);
+            wineShelfPart("dandelion_beer_bottle", WineShelfBlock.Slot.BEER_BOTTLE, builder, rotation, direction);
         }
+    }
+
+    private void wineShelfPart(String name, WineShelfBlock.Slot slot, MultiPartBlockStateBuilder builder, int rotation, Direction direction) {
+        builder.part().modelFile(existingModel(name + "_slot_top_left")).rotationY(rotation).addModel()
+                .condition(HorizontalDirectionalBlock.FACING, direction)
+                .condition(WineShelfBlock.WINE_SHELF_SLOT_0, slot).end();
+        builder.part().modelFile(existingModel(name + "_slot_top_right")).rotationY(rotation).addModel()
+                .condition(HorizontalDirectionalBlock.FACING, direction)
+                .condition(WineShelfBlock.WINE_SHELF_SLOT_1, slot).end();
+        builder.part().modelFile(existingModel(name + "_slot_bottom_left")).rotationY(rotation).addModel()
+                .condition(HorizontalDirectionalBlock.FACING, direction)
+                .condition(WineShelfBlock.WINE_SHELF_SLOT_2, slot).end();
+        builder.part().modelFile(existingModel(name + "_slot_bottom_right")).rotationY(rotation).addModel()
+                .condition(HorizontalDirectionalBlock.FACING, direction)
+                .condition(WineShelfBlock.WINE_SHELF_SLOT_3, slot).end();
     }
 
     public ResourceLocation withSuffix(ResourceLocation resourceLocation, String suffix) {

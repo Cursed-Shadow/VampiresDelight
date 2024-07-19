@@ -3,11 +3,11 @@ package net.grid.vampiresdelight.common.block;
 import de.teamlapen.lib.lib.util.UtilLib;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.entity.WineShelfBlockEntity;
-import net.grid.vampiresdelight.common.registry.VDItems;
+import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -119,7 +119,7 @@ public class WineShelfBlock extends BaseEntityBlock {
                     return InteractionResult.sidedSuccess(pLevel.isClientSide);
                 } else {
                     ItemStack itemstack = player.getItemInHand(hand);
-                    if (itemstack.is(VDItems.BLOOD_WINE_BOTTLE.get())) {
+                    if (itemstack.is(VDTags.WINE_SHELF_BOTTLES)) {
                         addBottle(pLevel, pos, player, wineshelfblockentity, itemstack, i);
                         return InteractionResult.sidedSuccess(pLevel.isClientSide);
                     } else {
@@ -266,28 +266,32 @@ public class WineShelfBlock extends BaseEntityBlock {
         }
     }
 
-    public static Slot getSlotTypeForItem(Item item) {
+    public static Slot getSlotTypeForStack(ItemStack stack) {
         for (Slot slot : Slot.values()) {
-            if (Objects.equals(slot.name, itemName(item))) {
+            TagKey<Item> tag = slot.tag;
+            if (tag == null) continue;
+            if (stack.is(tag)) {
                 return slot;
             }
         }
-        return Slot.EMPTY;
-    }
-
-    private static String itemName(Item item) {
-        ResourceLocation resourceLocation = ForgeRegistries.ITEMS.getKey(item);
-        return resourceLocation == null ? "" : resourceLocation.getPath();
+        return stack.is(VDTags.WINE_SHELF_BOTTLES) ? Slot.WINE_BOTTLE : Slot.EMPTY;
     }
 
     public enum Slot implements StringRepresentable {
-        EMPTY("empty"),
-        BLOOD_WINE_BOTTLE("blood_wine_bottle");
+        EMPTY("empty", null),
+        BEER_BOTTLE("beer_bottle", VDTags.BEER_BOTTLES),
+        WINE_BOTTLE("wine_bottle", VDTags.WINE_BOTTLES);
 
         private final String name;
+        private final @Nullable TagKey<Item> tag;
 
-        Slot(String name) {
+        Slot(String name, @Nullable TagKey<Item> tag) {
             this.name = name;
+            this.tag = tag;
+        }
+
+        public @Nullable TagKey<Item> getTag() {
+            return tag;
         }
 
         @Override

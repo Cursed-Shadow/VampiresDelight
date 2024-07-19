@@ -4,12 +4,15 @@
 
 ### Additions
 - Added new food:
+  - **Dandelion Beer Bottle**;
+  - **Dandelion Beer Mug**;
   - **Black Mushroom Noodles**;
 - Added new blocks:
   - **Bloody Soil**;
   - **Bloody Soil Farmland**;
-- **Blood Wine Bottle** can now be placed on the ground;
-  - Click with **Blood Wine Bottle** while crouching to place it;
+- **Blood Wine Bottle** (and Dandelion Beer Bottle) can now be placed on the ground;
+  - Click while crouching to place it;
+  - Can be picked up by right-clicking while crouching;
   - Shatters when hit with a projectile (Arrows, Snow Balls, etc.);
 
 - ### Updates
@@ -25,6 +28,7 @@
 - Renamed **Wine Glass** to **Blood Wine Glass**;
 - Fixed:
   - uk_Ua;
+  - ru_Ru;
 
 ## 0.1.6b
 

@@ -3,7 +3,7 @@ package net.grid.vampiresdelight.common.block.entity;
 import com.mojang.logging.LogUtils;
 import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlockEntityTypes;
-import net.grid.vampiresdelight.common.registry.VDItems;
+import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -36,7 +36,7 @@ public class WineShelfBlockEntity extends BlockEntity implements Container {
 
             for (int i = 0; i < WineShelfBlock.SLOT_CONTENTS.size(); ++i) {
                 EnumProperty<WineShelfBlock.Slot> enumProperty = WineShelfBlock.SLOT_CONTENTS.get(i);
-                blockstate = blockstate.setValue(enumProperty, WineShelfBlock.getSlotTypeForItem(this.getItem(i).getItem()));
+                blockstate = blockstate.setValue(enumProperty, WineShelfBlock.getSlotTypeForStack(this.getItem(i)));
             }
 
             Objects.requireNonNull(this.level).setBlock(this.worldPosition, blockstate, 3);
@@ -100,7 +100,7 @@ public class WineShelfBlockEntity extends BlockEntity implements Container {
 
     @Override
     public void setItem(int slot, ItemStack stack) {
-        if (stack.is(VDItems.BLOOD_WINE_BOTTLE.get())) {
+        if (stack.is(VDTags.WINE_SHELF_BOTTLES)) {
             this.items.set(slot, stack);
             this.updateState(slot);
         }
@@ -129,7 +129,7 @@ public class WineShelfBlockEntity extends BlockEntity implements Container {
 
     @Override
     public boolean canPlaceItem(int index, ItemStack stack) {
-        return stack.is(VDItems.BLOOD_WINE_BOTTLE.get()) && this.getItem(index).isEmpty();
+        return stack.is(VDTags.WINE_SHELF_BOTTLES) && this.getItem(index).isEmpty();
     }
 
     public int getLastInteractedSlot() {

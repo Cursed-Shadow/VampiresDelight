@@ -21,10 +21,14 @@ public class VDTags {
     public static final TagKey<Item> VAMPIRE_FOOD = modItemTag("vampire_food");
     public static final TagKey<Item> HUNTER_FOOD = modItemTag("hunter_food");
     public static final TagKey<Item> WEREWOLF_ONLY_FOOD = modItemTag("werewolf_only_food");
-    public static final TagKey<Item> MINION_VAMPIRE_FOOD = modItemTag("minion_vampire_food");
 
     // Food that shouldn't be marked as rotten in AppleSkin food tooltip.
     public static final TagKey<Item> NOT_ROTTEN_FOOD = modItemTag("not_rotten_food");
+
+    // Bottle items that can be placed on Wine Shelves.
+    public static final TagKey<Item> WINE_SHELF_BOTTLES = modItemTag("wine_shelf_bottles");
+    public static final TagKey<Item> BEER_BOTTLES = modItemTag("beer_bottles");
+    public static final TagKey<Item> WINE_BOTTLES = modItemTag("wine_bottles");
 
     // Blocks
 
