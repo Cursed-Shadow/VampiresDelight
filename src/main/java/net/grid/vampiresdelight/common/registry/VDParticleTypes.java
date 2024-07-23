@@ -22,8 +22,4 @@ public class VDParticleTypes {
                     return DrinkSplashOptions.CODEC;
                 }
             });
-    /*
-    public static final RegistryObject<SimpleParticleType> DRINK_SPLASH = PARTICLE_TYPES.register("drink_splashes",
-            () -> new SimpleParticleType(true));
-     */
 }

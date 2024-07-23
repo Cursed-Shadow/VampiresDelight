@@ -1,28 +1,21 @@
 package net.grid.vampiresdelight.common.item;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.client.extension.PourableBottleItemExtension;
 import net.grid.vampiresdelight.common.block.PlacedPourableBottleBlock;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -81,46 +74,46 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand mainHand) {
         BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
         InteractionHand offHand = mainHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
-        ItemStack itemStack = player.getItemInHand(mainHand);
-        ItemStack bottle = player.getItemInHand(offHand);
+        ItemStack pouringBottle = player.getItemInHand(mainHand);
+        ItemStack glassBottle = player.getItemInHand(offHand);
 
         if (hitResult.getType() == HitResult.Type.BLOCK && player.isCrouching()) {
             BlockPos blockPos = hitResult.getBlockPos();
             BlockPos targetPos = player.isCrouching() ? blockPos.relative(hitResult.getDirection()) : blockPos;
             BlockState targetState = level.getBlockState(targetPos);
-            BlockState bottleBlockToPlace = placedBottleBlock.getStateForPlacement(new BlockPlaceContext(level, player, mainHand, itemStack, hitResult));
+            BlockState bottleBlockToPlace = placedBottleBlock.getStateForPlacement(new BlockPlaceContext(level, player, mainHand, pouringBottle, hitResult));
 
             if (targetState.canBeReplaced() && bottleBlockToPlace != null) {
                 level.setBlock(targetPos, bottleBlockToPlace, 3);
 
-                bottleBlockToPlace.getBlock().setPlacedBy(level, targetPos, bottleBlockToPlace, player, itemStack);
+                bottleBlockToPlace.getBlock().setPlacedBy(level, targetPos, bottleBlockToPlace, player, pouringBottle);
                 if (player instanceof ServerPlayer) {
-                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, targetPos, itemStack);
+                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, targetPos, pouringBottle);
                 }
                 SoundType soundtype = bottleBlockToPlace.getSoundType(level, targetPos, player);
                 level.playSound(player, targetPos, soundtype.getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                 level.gameEvent(GameEvent.BLOCK_PLACE, targetPos, GameEvent.Context.of(player, bottleBlockToPlace));
 
                 if (!player.getAbilities().instabuild) {
-                    itemStack.shrink(1);
+                    pouringBottle.shrink(1);
                 }
 
-                return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemStack);
+                return new InteractionResultHolder<>(InteractionResult.SUCCESS, pouringBottle);
             }
         }
 
-        if (itemStack.getOrCreateTag().contains("Pouring")) {
+        if (pouringBottle.getOrCreateTag().contains("Pouring")) {
             player.startUsingItem(mainHand);
-            return new InteractionResultHolder<>(InteractionResult.PASS, itemStack);
+            return new InteractionResultHolder<>(InteractionResult.PASS, pouringBottle);
         }
 
-        if (bottle.getItem() == servingContainer) {
-            ItemStack itemUsed = bottle.copy();
+        if (glassBottle.getItem() == servingContainer) {
+            ItemStack itemUsed = glassBottle.copy();
             ItemStack toPour = itemUsed.split(1);
             player.startUsingItem(mainHand);
-            itemStack.getOrCreateTag().put("Pouring", toPour.serializeNBT());
+            pouringBottle.getOrCreateTag().put("Pouring", toPour.serializeNBT());
             player.setItemInHand(offHand, itemUsed);
-            return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemStack);
+            return new InteractionResultHolder<>(InteractionResult.SUCCESS, pouringBottle);
         }
 
         Vec3 POVHit = hitResult.getLocation();
@@ -141,15 +134,15 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
             player.startUsingItem(mainHand);
 
             if (!level.isClientSide) {
-                itemStack.getOrCreateTag().put("Pouring", toPour.serializeNBT());
+                pouringBottle.getOrCreateTag().put("Pouring", toPour.serializeNBT());
                 if (pickedItem.isEmpty()) pickUp.discard();
                 else pickUp.setItem(pickedItem);
             }
 
-            return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemStack);
+            return new InteractionResultHolder<>(InteractionResult.SUCCESS, pouringBottle);
         }
 
-        return new InteractionResultHolder<>(InteractionResult.FAIL, itemStack);
+        return new InteractionResultHolder<>(InteractionResult.FAIL, pouringBottle);
     }
 
     @Override
@@ -165,10 +158,10 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
                 player.getInventory().placeItemBackInInventory(new ItemStack(serving));
             }
             compoundTag.remove("Pouring");
+            VDAdvancementTriggers.DRINK_POURED.trigger((ServerPlayer) player, itemStack);
+            entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
             if (itemStack.getDamageValue() >= itemStack.getMaxDamage()) itemStack = new ItemStack(servingContainer);
-            VDAdvancementTriggers.BLOOD_WINE_POURED.trigger((ServerPlayer) player);
-            entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
         }
 
         return itemStack;
@@ -237,50 +230,6 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new Extension());
-    }
-
-    static class Extension implements IClientItemExtensions {
-        private static final HumanoidModel.ArmPose POSE = HumanoidModel.ArmPose.create(VampiresDelight.MODID + "_pouring_pose", true, (model, entity, arm) -> {
-            boolean isRightArmPouring = arm == HumanoidArm.RIGHT;
-            makePose(isRightArmPouring ? model.rightArm : model.leftArm, isRightArmPouring ? model.leftArm : model.rightArm, model.head, arm);
-        });
-
-        private static void makePose(ModelPart pouringHand, ModelPart glassHand, ModelPart head, HumanoidArm arm) {
-            int multiplier = arm == HumanoidArm.RIGHT ? -1 : 1;
-
-            pouringHand.xRot = (float) Math.toRadians(-135) + head.xRot / 2f;
-            pouringHand.yRot = (float) Math.toRadians(45) * multiplier + head.yRot / 2.5f;
-
-            glassHand.xRot = (float) Math.toRadians(-50) + head.xRot / 2f;
-            glassHand.yRot = (float) Math.toRadians(25) * -multiplier + head.yRot / 2.5f;
-        }
-
-        @Override
-        public HumanoidModel.ArmPose getArmPose(LivingEntity entityLiving, InteractionHand hand, ItemStack itemStack) {
-            return (!itemStack.isEmpty() && entityLiving.getUsedItemHand() == hand && entityLiving.getUseItemRemainingTicks() > 0) ? POSE : HumanoidModel.ArmPose.EMPTY;
-        }
-
-        @Override
-        public boolean applyForgeHandTransform(PoseStack poseStack, LocalPlayer player, HumanoidArm arm, ItemStack itemInHand, float partialTick, float equipProcess, float swingProcess) {
-            if (player.isUsingItem() && player.getUseItemRemainingTicks() > 0) {
-                int modifier = arm == HumanoidArm.RIGHT ? 1 : -1;
-
-                float dY = Mth.abs(Mth.cos((player.getUseItemRemainingTicks() - partialTick + 1.0F) / 4.0F * (float) Math.PI) * 0.5F)  - 0.1f;
-                float dZ = modifier * -0.2f;
-
-                poseStack.translate(modifier * 0.3F, -0.4F, -0.4F);
-
-                if (player.getUseItem() == itemInHand) {
-                    poseStack.mulPose(Axis.YP.rotationDegrees(modifier * 15));
-                    poseStack.mulPose(Axis.XP.rotationDegrees(-60));
-
-                    poseStack.translate(0.0, dY, dZ);
-                }
-
-                return true;
-            }
-            return false;
-        }
+        consumer.accept(new PourableBottleItemExtension());
     }
 }

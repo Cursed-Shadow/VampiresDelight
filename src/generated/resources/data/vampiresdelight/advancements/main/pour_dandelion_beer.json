@@ -1,11 +1,11 @@
 {
-  "parent": "vampiresdelight:main/get_vampire_orchid",
+  "parent": "vampiresdelight:main/root",
   "criteria": {
-    "pour_blood_wine": {
+    "pour_dandelion_beer": {
       "conditions": {
         "item": {
           "items": [
-            "vampiresdelight:blood_wine_bottle"
+            "vampiresdelight:dandelion_beer_bottle"
           ]
         }
       },
@@ -15,21 +15,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "vampiresdelight.advancement.pour_blood_wine.desc"
+      "translate": "vampiresdelight.advancement.pour_dandelion_beer.desc"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "vampiresdelight:blood_wine_glass"
+      "item": "vampiresdelight:dandelion_beer_mug"
     },
     "show_toast": true,
     "title": {
-      "translate": "vampiresdelight.advancement.pour_blood_wine"
+      "translate": "vampiresdelight.advancement.pour_dandelion_beer"
     }
   },
   "requirements": [
     [
-      "pour_blood_wine"
+      "pour_dandelion_beer"
     ]
   ],
   "sends_telemetry_event": true

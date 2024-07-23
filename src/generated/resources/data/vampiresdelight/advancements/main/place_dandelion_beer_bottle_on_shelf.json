@@ -1,0 +1,49 @@
+{
+  "parent": "vampiresdelight:main/pour_dandelion_beer",
+  "criteria": {
+    "wine_shelf": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "tag": "vampiresdelight:wine_shelf"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "vampiresdelight:dandelion_beer_bottle"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "vampiresdelight:spruce_wine_shelf"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf"
+    }
+  },
+  "requirements": [
+    [
+      "wine_shelf"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

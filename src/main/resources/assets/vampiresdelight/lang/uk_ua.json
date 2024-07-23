@@ -8,7 +8,7 @@
   "block.vampiresdelight.bloody_soil": "Кривавий ґрунт",
   "block.vampiresdelight.bloody_soil_farmland": "Кривава рілля",
   "block.vampiresdelight.vampire_orchid_crop": "Зростаюча вампірська орхідея",
-  "block.vampiresdelight.spirit_lantern": "Ліхтар Духа",
+  "block.vampiresdelight.spirit_lantern": "Ліхтар духа",
   "block.vampiresdelight.dark_spruce_cabinet": "Темно-смерекова шафка",
   "block.vampiresdelight.cursed_spruce_cabinet": "Проклята шафка",
   "block.vampiresdelight.jacaranda_cabinet": "Жакарандова шафка",
@@ -194,6 +194,11 @@
   "vampiresdelight.advancement.consume_disgusting_food": "Огидно!",
   "vampiresdelight.advancement.consume_disgusting_food.desc": "З'їжте будь-яку огидну їжу, не розраховану на вашу расу.",
 
+  "vampiresdelight.advancement.pour_dandelion_beer": "Я знав, що у вас, клятих ельфів, нема честі! Нема поваги! Нема ПИВА!",
+  "vampiresdelight.advancement.pour_dandelion_beer.desc": "Налийте кульбабове пиво в скляну пляшку двома вашими руками без верстака.",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Місцева пивоварня",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Поставте пляшку кульбабового пива на винну полицю. Так, винну.",
+
   "vampiresdelight.advancement.get_garlic": "Месія людства",
   "vampiresdelight.advancement.get_garlic.desc": "Знайти часник в дикій природі або в будинку тренера мисливців.",
 
@@ -205,9 +210,9 @@
   "vampiresdelight.advancement.get_orchid_tea.desc": "Зваріть орхідеєвий чай. Він може заразити Sanguinare, якщо його вип'є людина. Може бути трошечки пікантним.",
 
   "vampiresdelight.advancement.pour_blood_wine": "Смак кривавого вина ніяк не змінився...",
-  "vampiresdelight.advancement.pour_blood_wine.desc": "Налийте кров'яне вино в скляну пляшку голими руками.",
+  "vampiresdelight.advancement.pour_blood_wine.desc": "Налийте кров'яне вино в скляну пляшку двома вашими руками без верстака.",
   "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Місцевий бар",
-  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Створіть винна полиця для зберігання кривавого вина. Щоб поставити на неї пляшку вина, натисніть на неї з пляшкою в руці.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Поставте пляшку кривавого вина на винну полицю.",
 
   "vampiresdelight.advancement.get_human_eye": "Смішна нарізка дітей",
   "vampiresdelight.advancement.get_human_eye.desc": "За допомогою ножа виколупуйте людське око з будь-якої людиноподібної істоти, наприклад, селянина чи мисливця.",

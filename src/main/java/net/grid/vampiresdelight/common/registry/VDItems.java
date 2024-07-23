@@ -122,8 +122,8 @@ public class VDItems {
             () -> new BlockItem(VDBlocks.BLOODY_SOIL.get(), basicItem()));
     public static final RegistryObject<Item> BLOODY_SOIL_FARMLAND = ITEMS.register("bloody_soil_farmland",
             () -> new BlockItem(VDBlocks.BLOODY_SOIL_FARMLAND.get(), basicItem()));
-    public static final RegistryObject<SpiritLanternItem> SPIRIT_LANTERN = ITEMS.register("spirit_lantern",
-            () -> new SpiritLanternItem(VDBlocks.SPIRIT_LANTERN.get(), basicItem()));
+    public static final RegistryObject<BlockItem> SPIRIT_LANTERN = ITEMS.register("spirit_lantern",
+            () -> new BlockItem(VDBlocks.SPIRIT_LANTERN.get(), basicItem()));
 
     // Tools/Misc
     public static final RegistryObject<KnifeItem> SILVER_KNIFE = ITEMS.register("silver_knife",

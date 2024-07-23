@@ -194,6 +194,11 @@
   "vampiresdelight.advancement.consume_disgusting_food": "Disgusting!",
   "vampiresdelight.advancement.consume_disgusting_food.desc": "Eat any disgusting food not intended for your race.",
 
+  "vampiresdelight.advancement.pour_dandelion_beer": "I knew you fharkin' elves had no honour! No respect! No BEER!",
+  "vampiresdelight.advancement.pour_dandelion_beer.desc": "Pour dandelion beer into glass bottle using your two hands without Crafting Table.",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Local Brewery",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Place Dandelion Beer Bottle on a Wine Shelf. That's legit by the way.",
+
   "vampiresdelight.advancement.get_garlic": "Messiah of Humanity",
   "vampiresdelight.advancement.get_garlic.desc": "Find garlic in the wild or at hunter trainer's house.",
 
@@ -205,9 +210,9 @@
   "vampiresdelight.advancement.get_orchid_tea.desc": "Brew some Orchid Tea. It can infect with Sanguinare if drunk by a human. Can be a little spicy.",
 
   "vampiresdelight.advancement.pour_blood_wine": "Blood Wine Tastes the Same as I Remember",
-  "vampiresdelight.advancement.pour_blood_wine.desc": "Pour blood wine into glass bottle using your bare hands.",
+  "vampiresdelight.advancement.pour_blood_wine.desc": "Pour blood wine into glass bottle using your two hands without Crafting Table.",
   "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Local Bar",
-  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Craft Wine Shelf to store blood wine. To place wine bottles into it, click on it with bottle in hand.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Place Blood Wine Bottle on a Wine Shelf.",
 
   "vampiresdelight.advancement.get_human_eye": "Funny Cuts of Children",
   "vampiresdelight.advancement.get_human_eye.desc": "Scavenge human eye from any human-like creature such as villager and hunter using Knife.",
