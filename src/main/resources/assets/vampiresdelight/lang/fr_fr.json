@@ -58,9 +58,9 @@
   "item.vampiresdelight.alchemical_cocktail": "Cocktail alchimique",
 
   "item.vampiresdelight.sugared_berries": "Baies sucrées",
-  "item.vampiresdelight.dandelion_beer_bottle": "Dandelion Beer Bottle",
-  "block.vampiresdelight.dandelion_beer_bottle_placed": "Placed Dandelion Beer Bottle",
-  "item.vampiresdelight.dandelion_beer_mug": "Dandelion Beer Mug",
+  "item.vampiresdelight.dandelion_beer_bottle": "Bouteille de bière pissenlit",
+  "block.vampiresdelight.dandelion_beer_bottle_placed": "Bouteille de bière de pissenlit placée",
+  "item.vampiresdelight.dandelion_beer_mug": "Tasse de bière de pissenlit",
   "item.vampiresdelight.daisy_tea": "Thé de marguerite",
   "item.vampiresdelight.pure_sorbet": "Sorbet pur",
   "item.vampiresdelight.rice_dough": "Pâte de riz",
@@ -170,8 +170,8 @@
 
   "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contient %s portion de vin",
   "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Contient %s des portions de vin",
-  "vampiresdelight.tooltip.dandelion_beer_bottle.single_serving": "Contains %s serving of beer",
-  "vampiresdelight.tooltip.dandelion_beer_bottle.multiple_servings": "Contains %s servings of beer",
+  "vampiresdelight.tooltip.dandelion_beer_bottle.single_serving": "Contient %s portion de bière",
+  "vampiresdelight.tooltip.dandelion_beer_bottle.multiple_servings": "Contient %s des portions de bière",
 
   "vampiresdelight.text.planted_on": "Doit être planté sur des terres labourée corrompue",
   "vampiresdelight.text.pirated": "Regardez cette chose délicieuse. Et si vous avez téléchargé le mod depuis la ressource officielle, par exemple CurseForge ou Modrinth, L'auteur du mod aurait pu se le permettre également. Merci de votre compréhension, s'il vous plaît, ne piratez pas le mod.",
