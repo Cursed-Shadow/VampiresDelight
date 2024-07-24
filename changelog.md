@@ -3,25 +3,33 @@
 ## 0.1.7
 
 ### Additions
-- Added new food:
+- New food items added:
   - **Dandelion Beer Bottle**;
   - **Dandelion Beer Mug**;
   - **Black Mushroom Noodles**;
-- Added new blocks:
+- New blocks added:
   - **Bloody Soil**;
   - **Bloody Soil Farmland**;
 - **Blood Wine Bottle** (and Dandelion Beer Bottle) can now be placed on the ground;
   - Click while crouching to place it;
   - Can be picked up by right-clicking while crouching;
   - Shatters when hit with a projectile (Arrows, Snow Balls, etc.);
+- New advancements added:
+  - `I knew you fharkin' elves had no honour! No respect! No BEER!` - Pour dandelion beer into glass bottle;
+  - `Local Brewery` - Place Dandelion Beer Bottle on a Wine Shelf;
+- New configs added:
+  - `bloodySoilBoostChance`:
+    - `0.2` by default;
+    - Range: from `0.0` to `1.0`;
 
 - ### Updates
 - Updated textures and models:
   - **Blood Wine Bottle**;
   - **Blood Wine Glass**;
   - **Daisy Tea**;
-- Modified food values:
+- Changed food values:
   - **Snow_White Ice Cream**: `4` to `3,5`;
+- **Vampire Bite** enchantment now heals at least half a heart on a successful hit;
 
 ### Translations
 - **New lines added**;
