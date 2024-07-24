@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BloodySoilFarmlandBlock extends CursedFarmlandBlock{
+public class BloodySoilFarmlandBlock extends CursedFarmlandBlock {
     public BloodySoilFarmlandBlock(Properties properties) {
         super(properties);
     }

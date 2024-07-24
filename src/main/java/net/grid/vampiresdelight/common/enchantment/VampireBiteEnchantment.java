@@ -10,14 +10,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
 public class VampireBiteEnchantment extends Enchantment {
     public VampireBiteEnchantment(Rarity rarity, EnchantmentCategory category) {
         super(rarity, category, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
@@ -33,10 +29,12 @@ public class VampireBiteEnchantment extends Enchantment {
         };
         int maxHealingValue = (int) (VDConfiguration.VAMPIRE_BITE_MAX_HEALING_VALUE.get() * 2);
 
-        if (randomSource.nextInt(100) <= chance && user instanceof Player player) {
-            float healAmount = (float) level / 30 * damage;
-            if (healAmount > maxHealingValue) healAmount = maxHealingValue;
-            player.heal(healAmount);
+        if (user instanceof Player player && randomSource.nextInt(100) <= chance) {
+            float healAmount = (float) Math.ceil((double) level / 30 * damage);
+
+            if (!user.getCommandSenderWorld().isClientSide) {
+                player.heal(Math.min(healAmount, maxHealingValue));
+            }
         }
     }
 
@@ -47,10 +45,9 @@ public class VampireBiteEnchantment extends Enchantment {
             if (event.getSource().getEntity() instanceof Player player) {
                 ItemStack weapon = player.getMainHandItem();
                 int enchantmentLevel = weapon.getEnchantmentLevel(VDEnchantments.VAMPIRE_BITE.get());
-                Level level = event.getEntity().getCommandSenderWorld();
-                if (!level.isClientSide) {
-                    if (!VDConfiguration.DISABLE_VAMPIRE_BITE.get())
-                        healFromDamage(player, enchantmentLevel, event.getAmount());
+
+                if (!(VDConfiguration.DISABLE_VAMPIRE_BITE.get() && player.getCommandSenderWorld().isClientSide)) {
+                    healFromDamage(player, enchantmentLevel, event.getAmount());
                 }
             }
         }

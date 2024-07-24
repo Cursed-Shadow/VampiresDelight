@@ -12,6 +12,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -195,7 +196,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
             entity.playSound(VDSounds.POURING_SHORT.get(), 1.2F, entity.getRandom().nextFloat() * 0.2F + 0.9F + ((float) entity.getTicksUsingItem() / 128));
         }
 
-        return false;
+        return true;
     }
 
     @Override
@@ -225,7 +226,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
 
     @Override
     public @NotNull UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.CUSTOM;
+        return UseAnim.DRINK;
     }
 
     @Override
