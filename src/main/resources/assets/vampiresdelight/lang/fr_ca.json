@@ -194,10 +194,10 @@
   "vampiresdelight.advancement.consume_disgusting_food": "Dégoûtant!",
   "vampiresdelight.advancement.consume_disgusting_food.desc": "Mangez toute nourriture dégoûtante qui n'est pas destinée à votre race.",
 
-  "vampiresdelight.advancement.pour_dandelion_beer": "I knew you fharkin' elves had no honour! No respect! No BEER!",
-  "vampiresdelight.advancement.pour_dandelion_beer.desc": "Pour dandelion beer into glass bottle using your two hands without Crafting Table.",
-  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Local Brewery",
-  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Place Dandelion Beer Bottle on a Wine Shelf. That's legit by the way.",
+  "vampiresdelight.advancement.pour_dandelion_beer": "Je savais que vous, les putains d'elfes, n'aviez aucun honneur! Pas de respect! Pas de bière!",
+  "vampiresdelight.advancement.pour_dandelion_beer.desc": "Versez de la bière de pissenlit dans une bouteille en verre à l'aide de vos deux mains sans établi.",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Brasserie locale",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Placez la bouteille de bière pissenlit sur une étagère à vin. C'est légitime d'ailleurs.",
 
   "vampiresdelight.advancement.get_garlic": "L'héros de l'humanité",
   "vampiresdelight.advancement.get_garlic.desc": "Trouvez de l'ail dans la nature ou chez les chasseurs.",
@@ -210,9 +210,9 @@
   "vampiresdelight.advancement.get_orchid_tea.desc": "Préparez du thé aux orchidées. Il peut infecter avec du Sanguinare s'il est bu par un humain. Peut être un peu épicé.",
 
   "vampiresdelight.advancement.pour_blood_wine": "Le vin de sang a le même goût que dans mes souvenirs",
-  "vampiresdelight.advancement.pour_blood_wine.desc": "Pour blood wine into glass bottle using your two hands without Crafting Table.",
+  "vampiresdelight.advancement.pour_blood_wine.desc": "Versez le vin de sang dans une bouteille en verre en utilisant vos deux mains sans établi.",
   "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf": "Bar local",
-  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Place Blood Wine Bottle on a Wine Shelf.",
+  "vampiresdelight.advancement.place_blood_wine_bottle_on_shelf.desc": "Placez la bouteille de vin de sang sur une étagère à vin.",
 
   "vampiresdelight.advancement.get_human_eye": "Coupes drôles d'enfants",
   "vampiresdelight.advancement.get_human_eye.desc": "Récupérez l'œil humain de toute créature ressemblant à un humain, comme un villageois et un chasseur, à l'aide d'un couteau.",
@@ -225,7 +225,7 @@
 
   "stat.vampiresdelight.disgusting_food_consumed": "Nourriture dégoûtante consommée",
 
-  "vampiresdelight.jei.pouring": "Déverser",
+  "vampiresdelight.jei.pouring": "Verser",
   "vampiresdelight.jei.info.human_eye": "Ingrédient d'apparence dégoûtante pour la nourriture des vampires.\\n\\nObtenu en découpant des villageois, des pilleurs, des chasseurs et d'autres races ressemblant à des humains.",
   "vampiresdelight.jei.info.black_mushroom": "Les champignons noirs sont rarement trouvés dans les forêts de vampires.\\n\\nLa farine d'os peut être utilisée pour en cultiver une énorme variante.",
   "vampiresdelight.jei.info.wild_garlic": "L'ail est couramment trouvé comme plante sauvage dans les terres tempérées, comme les plaines et les forêts."
