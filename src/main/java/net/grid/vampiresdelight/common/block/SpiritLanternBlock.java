@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.common.block;
 
-import net.grid.vampiresdelight.common.utility.VDTextUtils;
-import net.minecraft.ChatFormatting;
+import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -87,6 +86,6 @@ public class SpiritLanternBlock extends LanternBlock {
 
     @Override
     public void appendHoverText(ItemStack pStack, @org.jetbrains.annotations.Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        pTooltip.add(VDTextUtils.getTranslation("tooltip.spirit_lantern").withStyle(ChatFormatting.GRAY));
+        VDTooltipUtils.addShiftTooltip("tooltip.spirit_lantern", pTooltip);
     }
 }

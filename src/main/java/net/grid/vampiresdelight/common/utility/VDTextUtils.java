@@ -11,12 +11,17 @@ import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.ForgeI18n;
 
 import java.util.List;
 
 public class VDTextUtils {
     public static MutableComponent getTranslation(String key, Object... args) {
         return Component.translatable(VampiresDelight.MODID + "." + key, args);
+    }
+
+    public static String getStraightTranslation(String key) {
+        return ForgeI18n.getPattern(VampiresDelight.MODID + "." + key);
     }
 
     public static void addFoodEffectTooltip(ItemStack item, LivingEntity consumer, List<Component> tooltip) {

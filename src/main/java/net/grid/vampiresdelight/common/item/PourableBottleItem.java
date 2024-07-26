@@ -5,6 +5,7 @@ import net.grid.vampiresdelight.common.block.PlacedPourableBottleBlock;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
+import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -12,7 +13,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -218,10 +218,11 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        int servings = pStack.getMaxDamage() - pStack.getDamageValue();
-        MutableComponent tooltip = VDTextUtils.getTranslation("tooltip." + this + (servings == 1 ? ".single_serving" : ".multiple_servings"), servings);
-        pTooltipComponents.add(tooltip.withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
+        int servings = stack.getMaxDamage() - stack.getDamageValue();
+        MutableComponent textTooltip = VDTextUtils.getTranslation("tooltip." + this + (servings == 1 ? ".single_serving" : ".multiple_servings"), servings);
+        tooltip.add(textTooltip.withStyle(ChatFormatting.GRAY));
+        VDTooltipUtils.addShiftTooltip("tooltip.pourable_drink_item", tooltip);
     }
 
     @Override

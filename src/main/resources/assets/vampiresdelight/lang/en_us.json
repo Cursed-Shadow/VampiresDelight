@@ -167,6 +167,9 @@
   "vampiresdelight.tooltip.cursed_cupcake": "Clears Garlic Effect",
   "vampiresdelight.tooltip.spirit_lantern": "Makes player see a little farther in vampire fog while holding",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Cannot burn the ground due to this server's settings",
+  "vampiresdelight.tooltip.pourable_drink_item": "To pour the drink from this bottle into a glass, hold the bottle with one hand and the Glass Bottle with the other. Then press and hold the left mouse button",
+  "vampiresdelight.tooltip.holdShiftForInfo": "Hold [%s] for info",
+  "vampiresdelight.tooltip.shift": "Shift",
 
   "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contains %s serving of wine",
   "vampiresdelight.tooltip.blood_wine_bottle.multiple_servings": "Contains %s servings of wine",

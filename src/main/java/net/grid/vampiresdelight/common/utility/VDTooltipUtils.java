@@ -2,12 +2,12 @@ package net.grid.vampiresdelight.common.utility;
 
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.api.entity.factions.IPlayableFaction;
-import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.ForgeI18n;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -16,9 +16,22 @@ import java.util.Objects;
 @ParametersAreNonnullByDefault
 public class VDTooltipUtils {
     public static void addSplitTooltip(String key, List<Component> tooltip, ChatFormatting style) {
-        String full = ForgeI18n.getPattern(VampiresDelight.MODID + "." + key);
-        for (String part : full.split("\n")) {
+        for (String part : VDTextUtils.getStraightTranslation(key).split("\n")) {
             tooltip.add(Component.literal(part).withStyle(style));
+        }
+    }
+
+    public static void addShiftTooltip(String key, List<Component> tooltip) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(VDTextUtils.getTranslation(key).withStyle(ChatFormatting.GRAY));
+        } else {
+            String[] mainTooltip = VDTextUtils.getStraightTranslation("tooltip.holdShiftForInfo").split("%s");
+            MutableComponent resultTooltip = Component.empty()
+                    .append(Component.literal(mainTooltip[0]).withStyle(ChatFormatting.DARK_GRAY))
+                    .append(Component.literal(VDTextUtils.getStraightTranslation("tooltip.shift")).withStyle(ChatFormatting.GRAY))
+                    .append(Component.literal(mainTooltip[1]).withStyle(ChatFormatting.DARK_GRAY));
+
+            tooltip.add(resultTooltip);
         }
     }
 
