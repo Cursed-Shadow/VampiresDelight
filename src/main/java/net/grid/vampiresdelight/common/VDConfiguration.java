@@ -1,69 +1,70 @@
 package net.grid.vampiresdelight.common;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
 import java.util.function.Predicate;
 
+@SuppressWarnings("deprecation")
 public class VDConfiguration {
-    public static final ForgeConfigSpec COMMON_CONFIG;
-    public static final ForgeConfigSpec CLIENT_CONFIG;
+    public static final ModConfigSpec COMMON_CONFIG;
+    public static final ModConfigSpec CLIENT_CONFIG;
 
     //COMMON
     public static final String CATEGORY_VILLAGE = "village";
-    public static final ForgeConfigSpec.BooleanValue FARMERS_BUY_GARLIC;
-    public static final ForgeConfigSpec.BooleanValue WANDERING_TRADER_SELLS_VAMPIRISM_ITEMS;
+    public static final ModConfigSpec.BooleanValue FARMERS_BUY_GARLIC;
+    public static final ModConfigSpec.BooleanValue WANDERING_TRADER_SELLS_VAMPIRISM_ITEMS;
 
     public static final String CATEGORY_BLOCKS = "blocks";
-    public static final ForgeConfigSpec.DoubleValue BLOODY_SOIL_BOOST_CHANCE;
+    public static final ModConfigSpec.DoubleValue BLOODY_SOIL_BOOST_CHANCE;
 
     public static final String CATEGORY_ITEMS = "items";
-    public static final ForgeConfigSpec.BooleanValue ALCHEMICAL_COCKTAIL_BURNS_GROUND;
-    public static final ForgeConfigSpec.DoubleValue ALCHEMICAL_COCKTAIL_SPLASH_RADIUS;
-    public static final ForgeConfigSpec.IntValue ALCHEMICAL_COCKTAIL_STACK_SIZE;
+    public static final ModConfigSpec.BooleanValue ALCHEMICAL_COCKTAIL_BURNS_GROUND;
+    public static final ModConfigSpec.DoubleValue ALCHEMICAL_COCKTAIL_SPLASH_RADIUS;
+    public static final ModConfigSpec.IntValue ALCHEMICAL_COCKTAIL_STACK_SIZE;
 
     public static final String CATEGORY_EFFECTS = "effects";
-    public static final ForgeConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
-    public static final ForgeConfigSpec.BooleanValue BAT_MEAT_WITHERS_HUMANS;
-    public static final ForgeConfigSpec.BooleanValue BLESSING_HELPS_AGAINST_GHOSTS;
-    public static final ForgeConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
+    public static final ModConfigSpec.BooleanValue REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST;
+    public static final ModConfigSpec.BooleanValue BAT_MEAT_WITHERS_HUMANS;
+    public static final ModConfigSpec.BooleanValue BLESSING_HELPS_AGAINST_GHOSTS;
+    public static final ModConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
 
     public static final String CATEGORY_ENCHANTMENTS = "enchantments";
-    public static final ForgeConfigSpec.BooleanValue BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON;
-    public static final ForgeConfigSpec.DoubleValue VAMPIRE_BITE_MAX_HEALING_VALUE;
-    public static final ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
-    public static final ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
-    public static final ForgeConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
-    public static final ForgeConfigSpec.BooleanValue DISABLE_VAMPIRE_BITE;
+    public static final ModConfigSpec.BooleanValue BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON;
+    public static final ModConfigSpec.DoubleValue VAMPIRE_BITE_MAX_HEALING_VALUE;
+    public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
+    public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
+    public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
+    public static final ModConfigSpec.BooleanValue DISABLE_VAMPIRE_BITE;
 
     public static final String CATEGORY_WORLD = "world";
-    public static final ForgeConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
-    public static final ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_IN_HUNTER_CAMP;
-    public static final ForgeConfigSpec.BooleanValue GENERATE_COOKING_POT_NEAR_HUNTER_CAMP;
-    public static final ForgeConfigSpec.IntValue COOKING_POT_IN_HUNTER_CAMP_CHANCE;
+    public static final ModConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
+    public static final ModConfigSpec.BooleanValue GENERATE_COOKING_POT_IN_HUNTER_CAMP;
+    public static final ModConfigSpec.BooleanValue GENERATE_COOKING_POT_NEAR_HUNTER_CAMP;
+    public static final ModConfigSpec.IntValue COOKING_POT_IN_HUNTER_CAMP_CHANCE;
 
     // CLIENT
     public static final String CATEGORY_TOOLTIPS = "tooltips";
-    public static final ForgeConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
-    public static final ForgeConfigSpec.BooleanValue COLORED_TOOLTIPS;
+    public static final ModConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
+    public static final ModConfigSpec.BooleanValue COLORED_TOOLTIPS;
     public static final String CATEGORY_TOOLTIP_COLORS = "tooltip_colors";
-    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
-    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_END_COLOR;
-    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_START_COLOR;
-    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_END_COLOR;
-    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_START_COLOR;
-    public static final ForgeConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_END_COLOR;
+    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
+    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_END_COLOR;
+    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_START_COLOR;
+    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_END_COLOR;
+    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_START_COLOR;
+    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_END_COLOR;
 
     public static final String CATEGORY_APPLESKIN = "appleskin";
-    public static final ForgeConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
-    public static final ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES;
-    public static final ForgeConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES;
+    public static final ModConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
+    public static final ModConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES;
+    public static final ModConfigSpec.BooleanValue HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES;
 
 
     static {
         // COMMON
-        ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
         COMMON_BUILDER.comment("Common settings");
 
         COMMON_BUILDER.comment("Village").push(CATEGORY_VILLAGE);
@@ -128,7 +129,7 @@ public class VDConfiguration {
 
 
         // CLIENT
-        ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder CLIENT_BUILDER = new ModConfigSpec.Builder();
         CLIENT_BUILDER.comment("Client settings");
 
         CLIENT_BUILDER.comment("Tooltips").push(CATEGORY_TOOLTIPS);

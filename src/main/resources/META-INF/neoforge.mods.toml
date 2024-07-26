@@ -3,6 +3,9 @@ loaderVersion="${loader_version_range}"
 issueTrackerURL = "https://github.com/TheGridExpert/VampiresDelight/issues"
 license="${mod_license}"
 
+[[mixins]]
+config = "${modId}.mixins.json"
+
 [[mods]]
 modId="vampiresdelight"
 version="${mod_version}"
@@ -19,29 +22,29 @@ Makes Vampirism and Farmer's Delight more compatible
 '''
 
 [[dependencies.vampiresdelight]]
-modId="forge"
-mandatory=true
-versionRange="${forge_version_range}"
+modId="neoforge"
+type="required"
+versionRange="${neo_version_range}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.vampiresdelight]]
 modId="minecraft"
-mandatory=true
+type="required"
 versionRange="${mc_version_range}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.vampiresdelight]]
 modId="vampirism"
-mandatory=true
+type="required"
 versionRange="${vampirism_version_range}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.vampiresdelight]]
 modId="farmersdelight"
-mandatory=true
+type="required"
 versionRange="${farmersdelight_version_range}"
 ordering="NONE"
 side="BOTH"

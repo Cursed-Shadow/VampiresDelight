@@ -3,17 +3,18 @@ package net.grid.vampiresdelight.common.registry;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.entity.DarkStoneStoveBlockEntity;
 import net.grid.vampiresdelight.common.block.entity.WineShelfBlockEntity;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class VDBlockEntityTypes {
-    public static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, VampiresDelight.MODID);
+    public static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, VampiresDelight.MODID);
 
-    public static final RegistryObject<BlockEntityType<DarkStoneStoveBlockEntity>> DARK_STONE_STOVE = TILES.register("dark_stone_stove",
+    public static final Supplier<BlockEntityType<DarkStoneStoveBlockEntity>> DARK_STONE_STOVE = TILES.register("dark_stone_stove",
             () -> BlockEntityType.Builder.of(DarkStoneStoveBlockEntity::new, VDBlocks.DARK_STONE_STOVE.get()).build(null));
-    public static final RegistryObject<BlockEntityType<WineShelfBlockEntity>> WINE_SHELF = TILES.register("wine_shelf",
+    public static final Supplier<BlockEntityType<WineShelfBlockEntity>> WINE_SHELF = TILES.register("wine_shelf",
             () -> BlockEntityType.Builder.of(WineShelfBlockEntity::new,
                             VDBlocks.OAK_WINE_SHELF.get(),
                             VDBlocks.SPRUCE_WINE_SHELF.get(),

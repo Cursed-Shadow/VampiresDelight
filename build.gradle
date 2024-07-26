@@ -17,7 +17,7 @@ base {
     archivesName = 'VampiresDelight'
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {
     version = project.neo_version
@@ -112,7 +112,7 @@ dependencies {
     compileOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}"
     if (include_appleskin.toBoolean())
         runtimeOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}"
-    
+
     // JEI
     compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")

@@ -7,16 +7,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
-@Mod.EventBusSubscriber(modid = VampiresDelight.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class VDCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, VampiresDelight.MODID);
 
-    public static final RegistryObject<CreativeModeTab> TAB_VAMPIRES_DELIGHT = CREATIVE_TABS.register(VampiresDelight.MODID,
+    public static final Supplier<CreativeModeTab> TAB_VAMPIRES_DELIGHT = CREATIVE_TABS.register(VampiresDelight.MODID,
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.vampiresdelight"))
                     .icon(() -> new ItemStack(VDBlocks.DARK_STONE_STOVE.get()))

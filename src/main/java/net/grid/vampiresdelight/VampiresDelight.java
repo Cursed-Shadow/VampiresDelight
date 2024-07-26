@@ -4,12 +4,11 @@ import net.grid.vampiresdelight.client.ClientSetup;
 import net.grid.vampiresdelight.common.CommonSetup;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.*;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,32 +17,31 @@ public class VampiresDelight {
     public static final String MODID = "vampiresdelight";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public VampiresDelight() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public VampiresDelight(IEventBus modEventBus, ModContainer modContainer) {
+        modEventBus.addListener(CommonSetup::init);
+        if (FMLEnvironment.dist.isClient()) {
+            modEventBus.addListener(ClientSetup::init);
+        }
 
-        eventBus.addListener(CommonSetup::init);
-        eventBus.addListener(ClientSetup::init);
+        modContainer.registerConfig(ModConfig.Type.COMMON, VDConfiguration.COMMON_CONFIG);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, VDConfiguration.CLIENT_CONFIG);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, VDConfiguration.COMMON_CONFIG);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, VDConfiguration.CLIENT_CONFIG);
-
-        VDParticleTypes.PARTICLE_TYPES.register(eventBus);
-        VDItems.ITEMS.register(eventBus);
-        VDPotions.POTIONS.register(eventBus);
-        VDOils.OILS.register(eventBus);
-        VDEnchantments.ENCHANTMENTS.register(eventBus);
-        VDStructures.STRUCTURE_TYPES.register(eventBus);
-        VDStructures.STRUCTURE_PIECES.register(eventBus);
-        VDStructures.STRUCTURE_PROCESSOR_TYPES.register(eventBus);
-        VDBlocks.BLOCKS.register(eventBus);
-        VDCreativeTabs.CREATIVE_TABS.register(eventBus);
-        VDEffects.EFFECTS.register(eventBus);
-        VDSounds.SOUNDS.register(eventBus);
-        VDEntityTypes.ENTITIES.register(eventBus);
-        VDFeatures.FEATURES.register(eventBus);
-        VDBlockEntityTypes.TILES.register(eventBus);
-        VDLootModifiers.LOOT_MODIFIERS.register(eventBus);
-
-        MinecraftForge.EVENT_BUS.register(this);
+        VDParticleTypes.PARTICLE_TYPES.register(modEventBus);
+        VDItems.ITEMS.register(modEventBus);
+        VDPotions.POTIONS.register(modEventBus);
+        VDOils.OILS.register(modEventBus);
+        VDEnchantments.ENCHANTMENTS.register(modEventBus);
+        VDStructures.STRUCTURE_TYPES.register(modEventBus);
+        VDStructures.STRUCTURE_PIECES.register(modEventBus);
+        VDStructures.STRUCTURE_PROCESSOR_TYPES.register(modEventBus);
+        VDBlocks.BLOCKS.register(modEventBus);
+        VDCreativeTabs.CREATIVE_TABS.register(modEventBus);
+        VDEffects.EFFECTS.register(modEventBus);
+        VDSounds.SOUNDS.register(modEventBus);
+        VDEntityTypes.ENTITIES.register(modEventBus);
+        VDFeatures.FEATURES.register(modEventBus);
+        VDBlockEntityTypes.TILES.register(modEventBus);
+        VDLootModifiers.LOOT_MODIFIERS.register(modEventBus);
+        VDAdvancementTriggers.TRIGGERS.register(modEventBus);
     }
 }

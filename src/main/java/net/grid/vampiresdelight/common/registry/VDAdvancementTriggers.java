@@ -2,16 +2,16 @@ package net.grid.vampiresdelight.common.registry;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.advancement.DrinkPouredTrigger;
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.advancements.critereon.PlayerTrigger;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.Registries;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class VDAdvancementTriggers {
-    public static final PlayerTrigger DISGUSTING_FOOD_CONSUMED = new PlayerTrigger(new ResourceLocation(VampiresDelight.MODID, "disgusting_food_consumed"));
-    public static final DrinkPouredTrigger DRINK_POURED = new DrinkPouredTrigger();
+    public static final DeferredRegister<CriterionTrigger<?>> TRIGGERS = DeferredRegister.create(Registries.TRIGGER_TYPE, VampiresDelight.MODID);
 
-    public static void register() {
-        CriteriaTriggers.register(DISGUSTING_FOOD_CONSUMED);
-        CriteriaTriggers.register(DRINK_POURED);
-    }
+    public static final Supplier<DrinkPouredTrigger> DRINK_POURED = TRIGGERS.register("drink_poured", DrinkPouredTrigger::new);
+    public static final Supplier<PlayerTrigger> DISGUSTING_FOOD_CONSUMED = TRIGGERS.register("disgusting_food_consumed", PlayerTrigger::new);
 }

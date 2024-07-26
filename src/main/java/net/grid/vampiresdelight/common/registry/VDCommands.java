@@ -8,19 +8,20 @@ import net.grid.vampiresdelight.common.command.HungerBarCommand;
 import net.grid.vampiresdelight.common.command.PlantLineCommand;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = VampiresDelight.MODID)
+@EventBusSubscriber(modid = VampiresDelight.MODID)
 public class VDCommands {
-    public static void onCommandsRegister(@NotNull RegisterCommandsEvent event) {
-        registerCommands(event.getDispatcher(), event.getBuildContext());
-    }
+    @SubscribeEvent
+    static void registerCommands(@NotNull RegisterCommandsEvent event) {
+        CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+        CommandBuildContext buildContext = event.getBuildContext();
 
-    public static void registerCommands(@NotNull CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext buildContext) {
         List<String> vampires_delight = Lists.newArrayList("vampires-delight");
 
         for (String s : vampires_delight) {
