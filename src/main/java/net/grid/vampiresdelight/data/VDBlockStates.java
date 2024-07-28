@@ -12,15 +12,19 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.block.*;
 
 import java.util.Map;
 import java.util.function.Function;
+
+import static net.grid.vampiresdelight.common.utility.VDNameUtils.blockName;
 
 public class VDBlockStates extends BlockStateProvider {
     private static final int DEFAULT_ANGLE_OFFSET = 180;
@@ -28,12 +32,9 @@ public class VDBlockStates extends BlockStateProvider {
         super(output, VampiresDelight.MODID, existingFileHelper);
     }
 
-    public String blockName(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block).getPath();
-    }
 
     public ResourceLocation resourceBlock(String path) {
-        return new ResourceLocation(VampiresDelight.MODID, "block/" + path);
+        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "block/" + path);
     }
 
     public ModelFile existingModel(Block block) {
@@ -116,7 +117,7 @@ public class VDBlockStates extends BlockStateProvider {
         this.simpleBlock(block,
                 models().cubeBottomTop(blockName(block),
                         resourceBlock(cropName + "_crate_side"),
-                        new ResourceLocation(FarmersDelight.MODID, "block/crate_bottom"),
+                        ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "block/crate_bottom"),
                         resourceBlock(cropName + "_crate_top")));
     }
 
@@ -235,17 +236,17 @@ public class VDBlockStates extends BlockStateProvider {
 
         ModelFile candleCake = models().withExistingParent(blockName(block), "block/template_cake_with_candle")
                 .texture("candle", blockTexture(candle))
-                .texture("bottom", withSuffix(blockTexture(cake), "_bottom"))
-                .texture("side", withSuffix(blockTexture(cake), "_side"))
-                .texture("top", withSuffix(blockTexture(cake), "_top"))
-                .texture("particle", withSuffix(blockTexture(cake), "_side"));
+                .texture("bottom", blockTexture(cake).withSuffix("_bottom"))
+                .texture("side", blockTexture(cake).withSuffix("_side"))
+                .texture("top", blockTexture(cake).withSuffix("_top"))
+                .texture("particle", blockTexture(cake).withSuffix("_side"));
 
         ModelFile candleCakeLit = models().withExistingParent(blockName(block) + "_lit", "block/template_cake_with_candle")
-                .texture("candle", withSuffix(blockTexture(candle), "_lit"))
-                .texture("bottom", withSuffix(blockTexture(cake), "_bottom"))
-                .texture("side", withSuffix(blockTexture(cake), "_side"))
-                .texture("top", withSuffix(blockTexture(cake), "_top"))
-                .texture("particle", withSuffix(blockTexture(cake), "_side"));
+                .texture("candle", blockTexture(candle).withSuffix("_lit"))
+                .texture("bottom", blockTexture(cake).withSuffix("_bottom"))
+                .texture("side", blockTexture(cake).withSuffix("_side"))
+                .texture("top", blockTexture(cake).withSuffix("_top"))
+                .texture("particle", blockTexture(cake).withSuffix("_side"));
 
         Function<BlockState, ModelFile> function = blockState -> blockState.getValue(BlockStateProperties.LIT) ? candleCakeLit : candleCake;
 
@@ -289,9 +290,5 @@ public class VDBlockStates extends BlockStateProvider {
         builder.part().modelFile(existingModel(name + "_slot_bottom_right")).rotationY(rotation).addModel()
                 .condition(HorizontalDirectionalBlock.FACING, direction)
                 .condition(WineShelfBlock.WINE_SHELF_SLOT_3, slot).end();
-    }
-
-    public ResourceLocation withSuffix(ResourceLocation resourceLocation, String suffix) {
-        return new ResourceLocation(resourceLocation.getNamespace(), resourceLocation.getPath() + suffix);
     }
 }

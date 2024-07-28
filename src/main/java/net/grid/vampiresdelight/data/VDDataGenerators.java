@@ -1,7 +1,8 @@
 package net.grid.vampiresdelight.data;
 
+import de.teamlapen.vampirism.REFERENCE;
+import de.teamlapen.vampirism.core.ModRegistries;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.registry.VDLootTables;
 import net.grid.vampiresdelight.data.loot.VDBlockLootTables;
 import net.grid.vampiresdelight.data.loot.VDChestLootTables;
 import net.grid.vampiresdelight.data.tag.VDBiomeTags;
@@ -15,10 +16,13 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
@@ -28,8 +32,10 @@ public class VDDataGenerators {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper helper = event.getExistingFileHelper();
+
+        DatapackBuiltinEntriesProvider provider = new DatapackBuiltinEntriesProvider(output, event.getLookupProvider(), ModRegistries.DATA_BUILDER, Set.of(REFERENCE.MODID));
+        CompletableFuture<HolderLookup.Provider> lookupProvider = provider.getRegistryProvider();
 
         VDBlockTags blockTags = new VDBlockTags(output, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTags);
@@ -40,11 +46,11 @@ public class VDDataGenerators {
         generator.addProvider(event.includeServer(), new VDRecipes(output, lookupProvider));
         generator.addProvider(event.includeServer(), new VDDataMaps(output, lookupProvider));
         generator.addProvider(event.includeServer(), new VDRegistrySets(output, lookupProvider));
-        generator.addProvider(event.includeServer(), new VDAdvancements(output, lookupProvider, helper));
-        generator.addProvider(event.includeServer(), new LootTableProvider(output, VDLootTables.getLootTables(), List.of(
+        generator.addProvider(event.includeServer(), new VDAdvancements.Provider(output, lookupProvider, helper));
+        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), List.of(
                 new LootTableProvider.SubProviderEntry(VDBlockLootTables::new, LootContextParamSets.BLOCK),
                 new LootTableProvider.SubProviderEntry(VDChestLootTables::new, LootContextParamSets.CHEST)
-        )));
+        ), lookupProvider));
 
         VDBlockStates blockStates = new VDBlockStates(output, helper);
         generator.addProvider(event.includeClient(), blockStates);

@@ -6,15 +6,16 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
 public class VDEntityTags extends EntityTypeTagsProvider {
-    public VDEntityTags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(pOutput, pProvider, VampiresDelight.MODID, existingFileHelper);
+
+    public VDEntityTags(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, provider, VampiresDelight.MODID, existingFileHelper);
     }
 
     @Override
@@ -23,6 +24,6 @@ public class VDEntityTags extends EntityTypeTagsProvider {
     }
 
     private void registerMinecraftTags() {
-        tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).addOptionalTag(new ResourceLocation("vampirism:hunter"));
+        tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).addOptionalTag(ResourceLocation.parse("vampirism:hunter"));
     }
 }

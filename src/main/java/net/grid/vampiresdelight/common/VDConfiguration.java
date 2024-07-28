@@ -172,8 +172,7 @@ public class VDConfiguration {
     }
 
     // Needed for list configs in order not to make it create additional toml.bak files
-    @SuppressWarnings("rawtypes")
-    private record ConfigTypePredicate(Class configType) implements Predicate<Object> {
+    private record ConfigTypePredicate(Class<?> configType) implements Predicate<Object> {
         @Override
             public boolean test(Object o) {
                 return configType.isInstance(o);

@@ -10,20 +10,17 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.client.model.generators.BlockModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import vectorwing.farmersdelight.FarmersDelight;
 
 import java.util.Objects;
 
+import static net.grid.vampiresdelight.common.utility.VDNameUtils.blockName;
+
 public class VDBlockModels extends BlockModelProvider {
     public VDBlockModels(PackOutput output,  ExistingFileHelper existingFileHelper) {
         super(output, VampiresDelight.MODID, existingFileHelper);
-    }
-
-    private String blockName(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block).getPath();
     }
 
     @Override
@@ -57,7 +54,7 @@ public class VDBlockModels extends BlockModelProvider {
         // Huge black mushroom blocks
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_BLOCK.get());
         hugeBlackMushroomBlock(VDBlocks.BLACK_MUSHROOM_STEM.get());
-        hugeBlackMushroomBlock("black_mushroom_block_inside");
+        hugeBlackMushroomBlockInside();
     }
 
     private void pieBlock(Block pieBlock) {
@@ -76,15 +73,15 @@ public class VDBlockModels extends BlockModelProvider {
         if (Objects.equals(suffix, ""))
             withExistingParent(pieBlockName + suffix, "farmersdelight:block/pie" + suffix)
                     .texture("particle", topTexture)
-                    .texture("bottom", new ResourceLocation(FarmersDelight.MODID, "block/pie_bottom"))
-                    .texture("side", new ResourceLocation(FarmersDelight.MODID, "block/pie_side"))
+                    .texture("bottom", ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "block/pie_bottom"))
+                    .texture("side", ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "block/pie_side"))
                     .texture("top", topTexture);
         else
             withExistingParent(pieBlockName + suffix, "farmersdelight:block/pie" + suffix)
                     .texture("particle", topTexture)
-                    .texture("bottom", new ResourceLocation(FarmersDelight.MODID, "block/pie_bottom"))
+                    .texture("bottom", ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "block/pie_bottom"))
                     .texture("inner", innerTexture)
-                    .texture("side", new ResourceLocation(FarmersDelight.MODID, "block/pie_side"))
+                    .texture("side", ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "block/pie_side"))
                     .texture("top", topTexture);
     }
 
@@ -94,7 +91,7 @@ public class VDBlockModels extends BlockModelProvider {
 
     private void wineShelfBlock(Block shelfBlock, Block woodType, String nameSpace) {
         ResourceLocation shelfTexture = resourceBlock(blockName(shelfBlock));
-        ResourceLocation woodTypeTexture = new ResourceLocation(nameSpace, "block/" + blockName(woodType));
+        ResourceLocation woodTypeTexture = ResourceLocation.fromNamespaceAndPath(nameSpace, "block/" + blockName(woodType));
         String name = blockName(shelfBlock);
 
         // Shelf body
@@ -143,15 +140,15 @@ public class VDBlockModels extends BlockModelProvider {
         hugeBlackMushroomBlock(blockName(block), resourceBlock(blockName(block)), true);
     }
 
-    private void hugeBlackMushroomBlock(String path) {
-        hugeBlackMushroomBlock(path, resourceBlock(path), false);
+    private void hugeBlackMushroomBlockInside() {
+        hugeBlackMushroomBlock("black_mushroom_block_inside", resourceBlock("black_mushroom_block_inside"), false);
     }
 
     public ResourceLocation resourceBlock(String path) {
-        return new ResourceLocation(VampiresDelight.MODID, "block/" + path);
+        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "block/" + path);
     }
 
     public ResourceLocation resourceBlock(String namespace, String path) {
-        return new ResourceLocation(namespace, "block/" + path);
+        return ResourceLocation.fromNamespaceAndPath(namespace, "block/" + path);
     }
 }

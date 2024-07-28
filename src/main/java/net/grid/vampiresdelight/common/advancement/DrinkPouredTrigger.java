@@ -1,51 +1,59 @@
 package net.grid.vampiresdelight.common.advancement;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonObject;
-import net.grid.vampiresdelight.VampiresDelight;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
-public class DrinkPouredTrigger extends SimpleCriterionTrigger<DrinkPouredTrigger.TriggerInstance> {
-    static final ResourceLocation ID = new ResourceLocation(VampiresDelight.MODID, "drink_poured");
+import java.util.Optional;
 
-    @Override
-    public ResourceLocation getId() {
-        return ID;
+// TODO: Check if this works
+public class DrinkPouredTrigger extends SimpleCriterionTrigger<DrinkPouredTrigger.TriggerInstance> {
+    public DrinkPouredTrigger() {
     }
 
     @Override
-    public TriggerInstance createInstance(JsonObject json, ContextAwarePredicate predicate, DeserializationContext deserializationContext) {
-        return new TriggerInstance(predicate, ItemPredicate.fromJson(json.get("item")));
+    public Codec<TriggerInstance> codec() {
+        return TriggerInstance.CODEC;
     }
 
     public void trigger(ServerPlayer player, ItemStack itemStack) {
         this.trigger(player, (instance) -> instance.matches(itemStack));
     }
 
-    public static class TriggerInstance extends AbstractCriterionTriggerInstance {
-        private final ItemPredicate item;
+    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
+        public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player),
+                ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TriggerInstance::item)
+        ).apply(instance, TriggerInstance::new));
 
-        public TriggerInstance(ContextAwarePredicate player, ItemPredicate item) {
-            super(ID, player);
+        public TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) {
+            this.player = player;
             this.item = item;
         }
 
-        public static TriggerInstance pouredDrinkBottle(ItemLike pItem) {
-            return new TriggerInstance(ContextAwarePredicate.ANY, new ItemPredicate(null, ImmutableSet.of(pItem.asItem()), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, EnchantmentPredicate.NONE, EnchantmentPredicate.NONE, null, NbtPredicate.ANY));
+        public static Criterion<TriggerInstance> pouredDrinkBottle(ItemLike item) {
+            return pouredDrinkBottle(ItemPredicate.Builder.item().of(item.asItem()));
         }
 
-        public boolean matches(ItemStack pItem) {
-            return this.item.matches(pItem);
+        public static Criterion<TriggerInstance> pouredDrinkBottle(ItemPredicate.Builder item) {
+            return VDAdvancementTriggers.DRINK_POURED.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.of(item.build())));
         }
 
-        public JsonObject serializeToJson(SerializationContext context) {
-            JsonObject jsonobject = super.serializeToJson(context);
-            jsonobject.add("item", item.serializeToJson());
-            return jsonobject;
+        public boolean matches(ItemStack item) {
+            return this.item.isEmpty() || this.item.get().test(item);
+        }
+
+        public Optional<ContextAwarePredicate> player() {
+            return this.player;
+        }
+
+        public Optional<ItemPredicate> item() {
+            return this.item;
         }
     }
 }

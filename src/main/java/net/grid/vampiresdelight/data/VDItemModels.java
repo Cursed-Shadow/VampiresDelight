@@ -3,25 +3,26 @@ package net.grid.vampiresdelight.data;
 import com.google.common.collect.Sets;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDItems;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import vectorwing.farmersdelight.data.ItemModels;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static net.grid.vampiresdelight.common.utility.VDNameUtils.itemName;
 import static vectorwing.farmersdelight.data.ItemModels.takeAll;
 
 public class VDItemModels extends ItemModelProvider {
-
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
-    public static final ResourceLocation COCKTAIL = new ResourceLocation(VampiresDelight.MODID, "item/cocktail");
+    public static final ResourceLocation COCKTAIL = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "item/cocktail");
     public static final ResourceLocation POURING = resourceItem("template_bottle_pouring");
 
     public VDItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -30,8 +31,7 @@ public class VDItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        Set<Item> items = ForgeRegistries.ITEMS.getValues().stream().filter(i -> VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(i)).getNamespace()))
-                .collect(Collectors.toSet());
+        Set<Item> items = BuiltInRegistries.ITEM.stream().filter(item -> VampiresDelight.MODID.equals(VDNameUtils.itemNamespace(item))).collect(Collectors.toSet());
 
         // Items that use its own model in models/item
         Set<Item> specialItems = Sets.newHashSet(
@@ -125,10 +125,6 @@ public class VDItemModels extends ItemModelProvider {
         withExistingParent(itemName(item), GENERATED).texture("layer0", texture)
                 .override().predicate(modLoc("metal_pipe"), 0.01f).model(
                         withExistingParent(itemName(item) + "_metal_pipe", GENERATED).texture("layer0", resourceItem("metal_pipe")));
-    }
-
-    private static String itemName(Item item) {
-        return Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();
     }
 
     private static ResourceLocation resourceBlock(String path) {

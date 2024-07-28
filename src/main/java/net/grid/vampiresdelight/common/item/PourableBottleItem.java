@@ -159,7 +159,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
                 player.getInventory().placeItemBackInInventory(new ItemStack(serving));
             }
             compoundTag.remove("Pouring");
-            VDAdvancementTriggers.DRINK_POURED.trigger((ServerPlayer) player, itemStack);
+            VDAdvancementTriggers.DRINK_POURED.get().trigger((ServerPlayer) player, itemStack);
             entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
             if (itemStack.getDamageValue() >= itemStack.getMaxDamage()) itemStack = new ItemStack(servingContainer);
