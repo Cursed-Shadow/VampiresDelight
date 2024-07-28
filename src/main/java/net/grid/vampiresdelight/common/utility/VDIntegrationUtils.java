@@ -6,7 +6,7 @@ import de.teamlapen.vampirism.api.entity.factions.IFaction;
 import de.teamlapen.vampirism.api.entity.factions.IFactionPlayerHandler;
 import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
-import net.grid.vampiresdelight.common.tag.VDForgeTags;
+import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
@@ -110,12 +110,12 @@ public class VDIntegrationUtils {
 
         @Override
         public @NotNull Ingredient getRepairIngredient() {
-            return Ingredient.of(VDForgeTags.SILVER_INGOT);
+            return Ingredient.of(VDCommonTags.SILVER_INGOT);
         }
 
         @Override
         public TagKey<Block> getTag() {
-            return VDForgeTags.NEEDS_SILVER_TOOL;
+            return VDCommonTags.NEEDS_SILVER_TOOL;
         }
     };
 }

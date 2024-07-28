@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.common.mixin;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.client.renderer.RenderHandler;
 import de.teamlapen.vampirism.config.VampirismConfig;
+import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDEffects;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDHelper;
@@ -30,7 +31,7 @@ public class MixinRenderHandler {
             if ((VampirismConfig.CLIENT.renderVampireForestFog.get() || VampirismConfig.SERVER.enforceRenderForestFog.get()) && (VDHelper.isEntityInArtificalVampireFogArea(player) || VDHelper.isEntityInVampireBiome(player))) {
                 float fogDistanceMultiplier = player.hasEffect(VDEffects.FOG_VISION.get()) ? Objects.requireNonNull(player.getEffect(VDEffects.FOG_VISION.get())).getAmplifier() + 1 : 0;
 
-                if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == VDItems.SPIRIT_LANTERN.get() || player.getItemInHand(InteractionHand.OFF_HAND).getItem() == VDItems.SPIRIT_LANTERN.get())
+                if (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == VDBlocks.SPIRIT_LANTERN.get().asItem() || player.getItemInHand(InteractionHand.OFF_HAND).getItem() == VDBlocks.SPIRIT_LANTERN.get().asItem())
                     fogDistanceMultiplier += 0.4f;
 
                 vampireBiomeFogDistanceMultiplier += fogDistanceMultiplier;

@@ -20,9 +20,9 @@ import net.minecraft.world.phys.Vec3;
 
 public class VDEntityUtils {
     public static void addFoodEffects(FoodProperties foodProperties, Level level, LivingEntity entity) {
-        for (Pair<MobEffectInstance, Float> pair : foodProperties.getEffects()) {
-            if (!level.isClientSide && pair.getFirst() != null && level.random.nextFloat() < pair.getSecond()) {
-                entity.addEffect(new MobEffectInstance(pair.getFirst()));
+        for (FoodProperties.PossibleEffect possibleEffect : foodProperties.effects()) {
+            if (!level.isClientSide && level.random.nextFloat() < possibleEffect.probability()) {
+                entity.addEffect(possibleEffect.effect());
             }
         }
     }

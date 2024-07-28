@@ -3,7 +3,7 @@ package net.grid.vampiresdelight.data.recipe;
 import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModTags;
 import net.grid.vampiresdelight.common.registry.*;
-import net.grid.vampiresdelight.common.tag.VDForgeTags;
+import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
@@ -279,11 +279,11 @@ public class VDCraftingRecipes {
 
     private static void recipesCraftedMeals(Consumer<FinishedRecipe> consumer) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.FISH_BURGER.get())
-                .requires(VDForgeTags.BREAD_RICE)
+                .requires(VDCommonTags.BREAD_RICE)
                 .requires(ForgeTags.COOKED_FISHES)
                 .requires(ForgeTags.SALAD_INGREDIENTS)
-                .requires(VDForgeTags.VEGETABLES_GARLIC)
-                .unlockedBy("has_garlic", has(VDForgeTags.VEGETABLES_GARLIC))
+                .requires(VDCommonTags.VEGETABLES_GARLIC)
+                .unlockedBy("has_garlic", has(VDCommonTags.VEGETABLES_GARLIC))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.BLOOD_SAUSAGE.get())
                 .requires(VDItems.BLOOD_SYRUP.get())
@@ -328,10 +328,10 @@ public class VDCraftingRecipes {
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.BAT_TACO.get())
                 .requires(ForgeTags.BREAD)
-                .requires(VDForgeTags.COOKED_BAT)
+                .requires(VDCommonTags.COOKED_BAT)
                 .requires(ForgeTags.SALAD_INGREDIENTS)
                 .requires(ForgeTags.CROPS_TOMATO)
-                .unlockedBy("has_cooked_bat", has(VDForgeTags.COOKED_BAT))
+                .unlockedBy("has_cooked_bat", has(VDCommonTags.COOKED_BAT))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.HARDTACK.get())
                 .requires(Items.WHEAT)

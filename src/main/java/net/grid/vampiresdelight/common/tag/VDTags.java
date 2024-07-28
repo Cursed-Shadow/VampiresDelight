@@ -49,14 +49,14 @@ public class VDTags {
 
 
     private static TagKey<Item> modItemTag(String path) {
-        return ItemTags.create(new ResourceLocation(VampiresDelight.MODID, path));
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path));
     }
 
     private static TagKey<Block> modBlockTag(String path) {
-        return BlockTags.create(new ResourceLocation(VampiresDelight.MODID, path));
+        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path));
     }
 
     private static TagKey<Biome> modBiomeTag(String path) {
-        return TagKey.create(Registries.BIOME, new ResourceLocation(VampiresDelight.MODID, path));
+        return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path));
     }
 }

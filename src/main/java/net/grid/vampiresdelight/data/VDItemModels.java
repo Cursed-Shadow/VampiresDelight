@@ -140,6 +140,6 @@ public class VDItemModels extends ItemModelProvider {
     }
 
     private static ResourceLocation modLocation(String path) {
-        return new ResourceLocation(VampiresDelight.MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path);
     }
 }

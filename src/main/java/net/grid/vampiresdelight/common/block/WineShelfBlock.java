@@ -4,8 +4,10 @@ import de.teamlapen.lib.lib.util.UtilLib;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.entity.WineShelfBlockEntity;
 import net.grid.vampiresdelight.common.tag.VDTags;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
@@ -301,6 +303,6 @@ public class WineShelfBlock extends BaseEntityBlock {
     }
 
     public static Iterable<Block> getAllShelveBlocks() {
-        return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block) != null && VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getNamespace()) && block instanceof WineShelfBlock).collect(Collectors.toList());
+        return BuiltInRegistries.BLOCK.stream().filter(block -> VampiresDelight.MODID.equals(VDNameUtils.blockNamespace(block)) && block instanceof WineShelfBlock).collect(Collectors.toList());
     }
 }

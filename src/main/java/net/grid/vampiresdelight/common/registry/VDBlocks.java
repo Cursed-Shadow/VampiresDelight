@@ -4,139 +4,138 @@ import com.mojang.datafixers.util.Pair;
 import de.teamlapen.lib.lib.util.UtilLib;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.*;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vectorwing.farmersdelight.common.block.*;
 
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class VDBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, VampiresDelight.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(VampiresDelight.MODID);
 
     public static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (state) -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 
     // Workstations
-    public static final Supplier<DarkStoneStoveBlock> DARK_STONE_STOVE = BLOCKS.register("dark_stone_stove",
+    public static final DeferredBlock<DarkStoneStoveBlock> DARK_STONE_STOVE = BLOCKS.register("dark_stone_stove",
             () -> new DarkStoneStoveBlock(Block.Properties.of().mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(2f, 10f).sound(SoundType.STONE).lightLevel(litBlockEmission(13))));
 
     // Crop Storage
-    public static final Supplier<Block> GARLIC_CRATE = BLOCKS.register("garlic_crate",
+    public static final DeferredBlock<Block> GARLIC_CRATE = BLOCKS.register("garlic_crate",
             () -> new Block(Block.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<Block> ORCHID_BAG = BLOCKS.register("orchid_bag",
+    public static final DeferredBlock<Block> ORCHID_BAG = BLOCKS.register("orchid_bag",
             () -> new Block(Block.Properties.ofFullCopy(Blocks.WHITE_WOOL)));
 
     // Building
-    public static final Supplier<SpiritLanternBlock> SPIRIT_LANTERN = BLOCKS.register("spirit_lantern",
+    public static final DeferredBlock<SpiritLanternBlock> SPIRIT_LANTERN = BLOCKS.register("spirit_lantern",
             () -> new SpiritLanternBlock(Block.Properties.of().mapColor(MapColor.METAL).forceSolidOn()
                     .requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN)
                     .lightLevel((state) -> 12).noOcclusion().pushReaction(PushReaction.DESTROY)));
-    public static final Supplier<CabinetBlock> DARK_SPRUCE_CABINET = BLOCKS.register("dark_spruce_cabinet",
+    public static final DeferredBlock<CabinetBlock> DARK_SPRUCE_CABINET = BLOCKS.register("dark_spruce_cabinet",
             () -> new CabinetBlock(Block.Properties.ofFullCopy(Blocks.BARREL)));
-    public static final Supplier<CabinetBlock> CURSED_SPRUCE_CABINET = BLOCKS.register("cursed_spruce_cabinet",
+    public static final DeferredBlock<CabinetBlock> CURSED_SPRUCE_CABINET = BLOCKS.register("cursed_spruce_cabinet",
             () -> new CabinetBlock(Block.Properties.ofFullCopy(Blocks.BARREL)));
-    public static final Supplier<CabinetBlock> JACARANDA_CABINET = BLOCKS.register("jacaranda_cabinet",
+    public static final DeferredBlock<CabinetBlock> JACARANDA_CABINET = BLOCKS.register("jacaranda_cabinet",
             () -> new CabinetBlock(Block.Properties.ofFullCopy(Blocks.BARREL)));
-    public static final Supplier<CabinetBlock> MAGIC_CABINET = BLOCKS.register("magic_cabinet",
+    public static final DeferredBlock<CabinetBlock> MAGIC_CABINET = BLOCKS.register("magic_cabinet",
             () -> new CabinetBlock(Block.Properties.ofFullCopy(Blocks.BARREL)));
-    public static final Supplier<WineShelfBlock> OAK_WINE_SHELF = BLOCKS.register("oak_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> OAK_WINE_SHELF = BLOCKS.register("oak_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
-    public static final Supplier<WineShelfBlock> SPRUCE_WINE_SHELF = BLOCKS.register("spruce_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> SPRUCE_WINE_SHELF = BLOCKS.register("spruce_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.SPRUCE_PLANKS)));
-    public static final Supplier<WineShelfBlock> BIRCH_WINE_SHELF = BLOCKS.register("birch_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> BIRCH_WINE_SHELF = BLOCKS.register("birch_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.BIRCH_PLANKS)));
-    public static final Supplier<WineShelfBlock> JUNGLE_WINE_SHELF = BLOCKS.register("jungle_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> JUNGLE_WINE_SHELF = BLOCKS.register("jungle_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.JUNGLE_PLANKS)));
-    public static final Supplier<WineShelfBlock> ACACIA_WINE_SHELF = BLOCKS.register("acacia_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> ACACIA_WINE_SHELF = BLOCKS.register("acacia_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.ACACIA_PLANKS)));
-    public static final Supplier<WineShelfBlock> DARK_OAK_WINE_SHELF = BLOCKS.register("dark_oak_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> DARK_OAK_WINE_SHELF = BLOCKS.register("dark_oak_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.DARK_OAK_PLANKS)));
-    public static final Supplier<WineShelfBlock> MANGROVE_WINE_SHELF = BLOCKS.register("mangrove_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> MANGROVE_WINE_SHELF = BLOCKS.register("mangrove_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.MANGROVE_PLANKS)));
-    public static final Supplier<WineShelfBlock> CHERRY_WINE_SHELF = BLOCKS.register("cherry_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> CHERRY_WINE_SHELF = BLOCKS.register("cherry_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)));
-    public static final Supplier<WineShelfBlock> BAMBOO_WINE_SHELF = BLOCKS.register("bamboo_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> BAMBOO_WINE_SHELF = BLOCKS.register("bamboo_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
-    public static final Supplier<WineShelfBlock> CRIMSON_WINE_SHELF = BLOCKS.register("crimson_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> CRIMSON_WINE_SHELF = BLOCKS.register("crimson_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS)));
-    public static final Supplier<WineShelfBlock> WARPED_WINE_SHELF = BLOCKS.register("warped_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> WARPED_WINE_SHELF = BLOCKS.register("warped_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.WARPED_PLANKS)));
-    public static final Supplier<WineShelfBlock> CURSED_SPRUCE_WINE_SHELF = BLOCKS.register("cursed_spruce_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> CURSED_SPRUCE_WINE_SHELF = BLOCKS.register("cursed_spruce_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.of().ignitedByLava().mapColor(MapColor.CRIMSON_HYPHAE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<WineShelfBlock> DARK_SPRUCE_WINE_SHELF = BLOCKS.register("dark_spruce_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> DARK_SPRUCE_WINE_SHELF = BLOCKS.register("dark_spruce_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.of().ignitedByLava().mapColor(MapColor.COLOR_GRAY).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final Supplier<WineShelfBlock> JACARANDA_WINE_SHELF = BLOCKS.register("jacaranda_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> JACARANDA_WINE_SHELF = BLOCKS.register("jacaranda_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
-    public static final Supplier<WineShelfBlock> MAGIC_WINE_SHELF = BLOCKS.register("magic_wine_shelf",
+    public static final DeferredBlock<WineShelfBlock> MAGIC_WINE_SHELF = BLOCKS.register("magic_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
-    public static final Supplier<BarStoolBlock> WHITE_BAR_STOOL = BLOCKS.register("white_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> ORANGE_BAR_STOOL = BLOCKS.register("orange_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> MAGENTA_BAR_STOOL = BLOCKS.register("magenta_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> LIGHT_BLUE_BAR_STOOL = BLOCKS.register("light_blue_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> YELLOW_BAR_STOOL = BLOCKS.register("yellow_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> LIME_BAR_STOOL = BLOCKS.register("lime_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> PINK_BAR_STOOL = BLOCKS.register("pink_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> GRAY_BAR_STOOL = BLOCKS.register("gray_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> LIGHT_GRAY_BAR_STOOL = BLOCKS.register("light_gray_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> CYAN_BAR_STOOL = BLOCKS.register("cyan_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> PURPLE_BAR_STOOL = BLOCKS.register("purple_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> BLUE_BAR_STOOL = BLOCKS.register("blue_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> BROWN_BAR_STOOL = BLOCKS.register("brown_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> GREEN_BAR_STOOL = BLOCKS.register("green_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> RED_BAR_STOOL = BLOCKS.register("red_bar_stool", BarStoolBlock::new);
-    public static final Supplier<BarStoolBlock> BLACK_BAR_STOOL = BLOCKS.register("black_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> WHITE_BAR_STOOL = BLOCKS.register("white_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> ORANGE_BAR_STOOL = BLOCKS.register("orange_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> MAGENTA_BAR_STOOL = BLOCKS.register("magenta_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> LIGHT_BLUE_BAR_STOOL = BLOCKS.register("light_blue_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> YELLOW_BAR_STOOL = BLOCKS.register("yellow_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> LIME_BAR_STOOL = BLOCKS.register("lime_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> PINK_BAR_STOOL = BLOCKS.register("pink_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> GRAY_BAR_STOOL = BLOCKS.register("gray_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> LIGHT_GRAY_BAR_STOOL = BLOCKS.register("light_gray_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> CYAN_BAR_STOOL = BLOCKS.register("cyan_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> PURPLE_BAR_STOOL = BLOCKS.register("purple_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> BLUE_BAR_STOOL = BLOCKS.register("blue_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> BROWN_BAR_STOOL = BLOCKS.register("brown_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> GREEN_BAR_STOOL = BLOCKS.register("green_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> RED_BAR_STOOL = BLOCKS.register("red_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> BLACK_BAR_STOOL = BLOCKS.register("black_bar_stool", BarStoolBlock::new);
 
     // Farming
-    public static final Supplier<CursedFarmlandBlock> CURSED_FARMLAND = BLOCKS.register("cursed_farmland",
+    public static final DeferredBlock<CursedFarmlandBlock> CURSED_FARMLAND = BLOCKS.register("cursed_farmland",
             () -> new CursedFarmlandBlock(Block.Properties.ofFullCopy(Blocks.FARMLAND).strength(0.6f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_BROWN)));
-    public static final Supplier<HugeMushroomBlock> BLACK_MUSHROOM_BLOCK = BLOCKS.register("black_mushroom_block",
+    public static final DeferredBlock<HugeMushroomBlock> BLACK_MUSHROOM_BLOCK = BLOCKS.register("black_mushroom_block",
             () -> new HugeMushroomBlock(Block.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BLACK)));
-    public static final Supplier<HugeMushroomBlock> BLACK_MUSHROOM_STEM  = BLOCKS.register("black_mushroom_stem",
+    public static final DeferredBlock<HugeMushroomBlock> BLACK_MUSHROOM_STEM  = BLOCKS.register("black_mushroom_stem",
             () -> new HugeMushroomBlock(Block.Properties.ofFullCopy(Blocks.MUSHROOM_STEM).mapColor(MapColor.TERRACOTTA_GRAY)));
-    public static final Supplier<BlackMushroomBlock> BLACK_MUSHROOM = BLOCKS.register("black_mushroom",
+    public static final DeferredBlock<BlackMushroomBlock> BLACK_MUSHROOM = BLOCKS.register("black_mushroom",
             () -> new BlackMushroomBlock(Block.Properties.ofFullCopy(Blocks.RED_MUSHROOM).mapColor(MapColor.TERRACOTTA_BLACK).sound(SoundType.FUNGUS)));
-    public static final Supplier<FlowerPotBlock> POTTED_BLACK_MUSHROOM = BLOCKS.register("potted_black_mushroom",
+    public static final DeferredBlock<FlowerPotBlock> POTTED_BLACK_MUSHROOM = BLOCKS.register("potted_black_mushroom",
             () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLACK_MUSHROOM, Block.Properties.of().noCollission().isViewBlocking(UtilLib::never).pushReaction(PushReaction.DESTROY).instabreak()));
 
     // Composting
-    public static final Supplier<BloodySoilBlock> BLOODY_SOIL = BLOCKS.register("bloody_soil",
+    public static final DeferredBlock<BloodySoilBlock> BLOODY_SOIL = BLOCKS.register("bloody_soil",
             () -> new BloodySoilBlock(Block.Properties.ofFullCopy(Blocks.DIRT).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_RED).randomTicks()));
-    public static final Supplier<BloodySoilFarmlandBlock> BLOODY_SOIL_FARMLAND = BLOCKS.register("bloody_soil_farmland",
+    public static final DeferredBlock<BloodySoilFarmlandBlock> BLOODY_SOIL_FARMLAND = BLOCKS.register("bloody_soil_farmland",
             () -> new BloodySoilFarmlandBlock(Block.Properties.ofFullCopy(Blocks.FARMLAND).strength(0.5f, 2.0f).sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_RED)));
 
     // Pastries
-    public static final Supplier<VampirePieBlock> BLOOD_PIE = BLOCKS.register("blood_pie",
+    public static final DeferredBlock<VampirePieBlock> BLOOD_PIE = BLOCKS.register("blood_pie",
             () -> new VampirePieBlock(Block.Properties.ofFullCopy(Blocks.CAKE), VDItems.BLOOD_PIE_SLICE::get));
 
     // Wild Crops
-    public static final Supplier<WildGarlicBlock> WILD_GARLIC = BLOCKS.register("wild_garlic",
+    public static final DeferredBlock<WildGarlicBlock> WILD_GARLIC = BLOCKS.register("wild_garlic",
             () -> new WildGarlicBlock(MobEffects.BLINDNESS.value(), 8, Block.Properties.ofFullCopy(Blocks.TALL_GRASS)));
 
     // Crops
-    public static final Supplier<VampireOrchidCropBlock> VAMPIRE_ORCHID_CROP = BLOCKS.register("vampire_orchid_crop",
+    public static final DeferredBlock<VampireOrchidCropBlock> VAMPIRE_ORCHID_CROP = BLOCKS.register("vampire_orchid_crop",
             () -> new VampireOrchidCropBlock(Block.Properties.ofFullCopy(Blocks.WHEAT).mapColor(MapColor.TERRACOTTA_MAGENTA).instabreak().noCollission().sound(SoundType.CROP)));
 
     // Placed Drinks
-    public static final Supplier<PlacedPourableBottleBlock> DANDELION_BEER_BOTTLE_PLACED = BLOCKS.register("dandelion_beer_bottle_placed",
+    public static final DeferredBlock<PlacedPourableBottleBlock> DANDELION_BEER_BOTTLE_PLACED = BLOCKS.register("dandelion_beer_bottle_placed",
             () -> new PlacedPourableBottleBlock(MapColor.TERRACOTTA_BROWN, VDItems.DANDELION_BEER_BOTTLE, PlacedPourableBottleBlock.SHAPE_1));
-    public static final Supplier<PlacedPourableBottleBlock> BLOOD_WINE_BOTTLE_PLACED = BLOCKS.register("blood_wine_bottle_placed",
+    public static final DeferredBlock<PlacedPourableBottleBlock> BLOOD_WINE_BOTTLE_PLACED = BLOCKS.register("blood_wine_bottle_placed",
             () -> new PlacedPourableBottleBlock(MapColor.TERRACOTTA_PURPLE, VDItems.BLOOD_WINE_BOTTLE, PlacedPourableBottleBlock.SHAPE_1));
 
     // Feasts
-    public static final Supplier<WeirdJellyBlock> WEIRD_JELLY_BLOCK = BLOCKS.register("weird_jelly_block",
+    public static final DeferredBlock<WeirdJellyBlock> WEIRD_JELLY_BLOCK = BLOCKS.register("weird_jelly_block",
             () -> new WeirdJellyBlock(Block.Properties.ofFullCopy(Blocks.SLIME_BLOCK), VDItems.WEIRD_JELLY::get, true));
 
     // Cakes
-    public static final Supplier<ConsumableCakeBlock> ORCHID_CAKE = BLOCKS.register("orchid_cake",
+    public static final DeferredBlock<ConsumableCakeBlock> ORCHID_CAKE = BLOCKS.register("orchid_cake",
             () -> new ConsumableCakeBlock(Block.Properties.ofFullCopy(Blocks.CAKE).mapColor(MapColor.TERRACOTTA_PURPLE), VDItems.ORCHID_CAKE_SLICE::get));
 
     static {

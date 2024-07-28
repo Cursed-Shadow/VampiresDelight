@@ -1,28 +1,35 @@
-package net.grid.vampiresdelight.data;
+package net.grid.vampiresdelight.data.tag;
 
+import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
-import net.grid.vampiresdelight.common.tag.VDForgeTags;
+import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.grid.vampiresdelight.common.tag.VDTags;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.tag.*;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 public class VDItemTags extends ItemTagsProvider {
-    public VDItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, CompletableFuture<TagsProvider.TagLookup<Block>> blockTagProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, provider, blockTagProvider, VampiresDelight.MODID, existingFileHelper);
+    public VDItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, blockTags, VampiresDelight.MODID, existingFileHelper);
     }
 
     @Override
@@ -30,7 +37,7 @@ public class VDItemTags extends ItemTagsProvider {
         this.registerModTags();
         this.registerVampirismTags();
         this.registerFarmersDelightTags();
-        this.registerForgeTags();
+        this.registerCommonTags();
         this.registerMinecraftTags();
         this.registerCompatibilityTags();
     }
@@ -110,32 +117,81 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.MAGIC_CABINET.get());
     }
 
-    @SuppressWarnings("unchecked")
-    private void registerForgeTags() {
-        tag(ForgeTags.BREAD)
-                .addTag((VDForgeTags.BREAD_RICE));
-        tag(VDForgeTags.BREAD_RICE)
+    private void registerCommonTags() {
+        // TODO: Also add dyed tags for bar stools
+        // TODO: Also add common tags for blocks
+        // TODO: Also check if they're correct after data gen
+
+        getAllHumanVDFood().forEach(item ->
+                tag(Tags.Items.FOODS).add(item));
+
+        tag(Tags.Items.CROPS)
+                .addTag(VDCommonTags.CROPS_GARLIC);
+        tag(VDCommonTags.CROPS_GARLIC)
+                .add(ModBlocks.GARLIC.asItem());
+
+        tag(Tags.Items.SEEDS)
+                .add(VDItems.ORCHID_SEEDS.get());
+
+        tag(Tags.Items.MUSHROOMS)
+                .add(VDItems.BLACK_MUSHROOM.get());
+
+        tag(Tags.Items.FOODS_VEGETABLE)
+                .add(ModBlocks.GARLIC.asItem());
+        tag(VDCommonTags.FOODS_GARLIC)
+                .add(ModBlocks.GARLIC.asItem());
+
+        // Blood bread should not be in FOODS_BREAD because it's vampire food
+        tag(Tags.Items.FOODS_BREAD)
+                .addTag(VDCommonTags.FOODS_BREADS_RICE);
+        tag(VDCommonTags.FOODS_BREADS_RICE)
                 .add(VDItems.RICE_BREAD.get());
+        tag(VDCommonTags.FOODS_BREADS_BLOOD)
+                .add(VDItems.BLOOD_BAGEL.get());
 
-        tag(ForgeTags.DOUGH)
+        tag(Tags.Items.FOODS_COOKIE)
+                .add(VDItems.ORCHID_COOKIE.get())
+                .add(VDItems.WOLF_BERRY_COOKIE.get());
+
+        // Blood dough should not be in FOODS_DOUGH as it's vampire food
+        tag(VDCommonTags.FOODS_DOUGH)
+                .addTag(VDCommonTags.FOODS_DOUGH_RICE);
+        tag(VDCommonTags.FOODS_DOUGH_RICE)
                 .add(VDItems.RICE_DOUGH.get());
-        tag(VDForgeTags.DOUGH_RICE)
-                .add(VDItems.RICE_DOUGH.get());
+        tag(VDCommonTags.FOODS_DOUGH_BLOOD)
+                .add(VDItems.BLOOD_BAGEL.get());
 
-        tag(VDForgeTags.COOKED_BAT).add(VDItems.COOKED_BAT.get(), VDItems.COOKED_BAT_CHOPS.get());
-        tag(VDForgeTags.RAW_BAT).add(VDItems.RAW_BAT.get(), VDItems.RAW_BAT_CHOPS.get());
+        tag(VDCommonTags.FOODS_RAW_BAT)
+                .add(VDItems.RAW_BAT.get())
+                .add(VDItems.RAW_BAT_CHOPS.get());
+        tag(VDCommonTags.FOODS_COOKED_BAT)
+                .add(VDItems.COOKED_BAT.get())
+                .add(VDItems.COOKED_BAT_CHOPS.get());
+        tag(Tags.Items.FOODS_RAW_MEAT)
+                .add(VDItems.RAW_BAT.get())
+                .add(VDItems.RAW_BAT_CHOPS.get());
+        tag(Tags.Items.FOODS_COOKED_MEAT)
+                .add(VDItems.COOKED_BAT.get())
+                .add(VDItems.COOKED_BAT_CHOPS.get());
 
-        tag(ForgeTags.VEGETABLES).addTags(VDForgeTags.VEGETABLES_GARLIC);
-        tag(VDForgeTags.VEGETABLES_GARLIC).add(ModItems.ITEM_GARLIC.get());
+        tag(Tags.Items.FOODS_FOOD_POISONING)
+                .addTag(VDCommonTags.FOODS_RAW_BAT);
 
-        tag(ForgeTags.TOOLS_KNIVES)
+        ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block ->
+                tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED).add(block.asItem()));
+
+        tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED)
+                .add(VDItems.BLOOD_PIE.get())
+                .add(VDItems.WEIRD_JELLY.get());
+
+        tag(VDCommonTags.TOOLS_KNIFE)
                 .add(VDItems.SILVER_KNIFE.get());
     }
 
     public void registerMinecraftTags() {
         tag(ItemTags.BOOKSHELF_BOOKS)
                 .add(ModItems.VAMPIRE_BOOK.get())
-                .addOptional(new ResourceLocation("guideapi_vp", "vampirism-guidebook"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath("guideapi_vp", "vampirism-guidebook"));
     }
 
     public void registerCompatibilityTags() {
@@ -145,7 +201,8 @@ public class VDItemTags extends ItemTagsProvider {
                 .addTag(VDTags.WEREWOLF_ONLY_FOOD)
                 .add(VDItems.PURE_SORBET.get());
 
-        tag(CompatibilityTags.CREATE_UPRIGHT_ON_BELT)
+        tag(VDCompatibilityTags.CREATE_UPRIGHT_ON_BELT)
+                .add(VDItems.DANDELION_BEER_MUG.get())
                 .add(VDItems.DAISY_TEA.get())
                 .add(VDItems.ORCHID_TEA.get())
                 .add(VDItems.MULLED_WINE_GLASS.get())
@@ -153,9 +210,19 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.BLOOD_PIE.get())
                 .add(VDItems.ORCHID_CAKE.get());
 
-        tag(CompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS)
-                .add(ModItems.ITEM_GARLIC.get());
-        tag(CompatibilityTags.SERENE_SEASONS_SUMMER_CROPS)
-                .add(ModItems.ITEM_GARLIC.get());
+        tag(VDCompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS).add(
+                ModBlocks.GARLIC.asItem());
+        tag(VDCompatibilityTags.SERENE_SEASONS_SPRING_CROPS).add(
+                VDItems.ORCHID_SEEDS.get());
+        tag(VDCompatibilityTags.SERENE_SEASONS_SUMMER_CROPS).add(
+                ModBlocks.GARLIC.asItem(),
+                VDItems.ORCHID_SEEDS.get());
+
+        tag(VDCompatibilityTags.TINKERS_CONSTRUCT_SEEDS)
+                .add(VDItems.ORCHID_SEEDS.get());
+    }
+
+    private static Iterable<Item> getAllHumanVDFood() {
+        return BuiltInRegistries.ITEM.stream().filter(item -> VampiresDelight.MODID.equals(VDNameUtils.itemNamespace(item)) && item.getFoodProperties(new ItemStack(item), null) != null).collect(Collectors.toList());
     }
 }

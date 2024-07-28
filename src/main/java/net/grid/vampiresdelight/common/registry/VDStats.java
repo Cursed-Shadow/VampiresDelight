@@ -25,7 +25,7 @@ public class VDStats {
     }
 
     private static ResourceLocation add(String name, @SuppressWarnings("SameParameterValue") StatFormatter formatter) {
-        return add(new ResourceLocation(VampiresDelight.MODID, name), formatter);
+        return add(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, name), formatter);
     }
 
     private static ResourceLocation add(ResourceLocation id, @SuppressWarnings("SameParameterValue") StatFormatter formatter) {

@@ -1,24 +1,24 @@
 package net.grid.vampiresdelight.common.tag;
 
-import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import vectorwing.farmersdelight.common.tag.CompatibilityTags;
 
-public class VDCompatibilityTags {
+public class VDCompatibilityTags extends CompatibilityTags {
     // Werewolves
-    public static final String WEREWOLVES = VDIntegrationUtils.WEREWOLVES;
+    public static final String WEREWOLVES = "werewolves";
     public static final TagKey<Item> SILVER_TOOL = externalItemTag(WEREWOLVES, "tools/silver");
     public static final TagKey<Item> WEREWOLF_FOOD = externalItemTag(WEREWOLVES, "werewolf_food");
 
     private static TagKey<Item> externalItemTag(String modId, String path) {
-        return ItemTags.create(new ResourceLocation(modId, path));
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(modId, path));
     }
 
     private static TagKey<Block> externalBlockTag(String modId, String path) {
-        return BlockTags.create(new ResourceLocation(modId, path));
+        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(modId, path));
     }
 }

@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.data;
+package net.grid.vampiresdelight.data.tag;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.tag.VDTags;

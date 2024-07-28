@@ -14,7 +14,7 @@ public class VDLootTables {
     public static final ResourceLocation CHEST_LOST_CARRIAGE = register("chests/lost_carriage");
 
     static @NotNull ResourceLocation register(@NotNull String resourceName) {
-        return register(new ResourceLocation(VampiresDelight.MODID, resourceName));
+        return register(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, resourceName));
     }
 
     static @NotNull ResourceLocation register(@NotNull ResourceLocation resourceLocation) {

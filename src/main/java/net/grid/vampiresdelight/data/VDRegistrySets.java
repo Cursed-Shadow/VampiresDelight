@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.data;
 
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.registry.VDStructures;
 import net.grid.vampiresdelight.common.world.VDBiomeModifiers;
 import net.grid.vampiresdelight.common.world.VDConfiguredFeatures;
 import net.grid.vampiresdelight.common.world.VDPlacedFeatures;
@@ -19,9 +18,9 @@ public class VDRegistrySets extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, VDConfiguredFeatures::createConfiguredFeatures)
             .add(Registries.PLACED_FEATURE, VDPlacedFeatures::createPlacedFeatures)
-            .add(ForgeRegistries.Keys.BIOME_MODIFIERS, VDBiomeModifiers::createBiomeModifiers)
-            .add(Registries.STRUCTURE, VDStructures::createStructures)
-            .add(Registries.STRUCTURE_SET, VDStructures::createStructureSets);
+            .add(ForgeRegistries.Keys.BIOME_MODIFIERS, VDBiomeModifiers::createBiomeModifiers);
+            //.add(Registries.STRUCTURE, VDStructures::createStructures)
+            //.add(Registries.STRUCTURE_SET, VDStructures::createStructureSets);
 
     public VDRegistrySets(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(VampiresDelight.MODID));

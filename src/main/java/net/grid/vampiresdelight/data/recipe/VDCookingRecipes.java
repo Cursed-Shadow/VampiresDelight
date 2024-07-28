@@ -5,7 +5,7 @@ import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.core.ModTags;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDItems;
-import net.grid.vampiresdelight.common.tag.VDForgeTags;
+import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -62,7 +62,7 @@ public class VDCookingRecipes {
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(consumer, itemLocationCooking(VDItems.WEIRD_JELLY_BLOCK.get()));
         CookingPotRecipeBuilder.cookingPotRecipe(VDItems.TRICOLOR_DANGO.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.STICK)
-                .addIngredient(VDForgeTags.DOUGH_RICE)
+                .addIngredient(VDCommonTags.DOUGH_RICE)
                 .addIngredient(VDItems.BLOOD_SYRUP.get())
                 .addIngredient(VDItems.ORCHID_PETALS.get())
                 .addIngredient(Items.SUGAR)
@@ -124,7 +124,7 @@ public class VDCookingRecipes {
                 .build(consumer, itemLocationCooking(VDItems.BLACK_MUSHROOM_NOODLES.get()));
         CookingPotRecipeBuilder.cookingPotRecipe(VDItems.GARLIC_SOUP.get(), 1, NORMAL_COOKING, MEDIUM_EXP, Items.BREAD)
                 .addIngredient(ForgeTags.RAW_CHICKEN)
-                .addIngredient(VDForgeTags.VEGETABLES_GARLIC)
+                .addIngredient(VDCommonTags.VEGETABLES_GARLIC)
                 .addIngredient(ForgeTags.VEGETABLES)
                 .unlockedByAnyIngredient(VDItems.GRILLED_GARLIC.get(), ModItems.ITEM_GARLIC.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
@@ -140,7 +140,7 @@ public class VDCookingRecipes {
                         new Ingredient.TagValue(ForgeTags.VEGETABLES_CARROT)
                 )))
                 .addIngredient(ForgeTags.VEGETABLES_BEETROOT)
-                .addIngredient(VDForgeTags.VEGETABLES_GARLIC)
+                .addIngredient(VDCommonTags.VEGETABLES_GARLIC)
                 .unlockedByAnyIngredient(VDItems.GRILLED_GARLIC.get(), ModItems.ITEM_GARLIC.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(consumer, itemLocationCooking(VDItems.BORSCHT.get()));

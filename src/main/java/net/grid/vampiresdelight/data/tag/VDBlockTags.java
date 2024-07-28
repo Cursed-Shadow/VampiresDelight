@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.data;
+package net.grid.vampiresdelight.data.tag;
 
 import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.VampiresDelight;
@@ -6,17 +6,16 @@ import net.grid.vampiresdelight.common.block.BarStoolBlock;
 import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
 import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
+import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
 import net.grid.vampiresdelight.common.tag.VDTags;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.tag.CompatibilityTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -39,12 +38,9 @@ public class VDBlockTags extends BlockTagsProvider {
         WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(VDTags.WINE_SHELF).add(block));
 
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> {
-            ResourceLocation key = ForgeRegistries.BLOCKS.getKey(block);
-            if (key != null) {
-                String name = key.getPath();
-                if (name.contains("orchid"))
-                    tag(VDTags.DROPS_ORCHID_CAKE_SLICE).add(block);
-            }
+            String name = VDNameUtils.blockName(block);
+            if (name.contains("orchid"))
+                tag(VDTags.DROPS_ORCHID_CAKE_SLICE).add(block);
 
             tag(BlockTags.CANDLE_CAKES).add(block);
         });
@@ -110,11 +106,15 @@ public class VDBlockTags extends BlockTagsProvider {
     }
 
     private void registerCompatibilityTags() {
-        tag(CompatibilityTags.CREATE_PASSIVE_BOILER_HEATERS).add(
+        tag(VDCompatibilityTags.CREATE_PASSIVE_BOILER_HEATERS).add(
                 VDBlocks.DARK_STONE_STOVE.get());
-        tag(CompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS_BLOCK).add(
+
+        tag(VDCompatibilityTags.SERENE_SEASONS_AUTUMN_CROPS_BLOCK).add(
                 ModBlocks.GARLIC.get());
-        tag(CompatibilityTags.SERENE_SEASONS_SUMMER_CROPS_BLOCK).add(
-                ModBlocks.GARLIC.get());
+        tag(VDCompatibilityTags.SERENE_SEASONS_SPRING_CROPS_BLOCK).add(
+                VDBlocks.VAMPIRE_ORCHID_CROP.get());
+        tag(VDCompatibilityTags.SERENE_SEASONS_SUMMER_CROPS_BLOCK).add(
+                ModBlocks.GARLIC.get(),
+                VDBlocks.VAMPIRE_ORCHID_CROP.get());
     }
 }
