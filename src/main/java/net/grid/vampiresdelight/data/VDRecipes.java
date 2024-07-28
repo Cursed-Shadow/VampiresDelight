@@ -1,27 +1,24 @@
 package net.grid.vampiresdelight.data;
 
 import net.grid.vampiresdelight.data.recipe.*;
-import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class VDRecipes extends RecipeProvider {
-    public VDRecipes(PackOutput output) {
-        super(output);
+    public VDRecipes(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        VDCookingRecipes.register(consumer);
-        VDCraftingRecipes.register(consumer);
-        VDCuttingRecipes.register(consumer);
-        VDSmeltingRecipes.register(consumer);
-        VDVampirismRecipes.register(consumer);
+    protected void buildRecipes(RecipeOutput output) {
+        VDCookingRecipes.register(output);
+        VDCraftingRecipes.register(output);
+        VDCuttingRecipes.register(output);
+        VDSmeltingRecipes.register(output);
+        VDVampirismRecipes.register(output);
     }
 }

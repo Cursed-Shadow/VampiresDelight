@@ -7,15 +7,13 @@ import net.grid.vampiresdelight.VampiresDelight;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.function.Supplier;
-
 public class VDOils {
     public static final DeferredRegister<IOil> OILS = DeferredRegister.create(VampirismRegistries.OIL.get(), VampiresDelight.MODID);
 
     public static final DeferredHolder<IOil, EffectWeaponOil> BLESSING = OILS.register("blessing",
             () -> new EffectWeaponOil(VDEffects.BLESSING, 200, 20));
-    public static final Supplier<EffectWeaponOil> CLOTHES_DISSOLVING = OILS.register("clothes_dissolving",
+    public static final DeferredHolder<IOil, EffectWeaponOil> CLOTHES_DISSOLVING = OILS.register("clothes_dissolving",
             () -> new EffectWeaponOil(VDEffects.CLOTHES_DISSOLVING, 50, 15));
-    public static final Supplier<EffectWeaponOil> FOG_VISION = OILS.register("fog_vision",
+    public static final DeferredHolder<IOil, EffectWeaponOil> FOG_VISION = OILS.register("fog_vision",
             () -> new EffectWeaponOil(VDEffects.FOG_VISION, 200, 20));
 }

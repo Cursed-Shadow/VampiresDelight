@@ -12,9 +12,6 @@ public class VDCommonTags extends CommonTags {
     public static final TagKey<Item> SILVER_INGOT = forgeItemTag("ingots/silver");
     public static final TagKey<Block> NEEDS_SILVER_TOOL = forgeBlockTag("needs_silver_tool");
 
-    public static final TagKey<Item> BREAD_RICE = forgeItemTag("bread/rice");
-    public static final TagKey<Item> DOUGH_RICE = forgeItemTag("dough/rice");
-
     public static final TagKey<Item> CROPS_GARLIC = commonItemTag("crops/garlic");
 
     public static final TagKey<Item> FOODS_GARLIC = commonItemTag("foods/garlic");
@@ -27,8 +24,6 @@ public class VDCommonTags extends CommonTags {
 
     public static final TagKey<Item> FOODS_RAW_BAT = commonItemTag("foods/raw_bat");
     public static final TagKey<Item> FOODS_COOKED_BAT = commonItemTag("foods/cooked_bat");
-
-    public static final TagKey<Item> VEGETABLES_GARLIC = forgeItemTag("vegetables/garlic");
 
 
 
