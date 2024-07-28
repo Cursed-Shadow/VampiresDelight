@@ -9,8 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.PlantType;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 
@@ -18,7 +16,7 @@ public class VDHelper extends Helper {
     // Plant type for plants that grow on cursed soil.
     public static final PlantType CURSED_PLANT_TYPE = PlantType.get("vampiresdelight_cursed");
 
-    public static final ResourceLocation BLOOD_BAR_ELEMENT = new ResourceLocation(REFERENCE.MODID, "blood_bar");
+    public static final ResourceLocation BLOOD_BAR_ELEMENT = ResourceLocation.fromNamespaceAndPath(REFERENCE.MODID, "blood_bar");
 
     public static boolean canBeInfectedFromItem(Player player) {
         return canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get();
@@ -32,10 +30,7 @@ public class VDHelper extends Helper {
     }
 
     public static boolean isSame(Item item, ResourceLocation key) {
-        Item requiedItem = ForgeRegistries.ITEMS.getValue(key);
-        if (requiedItem == null) return false;
-
-        return item == requiedItem;
+        return item == VDNameUtils.getItem(key);
     }
 
     public static boolean isDev() {

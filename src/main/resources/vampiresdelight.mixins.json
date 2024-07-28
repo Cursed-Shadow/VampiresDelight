@@ -6,8 +6,6 @@
   "plugin": "net.grid.vampiresdelight.common.mixin.plugin.VDMixinConfigPlugin",
   "mixins": [
     "MixinConsumableItem",
-    "MixinEnchantment",
-    "MixinFoodHelper",
     "MixinHunterCampPiecesFireplace",
     "MixinHunterCampPiecesSpecialBlock",
     "MixinLivingEntity",

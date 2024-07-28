@@ -8,6 +8,7 @@ import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -37,8 +38,8 @@ public class MixinConsumableItem {
         }
     }
 
-    @Inject(method = "appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V", at = @At("HEAD"), cancellable = true)
-    public void hideFoodTooltips(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
+    @Inject(method = "appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V", at = @At("HEAD"), cancellable = true)
+    public void hideFoodTooltips(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
         Player player = VampirismMod.proxy.getClientPlayer();
         if (player != null && !VDEntityUtils.canConsumeHumanFood(player) && !(VDHelper.isVampire(player) && stack.is(VDTags.BLOOD_FOOD)) && !(stack.getItem() instanceof MilkBottleItem)) {
             ci.cancel();

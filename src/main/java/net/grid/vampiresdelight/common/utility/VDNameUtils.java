@@ -18,6 +18,9 @@ public class VDNameUtils {
     public static String itemNamespace(Item item) {
         return itemLocation(item).getNamespace();
     }
+    public static Item getItem(ResourceLocation key) {
+        return BuiltInRegistries.ITEM.get(key);
+    }
 
     public static ResourceLocation blockLocation(Block block) {
         return BuiltInRegistries.BLOCK.getKey(block);
@@ -29,5 +32,8 @@ public class VDNameUtils {
 
     public static String blockNamespace(Block block) {
         return blockLocation(block).getNamespace();
+    }
+    public static Block getBlock(ResourceLocation key) {
+        return BuiltInRegistries.BLOCK.get(key);
     }
 }

@@ -17,10 +17,12 @@ import squeek.appleskin.helpers.FoodHelper;
 
 import static squeek.appleskin.helpers.FoodHelper.isFood;
 
+// TODO: Make it work
+/*
 @Mixin(FoodHelper.class)
 public class MixinFoodHelper {
-    @Inject(at = @At("HEAD"), method = "isRotten(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;)Z", remap = false, cancellable = true)
-    private static void isVampireFood(ItemStack itemStack, Player player, CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = "isRotten(Lnet/minecraft/world/food/FoodProperties;)Z", at = @At("HEAD"), remap = false, cancellable = true)
+    private static void isVampireFood(FoodProperties foodProperties, CallbackInfoReturnable<Boolean> cir) {
         if (isFood(itemStack, player)) {
             if ((itemStack.getItem() instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD)) && VDHelper.isVampire(player)) {
                 FoodProperties foodProperties = null;
@@ -41,3 +43,4 @@ public class MixinFoodHelper {
         }
     }
 }
+ */
