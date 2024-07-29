@@ -1,28 +1,25 @@
 package net.grid.vampiresdelight.common.item;
 
-import net.grid.vampiresdelight.client.extension.PourableBottleItemExtension;
 import net.grid.vampiresdelight.common.block.PlacedPourableBottleBlock;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
+import net.grid.vampiresdelight.common.registry.VDDataComponents;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
@@ -32,13 +29,11 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import net.minecraftforge.common.util.FakePlayer;
+import net.neoforged.neoforge.common.util.FakePlayer;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.item.component.ItemStackWrapper;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * Credits to the Create mod for mechanic
@@ -50,7 +45,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     private final Item servingContainer;
 
     public PourableBottleItem(Properties properties, PlacedPourableBottleBlock placedBottleBlock, Item serving, Item servingContainer, int servings) {
-        super(properties.defaultDurability(servings).setNoRepair());
+        super(properties.durability(servings).setNoRepair());
         this.placedBottleBlock = placedBottleBlock;
         this.serving = serving;
         this.servingContainer = servingContainer;
@@ -58,11 +53,6 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
 
     @Override
     public boolean isEnchantable(@NotNull ItemStack stack) {
-        return false;
-    }
-
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return false;
     }
 
@@ -99,22 +89,22 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
                     pouringBottle.shrink(1);
                 }
 
-                return new InteractionResultHolder<>(InteractionResult.SUCCESS, pouringBottle);
+                return InteractionResultHolder.success(pouringBottle);
             }
         }
 
-        if (pouringBottle.getOrCreateTag().contains("Pouring")) {
+        if (!pouringBottle.getOrDefault(VDDataComponents.SERVING_HELD, ItemStackWrapper.EMPTY).getStack().isEmpty()) {
             player.startUsingItem(mainHand);
-            return new InteractionResultHolder<>(InteractionResult.PASS, pouringBottle);
+            return InteractionResultHolder.pass(pouringBottle);
         }
 
         if (glassBottle.getItem() == servingContainer) {
             ItemStack itemUsed = glassBottle.copy();
             ItemStack toPour = itemUsed.split(1);
             player.startUsingItem(mainHand);
-            pouringBottle.getOrCreateTag().put("Pouring", toPour.serializeNBT());
+            pouringBottle.set(VDDataComponents.SERVING_HELD, new ItemStackWrapper(toPour));
             player.setItemInHand(offHand, itemUsed);
-            return new InteractionResultHolder<>(InteractionResult.SUCCESS, pouringBottle);
+            return InteractionResultHolder.success(pouringBottle);
         }
 
         Vec3 POVHit = hitResult.getLocation();
@@ -135,15 +125,15 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
             player.startUsingItem(mainHand);
 
             if (!level.isClientSide) {
-                pouringBottle.getOrCreateTag().put("Pouring", toPour.serializeNBT());
+                pouringBottle.set(VDDataComponents.SERVING_HELD, new ItemStackWrapper(toPour));
                 if (pickedItem.isEmpty()) pickUp.discard();
                 else pickUp.setItem(pickedItem);
             }
 
-            return new InteractionResultHolder<>(InteractionResult.SUCCESS, pouringBottle);
+            return InteractionResultHolder.success(pouringBottle);
         }
 
-        return new InteractionResultHolder<>(InteractionResult.FAIL, pouringBottle);
+        return InteractionResultHolder.fail(pouringBottle);
     }
 
     @Override
@@ -151,14 +141,14 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
         if (!(entity instanceof Player player))
             return itemStack;
 
-        CompoundTag compoundTag = itemStack.getOrCreateTag();
-        if (compoundTag.contains("Pouring")) {
+        ItemStackWrapper storedStack = itemStack.getOrDefault(VDDataComponents.SERVING_HELD, ItemStackWrapper.EMPTY);
+        if (!storedStack.getStack().isEmpty()) {
             if (player instanceof FakePlayer) {
                 player.drop(new ItemStack(serving), false, false);
             } else {
                 player.getInventory().placeItemBackInInventory(new ItemStack(serving));
             }
-            compoundTag.remove("Pouring");
+            itemStack.remove(VDDataComponents.SERVING_HELD);
             VDAdvancementTriggers.DRINK_POURED.get().trigger((ServerPlayer) player, itemStack);
             entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
@@ -173,11 +163,12 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
         if (!(entity instanceof Player player))
             return;
 
-        CompoundTag compoundTag = itemStack.getOrCreateTag();
-        if (compoundTag.contains("Pouring")) {
-            player.getInventory().placeItemBackInInventory(ItemStack.of(compoundTag.getCompound("Pouring")));
+        ItemStackWrapper storedStack = itemStack.getOrDefault(VDDataComponents.SERVING_HELD, ItemStackWrapper.EMPTY);
+        if (!storedStack.getStack().isEmpty()) {
+            player.getInventory().placeItemBackInInventory(storedStack.getStack());
+            itemStack.remove(VDDataComponents.SERVING_HELD);
+
             entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
-            compoundTag.remove("Pouring");
         }
     }
 
@@ -200,7 +191,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     }
 
     @Override
-    public int getUseDuration(ItemStack stack) {
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return 32;
     }
 
@@ -218,20 +209,15 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         int servings = stack.getMaxDamage() - stack.getDamageValue();
         MutableComponent textTooltip = VDTextUtils.getTranslation("tooltip." + this + (servings == 1 ? ".single_serving" : ".multiple_servings"), servings);
-        tooltip.add(textTooltip.withStyle(ChatFormatting.GRAY));
-        VDTooltipUtils.addShiftTooltip("tooltip.pourable_drink_item", tooltip);
+        tooltipComponents.add(textTooltip.withStyle(ChatFormatting.GRAY));
+        VDTooltipUtils.addShiftTooltip("tooltip.pourable_drink_item", tooltipComponents);
     }
 
     @Override
     public @NotNull UseAnim getUseAnimation(ItemStack itemStack) {
         return UseAnim.DRINK;
-    }
-
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new PourableBottleItemExtension());
     }
 }

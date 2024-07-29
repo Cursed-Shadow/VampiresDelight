@@ -17,8 +17,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
 
@@ -66,7 +64,7 @@ public class WerewolfConsumableItem extends Item {
 
         ItemStack containerStack = stack.getCraftingRemainingItem();
 
-        if (stack.isEdible()) {
+        if (stack.getFoodProperties(consumer) != null) {
             super.finishUsingItem(stack, level, consumer);
         } else {
             Player player = consumer instanceof Player ? (Player) consumer : null;
@@ -109,23 +107,22 @@ public class WerewolfConsumableItem extends Item {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
-                tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
+                tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip && player != null) {
                 if (VDIntegrationUtils.isWerewolf(player) || hasHumanFoodEffectTooltip) {
-                    VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
+                    VDTextUtils.addFoodEffectTooltip(stack, player, tooltipComponents, context);
                 }
             }
         }
 
         if (hasFactionTooltip && player != null)
-            VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player);
+            VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltipComponents, player);
     }
 }

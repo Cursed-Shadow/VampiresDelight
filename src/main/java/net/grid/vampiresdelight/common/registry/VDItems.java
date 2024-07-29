@@ -184,9 +184,9 @@ public class VDItems {
             () -> new DandelionBeerMugItem(drinkItem(VDFoodValues.DANDELION_BEER_MUG_HUMAN)));
     public static final DeferredItem<PourableBottleItem> DANDELION_BEER_BOTTLE = ITEMS.register("dandelion_beer_bottle",
             () -> new PourableBottleItem(basicItem(), VDBlocks.DANDELION_BEER_BOTTLE_PLACED.get(), VDItems.DANDELION_BEER_MUG.get(), Items.GLASS_BOTTLE, 3));
+
     public static final DeferredItem<VampireDrinkableItem> BLOOD_WINE_GLASS = ITEMS.register("blood_wine_glass",
             () -> new VampireDrinkableItem(drinkItem(VDFoodValues.BLOOD_WINE_GLASS_HUMAN), VDFoodValues.BLOOD_WINE_GLASS_VAMPIRE));
-
     public static final DeferredItem<PourableBottleItem> BLOOD_WINE_BOTTLE = ITEMS.register("blood_wine_bottle",
             () -> new PourableBottleItem(basicItem(), VDBlocks.BLOOD_WINE_BOTTLE_PLACED.get(), VDItems.BLOOD_WINE_GLASS.get(), Items.GLASS_BOTTLE, 3));
     public static final DeferredItem<VampireDrinkableItem> MULLED_WINE_GLASS = ITEMS.register("mulled_wine_glass",

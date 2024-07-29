@@ -7,11 +7,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import vectorwing.farmersdelight.common.Configuration;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class DandelionBeerMugItem extends DrinkableItem {
@@ -20,11 +18,11 @@ public class DandelionBeerMugItem extends DrinkableItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get() && player != null & VDEntityUtils.canConsumeHumanFood(player)) {
-            VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
+            VDTextUtils.addFoodEffectTooltip(stack, player, tooltip, context);
         }
     }
 }

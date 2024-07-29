@@ -17,9 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
 
@@ -42,20 +39,19 @@ public class OrchidTeaItem extends VampireDrinkableItem {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (player != null && VDHelper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get()) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
-                tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
+                tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
             } else {
-                VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
+                VDTextUtils.addFoodEffectTooltip(stack, player, tooltipComponents, context);
             }
         }
 
         if (player != null)
-            VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
+            VDTooltipUtils.addFactionFoodToolTips(tooltipComponents, player, VReference.VAMPIRE_FACTION);
     }
 }

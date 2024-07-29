@@ -30,7 +30,7 @@ public class VampireDrinkableItem extends VampireConsumableItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack heldStack = player.getItemInHand(hand);
-        if (heldStack.isEdible()) {
+        if (heldStack.getFoodProperties(player) != null) {
             if (player.canEat(Objects.requireNonNull(heldStack.getFoodProperties(player)).canAlwaysEat())) {
                 player.startUsingItem(hand);
                 return InteractionResultHolder.consume(heldStack);

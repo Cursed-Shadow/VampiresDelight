@@ -16,8 +16,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.Configuration;
 import net.minecraft.network.chat.Component;
@@ -102,10 +100,9 @@ public class VampireConsumableItem extends Item {
 
         ItemStack containerStack = stack.getCraftingRemainingItem();
 
-        if (stack.isEdible()) {
+        if (stack.getFoodProperties(consumer) != null) {
             // TODO: Make werewolves also get nasty affects from vampire food
             VDEntityUtils.consumeBloodFood(stack, level, consumer);
-            //level.playSound(null, consumer.getX(), consumer.getY(), consumer.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
         } else {
             Player player = consumer instanceof Player ? (Player) consumer : null;
             if (player instanceof ServerPlayer) {
@@ -150,28 +147,27 @@ public class VampireConsumableItem extends Item {
         return vampireFood;
     }
 
-    public FoodProperties getHunterFood() {
+    public @Nullable FoodProperties getHunterFood() {
         return hunterFood;
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
-                tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
+                tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {
                 if (player != null && (VDHelper.isVampire(player) || hasHumanFoodEffectTooltip)) {
-                    VDTextUtils.addFoodEffectTooltip(stack, player, tooltip);
+                    VDTextUtils.addFoodEffectTooltip(stack, player, tooltipComponents, context);
                 }
             }
         }
 
         if (hasFactionTooltip && player != null)
-            VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
+            VDTooltipUtils.addFactionFoodToolTips(tooltipComponents, player, VReference.VAMPIRE_FACTION);
     }
 }

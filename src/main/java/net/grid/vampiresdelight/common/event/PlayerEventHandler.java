@@ -20,20 +20,19 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.MobEffectEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
 import java.util.Objects;
 import java.util.Optional;
 
-@Mod.EventBusSubscriber(modid = VampiresDelight.MODID)
+@EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerEventHandler {
     @SubscribeEvent
     public static void checkDisgustingFood(LivingEntityUseItemEvent.@NotNull Finish event) {
@@ -69,7 +68,7 @@ public class PlayerEventHandler {
     private static void disgustingFoodConsumed(LivingEntity livingEntity) {
         if (livingEntity instanceof Player player) {
             player.awardStat(VDStats.disgusting_food_consumed);
-            VDAdvancementTriggers.DISGUSTING_FOOD_CONSUMED.trigger((ServerPlayer) player);
+            VDAdvancementTriggers.DISGUSTING_FOOD_CONSUMED.get().trigger((ServerPlayer) player);
         }
     }
 
@@ -89,7 +88,7 @@ public class PlayerEventHandler {
         ItemStack itemInHand = consumer.getItemInHand(consumer.getUsedItemHand());
         Item item = itemInHand.getItem();
         if (VDHelper.isVampire(consumer) && item instanceof ConsumableItem && !itemInHand.is(VDTags.BLOOD_FOOD)) {
-            event.setResult(Event.Result.DENY);
+            event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
         }
     }
 
@@ -97,7 +96,7 @@ public class PlayerEventHandler {
     public static void onDrunkFromPoisonousPlayer(BloodDrinkEvent event) {
         Optional<LivingEntity> bloodSourceEntity = event.getBloodSource().getEntity();
         if (bloodSourceEntity.isPresent() && bloodSourceEntity.get() instanceof Player player && Objects.equals(player.getUUID().toString(), "052ef844-4947-452c-867d-902c8fa1cd94")) {
-            LivingEntity biter = event.getVampire().getRepresentingEntity();
+            LivingEntity biter = event.getVampire().asEntity();
             biter.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1));
         }
     }

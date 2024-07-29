@@ -28,6 +28,7 @@ public class VampiresDelight {
 
         VDParticleTypes.PARTICLE_TYPES.register(modEventBus);
         VDItems.ITEMS.register(modEventBus);
+        VDDataComponents.DATA_COMPONENTS.register(modEventBus);
         VDPotions.POTIONS.register(modEventBus);
         VDOils.OILS.register(modEventBus);
         VDEnchantments.ENCHANTMENTS.register(modEventBus);

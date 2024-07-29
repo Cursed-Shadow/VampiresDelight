@@ -4,6 +4,7 @@ import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -85,7 +86,7 @@ public class SpiritLanternBlock extends LanternBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @org.jetbrains.annotations.Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        VDTooltipUtils.addShiftTooltip("tooltip.spirit_lantern", pTooltip);
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        VDTooltipUtils.addShiftTooltip("tooltip.spirit_lantern", tooltipComponents);
     }
 }

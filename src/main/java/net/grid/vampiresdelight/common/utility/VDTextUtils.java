@@ -23,8 +23,8 @@ public class VDTextUtils {
         return I18n.get(VampiresDelight.MODID + "." + key);
     }
 
-    public static void addFoodEffectTooltip(ItemStack item, LivingEntity consumer, List<Component> tooltip, Item.TooltipContext context) {
-        FoodProperties foodProperties = item.getItem().getFoodProperties(item, consumer);
+    public static void addFoodEffectTooltip(ItemStack stack, LivingEntity consumer, List<Component> tooltip, Item.TooltipContext context) {
+        FoodProperties foodProperties = stack.getItem().getFoodProperties(stack, consumer);
         if (foodProperties == null) return;
 
         List<FoodProperties.PossibleEffect> effectList = foodProperties.effects();

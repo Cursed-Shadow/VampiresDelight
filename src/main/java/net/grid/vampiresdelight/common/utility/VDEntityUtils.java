@@ -46,12 +46,12 @@ public class VDEntityUtils {
         FoodProperties foodProperties = stack.getFoodProperties(consumer);
 
         if (foodProperties != null) {
-            FoodProperties bloodFoodProperties = VDHelper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
+            FoodProperties bloodFoodProperties = VDHelper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationModifier(0).build();
             if (consumer instanceof Player player) {
-                VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
+                VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(bloodFoodProperties.nutrition(), bloodFoodProperties.saturation(), new DrinkBloodContext(stack)));
             }
             if (consumer instanceof IVampire) {
-                ((IVampire) consumer).drinkBlood(bloodFoodProperties.getNutrition(), bloodFoodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
+                ((IVampire) consumer).drinkBlood(bloodFoodProperties.nutrition(), bloodFoodProperties.saturation(), new DrinkBloodContext(stack));
             } else if (!VDHelper.isVampire(consumer))
                 consumer.eat(level, stack);
         }

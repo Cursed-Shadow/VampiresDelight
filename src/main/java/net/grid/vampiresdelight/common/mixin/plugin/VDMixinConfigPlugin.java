@@ -1,7 +1,7 @@
 package net.grid.vampiresdelight.common.mixin.plugin;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraftforge.fml.loading.LoadingModList;
+import net.neoforged.fml.loading.LoadingModList;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;

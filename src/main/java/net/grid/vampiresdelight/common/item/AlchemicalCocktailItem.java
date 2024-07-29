@@ -22,8 +22,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -77,13 +75,12 @@ public class AlchemicalCocktailItem extends Item implements IFactionExclusiveIte
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (!VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get()) {
             MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip.alchemical_cocktail.burn_land_disabled");
-            tooltip.add(textEmpty.withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(textEmpty.withStyle(ChatFormatting.GRAY));
         }
 
-        super.appendHoverText(stack, level, tooltip, isAdvanced);
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

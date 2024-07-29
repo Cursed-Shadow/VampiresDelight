@@ -18,19 +18,19 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.common.utility.ItemUtils;
 
-@Mod.EventBusSubscriber(modid = VampiresDelight.MODID)
+@EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerInteractEventHandler {
     @SubscribeEvent
     public static void onCursedEarthClickedWithHoe(BlockEvent.BlockToolModificationEvent event) {
-        if (event.isCanceled() || ! event.getToolAction().equals(ToolActions.HOE_TILL))
+        if (event.isCanceled() || ! event.getItemAbility().equals(ItemAbilities.HOE_TILL))
             return;
 
         LevelAccessor world = event.getContext().getLevel();
@@ -38,7 +38,7 @@ public class PlayerInteractEventHandler {
         BlockState cursedBlock = world.getBlockState(event.getContext().getClickedPos());
         BlockState newBlock = VDBlocks.CURSED_FARMLAND.get().defaultBlockState();
 
-        if (event.getToolAction() == ToolActions.HOE_TILL && (cursedBlock.is(ModBlocks.CURSED_EARTH.get()) || cursedBlock.is(ModBlocks.CURSED_GRASS.get()))) {
+        if (event.getItemAbility() == ItemAbilities.HOE_TILL && (cursedBlock.is(ModBlocks.CURSED_EARTH.get()) || cursedBlock.is(ModBlocks.CURSED_GRASS.get()))) {
             if (newBlock.canSurvive(world, pos)) {
                 event.setFinalState(VDBlocks.CURSED_FARMLAND.get().defaultBlockState());
             }

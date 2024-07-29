@@ -1,28 +1,27 @@
 package net.grid.vampiresdelight.common.event;
 
 import de.teamlapen.vampirism.core.ModBlocks;
-import de.teamlapen.vampirism.core.ModItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.BasicItemListing;
-import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.event.village.WandererTradesEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.BasicItemListing;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.neoforged.neoforge.event.village.WandererTradesEvent;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = VampiresDelight.MODID)
+@EventBusSubscriber(modid = VampiresDelight.MODID)
 @ParametersAreNonnullByDefault
 public class VillagerEventHandler {
     @SubscribeEvent
@@ -31,10 +30,9 @@ public class VillagerEventHandler {
 
         Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
         VillagerProfession profession = event.getType();
-        ResourceLocation professionKey = ForgeRegistries.VILLAGER_PROFESSIONS.getKey(profession);
-        if (professionKey == null) return;
+        ResourceLocation professionKey = BuiltInRegistries.VILLAGER_PROFESSION.getKey(profession);
         if (professionKey.getPath().equals("farmer")) {
-            trades.get(1).add(emeraldForItemsTrade(ModItems.ITEM_GARLIC.get(), 24, 16, 4));
+            trades.get(1).add(emeraldForItemsTrade(ModBlocks.GARLIC.asItem(), 24, 16, 4));
         }
     }
 
@@ -45,7 +43,7 @@ public class VillagerEventHandler {
             trades.add(itemForEmeraldTrade(ModBlocks.VAMPIRE_ORCHID.get(), 1, 1, 12));
             trades.add(itemForEmeraldTrade(VDItems.ORCHID_SEEDS.get(), 2, 1, 12));
             trades.add(itemForEmeraldTrade(VDItems.ORCHID_PETALS.get(), 1, 2, 12));
-            trades.add(itemForEmeraldTrade(ModItems.ITEM_GARLIC.get(), 1, 1, 12));
+            trades.add(itemForEmeraldTrade(ModBlocks.GARLIC.asItem(), 1, 1, 12));
             trades.add(itemForEmeraldTrade(ModBlocks.CURSED_EARTH.get(), 1, 1, 12));
             trades.add(itemForEmeraldTrade(ModBlocks.CURSED_ROOTS.get(), 1, 1, 12));
             trades.add(itemForEmeraldTrade(VDItems.BLACK_MUSHROOM.get(), 1, 2, 12));
