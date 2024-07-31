@@ -74,17 +74,7 @@ configurations {
 }
 
 repositories {
-    // Vampirism
-    maven {
-        name = "Maxanier"
-        url = "https://maven.maxanier.de/releases"
-        content {
-            includeGroupAndSubgroups "de.teamlapen"
-            includeGroupAndSubgroups "de.maxanier"
-        }
-    }
-
-    // For Farmer's Delight and others
+    // CurseGradle
     exclusiveContent {
         forRepository {
             maven {
@@ -117,7 +107,6 @@ repositories {
 dependencies {
     implementation "curse.maven:farmers-delight-398521:${farmersdelight_version}"
     implementation "curse.maven:vampirism-become-a-vampire-233029:${vampirism_version}"
-    //implementation "de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}"
 
     // AppleSkin
     compileOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}:api"
