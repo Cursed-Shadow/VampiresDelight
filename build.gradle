@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '1.0.0'
+    id 'net.neoforged.moddev' version '1.0.14'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -13,8 +13,12 @@ tasks.named('wrapper', Wrapper).configure {
 version = "${minecraft_version}-${mod_version}"
 group = 'net.grid.vampiresdelight'
 
+repositories {
+    mavenLocal()
+}
+
 base {
-    archivesName = 'VampiresDelight'
+    archivesName = mod_id
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -35,6 +39,7 @@ neoForge {
 
         server {
             server()
+            programArgument '--nogui'
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
@@ -49,7 +54,7 @@ neoForge {
         }
 
         configureEach {
-            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            systemProperty 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             logLevel = org.slf4j.event.Level.DEBUG
         }
