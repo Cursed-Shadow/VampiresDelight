@@ -30,7 +30,7 @@ public class VampiresDelight {
         VDItems.ITEMS.register(modEventBus);
         VDDataComponents.DATA_COMPONENTS.register(modEventBus);
         VDPotions.POTIONS.register(modEventBus);
-        VDOils.OILS.register(modEventBus);
+        //VDOils.OILS.register(modEventBus); // TODO: Something makes it not load while running data and client
         VDBlocks.BLOCKS.register(modEventBus);
         VDCreativeTabs.CREATIVE_TABS.register(modEventBus);
         VDEffects.EFFECTS.register(modEventBus);

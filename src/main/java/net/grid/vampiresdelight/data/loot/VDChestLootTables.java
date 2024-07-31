@@ -54,11 +54,13 @@ public class VDChestLootTables implements LootTableSubProvider {
     }
 
     public void lootModifiers(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
+        /*
         consumer.accept(VDLootTables.VD_CHEST_VAMPIRE_DUNGEON, LootTable.lootTable()
                 .withPool(vampiresBiteBookLoot(1, 2))
         );
+         */
         consumer.accept(VDLootTables.VD_CHEST_VAMPIRE_HUT, LootTable.lootTable()
-                .withPool(vampiresBiteBookLoot(1, 3))
+                //.withPool(vampiresBiteBookLoot(1, 3))
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 8))
                         .add(LootItem.lootTableItem(VDItems.ORCHID_COOKIE.get()).setWeight(10))
                         .add(LootItem.lootTableItem(VDItems.ORCHID_TEA.get()).setWeight(3))
@@ -72,12 +74,14 @@ public class VDChestLootTables implements LootTableSubProvider {
                         .add(EmptyLootItem.emptyItem().setWeight(8))
                 )
         );
+        /*
         consumer.accept(VDLootTables.VD_CHEST_ALTAR, LootTable.lootTable()
                 .withPool(vampiresBiteBookLoot(1, 2))
         );
         consumer.accept(VDLootTables.VD_CHEST_CRYPT, LootTable.lootTable()
                 .withPool(vampiresBiteBookLoot(1, 4))
         );
+         */
         consumer.accept(VDLootTables.VD_CHEST_HUNTER_OUTPOST_TENT, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 8))
                         .add(LootItem.lootTableItem(VDItems.HARDTACK.get()).setWeight(5))
@@ -98,6 +102,8 @@ public class VDChestLootTables implements LootTableSubProvider {
         );
     }
 
+    // TODO: Currently it can't access enchants from here, not sure why
+    /*
     public LootPool.Builder vampiresBiteBookLoot(int bookWeight, int emptyWeight) {
         HolderLookup.RegistryLookup<Enchantment> lookup = this.provider.lookupOrThrow(Registries.ENCHANTMENT);
         return LootPool.lootPool().setRolls(ConstantValue.exactly(1))
@@ -105,4 +111,5 @@ public class VDChestLootTables implements LootTableSubProvider {
                         .apply((new EnchantRandomlyFunction.Builder()).withEnchantment(lookup.getOrThrow(VDEnchantments.VAMPIRE_BITE))))
                 .add(EmptyLootItem.emptyItem().setWeight(emptyWeight));
     }
+     */
 }

@@ -12,7 +12,6 @@
     "MixinModPlayerEventHandler",
     "MixinPowderSnowBlock",
     "MixinRenderHandler",
-    "MixinSetOilFunction",
     "accessor.BloodStatsAccessor",
     "accessor.StructurePieceAccessor",
     "accessor.VampirismItemBloodFoodItemAccessor"

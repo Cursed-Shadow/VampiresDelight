@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "F": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "W": {
+      "item": "minecraft:light_gray_wool"
+    }
+  },
+  "pattern": [
+    "W",
+    "F",
+    "F"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:light_gray_bar_stool"
+  }
+}

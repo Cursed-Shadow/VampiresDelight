@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "minecraft:stick"
+  },
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "tag": "c:foods/dough/rice"
+    },
+    {
+      "item": "vampiresdelight:blood_syrup"
+    },
+    {
+      "item": "vampiresdelight:orchid_petals"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:tricolor_dango"
+  }
+}

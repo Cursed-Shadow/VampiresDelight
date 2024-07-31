@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vampiresdelight:blood_bagel"
+    },
+    {
+      "tag": "c:foods/cooked_bacon"
+    },
+    {
+      "item": "farmersdelight:fried_egg"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:bagel_sandwich"
+  }
+}

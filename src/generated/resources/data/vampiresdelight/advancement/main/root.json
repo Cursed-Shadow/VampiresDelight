@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "seeds": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "vampiresdelight:textures/block/dark_stone_small_bricks.png",
+    "description": {
+      "translate": "vampiresdelight.advancement.root.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "vampiresdelight:dark_stone_stove"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "vampiresdelight.advancement.root"
+    }
+  },
+  "requirements": [
+    [
+      "seeds"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

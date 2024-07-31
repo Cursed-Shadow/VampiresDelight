@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "tag": "c:bones"
+    },
+    {
+      "tag": "c:slimeballs"
+    },
+    {
+      "tag": "c:slimeballs"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "tag": "vampirism:pure_blood"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:weird_jelly_block"
+  }
+}

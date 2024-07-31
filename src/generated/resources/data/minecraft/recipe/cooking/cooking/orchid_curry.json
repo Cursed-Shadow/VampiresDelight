@@ -1,0 +1,34 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "vampiresdelight:orchid_petals"
+    },
+    {
+      "item": "vampiresdelight:orchid_petals"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "tag": "c:foods/raw_mutton"
+        },
+        {
+          "tag": "c:foods/raw_beef"
+        }
+      ]
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:orchid_curry"
+  }
+}

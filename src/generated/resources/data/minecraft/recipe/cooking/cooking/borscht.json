@@ -1,0 +1,42 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "tag": "c:foods/raw_pork"
+        },
+        {
+          "item": "minecraft:beef"
+        },
+        {
+          "tag": "c:foods/raw_chicken"
+        }
+      ]
+    },
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "minecraft:potato"
+        },
+        {
+          "item": "minecraft:carrot"
+        }
+      ]
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "tag": "c:crops/garlic"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:borscht"
+  }
+}

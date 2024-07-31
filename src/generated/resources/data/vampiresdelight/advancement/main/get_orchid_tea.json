@@ -1,0 +1,34 @@
+{
+  "parent": "vampiresdelight:main/plant_vampire_orchid_crop",
+  "criteria": {
+    "orchid_tea": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vampiresdelight:orchid_tea"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "vampiresdelight.advancement.get_orchid_tea.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "vampiresdelight:orchid_tea"
+    },
+    "title": {
+      "translate": "vampiresdelight.advancement.get_orchid_tea"
+    }
+  },
+  "requirements": [
+    [
+      "orchid_tea"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

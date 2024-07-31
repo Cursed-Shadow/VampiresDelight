@@ -1,0 +1,25 @@
+{
+  "values": {
+    "vampiresdelight:blood_pie": {
+      "chance": 1.0
+    },
+    "vampiresdelight:blood_pie_slice": {
+      "chance": 0.85
+    },
+    "vampiresdelight:orchid_cookie": {
+      "chance": 0.85
+    },
+    "vampiresdelight:orchid_petals": {
+      "chance": 0.5
+    },
+    "vampiresdelight:orchid_seeds": {
+      "chance": 0.3
+    },
+    "vampiresdelight:weird_jelly_block": {
+      "chance": 1.0
+    },
+    "vampiresdelight:wild_garlic": {
+      "chance": 0.65
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "vampirism:dark_spruce_trapdoor"
+    },
+    "_": {
+      "item": "vampirism:dark_spruce_slab"
+    }
+  },
+  "pattern": [
+    "___",
+    "D D",
+    "___"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:dark_spruce_cabinet"
+  }
+}

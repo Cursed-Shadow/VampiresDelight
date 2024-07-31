@@ -8,15 +8,11 @@ import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
 import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.grid.vampiresdelight.common.tag.VDTags;
-import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -25,7 +21,6 @@ import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
 public class VDItemTags extends ItemTagsProvider {
     public VDItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
@@ -135,8 +130,8 @@ public class VDItemTags extends ItemTagsProvider {
         // TODO: Also add common tags for blocks
         // TODO: Also check if they're correct after data gen
 
-        getAllHumanVDFood().forEach(item ->
-                tag(Tags.Items.FOODS).add(item));
+        //getAllHumanVDFood().forEach(item ->
+                //tag(Tags.Items.FOODS).add(item));
 
         tag(Tags.Items.CROPS)
                 .addTag(VDCommonTags.CROPS_GARLIC);
@@ -235,7 +230,7 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.ORCHID_SEEDS.get());
     }
 
-    private static Iterable<Item> getAllHumanVDFood() {
-        return BuiltInRegistries.ITEM.stream().filter(item -> VampiresDelight.MODID.equals(VDNameUtils.itemNamespace(item)) && item.getFoodProperties(new ItemStack(item), null) != null).collect(Collectors.toList());
-    }
+    //private static Iterable<Item> getAllHumanVDFood() {
+        //return BuiltInRegistries.ITEM.stream().filter(item -> VampiresDelight.MODID.equals(VDNameUtils.itemNamespace(item)) && item.getFoodProperties(new ItemStack(item), null) != null).collect(Collectors.toList());
+    //}
 }

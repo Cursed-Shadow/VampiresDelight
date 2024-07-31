@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vampiresdelight:blood_syrup"
+    },
+    {
+      "tag": "c:foods/dough/rice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:blood_dough"
+  }
+}

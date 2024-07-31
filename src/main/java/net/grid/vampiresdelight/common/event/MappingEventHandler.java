@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = VampiresDelight.MODID)
+@EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class MappingEventHandler {
     @SubscribeEvent
     public static void fix(NewRegistryEvent event) {

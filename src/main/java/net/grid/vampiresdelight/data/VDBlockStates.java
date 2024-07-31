@@ -32,7 +32,6 @@ public class VDBlockStates extends BlockStateProvider {
         super(output, VampiresDelight.MODID, existingFileHelper);
     }
 
-
     public ResourceLocation resourceBlock(String path) {
         return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "block/" + path);
     }

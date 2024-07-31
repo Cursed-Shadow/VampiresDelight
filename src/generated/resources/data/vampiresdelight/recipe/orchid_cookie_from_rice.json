@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vampiresdelight:orchid_petals"
+    },
+    {
+      "tag": "c:crops/rice"
+    },
+    {
+      "tag": "c:crops/rice"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "id": "vampiresdelight:orchid_cookie"
+  }
+}

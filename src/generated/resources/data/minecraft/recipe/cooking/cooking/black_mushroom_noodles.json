@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "vampiresdelight:black_mushroom"
+    },
+    {
+      "item": "vampiresdelight:black_mushroom"
+    },
+    {
+      "tag": "c:foods/pasta"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:foods/milk"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:black_mushroom_noodles"
+  }
+}

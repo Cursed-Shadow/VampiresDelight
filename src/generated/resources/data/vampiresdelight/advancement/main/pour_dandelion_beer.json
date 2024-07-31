@@ -1,0 +1,31 @@
+{
+  "parent": "vampiresdelight:main/root",
+  "criteria": {
+    "pour_dandelion_beer": {
+      "conditions": {
+        "item": {
+          "items": "vampiresdelight:dandelion_beer_bottle"
+        }
+      },
+      "trigger": "vampiresdelight:drink_poured"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "vampiresdelight.advancement.pour_dandelion_beer.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "vampiresdelight:dandelion_beer_mug"
+    },
+    "title": {
+      "translate": "vampiresdelight.advancement.pour_dandelion_beer"
+    }
+  },
+  "requirements": [
+    [
+      "pour_dandelion_beer"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:apple"
+    },
+    "i": {
+      "item": "minecraft:ice"
+    },
+    "p": {
+      "tag": "vampirism:pure_blood"
+    },
+    "s": {
+      "item": "minecraft:sweet_berries"
+    },
+    "t": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    " sa",
+    "ips",
+    "ti "
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:pure_sorbet"
+  }
+}

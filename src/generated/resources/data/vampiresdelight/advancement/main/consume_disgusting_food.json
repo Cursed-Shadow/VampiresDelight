@@ -1,0 +1,26 @@
+{
+  "parent": "vampiresdelight:main/root",
+  "criteria": {
+    "disgusting_food": {
+      "trigger": "vampiresdelight:disgusting_food_consumed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "vampiresdelight.advancement.consume_disgusting_food.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "vampirism:human_heart"
+    },
+    "title": {
+      "translate": "vampiresdelight.advancement.consume_disgusting_food"
+    }
+  },
+  "requirements": [
+    [
+      "disgusting_food"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

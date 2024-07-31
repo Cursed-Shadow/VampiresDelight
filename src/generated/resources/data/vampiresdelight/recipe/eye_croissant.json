@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:foods/bread"
+    },
+    {
+      "item": "vampiresdelight:human_eye"
+    },
+    {
+      "item": "vampiresdelight:human_eye"
+    },
+    {
+      "tag": "c:foods/leafy_green"
+    },
+    {
+      "tag": "c:crops/tomato"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:eye_croissant"
+  }
+}

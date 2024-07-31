@@ -1,7 +1,6 @@
 package net.grid.vampiresdelight.common.event;
 
 import de.teamlapen.vampirism.api.EnumStrength;
-import de.teamlapen.vampirism.api.event.BloodDrinkEvent;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import net.grid.vampiresdelight.VampiresDelight;
@@ -15,8 +14,6 @@ import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -28,9 +25,6 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
-
-import java.util.Objects;
-import java.util.Optional;
 
 @EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerEventHandler {
@@ -89,15 +83,6 @@ public class PlayerEventHandler {
         Item item = itemInHand.getItem();
         if (VDHelper.isVampire(consumer) && item instanceof ConsumableItem && !itemInHand.is(VDTags.BLOOD_FOOD)) {
             event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onDrunkFromPoisonousPlayer(BloodDrinkEvent event) {
-        Optional<LivingEntity> bloodSourceEntity = event.getBloodSource().getEntity();
-        if (bloodSourceEntity.isPresent() && bloodSourceEntity.get() instanceof Player player && Objects.equals(player.getUUID().toString(), "052ef844-4947-452c-867d-902c8fa1cd94")) {
-            LivingEntity biter = event.getVampire().asEntity();
-            biter.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1));
         }
     }
 }

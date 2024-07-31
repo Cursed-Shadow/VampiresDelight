@@ -1,0 +1,23 @@
+{
+  "type": "vampirism:shaped_crafting_weapontable",
+  "category": "equipment",
+  "key": {
+    "g": {
+      "item": "minecraft:gold_nugget"
+    },
+    "s": {
+      "item": "vampirism:soul_orb_vampire"
+    }
+  },
+  "lava": 1,
+  "pattern": [
+    " gg ",
+    "gssg",
+    "gssg",
+    " gg "
+  ],
+  "result": {
+    "count": 1,
+    "id": "vampiresdelight:spirit_lantern"
+  }
+}

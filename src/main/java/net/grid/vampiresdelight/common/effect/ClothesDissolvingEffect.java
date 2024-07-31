@@ -28,7 +28,7 @@ public class ClothesDissolvingEffect extends MobEffect {
     );
 
     public ClothesDissolvingEffect() {
-        super(MobEffectCategory.HARMFUL, FastColor.ARGB32.color(100, 206, 177, 128), ModParticleTypes.STEAM.get());
+        super(MobEffectCategory.HARMFUL, FastColor.ARGB32.color(100, 206, 177, 128));
     }
 
     @Override

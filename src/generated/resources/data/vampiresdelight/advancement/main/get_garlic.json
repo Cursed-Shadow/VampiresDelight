@@ -1,0 +1,34 @@
+{
+  "parent": "vampiresdelight:main/root",
+  "criteria": {
+    "garlic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vampirism:garlic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "vampiresdelight.advancement.get_garlic.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "vampiresdelight:wild_garlic"
+    },
+    "title": {
+      "translate": "vampiresdelight.advancement.get_garlic"
+    }
+  },
+  "requirements": [
+    [
+      "garlic"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
