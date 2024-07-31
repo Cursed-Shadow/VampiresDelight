@@ -14,13 +14,14 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class VDRegistrySets extends DatapackBuiltinEntriesProvider {
+public class VDRegistries extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, VDConfiguredFeatures::createConfiguredFeatures)
             .add(Registries.PLACED_FEATURE, VDPlacedFeatures::createPlacedFeatures)
-            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, VDBiomeModifiers::createBiomeModifiers);
+            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, VDBiomeModifiers::createBiomeModifiers)
+            .add(Registries.ENCHANTMENT, VDEnchantments::createEnchantments);
 
-    public VDRegistrySets(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public VDRegistries(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(VampiresDelight.MODID));
     }
 }

@@ -2,7 +2,7 @@ package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
-import de.teamlapen.vampirism.core.ModEffects;
+import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.common.constants.VDFoodValues;
 import net.grid.vampiresdelight.common.utility.*;
 import net.minecraft.world.entity.LivingEntity;
@@ -63,7 +63,7 @@ public class HunterConsumableItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity consumer) {
         if (!level.isClientSide) {
             if (containsGarlic) {
-                VDEntityUtils.cureEffect(ModEffects.SANGUINARE.get(), consumer);
+                consumer.removeEffectsCuredBy(ModItems.GARLIC_CURE);
             }
 
             if (features != null) {

@@ -5,13 +5,14 @@ import de.teamlapen.vampirism.sit.SitUtil;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -30,8 +31,8 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -39,12 +40,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("deprecation")
@@ -59,14 +57,14 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        BlockState blockAbove = pLevel.getBlockState(pPos.above());
-        if (isClickedOnSeat(pPos, pHit) && (blockAbove.isAir() || blockAbove.is(BlockTags.BUTTONS) || blockAbove.is(BlockTags.TRAPDOORS) || blockAbove.is(Blocks.END_ROD))) {
-            startSitting(pPlayer, pLevel, pPos, 0.75);
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        BlockState blockAbove = level.getBlockState(pos.above());
+        if (isClickedOnSeat(pos, hitResult) && (blockAbove.isAir() || blockAbove.is(BlockTags.BUTTONS) || blockAbove.is(BlockTags.TRAPDOORS) || blockAbove.is(Blocks.END_ROD))) {
+            startSitting(player, level, pos, 0.75);
             return InteractionResult.SUCCESS;
         }
 
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
     private static boolean isClickedOnSeat(BlockPos pPos, BlockHitResult pHit) {
@@ -90,7 +88,7 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     private static boolean isPlayerInRange(@NotNull Player pPlayer, BlockPos pPos) {
         Vec3 playerPos = pPlayer.position();
         Vec3 blockPos = new Vec3(pPos.getX(), pPos.getY(), pPos.getZ());
-        AttributeInstance blockReach = pPlayer.getAttribute(ForgeMod.BLOCK_REACH.get());
+        AttributeInstance blockReach = pPlayer.getAttribute(Attributes.BLOCK_INTERACTION_RANGE);
         double blockReachDistance = (blockReach == null) ? 4.5D : blockReach.getValue();
 
         blockPos = blockPos.add(0.5D, 0.5D, 0.5D);
@@ -161,13 +159,13 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
 
     @Override
-    public @Nullable BlockPathTypes getBlockPathType(BlockState state, BlockGetter level, BlockPos pos, @Nullable Mob mob) {
-        return BlockPathTypes.RAIL;
+    public @Nullable PathType getAdjacentBlockPathType(BlockState state, BlockGetter level, BlockPos pos, @Nullable Mob mob, PathType originalType) {
+        return PathType.FENCE;
     }
 
     @Override
@@ -176,6 +174,6 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public static Iterable<Block> getBarStoolBlocks() {
-        return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block) != null && VampiresDelight.MODID.equals(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)).getNamespace()) && block instanceof BarStoolBlock).collect(Collectors.toList());
+        return BuiltInRegistries.BLOCK.stream().filter(block -> VampiresDelight.MODID.equals(BuiltInRegistries.BLOCK.getKey(block).getNamespace()) && block instanceof BarStoolBlock).collect(Collectors.toList());
     }
 }

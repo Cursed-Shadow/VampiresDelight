@@ -91,6 +91,13 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.COOKED_BAT.get())
                 .add(VDItems.COOKED_BAT_CHOPS.get())
                 .add(VDItems.BAT_TACO.get());
+        tag(VDTags.VAMPIRE_BITE_ENCHANTABLE)
+                .add(ModItems.HEART_SEEKER_NORMAL.get())
+                .add(ModItems.HEART_SEEKER_ENHANCED.get())
+                .add(ModItems.HEART_SEEKER_ULTIMATE.get())
+                .add(ModItems.HEART_STRIKER_NORMAL.get())
+                .add(ModItems.HEART_STRIKER_ENHANCED.get())
+                .add(ModItems.HEART_STRIKER_ULTIMATE.get());
         tag(VDTags.WINE_SHELF_BOTTLES)
                 .addTag(VDTags.BEER_BOTTLES)
                 .addTag(VDTags.WINE_BOTTLES);
@@ -107,6 +114,12 @@ public class VDItemTags extends ItemTagsProvider {
     }
 
     private void registerFarmersDelightTags() {
+        tag(ModTags.KNIFE_ENCHANTABLE)
+                .add(ModItems.HUNTER_AXE_NORMAL.get())
+                .add(ModItems.HUNTER_AXE_ENHANCED.get())
+                .add(ModItems.HUNTER_AXE_ULTIMATE.get())
+                .add(ModItems.STAKE.get());
+
         tag(ModTags.KNIVES)
                 .add(VDItems.SILVER_KNIFE.get());
 

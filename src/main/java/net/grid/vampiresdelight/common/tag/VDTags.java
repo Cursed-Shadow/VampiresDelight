@@ -11,7 +11,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class VDTags {
-    // Items
+
+    // --Items--
 
     // Human food which must give the same nutrition to vampires. Doesn't make hunter food vampire-friendly, though.
     // Used for compatibility in external mods and data pack. Empty by default.
@@ -25,12 +26,15 @@ public class VDTags {
     // Food that shouldn't be marked as rotten in AppleSkin food tooltip.
     public static final TagKey<Item> NOT_ROTTEN_FOOD = modItemTag("not_rotten_food");
 
+    // Items which are compatible with the Vampire Bite enchantment.
+    public static final TagKey<Item> VAMPIRE_BITE_ENCHANTABLE = modItemTag("enchantable/vampire_bite");
+
     // Bottle items that can be placed on Wine Shelves.
     public static final TagKey<Item> WINE_SHELF_BOTTLES = modItemTag("wine_shelf_bottles");
     public static final TagKey<Item> BEER_BOTTLES = modItemTag("beer_bottles");
     public static final TagKey<Item> WINE_BOTTLES = modItemTag("wine_bottles");
 
-    // Blocks
+    // --Blocks--
 
     // All Wine Shelves (for advancements).
     public static final TagKey<Block> WINE_SHELF = modBlockTag("wine_shelf");
@@ -41,7 +45,10 @@ public class VDTags {
     // Blocks black mushroom can grow on.
     public static final TagKey<Block> BLACK_MUSHROOM_GROW_BLOCK = modBlockTag("black_mushroom_grow_block");
 
-    // Biomes
+    // Blocks that can be booster by bloody soil
+    public static final TagKey<Block> CURSED_PLANTS = modBlockTag("cursed_plants");
+
+    // --Biomes--
 
     // Biomes lost carriage spawns in.
     public static final TagKey<Biome> HAS_LOST_CARRIAGE = modBiomeTag("has_structure/lost_carriage");

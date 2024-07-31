@@ -8,9 +8,4 @@ public class FogVisionEffect extends MobEffect {
     public FogVisionEffect() {
         super(MobEffectCategory.BENEFICIAL, FastColor.ARGB32.color(100, 135, 105, 150));
     }
-
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
-    }
 }

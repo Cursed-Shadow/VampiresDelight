@@ -10,6 +10,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BloodySoilFarmlandBlock extends CursedFarmlandBlock {
@@ -17,17 +18,14 @@ public class BloodySoilFarmlandBlock extends CursedFarmlandBlock {
         super(properties);
     }
 
-    private static boolean hasWater(LevelReader level, BlockPos pos) {
-        for (BlockPos nearbyPos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
-            if (level.getFluidState(nearbyPos).is(FluidTags.WATER)) {
-                return true;
-            }
-        }
-        return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(level, pos);
-    }
-
     public static void turnToBloodySoil(BlockState state, Level level, BlockPos pos) {
         level.setBlockAndUpdate(pos, pushEntitiesUp(state, VDBlocks.BLOODY_SOIL.get().defaultBlockState(), level, pos));
+    }
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState aboveState = level.getBlockState(pos.above());
+        return super.canSurvive(state, level, pos) || aboveState.getBlock().equals(Blocks.MELON) || aboveState.getBlock().equals(Blocks.PUMPKIN);
     }
 
     @Override
@@ -48,7 +46,7 @@ public class BloodySoilFarmlandBlock extends CursedFarmlandBlock {
     @Override
     public void randomTick(BlockState blockState, ServerLevel worldIn, BlockPos pos, RandomSource randomSource) {
         int moisture = blockState.getValue(MOISTURE);
-        if (!hasWater(worldIn, pos) && !worldIn.isRainingAt(pos.above())) {
+        if (!isNearWater(worldIn, pos) && !worldIn.isRainingAt(pos.above())) {
             if (moisture > 0) {
                 worldIn.setBlock(pos, blockState.setValue(MOISTURE, moisture - 1), 2);
             }

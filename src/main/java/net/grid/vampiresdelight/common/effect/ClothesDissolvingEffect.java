@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.common.effect;
 import com.google.common.collect.ImmutableSet;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.minecraft.core.Holder;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.effect.MobEffect;
@@ -14,12 +15,13 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.registry.ModParticleTypes;
 
 public class ClothesDissolvingEffect extends MobEffect {
-    private static final ImmutableSet<ArmorMaterial> FULLY_BREAKABLE_ARMOR = ImmutableSet.of(
+    private static final ImmutableSet<Holder<ArmorMaterial>> FULLY_BREAKABLE_ARMOR = ImmutableSet.of(
             ArmorMaterials.LEATHER,
             ArmorMaterials.CHAIN,
             ArmorMaterials.GOLD
@@ -30,7 +32,7 @@ public class ClothesDissolvingEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
+    public boolean applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
         ItemStack[] armor = new ItemStack[] {
                 livingEntity.getItemBySlot(EquipmentSlot.HEAD),
                 livingEntity.getItemBySlot(EquipmentSlot.CHEST),
@@ -39,7 +41,7 @@ public class ClothesDissolvingEffect extends MobEffect {
         };
 
         for (ItemStack stack : armor) {
-            int damagePerTick = getDamagePerTick(stack);
+            int damagePerTick = getDamagePerTick(stack, livingEntity);
             int durability = stack.getMaxDamage() - stack.getDamageValue();
 
             if (damagePerTick < durability)
@@ -58,31 +60,28 @@ public class ClothesDissolvingEffect extends MobEffect {
 
         VDEntityUtils.spawnParticlesAroundEntity(ModParticleTypes.STEAM.get(), livingEntity,
                 livingEntity.getRandom().nextInt(3, 8), 0.015D, -0.5D);
+
+        return true;
     }
 
-    public int getDamagePerTick(ItemStack stack) {
+    public int getDamagePerTick(ItemStack stack, LivingEntity livingEntity) {
         int maxDamage = stack.getMaxDamage();
         int damageDivider = 90;
 
         if (stack.getItem() instanceof ArmorItem armorItem) {
             damageDivider = (FULLY_BREAKABLE_ARMOR.contains(armorItem.getMaterial()) && VDConfiguration.ARMOR_DISSOLVES_FULLY.get()) ? 15 : 80;
 
-            if (armorItem.getAllEnchantments(stack).containsKey(Enchantments.UNBREAKING)) {
-                int level = armorItem.getAllEnchantments(stack).get(Enchantments.UNBREAKING);
-                damageDivider += ((damageDivider / 2) * level);
-            }
+            Holder<Enchantment> unbreaking = livingEntity.level().registryAccess().holderOrThrow(Enchantments.UNBREAKING);
+            int enchantmentLevel = stack.getEnchantmentLevel(unbreaking);
+            damageDivider += ((damageDivider / 2) * enchantmentLevel);
         }
 
         return maxDamage / damageDivider;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        int j = 15 >> amplifier;
-        if (j > 0) {
-            return duration % j == 0;
-        } else {
-            return true;
-        }
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
+        int i = 15 >> amplifier;
+        return i == 0 || duration % i == 0;
     }
 }

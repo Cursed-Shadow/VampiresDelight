@@ -118,7 +118,7 @@ public class VDBlocks {
 
     // Wild Crops
     public static final DeferredBlock<WildGarlicBlock> WILD_GARLIC = BLOCKS.register("wild_garlic",
-            () -> new WildGarlicBlock(MobEffects.BLINDNESS.value(), 8, Block.Properties.ofFullCopy(Blocks.TALL_GRASS)));
+            () -> new WildGarlicBlock(MobEffects.BLINDNESS, 8, Block.Properties.ofFullCopy(Blocks.TALL_GRASS)));
 
     // Crops
     public static final DeferredBlock<VampireOrchidCropBlock> VAMPIRE_ORCHID_CROP = BLOCKS.register("vampire_orchid_crop",

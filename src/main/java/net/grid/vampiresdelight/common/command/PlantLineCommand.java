@@ -10,19 +10,19 @@ import net.minecraft.commands.arguments.blocks.BlockStateArgument;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.stream.Stream;
 
 public class PlantLineCommand extends BasicCommand {
+    /*
     public static ArgumentBuilder<CommandSourceStack, ?> register(CommandBuildContext buildContext) {
         return Commands.literal("spawnPlantLine")
                 .requires(context -> context.hasPermission(PERMISSION_LEVEL_CHEAT))
@@ -35,7 +35,7 @@ public class PlantLineCommand extends BasicCommand {
         ServerLevel level = source.getLevel();
         BlockState soilBlock = state.getState();
 
-        Stream<Block> plantBlocks = ForgeRegistries.BLOCKS.getValues().stream();
+        Stream<Block> plantBlocks = BuiltInRegistries.BLOCK.stream();
         // All plants that can grow on soil block
         List<BlockState> plants = plantBlocks.map(Block::defaultBlockState).filter(blockState -> blockState.getBlock() instanceof IPlantable iPlantable && soilBlock.canSustainPlant(level, pos, Direction.NORTH, iPlantable)).toList();
 
@@ -56,4 +56,5 @@ public class PlantLineCommand extends BasicCommand {
 
         return 0;
     }
+     */
 }

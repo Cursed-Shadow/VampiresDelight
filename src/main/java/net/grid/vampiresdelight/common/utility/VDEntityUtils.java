@@ -1,15 +1,15 @@
 package net.grid.vampiresdelight.common.utility;
 
-import com.mojang.datafixers.util.Pair;
 import de.teamlapen.vampirism.api.EnumStrength;
+import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import de.teamlapen.vampirism.util.DamageHandler;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +17,8 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.List;
 
 public class VDEntityUtils {
     public static void addFoodEffects(FoodProperties foodProperties, Level level, LivingEntity entity) {
@@ -48,7 +50,7 @@ public class VDEntityUtils {
         if (foodProperties != null) {
             FoodProperties bloodFoodProperties = VDHelper.isVampire(consumer) ? foodProperties : new FoodProperties.Builder().nutrition(0).saturationModifier(0).build();
             if (consumer instanceof Player player) {
-                VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(bloodFoodProperties.nutrition(), bloodFoodProperties.saturation(), new DrinkBloodContext(stack)));
+                VampirePlayer.get(player).drinkBlood(bloodFoodProperties.nutrition(), bloodFoodProperties.saturation(), new DrinkBloodContext(stack));
             }
             if (consumer instanceof IVampire) {
                 ((IVampire) consumer).drinkBlood(bloodFoodProperties.nutrition(), bloodFoodProperties.saturation(), new DrinkBloodContext(stack));
@@ -57,13 +59,26 @@ public class VDEntityUtils {
         }
     }
 
+    public static void consumeFeastBite(FoodProperties foodProperties, ItemStack stack, Level level, Player player) {
+        if (foodProperties != null) {
+            VampirePlayer.get(player).drinkBlood(foodProperties.nutrition(), foodProperties.saturation(), new DrinkBloodContext(stack));
+
+            if (player instanceof IVampire) {
+                ((IVampire) player).drinkBlood(foodProperties.nutrition(), foodProperties.saturation(), new DrinkBloodContext(stack));
+            } else if (!VDHelper.isVampire(player))
+                player.eat(level, stack);
+
+            if (VDHelper.isVampire(player)) {
+                VDEntityUtils.addFoodEffects(foodProperties, level, player);
+            }
+        }
+    }
+
     public static boolean hasPoison(FoodProperties foodProperties) {
         if (foodProperties != null) {
-            for (Pair<MobEffectInstance, Float> effect : foodProperties.getEffects()) {
-                if (effect.getFirst() != null) {
-                    effect.getFirst().getEffect();
-                    if (effect.getFirst().getEffect() == MobEffects.POISON)
-                        return true;
+            for (FoodProperties.PossibleEffect effect : foodProperties.effects()) {
+                if (effect.effect().getEffect() == MobEffects.POISON) {
+                    return true;
                 }
             }
         }
@@ -71,14 +86,14 @@ public class VDEntityUtils {
         return false;
     }
 
-    public static void cureEffect(MobEffect mobEffect, LivingEntity entity) {
+    public static void cureEffect(Holder<MobEffect> mobEffect, LivingEntity entity) {
         if (entity.hasEffect(mobEffect)){
             entity.removeEffect(mobEffect);
         }
     }
 
-    public static void cureEffects(LivingEntity entity, MobEffect... mobEffects) {
-        for (MobEffect effect : mobEffects) {
+    public static void cureEffects(LivingEntity entity, List<Holder<MobEffect>> mobEffects) {
+        for (Holder<MobEffect> effect : mobEffects) {
             if (entity.hasEffect(effect)) {
                 entity.removeEffect(effect);
             }
@@ -97,10 +112,10 @@ public class VDEntityUtils {
     }
 
     public static void affectVampireEntityWithGarlic(LivingEntity livingEntity, EnumStrength strength) {
-        if (livingEntity instanceof IVampire) {
+        if (livingEntity instanceof Player) {
+            VReference.VAMPIRE_FACTION.getPlayerCapability((Player) livingEntity).ifPresent(vamp -> DamageHandler.affectVampireGarlicDirect(vamp, strength));
+        } else if (livingEntity instanceof IVampire) {
             DamageHandler.affectVampireGarlicDirect((IVampire) livingEntity, strength);
-        } else if (livingEntity instanceof Player player) {
-            VampirePlayer.getOpt(player).ifPresent(vampire -> DamageHandler.affectVampireGarlicDirect(vampire, strength));
         }
     }
 

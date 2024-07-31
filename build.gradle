@@ -80,9 +80,15 @@ repositories {
     }
 
     // For Farmer's Delight and others
-    // It used to be Cursemaven, but I didn't manage to make it to work in 1.21
-    maven {
-        url = "https://api.modrinth.com/maven"
+    exclusiveContent {
+        forRepository {
+            maven {
+                url "https://cursemaven.com"
+            }
+        }
+        filter {
+            includeGroup "curse.maven"
+        }
     }
 
     // AppleSkin
@@ -104,7 +110,7 @@ repositories {
 }
 
 dependencies {
-    implementation "maven.modrinth:farmers-delight:${farmersdelight_version}"
+    implementation "curse.maven:farmers-delight-398521:${farmersdelight_version}"
     implementation "de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}"
 
     // AppleSkin
@@ -114,14 +120,14 @@ dependencies {
         runtimeOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}"
 
     // JEI
-    compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
 
-    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     // Werewolves
-    if (include_werewolves.toBoolean())
-        runtimeOnly("maven.modrinth:werewolves:${minecraft_version}-${werewolves_version}")
+    //if (include_werewolves.toBoolean())
+        //runtimeOnly("maven.modrinth:werewolves:${minecraft_version}-${werewolves_version}")
 }
 
 tasks.withType(ProcessResources).configureEach {

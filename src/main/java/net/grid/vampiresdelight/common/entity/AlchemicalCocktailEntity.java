@@ -9,8 +9,6 @@ import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
@@ -24,7 +22,6 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
@@ -40,10 +37,6 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         super(VDEntityTypes.ALCHEMICAL_COCKTAIL.get(), entity, level);
     }
 
-    public AlchemicalCocktailEntity(Level level, double x, double y, double z) {
-        super(VDEntityTypes.ALCHEMICAL_COCKTAIL.get(), x, y, z, level);
-    }
-
     @Override
     protected Item getDefaultItem() {
         return VDItems.ALCHEMICAL_COCKTAIL.get();
@@ -54,7 +47,7 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         super.onHitEntity(result);
         Entity entity = result.getEntity();
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), 0);
-        entity.setSecondsOnFire(16);
+        entity.igniteForSeconds(16);
         setOnFire(result);
         playLandingSound();
     }
@@ -116,12 +109,7 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    @Override
-    protected float getGravity() {
-        return 0.1F;
+    protected double getDefaultGravity() {
+        return 0.1;
     }
 }

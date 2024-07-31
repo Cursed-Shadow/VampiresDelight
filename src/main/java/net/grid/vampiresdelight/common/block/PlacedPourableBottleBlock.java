@@ -15,6 +15,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -41,7 +42,6 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-@SuppressWarnings("deprecation")
 public class PlacedPourableBottleBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final IntegerProperty SERVINGS = IntegerProperty.create("servings", 0, 64);
@@ -54,7 +54,7 @@ public class PlacedPourableBottleBlock extends Block implements SimpleWaterlogge
     private final VoxelShape shape;
 
     public PlacedPourableBottleBlock(MapColor mapColor, Supplier<PourableBottleItem> bottleItem, VoxelShape shape) {
-        super(Block.Properties.copy(Blocks.GLASS).mapColor(mapColor).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY));
+        super(Block.Properties.ofFullCopy(Blocks.GLASS).mapColor(mapColor).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY));
         this.bottleItem = bottleItem;
         this.shape = shape;
 
@@ -73,21 +73,19 @@ public class PlacedPourableBottleBlock extends Block implements SimpleWaterlogge
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (!pLevel.isClientSide && pPlayer.isCrouching()){
-            ItemStack itemStack = getBottleStack(pState);
-            if (pPlayer.getItemInHand(pHand).isEmpty()) {
-                pPlayer.setItemInHand(InteractionHand.MAIN_HAND, itemStack);
-            } else {
-                popResource(pLevel, pPos, itemStack);
-            }
-            pLevel.playSound(null, pPos, pState.getBlock().getSoundType(pState, pLevel, pPos, pPlayer).getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
-            pLevel.removeBlock(pPos, false);
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (!level.isClientSide && player.isCrouching()){
+            ItemStack itemStack = getBottleStack(state);
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+                player.setItemInHand(InteractionHand.MAIN_HAND, itemStack);
+                level.playSound(null, pos, state.getBlock().getSoundType(state, level, pos, player).getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.removeBlock(pos, false);
 
-            return InteractionResult.SUCCESS;
+                return InteractionResult.SUCCESS;
+            }
         }
 
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
     @Override
@@ -96,7 +94,7 @@ public class PlacedPourableBottleBlock extends Block implements SimpleWaterlogge
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         return getBottleStack(state);
     }
 
@@ -116,7 +114,7 @@ public class PlacedPourableBottleBlock extends Block implements SimpleWaterlogge
     }
 
     @Override
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
 

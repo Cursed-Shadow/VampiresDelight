@@ -1,10 +1,6 @@
 package net.grid.vampiresdelight.common.block;
 
-import de.teamlapen.vampirism.api.entity.vampire.IVampire;
-import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
-import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -12,6 +8,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -38,31 +35,32 @@ public class ConsumableCakeBlock extends CakeBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        Item item = itemstack.getItem();
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        Item item = stack.getItem();
 
-        if (itemstack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
+        if (stack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
             Block block = Block.byItem(item);
             if (block instanceof CandleBlock && ConsumableCandleCakeBlock.hasCandle(block, this)) {
-                if (!player.isCreative()) {
-                    itemstack.shrink(1);
-                }
-
+                stack.consume(1, player);
                 level.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.setBlockAndUpdate(pos, ConsumableCandleCakeBlock.byCandle(block, this));
                 level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
                 player.awardStat(Stats.ITEM_USED.get(item));
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.SUCCESS;
             }
         }
 
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (level.isClientSide) {
-            if (consumeBite(level, pos, state, player).consumesAction()) {
+            if (eat(level, pos, state, player).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
 
-            if (itemstack.isEmpty()) {
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
                 return InteractionResult.CONSUME;
             }
         }
@@ -78,20 +76,7 @@ public class ConsumableCakeBlock extends CakeBlock {
 
             ItemStack sliceStack = this.getCakeSlice();
             FoodProperties foodProperties = sliceStack.getFoodProperties(player);
-
-            if (foodProperties != null) {
-                // Don't shrink stack before retrieving food
-                VampirePlayer.getOpt(player).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack)));
-
-                if (player instanceof IVampire) {
-                    ((IVampire) player).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(sliceStack));
-                } else if (!VDHelper.isVampire(player))
-                    player.eat(level, sliceStack);
-
-                if (VDHelper.isVampire(player)) {
-                    VDEntityUtils.addFoodEffects(foodProperties, level, player);
-                }
-            }
+            VDEntityUtils.consumeFeastBite(foodProperties, sliceStack, level, player);
 
             int i = state.getValue(BITES);
             level.gameEvent(player, GameEvent.EAT, pos);

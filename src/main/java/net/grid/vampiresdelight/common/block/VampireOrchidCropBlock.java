@@ -1,16 +1,10 @@
 package net.grid.vampiresdelight.common.block;
 
 import de.teamlapen.vampirism.core.ModBlocks;
-import de.teamlapen.vampirism.world.VampirismWorld;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
-import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,10 +13,9 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.PlantType;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("deprecation")
+// TODO: Use SpecialPlantable to make sure it can only grow on cursed and bloody farmland
 public class VampireOrchidCropBlock extends CropBlock {
     public VampireOrchidCropBlock(Properties properties) {
         super(properties);
@@ -33,7 +26,6 @@ public class VampireOrchidCropBlock extends CropBlock {
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D),
             Block.box(5.0D,0.0D, 5.0D, 11.0D, 10.0D, 11.00)};
-    private static final int BONEMEAL_INCREASE = 1;
 
     @Override
     public int getMaxAge() {
@@ -45,15 +37,53 @@ public class VampireOrchidCropBlock extends CropBlock {
     }
 
     @Override
+    protected boolean mayPlaceOn(BlockState blockState, BlockGetter block, BlockPos pos) {
+        return blockState.is(VDBlocks.CURSED_FARMLAND.get()) || blockState.is(VDBlocks.BLOODY_SOIL_FARMLAND.get());
+    }
+
+    @Override
+    protected @NotNull ItemLike getBaseSeedId() {
+        return VDItems.ORCHID_SEEDS.get();
+    }
+
+    @Override
+    public @NotNull IntegerProperty getAgeProperty() {
+        return AGE;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateDefinition) {
+        stateDefinition.add(AGE);
+    }
+
+    @Override
+    protected int getBonemealAgeIncrease(Level worldIn) {
+        return 1;
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
+        return SHAPE_BY_AGE[this.getAge(blockState)];
+    }
+
+    /*
+    @Override
+    public PlantType getPlantType(BlockGetter world, BlockPos pos) {
+        return VDHelper.CURSED_PLANT_TYPE;
+    }
+
+    // TODO: Replace light check here with SpecialPlantable
+
+    @Override
     public void randomTick(BlockState blockState, ServerLevel worldIn, BlockPos pos, RandomSource randomSource) {
         if (!worldIn.isAreaLoaded(pos, 1)) return;
         if (worldIn.getRawBrightness(pos, 0) <= 12 || isPosInArtificalVampireFogArea(pos, worldIn) || VDHelper.isPosInVampireBiome(pos, worldIn)) {
             int i = this.getAge(blockState);
             if (i < this.getMaxAge()) {
                 float f = getGrowthSpeed(this, worldIn, pos);
-                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, blockState, randomSource.nextInt((int)(25.0F / f) + 1) == 0)) {
+                if (CommonHooks.onCropsGrowPre(worldIn, pos, blockState, randomSource.nextInt((int)(25.0F / f) + 1) == 0)) {
                     worldIn.setBlock(pos, this.getStateForAge(i + 1), 2);
-                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, blockState);
+                    CommonHooks.fireCropGrowPost(worldIn, pos, blockState);
                 }
             }
         }
@@ -105,39 +135,5 @@ public class VampireOrchidCropBlock extends CropBlock {
 
         return speed;
     }
-
-    @Override
-    protected boolean mayPlaceOn(BlockState blockState, BlockGetter block, BlockPos pos) {
-        return blockState.is(VDBlocks.CURSED_FARMLAND.get()) || blockState.is(VDBlocks.BLOODY_SOIL_FARMLAND.get());
-    }
-
-    @Override
-    protected @NotNull ItemLike getBaseSeedId() {
-        return VDItems.ORCHID_SEEDS.get();
-    }
-
-    @Override
-    public @NotNull IntegerProperty getAgeProperty() {
-        return AGE;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateDefinition) {
-        stateDefinition.add(AGE);
-    }
-
-    @Override
-    public PlantType getPlantType(BlockGetter world, BlockPos pos) {
-        return VDHelper.CURSED_PLANT_TYPE;
-    }
-
-    @Override
-    protected int getBonemealAgeIncrease(Level worldIn) {
-        return BONEMEAL_INCREASE;
-    }
-
-    @Override
-    public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
-        return SHAPE_BY_AGE[this.getAge(blockState)];
-    }
+     */
 }

@@ -5,12 +5,16 @@ import net.grid.vampiresdelight.common.block.WineShelfBlock;
 import net.grid.vampiresdelight.common.registry.VDBlockEntityTypes;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -20,6 +24,7 @@ import org.slf4j.Logger;
 import java.util.Objects;
 import java.util.function.Predicate;
 
+@SuppressWarnings("deprecation")
 public class WineShelfBlockEntity extends BlockEntity implements Container {
     private static final Logger LOGGER = LogUtils.getLogger();
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
@@ -46,15 +51,17 @@ public class WineShelfBlockEntity extends BlockEntity implements Container {
     }
 
     @Override
-    public void load(@NotNull CompoundTag tag) {
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         this.items.clear();
-        ContainerHelper.loadAllItems(tag, this.items);
+        ContainerHelper.loadAllItems(tag, this.items, registries);
         this.lastInteractedSlot = tag.getInt("last_interacted_slot");
     }
 
     @Override
-    protected void saveAdditional(@NotNull CompoundTag tag) {
-        ContainerHelper.saveAllItems(tag, this.items, true);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        ContainerHelper.saveAllItems(tag, this.items, true, registries);
         tag.putInt("last_interacted_slot", this.lastInteractedSlot);
     }
 
@@ -107,14 +114,9 @@ public class WineShelfBlockEntity extends BlockEntity implements Container {
     }
 
     @Override
-    public boolean canTakeItem(Container target, int index, @NotNull ItemStack stack) {
-        return target.hasAnyMatching((matchStack) -> {
-            if (matchStack.isEmpty()) {
-                return true;
-            } else {
-                return ItemStack.isSameItemSameTags(stack, matchStack) && matchStack.getCount() + stack.getCount() <= Math.min(matchStack.getMaxStackSize(), target.getMaxStackSize());
-            }
-        });
+    public boolean canTakeItem(Container target, int slot, ItemStack stack) {
+        return target.hasAnyMatching((matchStack) ->
+                matchStack.isEmpty() || ItemStack.isSameItemSameComponents(stack, matchStack) && matchStack.getCount() + stack.getCount() <= target.getMaxStackSize(matchStack));
     }
 
     @Override
@@ -136,28 +138,20 @@ public class WineShelfBlockEntity extends BlockEntity implements Container {
         return this.lastInteractedSlot;
     }
 
-    private net.minecraftforge.common.util.LazyOptional<?> itemHandler = net.minecraftforge.common.util.LazyOptional.of(this::createUnSidedHandler);
-
-    protected net.minecraftforge.items.IItemHandler createUnSidedHandler() {
-        return new net.minecraftforge.items.wrapper.InvWrapper(this);
+    @Override
+    protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        componentInput.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyInto(this.items);
     }
 
     @Override
-    public <T> net.minecraftforge.common.util.@NotNull LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.@NotNull Capability<T> cap, @org.jetbrains.annotations.Nullable net.minecraft.core.Direction side) {
-        if (!this.remove && cap == net.minecraftforge.common.capabilities.ForgeCapabilities.ITEM_HANDLER)
-            return itemHandler.cast();
-        return super.getCapability(cap, side);
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(this.items));
     }
 
     @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        itemHandler.invalidate();
-    }
-
-    @Override
-    public void reviveCaps() {
-        super.reviveCaps();
-        itemHandler = net.minecraftforge.common.util.LazyOptional.of(this::createUnSidedHandler);
+    public void removeComponentsFromTag(CompoundTag tag) {
+        tag.remove("Items");
     }
 }

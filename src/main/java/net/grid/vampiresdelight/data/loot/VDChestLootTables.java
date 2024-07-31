@@ -1,13 +1,15 @@
 package net.grid.vampiresdelight.data.loot;
 
 import de.teamlapen.vampirism.core.ModBlocks;
-import net.grid.vampiresdelight.common.registry.VDEnchantments;
+import net.grid.vampiresdelight.data.VDEnchantments;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDLootTables;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
@@ -96,10 +98,11 @@ public class VDChestLootTables implements LootTableSubProvider {
         );
     }
 
-    public static LootPool.Builder vampiresBiteBookLoot(int bookWeight, int emptyWeight) {
+    public LootPool.Builder vampiresBiteBookLoot(int bookWeight, int emptyWeight) {
+        HolderLookup.RegistryLookup<Enchantment> lookup = this.provider.lookupOrThrow(Registries.ENCHANTMENT);
         return LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(Items.BOOK).setWeight(bookWeight)
-                        .apply((new EnchantRandomlyFunction.Builder()).withEnchantment(VDEnchantments.VAMPIRE_BITE.get())))
+                        .apply((new EnchantRandomlyFunction.Builder()).withEnchantment(lookup.getOrThrow(VDEnchantments.VAMPIRE_BITE))))
                 .add(EmptyLootItem.emptyItem().setWeight(emptyWeight));
     }
 }

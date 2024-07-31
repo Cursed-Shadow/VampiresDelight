@@ -30,12 +30,15 @@ public class BlessingEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
-        if (!VDHelper.isVampire(entity)) {
-            resistUnholySpirits(entity.level(), entity.getX(), entity.getY(), entity.getZ(), amplifier);
-        } else {
-            entity.removeEffect(VDEffects.BLESSING.get());
+    public boolean applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
+        if (VDHelper.isVampire(entity)) {
+            entity.removeEffect(VDEffects.BLESSING);
+            return false;
         }
+
+        resistUnholySpirits(entity.level(), entity.getX(), entity.getY(), entity.getZ(), amplifier);
+
+        return true;
     }
 
     public static void resistUnholySpirits(final LevelAccessor world, final double x, final double y, final double z, int amplifier) {
@@ -49,7 +52,7 @@ public class BlessingEffect extends MobEffect {
             double entityZ = livingEntity.getZ();
 
             if (livingEntity instanceof Phantom || (livingEntity instanceof GhostEntity && VDConfiguration.BLESSING_HELPS_AGAINST_GHOSTS.get())) {
-                if (!livingEntity.getEntityData().isEmpty()) {
+                //if (!livingEntity.getEntityData().isEmpty()) {
                     livingEntity.remove(Entity.RemovalReason.DISCARDED);
 
                     Level level = (Level) world;
@@ -60,13 +63,8 @@ public class BlessingEffect extends MobEffect {
                             livingEntity.getRandom().nextInt(4, 10);
 
                     VDEntityUtils.spawnBlessingParticlesAroundEntity(VDParticleTypes.BLESSING.get(), livingEntity, amount);
-                }
+                //}
             }
         }
-    }
-
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
     }
 }

@@ -36,7 +36,6 @@ public class VDConfiguration {
     public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
     public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
     public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_3;
-    public static final ModConfigSpec.BooleanValue DISABLE_VAMPIRE_BITE;
 
     public static final String CATEGORY_WORLD = "world";
     public static final ModConfigSpec.BooleanValue GENERATE_VD_CHEST_LOOT;
@@ -105,13 +104,11 @@ public class VDConfiguration {
         VAMPIRE_BITE_MAX_HEALING_VALUE = COMMON_BUILDER.comment("What should be the maximum amount of hearts that Vampire Bite enchantment should heal?")
                 .defineInRange("vampireBiteMaxHealingValue", 1.5, 0.5, 10.0);
         VAMPIRE_BITE_HEALING_CHANCE_1 = COMMON_BUILDER.comment("With what chance should Vampire Bite enchantment regenerate health?")
-                .defineInRange("vampireBiteChanceLevel1", 20, 1, 100);
+                .defineInRange("vampireBiteChanceLevel1", 25, 1, 100);
         VAMPIRE_BITE_HEALING_CHANCE_2 = COMMON_BUILDER
-                .defineInRange("vampireBiteChanceLevel2", 25, 1, 100);
+                .defineInRange("vampireBiteChanceLevel2", 30, 1, 100);
         VAMPIRE_BITE_HEALING_CHANCE_3 = COMMON_BUILDER
-                .defineInRange("vampireBiteChanceLevel3", 30, 1, 100);
-        DISABLE_VAMPIRE_BITE = COMMON_BUILDER.comment("Should Vampire Bite enchantment be disabled?").comment("It won't be removed from the game, but it'll be impossible to apply it to tools and it won't heal the player.")
-                .define("disableVampireBite", false);
+                .defineInRange("vampireBiteChanceLevel3", 35, 1, 100);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("World generation").push(CATEGORY_WORLD);

@@ -7,6 +7,8 @@
 - Tooltips modified and added:
   - **Spirit Lantern**'s tooltip is now hidden in order to save space on screen. Hold shift to view it;
   - **Dandelion Beer Bottle** and **Blood Wine Bottle** now have a tooltip explaining how to pour drinks. Hold shift to view it;
+- Old configs removed:
+  - `disableVampireBite`;
 
 ## 0.1.7
 

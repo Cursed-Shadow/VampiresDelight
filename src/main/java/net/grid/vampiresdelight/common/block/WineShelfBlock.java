@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.common.block;
 
+import com.mojang.serialization.MapCodec;
 import de.teamlapen.lib.lib.util.UtilLib;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.entity.WineShelfBlockEntity;
@@ -9,11 +10,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -34,17 +37,17 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("deprecation")
 public class WineShelfBlock extends BaseEntityBlock {
+    public static final MapCodec<WineShelfBlock> CODEC = simpleCodec(WineShelfBlock::new);
     public static final BooleanProperty HAS_UPPER_SUPPORT = BooleanProperty.create("has_upper_support");
     public static final EnumProperty<Slot> WINE_SHELF_SLOT_0 = EnumProperty.create("slot_0", Slot.class);
     public static final EnumProperty<Slot> WINE_SHELF_SLOT_1 = EnumProperty.create("slot_1", Slot.class);
@@ -64,6 +67,11 @@ public class WineShelfBlock extends BaseEntityBlock {
         }
 
         return shape;
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     public WineShelfBlock(Properties properties) {
@@ -108,26 +116,39 @@ public class WineShelfBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(@NotNull BlockState state, Level pLevel, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
-        BlockEntity blockEntity = pLevel.getBlockEntity(pos);
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof WineShelfBlockEntity wineshelfblockentity) {
-            Optional<Vec2> optional = getRelativeHitCoordinatesForBlockFace(hitResult, state.getValue(HorizontalDirectionalBlock.FACING));
-            if (optional.isEmpty()) {
-                return InteractionResult.PASS;
+            if (!stack.is(ItemTags.BOOKSHELF_BOOKS)) {
+                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             } else {
-                int i = getHitSlot(optional.get());
-                if (state.getValue(SLOT_CONTENTS.get(i)) != Slot.EMPTY) {
-                    removeBottle(pLevel, pos, player, wineshelfblockentity, i);
-                    return InteractionResult.sidedSuccess(pLevel.isClientSide);
+                OptionalInt optionalint = getHitSlot(hitResult, state);
+                if (optionalint.isEmpty()) {
+                    return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+                } else if (state.getValue(SLOT_CONTENTS.get(optionalint.getAsInt())) != Slot.EMPTY) {
+                    return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
                 } else {
-                    ItemStack itemstack = player.getItemInHand(hand);
-                    if (itemstack.is(VDTags.WINE_SHELF_BOTTLES)) {
-                        addBottle(pLevel, pos, player, wineshelfblockentity, itemstack, i);
-                        return InteractionResult.sidedSuccess(pLevel.isClientSide);
-                    } else {
-                        return InteractionResult.CONSUME;
-                    }
+                    addBottle(level, pos, player, wineshelfblockentity, stack, optionalint.getAsInt());
+                    return ItemInteractionResult.sidedSuccess(level.isClientSide);
                 }
+            }
+        } else {
+            return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+        }
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof WineShelfBlockEntity wineshelfblockentity) {
+            OptionalInt optionalint = this.getHitSlot(hitResult, state);
+            if (optionalint.isEmpty()) {
+                return InteractionResult.PASS;
+            } else if (state.getValue(SLOT_CONTENTS.get(optionalint.getAsInt())) == Slot.EMPTY) {
+                return InteractionResult.CONSUME;
+            } else {
+                removeBottle(level, pos, player, wineshelfblockentity, optionalint.getAsInt());
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
         } else {
             return InteractionResult.PASS;
@@ -155,10 +176,12 @@ public class WineShelfBlock extends BaseEntityBlock {
         }
     }
 
-    private static int getHitSlot(Vec2 hitPos) {
-        int i = hitPos.y >= 0.5F ? 0 : 1;
-        int j = getSection(hitPos.x);
-        return j + i * 2;
+    private OptionalInt getHitSlot(BlockHitResult hitResult, BlockState state) {
+        return getRelativeHitCoordinatesForBlockFace(hitResult, state.getValue(HorizontalDirectionalBlock.FACING)).map(vec2 -> {
+            int i = vec2.y >= 0.5F ? 0 : 1;
+            int j = getSection(vec2.x);
+            return OptionalInt.of(j + i * 2);
+        }).orElseGet(OptionalInt::empty);
     }
 
     private static int getSection(float pX) {

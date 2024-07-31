@@ -1,10 +1,6 @@
 package net.grid.vampiresdelight.common.block;
 
-import de.teamlapen.vampirism.api.entity.vampire.IVampire;
-import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
-import de.teamlapen.vampirism.entity.vampire.DrinkBloodContext;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -32,19 +28,7 @@ public class VampirePieBlock extends PieBlock {
         } else {
             ItemStack stack = this.getPieSliceItem();
             FoodProperties foodProperties = stack.getItem().getFoodProperties(stack, consumer);
-
-            if (foodProperties != null) {
-                VampirePlayer.getOpt(consumer).ifPresent(v -> v.drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack)));
-
-                if (consumer instanceof IVampire) {
-                    ((IVampire) consumer).drinkBlood(foodProperties.getNutrition(), foodProperties.getSaturationModifier(), new DrinkBloodContext(stack));
-                } else if (!VDHelper.isVampire(consumer))
-                    consumer.eat(level, stack);
-
-                if (VDHelper.isVampire(consumer)) {
-                    VDEntityUtils.addFoodEffects(foodProperties, level, consumer);
-                }
-            }
+            VDEntityUtils.consumeFeastBite(foodProperties, stack, level, consumer);
 
             int bites = state.getValue(BITES);
             if (bites < getMaxBites() - 1) {
