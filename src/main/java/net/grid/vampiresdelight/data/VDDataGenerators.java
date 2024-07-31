@@ -5,10 +5,7 @@ import de.teamlapen.vampirism.core.ModRegistries;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.data.loot.VDBlockLootTables;
 import net.grid.vampiresdelight.data.loot.VDChestLootTables;
-import net.grid.vampiresdelight.data.tag.VDBiomeTags;
-import net.grid.vampiresdelight.data.tag.VDBlockTags;
-import net.grid.vampiresdelight.data.tag.VDEntityTags;
-import net.grid.vampiresdelight.data.tag.VDItemTags;
+import net.grid.vampiresdelight.data.tag.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -40,6 +37,7 @@ public class VDDataGenerators {
         VDBlockTags blockTags = new VDBlockTags(output, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new VDItemTags(output, lookupProvider, blockTags.contentsGetter(), helper));
+        generator.addProvider(event.includeServer(), new VDEnchantmentTags(output, lookupProvider, helper));
         generator.addProvider(event.includeServer(), new VDBiomeTags(output, lookupProvider, helper));
         generator.addProvider(event.includeServer(), new VDEntityTags(output, lookupProvider, helper));
 

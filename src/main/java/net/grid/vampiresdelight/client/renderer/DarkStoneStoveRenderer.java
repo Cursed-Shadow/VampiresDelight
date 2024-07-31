@@ -13,44 +13,44 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 public class DarkStoneStoveRenderer implements BlockEntityRenderer<DarkStoneStoveBlockEntity> {
     public DarkStoneStoveRenderer(BlockEntityRendererProvider.Context context) {
     }
 
     @Override
-    public void render(DarkStoneStoveBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        Direction direction = pBlockEntity.getBlockState().getValue(DarkStoneStoveBlock.FACING).getOpposite();
+    public void render(DarkStoneStoveBlockEntity stoveEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int combinedLightIn, int combinedOverlayIn) {
+        Direction direction = stoveEntity.getBlockState().getValue(DarkStoneStoveBlock.FACING).getOpposite();
 
-        ItemStackHandler inventory = pBlockEntity.getInventory();
-        int posLong = (int) pBlockEntity.getBlockPos().asLong();
+        ItemStackHandler inventory = stoveEntity.getInventory();
+        int posLong = (int) stoveEntity.getBlockPos().asLong();
 
         for (int i = 0; i < inventory.getSlots(); ++i) {
             ItemStack stoveStack = inventory.getStackInSlot(i);
             if (!stoveStack.isEmpty()) {
-                pPoseStack.pushPose();
+                poseStack.pushPose();
 
                 // Center item above the stove
-                pPoseStack.translate(0.5D, 1.02D, 0.5D);
+                poseStack.translate(0.5D, 1.02D, 0.5D);
 
                 // Rotate item to face the stove's front side
                 float f = -direction.toYRot();
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(f));
+                poseStack.mulPose(Axis.YP.rotationDegrees(f));
 
                 // Rotate item flat on the stove. Use X and Y from now on
-                pPoseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+                poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
 
                 // Neatly align items according to their index
-                Vec2 itemOffset = pBlockEntity.getStoveItemOffset(i);
-                pPoseStack.translate(itemOffset.x, itemOffset.y, 0.0D);
+                Vec2 itemOffset = stoveEntity.getStoveItemOffset(i);
+                poseStack.translate(itemOffset.x, itemOffset.y, 0.0D);
 
                 // Resize the items
-                pPoseStack.scale(0.375F, 0.375F, 0.375F);
+                poseStack.scale(0.375F, 0.375F, 0.375F);
 
-                if (pBlockEntity.getLevel() != null)
-                    Minecraft.getInstance().getItemRenderer().renderStatic(stoveStack, ItemDisplayContext.FIXED, LevelRenderer.getLightColor(pBlockEntity.getLevel(), pBlockEntity.getBlockPos().above()), pPackedOverlay, pPoseStack, pBuffer, pBlockEntity.getLevel(), posLong + i);
-                pPoseStack.popPose();
+                if (stoveEntity.getLevel() != null)
+                    Minecraft.getInstance().getItemRenderer().renderStatic(stoveStack, ItemDisplayContext.FIXED, LevelRenderer.getLightColor(stoveEntity.getLevel(), stoveEntity.getBlockPos().above()), combinedOverlayIn, poseStack, buffer, stoveEntity.getLevel(), posLong + i);
+                poseStack.popPose();
             }
         }
     }

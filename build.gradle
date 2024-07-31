@@ -111,7 +111,8 @@ repositories {
 
 dependencies {
     implementation "curse.maven:farmers-delight-398521:${farmersdelight_version}"
-    implementation "de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}"
+    implementation "curse.maven:vampirism-become-a-vampire-233029:${vampirism_version}"
+    //implementation "de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}"
 
     // AppleSkin
     compileOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}:api"

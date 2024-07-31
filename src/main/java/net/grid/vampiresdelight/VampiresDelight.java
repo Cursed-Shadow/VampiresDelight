@@ -1,10 +1,9 @@
 package net.grid.vampiresdelight;
 
-import net.grid.vampiresdelight.client.ClientSetup;
+import net.grid.vampiresdelight.client.event.ClientSetupEvents;
 import net.grid.vampiresdelight.common.CommonSetup;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.*;
-import net.grid.vampiresdelight.data.VDEnchantments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -21,7 +20,7 @@ public class VampiresDelight {
     public VampiresDelight(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(CommonSetup::init);
         if (FMLEnvironment.dist.isClient()) {
-            modEventBus.addListener(ClientSetup::init);
+            modEventBus.addListener(ClientSetupEvents::init);
         }
 
         modContainer.registerConfig(ModConfig.Type.COMMON, VDConfiguration.COMMON_CONFIG);
@@ -32,7 +31,6 @@ public class VampiresDelight {
         VDDataComponents.DATA_COMPONENTS.register(modEventBus);
         VDPotions.POTIONS.register(modEventBus);
         VDOils.OILS.register(modEventBus);
-        VDEnchantments.ENCHANTMENTS.register(modEventBus);
         VDBlocks.BLOCKS.register(modEventBus);
         VDCreativeTabs.CREATIVE_TABS.register(modEventBus);
         VDEffects.EFFECTS.register(modEventBus);

@@ -12,12 +12,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.bus.api.SubscribeEvent;
 import squeek.appleskin.api.event.FoodValuesEvent;
 import squeek.appleskin.api.event.TooltipOverlayEvent;
-import squeek.appleskin.api.food.FoodValues;
 
 @OnlyIn(Dist.CLIENT)
 public class VDAppleSkinEventHandler {
@@ -44,13 +43,9 @@ public class VDAppleSkinEventHandler {
             if (item instanceof VampirismItemBloodFoodItem bloodFoodItem && VDHelper.isVampire(player)) {
                 FoodProperties foodProperties = ((VampirismItemBloodFoodItemAccessor) bloodFoodItem).getVampireFood();
 
-                event.defaultFoodValues = makeFoodValues(foodProperties);
-                event.modifiedFoodValues = makeFoodValues(foodProperties);
+                event.defaultFoodProperties = foodProperties;
+                event.modifiedFoodProperties = foodProperties;
             }
         }
-    }
-
-    private static FoodValues makeFoodValues(FoodProperties foodProperties) {
-        return new FoodValues(foodProperties.getNutrition(), foodProperties.getSaturationModifier());
     }
 }

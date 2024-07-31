@@ -1,6 +1,6 @@
 package net.grid.vampiresdelight.integration.jei;
 
-import de.teamlapen.vampirism.core.ModItems;
+import de.teamlapen.vampirism.core.ModBlocks;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -14,12 +14,12 @@ import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.integration.jei.category.VDJEIPouringRecipeCategory;
 import net.grid.vampiresdelight.integration.jei.resource.VDJEIPouringRecipe;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -30,7 +30,7 @@ import java.util.*;
 @MethodsReturnNonnullByDefault
 @SuppressWarnings("unused")
 public class VDJEIPlugin implements IModPlugin {
-    private static final ResourceLocation ID = new ResourceLocation(VampiresDelight.MODID, "jei_plugin");
+    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "jei_plugin");
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -48,11 +48,11 @@ public class VDJEIPlugin implements IModPlugin {
         registerSingleIngredientInfo(VDItems.HUMAN_EYE.get(), registration);
         registerSingleIngredientInfo(VDItems.BLACK_MUSHROOM.get(), registration);
         registerSingleIngredientInfo(VDItems.SILVER_KNIFE.get(), TextUtils.getTranslation("jei.info.knife"), registration);
-        registerMultipleIngredientInfo(List.of(new ItemStack(VDItems.WILD_GARLIC.get()), new ItemStack(ModItems.ITEM_GARLIC.get())), registration);
+        registerMultipleIngredientInfo(List.of(new ItemStack(VDItems.WILD_GARLIC.get()), new ItemStack(ModBlocks.GARLIC.asItem())), registration);
     }
 
     private static void registerSingleIngredientInfo(Item item, IRecipeRegistration registration) {
-        registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, VDTextUtils.getTranslation("jei.info." + ForgeRegistries.ITEMS.getKey(item).getPath()));
+        registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, VDTextUtils.getTranslation("jei.info." + BuiltInRegistries.ITEM.getKey(item).getPath()));
     }
 
     private static void registerSingleIngredientInfo(Item item, MutableComponent translation, IRecipeRegistration registration) {
@@ -63,7 +63,7 @@ public class VDJEIPlugin implements IModPlugin {
      * ID of the first component in list is used for the translation.
      */
     private static void registerMultipleIngredientInfo(List<ItemStack> items, IRecipeRegistration registration) {
-        registration.addIngredientInfo(items, VanillaTypes.ITEM_STACK, VDTextUtils.getTranslation("jei.info." + ForgeRegistries.ITEMS.getKey(items.get(0).getItem()).getPath()));
+        registration.addIngredientInfo(items, VanillaTypes.ITEM_STACK, VDTextUtils.getTranslation("jei.info." + BuiltInRegistries.ITEM.getKey(items.getFirst().getItem()).getPath()));
     }
 
     @Override

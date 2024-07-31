@@ -17,6 +17,7 @@ import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.Random;
 
+/*
 public class NourishmentBloodOverlay {
     public static int bloodIconsOffset;
     private static final ResourceLocation ICONS_TEXTURE = new ResourceLocation(VampiresDelight.MODID, "textures/gui/icons.png");
@@ -105,3 +106,4 @@ public class NourishmentBloodOverlay {
         });
     }
 }
+ */

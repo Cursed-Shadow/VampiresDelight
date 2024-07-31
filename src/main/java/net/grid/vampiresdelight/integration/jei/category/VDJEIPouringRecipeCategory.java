@@ -30,7 +30,7 @@ public class VDJEIPouringRecipeCategory implements IRecipeCategory<VDJEIPouringR
     public VDJEIPouringRecipeCategory(IGuiHelper helper) {
         title = VDTextUtils.getTranslation("jei.pouring");
 
-        ResourceLocation texture = new ResourceLocation(VampiresDelight.MODID, "textures/gui/jei/pouring.png");
+        ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "textures/gui/jei/pouring.png");
         background = helper.createDrawable(texture, 0, 0, 117, 57);
 
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(VDItems.BLOOD_WINE_GLASS.get()));

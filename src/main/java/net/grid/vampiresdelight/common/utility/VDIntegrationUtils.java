@@ -8,6 +8,7 @@ import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
 import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,7 +37,7 @@ public class VDIntegrationUtils {
 
     public static IFaction<?> werewolfFaction() {
         if (werewolfFaction == null) {
-            werewolfFaction = VampirismAPI.factionRegistry().getFactionByID(new ResourceLocation(WEREWOLVES, "werewolf"));
+            werewolfFaction = VampirismAPI.factionRegistry().getFactionByID(ResourceLocation.fromNamespaceAndPath(WEREWOLVES, "werewolf"));
         }
         return werewolfFaction;
     }
@@ -50,31 +52,35 @@ public class VDIntegrationUtils {
 
     public static boolean isWerewolf(Player player) {
         IFaction<?> werewolf = werewolfFaction();
-        return werewolf != null && VampirismAPI.getFactionPlayerHandler(player).map(h -> werewolf.equals(h.getCurrentFaction())).orElse(false);
+        return werewolf != null && VampirismAPI.factionPlayerHandler(player).isInFaction(werewolf);
+        //return werewolf != null && VampirismAPI.getFactionPlayerHandler(player).map(h -> werewolf.equals(h.getCurrentFaction())).orElse(false);
     }
 
     public static boolean hasSkill(Player player, ResourceLocation skillId) {
-        LazyOptional<IFactionPlayerHandler> playerHandler = player.isAlive() ? VampirismAPI.getFactionPlayerHandler(player) : LazyOptional.empty();
-        ISkill<?> requiredSkill = VampirismRegistries.SKILLS.get().getValue(skillId);
-        if (requiredSkill != null) {
-            return playerHandler.map(IFactionPlayerHandler::getCurrentFactionPlayer).flatMap(p -> p.map(d-> d.getSkillHandler().isSkillEnabled(requiredSkill))).orElse(false);
+        //LazyOptional<IFactionPlayerHandler> playerHandler = player.isAlive() ? VampirismAPI.getFactionPlayerHandler(player) : LazyOptional.empty();
+        IFactionPlayerHandler playerHandler = VampirismAPI.factionPlayerHandler(player);
+        ISkill<?> requiredSkill = VampirismRegistries.SKILL.get().get(skillId);
+        if (requiredSkill != null && playerHandler.getCurrentFactionPlayer().isPresent()) {
+            return playerHandler.getCurrentFactionPlayer().get().getSkillHandler().isSkillEnabled(requiredSkill);
+            //return playerHandler.map(IFactionPlayerHandler::getCurrentFactionPlayer).flatMap(p -> p.map(d-> d.getSkillHandler().isSkillEnabled(requiredSkill))).orElse(false);
         } else {
             return false;
         }
     }
 
-    public static final ResourceLocation WOLF_BERRIES = new ResourceLocation(WEREWOLVES, "wolf_berries");
-    public static final ResourceLocation LIVER = new ResourceLocation(WEREWOLVES, "liver");
+    public static final ResourceLocation WOLF_BERRIES = ResourceLocation.fromNamespaceAndPath(WEREWOLVES, "wolf_berries");
+    public static final ResourceLocation LIVER = ResourceLocation.fromNamespaceAndPath(WEREWOLVES, "liver");
 
-    public static final ResourceLocation NOT_MEAT = new ResourceLocation(WEREWOLVES, "not_meat");
+    public static final ResourceLocation NOT_MEAT = ResourceLocation.fromNamespaceAndPath(WEREWOLVES, "not_meat");
 
     public static boolean isWerewolfVegetarian(Player player) {
         return hasSkill(player, NOT_MEAT);
     }
 
+    // TODO: Needs to be checked to be more exact when Werewolves port
     public static boolean isMeat(@Nullable LivingEntity entity, ItemStack stack) {
         FoodProperties foodProperties = stack.getFoodProperties(entity);
-        return stack.isEdible() && foodProperties != null && (foodProperties.isMeat() || stack.is(VDCompatibilityTags.WEREWOLF_FOOD)); //|| WerewolvesConfig.SERVER.isCustomMeatItems(stack.getItem()));
+        return foodProperties != null && (stack.is(Tags.Items.FOODS_RAW_MEAT) || stack.is(VDCompatibilityTags.WEREWOLF_FOOD)); //|| WerewolvesConfig.SERVER.isCustomMeatItems(stack.getItem()));
     }
 
     public static boolean canWerewolfEatFood(LivingEntity entity, ItemStack stack) {
@@ -98,8 +104,8 @@ public class VDIntegrationUtils {
         }
 
         @Override
-        public int getLevel() {
-            return 2;
+        public @NotNull TagKey<Block> getIncorrectBlocksForDrops() {
+            return BlockTags.INCORRECT_FOR_IRON_TOOL; // TODO: Needs to be checked to be more exact
         }
 
         @Override
@@ -110,11 +116,6 @@ public class VDIntegrationUtils {
         @Override
         public @NotNull Ingredient getRepairIngredient() {
             return Ingredient.of(VDCommonTags.SILVER_INGOT);
-        }
-
-        @Override
-        public TagKey<Block> getTag() {
-            return VDCommonTags.NEEDS_SILVER_TOOL;
         }
     };
 }

@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class VDHelper extends Helper {
     // Plant type for plants that grow on cursed soil.
-    public static final PlantType CURSED_PLANT_TYPE = PlantType.get("vampiresdelight_cursed");
+    //public static final PlantType CURSED_PLANT_TYPE = PlantType.get("vampiresdelight_cursed");
 
     public static final ResourceLocation BLOOD_BAR_ELEMENT = ResourceLocation.fromNamespaceAndPath(REFERENCE.MODID, "blood_bar");
 

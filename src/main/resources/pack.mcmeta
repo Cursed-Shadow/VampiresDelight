@@ -1,6 +1,8 @@
 {
     "pack": {
-        "description": "Vampire's Delight resources",
-        "pack_format": 34
+        "description": {
+            "text": "${mod_id} resources"
+        },
+        "pack_format": 15
     }
 }

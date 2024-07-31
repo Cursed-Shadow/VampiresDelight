@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 // TODO: Fix this and find how to use it with bottles as it's now off
+/*
 public class PourableBottleItemExtension  implements IClientItemExtensions {
     private static final HumanoidModel.ArmPose POSE = HumanoidModel.ArmPose.create(VampiresDelight.MODID + "_pouring_pose", true, (model, entity, arm) -> {
         boolean isRightArmPouring = arm == HumanoidArm.RIGHT;
@@ -31,3 +32,4 @@ public class PourableBottleItemExtension  implements IClientItemExtensions {
         return (!itemStack.isEmpty() && entityLiving.getUsedItemHand() == hand && entityLiving.getUseItemRemainingTicks() > 0) ? POSE : HumanoidModel.ArmPose.EMPTY;
     }
 }
+ */
