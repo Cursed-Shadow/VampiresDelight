@@ -19,7 +19,7 @@ public class WildGarlicBlock extends WildCropBlock {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity livingEntity && VDHelper.isVampire(entity)) {
+        if (entity instanceof LivingEntity livingEntity && VDHelper.isVampire(livingEntity)) {
             VDEntityUtils.affectVampireEntityWithGarlic(livingEntity, EnumStrength.WEAK);
         }
 

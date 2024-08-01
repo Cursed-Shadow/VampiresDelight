@@ -9,7 +9,11 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 import net.neoforged.neoforge.client.IArmPoseTransformer;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
 public class PourableBottleItemExtension  implements IClientItemExtensions {
     public static final EnumProxy<HumanoidModel.ArmPose> POURING_POSE = new EnumProxy<>(HumanoidModel.ArmPose.class, true, (IArmPoseTransformer) PourableBottleItemExtension::makePose);
 
@@ -28,6 +32,7 @@ public class PourableBottleItemExtension  implements IClientItemExtensions {
         glassHand.yRot = (float) Math.toRadians(25) * -multiplier + head.yRot / 2.5f;
     }
 
+    @Nullable
     @Override
     public HumanoidModel.ArmPose getArmPose(LivingEntity entityLiving, InteractionHand hand, ItemStack itemStack) {
         return (!itemStack.isEmpty() && entityLiving.getUsedItemHand() == hand && entityLiving.getUseItemRemainingTicks() > 0) ? POURING_POSE.getValue() : HumanoidModel.ArmPose.EMPTY;

@@ -29,6 +29,7 @@ public class VDEntityUtils {
         }
     }
 
+    // TODO: Check sound played after the player finishes eating
     public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer) {
         feedVampire(stack, level, consumer);
 

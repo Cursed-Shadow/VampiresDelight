@@ -119,7 +119,7 @@ public class WineShelfBlock extends BaseEntityBlock {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof WineShelfBlockEntity wineshelfblockentity) {
-            if (!stack.is(ItemTags.BOOKSHELF_BOOKS)) {
+            if (!stack.is(VDTags.WINE_SHELF_BOTTLES)) {
                 return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             } else {
                 OptionalInt optionalint = getHitSlot(hitResult, state);

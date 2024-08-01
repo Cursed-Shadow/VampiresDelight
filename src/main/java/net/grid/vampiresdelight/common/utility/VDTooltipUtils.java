@@ -36,12 +36,12 @@ public class VDTooltipUtils {
                 Objects.equals(foodFaction, VReference.VAMPIRE_FACTION) ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_RED :
                 Objects.equals(foodFaction, VReference.VAMPIRE_FACTION) ? ChatFormatting.DARK_RED : ChatFormatting.DARK_GREEN;
 
-        //tooltip.add(Component.empty());
+        tooltip.add(Component.empty());
         tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction", foodFaction.getName().copy().withStyle(color)).withStyle(ChatFormatting.GRAY));
     }
 
     public static void addWerewolfFactionFoodToolTips(List<Component> tooltip, Player player) {
-        //tooltip.add(Component.empty());
+        tooltip.add(Component.empty());
         ChatFormatting color = VDIntegrationUtils.isWerewolf(player) ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_RED;
         tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction", Component.translatable("text.werewolves.werewolf").withStyle(color)).withStyle(ChatFormatting.GRAY));
     }
