@@ -24,7 +24,6 @@ public class VDEnchantments {
                 Enchantment.dynamicCost(25, 10),
                 Enchantment.dynamicCost(50, 9),
                 2, EquipmentSlotGroup.MAINHAND))
-                //.withEffect(VDDataComponents.VAMPIRE_BITE.get(), new VampireBiteEffect(LevelBasedValue.perLevel(1.0f, 1.0f)))
                 .build(VAMPIRE_BITE.location()));
     }
 }

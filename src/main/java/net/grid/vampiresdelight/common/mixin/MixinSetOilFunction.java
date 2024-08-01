@@ -12,18 +12,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-// TODO: Fix oils and apply this mixin
+// TODO: Check if it even works
 @Mixin(SetOilFunction.class)
 public class MixinSetOilFunction {
     @Inject(at = @At("TAIL"), method = "run(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;)Lnet/minecraft/world/item/ItemStack;", cancellable = true)
     public void checkOilBeforeRun(ItemStack pStack, LootContext pContext, CallbackInfoReturnable<ItemStack> cir) {
-        // TODO: Check if it even works
-        /*
-        if (OilUtils.getOil(pStack) instanceof EffectWeaponOil effectOil)
-            if (effectOil.getEffect() == VDEffects.CLOTHES_DISSOLVING.get())
-                cir.setReturnValue(OilUtils.createOilItem(ModOils.VAMPIRE_BLOOD.get()))
-         */
-
         if (pStack.getItem() instanceof OilBottleItem oilBottleItem) {
             if (oilBottleItem.getOil(pStack) == VDOils.CLOTHES_DISSOLVING.getDelegate()) {
                 cir.setReturnValue(ItemDataUtils.setOil(pStack, ModOils.VAMPIRE_BLOOD));

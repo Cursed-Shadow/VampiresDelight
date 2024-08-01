@@ -4,6 +4,7 @@ import net.grid.vampiresdelight.common.block.PlacedPourableBottleBlock;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
 import net.grid.vampiresdelight.common.registry.VDDataComponents;
 import net.grid.vampiresdelight.common.registry.VDSounds;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
@@ -211,7 +212,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         int servings = stack.getMaxDamage() - stack.getDamageValue();
-        MutableComponent textTooltip = VDTextUtils.getTranslation("tooltip." + this + (servings == 1 ? ".single_serving" : ".multiple_servings"), servings);
+        MutableComponent textTooltip = VDTextUtils.getTranslation("tooltip." + VDNameUtils.itemName(this) + (servings == 1 ? ".single_serving" : ".multiple_servings"), servings);
         tooltipComponents.add(textTooltip.withStyle(ChatFormatting.GRAY));
         VDTooltipUtils.addShiftTooltip("tooltip.pourable_drink_item", tooltipComponents);
     }

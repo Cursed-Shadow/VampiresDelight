@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.common.item;
 import de.teamlapen.vampirism.VampirismMod;
 import net.grid.vampiresdelight.common.constants.VDFoodFeatures;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -31,7 +32,7 @@ public class DaisyTeaItem extends DrinkableItem {
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get() && player != null && VDEntityUtils.canConsumeHumanFood(player)) {
-            VDTooltipUtils.addSplitTooltip("tooltip." + this, tooltip, ChatFormatting.BLUE);
+            VDTooltipUtils.addSplitTooltip("tooltip." + VDNameUtils.itemName(this), tooltip, ChatFormatting.BLUE);
         }
     }
 }

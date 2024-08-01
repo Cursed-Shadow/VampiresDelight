@@ -1,0 +1,50 @@
+{
+  "type": "vampirism:alchemical_table",
+  "ingredient": {
+    "type": "neoforge:components",
+    "components": {
+      "vampirism:oil_contents": {
+        "oil": "vampirism:vampire_blood"
+      }
+    },
+    "items": "vampirism:oil_bottle"
+  },
+  "input": [
+    {
+      "type": "neoforge:components",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "vampiresdelight:fog_vision"
+        }
+      },
+      "items": "minecraft:potion"
+    },
+    {
+      "type": "neoforge:components",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "vampiresdelight:strong_fog_vision"
+        }
+      },
+      "items": "minecraft:potion"
+    },
+    {
+      "type": "neoforge:components",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "vampiresdelight:long_fog_vision"
+        }
+      },
+      "items": "minecraft:potion"
+    }
+  ],
+  "result": {
+    "components": {
+      "vampirism:oil_contents": {
+        "oil": "vampiresdelight:fog_vision"
+      }
+    },
+    "count": 1,
+    "id": "vampirism:oil_bottle"
+  }
+}

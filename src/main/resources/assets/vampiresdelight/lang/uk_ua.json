@@ -168,7 +168,8 @@
   "vampiresdelight.tooltip.spirit_lantern": "Дозволяє гравцеві бачити трохи далі крізь вампірський туман, при триманні у руці",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не може підпалювати землю через налаштування цього сервера",
   "vampiresdelight.tooltip.pourable_drink_item": "Щоб налити напій із цієї пляшки, візьміть пляшку однією рукою, а порожню скляну пляшку - іншою. Потім натисніть і утримуйте ліву клавішу миші",
-  "vampiresdelight.tooltip.holdShiftForInfo": "Утримуйте клавішу [%s] для підказки",
+  "vampiresdelight.tooltip.for_faction": "Для фракції:",
+  "vampiresdelight.tooltip.hold_shift_for_info": "Утримуйте клавішу [%s] для підказки",
   "vampiresdelight.tooltip.shift": "Shift",
 
   "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Містить %s порцію вина",

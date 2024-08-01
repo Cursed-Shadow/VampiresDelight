@@ -34,9 +34,10 @@ public class VDItemModels extends ItemModelProvider {
         Set<Item> items = BuiltInRegistries.ITEM.stream().filter(item -> VampiresDelight.MODID.equals(VDNameUtils.itemNamespace(item))).collect(Collectors.toSet());
 
         // Items that use its own model in models/item
-        Set<Item> specialItems = Sets.newHashSet(
-                VDItems.SPIRIT_LANTERN.get());
+        /*
+        Set<Item> specialItems = Sets.newHashSet();
         takeAll(items, specialItems.toArray(new Item[0])).forEach(items::remove);
+         */
 
         // Items that should be held like a mug
         Set<Item> mugItems = Sets.newHashSet(
@@ -64,7 +65,8 @@ public class VDItemModels extends ItemModelProvider {
                 VDItems.BLOOD_PIE.get(),
                 VDItems.ORCHID_SEEDS.get(),
                 VDItems.WEIRD_JELLY_BLOCK.get(),
-                VDItems.ORCHID_CAKE.get());
+                VDItems.ORCHID_CAKE.get(),
+                VDItems.SPIRIT_LANTERN.get());
         takeAll(items, spriteBlockItems.toArray(new Item[0])).forEach(item -> withExistingParent(itemName(item), GENERATED).texture("layer0", resourceItem(itemName(item))));
 
         Set<Item> flatBlockItems = Sets.newHashSet(

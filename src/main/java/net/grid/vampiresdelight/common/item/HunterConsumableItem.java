@@ -127,7 +127,7 @@ public class HunterConsumableItem extends Item {
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get() && VDEntityUtils.canConsumeHumanFood(player)) {
             if (this.hasCustomTooltip) {
-                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
+                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + VDNameUtils.itemName(this));
                 tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {

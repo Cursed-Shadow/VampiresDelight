@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class VDOils {
-    public static final DeferredRegister<IOil> OILS = DeferredRegister.create(VampirismRegistries.OIL.get(), VampiresDelight.MODID);
+    public static final DeferredRegister<IOil> OILS = DeferredRegister.create(VampirismRegistries.Keys.OIL, VampiresDelight.MODID);
 
     public static final DeferredHolder<IOil, EffectWeaponOil> BLESSING = OILS.register("blessing",
             () -> new EffectWeaponOil(VDEffects.BLESSING, 200, 20));

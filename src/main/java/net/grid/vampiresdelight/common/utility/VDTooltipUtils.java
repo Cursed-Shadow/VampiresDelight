@@ -6,7 +6,6 @@ import net.grid.vampiresdelight.common.VDConfiguration;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -22,17 +21,9 @@ public class VDTooltipUtils {
     }
 
     public static void addShiftTooltip(String key, List<Component> tooltip) {
-        if (Screen.hasShiftDown()) {
-            tooltip.add(VDTextUtils.getTranslation(key).withStyle(ChatFormatting.GRAY));
-        } else {
-            String[] mainTooltip = VDTextUtils.getStraightTranslation("tooltip.holdShiftForInfo").split("%s");
-            MutableComponent resultTooltip = Component.empty()
-                    .append(Component.literal(mainTooltip[0]).withStyle(ChatFormatting.DARK_GRAY))
-                    .append(Component.literal(VDTextUtils.getStraightTranslation("tooltip.shift")).withStyle(ChatFormatting.GRAY))
-                    .append(Component.literal(mainTooltip[1]).withStyle(ChatFormatting.DARK_GRAY));
-
-            tooltip.add(resultTooltip);
-        }
+        tooltip.add(Screen.hasShiftDown() ?
+                VDTextUtils.getTranslation(key).withStyle(ChatFormatting.GRAY) :
+                VDTextUtils.getTranslation("tooltip.hold_shift_for_info", VDTextUtils.getTranslation("tooltip.shift").withStyle(ChatFormatting.GRAY)).withStyle(ChatFormatting.DARK_GRAY));
     }
 
     public static void addFactionFoodToolTips(List<Component> tooltip, Player player, IPlayableFaction<?> foodFaction) {
@@ -42,7 +33,7 @@ public class VDTooltipUtils {
         }
 
         tooltip.add(Component.empty());
-        tooltip.add(Component.translatable("text.vampirism.faction_specifics").withStyle(ChatFormatting.GRAY));
+        tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction").withStyle(ChatFormatting.GRAY));
         ChatFormatting color;
 
         if (Objects.equals(foodFaction, VReference.VAMPIRE_FACTION)) {
@@ -64,7 +55,7 @@ public class VDTooltipUtils {
 
     public static void addWerewolfFactionFoodToolTips(List<Component> tooltip, Player player) {
         tooltip.add(Component.empty());
-        tooltip.add(Component.translatable("text.vampirism.faction_specifics").withStyle(ChatFormatting.GRAY));
+        tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction").withStyle(ChatFormatting.GRAY));
         ChatFormatting color;
 
         if (VDIntegrationUtils.isWerewolf(player)) {

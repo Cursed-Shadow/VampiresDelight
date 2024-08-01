@@ -9,6 +9,8 @@ import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,15 +20,17 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AlchemicalCocktailItem extends Item implements IFactionExclusiveItem {
+public class AlchemicalCocktailItem extends Item implements ProjectileItem, IFactionExclusiveItem {
     public AlchemicalCocktailItem(Properties properties) {
         super(properties);
     }
@@ -82,5 +86,12 @@ public class AlchemicalCocktailItem extends Item implements IFactionExclusiveIte
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    @Override
+    public Projectile asProjectile(Level level, Position position, ItemStack itemStack, Direction direction) {
+        AlchemicalCocktailEntity alchemicalCocktail = new AlchemicalCocktailEntity(level, position.x(), position.y(), position.z());
+        alchemicalCocktail.setItem(itemStack);
+        return alchemicalCocktail;
     }
 }

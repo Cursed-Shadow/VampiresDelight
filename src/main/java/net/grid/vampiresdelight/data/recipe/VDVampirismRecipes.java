@@ -1,15 +1,20 @@
 package net.grid.vampiresdelight.data.recipe;
 
 import de.teamlapen.vampirism.core.ModItems;
+import de.teamlapen.vampirism.data.recipebuilder.AlchemyTableRecipeBuilder;
 import de.teamlapen.vampirism.data.recipebuilder.ShapedWeaponTableRecipeBuilder;
 import de.teamlapen.vampirism.data.recipebuilder.ShapelessWeaponTableRecipeBuilder;
+import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
+import net.grid.vampiresdelight.common.registry.VDOils;
+import net.grid.vampiresdelight.common.registry.VDPotions;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -23,7 +28,7 @@ import java.util.Arrays;
 public class VDVampirismRecipes {
     public static void register(RecipeOutput output) {
         recipesWeaponTable(output);
-        //recipesAlchemyTable(output);
+        recipesAlchemyTable(output);
     }
 
     private static void recipesWeaponTable(RecipeOutput output) {
@@ -43,8 +48,6 @@ public class VDVampirismRecipes {
                 .save(output);
     }
 
-    // TODO: For some reason it just dies on load, need to fix that, or else oils won't exist
-    /*
     private static void recipesAlchemyTable(RecipeOutput output) {
         AlchemyTableRecipeBuilder
                 .builder(VDOils.BLESSING)
@@ -62,7 +65,6 @@ public class VDVampirismRecipes {
                 .input(potion(VDPotions.FOG_VISION, VDPotions.STRONG_FOG_VISION, VDPotions.LONG_FOG_VISION))
                 .save(output, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "fog_vision_oil"));
     }
-     */
 
     @SafeVarargs
     private static @NotNull Ingredient potion(Holder<Potion> @NotNull ... potion) {

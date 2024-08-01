@@ -3,12 +3,14 @@
 ## 0.1.8
 
 ### Additions
-- Ported to **1.21 NeoForge**;
 - Tooltips modified and added:
   - **Spirit Lantern**'s tooltip is now hidden in order to save space on screen. Hold shift to view it;
   - **Dandelion Beer Bottle** and **Blood Wine Bottle** now have a tooltip explaining how to pour drinks. Hold shift to view it;
-- Old configs removed:
+- Configs removed:
   - `disableVampireBite`;
+
+- ### Updates
+  - **Spirit Lantern**'s model is no longer 3D in hand;
 
 ## 0.1.7
 

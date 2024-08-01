@@ -61,7 +61,7 @@ public class PlayerEventHandler {
 
     private static void disgustingFoodConsumed(LivingEntity livingEntity) {
         if (livingEntity instanceof Player player) {
-            player.awardStat(VDStats.disgusting_food_consumed);
+            player.awardStat(VDStats.DISGUSTING_FOOD_CONSUMED.get());
             VDAdvancementTriggers.DISGUSTING_FOOD_CONSUMED.get().trigger((ServerPlayer) player);
         }
     }

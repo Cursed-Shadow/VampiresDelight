@@ -37,6 +37,10 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         super(VDEntityTypes.ALCHEMICAL_COCKTAIL.get(), entity, level);
     }
 
+    public AlchemicalCocktailEntity(Level level, double x, double y, double z) {
+        super(VDEntityTypes.ALCHEMICAL_COCKTAIL.get(), x, y, z, level);
+    }
+
     @Override
     protected Item getDefaultItem() {
         return VDItems.ALCHEMICAL_COCKTAIL.get();

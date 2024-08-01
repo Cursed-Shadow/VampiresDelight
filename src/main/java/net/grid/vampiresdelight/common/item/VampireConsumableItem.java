@@ -2,10 +2,7 @@ package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
-import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDHelper;
-import net.grid.vampiresdelight.common.utility.VDTextUtils;
-import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
+import net.grid.vampiresdelight.common.utility.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.MutableComponent;
@@ -157,7 +154,7 @@ public class VampireConsumableItem extends Item {
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
-                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
+                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + VDNameUtils.itemName(this));
                 tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
             if (this.hasFoodEffectTooltip) {

@@ -1,40 +1,18 @@
 package net.grid.vampiresdelight.common.registry;
 
 import net.grid.vampiresdelight.VampiresDelight;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.stats.StatFormatter;
-import net.minecraft.stats.Stats;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
-import java.util.Map;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class VDStats {
-    private static final Map<ResourceLocation, StatFormatter> ALL_STATS = new HashMap<>();
+    public static final DeferredRegister<ResourceLocation> CUSTOM_STATS = DeferredRegister.create(Registries.CUSTOM_STAT, VampiresDelight.MODID);
 
-    public static final ResourceLocation disgusting_food_consumed = add( "disgusting_food_consumed");
+    public static final DeferredHolder<ResourceLocation, ResourceLocation> DISGUSTING_FOOD_CONSUMED = add("disgusting_food_consumed");
 
-    public static void registerModStats() {
-        ALL_STATS.forEach(VDStats::register);
-    }
-
-    private static ResourceLocation add(String name) {
-        return add(name, StatFormatter.DEFAULT);
-    }
-
-    private static ResourceLocation add(String name, @SuppressWarnings("SameParameterValue") StatFormatter formatter) {
-        return add(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, name), formatter);
-    }
-
-    private static ResourceLocation add(ResourceLocation id, @SuppressWarnings("SameParameterValue") StatFormatter formatter) {
-        ALL_STATS.put(id, formatter);
-        return id;
-    }
-
-    private static void register(@NotNull ResourceLocation id, StatFormatter formatter) {
-        Registry.register(BuiltInRegistries.CUSTOM_STAT, id, id);
-        Stats.CUSTOM.get(id, formatter);
+    private static DeferredHolder<ResourceLocation, ResourceLocation> add(String name) {
+        var id = ResourceLocation.fromNamespaceAndPath(CUSTOM_STATS.getNamespace(), name);
+        return CUSTOM_STATS.register(name, () -> id);
     }
 }

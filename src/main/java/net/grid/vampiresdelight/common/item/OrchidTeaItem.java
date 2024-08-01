@@ -7,6 +7,7 @@ import net.grid.vampiresdelight.common.constants.VDFoodFeatures;
 import net.grid.vampiresdelight.common.constants.VDFoodValues;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDHelper;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.ChatFormatting;
@@ -44,7 +45,7 @@ public class OrchidTeaItem extends VampireDrinkableItem {
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (player != null && VDHelper.canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get()) {
-                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + this);
+                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + VDNameUtils.itemName(this));
                 tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
             } else {
                 VDTextUtils.addFoodEffectTooltip(stack, player, tooltipComponents, context);

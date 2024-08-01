@@ -40,7 +40,6 @@ public class ToolTipEvents {
             return;
 
         ItemStack stack = event.getItemStack();
-        Item item = stack.getItem();
 
         List<? extends Integer> vampireStartColors = VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR.get();
         Color vampireStartColor = new Color(vampireStartColors.get(0), vampireStartColors.get(1), vampireStartColors.get(2));
@@ -61,7 +60,7 @@ public class ToolTipEvents {
             setBorderColors(vampireStartColor, vampireEndColor, event);
         } else if (stack.is(VDTags.HUNTER_FOOD) && player != null && VDHelper.isVampire(player)) {
             setBorderColors(hunterStartColor, hunterEndColor, event);
-        } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
+        } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD)) { // || VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES) //TODO: Check how to make Wolf Berries counted as werewolf food without making every tooltip orange
             setBorderColors(werewolfStartColor, werewolfEndColor, event);
         }
     }
