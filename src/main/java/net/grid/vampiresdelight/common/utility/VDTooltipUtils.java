@@ -32,38 +32,17 @@ public class VDTooltipUtils {
                 return;
         }
 
-        tooltip.add(Component.empty());
-        tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction").withStyle(ChatFormatting.GRAY));
-        ChatFormatting color;
+        ChatFormatting color = VDHelper.isVampire(player) ?
+                Objects.equals(foodFaction, VReference.VAMPIRE_FACTION) ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_RED :
+                Objects.equals(foodFaction, VReference.VAMPIRE_FACTION) ? ChatFormatting.DARK_RED : ChatFormatting.DARK_GREEN;
 
-        if (Objects.equals(foodFaction, VReference.VAMPIRE_FACTION)) {
-            if (VDHelper.isVampire(player)) {
-                color = ChatFormatting.DARK_GREEN;
-            } else {
-                color = ChatFormatting.DARK_RED;
-            }
-        } else {
-            if (!VDHelper.isVampire(player)) {
-                color = ChatFormatting.DARK_GREEN;
-            } else {
-                color = ChatFormatting.DARK_RED;
-            }
-        }
-
-        tooltip.add(Component.literal(" ").append(foodFaction.getName()).withStyle(color));
+        //tooltip.add(Component.empty());
+        tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction", foodFaction.getName().copy().withStyle(color)).withStyle(ChatFormatting.GRAY));
     }
 
     public static void addWerewolfFactionFoodToolTips(List<Component> tooltip, Player player) {
-        tooltip.add(Component.empty());
-        tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction").withStyle(ChatFormatting.GRAY));
-        ChatFormatting color;
-
-        if (VDIntegrationUtils.isWerewolf(player)) {
-            color = ChatFormatting.DARK_GREEN;
-        } else {
-            color = ChatFormatting.DARK_RED;
-        }
-
-        tooltip.add(Component.literal(" ").append(Component.translatable("text.werewolves.werewolf")).withStyle(color));
+        //tooltip.add(Component.empty());
+        ChatFormatting color = VDIntegrationUtils.isWerewolf(player) ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_RED;
+        tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction", Component.translatable("text.werewolves.werewolf").withStyle(color)).withStyle(ChatFormatting.GRAY));
     }
 }

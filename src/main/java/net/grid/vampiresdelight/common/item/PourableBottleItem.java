@@ -79,8 +79,8 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
                 level.setBlock(targetPos, bottleBlockToPlace, 3);
 
                 bottleBlockToPlace.getBlock().setPlacedBy(level, targetPos, bottleBlockToPlace, player, pouringBottle);
-                if (player instanceof ServerPlayer) {
-                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, targetPos, pouringBottle);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, targetPos, pouringBottle);
                 }
                 SoundType soundtype = bottleBlockToPlace.getSoundType(level, targetPos, player);
                 level.playSound(player, targetPos, soundtype.getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
@@ -150,7 +150,9 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
                 player.getInventory().placeItemBackInInventory(new ItemStack(serving));
             }
             itemStack.remove(VDDataComponents.SERVING_HELD);
-            VDAdvancementTriggers.DRINK_POURED.get().trigger((ServerPlayer) player, itemStack);
+            if (player instanceof ServerPlayer serverPlayer) {
+                VDAdvancementTriggers.DRINK_POURED.get().trigger(serverPlayer, itemStack);
+            }
             entity.playSound(VDSounds.POURING_FINISH.get(), 1.2F, 1.0F);
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
             if (itemStack.getDamageValue() >= itemStack.getMaxDamage()) itemStack = new ItemStack(servingContainer);

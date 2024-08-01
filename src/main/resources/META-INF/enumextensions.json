@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "VAMPIRESDELIGHT_POURING_POSE",
+      "constructor": "(ZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {
+        "class": "net/grid/vampiresdelight/client/extension/PourableBottleItemExtension",
+        "field": "POURING_POSE"
+      }
+    }
+  ]
+}

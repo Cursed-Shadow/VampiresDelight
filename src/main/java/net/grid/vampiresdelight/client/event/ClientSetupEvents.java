@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.client.event;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.client.extension.PourableBottleItemExtension;
 import net.grid.vampiresdelight.client.particle.BlessingParticle;
 import net.grid.vampiresdelight.client.renderer.DarkStoneStoveRenderer;
 import net.grid.vampiresdelight.common.item.AlchemicalCocktailItem;
@@ -10,17 +11,16 @@ import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDParticleTypes;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.grid.vampiresdelight.integration.appleskin.VDAppleSkinEventHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 
 import java.util.stream.Stream;
@@ -29,9 +29,6 @@ import java.util.stream.Stream;
 public class ClientSetupEvents {
     public static void init(final FMLClientSetupEvent event) {
         event.enqueueWork(ClientSetupEvents::registerItemProperties);
-
-        //NourishmentBloodOverlay.init();
-        //HUDOverlayEvents.init();
 
         if (VDIntegrationUtils.isModPresent(VDIntegrationUtils.APPLESKIN)) {
             NeoForge.EVENT_BUS.register(new VDAppleSkinEventHandler());
@@ -57,9 +54,14 @@ public class ClientSetupEvents {
         event.registerBlockEntityRenderer(VDBlockEntityTypes.DARK_STONE_STOVE.get(), DarkStoneStoveRenderer::new);
     }
 
-    @SuppressWarnings("deprecation")
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event) {
-        Minecraft.getInstance().particleEngine.register(VDParticleTypes.BLESSING.get(), BlessingParticle.Provider::new);
+        event.registerSpriteSet(VDParticleTypes.BLESSING.get(), BlessingParticle.Provider::new);
+    }
+
+    @SubscribeEvent
+    private static void registerClientExtensions(RegisterClientExtensionsEvent event) {
+        event.registerItem(new PourableBottleItemExtension(),
+                VDItems.DANDELION_BEER_BOTTLE.get(), VDItems.BLOOD_WINE_BOTTLE.get());
     }
 }

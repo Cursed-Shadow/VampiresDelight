@@ -17,6 +17,7 @@ itemIcon = "vampiresdelight:dark_stone_stove"
 configBackground = "vampiresdelight:textures/block/dark_stone_small_bricks.png"
 credits="${credits}"
 authors="GridExpert"
+enumExtensions="META-INF/enumextensions.json"
 description='''
 Makes Vampirism and Farmer's Delight more compatible
 '''
