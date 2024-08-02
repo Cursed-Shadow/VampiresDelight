@@ -119,10 +119,6 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
 
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-
-    // Werewolves
-    //if (include_werewolves.toBoolean())
-        //runtimeOnly("maven.modrinth:werewolves:${minecraft_version}-${werewolves_version}")
 }
 
 tasks.withType(ProcessResources).configureEach {

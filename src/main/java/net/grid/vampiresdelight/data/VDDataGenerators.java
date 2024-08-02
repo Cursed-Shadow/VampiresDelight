@@ -52,6 +52,7 @@ public class VDDataGenerators {
         generator.addProvider(event.includeServer(), datapackProvider);
         generator.addProvider(event.includeServer(), new VDEnchantmentTags(output, builtinLookupProvider, helper));
 
+        generator.addProvider(event.includeServer(), new VDParticles(output, helper));
         generator.addProvider(event.includeServer(), new VDRecipes(output, lookupProvider));
         generator.addProvider(event.includeServer(), new VDDataMaps(output, lookupProvider));
         generator.addProvider(event.includeServer(), new VDAdvancements.Provider(output, lookupProvider, helper));
