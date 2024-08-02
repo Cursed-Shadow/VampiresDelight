@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +54,11 @@ public class VDTags {
     // Biomes lost carriage spawns in.
     public static final TagKey<Biome> HAS_LOST_CARRIAGE = modBiomeTag("has_structure/lost_carriage");
 
+    // --Entities--
+
+    // Entities which are considered to be unholy spirits by blessing effect and vanished.
+    public static final TagKey<EntityType<?>> UNHOLY_SPIRITS = modEntityTag("unholy_spirits");
+
 
 
     private static TagKey<Item> modItemTag(String path) {
@@ -65,5 +71,9 @@ public class VDTags {
 
     private static TagKey<Biome> modBiomeTag(String path) {
         return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path));
+    }
+
+    private static TagKey<EntityType<?>> modEntityTag(String path) {
+        return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path));
     }
 }

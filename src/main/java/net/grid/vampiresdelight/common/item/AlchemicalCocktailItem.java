@@ -1,8 +1,5 @@
 package net.grid.vampiresdelight.common.item;
 
-import de.teamlapen.vampirism.api.VReference;
-import de.teamlapen.vampirism.api.entity.factions.IFaction;
-import de.teamlapen.vampirism.api.items.IFactionExclusiveItem;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.entity.AlchemicalCocktailEntity;
 import net.grid.vampiresdelight.common.registry.VDItems;
@@ -26,11 +23,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AlchemicalCocktailItem extends Item implements ProjectileItem, IFactionExclusiveItem {
+public class AlchemicalCocktailItem extends Item implements ProjectileItem {
     public AlchemicalCocktailItem(Properties properties) {
         super(properties);
     }
@@ -53,11 +49,6 @@ public class AlchemicalCocktailItem extends Item implements ProjectileItem, IFac
         }
 
         return InteractionResultHolder.sidedSuccess(heldStack, level.isClientSide());
-    }
-
-    @Override
-    public @Nullable IFaction<?> getExclusiveFaction(ItemStack stack) {
-        return VReference.HUNTER_FACTION;
     }
 
     @Override

@@ -74,7 +74,7 @@ configurations {
 }
 
 repositories {
-    // CurseGradle
+    // CurseMaven
     exclusiveContent {
         forRepository {
             maven {

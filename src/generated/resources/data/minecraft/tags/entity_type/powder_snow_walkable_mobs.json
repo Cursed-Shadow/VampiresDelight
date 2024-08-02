@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "#vampirism:hunter",
-      "required": false
-    }
+    "#vampirism:hunter"
   ]
 }
