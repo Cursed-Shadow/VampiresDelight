@@ -18,21 +18,21 @@ public class HungerBarCommand extends BasicCommand {
         return Commands.literal("hungerBar")
                 .requires(context -> context.hasPermission(PERMISSION_LEVEL_CHEAT))
                 .then(Commands.literal("fill")
-                        .executes(context -> setBloodBar(20, Lists.newArrayList(context.getSource().getPlayerOrException())))
+                        .executes(context -> setHungerBar(20, Lists.newArrayList(context.getSource().getPlayerOrException())))
                         .then(Commands.argument("player", EntityArgument.players())
-                                .executes(context -> setBloodBar(Integer.MAX_VALUE, EntityArgument.getPlayers(context, "player")))))
+                                .executes(context -> setHungerBar(Integer.MAX_VALUE, EntityArgument.getPlayers(context, "player")))))
                 .then(Commands.literal("empty")
-                        .executes(context -> setBloodBar(0, Lists.newArrayList(context.getSource().getPlayerOrException())))
+                        .executes(context -> setHungerBar(0, Lists.newArrayList(context.getSource().getPlayerOrException())))
                         .then(Commands.argument("player", EntityArgument.players())
-                                .executes(context -> setBloodBar(0, EntityArgument.getPlayers(context, "player")))))
+                                .executes(context -> setHungerBar(0, EntityArgument.getPlayers(context, "player")))))
                 .then(Commands.literal("set")
                         .then(Commands.argument("amount", IntegerArgumentType.integer(0))
-                                .executes(context -> setBloodBar(IntegerArgumentType.getInteger(context, "amount"), Lists.newArrayList(context.getSource().getPlayerOrException())))
+                                .executes(context -> setHungerBar(IntegerArgumentType.getInteger(context, "amount"), Lists.newArrayList(context.getSource().getPlayerOrException())))
                                 .then(Commands.argument("player", EntityArgument.players())
-                                        .executes(context -> setBloodBar(IntegerArgumentType.getInteger(context, "amount"), EntityArgument.getPlayers(context, "player"))))));
+                                        .executes(context -> setHungerBar(IntegerArgumentType.getInteger(context, "amount"), EntityArgument.getPlayers(context, "player"))))));
     }
 
-    private static int setBloodBar(int amount, @NotNull Collection<ServerPlayer> players) {
+    private static int setHungerBar(int amount, @NotNull Collection<ServerPlayer> players) {
         players.forEach(player -> {
             FoodData foodData = player.getFoodData();
             foodData.setFoodLevel(amount);

@@ -138,12 +138,17 @@ public class VDEntityUtils {
         }
     }
 
-    public static void spawnBlessingParticlesAroundEntity(ParticleOptions particle, LivingEntity livingEntity, int amount) {
+    public static void spawnBlessingParticlesAroundEntity(ParticleOptions particle, LivingEntity livingEntity, int amount, double radius) {
+        double centerX = livingEntity.getX();
+        double centerY = livingEntity.getY() + livingEntity.getHitbox().getYsize() / 2 + 0.7;
+        double centerZ = livingEntity.getZ();
+
         for (int i = 0; i < amount; i++) {
-            double x = livingEntity.getX() + (2.0F * livingEntity.getRandom().nextFloat() - 1.0F) * 0.65;
-            double y = livingEntity.getY() + 0.1 + livingEntity.getRandom().nextFloat() * 0.8;
-            double z = livingEntity.getZ() + (2.0F * livingEntity.getRandom().nextFloat() - 1.0F) * 0.65;
-            livingEntity.level().addParticle(particle, x, y, z, 0.0, 0.0, 0.0);
+            double angle = 2 * Math.PI * i / amount;
+            double offsetX = radius * Math.cos(angle);
+            double offsetZ = radius * Math.sin(angle);
+
+            livingEntity.level().addParticle(particle, centerX + offsetX, centerY, centerZ + offsetZ, 0, 0, 0);
         }
     }
 

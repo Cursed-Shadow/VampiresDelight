@@ -50,8 +50,8 @@ public class BlessingEffect extends MobEffect {
             if (type.is(VDTags.UNHOLY_SPIRITS) && !(type == ModEntities.GHOST.get() && !VDConfiguration.BLESSING_HELPS_AGAINST_GHOSTS.get())) {
                 spirit.remove(Entity.RemovalReason.DISCARDED);
 
-                level.playSound(null, spirit.getX(), spirit.getY(), spirit.getZ(), VDSounds.TRIANGLE.get(), SoundSource.NEUTRAL, 0.4f, entity.getRandom().nextFloat() * 0.5F);
-                VDEntityUtils.spawnBlessingParticlesAroundEntity(VDParticleTypes.BLESSING.get(), spirit, type == ModEntities.GHOST.get() ? spirit.getRandom().nextInt(4, 10) : spirit.getRandom().nextInt(18, 25));
+                level.playSound(null, spirit.getX(), spirit.getY(), spirit.getZ(), VDSounds.TRIANGLE.get(), SoundSource.HOSTILE, 0.4f, entity.getRandom().nextFloat() * 0.5F);
+                VDEntityUtils.spawnBlessingParticlesAroundEntity(VDParticleTypes.BLESSING.get(), spirit, type == ModEntities.GHOST.get() ? spirit.getRandom().nextInt(4, 10) : spirit.getRandom().nextInt(18, 25), type == ModEntities.GHOST.get() ? 0.4 : 0.6);
             }
         });
     }
