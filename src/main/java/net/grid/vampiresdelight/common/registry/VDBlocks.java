@@ -132,7 +132,7 @@ public class VDBlocks {
 
     // Feasts
     public static final DeferredBlock<WeirdJellyBlock> WEIRD_JELLY_BLOCK = BLOCKS.register("weird_jelly_block",
-            () -> new WeirdJellyBlock(Block.Properties.ofFullCopy(Blocks.SLIME_BLOCK), VDItems.WEIRD_JELLY::get, true));
+            () -> new WeirdJellyBlock(Block.Properties.ofFullCopy(Blocks.CAKE).sound(SoundType.SLIME_BLOCK).noOcclusion().mapColor(MapColor.TERRACOTTA_MAGENTA), VDItems.WEIRD_JELLY::get, true));
 
     // Cakes
     public static final DeferredBlock<ConsumableCakeBlock> ORCHID_CAKE = BLOCKS.register("orchid_cake",

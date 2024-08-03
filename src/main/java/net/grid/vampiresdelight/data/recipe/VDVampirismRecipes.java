@@ -37,6 +37,7 @@ public class VDVampirismRecipes {
                 .requires(ModItems.ITEM_ALCHEMICAL_FIRE.get(), 2)
                 .unlockedBy("has_alchemical_fire", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ITEM_ALCHEMICAL_FIRE.get()))
                 .save(output);
+
         ShapedWeaponTableRecipeBuilder.shapedWeaponTable(RecipeCategory.COMBAT, VDBlocks.SPIRIT_LANTERN.get())
                 .pattern(" gg ")
                 .pattern("gssg")
@@ -54,11 +55,13 @@ public class VDVampirismRecipes {
                 .bloodOilIngredient()
                 .input(potion(VDPotions.BLESSING, VDPotions.STRONG_BLESSING, VDPotions.LONG_BLESSING))
                 .save(output, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "blessing_oil"));
+
         AlchemyTableRecipeBuilder
                 .builder(VDOils.CLOTHES_DISSOLVING)
                 .bloodOilIngredient()
                 .input(potion(VDPotions.CLOTHES_DISSOLVING))
                 .save(output, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "clothes_dissolving_oil"));
+
         AlchemyTableRecipeBuilder
                 .builder(VDOils.FOG_VISION)
                 .bloodOilIngredient()

@@ -8,7 +8,12 @@
   - `disableVampireBite`;
 
 - ### Updates
-  - **Spirit Lantern**'s model is no longer 3D in hand;
+- **Spirit Lantern**'s model is no longer 3D in hand;
+- **Weird Jelly** no longer breaks instantly;
+
+- ### Removals
+- Configs removed:
+  - `disableVampireBite`;
 
 ## 0.1.7b
 
