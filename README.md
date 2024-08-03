@@ -21,9 +21,8 @@
 <a href="https://modrinth.com/mod/vampires-delight">
     <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg" alt="Curseforge Downloads">
 </a>
-<br>
 <a href="https://discord.gg/r8Hh3Qvt86">
-    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/social/discord-plural_vector.svg" width="40%" alt="Discord Invite">
+    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg" alt="Discord Invite">
 </a>
 
 ## People
