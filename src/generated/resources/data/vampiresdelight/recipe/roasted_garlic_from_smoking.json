@@ -1,13 +1,13 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:smoking",
   "category": "food",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "experience": 0.35,
   "ingredient": {
     "item": "vampirism:garlic"
   },
   "result": {
     "count": 1,
-    "id": "vampiresdelight:grilled_garlic"
+    "id": "vampiresdelight:roasted_garlic"
   }
 }

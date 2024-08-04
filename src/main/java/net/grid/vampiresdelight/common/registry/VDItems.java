@@ -142,8 +142,8 @@ public class VDItems {
             () -> new ItemNameBlockItem(VDBlocks.VAMPIRE_ORCHID_CROP.get(), basicItem()));
 
     // Foodstuffs
-    public static final DeferredItem<HunterConsumableItem> GRILLED_GARLIC = ITEMS.register("grilled_garlic",
-            () -> new HunterConsumableItem(foodItem(VDFoodValues.GRILLED_GARLIC), null));
+    public static final DeferredItem<HunterConsumableItem> ROASTED_GARLIC = ITEMS.register("roasted_garlic",
+            () -> new HunterConsumableItem(foodItem(VDFoodValues.ROASTED_GARLIC), null));
     public static final DeferredItem<DaisyTeaItem> DAISY_TEA = ITEMS.register("daisy_tea",
             () -> new DaisyTeaItem(drinkItem()));
     public static final DeferredItem<VampireDrinkableItem> BLOOD_SYRUP = ITEMS.register("blood_syrup",

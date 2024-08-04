@@ -15,7 +15,7 @@ import net.minecraft.world.level.ItemLike;
 
 public class VDSmeltingRecipes {
     public static void register(RecipeOutput output) {
-        multipleSmeltingRecipes(VDItems.GRILLED_GARLIC.get(), ModBlocks.GARLIC.asItem(),
+        multipleSmeltingRecipes(VDItems.ROASTED_GARLIC.get(), ModBlocks.GARLIC.asItem(),
                 0.35F, true, true, true, output);
 
         multipleSmeltingRecipes(VDItems.COOKED_BAT.get(), VDItems.RAW_BAT.get(),

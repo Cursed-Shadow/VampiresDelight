@@ -86,7 +86,7 @@ public class VDFoodValues {
     
 
     // Small foods
-    public static final FoodProperties GRILLED_GARLIC = new FoodProperties.Builder()
+    public static final FoodProperties ROASTED_GARLIC = new FoodProperties.Builder()
             .nutrition(3).saturationModifier(0.2f).build();
     
     public static final FoodProperties RICE_DOUGH = new FoodProperties.Builder()

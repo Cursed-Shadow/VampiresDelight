@@ -21,13 +21,18 @@ public class MappingEventHandler {
             remap(ResourceLocation.parse(id), ResourceLocation.parse(newId));
         }
 
-        public void remap(ResourceLocation id, ResourceLocation object) {
-            register.addAlias(id, object);
+        public void remap(ResourceLocation id, ResourceLocation newId) {
+            register.addAlias(id, newId);
         }
     }
 
     private static void fixItems(@NotNull Mapping mapping) {
-        mapping.remap("vampiresdelight:eye_toast", "vampiresdelight:eye_croissant");
-        mapping.remap("vampiresdelight:wine_glass", "vampiresdelight:blood_wine_glass");
+        mapping.remap(id("eye_toast"), id("eye_croissant"));
+        mapping.remap(id("wine_glass"), id("blood_wine_glass"));
+        mapping.remap(id("grilled_garlic"), id("roasted_garlic"));
+    }
+
+    private static String id(String name) {
+        return VampiresDelight.MODID + ":" + name;
     }
 }

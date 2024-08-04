@@ -7,13 +7,18 @@
 - Configs removed:
   - `disableVampireBite`;
 
-- ### Updates
+### Updates
 - **Spirit Lantern**'s model is no longer 3D in hand;
 - **Weird Jelly** no longer breaks instantly;
+- Updated **Grilled (Roasted) Garlic** texture;
 
-- ### Removals
+### Removals
 - Configs removed:
   - `disableVampireBite`;
+
+### Translations
+- **New lines added**;
+- Renamed **Grilled Garlic** to **Roasted Garlic**;
 
 ## 0.1.7b
 

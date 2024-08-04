@@ -138,7 +138,7 @@ public class VDCookingRecipes {
                 .addIngredient(VDCommonTags.FOODS_RAW_CHICKEN)
                 .addIngredient(VDCommonTags.CROPS_GARLIC)
                 .addIngredient(Tags.Items.FOODS_VEGETABLE)
-                .unlockedByAnyIngredient(VDItems.GRILLED_GARLIC.get(), ModBlocks.GARLIC.asItem())
+                .unlockedByAnyIngredient(VDItems.ROASTED_GARLIC.get(), ModBlocks.GARLIC.asItem())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(output, itemLocationCooking(VDItems.GARLIC_SOUP.get()));
 
@@ -154,7 +154,7 @@ public class VDCookingRecipes {
                 )))
                 .addIngredient(Items.BEETROOT)
                 .addIngredient(VDCommonTags.CROPS_GARLIC)
-                .unlockedByAnyIngredient(VDItems.GRILLED_GARLIC.get(), ModBlocks.GARLIC.asItem())
+                .unlockedByAnyIngredient(VDItems.ROASTED_GARLIC.get(), ModBlocks.GARLIC.asItem())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(output, itemLocationCooking(VDItems.BORSCHT.get()));
     }
