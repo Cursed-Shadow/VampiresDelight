@@ -1,6 +1,5 @@
 package net.grid.vampiresdelight.common.utility;
 
-import de.teamlapen.vampirism.REFERENCE;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.effects.SanguinareEffect;
@@ -13,11 +12,6 @@ import net.minecraft.world.item.Item;
 import java.util.Objects;
 
 public class VDHelper extends Helper {
-    // Plant type for plants that grow on cursed soil.
-    //public static final PlantType CURSED_PLANT_TYPE = PlantType.get("vampiresdelight_cursed");
-
-    public static final ResourceLocation BLOOD_BAR_ELEMENT = ResourceLocation.fromNamespaceAndPath(REFERENCE.MODID, "blood_bar");
-
     public static boolean canBeInfectedFromItem(Player player) {
         return canBecomeVampire(player) && !VampirismConfig.SERVER.disableFangInfection.get();
     }

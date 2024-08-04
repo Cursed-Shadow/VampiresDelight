@@ -16,7 +16,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import squeek.appleskin.api.event.FoodValuesEvent;
+import squeek.appleskin.api.event.HUDOverlayEvent;
 import squeek.appleskin.api.event.TooltipOverlayEvent;
+
 
 @OnlyIn(Dist.CLIENT)
 public class VDAppleSkinEventHandler {
@@ -46,6 +48,15 @@ public class VDAppleSkinEventHandler {
                 event.defaultFoodProperties = foodProperties;
                 event.modifiedFoodProperties = foodProperties;
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void onSaturationHUDOverlayEvent(HUDOverlayEvent.Saturation event) {
+        Player player = VampirismMod.proxy.getClientPlayer();
+
+        if (player != null && VDHelper.isVampire(player)) {
+            event.setCanceled(true);
         }
     }
 }

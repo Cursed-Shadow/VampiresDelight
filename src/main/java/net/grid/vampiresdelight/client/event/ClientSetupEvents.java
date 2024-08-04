@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.client.event;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.client.extension.PourableBottleItemExtension;
+import net.grid.vampiresdelight.client.gui.VDHUDOverlays;
 import net.grid.vampiresdelight.client.particle.BlessingParticle;
 import net.grid.vampiresdelight.client.renderer.DarkStoneStoveRenderer;
 import net.grid.vampiresdelight.common.item.AlchemicalCocktailItem;
@@ -19,6 +20,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -47,6 +49,11 @@ public class ClientSetupEvents {
     @SubscribeEvent
     public static void onEntityRendererRegister(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(VDEntityTypes.ALCHEMICAL_COCKTAIL.get(), ThrownItemRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerGuiLayers(RegisterGuiLayersEvent event) {
+        VDHUDOverlays.register(event);
     }
 
     @SubscribeEvent
