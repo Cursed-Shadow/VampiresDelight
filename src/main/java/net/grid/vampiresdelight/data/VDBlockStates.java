@@ -88,6 +88,8 @@ public class VDBlockStates extends BlockStateProvider {
         this.farmlandBlock(VDBlocks.CURSED_FARMLAND.get());
         this.farmlandBlock(VDBlocks.BLOODY_SOIL_FARMLAND.get());
 
+        this.spiritLanternBlock(VDBlocks.SPIRIT_LANTERN.get());
+
         WineShelfBlock.getAllShelveBlocks().forEach(this::wineShelfBlock);
         BarStoolBlock.getBarStoolBlocks().forEach(block -> this.simpleBlock(block, existingModel(block)));
 
@@ -250,6 +252,32 @@ public class VDBlockStates extends BlockStateProvider {
         Function<BlockState, ModelFile> function = blockState -> blockState.getValue(BlockStateProperties.LIT) ? candleCakeLit : candleCake;
 
         this.getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(function.apply(state)).build());
+    }
+
+    public void spiritLanternBlock(Block block) {
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block);
+        int[] rotations = {270, 0, 90, 180};
+        Direction[] directions = {Direction.WEST, Direction.NORTH, Direction.EAST, Direction.SOUTH};
+
+        ModelFile notHanging = existingModel(blockName(block));
+        ModelFile hanging = existingModel(blockName(block) + "_hanging_base");
+        ModelFile chain = existingModel(blockName(block) + "_chain");
+
+        for (int i = 0; i < rotations.length; i++) {
+            int rotation = rotations[i];
+            Direction direction = directions[i];
+
+            builder.part().modelFile(notHanging).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction)
+                    .condition(SpiritLanternBlock.HANGING, false).end();
+
+            builder.part().modelFile(hanging).rotationY(rotation).addModel()
+                    .condition(HorizontalDirectionalBlock.FACING, direction)
+                    .condition(SpiritLanternBlock.HANGING, true).end();
+        }
+
+        builder.part().modelFile(chain).addModel()
+                .condition(SpiritLanternBlock.HANGING, true).end();
     }
 
     public void wineShelfBlock(Block block) {

@@ -7,37 +7,7 @@
       },
       "when": {
         "facing": "west",
-        "hanging": false
-      }
-    },
-    {
-      "apply": {
-        "model": "vampiresdelight:block/spirit_lantern",
-        "y": 0
-      },
-      "when": {
-        "facing": "north",
-        "hanging": false
-      }
-    },
-    {
-      "apply": {
-        "model": "vampiresdelight:block/spirit_lantern",
-        "y": 90
-      },
-      "when": {
-        "facing": "east",
-        "hanging": false
-      }
-    },
-    {
-      "apply": {
-        "model": "vampiresdelight:block/spirit_lantern",
-        "y": 180
-      },
-      "when": {
-        "facing": "south",
-        "hanging": false
+        "hanging": "false"
       }
     },
     {
@@ -47,17 +17,35 @@
       },
       "when": {
         "facing": "west",
-        "hanging": true
+        "hanging": "true"
       }
     },
     {
       "apply": {
-        "model": "vampiresdelight:block/spirit_lantern_hanging_base",
-        "y": 0
+        "model": "vampiresdelight:block/spirit_lantern"
       },
       "when": {
         "facing": "north",
-        "hanging": true
+        "hanging": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "vampiresdelight:block/spirit_lantern_hanging_base"
+      },
+      "when": {
+        "facing": "north",
+        "hanging": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "vampiresdelight:block/spirit_lantern",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "hanging": "false"
       }
     },
     {
@@ -67,7 +55,17 @@
       },
       "when": {
         "facing": "east",
-        "hanging": true
+        "hanging": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "vampiresdelight:block/spirit_lantern",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "hanging": "false"
       }
     },
     {
@@ -77,7 +75,7 @@
       },
       "when": {
         "facing": "south",
-        "hanging": true
+        "hanging": "true"
       }
     },
     {
@@ -85,7 +83,7 @@
         "model": "vampiresdelight:block/spirit_lantern_chain"
       },
       "when": {
-        "hanging": true
+        "hanging": "true"
       }
     }
   ]
