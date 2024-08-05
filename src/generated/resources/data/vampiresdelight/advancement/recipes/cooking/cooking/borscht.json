@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:oxeye_daisy"
+            "items": [
+              "vampiresdelight:roasted_garlic",
+              "vampirism:garlic"
+            ]
           }
         ]
       },
@@ -13,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cooking/cooking/daisy_tea"
+        "recipe": "vampiresdelight:cooking/cooking/borscht"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cooking/cooking/daisy_tea"
+      "vampiresdelight:cooking/cooking/borscht"
     ]
   }
 }

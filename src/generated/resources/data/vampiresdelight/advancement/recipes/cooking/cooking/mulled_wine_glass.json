@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "vampiresdelight:black_mushroom"
+            "items": "vampiresdelight:blood_wine_glass"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cooking/cooking/black_mushroom_soup"
+        "recipe": "vampiresdelight:cooking/cooking/mulled_wine_glass"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cooking/cooking/black_mushroom_soup"
+      "vampiresdelight:cooking/cooking/mulled_wine_glass"
     ]
   }
 }

@@ -6,11 +6,8 @@
         "items": [
           {
             "items": [
-              "vampirism:pure_blood_0",
-              "vampirism:pure_blood_1",
-              "vampirism:pure_blood_2",
-              "vampirism:pure_blood_3",
-              "vampirism:pure_blood_4"
+              "vampiresdelight:roasted_garlic",
+              "vampirism:garlic"
             ]
           }
         ]
@@ -19,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cooking/cooking/weird_jelly_block"
+        "recipe": "vampiresdelight:cooking/cooking/garlic_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cooking/cooking/weird_jelly_block"
+      "vampiresdelight:cooking/cooking/garlic_soup"
     ]
   }
 }

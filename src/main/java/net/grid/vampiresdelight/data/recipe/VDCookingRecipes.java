@@ -183,10 +183,10 @@ public class VDCookingRecipes {
     }
 
     private static String itemLocationCooking(Item item) {
-        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cooking/" + itemName(item)).getPath();
+        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cooking/" + itemName(item)).toString();
     }
 
     private static String blockLocationCooking(Block block) {
-        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cooking/" + blockName(block)).getPath();
+        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cooking/" + blockName(block)).toString();
     }
 }

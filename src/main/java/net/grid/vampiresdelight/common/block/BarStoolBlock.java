@@ -14,6 +14,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -49,8 +50,11 @@ import java.util.stream.Collectors;
 public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public BarStoolBlock() {
+    private final DyeColor color;
+
+    public BarStoolBlock(DyeColor color) {
         super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
+        this.color = color;
 
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(WATERLOGGED, false));
@@ -171,6 +175,10 @@ public class BarStoolBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return Shapes.join(Block.box(4, 0, 4, 12, 13, 12), Block.box(3, 13, 3, 13, 16, 13), BooleanOp.OR);
+    }
+
+    public DyeColor getColor() {
+        return color;
     }
 
     public static Iterable<Block> getBarStoolBlocks() {

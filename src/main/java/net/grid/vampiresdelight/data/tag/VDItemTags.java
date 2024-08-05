@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.data.tag;
 import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.block.BarStoolBlock;
 import net.grid.vampiresdelight.common.block.ConsumableCandleCakeBlock;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.tag.VDCompatibilityTags;
@@ -128,12 +129,13 @@ public class VDItemTags extends ItemTagsProvider {
     }
 
     private void registerCommonTags() {
-        // TODO: Also add dyed tags for bar stools
-        // TODO: Also add common tags for blocks
-        // TODO: Also check if they're correct after data gen
+        BarStoolBlock.getBarStoolBlocks().forEach(block -> {
+            tag(Tags.Items.DYED).add(block.asItem());
 
-        //getAllHumanVDFood().forEach(item ->
-                //tag(Tags.Items.FOODS).add(item));
+            if (block instanceof BarStoolBlock barStoolBlock) {
+                tag(barStoolBlock.getColor().getDyedTag()).add(block.asItem());
+            }
+        });
 
         tag(Tags.Items.CROPS)
                 .addTag(VDCommonTags.CROPS_GARLIC);
@@ -231,8 +233,4 @@ public class VDItemTags extends ItemTagsProvider {
         tag(VDCompatibilityTags.TINKERS_CONSTRUCT_SEEDS)
                 .add(VDItems.ORCHID_SEEDS.get());
     }
-
-    //private static Iterable<Item> getAllHumanVDFood() {
-        //return BuiltInRegistries.ITEM.stream().filter(item -> VampiresDelight.MODID.equals(VDNameUtils.itemNamespace(item)) && item.getFoodProperties(new ItemStack(item), null) != null).collect(Collectors.toList());
-    //}
 }

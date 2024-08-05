@@ -133,10 +133,10 @@ public class VDCuttingRecipes {
     }
 
     private static String itemLocationCutting(Item item) {
-        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cutting/" + itemName(item)).getPath();
+        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cutting/" + itemName(item)).toString();
     }
 
     private static String blockLocationCutting(Block block) {
-        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cutting/" + blockName(block)).getPath();
+        return ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "cutting/" + blockName(block)).toString();
     }
 }

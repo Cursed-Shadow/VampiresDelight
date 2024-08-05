@@ -60,7 +60,6 @@ public class ConsumableCandleCakeBlock extends AbstractCandleBlock {
         return CODEC;
     }
 
-    // TODO: Check if it works as intended, because cakeBlock is no longer a ConsumableCakeBlock but just Block for Codec purposes
     public ConsumableCandleCakeBlock(BlockBehaviour.Properties properties, Block cakeBlock, Block candleBlock) {
         super(properties);
         this.cakeBlock = cakeBlock;

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "vampiresdelight:orchid_petals"
+            "items": "vampiresdelight:black_mushroom"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cooking/cooking/orchid_cream_soup"
+        "recipe": "vampiresdelight:cooking/cooking/black_mushroom_noodles"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cooking/cooking/orchid_cream_soup"
+      "vampiresdelight:cooking/cooking/black_mushroom_noodles"
     ]
   }
 }

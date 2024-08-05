@@ -63,17 +63,17 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand mainHand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand pouringHand) {
         BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
-        InteractionHand offHand = mainHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
-        ItemStack pouringBottle = player.getItemInHand(mainHand);
+        InteractionHand offHand = pouringHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+        ItemStack pouringBottle = player.getItemInHand(pouringHand);
         ItemStack glassBottle = player.getItemInHand(offHand);
 
         if (hitResult.getType() == HitResult.Type.BLOCK && player.isCrouching()) {
             BlockPos blockPos = hitResult.getBlockPos();
             BlockPos targetPos = player.isCrouching() ? blockPos.relative(hitResult.getDirection()) : blockPos;
             BlockState targetState = level.getBlockState(targetPos);
-            BlockState bottleBlockToPlace = placedBottleBlock.getStateForPlacement(new BlockPlaceContext(level, player, mainHand, pouringBottle, hitResult));
+            BlockState bottleBlockToPlace = placedBottleBlock.getStateForPlacement(new BlockPlaceContext(level, player, pouringHand, pouringBottle, hitResult));
 
             if (targetState.canBeReplaced() && bottleBlockToPlace != null) {
                 level.setBlock(targetPos, bottleBlockToPlace, 3);
@@ -95,14 +95,14 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
         }
 
         if (!pouringBottle.getOrDefault(VDDataComponents.SERVING_HELD, ItemStackWrapper.EMPTY).getStack().isEmpty()) {
-            player.startUsingItem(mainHand);
+            player.startUsingItem(pouringHand);
             return InteractionResultHolder.pass(pouringBottle);
         }
 
         if (glassBottle.getItem() == servingContainer) {
             ItemStack itemUsed = glassBottle.copy();
             ItemStack toPour = itemUsed.split(1);
-            player.startUsingItem(mainHand);
+            player.startUsingItem(pouringHand);
             pouringBottle.set(VDDataComponents.SERVING_HELD, new ItemStackWrapper(toPour));
             player.setItemInHand(offHand, itemUsed);
             return InteractionResultHolder.success(pouringBottle);
@@ -123,7 +123,7 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
         if (pickUp != null) {
             ItemStack pickedItem = pickUp.getItem().copy();
             ItemStack toPour = pickedItem.split(1);
-            player.startUsingItem(mainHand);
+            player.startUsingItem(pouringHand);
 
             if (!level.isClientSide) {
                 pouringBottle.set(VDDataComponents.SERVING_HELD, new ItemStackWrapper(toPour));
@@ -223,4 +223,32 @@ public class PourableBottleItem extends Item implements ICustomUseItem {
     public @NotNull UseAnim getUseAnimation(ItemStack itemStack) {
         return UseAnim.DRINK;
     }
+
+    /*
+    @EventBusSubscriber(modid = VampiresDelight.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
+    public static class ContainerRender {
+        @SubscribeEvent
+        static void onRenderHandEvent(RenderHandEvent event) {
+            Player player = Minecraft.getInstance().player;
+            if (player == null) {
+                return;
+            }
+
+            // In this case it's done when arm with nothing it in is rendered while other arm has pouring bottle, so it's reverted
+            InteractionHand offHand = event.getHand();
+            InteractionHand pouringHand = offHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+            ItemStack glassBottle = player.getItemInHand(pouringHand);
+            ItemStack pouringBottle = player.getItemInHand(offHand);
+
+            // Render bottle if it's empty and players pours into nothing
+            if (glassBottle.isEmpty() && !pouringBottle.isEmpty() && pouringBottle.getItem() instanceof PourableBottleItem pourableBottleItem) {
+                // Serving container in which drink is poured. So it's usually glass bottle. That's what we are going to render
+                Item servingContainer = pourableBottleItem.servingContainer;
+                ItemDisplayContext displayContext = player.getMainArm() == HumanoidArm.RIGHT && offHand == InteractionHand.MAIN_HAND ? ItemDisplayContext.THIRD_PERSON_RIGHT_HAND : ItemDisplayContext.THIRD_PERSON_LEFT_HAND;
+
+                Minecraft.getInstance().getEntityRenderDispatcher().getItemInHandRenderer().renderItem(player, new ItemStack(servingContainer), displayContext, player.getMainArm() == HumanoidArm.LEFT, event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+            }
+        }
+    }
+     */
 }

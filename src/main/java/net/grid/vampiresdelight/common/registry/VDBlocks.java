@@ -5,6 +5,7 @@ import de.teamlapen.lib.lib.util.UtilLib;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.block.*;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -77,22 +78,38 @@ public class VDBlocks {
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
     public static final DeferredBlock<WineShelfBlock> MAGIC_WINE_SHELF = BLOCKS.register("magic_wine_shelf",
             () -> new WineShelfBlock(Block.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
-    public static final DeferredBlock<BarStoolBlock> WHITE_BAR_STOOL = BLOCKS.register("white_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> ORANGE_BAR_STOOL = BLOCKS.register("orange_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> MAGENTA_BAR_STOOL = BLOCKS.register("magenta_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> LIGHT_BLUE_BAR_STOOL = BLOCKS.register("light_blue_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> YELLOW_BAR_STOOL = BLOCKS.register("yellow_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> LIME_BAR_STOOL = BLOCKS.register("lime_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> PINK_BAR_STOOL = BLOCKS.register("pink_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> GRAY_BAR_STOOL = BLOCKS.register("gray_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> LIGHT_GRAY_BAR_STOOL = BLOCKS.register("light_gray_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> CYAN_BAR_STOOL = BLOCKS.register("cyan_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> PURPLE_BAR_STOOL = BLOCKS.register("purple_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> BLUE_BAR_STOOL = BLOCKS.register("blue_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> BROWN_BAR_STOOL = BLOCKS.register("brown_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> GREEN_BAR_STOOL = BLOCKS.register("green_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> RED_BAR_STOOL = BLOCKS.register("red_bar_stool", BarStoolBlock::new);
-    public static final DeferredBlock<BarStoolBlock> BLACK_BAR_STOOL = BLOCKS.register("black_bar_stool", BarStoolBlock::new);
+    public static final DeferredBlock<BarStoolBlock> WHITE_BAR_STOOL = BLOCKS.register("white_bar_stool",
+            () -> new BarStoolBlock(DyeColor.WHITE));
+    public static final DeferredBlock<BarStoolBlock> ORANGE_BAR_STOOL = BLOCKS.register("orange_bar_stool",
+            () -> new BarStoolBlock(DyeColor.ORANGE));
+    public static final DeferredBlock<BarStoolBlock> MAGENTA_BAR_STOOL = BLOCKS.register("magenta_bar_stool",
+            () -> new BarStoolBlock(DyeColor.MAGENTA));
+    public static final DeferredBlock<BarStoolBlock> LIGHT_BLUE_BAR_STOOL = BLOCKS.register("light_blue_bar_stool",
+            () -> new BarStoolBlock(DyeColor.LIGHT_BLUE));
+    public static final DeferredBlock<BarStoolBlock> YELLOW_BAR_STOOL = BLOCKS.register("yellow_bar_stool",
+            () -> new BarStoolBlock(DyeColor.YELLOW));
+    public static final DeferredBlock<BarStoolBlock> LIME_BAR_STOOL = BLOCKS.register("lime_bar_stool",
+            () -> new BarStoolBlock(DyeColor.LIME));
+    public static final DeferredBlock<BarStoolBlock> PINK_BAR_STOOL = BLOCKS.register("pink_bar_stool",
+            () -> new BarStoolBlock(DyeColor.PINK));
+    public static final DeferredBlock<BarStoolBlock> GRAY_BAR_STOOL = BLOCKS.register("gray_bar_stool",
+            () -> new BarStoolBlock(DyeColor.GRAY));
+    public static final DeferredBlock<BarStoolBlock> LIGHT_GRAY_BAR_STOOL = BLOCKS.register("light_gray_bar_stool",
+            () -> new BarStoolBlock(DyeColor.LIGHT_GRAY));
+    public static final DeferredBlock<BarStoolBlock> CYAN_BAR_STOOL = BLOCKS.register("cyan_bar_stool",
+            () -> new BarStoolBlock(DyeColor.CYAN));
+    public static final DeferredBlock<BarStoolBlock> PURPLE_BAR_STOOL = BLOCKS.register("purple_bar_stool",
+            () -> new BarStoolBlock(DyeColor.PURPLE));
+    public static final DeferredBlock<BarStoolBlock> BLUE_BAR_STOOL = BLOCKS.register("blue_bar_stool",
+            () -> new BarStoolBlock(DyeColor.BLUE));
+    public static final DeferredBlock<BarStoolBlock> BROWN_BAR_STOOL = BLOCKS.register("brown_bar_stool",
+            () -> new BarStoolBlock(DyeColor.BROWN));
+    public static final DeferredBlock<BarStoolBlock> GREEN_BAR_STOOL = BLOCKS.register("green_bar_stool",
+            () -> new BarStoolBlock(DyeColor.GREEN));
+    public static final DeferredBlock<BarStoolBlock> RED_BAR_STOOL = BLOCKS.register("red_bar_stool",
+            () -> new BarStoolBlock(DyeColor.RED));
+    public static final DeferredBlock<BarStoolBlock> BLACK_BAR_STOOL = BLOCKS.register("black_bar_stool",
+            () -> new BarStoolBlock(DyeColor.BLACK));
 
     // Farming
     public static final DeferredBlock<CursedFarmlandBlock> CURSED_FARMLAND = BLOCKS.register("cursed_farmland",

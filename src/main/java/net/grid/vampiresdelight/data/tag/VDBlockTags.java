@@ -11,7 +11,9 @@ import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +33,7 @@ public class VDBlockTags extends BlockTagsProvider {
         this.registerBlockMineables();
         this.registerMinecraftTags();
         this.registerFarmersDelightTags();
+        this.registerCommonTags();
         this.registerCompatibilityTags();
     }
 
@@ -71,13 +74,6 @@ public class VDBlockTags extends BlockTagsProvider {
         WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(BlockTags.MINEABLE_WITH_AXE).add(block));
         BarStoolBlock.getBarStoolBlocks().forEach(block -> tag(BlockTags.MINEABLE_WITH_AXE).add(block));
 
-        tag(ModTags.MINEABLE_WITH_KNIFE)
-                .addTag(VDTags.DROPS_ORCHID_CAKE_SLICE)
-                .add(
-                        VDBlocks.BLOOD_PIE.get(),
-                        VDBlocks.WEIRD_JELLY_BLOCK.get(),
-                        VDBlocks.ORCHID_CAKE.get()
-                );
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 VDBlocks.DARK_STONE_STOVE.get(),
                 VDBlocks.SPIRIT_LANTERN.get()
@@ -87,11 +83,23 @@ public class VDBlockTags extends BlockTagsProvider {
                 VDBlocks.BLOODY_SOIL.get(),
                 VDBlocks.BLOODY_SOIL_FARMLAND.get()
         );
+        tag(ModTags.MINEABLE_WITH_KNIFE)
+                .addTag(VDTags.DROPS_ORCHID_CAKE_SLICE)
+                .add(
+                        VDBlocks.BLOOD_PIE.get(),
+                        VDBlocks.WEIRD_JELLY_BLOCK.get(),
+                        VDBlocks.ORCHID_CAKE.get()
+                );
     }
 
     protected void registerMinecraftTags() {
+        tag(BlockTags.BAMBOO_PLANTABLE_ON).add(
+                VDBlocks.BLOODY_SOIL.get());
+        tag(BlockTags.MUSHROOM_GROW_BLOCK).add(
+                VDBlocks.BLOODY_SOIL.get());
         tag(BlockTags.CROPS).add(
-                ModBlocks.GARLIC.get());
+                ModBlocks.GARLIC.get(),
+                VDBlocks.VAMPIRE_ORCHID_CROP.get());
         tag(BlockTags.SMALL_FLOWERS).add(
                 VDBlocks.WILD_GARLIC.get());
         tag(BlockTags.FLOWER_POTS)
@@ -109,6 +117,17 @@ public class VDBlockTags extends BlockTagsProvider {
                 ModBlocks.FIRE_PLACE.get());
         tag(ModTags.HEAT_SOURCES).add(
                 VDBlocks.DARK_STONE_STOVE.get());
+    }
+
+    private void registerCommonTags() {
+        BarStoolBlock.getBarStoolBlocks().forEach(block -> {
+            tag(Tags.Blocks.DYED).add(block);
+
+            if (block instanceof BarStoolBlock barStoolBlock) {
+                ResourceLocation tag = ResourceLocation.fromNamespaceAndPath("c", "dyed/" + barStoolBlock.getColor().getName());
+                tag(BlockTags.create(tag)).add(block);
+            }
+        });
     }
 
     private void registerCompatibilityTags() {
