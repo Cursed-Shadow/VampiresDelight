@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vampiresdelight:cooking/cooking/black_mushroom_noodles"
+        "recipe": "vampiresdelight:cooking/black_mushroom_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "vampiresdelight:cooking/cooking/black_mushroom_noodles"
+      "vampiresdelight:cooking/black_mushroom_soup"
     ]
   }
 }

@@ -177,7 +177,7 @@
   "vampiresdelight.tooltip.dandelion_beer_bottle.single_serving": "Contient %s portion de bière",
   "vampiresdelight.tooltip.dandelion_beer_bottle.multiple_servings": "Contient %s des portions de bière",
 
-  "vampiresdelight.text.planted_on": "Doit être planté sur des terres labourée corrompue",
+  "vampiresdelight.text.planted_on_vampire_soil": "Must be planted on Cursed or Bloody Soil Farmland",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",
 

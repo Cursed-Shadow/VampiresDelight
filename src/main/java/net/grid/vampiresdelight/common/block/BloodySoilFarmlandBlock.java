@@ -3,7 +3,6 @@ package net.grid.vampiresdelight.common.block;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;

@@ -5,13 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "vampirism:pure_blood_0",
-              "vampirism:pure_blood_1",
-              "vampirism:pure_blood_2",
-              "vampirism:pure_blood_3",
-              "vampirism:pure_blood_4"
-            ]
+            "items": "vampiresdelight:blood_wine_glass"
           }
         ]
       },
@@ -19,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vampiresdelight:cooking/cooking/weird_jelly_block"
+        "recipe": "vampiresdelight:cooking/mulled_wine_glass"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "vampiresdelight:cooking/cooking/weird_jelly_block"
+      "vampiresdelight:cooking/mulled_wine_glass"
     ]
   }
 }

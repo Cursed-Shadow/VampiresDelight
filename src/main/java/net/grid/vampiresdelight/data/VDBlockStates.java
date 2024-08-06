@@ -67,8 +67,8 @@ public class VDBlockStates extends BlockStateProvider {
         });
 
         getVariantBuilder(VDBlocks.VAMPIRE_ORCHID_CROP.get())
-                .partialState().with(VampireOrchidCropBlock.AGE, 0).modelForState().modelFile(models().getExistingFile(modLoc("vampire_orchid_crop_stage0"))).addModel()
-                .partialState().with(VampireOrchidCropBlock.AGE, 1).modelForState().modelFile(models().getExistingFile(modLoc("vampire_orchid_crop_stage1"))).addModel();
+                .partialState().with(OrchidCropBlock.AGE, 0).modelForState().modelFile(models().getExistingFile(modLoc("vampire_orchid_crop_stage0"))).addModel()
+                .partialState().with(OrchidCropBlock.AGE, 1).modelForState().modelFile(models().getExistingFile(modLoc("vampire_orchid_crop_stage1"))).addModel();
 
         this.feastBlock(VDBlocks.WEIRD_JELLY_BLOCK.get());
 

@@ -138,8 +138,8 @@ public class VDBlocks {
             () -> new WildGarlicBlock(MobEffects.BLINDNESS, 8, Block.Properties.ofFullCopy(Blocks.TALL_GRASS)));
 
     // Crops
-    public static final DeferredBlock<VampireOrchidCropBlock> VAMPIRE_ORCHID_CROP = BLOCKS.register("vampire_orchid_crop",
-            () -> new VampireOrchidCropBlock(Block.Properties.ofFullCopy(Blocks.WHEAT).mapColor(MapColor.TERRACOTTA_MAGENTA).instabreak().noCollission().sound(SoundType.CROP)));
+    public static final DeferredBlock<OrchidCropBlock> VAMPIRE_ORCHID_CROP = BLOCKS.register("vampire_orchid_crop",
+            () -> new OrchidCropBlock(Block.Properties.ofFullCopy(Blocks.WHEAT).mapColor(MapColor.TERRACOTTA_MAGENTA).instabreak().noCollission().sound(SoundType.CROP)));
 
     // Placed Drinks
     public static final DeferredBlock<PlacedPourableBottleBlock> DANDELION_BEER_BOTTLE_PLACED = BLOCKS.register("dandelion_beer_bottle_placed",

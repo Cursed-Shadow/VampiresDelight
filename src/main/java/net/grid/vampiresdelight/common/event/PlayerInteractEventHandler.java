@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,9 +23,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.common.utility.ItemUtils;
+
+import java.util.Map;
 
 @EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerInteractEventHandler {
@@ -44,6 +48,66 @@ public class PlayerInteractEventHandler {
             }
         }
     }
+
+    @SubscribeEvent
+    public static void onRichSoilClickedWithPureBlood(UseItemOnBlockEvent event) {
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        BlockState blockState = level.getBlockState(pos);
+        Block block = blockState.getBlock();
+        ItemStack itemStack = event.getItemStack();
+
+        if (!level.isClientSide() && event.getUsePhase() == UseItemOnBlockEvent.UsePhase.ITEM_AFTER_BLOCK) {
+            if (itemStack.is(de.teamlapen.vampirism.core.ModTags.Items.PURE_BLOOD)) {
+                Map<Block, Block> blocksMap = Map.of(
+                        vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL.get(), VDBlocks.BLOODY_SOIL.get(),
+                        vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get(), VDBlocks.BLOODY_SOIL_FARMLAND.get()
+                );
+
+                Block bloodyBlock = blocksMap.get(block);
+                if (bloodyBlock != null) {
+                    itemStack.shrink(1);
+                    level.setBlockAndUpdate(pos, bloodyBlock.defaultBlockState());
+                    level.playSound(null, pos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.6F, 1.0F);
+                    event.setCancellationResult(ItemInteractionResult.sidedSuccess(level.isClientSide()));
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onWrongPlantSoilClicked(PlayerInteractEvent.RightClickBlock event) {
+        Item item = event.getEntity().getItemInHand(event.getHand()).getItem();
+        Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
+
+        if (item == VDItems.ORCHID_SEEDS.get() && (block == Blocks.FARMLAND || block == vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get())) {
+            event.getEntity().displayClientMessage(VDTextUtils.getTranslation("text.planted_on_vampire_soil"), true);
+        }
+    }
+
+    /*
+    // Replace this with an event that would work. It does not work properly
+    @SubscribeEvent
+    public static void onWrongSoilChosen(BlockEvent.EntityPlaceEvent event) {
+        BlockState placedState = event.getPlacedBlock();
+        BlockState stateBelow = event.getLevel().getBlockState(event.getPos().below());
+
+        if (placedState.is(VDBlocks.VAMPIRE_ORCHID_CROP.get()) && (stateBelow.is(Blocks.FARMLAND) || stateBelow.is(vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get()))) {
+            if (stateBelow.is(vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get())) {
+                event.setCanceled(true);
+            }
+
+            Entity entity = event.getEntity();
+            if (entity instanceof Player player) {
+                player.displayClientMessage(VDTextUtils.getTranslation("text.planted_on_vampire_soil"), true);
+            }
+        }
+
+        if (placedState.is(ModBlocks.GARLIC.get()) && stateBelow.is(VDTags.CURSED_FARMLANDS)) {
+            event.setCanceled(true);
+        }
+    }
+     */
 
     @SubscribeEvent
     public static void onCakeInteraction(PlayerInteractEvent.RightClickBlock event) {
@@ -85,14 +149,5 @@ public class PlayerInteractEventHandler {
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
         }
-    }
-
-    @SubscribeEvent
-    public static void onWrongPlantSoilClicked(PlayerInteractEvent.RightClickBlock event) {
-        Item item = event.getEntity().getItemInHand(event.getHand()).getItem();
-        Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
-
-        if (item == VDItems.ORCHID_SEEDS.get() && (block == Blocks.FARMLAND || block == vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get()))
-            event.getEntity().displayClientMessage(VDTextUtils.getTranslation("text.planted_on"), true);
     }
 }

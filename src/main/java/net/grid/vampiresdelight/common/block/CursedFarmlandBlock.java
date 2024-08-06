@@ -8,6 +8,7 @@ import de.teamlapen.vampirism.items.HolyWaterBottleItem;
 import de.teamlapen.vampirism.items.HolyWaterSplashBottleItem;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.FarmlandWaterManager;
+import net.neoforged.neoforge.common.util.TriState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
@@ -107,16 +109,6 @@ public class CursedFarmlandBlock extends FarmBlock implements HolyWaterEffectCon
         level.setBlockAndUpdate(pos, Blocks.GRASS_BLOCK.defaultBlockState());
     }
 
-    // TODO: Check what can be planted
-    /*
-    @Override
-    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable) {
-        net.minecraftforge.common.PlantType plantType = plantable.getPlantType(world, pos.relative(facing));
-        BlockState block = plantable.getPlant(world, pos);
-        return (plantable instanceof BushBlock && plantType != PlantType.CROP) || (plantType == VReference.VAMPIRE_PLANT_TYPE || plantType == VDHelper.CURSED_PLANT_TYPE || block.getBlock() instanceof VampirismFlowerBlock);
-    }
-     */
-
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? ModBlocks.CURSED_EARTH.get().defaultBlockState() : super.getStateForPlacement(context);
@@ -129,5 +121,10 @@ public class CursedFarmlandBlock extends FarmBlock implements HolyWaterEffectCon
         }
         //Super turns block to default dirt, so it mustn't be called here
         entity.causeFallDamage(damage, 1.0F, entity.damageSources().fall());
+    }
+
+    @Override
+    public TriState canSustainPlant(BlockState state, BlockGetter level, BlockPos soilPosition, Direction facing, BlockState plant) {
+        return plant.is(ModBlocks.GARLIC.get()) ? TriState.FALSE : super.canSustainPlant(state, level, soilPosition, facing, plant);
     }
 }

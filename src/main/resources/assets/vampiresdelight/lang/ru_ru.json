@@ -177,7 +177,7 @@
   "vampiresdelight.tooltip.dandelion_beer_bottle.single_serving": "Содержит %s порцию пива",
   "vampiresdelight.tooltip.dandelion_beer_bottle.multiple_servings": "Содержит %s порции пива",
 
-  "vampiresdelight.text.planted_on": "Это должно быть посажено на проклятую пашню",
+  "vampiresdelight.text.planted_on_vampire_soil": "Это нужно сажать на проклятую или кровавую пашню",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",
 

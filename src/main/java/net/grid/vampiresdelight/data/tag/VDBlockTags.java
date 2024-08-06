@@ -55,8 +55,11 @@ public class VDBlockTags extends BlockTagsProvider {
         tag(VDTags.CURSED_PLANTS).add(
                 VDBlocks.VAMPIRE_ORCHID_CROP.get(),
                 ModBlocks.DARK_SPRUCE_SAPLING.get(),
-                ModBlocks.CURSED_SPRUCE_SAPLING.get()
-        );
+                ModBlocks.CURSED_SPRUCE_SAPLING.get());
+
+        tag(VDTags.CURSED_FARMLANDS).add(
+                VDBlocks.CURSED_FARMLAND.get(),
+                VDBlocks.BLOODY_SOIL_FARMLAND.get());
     }
 
     protected void registerBlockMineables() {
@@ -68,42 +71,45 @@ public class VDBlockTags extends BlockTagsProvider {
                 VDBlocks.MAGIC_CABINET.get(),
                 VDBlocks.BLACK_MUSHROOM_BLOCK.get(),
                 VDBlocks.BLACK_MUSHROOM_STEM.get(),
-                VDBlocks.BLACK_MUSHROOM.get()
-        );
+                VDBlocks.BLACK_MUSHROOM.get());
 
         WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(BlockTags.MINEABLE_WITH_AXE).add(block));
         BarStoolBlock.getBarStoolBlocks().forEach(block -> tag(BlockTags.MINEABLE_WITH_AXE).add(block));
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 VDBlocks.DARK_STONE_STOVE.get(),
-                VDBlocks.SPIRIT_LANTERN.get()
-        );
+                VDBlocks.SPIRIT_LANTERN.get());
+
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 VDBlocks.CURSED_FARMLAND.get(),
                 VDBlocks.BLOODY_SOIL.get(),
-                VDBlocks.BLOODY_SOIL_FARMLAND.get()
-        );
+                VDBlocks.BLOODY_SOIL_FARMLAND.get());
+
         tag(ModTags.MINEABLE_WITH_KNIFE)
                 .addTag(VDTags.DROPS_ORCHID_CAKE_SLICE)
                 .add(
                         VDBlocks.BLOOD_PIE.get(),
                         VDBlocks.WEIRD_JELLY_BLOCK.get(),
-                        VDBlocks.ORCHID_CAKE.get()
-                );
+                        VDBlocks.ORCHID_CAKE.get());
     }
 
     protected void registerMinecraftTags() {
+        tag(BlockTags.DIRT).add(
+                VDBlocks.BLOODY_SOIL.get());
         tag(BlockTags.BAMBOO_PLANTABLE_ON).add(
                 VDBlocks.BLOODY_SOIL.get());
         tag(BlockTags.MUSHROOM_GROW_BLOCK).add(
                 VDBlocks.BLOODY_SOIL.get());
+
         tag(BlockTags.CROPS).add(
                 ModBlocks.GARLIC.get(),
                 VDBlocks.VAMPIRE_ORCHID_CROP.get());
         tag(BlockTags.SMALL_FLOWERS).add(
                 VDBlocks.WILD_GARLIC.get());
+
         tag(BlockTags.FLOWER_POTS)
                 .add(VDBlocks.POTTED_BLACK_MUSHROOM.get());
+
         tag(BlockTags.SWORD_EFFICIENT)
                 .add(VDBlocks.POTTED_BLACK_MUSHROOM.get());
     }
@@ -111,10 +117,22 @@ public class VDBlockTags extends BlockTagsProvider {
     private void registerFarmersDelightTags() {
         tag(ModTags.WILD_CROPS).add(
                 VDBlocks.WILD_GARLIC.get());
+
         tag(ModTags.STRAW_BLOCKS).add(
                 VDBlocks.ORCHID_BAG.get());
+
+        tag(ModTags.COMPOST_ACTIVATORS).add(
+                VDBlocks.BLACK_MUSHROOM.get(),
+                VDBlocks.BLOODY_SOIL.get(),
+                VDBlocks.BLOODY_SOIL_FARMLAND.get());
+        tag(ModTags.UNAFFECTED_BY_RICH_SOIL).add(
+                VDBlocks.BLACK_MUSHROOM.get());
+        tag(ModTags.MUSHROOM_COLONY_GROWABLE_ON).add(
+                VDBlocks.BLOODY_SOIL.get());
+
         tag(ModTags.TRAY_HEAT_SOURCES).add(
                 ModBlocks.FIRE_PLACE.get());
+
         tag(ModTags.HEAT_SOURCES).add(
                 VDBlocks.DARK_STONE_STOVE.get());
     }

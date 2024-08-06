@@ -46,8 +46,11 @@ public class VDTags {
     // Blocks black mushroom can grow on.
     public static final TagKey<Block> BLACK_MUSHROOM_GROW_BLOCK = modBlockTag("black_mushroom_grow_block");
 
-    // Blocks that can be booster by bloody soil
+    // Blocks that can be booster by bloody soil.
     public static final TagKey<Block> CURSED_PLANTS = modBlockTag("cursed_plants");
+
+    // Blocks that can sustain cursed crops.
+    public static final TagKey<Block> CURSED_FARMLANDS = modBlockTag("cursed_farmlands");
 
     // --Biomes--
 

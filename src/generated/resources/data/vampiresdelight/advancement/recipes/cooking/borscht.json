@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "vampiresdelight:black_mushroom"
+            "items": [
+              "vampiresdelight:roasted_garlic",
+              "vampirism:garlic"
+            ]
           }
         ]
       },
@@ -13,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vampiresdelight:cooking/cooking/black_mushroom_soup"
+        "recipe": "vampiresdelight:cooking/borscht"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "vampiresdelight:cooking/cooking/black_mushroom_soup"
+      "vampiresdelight:cooking/borscht"
     ]
   }
 }

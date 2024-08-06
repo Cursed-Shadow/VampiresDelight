@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:wheat",
-              "minecraft:dandelion"
-            ]
+            "items": "vampiresdelight:orchid_petals"
           }
         ]
       },
@@ -16,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vampiresdelight:cooking/cooking/dandelion_beer_bottle"
+        "recipe": "vampiresdelight:cooking/orchid_cream_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "vampiresdelight:cooking/cooking/dandelion_beer_bottle"
+      "vampiresdelight:cooking/orchid_cream_soup"
     ]
   }
 }

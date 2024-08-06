@@ -4,17 +4,22 @@ import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
+import net.neoforged.neoforge.common.util.TriState;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.common.utility.MathUtils;
 
@@ -26,10 +31,30 @@ public class BloodySoilBlock extends Block {
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!level.isClientSide) {
-            // TODO: Add black mushroom transformation
-
-            boostCrop(state, level, pos);
+            if (!transformPlants(level, pos)) {
+                boostCrop(state, level, pos);
+            }
         }
+    }
+
+    public static boolean transformPlants(ServerLevel level, BlockPos pos) {
+        BlockPos abovePos = pos.above();
+        BlockState aboveState = level.getBlockState(abovePos);
+        Block aboveBlock = aboveState.getBlock();
+
+        // TODO: Add black mushroom transformation as well
+
+        // Convert mushrooms to colonies if it's dark enough
+        if (aboveBlock == Blocks.BROWN_MUSHROOM) {
+            level.setBlockAndUpdate(pos.above(), ModBlocks.BROWN_MUSHROOM_COLONY.get().defaultBlockState());
+            return true;
+        } else if (aboveBlock == Blocks.RED_MUSHROOM) {
+            level.setBlockAndUpdate(pos.above(), ModBlocks.RED_MUSHROOM_COLONY.get().defaultBlockState());
+            return true;
+        }
+
+        // "false" if transformed and not boosted
+        return false;
     }
 
     public static void boostCrop(BlockState state, ServerLevel level, BlockPos pos) {
@@ -65,11 +90,8 @@ public class BloodySoilBlock extends Block {
         return null;
     }
 
-    /*
     @Override
-    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable iPlantable) {
-        PlantType plantType = iPlantable.getPlantType(world, pos);
-        return plantType != PlantType.CROP && plantType != PlantType.NETHER && plantType != PlantType.WATER;
+    public TriState canSustainPlant(BlockState state, BlockGetter level, BlockPos soilPosition, Direction facing, BlockState plant) {
+        return TriState.DEFAULT;
     }
-     */
 }

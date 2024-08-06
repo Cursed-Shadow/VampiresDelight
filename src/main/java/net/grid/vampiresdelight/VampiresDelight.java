@@ -9,13 +9,10 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.loading.FMLEnvironment;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Mod(VampiresDelight.MODID)
 public class VampiresDelight {
     public static final String MODID = "vampiresdelight";
-    public static final Logger LOGGER = LogManager.getLogger();
 
     public VampiresDelight(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(CommonSetup::init);

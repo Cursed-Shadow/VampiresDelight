@@ -6,8 +6,8 @@
         "items": [
           {
             "items": [
-              "vampiresdelight:roasted_garlic",
-              "vampirism:garlic"
+              "vampiresdelight:orchid_petals",
+              "vampirism:vampire_orchid"
             ]
           }
         ]
@@ -16,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vampiresdelight:cooking/cooking/garlic_soup"
+        "recipe": "vampiresdelight:cooking/orchid_tea"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "vampiresdelight:cooking/cooking/garlic_soup"
+      "vampiresdelight:cooking/orchid_tea"
     ]
   }
 }

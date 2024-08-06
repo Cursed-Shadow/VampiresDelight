@@ -72,6 +72,7 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.ORCHID_CURRY.get())
                 .add(VDItems.ORCHID_CREAM_SOUP.get())
                 .add(VDItems.BLACK_MUSHROOM_NOODLES.get());
+
         tag(VDTags.HUNTER_FOOD)
                 .add(ModItems.GARLIC_BREAD.get())
                 .add(VDItems.BORSCHT.get())
@@ -80,15 +81,18 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(VDItems.HARDTACK.get())
                 .add(VDItems.FISH_BURGER.get())
                 .add(VDItems.SNOW_WHITE_ICE_CREAM.get());
+
         tag(VDTags.WEREWOLF_ONLY_FOOD)
                 .add(VDItems.WOLF_BERRY_COOKIE.get())
                 .add(VDItems.WOLF_BERRY_ICE_CREAM.get())
                 .addOptional(VDIntegrationUtils.WOLF_BERRIES);
+
         tag(VDTags.NOT_ROTTEN_FOOD)
                 .add(VDItems.DANDELION_BEER_MUG.get())
                 .add(VDItems.COOKED_BAT.get())
                 .add(VDItems.COOKED_BAT_CHOPS.get())
                 .add(VDItems.BAT_TACO.get());
+
         tag(VDTags.VAMPIRE_BITE_ENCHANTABLE)
                 .add(ModItems.HEART_SEEKER_NORMAL.get())
                 .add(ModItems.HEART_SEEKER_ENHANCED.get())
@@ -96,13 +100,17 @@ public class VDItemTags extends ItemTagsProvider {
                 .add(ModItems.HEART_STRIKER_NORMAL.get())
                 .add(ModItems.HEART_STRIKER_ENHANCED.get())
                 .add(ModItems.HEART_STRIKER_ULTIMATE.get());
+
         tag(VDTags.WINE_SHELF_BOTTLES)
                 .addTag(VDTags.BEER_BOTTLES)
                 .addTag(VDTags.WINE_BOTTLES);
+
         tag(VDTags.BEER_BOTTLES)
                 .add(VDItems.DANDELION_BEER_BOTTLE.get());
+
         tag(VDTags.WINE_BOTTLES)
                 .add(VDItems.BLOOD_WINE_BOTTLE.get());
+
         tag(VDTags.BLOOD_FOOD);
     }
 

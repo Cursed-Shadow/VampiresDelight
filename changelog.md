@@ -4,10 +4,13 @@
 
 ### Additions
 - Updated to NeoForge;
+- **Bloody Soil** can now be obtained by clicking on the **Rich Soil** or the *Rich Soil Farmland** with a **Pure Blood Bottle**;
 - Configs removed:
   - `disableVampireBite`;
 
 ### Updates
+- Most of the normal plants can now be planted in the **Cursed Farmland** and the **Bloody Soil Farmland**, except for the **Garlic**;
+- **Bloody Soil** now only boost cursed plants such as the **Vampire Orchid** and the **Dark Spruce Sapling**;
 - **Spirit Lantern**'s model is no longer 3D in hand;
 - **Weird Jelly** no longer breaks instantly;
 - Updated **Grilled (Roasted) Garlic** texture;
