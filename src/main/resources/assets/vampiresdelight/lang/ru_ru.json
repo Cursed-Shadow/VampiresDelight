@@ -132,6 +132,8 @@
   "item.vampiresdelight.wolf_berry_cookie": "Печенье из волчьих ягод",
   "item.vampiresdelight.wolf_berry_ice_cream": "Мороженое из волчьих ягод",
 
+  "entity.vampiresdelight.alchemical_cocktail": "Алхимический коктейль",
+
   "effect.vampiresdelight.blessing": "Благословение",
   "effect.vampiresdelight.blessing.description": "Защищает от злых духов, например фантомов.",
 
@@ -223,8 +225,11 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Лучший подарок для любого мужчины",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Добудьте зелье, растворяющее одежду, и познайте смысл жизни. Не спрашивайте меня, как его достать, лучше спросите эльфа.",
 
-  "vampiresdelight.subtitles.bottle_breaks": "Стеклянная бутылка разбивается",
+  "vampiresdelight.subtitles.block.bottle_breaks": "Стеклянная бутылка разбивается",
+  "vampiresdelight.subtitles.item.pouring_short": "Напиток наливается в стакан",
   "vampiresdelight.subtitles.metal_pipe": "Металлическая труба падает",
+  "vampiresdelight.subtitles.triangle": "Треугольнички звенят",
+  "vampiresdelight.subtitles.entity.alchemical_cocktail.throw": "Алхимический коктейль брошен",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Мерзкая пища съедена",
 

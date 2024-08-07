@@ -29,6 +29,7 @@ import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.FarmlandWaterManager;
 import net.neoforged.neoforge.common.util.TriState;
 import org.jetbrains.annotations.NotNull;
+import vectorwing.farmersdelight.common.block.BuddingTomatoBlock;
 
 import java.util.Iterator;
 
@@ -125,6 +126,7 @@ public class CursedFarmlandBlock extends FarmBlock implements HolyWaterEffectCon
 
     @Override
     public TriState canSustainPlant(BlockState state, BlockGetter level, BlockPos soilPosition, Direction facing, BlockState plant) {
-        return plant.is(ModBlocks.GARLIC.get()) ? TriState.FALSE : super.canSustainPlant(state, level, soilPosition, facing, plant);
+        // Garlic must not be able to be planted, while tomato only supports vanilla Farmland and Rich Soil Farmland block, so we need to override it here
+        return plant.is(ModBlocks.GARLIC.get()) ? TriState.FALSE : plant.getBlock() instanceof BuddingTomatoBlock ? TriState.TRUE : super.canSustainPlant(state, level, soilPosition, facing, plant);
     }
 }

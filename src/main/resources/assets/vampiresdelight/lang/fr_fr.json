@@ -132,6 +132,8 @@
   "item.vampiresdelight.wolf_berry_cookie": "Biscuit aux baies de loup",
   "item.vampiresdelight.wolf_berry_ice_cream": "Crème glacée aux baies de loup",
 
+  "entity.vampiresdelight.alchemical_cocktail": "Cocktail alchimique",
+
   "effect.vampiresdelight.blessing": "Bénédiction",
   "effect.vampiresdelight.blessing.description": "Protège des mauvais esprits tels que les phantoms.",
 
@@ -223,8 +225,11 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "Le meilleur cadeau pour tout homme",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtenez une potion qui dissout les vêtements et apprenez le sens de la vie. Ne me demandez pas comment l'obtenir, demandez à un elfe.",
 
-  "vampiresdelight.subtitles.bottle_breaks": "Une bouteille en verre se brise",
+  "vampiresdelight.subtitles.block.bottle_breaks": "Une bouteille en verre se brise",
+  "vampiresdelight.subtitles.item.pouring_short": "Drink is being poured",
   "vampiresdelight.subtitles.metal_pipe": "Chutes de tuyaux métalliques",
+  "vampiresdelight.subtitles.triangle": "Triangles chime",
+  "vampiresdelight.subtitles.entity.alchemical_cocktail.throw": "Alchemical Cocktail thrown",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Nourriture dégoûtante consommée",
 

@@ -5,7 +5,6 @@
   "refmap": "vampiresdelight.refmap.json",
   "plugin": "net.grid.vampiresdelight.common.mixin.plugin.VDMixinConfigPlugin",
   "mixins": [
-    "MixinBuddingTomatoBlock",
     "MixinCommonModBusEvents",
     "MixinConsumableItem",
     "MixinHunterCampPiecesFireplace",

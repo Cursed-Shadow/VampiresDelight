@@ -25,4 +25,6 @@ public class VDSounds {
             () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "item.pouring_short")));
     public static final Supplier<SoundEvent> POURING_FINISH = SOUNDS.register("item.pouring_finish",
             () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "item.pouring_finish")));
+    public static final Supplier<SoundEvent> ALCHEMICAL_COCKTAIL_THROW = SOUNDS.register("entity.alchemical_cocktail.throw",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "entity.alchemical_cocktail.throw")));
 }

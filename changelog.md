@@ -24,6 +24,8 @@
 
 ### Translations
 - Renamed **Grilled Garlic** to **Roasted Garlic**;
+- Added more subtitles for sounds;
+- Added missing translation for thrown **Alchemical Cocktail**;
 - Corrected:
   - uk_Ua;
   - ru_Ru;

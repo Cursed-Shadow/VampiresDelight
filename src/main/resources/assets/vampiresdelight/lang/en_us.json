@@ -132,6 +132,8 @@
   "item.vampiresdelight.wolf_berry_cookie": "Wolf Berry Cookie",
   "item.vampiresdelight.wolf_berry_ice_cream": "Wolf Berry Ice Cream",
 
+  "entity.vampiresdelight.alchemical_cocktail": "Alchemical Cocktail",
+
   "effect.vampiresdelight.blessing": "Blessing",
   "effect.vampiresdelight.blessing.description": "Protects from evil spirits such as phantoms.",
 
@@ -223,8 +225,11 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion": "The Best Present for Any Man",
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtain a potion that dissolves clothes and learn the sense of life. Don't ask me how to get it, ask an elf.",
 
-  "vampiresdelight.subtitles.bottle_breaks": "Glass bottle shatters",
+  "vampiresdelight.subtitles.block.bottle_breaks": "Glass bottle shatters",
+  "vampiresdelight.subtitles.item.pouring_short": "Drink is being poured",
   "vampiresdelight.subtitles.metal_pipe": "Metal pipe falls",
+  "vampiresdelight.subtitles.triangle": "Triangles chime",
+  "vampiresdelight.subtitles.entity.alchemical_cocktail.throw": "Alchemical Cocktail thrown",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Disgusting Food Consumed",
 

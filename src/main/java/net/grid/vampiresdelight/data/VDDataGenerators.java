@@ -66,5 +66,6 @@ public class VDDataGenerators {
         VDBlockStates blockStates = new VDBlockStates(output, helper);
         generator.addProvider(event.includeClient(), blockStates);
         generator.addProvider(event.includeClient(), new VDItemModels(output, blockStates.models().existingFileHelper));
+        generator.addProvider(event.includeClient(), new VDSoundDefinitions(output, helper));
     }
 }
