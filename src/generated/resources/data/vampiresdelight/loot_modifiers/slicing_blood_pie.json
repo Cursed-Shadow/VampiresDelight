@@ -1,0 +1,21 @@
+{
+  "type": "vampiresdelight:pastry_slicing",
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "items": "#farmersdelight:tools/knives"
+      }
+    },
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "block": "vampiresdelight:blood_pie",
+          "condition": "minecraft:block_state_property"
+        }
+      ]
+    }
+  ],
+  "slice": "vampiresdelight:blood_pie_slice"
+}

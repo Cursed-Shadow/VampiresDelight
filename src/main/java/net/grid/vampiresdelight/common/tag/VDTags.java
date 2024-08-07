@@ -62,6 +62,9 @@ public class VDTags {
     // Entities which are considered to be unholy spirits by blessing effect and vanished.
     public static final TagKey<EntityType<?>> UNHOLY_SPIRITS = modEntityTag("unholy_spirits");
 
+    // Human-like entities which are supposed to drop human eyes when killed with
+    public static final TagKey<EntityType<?>> DROP_HUMAN_EYE = modEntityTag("drop_human_eye");
+
 
 
     private static TagKey<Item> modItemTag(String path) {

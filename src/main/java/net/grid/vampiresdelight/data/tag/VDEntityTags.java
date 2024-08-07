@@ -31,11 +31,15 @@ public class VDEntityTags extends EntityTypeTagsProvider {
         tag(VDTags.UNHOLY_SPIRITS)
                 .add(EntityType.PHANTOM)
                 .add(ModEntities.GHOST.get());
+        tag(VDTags.DROP_HUMAN_EYE)
+                .addTag(ModTags.Entities.HUNTER)
+                .addTag(EntityTypeTags.RAIDERS)
+                .add(EntityType.VILLAGER)
+                .add(EntityType.WANDERING_TRADER);
     }
 
     private void registerMinecraftTags() {
         tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)
                 .addTag(ModTags.Entities.HUNTER);
-                //.addOptionalTag(ResourceLocation.parse("vampirism:hunter"));
     }
 }

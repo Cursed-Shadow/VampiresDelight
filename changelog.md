@@ -19,9 +19,14 @@
 - Configs removed:
   - `disableVampireBite`;
 
+### Fixes
+- **Blood Pie** and **Orchid Cake** now drop slices after being broken with a knife as intended;
+
 ### Translations
-- **New lines added**;
 - Renamed **Grilled Garlic** to **Roasted Garlic**;
+- Corrected:
+  - uk_Ua;
+  - ru_Ru;
 
 ## 0.1.7b
 

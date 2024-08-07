@@ -1,11 +1,10 @@
 {
   "type": "vampiresdelight:add_loot_table",
-  "conditions":
-  [
+  "conditions": [
     {
       "condition": "neoforge:loot_table_id",
       "loot_table_id": "vampirism:chests/vampire_altar"
     }
   ],
-  "lootTable": "vampiresdelight:chests/vd_vampire_altar"
+  "lootTable": "vampiresdelight:chests/vd_altar"
 }

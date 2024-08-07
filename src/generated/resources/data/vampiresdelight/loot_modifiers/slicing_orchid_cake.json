@@ -1,0 +1,21 @@
+{
+  "type": "vampiresdelight:pastry_slicing",
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "items": "#farmersdelight:tools/knives"
+      }
+    },
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "block": "vampiresdelight:orchid_cake",
+          "condition": "minecraft:block_state_property"
+        }
+      ]
+    }
+  ],
+  "slice": "vampiresdelight:orchid_cake_slice"
+}

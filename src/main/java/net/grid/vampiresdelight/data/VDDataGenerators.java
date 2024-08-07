@@ -56,6 +56,7 @@ public class VDDataGenerators {
         generator.addProvider(event.includeServer(), new VDRecipes(output, lookupProvider));
         generator.addProvider(event.includeServer(), new VDDataMaps(output, lookupProvider));
         generator.addProvider(event.includeServer(), new VDAdvancements.Provider(output, lookupProvider, helper));
+        generator.addProvider(event.includeServer(), new VDGlobalLootModifiers(output, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), List.of(
                 new LootTableProvider.SubProviderEntry(VDBlockLootTables::new, LootContextParamSets.BLOCK),
                 new LootTableProvider.SubProviderEntry(VDChestLootTables::new, LootContextParamSets.CHEST)
