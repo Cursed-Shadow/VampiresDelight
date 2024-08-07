@@ -7,12 +7,17 @@ import net.grid.vampiresdelight.common.world.VDPlacedFeatures;
 import net.grid.vampiresdelight.data.loot.VDBlockLootTables;
 import net.grid.vampiresdelight.data.loot.VDChestLootTables;
 import net.grid.vampiresdelight.data.tag.*;
+import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.metadata.PackMetadataGenerator;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -21,9 +26,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
@@ -67,5 +70,9 @@ public class VDDataGenerators {
         generator.addProvider(event.includeClient(), blockStates);
         generator.addProvider(event.includeClient(), new VDItemModels(output, blockStates.models().existingFileHelper));
         generator.addProvider(event.includeClient(), new VDSoundDefinitions(output, helper));
+
+        generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
+                Component.literal("Vampire's Delight resources"),
+                DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES))));
     }
 }
