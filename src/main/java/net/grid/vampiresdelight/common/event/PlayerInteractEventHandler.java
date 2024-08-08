@@ -68,7 +68,7 @@ public class PlayerInteractEventHandler {
                 if (bloodyBlock != null) {
                     itemStack.shrink(1);
                     level.setBlockAndUpdate(pos, bloodyBlock.defaultBlockState());
-                    level.playSound(null, pos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.6F, 1.0F);
+                    level.playSound(null, pos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 2.6F, 1.0F);
                     event.setCancellationResult(ItemInteractionResult.sidedSuccess(level.isClientSide()));
                 }
             }
