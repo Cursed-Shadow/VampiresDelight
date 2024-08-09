@@ -2,6 +2,8 @@
 
 ## 0.1.8
 
+// TODO: Add Botany Pots data for Bloody Soil
+
 ### Additions
 - Updated to NeoForge;
 - **Bloody Soil** can now be obtained by clicking on the **Rich Soil** or the *Rich Soil Farmland** with a **Pure Blood Bottle**;

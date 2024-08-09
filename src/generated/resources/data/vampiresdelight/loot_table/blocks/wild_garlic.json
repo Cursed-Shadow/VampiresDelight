@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -13,7 +13,7 @@
                 {
                   "condition": "minecraft:match_tool",
                   "predicate": {
-                    "tag": "forge:shears"
+                    "items": "#c:tools/shear"
                   }
                 }
               ],
@@ -23,22 +23,24 @@
               "type": "minecraft:item",
               "functions": [
                 {
-                  "function": "minecraft:apply_bonus",
+                  "function": "minecraft:explosion_decay"
+                },
+                {
                   "enchantment": "minecraft:fortune",
                   "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
                   "parameters": {
                     "bonusMultiplier": 2
                   }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "vampirism:item_garlic"
+              "name": "vampirism:garlic"
             }
           ]
         }
-      ]
+      ],
+      "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "vampiresdelight:blocks/wild_garlic"
 }
