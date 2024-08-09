@@ -5,9 +5,6 @@
 ### Additions
 - Updated to NeoForge;
 - **Bloody Soil** can now be obtained by clicking on the **Rich Soil** or the *Rich Soil Farmland** with a **Pure Blood Bottle**;
-- Configs removed:
-  - `disableVampireBite`;
-  - `backstabbingCanBeAppliedToHunterWeapon`;
 
 ### Updates
 - Most of the normal plants can now be planted in the **Cursed Farmland** and the **Bloody Soil Farmland**, except for the **Garlic**;
@@ -22,6 +19,13 @@
 
 ### Fixes
 - **Blood Pie** and **Orchid Cake** now drop slices after being broken with a knife as intended;
+
+### Configurations
+- Added brand-new config screen that can be found in mod menu;
+- Set the default value of `cookingPotInHunterCampSpawnChance` to `40`;
+- Removed configs:
+  - `disableVampireBite`;
+  - `backstabbingCanBeAppliedToHunterWeapon`;
 
 ### Translations
 - Renamed **Grilled Garlic** to **Roasted Garlic**;

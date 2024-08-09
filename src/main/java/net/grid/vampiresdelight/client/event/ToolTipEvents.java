@@ -22,7 +22,6 @@ import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 import java.awt.*;
-import java.io.File;
 import java.util.List;
 
 @EventBusSubscriber(modid = VampiresDelight.MODID, value = Dist.CLIENT)

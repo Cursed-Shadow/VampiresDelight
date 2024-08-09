@@ -10,5 +10,27 @@
 
   "item.vampiresdelight.wolf_berry_cookie": "Wolf Berry Biscuit",
 
-  "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Plant vampire orchid seeds on cursed farmland. To make one, plough cursed earth or grass with hoe."
+  "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Plant vampire orchid seeds on cursed farmland. To make one, plough cursed earth or grass with hoe.",
+
+  "vampiresdelight.configuration.armorDissolvesFully": "Weak armour dissolves fully",
+  "vampiresdelight.configuration.armorDissolvesFully.tooltip": "Should \"weak\" armour such as leather and chain dissolve fully because of Dissolving effect?",
+
+  "vampiresdelight.configuration.coloredTooltips": "Coloured tooltips",
+  "vampiresdelight.configuration.coloredTooltips.tooltip": "Should the mod change the colour of tooltips?",
+
+  "vampiresdelight.configuration.hunterTooltipsForEveryone.tooltip": "Should hunter food tooltips and tooltip's colour be shown to all fractions? (Only shown to vampires by default)",
+
+  "vampiresdelight.configuration.tooltip_colors": "Colours of tooltip outlines",
+  "vampiresdelight.configuration.vampireFoodTooltipStartColor": "Vampire tooltip start colour",
+  "vampiresdelight.configuration.vampireFoodTooltipStartColor.tooltip": "What colour (rgb) should be used for vampire food tooltips as the start colour? (The shade it starts with)",
+  "vampiresdelight.configuration.vampireFoodTooltipEndColor": "Vampire tooltip end color",
+  "vampiresdelight.configuration.vampireFoodTooltipEndColor.tooltip": "What colour (rgb) should be used for vampire food tooltips as the end colour? (The shade it ends with)",
+  "vampiresdelight.configuration.hunterFoodTooltipStartColor": "Hunter tooltip start color",
+  "vampiresdelight.configuration.hunterFoodTooltipStartColor.tooltip": "hat colour (rgb) should be used for hunter food tooltips as the end colour? (The shade it ends with)",
+  "vampiresdelight.configuration.hunterFoodTooltipEndColor": "Hunter tooltip end color",
+  "vampiresdelight.configuration.hunterFoodTooltipEndColor.tooltip": "What colour (rgb) should be used for hunter food tooltips as the start colour? (The shade it starts with)",
+  "vampiresdelight.configuration.werewolfFoodTooltipStartColor": "Werewolf tooltip start color",
+  "vampiresdelight.configuration.werewolfFoodTooltipStartColor.tooltip": "What colour (rgb) should be used for werewolf food tooltips as the start colour? (Werewolves mod only) (The shade it starts with)",
+  "vampiresdelight.configuration.werewolfFoodTooltipEndColor": "Werewolf tooltip end color",
+  "vampiresdelight.configuration.werewolfFoodTooltipEndColor.tooltip": "What colour (rgb) should be used for werewolf food tooltips as the end colour? (Werewolves mod only) (The shade it ends with)"
 }

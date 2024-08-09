@@ -9,7 +9,6 @@ import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -104,7 +103,7 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         if (isMetalPipe()) {
             this.playSound(VDSounds.METAL_PIPE.get(), 2.0F, this.random.nextFloat() * 0.1F + 1.0F);
         } else {
-            this.playSound(SoundEvents.GLASS_BREAK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            this.playSound(VDSounds.BOTTLE_BREAKS.get(), 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
         }
     }
 
