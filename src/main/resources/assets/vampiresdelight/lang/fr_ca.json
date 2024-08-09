@@ -250,7 +250,7 @@
 
   "vampiresdelight.configuration.items": "Items",
   "vampiresdelight.configuration.alchemicalCocktailBurnsGround": "Alchemical Cocktail burns ground",
-  "vampiresdelight.configuration.alchemicalCocktailBurnsGround.tooltip": "Should the Alchemical Cocktail burn ground when thrown? Recommended to set this to \"false\" on servers with claims.",
+  "vampiresdelight.configuration.alchemicalCocktailBurnsGround.tooltip": "Should the Alchemical Cocktail burn ground when thrown? Recommended to turn this off on servers with claims.",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius": "Alchemical Cocktail splash radius",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius.tooltip": "What should be the radius of Alchemical Cocktail fire splash?",
   "vampiresdelight.configuration.alchemicalCocktailStackSize": "Alchemical Cocktail max stack size",

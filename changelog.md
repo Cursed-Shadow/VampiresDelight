@@ -9,6 +9,8 @@
 ### Updates
 - Most of the normal plants can now be planted in the **Cursed Farmland** and the **Bloody Soil Farmland**, except for the **Garlic**;
 - **Bloody Soil** now only boost cursed plants such as the **Vampire Orchid** and the **Dark Spruce Sapling**;
+- Attacking an entity with **Alchemical Cocktail** will now cause it to break, setting everything on fire as if you threw it;
+- **Alchemical Cocktail** now has a handheld model, like a sword or a pickaxe;
 - **Spirit Lantern**'s model is no longer 3D in hand;
 - **Weird Jelly** no longer breaks instantly;
 - Updated **Grilled (Roasted) Garlic** texture;

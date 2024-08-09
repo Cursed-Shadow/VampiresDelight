@@ -250,7 +250,7 @@
 
   "vampiresdelight.configuration.items": "Предмети",
   "vampiresdelight.configuration.alchemicalCocktailBurnsGround": "Алхімічний коктейль підпалює землю",
-  "vampiresdelight.configuration.alchemicalCocktailBurnsGround.tooltip": "Чи повинен алхімічний коктейль підпалювати землю, коли його кидають? Рекомендується встановити це на \"false\" на серверах з приватом.",
+  "vampiresdelight.configuration.alchemicalCocktailBurnsGround.tooltip": "Чи повинен алхімічний коктейль підпалювати землю, коли його кидають? Рекомендується встановити це вимкнути на серверах з приватом.",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius": "Радіус ураження алхімічного коктейлю",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius.tooltip": "Яким має бути радіус ураження алхімічного коктейлю?",
   "vampiresdelight.configuration.alchemicalCocktailStackSize": "Максимальний розмір стека алхімічного коктейлю",

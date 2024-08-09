@@ -52,7 +52,7 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), 0);
         entity.igniteForSeconds(16);
         setOnFire(result);
-        playLandingSound();
+        playSmashSound(this, isMetalPipe());
     }
 
     @Override
@@ -61,14 +61,17 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         if (!level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte) 3);
             setOnFire(result);
-            playLandingSound();
+            playSmashSound(this, isMetalPipe());
             this.discard();
         }
     }
 
-    private void setOnFire(HitResult result) {
-        if (VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get() && !level().isClientSide) {
-            BlockPos blockPos = BlockPos.containing(result.getLocation());
+    public void setOnFire(HitResult result) {
+        setOnFire(BlockPos.containing(result.getLocation()), level());
+    }
+
+    public static void setOnFire(BlockPos blockPos, Level level) {
+        if (VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get() && !level.isClientSide) {
             double radius = VDConfiguration.ALCHEMICAL_COCKTAIL_SPLASH_RADIUS.get();
 
             for (int dx = (int) -Math.ceil(radius); dx <= radius; dx++) {
@@ -78,15 +81,14 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
 
                     for (int dy = -2; dy < 2; dy++) {
                         BlockPos pos = blockPos.offset(dx, dy, dz);
-                        BlockState blockState = level().getBlockState(pos);
-                        BlockState blockStateBelow = level().getBlockState(pos.below());
+                        BlockState blockState = level.getBlockState(pos);
+                        BlockState blockStateBelow = level.getBlockState(pos.below());
 
                         Random random = new Random();
                         double probability = (radius - distance) / radius;
 
-                        //level().setBlockAndUpdate(pos, Blocks.EMERALD_BLOCK.defaultBlockState());
-                        if (blockState.canBeReplaced() && isProperBlockBelow(blockStateBelow, pos.below(), level()) && random.nextDouble() < probability) {
-                            level().setBlockAndUpdate(pos, ModBlocks.ALCHEMICAL_FIRE.get().defaultBlockState());
+                        if (blockState.canBeReplaced() && isProperBlockBelow(blockStateBelow, pos.below(), level) && random.nextDouble() < probability) {
+                            level.setBlockAndUpdate(pos, ModBlocks.ALCHEMICAL_FIRE.get().defaultBlockState());
                         }
                     }
                 }
@@ -99,11 +101,11 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
         return blockStateBelow.isFaceSturdy(level, posBelow, Direction.UP) || blockStateBelow.is(BlockTags.LEAVES) || blockBelow instanceof StairBlock;
     }
 
-    private void playLandingSound() {
-        if (isMetalPipe()) {
-            this.playSound(VDSounds.METAL_PIPE.get(), 2.0F, this.random.nextFloat() * 0.1F + 1.0F);
+    public static void playSmashSound(Entity entity, boolean isMetalPipe) {
+        if (isMetalPipe) {
+            entity.playSound(VDSounds.METAL_PIPE.get(), 2.0F, entity.getRandom().nextFloat() * 0.1F + 1.0F);
         } else {
-            this.playSound(VDSounds.BOTTLE_BREAKS.get(), 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            entity.playSound(VDSounds.BOTTLE_BREAKS.get(), 1.0F, (entity.getRandom().nextFloat() - entity.getRandom().nextFloat()) * 0.2F + 1.0F);
         }
     }
 

@@ -56,12 +56,17 @@ public class AlchemicalCocktailItem extends Item implements ProjectileItem {
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        if (isMetalPipe(pStack)) {
-            pTarget.playSound(VDSounds.METAL_PIPE.get(), 2.0F, pTarget.getRandom().nextFloat() * 0.1F + 1.0F);
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        AlchemicalCocktailEntity.playSmashSound(target, isMetalPipe(stack));
+        if (!isMetalPipe(stack)) {
+            target.igniteForSeconds(16);
+            AlchemicalCocktailEntity.setOnFire(target.blockPosition(), target.level());
+            if (!(attacker instanceof Player player && player.isCreative())) stack.shrink(1);
+
+            return true;
         }
 
-        return super.hurtEnemy(pStack, pTarget, pAttacker);
+        return false;
     }
 
     public static boolean isMetalPipe(ItemStack stack) {

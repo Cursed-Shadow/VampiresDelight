@@ -84,6 +84,7 @@ public class VDItemModels extends ItemModelProvider {
 
         // Handheld items
         Set<Item> handheldItems = Sets.newHashSet(
+                VDItems.ALCHEMICAL_COCKTAIL.get(),
                 VDItems.TRICOLOR_DANGO.get(),
                 VDItems.EYES_ON_STICK.get(),
                 VDItems.SILVER_KNIFE.get()
@@ -124,7 +125,7 @@ public class VDItemModels extends ItemModelProvider {
 
     public void alchemicalCocktailModel(Item item) {
         ResourceLocation texture = resourceItem(itemName(item));
-        withExistingParent(itemName(item), GENERATED).texture("layer0", texture)
+        withExistingParent(itemName(item), HANDHELD).texture("layer0", texture)
                 .override().predicate(modLoc("metal_pipe"), 0.01f).model(
                         withExistingParent(itemName(item) + "_metal_pipe", GENERATED).texture("layer0", resourceItem("metal_pipe")));
     }

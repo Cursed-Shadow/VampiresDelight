@@ -250,7 +250,7 @@
 
   "vampiresdelight.configuration.items": "Предметы",
   "vampiresdelight.configuration.alchemicalCocktailBurnsGround": "Алхимический коктейль поджигает землю",
-  "vampiresdelight.configuration.alchemicalCocktailBurnsGround.tooltip": "Должен ли алхимический коктейль поджигать землю при попадании? Рекомендуется установить значение \"false\" на серверах с приватом.",
+  "vampiresdelight.configuration.alchemicalCocktailBurnsGround.tooltip": "Должен ли алхимический коктейль поджигать землю при попадании? Рекомендуется это вырубить на серверах с приватом.",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius": "Радиус поражения алхимического коктейля",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius.tooltip": "Каков должен быть радиус поражения алхимического коктейля?",
   "vampiresdelight.configuration.alchemicalCocktailStackSize": "Максимальный размер стека алхимического коктейля",
