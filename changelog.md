@@ -7,6 +7,7 @@
 - **Bloody Soil** can now be obtained by clicking on the **Rich Soil** or the *Rich Soil Farmland** with a **Pure Blood Bottle**;
 - Configs removed:
   - `disableVampireBite`;
+  - `backstabbingCanBeAppliedToHunterWeapon`;
 
 ### Updates
 - Most of the normal plants can now be planted in the **Cursed Farmland** and the **Bloody Soil Farmland**, except for the **Garlic**;

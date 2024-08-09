@@ -9,6 +9,8 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(VampiresDelight.MODID)
 public class VampiresDelight {
@@ -22,6 +24,10 @@ public class VampiresDelight {
 
         modContainer.registerConfig(ModConfig.Type.COMMON, VDConfiguration.COMMON_CONFIG);
         modContainer.registerConfig(ModConfig.Type.CLIENT, VDConfiguration.CLIENT_CONFIG);
+
+        if (FMLEnvironment.dist.isClient()) {
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        }
 
         VDParticleTypes.PARTICLE_TYPES.register(modEventBus);
         VDItems.ITEMS.register(modEventBus);

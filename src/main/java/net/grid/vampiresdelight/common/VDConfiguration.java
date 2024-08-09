@@ -31,7 +31,6 @@ public class VDConfiguration {
     public static final ModConfigSpec.BooleanValue ARMOR_DISSOLVES_FULLY;
 
     public static final String CATEGORY_ENCHANTMENTS = "enchantments";
-    public static final ModConfigSpec.BooleanValue BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON;
     public static final ModConfigSpec.DoubleValue VAMPIRE_BITE_MAX_HEALING_VALUE;
     public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_1;
     public static final ModConfigSpec.IntValue VAMPIRE_BITE_HEALING_CHANCE_2;
@@ -99,8 +98,6 @@ public class VDConfiguration {
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.comment("Enchantments").push(CATEGORY_ENCHANTMENTS);
-        BACKSTABBING_CAN_BE_APPLIED_TO_HUNTER_WEAPON = COMMON_BUILDER.comment("Should it be possible to apply Backstabbing enchantment to some hunter axes and stakes?")
-                .define("backstabbingCanBeAppliedToHunterWeapon", true);
         VAMPIRE_BITE_MAX_HEALING_VALUE = COMMON_BUILDER.comment("What should be the maximum amount of hearts that Vampire Bite enchantment should heal?")
                 .defineInRange("vampireBiteMaxHealingValue", 1.5, 0.5, 10.0);
         VAMPIRE_BITE_HEALING_CHANCE_1 = COMMON_BUILDER.comment("With what chance should Vampire Bite enchantment regenerate health?")

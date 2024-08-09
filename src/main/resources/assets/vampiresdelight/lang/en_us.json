@@ -236,5 +236,52 @@
   "vampiresdelight.jei.pouring": "Pouring",
   "vampiresdelight.jei.info.human_eye": "Disgusting looking ingredient for vampire food.\\n\\nObtained by cutting up villagers, pillagers, hunters, and some other human-like races.",
   "vampiresdelight.jei.info.black_mushroom": "Black mushrooms can be rarely found in vampire forests.\\n\\nBone Meal can be used to grow a huge variant.",
-  "vampiresdelight.jei.info.wild_garlic": "Garlic can be commonly found as a wild plant in temperate lands, such as plains and forests."
+  "vampiresdelight.jei.info.wild_garlic": "Garlic can be commonly found as a wild plant in temperate lands, such as plains and forests.",
+
+  "vampiresdelight.configuration.village": "Village",
+  "vampiresdelight.configuration.farmersBuyGarlic": "Farmers buy garlic",
+  "vampiresdelight.configuration.wanderingTraderSellsVampirismItems": "Wandering trader sells Vampirism items",
+
+  "vampiresdelight.configuration.blocks": "Blocks",
+  "vampiresdelight.configuration.bloodySoilBoostChance": "Bloody Soil crop boost chance",
+
+  "vampiresdelight.configuration.items": "Items",
+  "vampiresdelight.configuration.alchemicalCocktailBurnsGround": "Alchemical Cocktail burns ground",
+  "vampiresdelight.configuration.alchemicalCocktailSplashRadius": "Alchemical Cocktail splash radius",
+  "vampiresdelight.configuration.alchemicalCocktailStackSize": "Alchemical Cocktail max stack size",
+
+  "vampiresdelight.configuration.effects": "Effects",
+  "vampiresdelight.configuration.replaceWeirdJellySunscreenWithJumpboost": "Replace Weird Jelly Sunscreen with Jump Boost",
+  "vampiresdelight.configuration.batMeatWithersHumans": "Bat meat withers humans",
+  "vampiresdelight.configuration.blessingHelpsAgainstGhosts": "Blessing helps against Ghosts",
+  "vampiresdelight.configuration.armorDissolvesFully": "Weak armor dissolves fully",
+
+  "vampiresdelight.configuration.enchantments": "Enchantments",
+  "vampiresdelight.configuration.vampireBiteMaxHealingValue": "Vampire Bite max healing value",
+  "vampiresdelight.configuration.vampireBiteChanceLevel1": "Vampire Bite healing chance for level 1",
+  "vampiresdelight.configuration.vampireBiteChanceLevel2": "Vampire Bite healing chance for level 2",
+  "vampiresdelight.configuration.vampireBiteChanceLevel3": "Vampire Bite healing chance for level 3",
+
+  "vampiresdelight.configuration.world": "World generation",
+  "vampiresdelight.configuration.generateVDChestLoot": "Generate mod's chest loot",
+  "vampiresdelight.configuration.generateCookingPotInHunterCamp": "Generate Cooking Pot in hunter camps",
+  "vampiresdelight.configuration.generateCookingPotNearHunterCamp": "Generate Cooking Pot near hunter camps",
+  "vampiresdelight.configuration.cookingPotInHunterCampSpawnChance": "Cooking Pot in hunter camps spawn chance",
+
+  "vampiresdelight.configuration.tooltips": "Tooltips",
+  "vampiresdelight.configuration.coloredTooltips": "Colored tooltips",
+  "vampiresdelight.configuration.hunterTooltipsForEveryone": "Hunter food tooltips for everyone",
+
+  "vampiresdelight.configuration.tooltip_colors": "Colors of tooltip outlines",
+  "vampiresdelight.configuration.vampireFoodTooltipStartColor": "Vampire food tooltip start color",
+  "vampiresdelight.configuration.vampireFoodTooltipEndColor": "Vampire food tooltip end color",
+  "vampiresdelight.configuration.hunterFoodTooltipStartColor": "Hunter food tooltip start color",
+  "vampiresdelight.configuration.hunterFoodTooltipEndColor": "Hunter food tooltip end color",
+  "vampiresdelight.configuration.werewolfFoodTooltipStartColor": "Werewolf food tooltip start color",
+  "vampiresdelight.configuration.werewolfFoodTooltipEndColor": "Werewolf food tooltip end color",
+
+  "vampiresdelight.configuration.appleskin": "AppleSkin",
+  "vampiresdelight.configuration.correctAppleSkinTooltips": "Adjust AppleSkin tooltips",
+  "vampiresdelight.configuration.hideAppleSkinHumanFoodTooltipsForVampires": "Hide AppleSkin human food tooltips for vampires",
+  "vampiresdelight.configuration.hideAppleSkinHumanFoodTooltipsForWerewolves": "Hide AppleSkin human food tooltips for werewolves"
 }
