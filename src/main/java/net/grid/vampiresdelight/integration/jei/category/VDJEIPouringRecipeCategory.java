@@ -13,15 +13,10 @@ import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.integration.jei.VDJEIRecipeTypes;
 import net.grid.vampiresdelight.integration.jei.resource.VDJEIPouringRecipe;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class VDJEIPouringRecipeCategory implements IRecipeCategory<VDJEIPouringRecipe> {
     private final Component title;
     private final IDrawable background;

@@ -201,7 +201,7 @@
 
   "vampiresdelight.advancement.pour_dandelion_beer": "Je savais que vous, les putains d'elfes, n'aviez aucun honneur! Pas de respect! Pas de BIÈRE!",
   "vampiresdelight.advancement.pour_dandelion_beer.desc": "Versez de la bière de pissenlit dans une bouteille en verre à l'aide de vos deux mains sans établi.",
-  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Brasserie locale",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "He hasn't brewed it since...",
   "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Placez la bouteille de bière pissenlit sur une étagère à vin. C'est légal d'ailleurs.",
 
   "vampiresdelight.advancement.get_garlic": "L'héros de l'humanité",
@@ -234,6 +234,7 @@
   "stat.vampiresdelight.disgusting_food_consumed": "Nourriture dégoûtante consommée",
 
   "vampiresdelight.jei.pouring": "Verser",
+  "vampiresdelight.jei.spilling_blood": "Spilling Blood",
   "vampiresdelight.jei.info.human_eye": "Ingrédient d'apparence dégoûtante pour la nourriture des vampires.\\n\\nObtenu en découpant des villageois, des pilleurs, des chasseurs et d'autres races ressemblant à des humains.",
   "vampiresdelight.jei.info.black_mushroom": "Les champignons noirs sont rarement trouvés dans les forêts de vampires.\\n\\nLa farine d'os peut être utilisée pour en cultiver une énorme variante.",
   "vampiresdelight.jei.info.wild_garlic": "L'ail est couramment trouvé comme plante sauvage dans les terres tempérées, comme les plaines et les forêts.",

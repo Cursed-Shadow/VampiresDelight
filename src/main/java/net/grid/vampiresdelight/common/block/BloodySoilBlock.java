@@ -61,7 +61,7 @@ public class BloodySoilBlock extends Block {
         BlockPos abovePos = pos.above();
         BlockState aboveState = level.getBlockState(abovePos);
 
-        if (canBoostCrop(state, level, pos)) {
+        if (canBoostCrop(state)) {
             if (aboveState.getBlock() instanceof BonemealableBlock growable && MathUtils.RAND.nextFloat() <= VDConfiguration.BLOODY_SOIL_BOOST_CHANCE.get()) {
                 if (growable.isValidBonemealTarget(level, abovePos, aboveState) && CommonHooks.canCropGrow(level, abovePos, aboveState, true)) {
                     growable.performBonemeal(level, level.random, abovePos, aboveState);
@@ -74,12 +74,8 @@ public class BloodySoilBlock extends Block {
         }
     }
 
-    public static boolean canBoostCrop(BlockState state, ServerLevel level, BlockPos pos) {
-        BlockPos abovePos = pos.above();
-        BlockState aboveState = level.getBlockState(abovePos);
-        Block aboveBlock = aboveState.getBlock();
-
-        return state.is(VDTags.CURSED_PLANTS) && VDConfiguration.BLOODY_SOIL_BOOST_CHANCE.get() != 0.0 && !(aboveState.is(ModTags.UNAFFECTED_BY_RICH_SOIL) || aboveBlock instanceof TallFlowerBlock);
+    public static boolean canBoostCrop(BlockState state) {
+        return state.is(VDTags.CURSED_PLANTS) && VDConfiguration.BLOODY_SOIL_BOOST_CHANCE.get() != 0.0;
     }
 
     @Override

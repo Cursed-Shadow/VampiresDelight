@@ -17,22 +17,19 @@
 - **Weird Jelly** no longer breaks instantly;
 - Updated **Grilled (Roasted) Garlic** texture;
 
-### Removals
-- Configs removed:
-  - `disableVampireBite`;
-
 ### Fixes
 - **Blood Pie** and **Orchid Cake** now drop slices after being broken with a knife as intended;
 
 ### Configurations
 - Added brand-new config screen that can be found in mod menu;
 - Set the default value of `cookingPotInHunterCampSpawnChance` to `40`;
-- Removed configs:
+- Removed configs since now their functions can be configured using data packs:
   - `disableVampireBite`;
   - `backstabbingCanBeAppliedToHunterWeapon`;
 
 ### Translations
 - Renamed **Grilled Garlic** to **Roasted Garlic**;
+- Renamed advancement **Local Brewery** to **He hasn't brewed it since...**, since there's already a vanilla advancement with the same name;
 - Added more subtitles for sounds;
 - Added missing translation for thrown **Alchemical Cocktail**;
 - Corrected:

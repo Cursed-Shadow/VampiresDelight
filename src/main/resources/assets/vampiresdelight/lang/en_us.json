@@ -201,7 +201,7 @@
 
   "vampiresdelight.advancement.pour_dandelion_beer": "I knew you fharkin' elves had no honour! No respect! No BEER!",
   "vampiresdelight.advancement.pour_dandelion_beer.desc": "Pour dandelion beer into glass bottle using your two hands without Crafting Table.",
-  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Local Brewery",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "He hasn't brewed it since...",
   "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Place Dandelion Beer Bottle on a Wine Shelf. That's legit by the way.",
 
   "vampiresdelight.advancement.get_garlic": "Messiah of Humanity",
@@ -234,6 +234,7 @@
   "stat.vampiresdelight.disgusting_food_consumed": "Disgusting Food Consumed",
 
   "vampiresdelight.jei.pouring": "Pouring",
+  "vampiresdelight.jei.spilling_blood": "Spilling Blood",
   "vampiresdelight.jei.info.human_eye": "Disgusting looking ingredient for vampire food.\\n\\nObtained by cutting up villagers, pillagers, hunters, and some other human-like races.",
   "vampiresdelight.jei.info.black_mushroom": "Black mushrooms can be rarely found in vampire forests.\\n\\nBone Meal can be used to grow a huge variant.",
   "vampiresdelight.jei.info.wild_garlic": "Garlic can be commonly found as a wild plant in temperate lands, such as plains and forests.",

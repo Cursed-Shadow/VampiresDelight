@@ -12,7 +12,9 @@ import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.integration.jei.category.VDJEIPouringRecipeCategory;
+import net.grid.vampiresdelight.integration.jei.category.VDJEISpillingBloodRecipeCategory;
 import net.grid.vampiresdelight.integration.jei.resource.VDJEIPouringRecipe;
+import net.grid.vampiresdelight.integration.jei.resource.VDJEISpillingBloodRecipe;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.MutableComponent;
@@ -20,6 +22,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -35,15 +38,22 @@ public class VDJEIPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         registry.addRecipeCategories(new VDJEIPouringRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new VDJEISpillingBloodRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        VDJEIPouringRecipe[] recipes = new VDJEIPouringRecipe[] {
+        VDJEIPouringRecipe[] pouringRecipes = new VDJEIPouringRecipe[] {
                 new VDJEIPouringRecipe(new ItemStack(VDItems.BLOOD_WINE_BOTTLE.get()), new ItemStack(VDItems.BLOOD_WINE_GLASS.get()), new ItemStack(Items.GLASS_BOTTLE)),
                 new VDJEIPouringRecipe(new ItemStack(VDItems.DANDELION_BEER_BOTTLE.get()), new ItemStack(VDItems.DANDELION_BEER_MUG.get()), new ItemStack(Items.GLASS_BOTTLE))
         };
-        registration.addRecipes(VDJEIRecipeTypes.POURING, new ArrayList<>(Arrays.asList(recipes)));
+        registration.addRecipes(VDJEIRecipeTypes.POURING, new ArrayList<>(Arrays.asList(pouringRecipes)));
+
+        VDJEISpillingBloodRecipe[] spillingBloodRecipes = new VDJEISpillingBloodRecipe[] {
+                new VDJEISpillingBloodRecipe(new ItemStack(ModItems.RICH_SOIL.get()), new ItemStack(VDItems.BLOODY_SOIL.get())),
+                new VDJEISpillingBloodRecipe(new ItemStack(ModItems.RICH_SOIL_FARMLAND.get()), new ItemStack(VDItems.BLOODY_SOIL_FARMLAND.get()))
+        };
+        registration.addRecipes(VDJEIRecipeTypes.SPILLING_BLOOD, new ArrayList<>(Arrays.asList(spillingBloodRecipes)));
 
         registerSingleIngredientInfo(VDItems.HUMAN_EYE.get(), registration);
         registerSingleIngredientInfo(VDItems.BLACK_MUSHROOM.get(), registration);

@@ -6,7 +6,6 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 import java.util.List;
 import java.util.function.Predicate;
 
-@SuppressWarnings("deprecation")
 public class VDConfiguration {
     public static final ModConfigSpec COMMON_CONFIG;
     public static final ModConfigSpec CLIENT_CONFIG;
@@ -153,27 +152,27 @@ public class VDConfiguration {
         VAMPIRE_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
                 .comment("What color (rgb) should be used for vampire food tooltips as the start color? (The shade it starts with)")
                 .comment("Default: 124, 40, 124")
-                .defineList("vampireFoodTooltipStartColor", ImmutableList.of(124, 40, 124), new ConfigTypePredicate(Integer.class));
+                .defineList("vampireFoodTooltipStartColor", ImmutableList.of(124, 40, 124), () -> 0, new ConfigTypePredicate(Integer.class));
         VAMPIRE_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER
                 .comment("What color (rgb) should be used for vampire food tooltips as the end color? (The shade it ends with)")
                 .comment("Default: 50, 0, 70")
-                .defineList("vampireFoodTooltipEndColor", ImmutableList.of(50, 0, 70), new ConfigTypePredicate(Integer.class));
+                .defineList("vampireFoodTooltipEndColor", ImmutableList.of(50, 0, 70), () -> 0, new ConfigTypePredicate(Integer.class));
         HUNTER_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
                 .comment("What color (rgb) should be used for hunter food tooltips as the start color? (The shade it starts with)")
                 .comment("Default: 65, 65, 220")
-                .defineList("hunterFoodTooltipStartColor", ImmutableList.of(65, 65, 220), new ConfigTypePredicate(Integer.class));
+                .defineList("hunterFoodTooltipStartColor", ImmutableList.of(65, 65, 220), () -> 0, new ConfigTypePredicate(Integer.class));
         HUNTER_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER
                 .comment("What color (rgb) should be used for hunter food tooltips as the end color? (The shade it ends with)")
                 .comment("Default: 30, 30, 90")
-                .defineList("hunterFoodTooltipEndColor", ImmutableList.of(30, 30, 90), new ConfigTypePredicate(Integer.class));
+                .defineList("hunterFoodTooltipEndColor", ImmutableList.of(30, 30, 90), () -> 0, new ConfigTypePredicate(Integer.class));
         WEREWOLF_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
                 .comment("What color (rgb) should be used for werewolf food tooltips as the start color? (Werewolves mod only) (The shade it starts with)")
                 .comment("Default: 250, 135, 0")
-                .defineList("werewolfFoodTooltipStartColor", ImmutableList.of(250, 135, 0), new ConfigTypePredicate(Integer.class));
+                .defineList("werewolfFoodTooltipStartColor", ImmutableList.of(250, 135, 0), () -> 0, new ConfigTypePredicate(Integer.class));
         WEREWOLF_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER
                 .comment("What color (rgb) should be used for werewolf food tooltips as the end color? (Werewolves mod only) (The shade it ends with)")
                 .comment("Default: 115, 45, 0")
-                .defineList("werewolfFoodTooltipEndColor", ImmutableList.of(115, 45, 0), new ConfigTypePredicate(Integer.class));
+                .defineList("werewolfFoodTooltipEndColor", ImmutableList.of(115, 45, 0), () -> 0, new ConfigTypePredicate(Integer.class));
         CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(CATEGORY_APPLESKIN);

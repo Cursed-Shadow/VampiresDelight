@@ -201,7 +201,7 @@
 
   "vampiresdelight.advancement.pour_dandelion_beer": "Я знал, что у вас, хряцких эльфов, нет чести! Нет уважения! Нет ПИВА!",
   "vampiresdelight.advancement.pour_dandelion_beer.desc": "Налейте одуванчиковое пиво в кружку своими двумя руками, не заходя в верстак.",
-  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Местная пивоварня",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Он не варил его с тех пор, как...",
   "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Поставьте бутылку одуванчикового пива на винную полку. Да, винную.",
 
   "vampiresdelight.advancement.get_garlic": "Мессия человечества",
@@ -233,7 +233,8 @@
 
   "stat.vampiresdelight.disgusting_food_consumed": "Мерзкая пища съедена",
 
-  "vampiresdelight.jei.pouring": "Налить",
+  "vampiresdelight.jei.pouring": "Наливание",
+  "vampiresdelight.jei.spilling_blood": "Окровавливание",
   "vampiresdelight.jei.info.human_eye": "Малоприятный глазу ингредиент вампирской кухни.\\n\\nМожно получить зарезав ножом жителя, райзбойника, охотника и других человекоподобных созданий.",
   "vampiresdelight.jei.info.black_mushroom": "Чёрные грибы могут изредка быть найдены в вампирских лесах.\\n\\nМожно использовать костную муку для выращивания огромного варианта.",
   "vampiresdelight.jei.info.wild_garlic": "Чеснок может быть найден дикорастущим в местах с умеренным климатом, вроде полей и лесов.",
