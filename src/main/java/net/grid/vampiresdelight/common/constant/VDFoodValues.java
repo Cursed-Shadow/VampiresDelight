@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.common.constants;
+package net.grid.vampiresdelight.common.constant;
 
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDEffects;

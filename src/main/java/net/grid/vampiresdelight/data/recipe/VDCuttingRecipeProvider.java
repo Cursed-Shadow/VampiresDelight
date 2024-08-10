@@ -19,7 +19,7 @@ import net.neoforged.neoforge.common.Tags;
 import vectorwing.farmersdelight.common.crafting.ingredient.ItemAbilityIngredient;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
-public class VDCuttingRecipes {
+public class VDCuttingRecipeProvider {
     public static void register(RecipeOutput output) {
         // Knife
         cuttingAnimalItems(output);

@@ -2,7 +2,7 @@ package net.grid.vampiresdelight.common.enchantment;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
-import net.grid.vampiresdelight.data.VDEnchantments;
+import net.grid.vampiresdelight.common.registry.VDEnchantments;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;

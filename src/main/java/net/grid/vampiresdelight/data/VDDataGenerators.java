@@ -1,11 +1,12 @@
 package net.grid.vampiresdelight.data;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.registry.VDEnchantments;
 import net.grid.vampiresdelight.common.world.VDBiomeModifiers;
 import net.grid.vampiresdelight.common.world.VDConfiguredFeatures;
 import net.grid.vampiresdelight.common.world.VDPlacedFeatures;
-import net.grid.vampiresdelight.data.loot.VDBlockLootTables;
-import net.grid.vampiresdelight.data.loot.VDChestLootTables;
+import net.grid.vampiresdelight.data.loot.VDBlockLootTableProvider;
+import net.grid.vampiresdelight.data.loot.VDChestLootTableProvider;
 import net.grid.vampiresdelight.data.tag.*;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
@@ -44,32 +45,32 @@ public class VDDataGenerators {
                 .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, VDBiomeModifiers::createBiomeModifiers)
                 .add(Registries.ENCHANTMENT, VDEnchantments::createEnchantments);
 
-        VDBlockTags blockTags = new VDBlockTags(output, lookupProvider, helper);
+        VDBlockTagProvider blockTags = new VDBlockTagProvider(output, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new VDItemTags(output, lookupProvider, blockTags.contentsGetter(), helper));
-        generator.addProvider(event.includeServer(), new VDBiomeTags(output, lookupProvider, helper));
-        generator.addProvider(event.includeServer(), new VDEntityTags(output, lookupProvider, helper));
+        generator.addProvider(event.includeServer(), new VDItemTagProvider(output, lookupProvider, blockTags.contentsGetter(), helper));
+        generator.addProvider(event.includeServer(), new VDBiomeTagProvider(output, lookupProvider, helper));
+        generator.addProvider(event.includeServer(), new VDEntityTagProvider(output, lookupProvider, helper));
 
         DatapackBuiltinEntriesProvider datapackProvider = new DatapackBuiltinEntriesProvider(output, lookupProvider, registrySetBuilder, Set.of(VampiresDelight.MODID));
         CompletableFuture<HolderLookup.Provider> builtinLookupProvider = datapackProvider.getRegistryProvider();
         generator.addProvider(event.includeServer(), datapackProvider);
-        generator.addProvider(event.includeServer(), new VDEnchantmentTags(output, builtinLookupProvider, helper));
+        generator.addProvider(event.includeServer(), new VDEnchantmentTagProvider(output, builtinLookupProvider, helper));
 
-        generator.addProvider(event.includeServer(), new VDParticles(output, helper));
-        generator.addProvider(event.includeServer(), new VDRecipes(output, lookupProvider));
-        generator.addProvider(event.includeServer(), new VDDataMaps(output, lookupProvider));
-        generator.addProvider(event.includeServer(), new VDAdvancements.Provider(output, lookupProvider, helper));
-        generator.addProvider(event.includeServer(), new VDGlobalLootModifiers(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new VDParticleDescriptionProvider(output, helper));
+        generator.addProvider(event.includeServer(), new VDRecipeProvider(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new VDDataMapProvider(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new VDAdvancementProvider.Provider(output, lookupProvider, helper));
+        generator.addProvider(event.includeServer(), new VDLootModifierProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), List.of(
-                new LootTableProvider.SubProviderEntry(VDBlockLootTables::new, LootContextParamSets.BLOCK),
-                new LootTableProvider.SubProviderEntry(VDChestLootTables::new, LootContextParamSets.CHEST)
+                new LootTableProvider.SubProviderEntry(VDBlockLootTableProvider::new, LootContextParamSets.BLOCK),
+                new LootTableProvider.SubProviderEntry(VDChestLootTableProvider::new, LootContextParamSets.CHEST)
         ), builtinLookupProvider));
 
-        generator.addProvider(event.includeClient(), new VDBlockModels(output, helper));
-        VDBlockStates blockStates = new VDBlockStates(output, helper);
+        generator.addProvider(event.includeClient(), new VDBlockModelProvider(output, helper));
+        VDBlockStateProvider blockStates = new VDBlockStateProvider(output, helper);
         generator.addProvider(event.includeClient(), blockStates);
-        generator.addProvider(event.includeClient(), new VDItemModels(output, blockStates.models().existingFileHelper));
-        generator.addProvider(event.includeClient(), new VDSoundDefinitions(output, helper));
+        generator.addProvider(event.includeClient(), new VDItemModelProvider(output, blockStates.models().existingFileHelper));
+        generator.addProvider(event.includeClient(), new VDSoundDefinitionProvider(output, helper));
 
         generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
                 Component.literal("Vampire's Delight resources"),

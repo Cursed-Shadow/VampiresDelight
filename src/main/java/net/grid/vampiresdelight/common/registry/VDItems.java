@@ -1,8 +1,8 @@
 package net.grid.vampiresdelight.common.registry;
 
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.constants.VDFoodValues;
-import net.grid.vampiresdelight.common.constants.VDFoodFeatures;
+import net.grid.vampiresdelight.common.constant.VDFoodValues;
+import net.grid.vampiresdelight.common.constant.VDFoodFeatures;
 import net.grid.vampiresdelight.common.item.*;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.world.food.FoodProperties;

@@ -26,7 +26,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
-public class VDAdvancements implements AdvancementProvider.AdvancementGenerator {
+public class VDAdvancementProvider implements AdvancementProvider.AdvancementGenerator {
     @Override
     public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer, ExistingFileHelper existingFileHelper) {
         AdvancementHolder vampiresDelight = Advancement.Builder.advancement()
@@ -100,7 +100,7 @@ public class VDAdvancements implements AdvancementProvider.AdvancementGenerator 
 
     static class Provider extends AdvancementProvider {
         public Provider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
-            super(output, registries, existingFileHelper, List.of(new VDAdvancements()));
+            super(output, registries, existingFileHelper, List.of(new VDAdvancementProvider()));
         }
     }
 }

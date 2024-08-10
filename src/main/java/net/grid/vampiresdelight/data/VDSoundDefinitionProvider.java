@@ -10,8 +10,8 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.SoundDefinition;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 
-public class VDSoundDefinitions extends SoundDefinitionsProvider {
-    protected VDSoundDefinitions(PackOutput output, ExistingFileHelper helper) {
+public class VDSoundDefinitionProvider extends SoundDefinitionsProvider {
+    protected VDSoundDefinitionProvider(PackOutput output, ExistingFileHelper helper) {
         super(output, VampiresDelight.MODID, helper);
     }
 

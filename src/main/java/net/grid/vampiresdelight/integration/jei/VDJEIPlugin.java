@@ -80,6 +80,12 @@ public class VDJEIPlugin implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(VDItems.DARK_STONE_STOVE.get()), RecipeTypes.CAMPFIRE_COOKING);
         registration.addRecipeCatalyst(new ItemStack(VDItems.BLOOD_WINE_BOTTLE.get()), VDJEIRecipeTypes.POURING);
+        registration.addRecipeCatalyst(new ItemStack(VDItems.DANDELION_BEER_BOTTLE.get()), VDJEIRecipeTypes.POURING);
+        registration.addRecipeCatalyst(new ItemStack(de.teamlapen.vampirism.core.ModItems.PURE_BLOOD_0.get()), VDJEIRecipeTypes.SPILLING_BLOOD);
+        registration.addRecipeCatalyst(new ItemStack(de.teamlapen.vampirism.core.ModItems.PURE_BLOOD_1.get()), VDJEIRecipeTypes.SPILLING_BLOOD);
+        registration.addRecipeCatalyst(new ItemStack(de.teamlapen.vampirism.core.ModItems.PURE_BLOOD_2.get()), VDJEIRecipeTypes.SPILLING_BLOOD);
+        registration.addRecipeCatalyst(new ItemStack(de.teamlapen.vampirism.core.ModItems.PURE_BLOOD_3.get()), VDJEIRecipeTypes.SPILLING_BLOOD);
+        registration.addRecipeCatalyst(new ItemStack(de.teamlapen.vampirism.core.ModItems.PURE_BLOOD_4.get()), VDJEIRecipeTypes.SPILLING_BLOOD);
     }
 
     @Override

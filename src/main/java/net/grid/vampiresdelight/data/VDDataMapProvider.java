@@ -12,8 +12,8 @@ import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
 import java.util.concurrent.CompletableFuture;
 
-public class VDDataMaps extends DataMapProvider {
-    protected VDDataMaps(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+public class VDDataMapProvider extends DataMapProvider {
+    protected VDDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
     }
 

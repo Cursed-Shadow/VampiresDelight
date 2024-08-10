@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.common.constants;
+package net.grid.vampiresdelight.common.constant;
 
 import de.teamlapen.vampirism.core.ModEffects;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;

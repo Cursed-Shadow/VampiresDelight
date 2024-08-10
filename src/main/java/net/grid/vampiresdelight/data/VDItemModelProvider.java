@@ -19,13 +19,13 @@ import java.util.stream.Collectors;
 import static net.grid.vampiresdelight.common.utility.VDNameUtils.itemName;
 import static vectorwing.farmersdelight.data.ItemModels.takeAll;
 
-public class VDItemModels extends ItemModelProvider {
+public class VDItemModelProvider extends ItemModelProvider {
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
     public static final ResourceLocation COCKTAIL = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "item/cocktail");
     public static final ResourceLocation POURING = resourceItem("template_bottle_pouring");
 
-    public VDItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
+    public VDItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, VampiresDelight.MODID, existingFileHelper);
     }
 

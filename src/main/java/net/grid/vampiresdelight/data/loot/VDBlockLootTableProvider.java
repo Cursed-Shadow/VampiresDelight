@@ -33,10 +33,10 @@ import vectorwing.farmersdelight.common.block.FeastBlock;
 import java.util.HashSet;
 import java.util.Set;
 
-public class VDBlockLootTables extends BlockLootSubProvider {
+public class VDBlockLootTableProvider extends BlockLootSubProvider {
     private final Set<Block> generatedLootTables = new HashSet<>();
 
-    public VDBlockLootTables(HolderLookup.Provider lookupProvider) {
+    public VDBlockLootTableProvider(HolderLookup.Provider lookupProvider) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
     }
 

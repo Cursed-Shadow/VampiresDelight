@@ -24,8 +24,8 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class VDItemTags extends ItemTagsProvider {
-    public VDItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
+public class VDItemTagProvider extends ItemTagsProvider {
+    public VDItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, blockTags, VampiresDelight.MODID, existingFileHelper);
     }
 

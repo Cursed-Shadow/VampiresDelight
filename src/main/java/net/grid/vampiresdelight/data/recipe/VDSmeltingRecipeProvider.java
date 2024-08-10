@@ -13,7 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
-public class VDSmeltingRecipes {
+public class VDSmeltingRecipeProvider {
     public static void register(RecipeOutput output) {
         multipleSmeltingRecipes(VDItems.ROASTED_GARLIC.get(), ModBlocks.GARLIC.asItem(),
                 0.35F, true, true, true, output);

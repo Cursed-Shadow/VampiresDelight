@@ -12,9 +12,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class VDBiomeTags extends BiomeTagsProvider {
+public class VDBiomeTagProvider extends BiomeTagsProvider {
 
-    public VDBiomeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, @Nullable ExistingFileHelper existingFileHelper) {
+    public VDBiomeTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, provider, VampiresDelight.MODID, existingFileHelper);
     }
 

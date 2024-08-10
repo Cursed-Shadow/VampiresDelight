@@ -15,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class VDEntityTags extends EntityTypeTagsProvider {
+public class VDEntityTagProvider extends EntityTypeTagsProvider {
 
-    public VDEntityTags(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, @Nullable ExistingFileHelper existingFileHelper) {
+    public VDEntityTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, provider, VampiresDelight.MODID, existingFileHelper);
     }
 

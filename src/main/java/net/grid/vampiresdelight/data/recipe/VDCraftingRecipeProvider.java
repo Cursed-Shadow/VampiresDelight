@@ -31,7 +31,7 @@ import java.util.stream.Stream;
 import static net.grid.vampiresdelight.common.utility.VDNameUtils.blockName;
 import static net.grid.vampiresdelight.common.utility.VDNameUtils.itemName;
 
-public class VDCraftingRecipes {
+public class VDCraftingRecipeProvider {
     public static void register(RecipeOutput output) {
         recipesBlocks(output);
         recipesMaterials(output);

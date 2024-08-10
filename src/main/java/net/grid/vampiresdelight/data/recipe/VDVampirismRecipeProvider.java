@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
-public class VDVampirismRecipes {
+public class VDVampirismRecipeProvider {
     public static void register(RecipeOutput output) {
         recipesWeaponTable(output);
         recipesAlchemyTable(output);

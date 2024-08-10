@@ -1,7 +1,7 @@
 package net.grid.vampiresdelight.data.tag;
 
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.data.VDEnchantments;
+import net.grid.vampiresdelight.common.registry.VDEnchantments;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EnchantmentTagsProvider;
@@ -11,8 +11,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class VDEnchantmentTags extends EnchantmentTagsProvider {
-    public VDEnchantmentTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+public class VDEnchantmentTagProvider extends EnchantmentTagsProvider {
+    public VDEnchantmentTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, VampiresDelight.MODID, existingFileHelper);
     }
 

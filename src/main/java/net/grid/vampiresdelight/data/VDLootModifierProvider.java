@@ -31,8 +31,8 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
-public class VDGlobalLootModifiers extends GlobalLootModifierProvider {
-    public VDGlobalLootModifiers(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+public class VDLootModifierProvider extends GlobalLootModifierProvider {
+    public VDLootModifierProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, VampiresDelight.MODID);
     }
 

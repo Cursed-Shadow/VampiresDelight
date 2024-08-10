@@ -1,7 +1,7 @@
 package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
-import net.grid.vampiresdelight.common.constants.VDFoodFeatures;
+import net.grid.vampiresdelight.common.constant.VDFoodFeatures;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;

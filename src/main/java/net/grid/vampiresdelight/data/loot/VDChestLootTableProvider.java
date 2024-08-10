@@ -3,7 +3,7 @@ package net.grid.vampiresdelight.data.loot;
 import de.teamlapen.vampirism.core.ModBlocks;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDLootTables;
-import net.grid.vampiresdelight.data.VDEnchantments;
+import net.grid.vampiresdelight.common.registry.VDEnchantments;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
@@ -23,10 +23,10 @@ import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.function.BiConsumer;
 
-public class VDChestLootTables implements LootTableSubProvider {
+public class VDChestLootTableProvider implements LootTableSubProvider {
     private final HolderLookup.Provider provider;
 
-    public VDChestLootTables(HolderLookup.Provider provider) {
+    public VDChestLootTableProvider(HolderLookup.Provider provider) {
         this.provider = provider;
     }
 

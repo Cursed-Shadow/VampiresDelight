@@ -26,9 +26,9 @@ import java.util.function.Function;
 
 import static net.grid.vampiresdelight.common.utility.VDNameUtils.blockName;
 
-public class VDBlockStates extends BlockStateProvider {
+public class VDBlockStateProvider extends BlockStateProvider {
     private static final int DEFAULT_ANGLE_OFFSET = 180;
-    public VDBlockStates(PackOutput output, ExistingFileHelper existingFileHelper) {
+    public VDBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, VampiresDelight.MODID, existingFileHelper);
     }
 

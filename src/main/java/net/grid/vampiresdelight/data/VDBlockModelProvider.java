@@ -18,8 +18,8 @@ import java.util.Objects;
 
 import static net.grid.vampiresdelight.common.utility.VDNameUtils.blockName;
 
-public class VDBlockModels extends BlockModelProvider {
-    public VDBlockModels(PackOutput output,  ExistingFileHelper existingFileHelper) {
+public class VDBlockModelProvider extends BlockModelProvider {
+    public VDBlockModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, VampiresDelight.MODID, existingFileHelper);
     }
 

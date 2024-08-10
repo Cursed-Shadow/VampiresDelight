@@ -8,17 +8,17 @@ import net.minecraft.data.recipes.RecipeProvider;
 
 import java.util.concurrent.CompletableFuture;
 
-public class VDRecipes extends RecipeProvider {
-    public VDRecipes(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+public class VDRecipeProvider extends RecipeProvider {
+    public VDRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
     }
 
     @Override
     protected void buildRecipes(RecipeOutput output) {
-        VDCookingRecipes.register(output);
-        VDCraftingRecipes.register(output);
-        VDCuttingRecipes.register(output);
-        VDSmeltingRecipes.register(output);
-        VDVampirismRecipes.register(output);
+        VDCookingRecipeProvider.register(output);
+        VDCraftingRecipeProvider.register(output);
+        VDCuttingRecipeProvider.register(output);
+        VDSmeltingRecipeProvider.register(output);
+        VDVampirismRecipeProvider.register(output);
     }
 }
