@@ -1,12 +1,10 @@
 package net.grid.vampiresdelight.common.block;
 
 import net.grid.vampiresdelight.common.tag.VDTags;
-import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.world.VDConfiguredFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.MushroomBlock;
@@ -23,23 +21,15 @@ public class BlackMushroomBlock extends MushroomBlock {
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+    protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos blockpos = pos.below();
         BlockState blockstate = level.getBlockState(blockpos);
         TriState soilDecision = blockstate.canSustainPlant(level, blockpos, Direction.UP, state);
-        return blockstate.is(VDTags.BLACK_MUSHROOM_GROW_BLOCK) || (soilDecision.isDefault() ? (level.getRawBrightness(pos, 0) < 13 || VDHelper.isPosInVampireBiome(pos, (LevelAccessor) level)) && this.mayPlaceOn(blockstate, level, blockpos) : soilDecision.isTrue());
+        return blockstate.is(VDTags.BLACK_MUSHROOM_GROW_BLOCK) || (soilDecision.isDefault() ? level.getRawBrightness(pos, 0) < 13 && this.mayPlaceOn(blockstate, level, blockpos) : soilDecision.isTrue());
     }
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
     }
-
-    // TODO: Do something with it the same was as with vampire orchid crop
-    /*
-    @Override
-    public PlantType getPlantType(BlockGetter level, BlockPos pos) {
-        return VReference.VAMPIRE_PLANT_TYPE;
-    }
-     */
 }

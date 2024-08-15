@@ -1,10 +1,6 @@
 package net.grid.vampiresdelight.common;
 
-import com.google.common.collect.ImmutableList;
 import net.neoforged.neoforge.common.ModConfigSpec;
-
-import java.util.List;
-import java.util.function.Predicate;
 
 public class VDConfiguration {
     public static final ModConfigSpec COMMON_CONFIG;
@@ -47,12 +43,12 @@ public class VDConfiguration {
     public static final ModConfigSpec.BooleanValue COLORED_TOOLTIPS;
 
     public static final String CATEGORY_TOOLTIP_COLORS = "tooltip_colors";
-    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
-    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> VAMPIRE_FOOD_TOOLTIP_END_COLOR;
-    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_START_COLOR;
-    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> HUNTER_FOOD_TOOLTIP_END_COLOR;
-    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_START_COLOR;
-    public static final ModConfigSpec.ConfigValue<List<? extends Integer>> WEREWOLF_FOOD_TOOLTIP_END_COLOR;
+    public static final ModConfigSpec.ConfigValue<String> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
+    public static final ModConfigSpec.ConfigValue<String> VAMPIRE_FOOD_TOOLTIP_END_COLOR;
+    public static final ModConfigSpec.ConfigValue<String> HUNTER_FOOD_TOOLTIP_START_COLOR;
+    public static final ModConfigSpec.ConfigValue<String> HUNTER_FOOD_TOOLTIP_END_COLOR;
+    public static final ModConfigSpec.ConfigValue<String> WEREWOLF_FOOD_TOOLTIP_START_COLOR;
+    public static final ModConfigSpec.ConfigValue<String> WEREWOLF_FOOD_TOOLTIP_END_COLOR;
 
     public static final String CATEGORY_APPLESKIN = "appleskin";
     public static final ModConfigSpec.BooleanValue CORRECT_APPLE_SKIN_TOOLTIPS;
@@ -93,7 +89,7 @@ public class VDConfiguration {
         COMMON_BUILDER.push(CATEGORY_EFFECTS);
         REPLACE_WEIRD_JELLY_SUNSCREEN_WITH_JUMPBOOST = COMMON_BUILDER
                 .comment("Should the Weird Jelly Sunscreen effect be replaced with Jump Boost?")
-                .define("replaceWeirdJellySunscreenWithJumpboost", false);
+                .define("replaceWeirdJellySunscreenWithJumpBoost", false);
         BAT_MEAT_WITHERS_HUMANS = COMMON_BUILDER
                 .comment("Should the bat meat and food made of it have chance of giving Wither effect when eaten by humans?")
                 .define("batMeatWithersHumans", true);
@@ -150,29 +146,23 @@ public class VDConfiguration {
 
         CLIENT_BUILDER.push(CATEGORY_TOOLTIP_COLORS);
         VAMPIRE_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
-                .comment("What color (rgb) should be used for vampire food tooltips as the start color? (The shade it starts with)")
-                .comment("Default: 124, 40, 124")
-                .defineList("vampireFoodTooltipStartColor", ImmutableList.of(124, 40, 124), () -> 0, new ConfigTypePredicate(Integer.class));
+                .comment("What color (hex) should be used for vampire food tooltips as the start color? (The shade it starts with)")
+                .define("vampireFoodTooltipStartColor", "#7c287c");
         VAMPIRE_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER
-                .comment("What color (rgb) should be used for vampire food tooltips as the end color? (The shade it ends with)")
-                .comment("Default: 50, 0, 70")
-                .defineList("vampireFoodTooltipEndColor", ImmutableList.of(50, 0, 70), () -> 0, new ConfigTypePredicate(Integer.class));
+                .comment("What color (hex) should be used for vampire food tooltips as the end color? (The shade it ends with)")
+                .define("vampireFoodTooltipEndColor", "#320046");
         HUNTER_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
-                .comment("What color (rgb) should be used for hunter food tooltips as the start color? (The shade it starts with)")
-                .comment("Default: 65, 65, 220")
-                .defineList("hunterFoodTooltipStartColor", ImmutableList.of(65, 65, 220), () -> 0, new ConfigTypePredicate(Integer.class));
+                .comment("What color (hex) should be used for hunter food tooltips as the start color? (The shade it starts with)")
+                .define("hunterFoodTooltipStartColor", "#4141dc");
         HUNTER_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER
-                .comment("What color (rgb) should be used for hunter food tooltips as the end color? (The shade it ends with)")
-                .comment("Default: 30, 30, 90")
-                .defineList("hunterFoodTooltipEndColor", ImmutableList.of(30, 30, 90), () -> 0, new ConfigTypePredicate(Integer.class));
+                .comment("What color (hex) should be used for hunter food tooltips as the end color? (The shade it ends with)")
+                .define("hunterFoodTooltipEndColor", "#1e1e5a");
         WEREWOLF_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
-                .comment("What color (rgb) should be used for werewolf food tooltips as the start color? (Werewolves mod only) (The shade it starts with)")
-                .comment("Default: 250, 135, 0")
-                .defineList("werewolfFoodTooltipStartColor", ImmutableList.of(250, 135, 0), () -> 0, new ConfigTypePredicate(Integer.class));
+                .comment("What color (hex) should be used for werewolf food tooltips as the start color? (Werewolves mod only) (The shade it starts with)")
+                .define("werewolfFoodTooltipStartColor", "#fa8500");
         WEREWOLF_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER
-                .comment("What color (rgb) should be used for werewolf food tooltips as the end color? (Werewolves mod only) (The shade it ends with)")
-                .comment("Default: 115, 45, 0")
-                .defineList("werewolfFoodTooltipEndColor", ImmutableList.of(115, 45, 0), () -> 0, new ConfigTypePredicate(Integer.class));
+                .comment("What color (hex) should be used for werewolf food tooltips as the end color? (Werewolves mod only) (The shade it ends with)")
+                .define("werewolfFoodTooltipEndColor", "#732c00");
         CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(CATEGORY_APPLESKIN);
@@ -188,13 +178,5 @@ public class VDConfiguration {
 
         CLIENT_BUILDER.pop();
         CLIENT_CONFIG = CLIENT_BUILDER.build();
-    }
-
-    // Needed for list configs in order not to make it create additional toml.bak files
-    private record ConfigTypePredicate(Class<?> configType) implements Predicate<Object> {
-        @Override
-        public boolean test(Object o) {
-            return configType.isInstance(o);
-        }
     }
 }

@@ -1,0 +1,18 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "vampiresdelight:bloody_soil_farmland"
+  },
+  "display": {
+    "block": "vampiresdelight:bloody_soil_farmland"
+  },
+  "categories": [
+    "dirt",
+    "grass",
+    "podzol",
+    "mushroom",
+    "cursed_earth",
+    "cursed_farmland"
+  ],
+  "growthModifier": 1.10
+}

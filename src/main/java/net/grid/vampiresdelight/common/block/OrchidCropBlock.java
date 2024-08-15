@@ -18,8 +18,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.CommonHooks;
-import net.neoforged.neoforge.common.util.TriState;
 import org.jetbrains.annotations.NotNull;
 
 public class OrchidCropBlock extends CropBlock {
@@ -48,33 +46,24 @@ public class OrchidCropBlock extends CropBlock {
         return SHAPE_BY_AGE[this.getAge(blockState)];
     }
 
-    // TODO: Fix Orchid Crop and Bloody Soil boost
-
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        TriState soilDecision = level.getBlockState(pos.below()).canSustainPlant(level, pos.below(), Direction.UP, state);
-        //if (!isDarkOrFoggyEnough(level, pos)) {
-            //return false;
-        //} else
-        if (!soilDecision.isDefault()) {
-            return soilDecision.isTrue();
-        } else {
-            return super.canSurvive(state, level, pos);
-        }
+        // CropBlock's canSurvive checks light conditions. We don't need that so this method is taken from BushBlock
+        net.neoforged.neoforge.common.util.TriState soilDecision = level.getBlockState(pos.below()).canSustainPlant(level, pos.below(), net.minecraft.core.Direction.UP, state);
+        if (!soilDecision.isDefault()) return soilDecision.isTrue();
+        return this.mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
     }
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (level.isAreaLoaded(pos, 1)) {
-            if (isDarkOrFoggyEnough(level, pos)) {
-                int age = this.getAge(state);
-                if (age < this.getMaxAge()) {
-                    float growthSpeed = getGrowthSpeed(state, level, pos);
-                    if (CommonHooks.canCropGrow(level, pos, state, random.nextInt((int) (25.0F / growthSpeed) + 1) == 0)) {
-                        level.setBlock(pos, this.getStateForAge(age + 1), 2);
-                        CommonHooks.fireCropGrowPost(level, pos, state);
-                    }
-                }
+        if (!level.isAreaLoaded(pos, 1)) return;
+        int age = this.getAge(state);
+        if (age < this.getMaxAge()) {
+            // Growth speed is adjusted here
+            float growthSpeed = (float) (getGrowthSpeed(state, level, pos) * (isDarkOrFoggyEnough(level, pos) ? 1.2 : 0.6));
+            if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, pos, state, random.nextInt((int) ((25.0F / growthSpeed) + 1)) == 0)) {
+                level.setBlock(pos, this.getStateForAge(age + 1), 2);
+                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
             }
         }
     }

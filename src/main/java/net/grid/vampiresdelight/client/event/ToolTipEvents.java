@@ -28,40 +28,25 @@ import java.util.List;
 public class ToolTipEvents {
     @SubscribeEvent
     public static void onTooltipColorEvent(RenderTooltipEvent.Color event) {
+        ItemStack stack = event.getItemStack();
         Player player = VampirismMod.proxy.getClientPlayer();
 
-        if (!VDConfiguration.COLORED_TOOLTIPS.get())
+        if (!VDConfiguration.COLORED_TOOLTIPS.get() || stack.isEmpty())
             return;
 
-        ItemStack stack = event.getItemStack();
-
-        List<? extends Integer> vampireStartColors = VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR.get();
-        Color vampireStartColor = new Color(vampireStartColors.get(0), vampireStartColors.get(1), vampireStartColors.get(2));
-        List<? extends Integer> vampireEndColors = VDConfiguration.VAMPIRE_FOOD_TOOLTIP_END_COLOR.get();
-        Color vampireEndColor = new Color(vampireEndColors.get(0), vampireEndColors.get(1), vampireEndColors.get(2));
-
-        List<? extends Integer> hunterStartColors = VDConfiguration.HUNTER_FOOD_TOOLTIP_START_COLOR.get();
-        Color hunterStartColor = new Color(hunterStartColors.get(0), hunterStartColors.get(1), hunterStartColors.get(2));
-        List<? extends Integer> hunterEndColors = VDConfiguration.HUNTER_FOOD_TOOLTIP_END_COLOR.get();
-        Color hunterEndColor = new Color(hunterEndColors.get(0), hunterEndColors.get(1), hunterEndColors.get(2));
-
-        List<? extends Integer> werewolfStartColors = VDConfiguration.WEREWOLF_FOOD_TOOLTIP_START_COLOR.get();
-        Color werewolfStartColor = new Color(werewolfStartColors.get(0), werewolfStartColors.get(1), werewolfStartColors.get(2));
-        List<? extends Integer> werewolfEndColors = VDConfiguration.WEREWOLF_FOOD_TOOLTIP_END_COLOR.get();
-        Color werewolfEndColor = new Color(werewolfEndColors.get(0), werewolfEndColors.get(1), werewolfEndColors.get(2));
-
         if (stack.is(VDTags.VAMPIRE_FOOD)) {
-            setBorderColors(vampireStartColor, vampireEndColor, event);
-        } else if (stack.is(VDTags.HUNTER_FOOD) && player != null && VDHelper.isVampire(player)) {
-            setBorderColors(hunterStartColor, hunterEndColor, event);
+            setBorderColors(VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR.get(), VDConfiguration.VAMPIRE_FOOD_TOOLTIP_END_COLOR.get(), event);
+        } else if (stack.is(VDTags.HUNTER_FOOD) && (player != null && VDHelper.isVampire(player) || VDConfiguration.HUNTER_TOOLTIPS_FOR_EVERYONE.get())) {
+            setBorderColors(VDConfiguration.HUNTER_FOOD_TOOLTIP_START_COLOR.get(), VDConfiguration.HUNTER_FOOD_TOOLTIP_END_COLOR.get(), event);
         } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD)) {
-            setBorderColors(werewolfStartColor, werewolfEndColor, event);
+            setBorderColors(VDConfiguration.WEREWOLF_FOOD_TOOLTIP_START_COLOR.get(), VDConfiguration.WEREWOLF_FOOD_TOOLTIP_END_COLOR.get(), event);
         }
     }
 
-    public static void setBorderColors(Color borderStartColor, Color borderEndColor, RenderTooltipEvent.Color event) {
-        event.setBorderStart(borderStartColor.getRGB());
-        event.setBorderEnd(borderEndColor.getRGB());
+    // Color values must be in HEX
+    public static void setBorderColors(String borderStartColor, String borderEndColor, RenderTooltipEvent.Color event) {
+        event.setBorderStart(Color.decode(borderStartColor).getRGB());
+        event.setBorderEnd(Color.decode(borderEndColor).getRGB());
     }
 
     @SubscribeEvent

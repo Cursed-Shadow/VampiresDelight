@@ -6,7 +6,7 @@
   "categories": [
     "cursed_farmland"
   ],
-  "growthTicks": 1500,
+  "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
     "block": "vampiresdelight:vampire_orchid_crop"

@@ -52,7 +52,7 @@ public class BloodySoilFarmlandBlock extends CursedFarmlandBlock {
         } else if (moisture < 7) {
             worldIn.setBlock(pos, blockState.setValue(MOISTURE, 7), 2);
         } else if (moisture == 7) {
-            BloodySoilBlock.boostCrop(blockState, worldIn, pos);
+            BloodySoilBlock.boostCrop(worldIn, pos);
         }
     }
 

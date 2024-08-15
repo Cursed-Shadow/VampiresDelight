@@ -2,8 +2,6 @@
 
 ## 0.1.8
 
-// TODO: Add Botany Pots data for Bloody Soil
-
 ### Additions
 - Updated to NeoForge;
 - **Bloody Soil** can now be obtained by clicking on the **Rich Soil** or the *Rich Soil Farmland** with a **Pure Blood Bottle**;
@@ -11,6 +9,7 @@
 ### Updates
 - Most of the normal plants can now be planted in the **Cursed Farmland** and the **Bloody Soil Farmland**, except for the **Garlic**;
 - **Bloody Soil** now only boost cursed plants such as the **Vampire Orchid** and the **Dark Spruce Sapling**;
+- **Vampire Orchid Crop** no longer needs darkness, it will now grow in any light, but planting it in the dark or in fog will increase its growth speed;
 - Attacking an entity with **Alchemical Cocktail** will now cause it to break, setting everything on fire as if you threw it;
 - **Alchemical Cocktail** now has a handheld model, like a sword or a pickaxe;
 - **Spirit Lantern**'s model is no longer 3D in hand;
@@ -23,6 +22,9 @@
 ### Configurations
 - Added brand-new config screen that can be found in mod menu;
 - Set the default value of `cookingPotInHunterCampSpawnChance` to `40`;
+- `hunterTooltipsForEveryone` now changes the color of tooltips as well;
+- Tooltip border colors are now stored in hex value in configuration;
+- Renamed `replaceWeirdJellySunscreenWithJumpboost` to `replaceWeirdJellySunscreenWithJumpBoost` for accuracy;
 - Removed configs since now their functions can be configured using data packs:
   - `disableVampireBite`;
   - `backstabbingCanBeAppliedToHunterWeapon`;

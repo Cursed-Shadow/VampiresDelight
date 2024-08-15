@@ -4,11 +4,9 @@ import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.VDBlocks;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
@@ -16,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
-import net.neoforged.neoforge.common.util.TriState;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.utility.MathUtils;
@@ -30,7 +27,7 @@ public class BloodySoilBlock extends Block {
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!level.isClientSide) {
             transformPlants(level, pos);
-            boostCrop(state, level, pos);
+            boostCrop(level, pos);
         }
     }
 
@@ -49,12 +46,12 @@ public class BloodySoilBlock extends Block {
         }
     }
 
-    public static void boostCrop(BlockState state, ServerLevel level, BlockPos pos) {
+    public static void boostCrop(ServerLevel level, BlockPos pos) {
         BlockPos abovePos = pos.above();
         BlockState aboveState = level.getBlockState(abovePos);
         Block aboveBlock = aboveState.getBlock();
 
-        if (canBoostCrop(state)) {
+        if (canBoostCrop(aboveState)) {
             if (aboveBlock instanceof BonemealableBlock growable && MathUtils.RAND.nextFloat() <= VDConfiguration.BLOODY_SOIL_BOOST_CHANCE.get()) {
                 if (growable.isValidBonemealTarget(level, abovePos, aboveState) && CommonHooks.canCropGrow(level, pos.above(), aboveState, true)) {
                     growable.performBonemeal(level, level.random, abovePos, aboveState);
@@ -74,10 +71,5 @@ public class BloodySoilBlock extends Block {
             return VDBlocks.BLOODY_SOIL_FARMLAND.get().defaultBlockState();
         }
         return null;
-    }
-
-    @Override
-    public TriState canSustainPlant(BlockState state, BlockGetter level, BlockPos soilPosition, Direction facing, BlockState plant) {
-        return TriState.DEFAULT;
     }
 }

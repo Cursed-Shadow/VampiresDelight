@@ -4,6 +4,9 @@
     "item": "vampiresdelight:black_mushroom"
   },
   "categories": [
+    "stone",
+    "mushroom",
+    "mulch",
     "cursed_earth"
   ],
   "growthTicks": 1200,

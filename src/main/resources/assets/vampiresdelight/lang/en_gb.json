@@ -22,15 +22,15 @@
 
   "vampiresdelight.configuration.tooltip_colors": "Colours of tooltip outlines",
   "vampiresdelight.configuration.vampireFoodTooltipStartColor": "Vampire tooltip start colour",
-  "vampiresdelight.configuration.vampireFoodTooltipStartColor.tooltip": "What colour (rgb) should be used for vampire food tooltips as the start colour? (The shade it starts with)",
+  "vampiresdelight.configuration.vampireFoodTooltipStartColor.tooltip": "What colour (hex) should be used for vampire food tooltips as the start colour? (The shade it starts with)",
   "vampiresdelight.configuration.vampireFoodTooltipEndColor": "Vampire tooltip end color",
-  "vampiresdelight.configuration.vampireFoodTooltipEndColor.tooltip": "What colour (rgb) should be used for vampire food tooltips as the end colour? (The shade it ends with)",
+  "vampiresdelight.configuration.vampireFoodTooltipEndColor.tooltip": "What colour (hex) should be used for vampire food tooltips as the end colour? (The shade it ends with)",
   "vampiresdelight.configuration.hunterFoodTooltipStartColor": "Hunter tooltip start color",
-  "vampiresdelight.configuration.hunterFoodTooltipStartColor.tooltip": "hat colour (rgb) should be used for hunter food tooltips as the end colour? (The shade it ends with)",
+  "vampiresdelight.configuration.hunterFoodTooltipStartColor.tooltip": "hat colour (hex) should be used for hunter food tooltips as the end colour? (The shade it ends with)",
   "vampiresdelight.configuration.hunterFoodTooltipEndColor": "Hunter tooltip end color",
-  "vampiresdelight.configuration.hunterFoodTooltipEndColor.tooltip": "What colour (rgb) should be used for hunter food tooltips as the start colour? (The shade it starts with)",
+  "vampiresdelight.configuration.hunterFoodTooltipEndColor.tooltip": "What colour (hex) should be used for hunter food tooltips as the start colour? (The shade it starts with)",
   "vampiresdelight.configuration.werewolfFoodTooltipStartColor": "Werewolf tooltip start color",
-  "vampiresdelight.configuration.werewolfFoodTooltipStartColor.tooltip": "What colour (rgb) should be used for werewolf food tooltips as the start colour? (Werewolves mod only) (The shade it starts with)",
+  "vampiresdelight.configuration.werewolfFoodTooltipStartColor.tooltip": "What colour (hex) should be used for werewolf food tooltips as the start colour? (Werewolves mod only) (The shade it starts with)",
   "vampiresdelight.configuration.werewolfFoodTooltipEndColor": "Werewolf tooltip end color",
-  "vampiresdelight.configuration.werewolfFoodTooltipEndColor.tooltip": "What colour (rgb) should be used for werewolf food tooltips as the end colour? (Werewolves mod only) (The shade it ends with)"
+  "vampiresdelight.configuration.werewolfFoodTooltipEndColor.tooltip": "What colour (hex) should be used for werewolf food tooltips as the end colour? (Werewolves mod only) (The shade it ends with)"
 }

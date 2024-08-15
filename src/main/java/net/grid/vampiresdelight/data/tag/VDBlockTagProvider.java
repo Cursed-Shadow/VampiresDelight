@@ -49,11 +49,13 @@ public class VDBlockTagProvider extends BlockTagsProvider {
         });
 
         tag(VDTags.BLACK_MUSHROOM_GROW_BLOCK)
+                .addTag(BlockTags.MUSHROOM_GROW_BLOCK)
                 .addTag(de.teamlapen.vampirism.core.ModTags.Blocks.CURSED_EARTH)
                 .add(VDBlocks.BLOODY_SOIL.get());
 
         tag(VDTags.CURSED_PLANTS).add(
                 VDBlocks.VAMPIRE_ORCHID_CROP.get(),
+                VDBlocks.BLACK_MUSHROOM.get(),
                 ModBlocks.DARK_SPRUCE_SAPLING.get(),
                 ModBlocks.CURSED_SPRUCE_SAPLING.get());
 
