@@ -51,6 +51,8 @@ public class PlayerEventHandler {
                     disgustingFoodConsumed(livingEntity);
                 }
             }
+
+            // TODO: Check if it works when Werewolves updates
             if (!VDIntegrationUtils.isWerewolf(livingEntity)) {
                 if (item instanceof WerewolfConsumableItem && itemStack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
                     disgustingFoodConsumed(livingEntity);

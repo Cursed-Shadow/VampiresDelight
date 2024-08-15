@@ -2,7 +2,7 @@ package net.grid.vampiresdelight.common.mixin;
 
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 
-// TODO: Make it work
+// TODO: Make it work somehow, because the initial method got changed
 /*
 @Mixin(FoodHelper.class)
 public class MixinFoodHelper {

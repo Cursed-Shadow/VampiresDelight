@@ -169,6 +169,7 @@
   "vampiresdelight.tooltip.cursed_cupcake": "Очищает от эффекта чеснока",
   "vampiresdelight.tooltip.spirit_lantern": "Позволяет игроку видеть немного дальше сквозь вампирский туман, при ношении в руке",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не может поджигать землю из-за настроек сервера",
+  "vampiresdelight.tooltip.alchemical_cocktail.splash_radius": "Радиус поражения: %s",
   "vampiresdelight.tooltip.pourable_drink_item": "Чтобы налить напиток из этой бутылки, возьмите бутылку одной рукой, а пустую бутылочку - другой. Затем нажмите и удерживайте левую клавишу мыши",
   "vampiresdelight.tooltip.for_faction": "Для фракции: %s",
   "vampiresdelight.tooltip.hold_shift_for_info": "Ужерживайте клавишу [%s] для подсказки",

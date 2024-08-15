@@ -169,6 +169,7 @@
   "vampiresdelight.tooltip.cursed_cupcake": "Знімає ефект часнику",
   "vampiresdelight.tooltip.spirit_lantern": "Дозволяє гравцеві бачити трохи далі крізь вампірський туман, при триманні у руці",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Не може підпалювати землю через налаштування цього сервера",
+  "vampiresdelight.tooltip.alchemical_cocktail.splash_radius": "Радіус ураження: %s",
   "vampiresdelight.tooltip.pourable_drink_item": "Щоб налити напій із цієї пляшки, візьміть пляшку однією рукою, а порожню скляну пляшку - іншою. Потім натисніть і утримуйте ліву клавішу миші",
   "vampiresdelight.tooltip.for_faction": "Для фракції: %s",
   "vampiresdelight.tooltip.hold_shift_for_info": "Утримуйте клавішу [%s] для підказки",

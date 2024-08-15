@@ -5,6 +5,7 @@
 ### Additions
 - Updated to NeoForge;
 - **Bloody Soil** can now be obtained by clicking on the **Rich Soil** or the *Rich Soil Farmland** with a **Pure Blood Bottle**;
+- Added `splash_radius` data component which can modify the splash radius of an **Alchemical Cocktail**. It can be used in data packs or with commands;
 
 ### Updates
 - Most of the normal plants can now be planted in the **Cursed Farmland** and the **Bloody Soil Farmland**, except for the **Garlic**;

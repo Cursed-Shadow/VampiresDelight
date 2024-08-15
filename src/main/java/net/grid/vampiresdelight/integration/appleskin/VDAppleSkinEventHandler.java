@@ -29,8 +29,11 @@ public class VDAppleSkinEventHandler {
         Item item = itemStack.getItem();
 
         if (player != null) {
-            if ((VDHelper.isVampire(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES.get() && !(item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.LIVER))) ||
-                    (VDIntegrationUtils.isWerewolf(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES.get() && !VDIntegrationUtils.canWerewolfEatFood(player, itemStack))) {
+            if (VDHelper.isVampire(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES.get() && !(item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.LIVER))) {
+                event.setCanceled(true);
+            }
+
+            if (VDIntegrationUtils.isModPresent(VDIntegrationUtils.WEREWOLVES) && VDIntegrationUtils.isWerewolf(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_WEREWOLVES.get() && !VDIntegrationUtils.canWerewolfEatFood(player, itemStack)) {
                 event.setCanceled(true);
             }
         }

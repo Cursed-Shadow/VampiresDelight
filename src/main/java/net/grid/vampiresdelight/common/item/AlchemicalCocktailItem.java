@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.common.item;
 
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.entity.AlchemicalCocktailEntity;
+import net.grid.vampiresdelight.common.registry.VDDataComponents;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDSounds;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
@@ -9,7 +10,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -60,7 +60,7 @@ public class AlchemicalCocktailItem extends Item implements ProjectileItem {
         AlchemicalCocktailEntity.playSmashSound(target, isMetalPipe(stack));
         if (!isMetalPipe(stack)) {
             target.igniteForSeconds(16);
-            AlchemicalCocktailEntity.setOnFire(target.blockPosition(), target.level());
+            AlchemicalCocktailEntity.setOnFire(target.blockPosition(), getSplashRadius(stack), target.level());
             if (!(attacker instanceof Player player && player.isCreative())) stack.shrink(1);
 
             return true;
@@ -73,11 +73,22 @@ public class AlchemicalCocktailItem extends Item implements ProjectileItem {
         return stack.getHoverName().toString().toLowerCase().contains("metal pipe") && stack.getItem() == VDItems.ALCHEMICAL_COCKTAIL.get();
     }
 
+    public static double getSplashRadius(ItemStack stack) {
+        return stack.getOrDefault(VDDataComponents.SPLASH_RADIUS.get(), getDefaultSplashRadius());
+    }
+
+    public static double getDefaultSplashRadius() {
+        return VDConfiguration.ALCHEMICAL_COCKTAIL_SPLASH_RADIUS.get();
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if (stack.has(VDDataComponents.SPLASH_RADIUS.get())) {
+            tooltipComponents.add(VDTextUtils.getTranslation("tooltip.alchemical_cocktail.splash_radius", Component.literal(String.valueOf(getSplashRadius(stack))).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
+        }
+
         if (!VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get()) {
-            MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip.alchemical_cocktail.burn_land_disabled");
-            tooltipComponents.add(textEmpty.withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(VDTextUtils.getTranslation("tooltip.alchemical_cocktail.burn_land_disabled").withStyle(ChatFormatting.GRAY));
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);

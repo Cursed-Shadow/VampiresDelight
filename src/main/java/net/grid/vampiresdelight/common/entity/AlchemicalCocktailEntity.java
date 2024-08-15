@@ -67,13 +67,11 @@ public class AlchemicalCocktailEntity extends ThrowableItemProjectile  {
     }
 
     public void setOnFire(HitResult result) {
-        setOnFire(BlockPos.containing(result.getLocation()), level());
+        setOnFire(BlockPos.containing(result.getLocation()), AlchemicalCocktailItem.getSplashRadius(getItem()), level());
     }
 
-    public static void setOnFire(BlockPos blockPos, Level level) {
+    public static void setOnFire(BlockPos blockPos, double radius, Level level) {
         if (VDConfiguration.ALCHEMICAL_COCKTAIL_BURNS_GROUND.get() && !level.isClientSide) {
-            double radius = VDConfiguration.ALCHEMICAL_COCKTAIL_SPLASH_RADIUS.get();
-
             for (int dx = (int) -Math.ceil(radius); dx <= radius; dx++) {
                 for (int dz = (int) -Math.ceil(radius); dz <= radius; dz++) {
                     double distance = Math.sqrt(dx * dx + dz * dz);

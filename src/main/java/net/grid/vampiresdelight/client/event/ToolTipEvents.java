@@ -19,6 +19,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 import java.awt.*;
@@ -35,18 +36,31 @@ public class ToolTipEvents {
             return;
 
         if (stack.is(VDTags.VAMPIRE_FOOD)) {
-            setBorderColors(VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR.get(), VDConfiguration.VAMPIRE_FOOD_TOOLTIP_END_COLOR.get(), event);
+            setBorderColors(VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR, VDConfiguration.VAMPIRE_FOOD_TOOLTIP_END_COLOR, event);
         } else if (stack.is(VDTags.HUNTER_FOOD) && (player != null && VDHelper.isVampire(player) || VDConfiguration.HUNTER_TOOLTIPS_FOR_EVERYONE.get())) {
-            setBorderColors(VDConfiguration.HUNTER_FOOD_TOOLTIP_START_COLOR.get(), VDConfiguration.HUNTER_FOOD_TOOLTIP_END_COLOR.get(), event);
+            setBorderColors(VDConfiguration.HUNTER_FOOD_TOOLTIP_START_COLOR, VDConfiguration.HUNTER_FOOD_TOOLTIP_END_COLOR, event);
         } else if (stack.is(VDTags.WEREWOLF_ONLY_FOOD)) {
-            setBorderColors(VDConfiguration.WEREWOLF_FOOD_TOOLTIP_START_COLOR.get(), VDConfiguration.WEREWOLF_FOOD_TOOLTIP_END_COLOR.get(), event);
+            setBorderColors(VDConfiguration.WEREWOLF_FOOD_TOOLTIP_START_COLOR, VDConfiguration.WEREWOLF_FOOD_TOOLTIP_END_COLOR, event);
         }
     }
 
     // Color values must be in HEX
-    public static void setBorderColors(String borderStartColor, String borderEndColor, RenderTooltipEvent.Color event) {
-        event.setBorderStart(Color.decode(borderStartColor).getRGB());
-        event.setBorderEnd(Color.decode(borderEndColor).getRGB());
+    public static void setBorderColors(ModConfigSpec.ConfigValue<String> startColorConfigValue, ModConfigSpec.ConfigValue<String> endColorConfigValue, RenderTooltipEvent.Color event) {
+        Color startColor, endColor;
+
+        try {
+            startColor = Color.decode(startColorConfigValue.get());
+        } catch (NumberFormatException e) {
+            startColor = Color.decode(startColorConfigValue.getDefault());
+        }
+        try {
+            endColor = Color.decode(endColorConfigValue.get());
+        } catch (NumberFormatException e) {
+            endColor = Color.decode(endColorConfigValue.getDefault());
+        }
+
+        event.setBorderStart(startColor.getRGB());
+        event.setBorderEnd(endColor.getRGB());
     }
 
     @SubscribeEvent
@@ -62,7 +76,7 @@ public class ToolTipEvents {
             } else if (item instanceof GarlicBreadItem) {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
             } else if (VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
-                VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player);
+                VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player); // TODO: Check if it works when Werewolves updates
             }
 
             //tooltip.add(Component.literal("Color Test 1").withStyle(Style.EMPTY.withColor(new Color(66, 33, 133).getRGB()).withObfuscated(true)));
