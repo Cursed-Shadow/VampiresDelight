@@ -170,9 +170,9 @@
   "vampiresdelight.tooltip.spirit_lantern": "Permet au joueur de voir un peu plus loin dans le brouillard des vampires tout en tenant",
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Impossible de brûler le sol à cause des paramètres de ce serveur",
   "vampiresdelight.tooltip.alchemical_cocktail.splash_radius": "Splash radius: %s",
-  "vampiresdelight.tooltip.pourable_drink_item": "To pour the drink from this bottle into a glass, hold the bottle with one hand and the Glass Bottle with the other. Then press and hold the left mouse button",
+  "vampiresdelight.tooltip.pourable_drink_item": "Pour verser la boisson de cette bouteille dans un verre, tenez la bouteille d'une main et la bouteille en verre de l'autre. Appuyez ensuite sur le bouton gauche de la souris et maintenez-le enfoncé",
   "vampiresdelight.tooltip.for_faction": "For faction: %s",
-  "vampiresdelight.tooltip.hold_shift_for_info": "Hold [%s] for info",
+  "vampiresdelight.tooltip.hold_shift_for_info": "Maintenez [%s] pour infos",
   "vampiresdelight.tooltip.shift": "Shift",
 
   "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Contient %s portion de vin",
