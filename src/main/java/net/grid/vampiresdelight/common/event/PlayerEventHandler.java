@@ -26,6 +26,7 @@ import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerEventHandler {
     @SubscribeEvent

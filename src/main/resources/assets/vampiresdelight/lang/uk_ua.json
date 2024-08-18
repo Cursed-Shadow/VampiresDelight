@@ -141,7 +141,7 @@
   "item.minecraft.splash_potion.effect.blessing": "Вибухове зілля благословення",
   "item.minecraft.lingering_potion.effect.blessing": "Осідальне зілля благословення",
   "item.minecraft.tipped_arrow.effect.blessing": "Стріла благословення",
-  "oil.vampiresdelight.blessing": "Благословляюче",
+  "oil.vampiresdelight.blessing": "Благословляюче масло",
 
   "effect.vampiresdelight.clothes_dissolving": "Розчинення",
   "effect.vampiresdelight.clothes_dissolving.description": "Розчиняє одяг на гравці або мобі.",
@@ -150,7 +150,7 @@
   "item.minecraft.splash_potion.effect.clothes_dissolving": "Вибухове зілля розчинення",
   "item.minecraft.lingering_potion.effect.clothes_dissolving": "Осідальне зілля розчинення",
   "item.minecraft.tipped_arrow.effect.clothes_dissolving": "Стріла розчинення",
-  "oil.vampiresdelight.clothes_dissolving": "Розчиняюче",
+  "oil.vampiresdelight.clothes_dissolving": "Розчиняюче масло",
 
   "effect.vampiresdelight.fog_vision": "Туманне бачення",
   "effect.vampiresdelight.fog_vision.description": "Дозволяє бачити далі крізь вампірський туман.",
@@ -159,7 +159,7 @@
   "item.minecraft.splash_potion.effect.fog_vision": "Вибухове зілля туманного бачення",
   "item.minecraft.lingering_potion.effect.fog_vision": "Осідальне зілля туманного бачення",
   "item.minecraft.tipped_arrow.effect.fog_vision": "Стріла туманного бачення",
-  "oil.vampiresdelight.fog_vision": "Тумано-бачуче",
+  "oil.vampiresdelight.fog_vision": "Тумано-бачуче масло",
 
   "enchantment.vampiresdelight.vampire_bite": "Укус вампіра",
   "enchantment.vampiresdelight.vampire_bite.desc": "Лікує гравця пропорційно до кількості завданої шкоди.",
@@ -172,7 +172,7 @@
   "vampiresdelight.tooltip.alchemical_cocktail.splash_radius": "Радіус ураження: %s",
   "vampiresdelight.tooltip.pourable_drink_item": "Щоб налити напій із цієї пляшки, візьміть пляшку однією рукою, а порожню скляну пляшку - іншою. Потім натисніть і утримуйте ліву клавішу миші",
   "vampiresdelight.tooltip.for_faction": "Для фракції: %s",
-  "vampiresdelight.tooltip.hold_shift_for_info": "Утримуйте клавішу [%s] для підказки",
+  "vampiresdelight.tooltip.hold_shift_for_info": "Утримуйте [%s] для підказки",
   "vampiresdelight.tooltip.shift": "Shift",
 
   "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Містить %s порцію вина",
@@ -291,6 +291,12 @@
   "vampiresdelight.configuration.tooltips": "Підказки",
   "vampiresdelight.configuration.coloredTooltips": "Кольорові підказки",
   "vampiresdelight.configuration.coloredTooltips.tooltip": "Чи повинен мод змінювати колір підказок?",
+  "vampiresdelight.configuration.coloredTooltipsForVampirismItems": "Кольорові підказки для предметів з Vampirism",
+  "vampiresdelight.configuration.coloredTooltipsForVampirismItems.tooltip": "Чи повинен мод змінювати колір підказок для предметів з Vampirism (Часниковий хліб, людське серце тощо)?",
+  "vampiresdelight.configuration.factionTooltips": "Підказки фракцій",
+  "vampiresdelight.configuration.factionTooltips.tooltip": "Чи повинен мод додавати підказки, що вказують на фракцію, до якої належить предмет/їжа?",
+  "vampiresdelight.configuration.factionTooltipsForVampirismItems": "Faction tooltips for Vampirism items",
+  "vampiresdelight.configuration.factionTooltipsForVampirismItems.tooltip": "Чи повинен мод додавати підказки, що вказують на фракцію, до якої належить предмет/їжа для предметів з Vampirism (Часниковий хліб, людське серце тощо)?",
   "vampiresdelight.configuration.hunterTooltipsForEveryone": "Підказки для їжі мисливців для всіх фракцій",
   "vampiresdelight.configuration.hunterTooltipsForEveryone.tooltip": "Чи слід показувати підказки для їжі мисливців і колір підказки для всіх фракцій? (За замовчуванням показується тільки вампірам)",
 

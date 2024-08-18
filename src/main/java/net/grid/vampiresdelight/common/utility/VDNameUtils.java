@@ -15,12 +15,16 @@ public class VDNameUtils {
     public static String itemName(ItemLike item) {
         return itemLocation(item).getPath();
     }
-
     public static String itemNamespace(ItemLike item) {
         return itemLocation(item).getNamespace();
     }
+
     public static Item getItem(ResourceLocation key) {
         return BuiltInRegistries.ITEM.get(key);
+    }
+
+    public static boolean isItemFrom(ItemLike item, String modId) {
+        return itemNamespace(item).equals(modId);
     }
 
     public static ResourceLocation blockLocation(Block block) {
@@ -30,10 +34,10 @@ public class VDNameUtils {
     public static String blockName(Block block) {
         return blockLocation(block).getPath();
     }
-
     public static String blockNamespace(Block block) {
         return blockLocation(block).getNamespace();
     }
+
     public static Block getBlock(ResourceLocation key) {
         return BuiltInRegistries.BLOCK.get(key);
     }

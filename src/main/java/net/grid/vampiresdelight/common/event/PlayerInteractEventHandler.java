@@ -30,6 +30,7 @@ import vectorwing.farmersdelight.common.utility.ItemUtils;
 
 import java.util.Map;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = VampiresDelight.MODID)
 public class PlayerInteractEventHandler {
     @SubscribeEvent

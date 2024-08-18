@@ -291,6 +291,12 @@
   "vampiresdelight.configuration.tooltips": "Tooltips",
   "vampiresdelight.configuration.coloredTooltips": "Colored tooltips",
   "vampiresdelight.configuration.coloredTooltips.tooltip": "Should the mod change the color of tooltips?",
+  "vampiresdelight.configuration.coloredTooltipsForVampirismItems": "Colored tooltips for Vampirism items",
+  "vampiresdelight.configuration.coloredTooltipsForVampirismItems.tooltip": "Should the mod change the color of tooltips of items from Vampirism (Garlic Bread, Human Heart, ect.)?",
+  "vampiresdelight.configuration.factionTooltips": "Faction tooltips",
+  "vampiresdelight.configuration.factionTooltips.tooltip": "Should the mod add tooltips that show which faction the item belongs to?",
+  "vampiresdelight.configuration.factionTooltipsForVampirismItems": "Faction tooltips for Vampirism items",
+  "vampiresdelight.configuration.factionTooltipsForVampirismItems.tooltip": "Should the mod add tooltips for items from Vampirism (Garlic Bread, Human Heart, ect.) that show which faction the item belongs to?",
   "vampiresdelight.configuration.hunterTooltipsForEveryone": "Hunter food tooltips for everyone",
   "vampiresdelight.configuration.hunterTooltipsForEveryone.tooltip": "Should hunter food tooltips and tooltip's color be shown to all fractions? (Only shown to vampires by default)",
 

@@ -98,12 +98,12 @@
   "item.vampiresdelight.cursed_cupcake": "Проклятый кекс",
 
   "block.vampiresdelight.blood_pie": "Кровяной пирог",
-  "item.vampiresdelight.blood_pie_slice": "Кусок кровяного пирога",
+  "item.vampiresdelight.blood_pie_slice": "Долька кровяного пирога",
   "block.vampiresdelight.weird_jelly_block": "Странное желе",
   "item.vampiresdelight.weird_jelly": "Тарелка странного желе",
 
   "block.vampiresdelight.orchid_cake": "Орхидейный торт",
-  "item.vampiresdelight.orchid_cake_slice": "Кусок орхидейного торта",
+  "item.vampiresdelight.orchid_cake_slice": "Долька орхидейного торта",
   "block.vampiresdelight.orchid_candle_cake": "Орхидейный торт со свечой",
   "block.vampiresdelight.white_orchid_candle_cake": "Орхидейный торт с белой свечой",
   "block.vampiresdelight.orange_orchid_candle_cake": "Орхидейный торт с оранжевой свечой",
@@ -172,7 +172,7 @@
   "vampiresdelight.tooltip.alchemical_cocktail.splash_radius": "Радиус поражения: %s",
   "vampiresdelight.tooltip.pourable_drink_item": "Чтобы налить напиток из этой бутылки, возьмите бутылку одной рукой, а пустую бутылочку - другой. Затем нажмите и удерживайте левую клавишу мыши",
   "vampiresdelight.tooltip.for_faction": "Для фракции: %s",
-  "vampiresdelight.tooltip.hold_shift_for_info": "Ужерживайте клавишу [%s] для подсказки",
+  "vampiresdelight.tooltip.hold_shift_for_info": "Ужерживайте [%s] для подсказки",
   "vampiresdelight.tooltip.shift": "Shift",
 
   "vampiresdelight.tooltip.blood_wine_bottle.single_serving": "Содержит %s порцию вина",
@@ -291,6 +291,12 @@
   "vampiresdelight.configuration.tooltips": "Подсказки",
   "vampiresdelight.configuration.coloredTooltips": "Цветные подсказки",
   "vampiresdelight.configuration.coloredTooltips.tooltip": "Должен ли мод изменять цвет подсказок некоторых предметов?",
+  "vampiresdelight.configuration.coloredTooltipsForVampirismItems": "Цветные подсказки для предметов из Vampirism",
+  "vampiresdelight.configuration.coloredTooltipsForVampirismItems.tooltip": "Должен ли мод изменять цвет подсказок некоторых предметов из Vampirism (Чесночный хлеб, человеческое сердце и т.д.)?",
+  "vampiresdelight.configuration.factionTooltips": "Подсказки фракций",
+  "vampiresdelight.configuration.factionTooltips.tooltip": "Должен ли мод добавлять подсказки, которые указывают на фракцию, к которой относится предмет/еда?",
+  "vampiresdelight.configuration.factionTooltipsForVampirismItems": "Подсказки фракций для предметов из Vampirism",
+  "vampiresdelight.configuration.factionTooltipsForVampirismItems.tooltip": "Должен ли мод добавлять подсказки, которые указывают на фракцию, к которой относится предмет/еда из Vampirism (Чесночный хлеб, человеческое сердце и т.д.)?",
   "vampiresdelight.configuration.hunterTooltipsForEveryone": "Цветные подсказки еды охотников для всех фракций",
   "vampiresdelight.configuration.hunterTooltipsForEveryone.tooltip": "Должны ли подсказки к еде охотников и их цвет отображаться для всех фракций? (По умолчанию они показывается только вампирам)",
 

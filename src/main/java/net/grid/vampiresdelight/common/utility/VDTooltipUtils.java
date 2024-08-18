@@ -27,6 +27,10 @@ public class VDTooltipUtils {
     }
 
     public static void addFactionFoodToolTips(List<Component> tooltip, Player player, IPlayableFaction<?> foodFaction) {
+        if (!VDConfiguration.FACTION_TOOLTIPS.get()) {
+            return;
+        }
+
         if (!VDHelper.isVampire(player) && !VDConfiguration.HUNTER_TOOLTIPS_FOR_EVERYONE.get()) {
             if (!Objects.equals(foodFaction, VReference.VAMPIRE_FACTION))
                 return;
@@ -41,6 +45,9 @@ public class VDTooltipUtils {
     }
 
     public static void addWerewolfFactionFoodToolTips(List<Component> tooltip, Player player) {
+        if (!VDConfiguration.FACTION_TOOLTIPS.get()) {
+            return;
+        }
         tooltip.add(Component.empty());
         ChatFormatting color = VDIntegrationUtils.isWerewolf(player) ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_RED;
         tooltip.add(VDTextUtils.getTranslation("tooltip.for_faction", Component.translatable("text.werewolves.werewolf").withStyle(color)).withStyle(ChatFormatting.GRAY));

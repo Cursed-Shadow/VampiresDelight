@@ -21,6 +21,7 @@ import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = VampiresDelight.MODID)
 @ParametersAreNonnullByDefault
 public class VillagerEventHandler {

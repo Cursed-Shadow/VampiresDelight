@@ -10,6 +10,7 @@ import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
+import net.grid.vampiresdelight.common.utility.VDNameUtils;
 import net.grid.vampiresdelight.common.utility.VDTooltipUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -25,15 +26,23 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import java.awt.*;
 import java.util.List;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = VampiresDelight.MODID, value = Dist.CLIENT)
 public class ToolTipEvents {
     @SubscribeEvent
     public static void onTooltipColorEvent(RenderTooltipEvent.Color event) {
         ItemStack stack = event.getItemStack();
+        Item item = stack.getItem();
         Player player = VampirismMod.proxy.getClientPlayer();
 
-        if (!VDConfiguration.COLORED_TOOLTIPS.get() || stack.isEmpty())
+        if (!VDConfiguration.COLORED_TOOLTIPS.get() || stack.isEmpty()) {
             return;
+        }
+
+        // If the item isn't from Vampire's Delight and coloredTooltipsForVampirismItems is set to false, the tooltips won't be colored
+        if (!VDNameUtils.isItemFrom(item, VampiresDelight.MODID) && !VDConfiguration.COLORED_TOOLTIPS_FOR_VAMPIRISM_ITEMS.get()) {
+            return;
+        }
 
         if (stack.is(VDTags.VAMPIRE_FOOD)) {
             setBorderColors(VDConfiguration.VAMPIRE_FOOD_TOOLTIP_START_COLOR, VDConfiguration.VAMPIRE_FOOD_TOOLTIP_END_COLOR, event);
@@ -64,13 +73,17 @@ public class ToolTipEvents {
     }
 
     @SubscribeEvent
-    public static void addVDTooltips(ItemTooltipEvent event) {
+    public static void addVDTooltipsToOtherItems(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         Item item = itemStack.getItem();
         List<Component> tooltip = event.getToolTip();
         Player player = VampirismMod.proxy.getClientPlayer();
 
-        if (player != null) {
+        if (player == null) {
+            return;
+        }
+
+        if (VDConfiguration.FACTION_TOOLTIPS_FOR_VAMPIRISM_ITEMS.get()) {
             if (item instanceof VampirismItemBloodFoodItem || item instanceof BloodBottleItem) {
                 VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
             } else if (item instanceof GarlicBreadItem) {
@@ -78,9 +91,6 @@ public class ToolTipEvents {
             } else if (VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
                 VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player); // TODO: Check if it works when Werewolves updates
             }
-
-            //tooltip.add(Component.literal("Color Test 1").withStyle(Style.EMPTY.withColor(new Color(66, 33, 133).getRGB()).withObfuscated(true)));
-            //tooltip.add(Component.literal("Color Test 2").withStyle(Style.EMPTY.withColor(new Color(90, 90, 200).getRGB()).withUnderlined(true)));
         }
     }
 }

@@ -39,8 +39,11 @@ public class VDConfiguration {
 
     // CLIENT
     public static final String CATEGORY_TOOLTIPS = "tooltips";
-    public static final ModConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
     public static final ModConfigSpec.BooleanValue COLORED_TOOLTIPS;
+    public static final ModConfigSpec.BooleanValue COLORED_TOOLTIPS_FOR_VAMPIRISM_ITEMS;
+    public static final ModConfigSpec.BooleanValue FACTION_TOOLTIPS;
+    public static final ModConfigSpec.BooleanValue FACTION_TOOLTIPS_FOR_VAMPIRISM_ITEMS;
+    public static final ModConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
 
     public static final String CATEGORY_TOOLTIP_COLORS = "tooltip_colors";
     public static final ModConfigSpec.ConfigValue<String> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
@@ -139,6 +142,15 @@ public class VDConfiguration {
         COLORED_TOOLTIPS = CLIENT_BUILDER
                 .comment("Should the mod change the color of tooltips?")
                 .define("coloredTooltips", true);
+        COLORED_TOOLTIPS_FOR_VAMPIRISM_ITEMS = CLIENT_BUILDER
+                .comment("Should the mod change the color of tooltips of items from Vampirism (Garlic Bread, Human Heart, ect.)?")
+                .define("coloredTooltipsForVampirismItems", true);
+        FACTION_TOOLTIPS = CLIENT_BUILDER
+                .comment("Should the mod add tooltips that show which faction the item belongs to?")
+                .define("factionTooltips", true);
+        FACTION_TOOLTIPS_FOR_VAMPIRISM_ITEMS = CLIENT_BUILDER
+                .comment("Should the mod add tooltips for items from Vampirism (Garlic Bread, Human Heart, ect.) that show which faction the item belongs to?")
+                .define("factionTooltipsForVampirismItems", true);
         HUNTER_TOOLTIPS_FOR_EVERYONE = CLIENT_BUILDER
                 .comment("Should hunter food tooltips and tooltip's color be shown to all fractions? (Only shown to vampires by default)")
                 .define("hunterTooltipsForEveryone", false);

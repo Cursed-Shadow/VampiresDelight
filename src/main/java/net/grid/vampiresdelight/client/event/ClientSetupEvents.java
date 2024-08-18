@@ -27,6 +27,7 @@ import net.neoforged.neoforge.common.NeoForge;
 
 import java.util.stream.Stream;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetupEvents {
     public static void init(final FMLClientSetupEvent event) {
