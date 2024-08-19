@@ -171,7 +171,7 @@
   "vampiresdelight.tooltip.alchemical_cocktail.burn_land_disabled": "Impossible de brûler le sol à cause des paramètres de ce serveur",
   "vampiresdelight.tooltip.alchemical_cocktail.splash_radius": "Splash radius: %s",
   "vampiresdelight.tooltip.pourable_drink_item": "Pour verser la boisson de cette bouteille dans un verre, tenez la bouteille d'une main et la bouteille en verre de l'autre. Appuyez ensuite sur le bouton gauche de la souris et maintenez-le enfoncé",
-  "vampiresdelight.tooltip.for_faction": "For faction: %s",
+  "vampiresdelight.tooltip.for_faction": "Pour faction: %s",
   "vampiresdelight.tooltip.hold_shift_for_info": "Maintenez [%s] pour infos",
   "vampiresdelight.tooltip.shift": "Shift",
 
@@ -180,7 +180,7 @@
   "vampiresdelight.tooltip.dandelion_beer_bottle.single_serving": "Contient %s portion de bière",
   "vampiresdelight.tooltip.dandelion_beer_bottle.multiple_servings": "Contient %s des portions de bière",
 
-  "vampiresdelight.text.planted_on_vampire_soil": "Must be planted on Cursed or Bloody Soil Farmland",
+  "vampiresdelight.text.planted_on_vampire_soil": "Doit être planté sur des terres labourés au sol corrumpu ou sanglant",
 
   "itemGroup.vampiresdelight": "Vampire's Delight",
 
@@ -202,7 +202,7 @@
 
   "vampiresdelight.advancement.pour_dandelion_beer": "Je savais que vous, les putains d'elfes, n'aviez aucun honneur! Pas de respect! Pas de BIÈRE!",
   "vampiresdelight.advancement.pour_dandelion_beer.desc": "Versez de la bière de pissenlit dans une bouteille en verre à l'aide de vos deux mains sans établi.",
-  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "He hasn't brewed it since...",
+  "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf": "Il ne l'a pas brassé depuis...",
   "vampiresdelight.advancement.place_dandelion_beer_bottle_on_shelf.desc": "Placez la bouteille de bière pissenlit sur une étagère à vin. C'est légal d'ailleurs.",
 
   "vampiresdelight.advancement.get_garlic": "L'héros de l'humanité",
@@ -211,7 +211,7 @@
   "vampiresdelight.advancement.get_vampire_orchid": "Ton meilleur ami",
   "vampiresdelight.advancement.get_vampire_orchid.desc": "Trouvez orchidée vampire dans la forêt de vampires ou achetez-la auprès d'un marchand ambulant.",
   "vampiresdelight.advancement.plant_vampire_orchid_crop": "À la fois beauté et santé",
-  "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Plant Vampire Orchid seeds on Cursed or Bloody Soil Farmland.",
+  "vampiresdelight.advancement.plant_vampire_orchid_crop.desc": "Planter des graines d'Orchidée vampire sur des terres labourés corrompu ou sanglantes.",
   "vampiresdelight.advancement.get_orchid_tea": "Thé au goût de jalapeno",
   "vampiresdelight.advancement.get_orchid_tea.desc": "Préparez du thé aux orchidées. Il peut infecter avec du Sanguinare s'il est bu par un humain. Peut être un peu épicé.",
 
@@ -227,10 +227,10 @@
   "vampiresdelight.advancement.get_clothes_dissolving_potion.desc": "Obtenez une potion qui dissout les vêtements et apprenez le sens de la vie. Ne me demandez pas comment l'obtenir, demandez à un elfe.",
 
   "vampiresdelight.subtitles.block.bottle_breaks": "Une bouteille en verre se brise",
-  "vampiresdelight.subtitles.item.pouring_short": "Drink is being poured",
+  "vampiresdelight.subtitles.item.pouring_short": "La boisson est en train d'être versée",
   "vampiresdelight.subtitles.metal_pipe": "Chutes de tuyaux métalliques",
-  "vampiresdelight.subtitles.triangle": "Triangles chime",
-  "vampiresdelight.subtitles.entity.alchemical_cocktail.throw": "Alchemical Cocktail thrown",
+  "vampiresdelight.subtitles.triangle": "Carillon triangulaire",
+  "vampiresdelight.subtitles.entity.alchemical_cocktail.throw": "Cocktail alchimique lancé",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Nourriture dégoûtante consommée",
 
@@ -241,17 +241,17 @@
   "vampiresdelight.jei.info.wild_garlic": "L'ail est couramment trouvé comme plante sauvage dans les terres tempérées, comme les plaines et les forêts.",
 
   "vampiresdelight.configuration.village": "Village",
-  "vampiresdelight.configuration.farmersBuyGarlic": "Farmers buy garlic",
-  "vampiresdelight.configuration.farmersBuyGarlic.tooltip": "Should Farmers buy garlic? (May reduce chances of other trades appearing)",
-  "vampiresdelight.configuration.wanderingTraderSellsVampirismItems": "Wandering trader sells Vampirism items",
-  "vampiresdelight.configuration.wanderingTraderSellsVampirismItems.tooltip": "Should the Wandering Trader sell some of vampirism's and this mod's items? (Including seeds and some blocks)",
+  "vampiresdelight.configuration.farmersBuyGarlic": "Les agriculteurs achètent de l'ail",
+  "vampiresdelight.configuration.farmersBuyGarlic.tooltip": "Les agriculteurs devraient-ils acheter de l’ail ? (Peut réduire les chances d'apparition d'autres transactions)",
+  "vampiresdelight.configuration.wanderingTraderSellsVampirismItems": "Un marchand ambulant errant vend des objets de vampirism",
+  "vampiresdelight.configuration.wanderingTraderSellsVampirismItems.tooltip": "Le commerçant errant devrait-il vendre une partie du vampirisme et des objets de ce mod? (Y compris les graines et quelques blocs)",
 
-  "vampiresdelight.configuration.blocks": "Blocks",
-  "vampiresdelight.configuration.bloodySoilBoostChance": "Bloody Soil crop boost chance",
-  "vampiresdelight.configuration.bloodySoilBoostChance.tooltip": "How often (in percentage) should Bloody Soil succeed in boosting a plant's growth at each random tick? Set it to 0.0 to disable this.",
+  "vampiresdelight.configuration.blocks": "Blocs",
+  "vampiresdelight.configuration.bloodySoilBoostChance": "Chances d'augmentation de la culture du sol sanglant",
+  "vampiresdelight.configuration.bloodySoilBoostChance.tooltip": "À quelle fréquence (en pourcentage) le sol sanglant devrait-il réussir à stimuler la croissance d'une plante à chaque tick aléatoire? Réglez-le sur 0,0 pour désactiver cela.",
 
   "vampiresdelight.configuration.items": "Items",
-  "vampiresdelight.configuration.alchemicalCocktailBurnsGround": "Alchemical Cocktail burns ground",
+  "vampiresdelight.configuration.alchemicalCocktailBurnsGround": "Le cocktail alchimique brûle le sol",
   "vampiresdelight.configuration.alchemicalCocktailBurnsGround.tooltip": "Should the Alchemical Cocktail burn ground when thrown? Recommended to turn this off on servers with claims.",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius": "Alchemical Cocktail splash radius",
   "vampiresdelight.configuration.alchemicalCocktailSplashRadius.tooltip": "What should be the radius of Alchemical Cocktail fire splash?",
