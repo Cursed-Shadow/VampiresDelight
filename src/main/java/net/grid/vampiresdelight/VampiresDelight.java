@@ -1,6 +1,6 @@
 package net.grid.vampiresdelight;
 
-import net.grid.vampiresdelight.client.event.ClientSetupEvents;
+import net.grid.vampiresdelight.client.ClientSetup;
 import net.grid.vampiresdelight.common.CommonSetup;
 import net.grid.vampiresdelight.common.VDConfiguration;
 import net.grid.vampiresdelight.common.registry.*;
@@ -19,7 +19,7 @@ public class VampiresDelight {
     public VampiresDelight(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(CommonSetup::init);
         if (FMLEnvironment.dist.isClient()) {
-            modEventBus.addListener(ClientSetupEvents::init);
+            modEventBus.addListener(ClientSetup::init);
         }
 
         modContainer.registerConfig(ModConfig.Type.COMMON, VDConfiguration.COMMON_CONFIG);
