@@ -1,13 +1,12 @@
 package net.grid.vampiresdelight.data.recipe;
 
 import de.teamlapen.vampirism.core.ModBlocks;
-import de.teamlapen.vampirism.core.ModDataComponents;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.core.ModTags;
-import de.teamlapen.vampirism.items.component.BottleBlood;
 import net.grid.vampiresdelight.common.registry.*;
 import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -23,7 +22,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -136,7 +134,7 @@ public class VDCraftingRecipeProvider {
     private static void recipesFoodstuffs(RecipeOutput output) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, VDItems.BLOOD_SYRUP.get(), 2)
                 .requires(Items.GLASS_BOTTLE)
-                .requires(DataComponentIngredient.of(false, ModDataComponents.BOTTLE_BLOOD.get(), new BottleBlood(9), ModItems.BLOOD_BOTTLE.get()))
+                .requires(VDHelper.FULL_BLOOD_BOTTLE)
                 .requires(Ingredient.of(Items.APPLE, Items.SWEET_BERRIES, Items.GLOW_BERRIES, ModBlocks.CURSED_ROOTS.asItem(), ModBlocks.DARK_SPRUCE_LEAVES.asItem(), ModBlocks.DARK_SPRUCE_SAPLING.asItem(), ModBlocks.CURSED_SPRUCE_SAPLING.asItem()))
                 .unlockedBy(hasItem(ModItems.BLOOD_BOTTLE.get()), has(ModItems.BLOOD_BOTTLE.get()))
                 .save(output);

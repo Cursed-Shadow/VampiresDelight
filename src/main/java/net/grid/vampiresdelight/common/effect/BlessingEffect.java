@@ -9,7 +9,6 @@ import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.FastColor;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
@@ -23,9 +22,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Comparator;
 
 public class BlessingEffect extends MobEffect {
-
-    public BlessingEffect() {
-        super(MobEffectCategory.BENEFICIAL, FastColor.ARGB32.color(100, 250, 218, 94));
+    public BlessingEffect(MobEffectCategory category, int color) {
+        super(category, color);
     }
 
     @Override

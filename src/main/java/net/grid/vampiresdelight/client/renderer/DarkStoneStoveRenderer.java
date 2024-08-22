@@ -15,6 +15,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
 public class DarkStoneStoveRenderer implements BlockEntityRenderer<DarkStoneStoveBlockEntity> {
     public DarkStoneStoveRenderer(BlockEntityRendererProvider.Context context) {
     }
