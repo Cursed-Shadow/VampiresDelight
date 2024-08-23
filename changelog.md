@@ -2,6 +2,9 @@
 
 ## 0.1.8b
 
+### Updates
+- **Hardtack** can now be eaten faster by hunters; 
+
 ### Configurations
 - Added new configs:
   - `coloredTooltipsForVampirismItems`:

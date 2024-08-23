@@ -74,9 +74,9 @@ public class ToolTipEvents {
 
     @SubscribeEvent
     public static void addVDTooltipsToOtherItems(ItemTooltipEvent event) {
-        ItemStack itemStack = event.getItemStack();
-        Item item = itemStack.getItem();
-        List<Component> tooltip = event.getToolTip();
+        ItemStack stack = event.getItemStack();
+        Item item = stack.getItem();
+        List<Component> tooltipComponents = event.getToolTip();
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (player == null) {
@@ -85,12 +85,16 @@ public class ToolTipEvents {
 
         if (VDConfiguration.FACTION_TOOLTIPS_FOR_VAMPIRISM_ITEMS.get()) {
             if (item instanceof VampirismItemBloodFoodItem || item instanceof BloodBottleItem) {
-                VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.VAMPIRE_FACTION);
+                VDTooltipUtils.addFactionFoodToolTips(tooltipComponents, player, VReference.VAMPIRE_FACTION);
             } else if (item instanceof GarlicBreadItem) {
-                VDTooltipUtils.addFactionFoodToolTips(tooltip, player, VReference.HUNTER_FACTION);
+                VDTooltipUtils.addFactionFoodToolTips(tooltipComponents, player, VReference.HUNTER_FACTION);
             } else if (VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
-                VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltip, player); // TODO: Check if it works when Werewolves updates
+                VDTooltipUtils.addWerewolfFactionFoodToolTips(tooltipComponents, player); // TODO: Check if it works when Werewolves updates
             }
+        }
+
+        if (stack.getFoodProperties(player) != null) {
+            VDTooltipUtils.addFoodPropertiesDebugTooltip(stack, tooltipComponents);
         }
     }
 }

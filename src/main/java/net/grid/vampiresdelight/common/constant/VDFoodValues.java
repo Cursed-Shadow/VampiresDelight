@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.constant;
 
 import net.grid.vampiresdelight.common.VDConfiguration;
+import net.grid.vampiresdelight.common.misc.VDFoodPropertiesBuilder;
 import net.grid.vampiresdelight.common.registry.VDEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -234,8 +235,8 @@ public class VDFoodValues {
                 }
             }, 0.2F).build();
     
-    public static final FoodProperties HARDTACK_HUMAN = new FoodProperties.Builder()
-            .nutrition(6).saturationModifier(0.9f).build();
+    public static final FoodProperties HARDTACK_HUMAN = new VDFoodPropertiesBuilder()
+            .nutrition(6).saturationModifier(0.9f).eatSeconds(2.4f).build();
     
     public static final FoodProperties HARDTACK_HUNTER = new FoodProperties.Builder()
             .nutrition(8).saturationModifier(1.0f).build();

@@ -44,6 +44,7 @@ public class VDConfiguration {
     public static final ModConfigSpec.BooleanValue FACTION_TOOLTIPS;
     public static final ModConfigSpec.BooleanValue FACTION_TOOLTIPS_FOR_VAMPIRISM_ITEMS;
     public static final ModConfigSpec.BooleanValue HUNTER_TOOLTIPS_FOR_EVERYONE;
+    public static final ModConfigSpec.BooleanValue DEBUG_FOOD_TOOLTIPS;
 
     public static final String CATEGORY_TOOLTIP_COLORS = "tooltip_colors";
     public static final ModConfigSpec.ConfigValue<String> VAMPIRE_FOOD_TOOLTIP_START_COLOR;
@@ -154,6 +155,9 @@ public class VDConfiguration {
         HUNTER_TOOLTIPS_FOR_EVERYONE = CLIENT_BUILDER
                 .comment("Should hunter food tooltips and tooltip's color be shown to all fractions? (Only shown to vampires by default)")
                 .define("hunterTooltipsForEveryone", false);
+        DEBUG_FOOD_TOOLTIPS = CLIENT_BUILDER
+                .comment("Should some items have debug tooltips displaying food values? Only for testing purposes.")
+                .define("debugFoodTooltips", false);
         CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(CATEGORY_TOOLTIP_COLORS);
