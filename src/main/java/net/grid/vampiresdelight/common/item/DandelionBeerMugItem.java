@@ -17,6 +17,7 @@ public class DandelionBeerMugItem extends DrinkableItem {
         super(properties);
     }
 
+    // TODO: Check if this class is necessary
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
         Player player = VampirismMod.proxy.getClientPlayer();

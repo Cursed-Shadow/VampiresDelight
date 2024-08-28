@@ -13,6 +13,8 @@
     - `true` by default;
   - `factionTooltipsForVampirismItems`:
     - `true` by default;
+  - `debugFoodTooltips`:
+    - `false` by default;
 
 ## 0.1.8
 

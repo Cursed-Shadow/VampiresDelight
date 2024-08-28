@@ -299,6 +299,8 @@
   "vampiresdelight.configuration.factionTooltipsForVampirismItems.tooltip": "Le mod devrait-il ajouter des info-bulles pour les objets du vampirism (pain à l'ail, cœur humain, ect.) qui indiquent à quelle faction appartient l'objet ?",
   "vampiresdelight.configuration.hunterTooltipsForEveryone": "Info-bulles sur la nourriture des chasseurs pour tout le monde",
   "vampiresdelight.configuration.hunterTooltipsForEveryone.tooltip": "Les info-bulles de la nourriture des chasseurs et la couleur de l'info-bulle doivent-elles être affichées pour toutes les fractions? (Affiché uniquement aux vampires par défaut)",
+  "vampiresdelight.configuration.debugFoodTooltips": "Debug food values tooltips",
+  "vampiresdelight.configuration.debugFoodTooltips.tooltip": "Should some items have debug tooltips displaying food values?\n\n§e§lFor testing purposes only. It is not suitable for practical use while playing.",
 
   "vampiresdelight.configuration.tooltip_colors": "Couleurs des contours des info-bulles",
   "vampiresdelight.configuration.vampireFoodTooltipStartColor": "Couleur de départ de l'info-bulle du vampire",

@@ -9,6 +9,8 @@ import de.teamlapen.vampirism.util.DamageHandler;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -53,10 +55,14 @@ public class VDEntityUtils {
             if (consumer instanceof Player player) {
                 VampirePlayer.get(player).drinkBlood(bloodFoodProperties.nutrition(), bloodFoodProperties.saturation(), new DrinkBloodContext(stack));
             }
-            if (consumer instanceof IVampire) {
+            if (consumer instanceof IVampire) { {
                 ((IVampire) consumer).drinkBlood(bloodFoodProperties.nutrition(), bloodFoodProperties.saturation(), new DrinkBloodContext(stack));
-            } else if (!VDHelper.isVampire(consumer))
+            }
+            } else if (!VDHelper.isVampire(consumer)) {
                 consumer.eat(level, stack);
+            }
+            // TODO: Test if works properly
+            level.playSound(null, consumer.getX(), consumer.getY(), consumer.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, consumer.getRandom().nextFloat() * 0.1F + 0.9F);
         }
     }
 

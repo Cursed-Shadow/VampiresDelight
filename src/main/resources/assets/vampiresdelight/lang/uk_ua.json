@@ -299,6 +299,8 @@
   "vampiresdelight.configuration.factionTooltipsForVampirismItems.tooltip": "Чи повинен мод додавати підказки, що вказують на фракцію, до якої належить предмет/їжа для предметів з Vampirism (Часниковий хліб, людське серце тощо)?",
   "vampiresdelight.configuration.hunterTooltipsForEveryone": "Підказки для їжі мисливців для всіх фракцій",
   "vampiresdelight.configuration.hunterTooltipsForEveryone.tooltip": "Чи слід показувати підказки для їжі мисливців і колір підказки для всіх фракцій? (За замовчуванням показується тільки вампірам)",
+  "vampiresdelight.configuration.debugFoodTooltips": "Налагоджувальні підказки значень їжі",
+  "vampiresdelight.configuration.debugFoodTooltips.tooltip": "Чи повинні деякі предмети мати підказки для налагодження, які показують значення їжі предмета?\n\n§e§lВиключно для тестування, це не призначено для використання в грі.",
 
   "vampiresdelight.configuration.tooltip_colors": "Кольори підказок",
   "vampiresdelight.configuration.vampireFoodTooltipStartColor": "Початковий колір підказки для вампірської їжі",

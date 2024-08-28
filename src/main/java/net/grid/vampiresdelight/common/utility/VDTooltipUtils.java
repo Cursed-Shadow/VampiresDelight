@@ -14,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.awt.*;
 import java.util.List;
 import java.util.Objects;
 

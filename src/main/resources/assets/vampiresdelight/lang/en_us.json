@@ -247,7 +247,7 @@
   "vampiresdelight.configuration.wanderingTraderSellsVampirismItems.tooltip": "Should the Wandering Trader sell some of vampirism's and this mod's items? (Including seeds and some blocks)",
 
   "vampiresdelight.configuration.blocks": "Blocks",
-  "vampiresdelight.configuration.bloodySoilBoostChance": "Bloody Soil crop boost chance",
+  "vampiresdelight.configuration.bloodySoilBoostChance": "Bloody Soil growth boost chance",
   "vampiresdelight.configuration.bloodySoilBoostChance.tooltip": "How often (in percentage) should Bloody Soil succeed in boosting a plant's growth at each random tick? Set it to 0.0 to disable this.",
 
   "vampiresdelight.configuration.items": "Items",
@@ -299,6 +299,8 @@
   "vampiresdelight.configuration.factionTooltipsForVampirismItems.tooltip": "Should the mod add tooltips for items from Vampirism (Garlic Bread, Human Heart, ect.) that show which faction the item belongs to?",
   "vampiresdelight.configuration.hunterTooltipsForEveryone": "Hunter food tooltips for everyone",
   "vampiresdelight.configuration.hunterTooltipsForEveryone.tooltip": "Should hunter food tooltips and tooltip's color be shown to all fractions? (Only shown to vampires by default)",
+  "vampiresdelight.configuration.debugFoodTooltips": "Debug food values tooltips",
+  "vampiresdelight.configuration.debugFoodTooltips.tooltip": "Should some items have debug tooltips displaying food values?\n\n§e§lFor testing purposes only. It is not suitable for practical use while playing.",
 
   "vampiresdelight.configuration.tooltip_colors": "Colors of tooltip outlines",
   "vampiresdelight.configuration.vampireFoodTooltipStartColor": "Vampire tooltip start color",

@@ -25,11 +25,21 @@ import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
 public class FactionConsumableItem extends Item {
+
     private final @Nullable Consumer<LivingEntity> features;
     private final boolean hasFoodEffectTooltip;
     private final boolean hasCustomTooltip;
     private final boolean hasFactionTooltip;
     private final boolean hasGarlic;
+
+    public FactionConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip) {
+        super(properties);
+        this.features = features;
+        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
+        this.hasCustomTooltip = false;
+        this.hasFactionTooltip = false;
+        this.hasGarlic = false;
+    }
 
     public FactionConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasFactionTooltip, boolean hasGarlic) {
         super(properties);
@@ -57,7 +67,6 @@ public class FactionConsumableItem extends Item {
         ItemStack containerStack = stack.getCraftingRemainingItem();
 
         if (stack.getFoodProperties(consumer) != null) {
-            // TODO: Check if food eating finish sound is played for all races
             VDEntityUtils.consumeBloodFood(stack, level, consumer);
         } else {
             Player player = consumer instanceof Player ? (Player) consumer : null;
@@ -93,8 +102,9 @@ public class FactionConsumableItem extends Item {
     @Override
     public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
         if (entity != null) {
-            if (VDHelper.isVampire(entity) && getVampireFood(stack, entity) != null) {
-                return getVampireFood(stack, entity);
+            if (VDHelper.isVampire(entity)) {
+                FoodProperties vampireFood = getVampireFood(stack, entity);
+                return vampireFood == null ? new FoodProperties.Builder().build() : vampireFood;
             }
 
             if (VDHelper.isHunter(entity) && getHunterFood(stack, entity) != null) {
@@ -130,7 +140,7 @@ public class FactionConsumableItem extends Item {
         Player player = VampirismMod.proxy.getClientPlayer();
 
         if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
-            if (this.hasCustomTooltip) {
+            if (hasCustomTooltip(stack, player)) {
                 MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + VDNameUtils.itemName(this));
                 tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
@@ -139,8 +149,13 @@ public class FactionConsumableItem extends Item {
             }
         }
 
-        if (player != null && hasFactionTooltip(stack, player))
+        if (player != null && hasFactionTooltip(stack, player)) {
             addFactionFoodTooltip(tooltipComponents, player);
+        }
+    }
+
+    public boolean hasCustomTooltip(ItemStack stack, @Nullable Player player) {
+        return hasCustomTooltip;
     }
 
     public boolean hasFoodEffectTooltip(ItemStack stack, @Nullable Player player) {
@@ -155,5 +170,9 @@ public class FactionConsumableItem extends Item {
      * This must be overridden in child classes representing factions since it's empty by default.
      */
     public void addFactionFoodTooltip(List<Component> tooltipComponents, Player player) {
+    }
+
+    public boolean hasColoredTooltipMargins(ItemStack stack, @Nullable Player player) {
+        return true;
     }
 }

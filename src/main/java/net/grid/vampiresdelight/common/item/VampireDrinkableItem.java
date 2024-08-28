@@ -4,22 +4,22 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.function.Consumer;
 
 public class VampireDrinkableItem extends VampireConsumableItem {
-    public VampireDrinkableItem(Properties properties, FoodProperties vampireFood) {
-        super(properties, vampireFood, null, true, false, false);
+    public VampireDrinkableItem(Properties properties) {
+        super(properties, null);
     }
 
-    public VampireDrinkableItem(Properties properties, FoodProperties vampireFood, FoodProperties hunterFood, Consumer<LivingEntity> features) {
-        super(properties, vampireFood, hunterFood, features);
+    public VampireDrinkableItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
+        super(properties, features);
     }
 
     @Override

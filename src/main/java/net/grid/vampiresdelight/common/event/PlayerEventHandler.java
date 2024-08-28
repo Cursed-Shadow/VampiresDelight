@@ -4,7 +4,7 @@ import de.teamlapen.vampirism.api.EnumStrength;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.item.HunterConsumableItem;
+import net.grid.vampiresdelight.common.item.FactionConsumableItem;
 import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.grid.vampiresdelight.common.item.WerewolfConsumableItem;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
@@ -37,8 +37,8 @@ public class PlayerEventHandler {
 
         if (!livingEntity.getCommandSenderWorld().isClientSide) {
             if (VDHelper.isVampire(livingEntity)) {
-                if (item instanceof HunterConsumableItem hunterConsumableItem) {
-                    if (hunterConsumableItem.doesContainGarlic()) {
+                if (item instanceof FactionConsumableItem factionConsumableItem) {
+                    if (factionConsumableItem.hasGarlic()) {
                         VDEntityUtils.affectVampireEntityWithGarlic(livingEntity, EnumStrength.MEDIUM);
                         disgustingFoodConsumed(livingEntity);
                     }
