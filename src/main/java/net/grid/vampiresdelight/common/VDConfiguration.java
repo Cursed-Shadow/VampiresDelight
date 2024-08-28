@@ -38,6 +38,9 @@ public class VDConfiguration {
     public static final ModConfigSpec.IntValue COOKING_POT_IN_HUNTER_CAMP_CHANCE;
 
     // CLIENT
+    public static final String CATEGORY_GENERAL = "general";
+    public static final ModConfigSpec.DoubleValue SPIRIT_LANTERN_FOG_DISTANCE_MULTIPLIER;
+
     public static final String CATEGORY_TOOLTIPS = "tooltips";
     public static final ModConfigSpec.BooleanValue COLORED_TOOLTIPS;
     public static final ModConfigSpec.BooleanValue COLORED_TOOLTIPS_FOR_VAMPIRISM_ITEMS;
@@ -139,6 +142,12 @@ public class VDConfiguration {
         // CLIENT
         ModConfigSpec.Builder CLIENT_BUILDER = new ModConfigSpec.Builder();
 
+        CLIENT_BUILDER.push(CATEGORY_GENERAL);
+        SPIRIT_LANTERN_FOG_DISTANCE_MULTIPLIER = CLIENT_BUILDER
+                .comment("How much should Spirit Lantern multiply the visibility in fog? Set to 0.0 if you want to disable it at all. The multiplier is not multiplied by the value, but added to it. So if the value is 0.4, 40% will be added to the distance.")
+                .defineInRange("spiritLanternFogDistanceMultiplier", 0.4, 0.0, 10.0);
+        CLIENT_BUILDER.pop();
+
         CLIENT_BUILDER.push(CATEGORY_TOOLTIPS);
         COLORED_TOOLTIPS = CLIENT_BUILDER
                 .comment("Should the mod change the color of tooltips?")
@@ -158,7 +167,6 @@ public class VDConfiguration {
         DEBUG_FOOD_TOOLTIPS = CLIENT_BUILDER
                 .comment("Should some items have debug tooltips displaying food values? Only for testing purposes.")
                 .define("debugFoodTooltips", false);
-        CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(CATEGORY_TOOLTIP_COLORS);
         VAMPIRE_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
@@ -179,6 +187,8 @@ public class VDConfiguration {
         WEREWOLF_FOOD_TOOLTIP_END_COLOR = CLIENT_BUILDER
                 .comment("What color (hex) should be used for werewolf food tooltips as the end color? (Werewolves mod only) (The shade it ends with)")
                 .define("werewolfFoodTooltipEndColor", "#732c00");
+        CLIENT_BUILDER.pop();
+
         CLIENT_BUILDER.pop();
 
         CLIENT_BUILDER.push(CATEGORY_APPLESKIN);

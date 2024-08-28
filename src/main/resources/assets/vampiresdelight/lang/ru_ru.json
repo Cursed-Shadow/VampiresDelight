@@ -288,6 +288,10 @@
   "vampiresdelight.configuration.cookingPotInHunterCampSpawnChance": "Шанс появления кухонного котелка в лагерях охотников",
   "vampiresdelight.configuration.cookingPotInHunterCampSpawnChance.tooltip": "С какой вероятностью кухонный котелок на костре/очаге должен генерироваться в лагерях охотников?",
 
+  "vampiresdelight.configuration.general": "Общее",
+  "vampiresdelight.configuration.spiritLanternFogDistanceMultiplier": "Множитель видимости в тумане с фонарём духа",
+  "vampiresdelight.configuration.spiritLanternFogDistanceMultiplier.tooltip": "Насколько сильно фонарь духа должен умножать видимость в тумане? Установите значение 0.0, если хотите, чтобы он не умножал видимость вообще. Значение не умножается на множитель, а прибавляется к нему. Так что если значение равно 0,4, добавится 40% к расстоянию видимости.",
+
   "vampiresdelight.configuration.tooltips": "Подсказки",
   "vampiresdelight.configuration.coloredTooltips": "Цветные подсказки",
   "vampiresdelight.configuration.coloredTooltips.tooltip": "Должен ли мод изменять цвет подсказок некоторых предметов?",

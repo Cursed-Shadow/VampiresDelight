@@ -15,7 +15,6 @@
     "MixinModPlayerEventHandler",
     "MixinNourishmentOverlay",
     "MixinPowderSnowBlock",
-    "MixinRenderHandler",
     "MixinRichSoilFarmlandBlock",
     "MixinSetOilFunction",
     "accessor.StructurePieceAccessor",

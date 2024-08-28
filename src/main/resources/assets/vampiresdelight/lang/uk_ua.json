@@ -288,6 +288,10 @@
   "vampiresdelight.configuration.cookingPotInHunterCampSpawnChance": "Шанс появи каструлі в таборах мисливців",
   "vampiresdelight.configuration.cookingPotInHunterCampSpawnChance.tooltip": "З якою ймовірністю каструля на вогнищі повинна генеруватися у таборах мисливців?",
 
+  "vampiresdelight.configuration.general": "Загальне",
+  "vampiresdelight.configuration.spiritLanternFogDistanceMultiplier": "Множник відстані в тумані з ліхтарем духа",
+  "vampiresdelight.configuration.spiritLanternFogDistanceMultiplier.tooltip": "Наскільки сильно ліхтар духу повинен множити видимість у тумані? Встановіть значення 0.0, якщо хочете, щоб він не примножував видимість взагалі. Значення не множиться на множник, а додається до нього. Тобто якщо значення дорівнює 0,4, буде додано 40% до відстані видимості.",
+
   "vampiresdelight.configuration.tooltips": "Підказки",
   "vampiresdelight.configuration.coloredTooltips": "Кольорові підказки",
   "vampiresdelight.configuration.coloredTooltips.tooltip": "Чи повинен мод змінювати колір підказок?",

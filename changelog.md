@@ -6,7 +6,11 @@
 - **Hardtack** can now be eaten faster by hunters; 
 
 ### Configurations
+- `tooltip_colors` category is now inside of `tooltips` category;
 - Added new configs:
+  - `spiritLanternFogDistanceMultiplier`:
+    - `0.4` by default;
+    - Range: from `0.0` to `10.0`;
   - `coloredTooltipsForVampirismItems`:
     - `true` by default;
   - `factionTooltips`:

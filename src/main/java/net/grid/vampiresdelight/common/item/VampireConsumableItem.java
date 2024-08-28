@@ -13,27 +13,21 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class VampireConsumableItem extends FactionConsumableItem {
-
-    private final boolean hasHumanFoodEffectTooltip;
-
     public VampireConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
         super(properties, features, true, false, true, false);
-        this.hasHumanFoodEffectTooltip = false;
     }
 
     public VampireConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip) {
         super(properties, features, hasFoodEffectTooltip, false, true, false);
-        this.hasHumanFoodEffectTooltip = false;
     }
 
     public VampireConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
         super(properties, features, hasFoodEffectTooltip, hasCustomTooltip, true, false);
-        this.hasHumanFoodEffectTooltip = false;
     }
 
     @Override
     public boolean hasFoodEffectTooltip(ItemStack stack, @Nullable Player player) {
-        return player != null && (VDHelper.isVampire(player) || hasHumanFoodEffectTooltip) && super.hasFoodEffectTooltip(stack, player);
+        return player != null && VDHelper.isVampire(player) && super.hasFoodEffectTooltip(stack, player);
     }
 
     @Override

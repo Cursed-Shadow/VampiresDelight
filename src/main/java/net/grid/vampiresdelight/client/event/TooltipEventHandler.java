@@ -29,7 +29,7 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = VampiresDelight.MODID, value = Dist.CLIENT)
-public class ToolTipEvents {
+public class TooltipEventHandler {
     @SubscribeEvent
     public static void onTooltipColorEvent(RenderTooltipEvent.Color event) {
         ItemStack stack = event.getItemStack();

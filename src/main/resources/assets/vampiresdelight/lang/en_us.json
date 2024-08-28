@@ -288,6 +288,10 @@
   "vampiresdelight.configuration.cookingPotInHunterCampSpawnChance": "Cooking Pot in hunter camps spawn chance",
   "vampiresdelight.configuration.cookingPotInHunterCampSpawnChance.tooltip": "With what chance should a Cooking Pot on a Campfire/Fire Place be generated in hunter camps?",
 
+  "vampiresdelight.configuration.general": "General",
+  "vampiresdelight.configuration.spiritLanternFogDistanceMultiplier": "Spirit Lantern fog distance multiplier",
+  "vampiresdelight.configuration.spiritLanternFogDistanceMultiplier.tooltip": "How much should Spirit Lantern multiply the visibility in fog? Set to 0.0 if you want to disable it at all. The multiplier is not multiplied by the value, but added to it. So if the value is 0.4, 40% will be added to the distance.",
+
   "vampiresdelight.configuration.tooltips": "Tooltips",
   "vampiresdelight.configuration.coloredTooltips": "Colored tooltips",
   "vampiresdelight.configuration.coloredTooltips.tooltip": "Should the mod change the color of tooltips?",
