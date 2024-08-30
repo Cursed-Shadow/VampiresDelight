@@ -25,7 +25,8 @@ public class VDMixinConfigPlugin implements IMixinConfigPlugin {
     private static final Supplier<Boolean> TRUE = () -> true;
 
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
-            "net.grid.vampiresdelight.common.mixin.MixinFoodHelper", () -> LoadingModList.get().getModFileById("appleskin") != null
+            "net.grid.vampiresdelight.common.mixin.MixinFoodHelper", () -> LoadingModList.get().getModFileById("appleskin") != null,
+            "net.grid.vampiresdelight.common.mixin.MixinTextureHelper", () -> LoadingModList.get().getModFileById("appleskin") != null
 
     );
 

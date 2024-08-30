@@ -46,7 +46,7 @@ public class VDFoodValues {
     
 
     // Drinks
-    public static final FoodProperties DANDELION_BEER_MUG_HUMAN = new FoodProperties.Builder().alwaysEdible()
+    public static final FoodProperties DANDELION_BEER_MUG = new FoodProperties.Builder().alwaysEdible()
             .nutrition(3).saturationModifier(0.3f)
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, SHORT_DURATION), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300), 1.0F).build();

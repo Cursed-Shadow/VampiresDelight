@@ -227,7 +227,7 @@ public class VDItems {
 
     // Alcoholic Drinks
     public static final DeferredItem<DandelionBeerMugItem> DANDELION_BEER_MUG = ITEMS.register("dandelion_beer_mug",
-            () -> new DandelionBeerMugItem(drinkItem(VDFoodValues.DANDELION_BEER_MUG_HUMAN)));
+            () -> new DandelionBeerMugItem(drinkItem(VDFoodValues.DANDELION_BEER_MUG)));
 
     public static final DeferredItem<PourableBottleItem> DANDELION_BEER_BOTTLE = ITEMS.register("dandelion_beer_bottle",
             () -> new PourableBottleItem(basicItem(), VDBlocks.DANDELION_BEER_BOTTLE_PLACED.get(), VDItems.DANDELION_BEER_MUG.get(), Items.GLASS_BOTTLE, 3));

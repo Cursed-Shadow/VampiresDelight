@@ -17,7 +17,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import squeek.appleskin.api.event.HUDOverlayEvent;
 import squeek.appleskin.api.event.TooltipOverlayEvent;
 
-
 @OnlyIn(Dist.CLIENT)
 @SuppressWarnings("unused")
 public class VDAppleSkinEventHandler {

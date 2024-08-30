@@ -2,8 +2,15 @@
 
 ## 0.1.8b
 
+### Additions
+- Non-human food values in the food are now also stored in data components as well, and they can be modified using data packs or commands. However, it may cause various bugs. If you find any please report them. These new components are:
+  - `vampiresdelight:vampire_food`;
+  - `vampiresdelight:hunter_food`;
+  - `vampiresdelight:werewolf_food`;
+
 ### Updates
 - **Hardtack** can now be eaten faster by hunters; 
+- **Orchid Tea** no longer has a colored outline and a faction tooltip for humans who can be infected. For everyone else, it's displayed as before;
 
 ### Configurations
 - `tooltip_colors` category is now inside of `tooltips` category;

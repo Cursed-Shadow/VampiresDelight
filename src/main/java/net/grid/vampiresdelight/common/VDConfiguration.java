@@ -164,9 +164,6 @@ public class VDConfiguration {
         HUNTER_TOOLTIPS_FOR_EVERYONE = CLIENT_BUILDER
                 .comment("Should hunter food tooltips and tooltip's color be shown to all fractions? (Only shown to vampires by default)")
                 .define("hunterTooltipsForEveryone", false);
-        DEBUG_FOOD_TOOLTIPS = CLIENT_BUILDER
-                .comment("Should some items have debug tooltips displaying food values? Only for testing purposes.")
-                .define("debugFoodTooltips", false);
 
         CLIENT_BUILDER.push(CATEGORY_TOOLTIP_COLORS);
         VAMPIRE_FOOD_TOOLTIP_START_COLOR = CLIENT_BUILDER
@@ -188,6 +185,10 @@ public class VDConfiguration {
                 .comment("What color (hex) should be used for werewolf food tooltips as the end color? (Werewolves mod only) (The shade it ends with)")
                 .define("werewolfFoodTooltipEndColor", "#732c00");
         CLIENT_BUILDER.pop();
+
+        DEBUG_FOOD_TOOLTIPS = CLIENT_BUILDER
+                .comment("Should some items have debug tooltips displaying food values? Only for testing purposes.")
+                .define("debugFoodTooltips", false);
 
         CLIENT_BUILDER.pop();
 

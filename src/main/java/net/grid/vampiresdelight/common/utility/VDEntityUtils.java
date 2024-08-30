@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -31,7 +30,6 @@ public class VDEntityUtils {
         }
     }
 
-    // TODO: Check sound played after the player finishes eating
     public static void consumeBloodFood(ItemStack stack, Level level, LivingEntity consumer) {
         feedVampire(stack, level, consumer);
 
@@ -61,7 +59,6 @@ public class VDEntityUtils {
             } else if (!VDHelper.isVampire(consumer)) {
                 consumer.eat(level, stack);
             }
-            // TODO: Test if works properly
             level.playSound(null, consumer.getX(), consumer.getY(), consumer.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, consumer.getRandom().nextFloat() * 0.1F + 0.9F);
         }
     }
@@ -79,18 +76,6 @@ public class VDEntityUtils {
                 VDEntityUtils.addFoodEffects(foodProperties, level, player);
             }
         }
-    }
-
-    public static boolean hasPoison(FoodProperties foodProperties) {
-        if (foodProperties != null) {
-            for (FoodProperties.PossibleEffect effect : foodProperties.effects()) {
-                if (effect.effect().getEffect() == MobEffects.POISON) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     public static void cureEffect(Holder<MobEffect> mobEffect, LivingEntity entity) {
