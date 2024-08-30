@@ -6,17 +6,17 @@
       "item": "werewolves:wolf_berries"
     },
     {
-      "tag": "forge:crops/rice"
+      "tag": "c:crops/rice"
     },
     {
-      "tag": "forge:crops/rice"
+      "tag": "c:crops/rice"
     }
   ],
   "result": {
     "count": 8,
-    "item": "vampiresdelight:wolf_berry_cookie"
+    "id": "vampiresdelight:wolf_berry_cookie"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "werewolves"

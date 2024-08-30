@@ -9,7 +9,7 @@
       "item": "werewolves:wolf_berries"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:foods/milk"
     },
     {
       "item": "minecraft:ice"
@@ -22,9 +22,10 @@
     }
   ],
   "result": {
-    "item": "vampiresdelight:wolf_berry_ice_cream"
+    "count": 1,
+    "id": "vampiresdelight:wolf_berry_ice_cream"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "werewolves"

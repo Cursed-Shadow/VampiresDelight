@@ -15,10 +15,10 @@
     "___"
   ],
   "result": {
-    "item": "vampiresdelight:magic_cabinet"
+    "count": 1,
+    "id": "vampiresdelight:magic_cabinet"
   },
-  "show_notification": true,
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "werewolves"

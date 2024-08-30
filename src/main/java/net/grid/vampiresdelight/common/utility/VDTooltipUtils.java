@@ -1,5 +1,6 @@
 package net.grid.vampiresdelight.common.utility;
 
+import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VReference;
 import de.teamlapen.vampirism.api.entity.factions.IPlayableFaction;
 import net.grid.vampiresdelight.common.VDConfiguration;
@@ -34,6 +35,26 @@ public class VDTooltipUtils {
     public static void addFoodPropertiesDebugTooltip(ItemStack stack, List<Component> tooltipComponents) {
         if (!VDConfiguration.DEBUG_FOOD_TOOLTIPS.get()) {
             return;
+        }
+
+        tooltipComponents.add(Component.literal(""));
+
+        Player player = VampirismMod.proxy.getClientPlayer();
+        FoodProperties foodProperties = stack.getFoodProperties(player);
+
+        if (player != null && foodProperties != null) {
+            String resultFood = "";
+            if (foodProperties == stack.get(DataComponents.FOOD)) {
+                resultFood += " Default";
+            } else if (foodProperties == stack.get(VDDataComponents.VAMPIRE_FOOD)) {
+                resultFood += " Vampire";
+            } else if (foodProperties == stack.get(VDDataComponents.HUNTER_FOOD)) {
+                resultFood += " Hunter";
+            } else if (foodProperties == stack.get(VDDataComponents.WEREWOLF_FOOD)) {
+                resultFood += " Werewolf";
+            }
+
+            tooltipComponents.add(Component.literal("Result food:" + resultFood).withStyle(ChatFormatting.LIGHT_PURPLE));
         }
 
         tooltipComponents.add(Component.literal(""));

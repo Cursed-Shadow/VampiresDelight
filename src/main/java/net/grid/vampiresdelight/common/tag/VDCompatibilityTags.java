@@ -14,6 +14,8 @@ public class VDCompatibilityTags extends CompatibilityTags {
     public static final TagKey<Item> SILVER_TOOL = externalItemTag(WEREWOLVES, "tools/silver");
     public static final TagKey<Item> WEREWOLF_FOOD = externalItemTag(WEREWOLVES, "werewolf_food");
 
+    public static final TagKey<Block> INCORRECT_FOR_SILVER_TOOL = externalBlockTag("c", "incorrect_for_silver_tool");
+
     private static TagKey<Item> externalItemTag(String modId, String path) {
         return ItemTags.create(ResourceLocation.fromNamespaceAndPath(modId, path));
     }

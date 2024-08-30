@@ -6,8 +6,11 @@
   "ingredient": {
     "item": "vampiresdelight:silver_knife"
   },
-  "result": "werewolves:silver_nugget",
-  "conditions": [
+  "result": {
+    "count": 1,
+    "id":"werewolves:silver_nugget"
+  },
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "werewolves"
