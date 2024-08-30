@@ -273,10 +273,10 @@ public class VDItems {
             () -> new HunterConsumableItem(foodItem(VDFoodValues.SNOW_WHITE_ICE_CREAM), VDFoodFeatures.ICE_CREAM, true));
 
     public static final DeferredItem<WerewolfConsumableItem> WOLF_BERRY_COOKIE = ITEMS.register("wolf_berry_cookie",
-            () -> new WerewolfConsumableItem(foodItem(VDFoodValues.NASTY_POISON), FoodValues.COOKIES, null));
+            () -> new WerewolfConsumableItem(werewolfFoodItem(VDFoodValues.NASTY_POISON, FoodValues.COOKIES), null));
 
     public static final DeferredItem<WerewolfConsumableItem> WOLF_BERRY_ICE_CREAM = ITEMS.register("wolf_berry_ice_cream",
-            () -> new WerewolfConsumableItem(bowlFoodItem(VDFoodValues.NASTY_POISON), VDFoodValues.WOLF_BERRY_ICE_CREAM, VDFoodFeatures.ICE_CREAM));
+            () -> new WerewolfConsumableItem(werewolfBowlFoodItem(VDFoodValues.NASTY_POISON, VDFoodValues.WOLF_BERRY_ICE_CREAM), VDFoodFeatures.ICE_CREAM));
 
     // Basic Meals
     public static final DeferredItem<HunterConsumableItem> FISH_BURGER = ITEMS.register("fish_burger",
@@ -355,12 +355,20 @@ public class VDItems {
         return foodItem(humanFood).component(VDDataComponents.HUNTER_FOOD.get(), hunterFood);
     }
 
+    public static Item.Properties werewolfFoodItem(FoodProperties humanFood, FoodProperties werewolfFood) {
+        return foodItem(humanFood).component(VDDataComponents.WEREWOLF_FOOD.get(), werewolfFood);
+    }
+
     public static Item.Properties bowlFoodItem(FoodProperties food) {
         return inBowl(foodItem(food));
     }
 
     public static Item.Properties vampireBowlFoodItem(FoodProperties humanFood, FoodProperties vampireFood) {
         return inBowl(vampireFoodItem(humanFood, vampireFood));
+    }
+
+    public static Item.Properties werewolfBowlFoodItem(FoodProperties humanFood, FoodProperties werewolfFood) {
+        return inBowl(werewolfFoodItem(humanFood, werewolfFood));
     }
 
     public static Item.Properties drinkItem(FoodProperties food) {
