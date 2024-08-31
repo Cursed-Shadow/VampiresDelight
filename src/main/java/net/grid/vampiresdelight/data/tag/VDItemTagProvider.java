@@ -188,11 +188,12 @@ public class VDItemTagProvider extends ItemTagsProvider {
                 .add(VDItems.COOKED_BAT.get())
                 .add(VDItems.COOKED_BAT_CHOPS.get());
         tag(Tags.Items.FOODS_RAW_MEAT)
-                .add(VDItems.RAW_BAT.get())
-                .add(VDItems.RAW_BAT_CHOPS.get());
+                .addTag(VDCommonTags.FOODS_RAW_BAT);
         tag(Tags.Items.FOODS_COOKED_MEAT)
-                .add(VDItems.COOKED_BAT.get())
-                .add(VDItems.COOKED_BAT_CHOPS.get());
+                .addTag(VDCommonTags.FOODS_COOKED_BAT);
+        tag(ItemTags.MEAT)
+                .addTag(Tags.Items.FOODS_RAW_MEAT)
+                .addTag(VDCommonTags.FOODS_COOKED_BAT);
 
         tag(Tags.Items.FOODS_FOOD_POISONING)
                 .addTag(VDCommonTags.FOODS_RAW_BAT);

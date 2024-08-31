@@ -12,6 +12,9 @@
 - **Hardtack** can now be eaten faster by hunters; 
 - **Orchid Tea** no longer has a colored outline and a faction tooltip for humans who can be infected. For everyone else, it's displayed as before;
 
+### Fixes
+- Fixed **Werewolves** mod integration;
+
 ### Configurations
 - `tooltip_colors` category is now inside of `tooltips` category;
 - Added new configs:
