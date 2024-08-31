@@ -7,14 +7,16 @@ import net.grid.vampiresdelight.common.utility.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -139,13 +141,12 @@ public class FactionConsumableItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         Player player = VampirismMod.proxy.getClientPlayer();
 
-        if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+        if (Configuration.FOOD_EFFECT_TOOLTIP.get() && hasAnyFoodTooltip(stack, player)) {
             if (hasCustomTooltip(stack, player)) {
-                MutableComponent textEmpty = VDTextUtils.getTranslation("tooltip." + VDNameUtils.itemName(this));
-                tooltipComponents.add(textEmpty.withStyle(ChatFormatting.BLUE));
+                VDTooltipUtils.addFormattedTooltip("tooltip." + VDNameUtils.itemName(this), tooltipComponents, ChatFormatting.BLUE);
             }
             if (hasFoodEffectTooltip(stack, player)) {
-                VDTextUtils.addFoodEffectTooltip(stack, player, tooltipComponents, context);
+                VDTooltipUtils.addFoodEffectTooltip(stack, player, tooltipComponents, context);
             }
         }
 
@@ -162,6 +163,13 @@ public class FactionConsumableItem extends Item {
         return this.hasFoodEffectTooltip;
     }
 
+    /**
+     * Used if hasCustomTooltip's and hasFoodEffectTooltip's overrides are same. Does not apply for hasFactionTooltip though.
+     */
+    public boolean hasAnyFoodTooltip(ItemStack stack, @Nullable Player player) {
+        return hasCustomTooltip(stack, player) || hasFoodEffectTooltip(stack, player);
+    }
+
     public boolean hasFactionTooltip(ItemStack stack, Player player) {
         return this.hasFactionTooltip;
     }
@@ -174,5 +182,22 @@ public class FactionConsumableItem extends Item {
 
     public boolean hasColoredTooltipMargins(ItemStack stack, @Nullable Player player) {
         return true;
+    }
+
+    /**
+     * Used for child classes which are drinks.
+     */
+    public static InteractionResultHolder<ItemStack> useDrink(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        FoodProperties foodProperties = stack.getFoodProperties(player);
+        if (foodProperties != null) {
+            if (player.canEat(foodProperties.canAlwaysEat())) {
+                player.startUsingItem(hand);
+                return InteractionResultHolder.consume(stack);
+            } else {
+                return InteractionResultHolder.fail(stack);
+            }
+        }
+        return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

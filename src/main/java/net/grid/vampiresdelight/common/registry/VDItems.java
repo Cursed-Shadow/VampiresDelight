@@ -174,8 +174,8 @@ public class VDItems {
     public static final DeferredItem<HunterConsumableItem> ROASTED_GARLIC = ITEMS.register("roasted_garlic",
             () -> new HunterConsumableItem(foodItem(VDFoodValues.ROASTED_GARLIC), null));
 
-    public static final DeferredItem<DaisyTeaItem> DAISY_TEA = ITEMS.register("daisy_tea",
-            () -> new DaisyTeaItem(drinkItem()));
+    public static final DeferredItem<FactionDrinkableItem> DAISY_TEA = ITEMS.register("daisy_tea",
+            () -> new FactionDrinkableItem(drinkItem(), VDFoodFeatures.DAISY_TEA, false, true));
 
     public static final DeferredItem<VampireDrinkableItem> BLOOD_SYRUP = ITEMS.register("blood_syrup",
             () -> new VampireDrinkableItem(vampireDrinkItem(VDFoodValues.NASTY, VDFoodValues.BLOOD_SYRUP)));
@@ -226,8 +226,8 @@ public class VDItems {
             () -> new VampireConsumableItem(vampireFoodItem(VDFoodValues.NASTY, VDFoodValues.BLOOD_PIE_SLICE), null, false));
 
     // Alcoholic Drinks
-    public static final DeferredItem<DandelionBeerMugItem> DANDELION_BEER_MUG = ITEMS.register("dandelion_beer_mug",
-            () -> new DandelionBeerMugItem(drinkItem(VDFoodValues.DANDELION_BEER_MUG)));
+    public static final DeferredItem<FactionDrinkableItem> DANDELION_BEER_MUG = ITEMS.register("dandelion_beer_mug",
+            () -> new FactionDrinkableItem(drinkItem(VDFoodValues.DANDELION_BEER_MUG), null, true, false));
 
     public static final DeferredItem<PourableBottleItem> DANDELION_BEER_BOTTLE = ITEMS.register("dandelion_beer_bottle",
             () -> new PourableBottleItem(basicItem(), VDBlocks.DANDELION_BEER_BOTTLE_PLACED.get(), VDItems.DANDELION_BEER_MUG.get(), Items.GLASS_BOTTLE, 3));

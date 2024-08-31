@@ -27,13 +27,8 @@ public class HunterConsumableItem extends FactionConsumableItem {
     }
 
     @Override
-    public boolean hasCustomTooltip(ItemStack stack, @Nullable Player player) {
-        return VDEntityUtils.canConsumeHumanFood(player) && super.hasCustomTooltip(stack, player);
-    }
-
-    @Override
-    public boolean hasFoodEffectTooltip(ItemStack stack, @Nullable Player player) {
-        return VDEntityUtils.canConsumeHumanFood(player) && super.hasFoodEffectTooltip(stack, player);
+    public boolean hasAnyFoodTooltip(ItemStack stack, @Nullable Player player) {
+        return VDEntityUtils.canConsumeHumanFood(player) && super.hasAnyFoodTooltip(stack, player);
     }
 
     @Override
