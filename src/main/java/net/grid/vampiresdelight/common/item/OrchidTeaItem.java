@@ -1,9 +1,6 @@
 package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
-import net.grid.vampiresdelight.common.constant.VDFoodFeatures;
-import net.grid.vampiresdelight.common.constant.VDFoodValues;
-import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -11,9 +8,11 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Consumer;
+
 public class OrchidTeaItem extends VampireDrinkableItem {
-    public OrchidTeaItem() {
-        super(VDItems.vampireDrinkItem(VDFoodValues.ORCHID_TEA_HUMAN, VDFoodValues.ORCHID_TEA_VAMPIRE, VDFoodValues.ORCHID_TEA_IMMUNE), VDFoodFeatures.ORCHID_TEA);
+    public OrchidTeaItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
+        super(properties, features);
     }
 
     @Override

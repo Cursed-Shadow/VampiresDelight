@@ -281,10 +281,4 @@ public class VDFoodValues {
                     return new MobEffectInstance(de.teamlapen.vampirism.core.ModEffects.SUNSCREEN, SHORT_DURATION);
                 }
             }, 1.0F).build();
-    
-
-    // Other
-    public static final FoodProperties NONE = new FoodProperties.Builder()
-            .nutrition(0).saturationModifier(0).build();
-    
 }
