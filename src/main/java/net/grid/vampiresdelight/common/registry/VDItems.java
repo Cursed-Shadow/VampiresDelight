@@ -174,8 +174,8 @@ public class VDItems {
     public static final DeferredItem<HunterConsumableItem> ROASTED_GARLIC = ITEMS.register("roasted_garlic",
             () -> new HunterConsumableItem(item().food(VDFoodValues.ROASTED_GARLIC).get(), null));
 
-    public static final DeferredItem<FactionDrinkableItem> DAISY_TEA = ITEMS.register("daisy_tea",
-            () -> new FactionDrinkableItem(drinkItem().get(), VDFoodFeatures.DAISY_TEA, false, true));
+    public static final DeferredItem<FactionalDrinkableItem> DAISY_TEA = ITEMS.register("daisy_tea",
+            () -> new FactionalDrinkableItem(drinkItem().get(), VDFoodFeatures.DAISY_TEA, false, true));
 
     public static final DeferredItem<VampireDrinkableItem> BLOOD_SYRUP = ITEMS.register("blood_syrup",
             () -> new VampireDrinkableItem(drinkItem().food(VDFoodValues.NASTY).vampireFood(VDFoodValues.BLOOD_SYRUP).get()));
@@ -207,17 +207,17 @@ public class VDItems {
     public static final DeferredItem<VampireConsumableItem> BLOOD_BAGEL = ITEMS.register("blood_bagel",
             () -> new VampireConsumableItem(item().food(VDFoodValues.NASTY).vampireFood(VDFoodValues.BLOOD_BAGEL).get(), null));
 
-    public static final DeferredItem<FactionConsumableItem> RAW_BAT = ITEMS.register("raw_bat",
-            () -> new FactionConsumableItem(item().food(VDFoodValues.RAW_BAT).vampireFood(VDFoodValues.RAW_BAT).get(), null, false));
+    public static final DeferredItem<FactionalConsumableItem> RAW_BAT = ITEMS.register("raw_bat",
+            () -> new FactionalConsumableItem(item().food(VDFoodValues.RAW_BAT).vampireFood(VDFoodValues.RAW_BAT).get(), null, false));
 
-    public static final DeferredItem<FactionConsumableItem> RAW_BAT_CHOPS = ITEMS.register("raw_bat_chops",
-            () -> new FactionConsumableItem(item().food(VDFoodValues.RAW_BAT_CHOPS).vampireFood(VDFoodValues.RAW_BAT_CHOPS).get(), null, false));
+    public static final DeferredItem<FactionalConsumableItem> RAW_BAT_CHOPS = ITEMS.register("raw_bat_chops",
+            () -> new FactionalConsumableItem(item().food(VDFoodValues.RAW_BAT_CHOPS).vampireFood(VDFoodValues.RAW_BAT_CHOPS).get(), null, false));
 
-    public static final DeferredItem<FactionConsumableItem> COOKED_BAT = ITEMS.register("cooked_bat",
-            () -> new FactionConsumableItem(item().food(VDFoodValues.GRILLED_BAT_HUMAN).vampireFood(VDFoodValues.GRILLED_BAT_VAMPIRE).get(), null, false));
+    public static final DeferredItem<FactionalConsumableItem> COOKED_BAT = ITEMS.register("cooked_bat",
+            () -> new FactionalConsumableItem(item().food(VDFoodValues.GRILLED_BAT_HUMAN).vampireFood(VDFoodValues.GRILLED_BAT_VAMPIRE).get(), null, false));
 
-    public static final DeferredItem<FactionConsumableItem> COOKED_BAT_CHOPS = ITEMS.register("cooked_bat_chops",
-            () -> new FactionConsumableItem(item().food(VDFoodValues.GRILLED_BAT_CHOPS_HUMAN).vampireFood(VDFoodValues.GRILLED_BAT_CHOPS_VAMPIRE).get(), null, false));
+    public static final DeferredItem<FactionalConsumableItem> COOKED_BAT_CHOPS = ITEMS.register("cooked_bat_chops",
+            () -> new FactionalConsumableItem(item().food(VDFoodValues.GRILLED_BAT_CHOPS_HUMAN).vampireFood(VDFoodValues.GRILLED_BAT_CHOPS_VAMPIRE).get(), null, false));
 
     public static final DeferredItem<BlockItem> BLOOD_PIE = ITEMS.register("blood_pie",
             () -> new BlockItem(VDBlocks.BLOOD_PIE.get(), basicItem()));
@@ -226,8 +226,8 @@ public class VDItems {
             () -> new VampireConsumableItem(item().food(VDFoodValues.NASTY).vampireFood(VDFoodValues.BLOOD_PIE_SLICE).get(), null, false));
 
     // Alcoholic Drinks
-    public static final DeferredItem<FactionDrinkableItem> DANDELION_BEER_MUG = ITEMS.register("dandelion_beer_mug",
-            () -> new FactionDrinkableItem(drinkItem().food(VDFoodValues.DANDELION_BEER_MUG).get(), null, true, false));
+    public static final DeferredItem<FactionalDrinkableItem> DANDELION_BEER_MUG = ITEMS.register("dandelion_beer_mug",
+            () -> new FactionalDrinkableItem(drinkItem().food(VDFoodValues.DANDELION_BEER_MUG).get(), null, true, false));
 
     public static final DeferredItem<PourableBottleItem> DANDELION_BEER_BOTTLE = ITEMS.register("dandelion_beer_bottle",
             () -> new PourableBottleItem(basicItem(), VDBlocks.DANDELION_BEER_BOTTLE_PLACED.get(), VDItems.DANDELION_BEER_MUG.get(), Items.GLASS_BOTTLE, 3));
@@ -242,8 +242,8 @@ public class VDItems {
             () -> new VampireDrinkableItem(drinkItem().food(VDFoodValues.MULLED_WINE_GLASS_HUMAN).vampireFood(VDFoodValues.MULLED_WINE_GLASS_VAMPIRE).get()));
 
     // Sweets
-    public static final DeferredItem<FactionConsumableItem> PURE_SORBET = ITEMS.register("pure_sorbet",
-            () -> new FactionConsumableItem(item().universalFood(VDFoodValues.PURE_SORBET).get(), VDFoodFeatures.ICE_CREAM, true));
+    public static final DeferredItem<FactionalConsumableItem> PURE_SORBET = ITEMS.register("pure_sorbet",
+            () -> new FactionalConsumableItem(item().universalFood(VDFoodValues.PURE_SORBET).get(), VDFoodFeatures.ICE_CREAM, true));
 
     public static final DeferredItem<VampireConsumableItem> ORCHID_COOKIE = ITEMS.register("orchid_cookie",
             () -> new VampireConsumableItem(item().food(VDFoodValues.NASTY_BLINDNESS).vampireFood(VDFoodValues.ORCHID_COOKIE).get(), null));
@@ -297,11 +297,11 @@ public class VDItems {
     public static final DeferredItem<VampireConsumableItem> BAGEL_SANDWICH = ITEMS.register("bagel_sandwich",
             () -> new VampireConsumableItem(item().food(VDFoodValues.NASTY).vampireFood(VDFoodValues.BAGEL_SANDWICH).get(), null));
 
-    public static final DeferredItem<FactionConsumableItem> BAT_TACO = ITEMS.register("bat_taco",
-            () -> new FactionConsumableItem(item().food(VDFoodValues.BAT_TACO_HUMAN).vampireFood(VDFoodValues.BAT_TACO).get(), null, false));
+    public static final DeferredItem<FactionalConsumableItem> BAT_TACO = ITEMS.register("bat_taco",
+            () -> new FactionalConsumableItem(item().food(VDFoodValues.BAT_TACO_HUMAN).vampireFood(VDFoodValues.BAT_TACO).get(), null, false));
 
-    public static final DeferredItem<FactionConsumableItem> HARDTACK = ITEMS.register("hardtack",
-            () -> new FactionConsumableItem(item().food(VDFoodValues.HARDTACK_HUMAN).hunterFood(VDFoodValues.HARDTACK_HUNTER).get(), null, false, false, false, false));
+    public static final DeferredItem<FactionalConsumableItem> HARDTACK = ITEMS.register("hardtack",
+            () -> new FactionalConsumableItem(item().food(VDFoodValues.HARDTACK_HUMAN).hunterFood(VDFoodValues.HARDTACK_HUNTER).get(), null, false, false, false, false));
 
     // Soups and Stews
     public static final DeferredItem<VampireConsumableItem> ORCHID_CREAM_SOUP = ITEMS.register("orchid_cream_soup",

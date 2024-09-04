@@ -9,6 +9,7 @@
     "MixinConsumableItem",
     "MixinHunterCampPiecesFireplace",
     "MixinHunterCampPiecesSpecialBlock",
+    "MixinItem",
     "MixinKeepBloodySoilGiantTree",
     "MixinKeepBloodySoilTree",
     "MixinLivingEntity",

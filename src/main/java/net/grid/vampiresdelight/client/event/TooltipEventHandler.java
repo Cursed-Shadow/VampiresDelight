@@ -7,7 +7,7 @@ import de.teamlapen.vampirism.items.GarlicBreadItem;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
-import net.grid.vampiresdelight.common.item.FactionConsumableItem;
+import net.grid.vampiresdelight.common.item.FactionalConsumableItem;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
@@ -40,7 +40,7 @@ public class TooltipEventHandler {
             return;
         }
 
-        if (item instanceof FactionConsumableItem factionConsumableItem && !factionConsumableItem.hasColoredTooltipMargins(stack, player)) {
+        if (item instanceof FactionalConsumableItem factionConsumableItem && !factionConsumableItem.hasColoredTooltipMargins(stack, player)) {
             return;
         }
 

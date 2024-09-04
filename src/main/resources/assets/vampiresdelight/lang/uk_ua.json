@@ -246,6 +246,10 @@
   "vampiresdelight.configuration.wanderingTraderSellsVampirismItems": "Мандрівний крамар продає товари з мода",
   "vampiresdelight.configuration.wanderingTraderSellsVampirismItems.tooltip": "Чи повинен мандрівний крамар продавати деякі предмети з Vampirism та цього мода? (Включаючи насіння і деякі блоки)",
 
+  "vampiresdelight.configuration.overrides": "Перевизначення",
+  "vampiresdelight.configuration.overrideFoodPropertiesForFactions": "§eПеревизначати значення їжі предметів для фракцій",
+  "vampiresdelight.configuration.overrideFoodPropertiesForFactions.tooltip": "Чи повинен цей мод перевизначати значення їжі всіх ванільних та предметів з інших модів, щоб вони використовували специфічні для конкретної фракції? Якщо ввімкнути цю опцію, то компоненти з цього мода можна буде використовувати для будь-якого іншого предмета. Наприклад, якщо предмет має компонент `vampiresdelight:vampire_food`, він буде використовувати значення їжі для вампірів з компонента, а не стандартне, як у людей. Вимкніть цю функцію, якщо вона викликає конфлікти з іншими модами.",
+
   "vampiresdelight.configuration.blocks": "Блоки",
   "vampiresdelight.configuration.bloodySoilBoostChance": "Шанс прискорення росту рослин на кривавому ґрунті",
   "vampiresdelight.configuration.bloodySoilBoostChance.tooltip": "Як часто (у відсотках) кривавий ґрунт повинен підсилювати ріст рослини під час випадкового тіку? Встановіть на 0.0, щоб вимкнути це.",

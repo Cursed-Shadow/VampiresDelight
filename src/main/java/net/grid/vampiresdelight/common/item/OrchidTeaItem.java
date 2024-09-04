@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class OrchidTeaItem extends VampireDrinkableItem {
+public class OrchidTeaItem extends VampireDrinkableItem implements IFactionalFoodItem {
     public OrchidTeaItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
         super(properties, features);
     }
@@ -21,9 +21,9 @@ public class OrchidTeaItem extends VampireDrinkableItem {
             entity = VampirismMod.proxy.getClientPlayer();
         }
 
-        return VDHelper.isVampire(entity) ? getVampireFood(stack, entity) :
+        return VDHelper.isVampire(entity) ? getVampireFoodProperties(stack, entity) :
                 (entity instanceof Player player && VDHelper.canBeInfectedFromItem(player) ?
-                        super.getFoodProperties(stack, entity) : getHunterFood(stack, entity));
+                        super.getFoodProperties(stack, entity) : getHunterFoodProperties(stack, entity));
     }
 
     @Override

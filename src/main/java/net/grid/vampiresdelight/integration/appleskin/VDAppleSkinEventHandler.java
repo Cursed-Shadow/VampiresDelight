@@ -3,7 +3,6 @@ package net.grid.vampiresdelight.integration.appleskin;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import net.grid.vampiresdelight.common.VDConfiguration;
-import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.grid.vampiresdelight.common.registry.VDDataComponents;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDHelper;
@@ -27,7 +26,7 @@ public class VDAppleSkinEventHandler {
         Item item = itemStack.getItem();
 
         if (player != null) {
-            if (VDHelper.isVampire(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES.get() && !(item instanceof VampireConsumableItem || item instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.is(VDTags.BLOOD_FOOD) || itemStack.get(VDDataComponents.VAMPIRE_FOOD.get()) != null || VDHelper.isSame(item, VDIntegrationUtils.LIVER))) {
+            if (VDHelper.isVampire(player) && VDConfiguration.HIDE_APPLE_SKIN_HUMAN_FOOD_TOOLTIPS_FOR_VAMPIRES.get() && !(item instanceof VampirismItemBloodFoodItem || itemStack.is(VDTags.VAMPIRE_FOOD) || itemStack.get(VDDataComponents.VAMPIRE_FOOD.get()) != null || VDHelper.isSame(item, VDIntegrationUtils.LIVER))) {
                 event.setCanceled(true);
             }
 

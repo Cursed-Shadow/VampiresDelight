@@ -110,8 +110,6 @@ public class VDItemTagProvider extends ItemTagsProvider {
 
         tag(VDTags.WINE_BOTTLES)
                 .add(VDItems.BLOOD_WINE_BOTTLE.get());
-
-        tag(VDTags.BLOOD_FOOD);
     }
 
     private void registerVampirismTags() {

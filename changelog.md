@@ -11,6 +11,7 @@
 ### Updates
 - **Hardtack** can now be eaten faster by hunters; 
 - **Orchid Tea** no longer has a colored outline and a faction tooltip for humans who can be infected. For everyone else, it's displayed as before;
+- Removed `vampiresdelight:blood_food` tag for technical reasons since it's no longer necessary;
 
 ### Fixes
 - Fixed **Werewolves** mod integration;
@@ -18,6 +19,8 @@
 ### Configurations
 - `tooltip_colors` category is now inside of `tooltips` category;
 - Added new configs:
+  - `overrideFoodPropertiesForFactions`:
+    - `true` by default;
   - `spiritLanternFogDistanceMultiplier`:
     - `0.4` by default;
     - Range: from `0.0` to `10.0`;

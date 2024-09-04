@@ -15,10 +15,6 @@ public class VDTags {
 
     // --Items--
 
-    // Human food which must give the same nutrition to vampires. Doesn't make hunter food vampire-friendly, though.
-    // Used for compatibility in external mods and data pack. Empty by default.
-    public static final TagKey<Item> BLOOD_FOOD = modItemTag("blood_food");
-
     // Factional food (mostly for colored tooltips and such). (Look into the code before using).
     public static final TagKey<Item> VAMPIRE_FOOD = modItemTag("vampire_food");
     public static final TagKey<Item> HUNTER_FOOD = modItemTag("hunter_food");

@@ -2,7 +2,6 @@ package net.grid.vampiresdelight.common.item;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.core.ModItems;
-import net.grid.vampiresdelight.common.registry.VDDataComponents;
 import net.grid.vampiresdelight.common.utility.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -26,7 +25,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
-public class FactionConsumableItem extends Item {
+public class FactionalConsumableItem extends Item {
 
     private final @Nullable Consumer<LivingEntity> features;
     private final boolean hasFoodEffectTooltip;
@@ -34,7 +33,7 @@ public class FactionConsumableItem extends Item {
     private final boolean hasFactionTooltip;
     private final boolean hasGarlic;
 
-    public FactionConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip) {
+    public FactionalConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip) {
         super(properties);
         this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
@@ -43,7 +42,7 @@ public class FactionConsumableItem extends Item {
         this.hasGarlic = false;
     }
 
-    public FactionConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasFactionTooltip, boolean hasGarlic) {
+    public FactionalConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean hasFactionTooltip, boolean hasGarlic) {
         super(properties);
         this.features = features;
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
@@ -99,38 +98,6 @@ public class FactionConsumableItem extends Item {
      * Override this to apply changes to the consumer (e.g. curing effects).
      */
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
-    }
-
-    @Override
-    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
-        if (entity != null) {
-            if (VDHelper.isVampire(entity)) {
-                FoodProperties vampireFood = getVampireFood(stack, entity);
-                return vampireFood == null ? new FoodProperties.Builder().build() : vampireFood;
-            }
-
-            if (VDHelper.isHunter(entity) && getHunterFood(stack, entity) != null) {
-                return getHunterFood(stack, entity);
-            }
-
-            if (VDIntegrationUtils.isWerewolf(entity) && getWerewolfFood(stack, entity) != null) {
-                return getWerewolfFood(stack, entity);
-            }
-        }
-
-        return super.getFoodProperties(stack, entity);
-    }
-
-    public @Nullable FoodProperties getVampireFood(ItemStack stack, @Nullable LivingEntity entity) {
-        return stack.get(VDDataComponents.VAMPIRE_FOOD);
-    }
-
-    public @Nullable FoodProperties getHunterFood(ItemStack stack, @Nullable LivingEntity entity) {
-        return stack.get(VDDataComponents.HUNTER_FOOD);
-    }
-
-    public @Nullable FoodProperties getWerewolfFood(ItemStack stack, @Nullable LivingEntity entity) {
-        return stack.get(VDDataComponents.WEREWOLF_FOOD);
     }
 
     public boolean hasGarlic() {
@@ -200,4 +167,38 @@ public class FactionConsumableItem extends Item {
         }
         return ItemUtils.startUsingInstantly(level, player, hand);
     }
+
+    /*
+    @Override
+    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
+        if (entity != null) {
+            if (VDHelper.isVampire(entity)) {
+                FoodProperties vampireFood = getVampireFood(stack, entity);
+                return vampireFood == null ? new FoodProperties.Builder().build() : vampireFood;
+            }
+
+            if (VDHelper.isHunter(entity) && getHunterFood(stack, entity) != null) {
+                return getHunterFood(stack, entity);
+            }
+
+            if (VDIntegrationUtils.isWerewolf(entity) && getWerewolfFood(stack, entity) != null) {
+                return getWerewolfFood(stack, entity);
+            }
+        }
+
+        return super.getFoodProperties(stack, entity);
+    }
+
+    public @Nullable FoodProperties getVampireFood(ItemStack stack, @Nullable LivingEntity entity) {
+        return stack.get(VDDataComponents.VAMPIRE_FOOD);
+    }
+
+    public @Nullable FoodProperties getHunterFood(ItemStack stack, @Nullable LivingEntity entity) {
+        return stack.get(VDDataComponents.HUNTER_FOOD);
+    }
+
+    public @Nullable FoodProperties getWerewolfFood(ItemStack stack, @Nullable LivingEntity entity) {
+        return stack.get(VDDataComponents.WEREWOLF_FOOD);
+    }
+     */
 }

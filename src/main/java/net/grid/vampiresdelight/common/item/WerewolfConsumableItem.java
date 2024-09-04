@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
-public class WerewolfConsumableItem extends FactionConsumableItem {
+public class WerewolfConsumableItem extends FactionalConsumableItem {
     public WerewolfConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
         super(properties, features, true, false, true, false);
     }

@@ -4,10 +4,11 @@ import de.teamlapen.vampirism.api.EnumStrength;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.items.VampirismItemBloodFoodItem;
 import net.grid.vampiresdelight.VampiresDelight;
-import net.grid.vampiresdelight.common.item.FactionConsumableItem;
+import net.grid.vampiresdelight.common.item.FactionalConsumableItem;
 import net.grid.vampiresdelight.common.item.VampireConsumableItem;
 import net.grid.vampiresdelight.common.item.WerewolfConsumableItem;
 import net.grid.vampiresdelight.common.registry.VDAdvancementTriggers;
+import net.grid.vampiresdelight.common.registry.VDDataComponents;
 import net.grid.vampiresdelight.common.registry.VDStats;
 import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
@@ -37,7 +38,7 @@ public class PlayerEventHandler {
 
         if (!livingEntity.getCommandSenderWorld().isClientSide) {
             if (VDHelper.isVampire(livingEntity)) {
-                if (item instanceof FactionConsumableItem factionConsumableItem) {
+                if (item instanceof FactionalConsumableItem factionConsumableItem) {
                     if (factionConsumableItem.hasGarlic()) {
                         VDEntityUtils.affectVampireEntityWithGarlic(livingEntity, EnumStrength.MEDIUM);
                         disgustingFoodConsumed(livingEntity);
@@ -53,7 +54,6 @@ public class PlayerEventHandler {
                 }
             }
 
-            // TODO: Check if it works when Werewolves updates
             if (!VDIntegrationUtils.isWerewolf(livingEntity)) {
                 if (item instanceof WerewolfConsumableItem && itemStack.is(VDTags.WEREWOLF_ONLY_FOOD) || VDHelper.isSame(item, VDIntegrationUtils.WOLF_BERRIES)) {
                     disgustingFoodConsumed(livingEntity);
@@ -69,22 +69,12 @@ public class PlayerEventHandler {
         }
     }
 
-    @SubscribeEvent
-    public static void onBloodFoodEaten(LivingEntityUseItemEvent.@NotNull Finish event) {
-        ItemStack itemStack = event.getItem();
-        LivingEntity livingEntity = event.getEntity();
-
-        if (itemStack.is(VDTags.BLOOD_FOOD) && VDHelper.isVampire(livingEntity)) {
-            VDEntityUtils.feedVampire(itemStack, event.getEntity().level(), livingEntity);
-        }
-    }
-
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onFoodEaten(final MobEffectEvent.Applicable event) {
         LivingEntity consumer = event.getEntity();
         ItemStack itemInHand = consumer.getItemInHand(consumer.getUsedItemHand());
         Item item = itemInHand.getItem();
-        if (VDHelper.isVampire(consumer) && item instanceof ConsumableItem && !itemInHand.is(VDTags.BLOOD_FOOD)) {
+        if (VDHelper.isVampire(consumer) && item instanceof ConsumableItem && !itemInHand.has(VDDataComponents.VAMPIRE_FOOD)) {
             event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
         }
     }

@@ -246,6 +246,10 @@
   "vampiresdelight.configuration.wanderingTraderSellsVampirismItems": "Un marchand ambulant vend des objets de vampirism",
   "vampiresdelight.configuration.wanderingTraderSellsVampirismItems.tooltip": "Le marchand ambulant devrait-il vendre une partie du vampirism et des objets de ce mod? (Y compris les graines et quelques blocs)",
 
+  "vampiresdelight.configuration.overrides": "Overrides",
+  "vampiresdelight.configuration.overrideFoodPropertiesForFactions": "§eOverride food properties of items for factions",
+  "vampiresdelight.configuration.overrideFoodPropertiesForFactions.tooltip": "Should this mod override the food values of all vanilla and modded items to use faction-specific properties? Enabling this option makes components from this mod usable for any item. For instance, if an item has the `vampiresdelight:vampire_food` data component, it will use the food value from the component instead of the default one for vampires. Disable this if it causes conflicts with other mods.",
+
   "vampiresdelight.configuration.blocks": "Blocs",
   "vampiresdelight.configuration.bloodySoilBoostChance": "Chances d'augmentation de la culture du sol sanglant",
   "vampiresdelight.configuration.bloodySoilBoostChance.tooltip": "À quelle fréquence (en pourcentage) le sol sanglant devrait-il réussir à stimuler la croissance d'une plante à chaque tick aléatoire? Réglez-le sur 0,0 pour désactiver cela.",

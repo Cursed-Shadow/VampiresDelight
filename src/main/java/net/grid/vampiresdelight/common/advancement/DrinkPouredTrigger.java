@@ -11,7 +11,6 @@ import net.minecraft.world.level.ItemLike;
 
 import java.util.Optional;
 
-// TODO: Check if this works
 public class DrinkPouredTrigger extends SimpleCriterionTrigger<DrinkPouredTrigger.TriggerInstance> {
     public DrinkPouredTrigger() {
     }
@@ -30,11 +29,6 @@ public class DrinkPouredTrigger extends SimpleCriterionTrigger<DrinkPouredTrigge
                 EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player),
                 ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TriggerInstance::item)
         ).apply(instance, TriggerInstance::new));
-
-        public TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) {
-            this.player = player;
-            this.item = item;
-        }
 
         public static Criterion<TriggerInstance> pouredDrinkBottle(ItemLike item) {
             return pouredDrinkBottle(ItemPredicate.Builder.item().of(item.asItem()));

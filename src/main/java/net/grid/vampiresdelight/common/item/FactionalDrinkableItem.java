@@ -11,11 +11,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class FactionDrinkableItem extends FactionConsumableItem {
+public class FactionalDrinkableItem extends FactionalConsumableItem {
 
     private final boolean onlyHumanTooltip;
 
-    public FactionDrinkableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
+    public FactionalDrinkableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
         super(properties, features, hasFoodEffectTooltip, hasCustomTooltip, false, false);
         this.onlyHumanTooltip = true;
     }

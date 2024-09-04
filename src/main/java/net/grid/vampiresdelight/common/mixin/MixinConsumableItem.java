@@ -1,9 +1,7 @@
 package net.grid.vampiresdelight.common.mixin;
 
 import de.teamlapen.vampirism.VampirismMod;
-import net.grid.vampiresdelight.common.tag.VDTags;
 import net.grid.vampiresdelight.common.utility.VDEntityUtils;
-import net.grid.vampiresdelight.common.utility.VDHelper;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,7 +29,7 @@ public class MixinConsumableItem {
 
     @Redirect(method = "finishUsingItem", at = @At(value = "INVOKE", target = "Lvectorwing/farmersdelight/common/item/ConsumableItem;affectConsumer(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)V"))
     private void checkIfCanAffectConsumer(ConsumableItem instance, ItemStack stack, Level level, LivingEntity consumer) {
-        if (VDEntityUtils.canConsumeHumanFood(consumer) || stack.getItem() instanceof MilkBottleItem || stack.getItem() instanceof PopsicleItem || (VDHelper.isVampire(consumer) && stack.is(VDTags.BLOOD_FOOD))) {
+        if (VDEntityUtils.canConsumeHumanFood(consumer) || stack.getItem() instanceof MilkBottleItem || stack.getItem() instanceof PopsicleItem) {
             this.affectConsumer(stack, level, consumer);
         } else if (consumer instanceof Player player && VDIntegrationUtils.isWerewolf(player)) {
             player.displayClientMessage(Component.translatable("text.werewolves.taste_not_right"), true);
@@ -41,7 +39,7 @@ public class MixinConsumableItem {
     @Inject(method = "appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V", at = @At("HEAD"), cancellable = true)
     public void hideFoodTooltips(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
         Player player = VampirismMod.proxy.getClientPlayer();
-        if (player != null && !VDEntityUtils.canConsumeHumanFood(player) && !(VDHelper.isVampire(player) && stack.is(VDTags.BLOOD_FOOD)) && !(stack.getItem() instanceof MilkBottleItem)) {
+        if (player != null && !VDEntityUtils.canConsumeHumanFood(player) && !(stack.getItem() instanceof MilkBottleItem)) {
             ci.cancel();
         }
     }

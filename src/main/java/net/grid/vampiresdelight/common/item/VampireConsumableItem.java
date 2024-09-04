@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class VampireConsumableItem extends FactionConsumableItem {
+public class VampireConsumableItem extends FactionalConsumableItem {
     public VampireConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
         super(properties, features, true, false, true, false);
     }

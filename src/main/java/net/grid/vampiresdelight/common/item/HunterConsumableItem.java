@@ -13,17 +13,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class HunterConsumableItem extends FactionConsumableItem {
+public class HunterConsumableItem extends FactionalConsumableItem {
     public HunterConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features) {
         super(properties, features, false, false, false, true);
     }
 
     public HunterConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip) {
         super(properties, features, hasFoodEffectTooltip, false, false, true);
-    }
-
-    public HunterConsumableItem(Properties properties, @Nullable Consumer<LivingEntity> features, boolean hasFoodEffectTooltip, boolean hasCustomTooltip, boolean containsGarlic) {
-        super(properties, features, hasFoodEffectTooltip, hasCustomTooltip, false, containsGarlic);
     }
 
     @Override
