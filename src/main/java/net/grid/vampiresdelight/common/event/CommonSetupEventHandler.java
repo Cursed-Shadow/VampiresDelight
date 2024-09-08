@@ -1,12 +1,12 @@
-package net.grid.vampiresdelight.common;
+package net.grid.vampiresdelight.common.event;
 
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDPotions;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
-public class CommonSetup {
-    public static void init(final FMLCommonSetupEvent event) {
+public class CommonSetupEventHandler {
+    public static void setupCommon(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             VDPotions.registerPotionMixes();
             registerDispenserBehaviors();

@@ -240,6 +240,25 @@
   "vampiresdelight.jei.info.black_mushroom": "Les champignons noirs sont rarement trouvés dans les forêts de vampires.\\n\\nLa farine d'os peut être utilisée pour en cultiver une énorme variante.",
   "vampiresdelight.jei.info.wild_garlic": "L'ail est couramment trouvé comme plante sauvage dans les terres tempérées, comme les plaines et les forêts.",
 
+  "tag.item.vampiresdelight.vampire_food": "Vampire Food",
+  "tag.item.vampiresdelight.hunter_food": "Hunter Food",
+  "tag.item.vampiresdelight.werewolf_only_food": "Werewolf-only Food",
+  "tag.item.vampiresdelight.not_rotten_food": "Not Rotten Food",
+  "tag.item.vampiresdelight.enchantable.vampire_bite": "Vampire Bite Enchantable",
+  "tag.item.vampiresdelight.wine_shelf_bottles": "Wine Shelf Bottles",
+  "tag.item.vampiresdelight.beer_bottles": "Beer Bottles",
+  "tag.item.vampiresdelight.wine_bottles": "Wine Bottles",
+
+  "tag.block.vampiresdelight.wine_shelves": "Wine Shelves",
+  "tag.block.vampiresdelight.drops_orchid_cake_slice": "Drops Orchid Cake Slice",
+  "tag.block.vampiresdelight.black_mushroom_grow_block": "Black Mushroom Grow Block",
+  "tag.block.vampiresdelight.cursed_plants": "Cursed Plants",
+
+  "tag.worldgen.biome.vampiresdelight.has_structure.lost_carriage": "Has Lost Carriage Structure",
+
+  "tag.entity_type.vampiresdelight.unholy_spirits": "Unholy Spirits",
+  "tag.entity_type.vampiresdelight.drops_human_eye": "Drops Human Eye",
+
   "vampiresdelight.configuration.village": "Village",
   "vampiresdelight.configuration.farmersBuyGarlic": "les agriculteurs achètent de l'ail",
   "vampiresdelight.configuration.farmersBuyGarlic.tooltip": "Les agriculteurs devraient-ils acheter de l’ail ? (Peut réduire les chances d'apparition d'autres transactions)",

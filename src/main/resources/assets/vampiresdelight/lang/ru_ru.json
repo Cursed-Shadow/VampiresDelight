@@ -240,6 +240,25 @@
   "vampiresdelight.jei.info.black_mushroom": "Чёрные грибы могут изредка быть найдены в вампирских лесах.\\n\\nМожно использовать костную муку для выращивания огромного варианта.",
   "vampiresdelight.jei.info.wild_garlic": "Чеснок может быть найден дикорастущим в местах с умеренным климатом, вроде полей и лесов.",
 
+  "tag.item.vampiresdelight.vampire_food": "Вамирская еда",
+  "tag.item.vampiresdelight.hunter_food": "Охотничья еда",
+  "tag.item.vampiresdelight.werewolf_only_food": "Еда только для оборотней",
+  "tag.item.vampiresdelight.not_rotten_food": "Не гнилая еда",
+  "tag.item.vampiresdelight.enchantable.vampire_bite": "Можно зачаровать на укус вампира",
+  "tag.item.vampiresdelight.wine_shelf_bottles": "Бутылки для винных полок",
+  "tag.item.vampiresdelight.beer_bottles": "Бутылки пива",
+  "tag.item.vampiresdelight.wine_bottles": "Бутылки вина",
+
+  "tag.block.vampiresdelight.wine_shelves": "Винные полки",
+  "tag.block.vampiresdelight.drops_orchid_cake_slice": "Роняет дольку орхидейного торта",
+  "tag.block.vampiresdelight.black_mushroom_grow_block": "Приемлимые блоки для чёрного гриба",
+  "tag.block.vampiresdelight.cursed_plants": "Проклятые растения",
+
+  "tag.worldgen.biome.vampiresdelight.has_structure.lost_carriage": "Имеет структуру утраченного вагона",
+
+  "tag.entity_type.vampiresdelight.unholy_spirits": "Нечестивые духи",
+  "tag.entity_type.vampiresdelight.drops_human_eye": "Роняет человеческий глаз",
+
   "vampiresdelight.configuration.village": "Жители",
   "vampiresdelight.configuration.farmersBuyGarlic": "Фермеры покупают чеснок",
   "vampiresdelight.configuration.farmersBuyGarlic.tooltip": "Должны ди фермеры покупать чеснок? (Может снизить вероятность появления других торгов)",

@@ -11,7 +11,6 @@
 ### Updates
 - **Hardtack** can now be eaten faster by hunters; 
 - **Orchid Tea** no longer has a colored outline and a faction tooltip for humans who can be infected. For everyone else, it's displayed as before;
-- Removed `vampiresdelight:blood_food` tag for technical reasons since it's no longer necessary;
 
 ### Fixes
 - Fixed **Werewolves** mod integration;
@@ -32,6 +31,15 @@
     - `true` by default;
   - `debugFoodTooltips`:
     - `false` by default;
+
+### Tags
+- Renamed tags:
+  - `vampiresdelight:drop_human_eye` into `vampiresdelight:drops_human_eye`;
+  - `vampiresdelight:wine_shelf` into `vampiresdelight:wine_shelves`;
+- Removed `vampiresdelight:blood_food` tag for technical reasons since it's no longer necessary;
+
+### Translations
+- Added translations to all mod's tags;
 
 ## 0.1.8
 

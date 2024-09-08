@@ -1,8 +1,8 @@
 package net.grid.vampiresdelight;
 
-import net.grid.vampiresdelight.client.ClientSetup;
-import net.grid.vampiresdelight.common.CommonSetup;
+import net.grid.vampiresdelight.client.event.ClientSetupEventHandler;
 import net.grid.vampiresdelight.common.VDConfiguration;
+import net.grid.vampiresdelight.common.event.CommonSetupEventHandler;
 import net.grid.vampiresdelight.common.registry.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -17,9 +17,9 @@ public class VampiresDelight {
     public static final String MODID = "vampiresdelight";
 
     public VampiresDelight(IEventBus modEventBus, ModContainer modContainer) {
-        modEventBus.addListener(CommonSetup::init);
+        modEventBus.addListener(CommonSetupEventHandler::setupCommon);
         if (FMLEnvironment.dist.isClient()) {
-            modEventBus.addListener(ClientSetup::init);
+            modEventBus.addListener(ClientSetupEventHandler::setupClient);
         }
 
         modContainer.registerConfig(ModConfig.Type.COMMON, VDConfiguration.COMMON_CONFIG);

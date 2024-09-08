@@ -38,7 +38,7 @@ public class VDBlockTagProvider extends BlockTagsProvider {
     }
 
     private void registerModTags() {
-        WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(VDTags.WINE_SHELF).add(block));
+        WineShelfBlock.getAllShelveBlocks().forEach(block -> tag(VDTags.WINE_SHELVES).add(block));
 
         ConsumableCandleCakeBlock.getAllCandleCakes().forEach(block -> {
             String name = VDNameUtils.blockName(block);

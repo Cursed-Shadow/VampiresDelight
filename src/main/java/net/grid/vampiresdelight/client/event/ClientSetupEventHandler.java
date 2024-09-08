@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.client;
+package net.grid.vampiresdelight.client.event;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.client.extension.PourableBottleItemExtension;
@@ -29,9 +29,9 @@ import java.util.stream.Stream;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class ClientSetup {
-    public static void init(final FMLClientSetupEvent event) {
-        event.enqueueWork(ClientSetup::registerItemProperties);
+public class ClientSetupEventHandler {
+    public static void setupClient(final FMLClientSetupEvent event) {
+        event.enqueueWork(ClientSetupEventHandler::registerItemProperties);
 
         if (VDIntegrationUtils.isModPresent(VDIntegrationUtils.APPLESKIN)) {
             NeoForge.EVENT_BUS.register(new VDAppleSkinEventHandler());

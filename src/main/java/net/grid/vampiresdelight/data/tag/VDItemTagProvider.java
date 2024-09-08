@@ -201,7 +201,8 @@ public class VDItemTagProvider extends ItemTagsProvider {
 
         tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED)
                 .add(VDItems.BLOOD_PIE.get())
-                .add(VDItems.WEIRD_JELLY.get());
+                .add(VDItems.WEIRD_JELLY_BLOCK.get())
+                .add(VDItems.ORCHID_CAKE.get());
 
         tag(VDCommonTags.TOOLS_KNIFE)
                 .add(VDItems.SILVER_KNIFE.get());

@@ -50,7 +50,7 @@ public class VDAdvancementProvider implements AdvancementProvider.AdvancementGen
 
         AdvancementHolder localBrewery = getAdvancement(iKnewYouElves, VDItems.SPRUCE_WINE_SHELF.get(), "place_dandelion_beer_bottle_on_shelf", AdvancementType.TASK, false, false)
                 .addCriterion("wine_shelf", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
-                        LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(VDTags.WINE_SHELF)),
+                        LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(VDTags.WINE_SHELVES)),
                         ItemPredicate.Builder.item().of(VDItems.DANDELION_BEER_BOTTLE.get())))
                 .save(consumer, getNameId("main/place_dandelion_beer_bottle_on_shelf"));
 
@@ -78,7 +78,7 @@ public class VDAdvancementProvider implements AdvancementProvider.AdvancementGen
 
         AdvancementHolder localBar = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.DARK_SPRUCE_WINE_SHELF.get(), "place_blood_wine_bottle_on_shelf", AdvancementType.TASK, false, false)
                 .addCriterion("wine_shelf", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
-                        LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(VDTags.WINE_SHELF)),
+                        LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(VDTags.WINE_SHELVES)),
                         ItemPredicate.Builder.item().of(VDItems.BLOOD_WINE_BOTTLE.get())))
                 .save(consumer, getNameId("main/place_blood_wine_bottle_on_shelf"));
 

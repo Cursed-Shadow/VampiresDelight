@@ -240,6 +240,25 @@
   "vampiresdelight.jei.info.black_mushroom": "Black mushrooms can be rarely found in vampire forests.\\n\\nBone Meal can be used to grow a huge variant.",
   "vampiresdelight.jei.info.wild_garlic": "Garlic can be commonly found as a wild plant in temperate lands, such as plains and forests.",
 
+  "tag.item.vampiresdelight.vampire_food": "Vampire Food",
+  "tag.item.vampiresdelight.hunter_food": "Hunter Food",
+  "tag.item.vampiresdelight.werewolf_only_food": "Werewolf-only Food",
+  "tag.item.vampiresdelight.not_rotten_food": "Not Rotten Food",
+  "tag.item.vampiresdelight.enchantable.vampire_bite": "Vampire Bite Enchantable",
+  "tag.item.vampiresdelight.wine_shelf_bottles": "Wine Shelf Bottles",
+  "tag.item.vampiresdelight.beer_bottles": "Beer Bottles",
+  "tag.item.vampiresdelight.wine_bottles": "Wine Bottles",
+
+  "tag.block.vampiresdelight.wine_shelves": "Wine Shelves",
+  "tag.block.vampiresdelight.drops_orchid_cake_slice": "Drops Orchid Cake Slice",
+  "tag.block.vampiresdelight.black_mushroom_grow_block": "Black Mushroom Grow Block",
+  "tag.block.vampiresdelight.cursed_plants": "Cursed Plants",
+
+  "tag.worldgen.biome.vampiresdelight.has_structure.lost_carriage": "Has Lost Carriage Structure",
+
+  "tag.entity_type.vampiresdelight.unholy_spirits": "Unholy Spirits",
+  "tag.entity_type.vampiresdelight.drops_human_eye": "Drops Human Eye",
+
   "vampiresdelight.configuration.village": "Village",
   "vampiresdelight.configuration.farmersBuyGarlic": "Farmers buy garlic",
   "vampiresdelight.configuration.farmersBuyGarlic.tooltip": "Should Farmers buy garlic? (May reduce chances of other trades appearing)",

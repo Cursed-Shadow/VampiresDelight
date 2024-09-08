@@ -34,7 +34,7 @@ public class VDTags {
     // --Blocks--
 
     // All Wine Shelves (for advancements).
-    public static final TagKey<Block> WINE_SHELF = modBlockTag("wine_shelf");
+    public static final TagKey<Block> WINE_SHELVES = modBlockTag("wine_shelves");
 
     // Candle cake variants that drop the cake slice when sliced by a knife.
     public static final TagKey<Block> DROPS_ORCHID_CAKE_SLICE = modBlockTag("drops_orchid_cake_slice");
@@ -59,7 +59,7 @@ public class VDTags {
     public static final TagKey<EntityType<?>> UNHOLY_SPIRITS = modEntityTag("unholy_spirits");
 
     // Human-like entities which are supposed to drop human eyes when killed with
-    public static final TagKey<EntityType<?>> DROP_HUMAN_EYE = modEntityTag("drop_human_eye");
+    public static final TagKey<EntityType<?>> DROP_HUMAN_EYE = modEntityTag("drops_human_eye");
 
 
 

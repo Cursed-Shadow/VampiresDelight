@@ -240,6 +240,25 @@
   "vampiresdelight.jei.info.black_mushroom": "Чорні гриби можна деколи знайти у вампирських лісах.\\n\\Можна використати кісткове борошно для вирощування величезного варіанту.",
   "vampiresdelight.jei.info.wild_garlic": "Часник можна знайти дикорослим у помірних краях, таких як рівнини та ліси.",
 
+  "tag.item.vampiresdelight.vampire_food": "Вампирська їжа",
+  "tag.item.vampiresdelight.hunter_food": "Мисливська їжа",
+  "tag.item.vampiresdelight.werewolf_only_food": "Їжа лише для перевертнів",
+  "tag.item.vampiresdelight.not_rotten_food": "Не гнила їжа",
+  "tag.item.vampiresdelight.enchantable.vampire_bite": "Можна зачарувати на укус вампіра",
+  "tag.item.vampiresdelight.wine_shelf_bottles": "Пляшки для винних полиць",
+  "tag.item.vampiresdelight.beer_bottles": "Пляшки пива",
+  "tag.item.vampiresdelight.wine_bottles": "Пляшки вина",
+
+  "tag.block.vampiresdelight.wine_shelves": "Винні полиці",
+  "tag.block.vampiresdelight.drops_orchid_cake_slice": "Роняє шматок орхідеєвого торта",
+  "tag.block.vampiresdelight.black_mushroom_grow_block": "Прийнятні блоки для чорного гриба",
+  "tag.block.vampiresdelight.cursed_plants": "Прокляті рослини",
+
+  "tag.worldgen.biome.vampiresdelight.has_structure.lost_carriage": "Має структуру втраченого вагона",
+
+  "tag.entity_type.vampiresdelight.unholy_spirits": "Нечестиві духи",
+  "tag.entity_type.vampiresdelight.drops_human_eye": "Роняє людське око",
+
   "vampiresdelight.configuration.village": "Селяни",
   "vampiresdelight.configuration.farmersBuyGarlic": "Фермери купують часник",
   "vampiresdelight.configuration.farmersBuyGarlic.tooltip": "Чи повинні фермери купувати часник? (Може зменшити шанси на появу інших угод)",

@@ -86,30 +86,6 @@ public class PlayerInteractEventHandler {
         }
     }
 
-    /*
-    // Replace this with an event that would work. It does not work properly
-    @SubscribeEvent
-    public static void onWrongSoilChosen(BlockEvent.EntityPlaceEvent event) {
-        BlockState placedState = event.getPlacedBlock();
-        BlockState stateBelow = event.getLevel().getBlockState(event.getPos().below());
-
-        if (placedState.is(VDBlocks.VAMPIRE_ORCHID_CROP.get()) && (stateBelow.is(Blocks.FARMLAND) || stateBelow.is(vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get()))) {
-            if (stateBelow.is(vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL_FARMLAND.get())) {
-                event.setCanceled(true);
-            }
-
-            Entity entity = event.getEntity();
-            if (entity instanceof Player player) {
-                player.displayClientMessage(VDTextUtils.getTranslation("text.planted_on_vampire_soil"), true);
-            }
-        }
-
-        if (placedState.is(ModBlocks.GARLIC.get()) && stateBelow.is(VDTags.CURSED_FARMLANDS)) {
-            event.setCanceled(true);
-        }
-    }
-     */
-
     @SubscribeEvent
     public static void onCakeInteraction(PlayerInteractEvent.RightClickBlock event) {
         ItemStack toolStack = event.getEntity().getItemInHand(event.getHand());
