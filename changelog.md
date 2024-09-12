@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.9b
+
+### Fixes
+- Fixed a critical bug that allowed vampire players to eat everything, even without custom data components;
+
 ## 0.1.9
 
 ### Additions

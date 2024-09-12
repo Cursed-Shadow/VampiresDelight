@@ -40,11 +40,12 @@ public abstract class MixinItem implements IItemExtension, IFactionalFoodItem {
 
     @Override
     public @Nullable FoodProperties getFoodProperties(@NotNull ItemStack stack, @Nullable LivingEntity entity) {
-        // Do NOT "fix" this warning, it would just break everything.
-        if (entity != null && (VDConfiguration.OVERRIDE_FOOD_PROPERTIES_FOR_FACTIONS.get() || (Item) (Object) this instanceof FactionalConsumableItem)) {
-            if (VDHelper.isVampire(entity)) {
-                FoodProperties vampireFood = getVampireFoodProperties(stack, entity);
-                return vampireFood == null ? new FoodProperties.Builder().build() : vampireFood;
+        FoodProperties defaultFood = IItemExtension.super.getFoodProperties(stack, entity);
+
+        // Do NOT "simplify" the line in this warning, it would just break everything.
+        if (entity != null && defaultFood != null && (VDConfiguration.OVERRIDE_FOOD_PROPERTIES_FOR_FACTIONS.get() || (Item) (Object) this instanceof FactionalConsumableItem)) {
+            if (VDHelper.isVampire(entity) && getVampireFoodProperties(stack, entity) != null) {
+                return getVampireFoodProperties(stack, entity);
             }
 
             if (VDHelper.isHunter(entity) && getHunterFoodProperties(stack, entity) != null) {
@@ -56,6 +57,6 @@ public abstract class MixinItem implements IItemExtension, IFactionalFoodItem {
             }
         }
 
-        return IItemExtension.super.getFoodProperties(stack, entity);
+        return defaultFood;
     }
 }
