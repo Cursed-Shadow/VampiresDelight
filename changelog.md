@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.8b
+## 0.1.9
 
 ### Additions
 - Non-human food values in the food are now also stored in data components as well, and they can be modified using data packs or commands. However, it may cause various bugs. If you find any please report them. These new components are:
