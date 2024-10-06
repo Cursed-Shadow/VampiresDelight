@@ -285,7 +285,7 @@
   "vampiresdelight.configuration.replaceWeirdJellySunscreenWithJumpBoost": "Замінити ефект чудернацького желе з захисту від сонця на стрибучість",
   "vampiresdelight.configuration.replaceWeirdJellySunscreenWithJumpBoost.tooltip": "Чи слід замінити ефект чудернацького желе з захисту від сонця на стрибучість?",
   "vampiresdelight.configuration.batMeatWithersHumans": "М'ясо кажана висушує людей",
-  "vampiresdelight.configuration.batMeatWithersHumans.tooltip": "Чи повинно м'ясо кажана та їжа з нього мати шанс викликати ефект висушування при вживанні людьми?",
+  "vampiresdelight.configuration.batMeatWithersHumans.tooltip": "Чи повинно м'ясо кажана та їжа з нього мати шанс викликати ефект висушування при вживанні людьми? Інакше ефект висушування замінюється на отруєння.",
   "vampiresdelight.configuration.blessingHelpsAgainstGhosts": "Благословення допомагає проти привидів",
   "vampiresdelight.configuration.blessingHelpsAgainstGhosts.tooltip": "Чи слід благословенню виганяти примар так само, як фантомів?",
   "vampiresdelight.configuration.armorDissolvesFully": "Слабка броня розчиняється повністю",

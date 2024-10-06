@@ -285,7 +285,7 @@
   "vampiresdelight.configuration.replaceWeirdJellySunscreenWithJumpBoost": "Эффект странного желе заменён с защиты от солнца на прыгучесть",
   "vampiresdelight.configuration.replaceWeirdJellySunscreenWithJumpBoost.tooltip": "Должен ли эффект странного желе быть заменён с защиты от солнца на прыгучесть?",
   "vampiresdelight.configuration.batMeatWithersHumans": "Мясо летучих мышей иссушает людей",
-  "vampiresdelight.configuration.batMeatWithersHumans.tooltip": "Должно ли мясо летучих мышей и еда, приготовленная из него, иметь шанс наложить эффект иссушения, если его съест человек?",
+  "vampiresdelight.configuration.batMeatWithersHumans.tooltip": "Должно ли мясо летучих мышей и еда, приготовленная из него, иметь шанс наложить эффект иссушения, если его съест человек? Иначе иссушение будет заменено на отравление.",
   "vampiresdelight.configuration.blessingHelpsAgainstGhosts": "Благословение помогает против призраков",
   "vampiresdelight.configuration.blessingHelpsAgainstGhosts.tooltip": "Должен ли эффект благословения изгонять призраков так же, как фантомов?",
   "vampiresdelight.configuration.armorDissolvesFully": "Слабая броня полностью растворяется",

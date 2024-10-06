@@ -107,7 +107,7 @@ public class VDConfiguration {
                 .comment("Should the Weird Jelly Sunscreen effect be replaced with Jump Boost?")
                 .define("replaceWeirdJellySunscreenWithJumpBoost", false);
         BAT_MEAT_WITHERS_HUMANS = COMMON_BUILDER
-                .comment("Should the bat meat and food made of it have chance of giving Wither effect when eaten by humans?")
+                .comment("Should the bat meat and food made of it have chance of giving Wither effect when eaten by humans? Otherwise, it would poison the player and not wither.")
                 .define("batMeatWithersHumans", true);
         BLESSING_HELPS_AGAINST_GHOSTS = COMMON_BUILDER
                 .comment("Should the blessing effect banish ghosts just like phantoms?")

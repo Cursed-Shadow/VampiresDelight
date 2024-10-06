@@ -98,57 +98,33 @@ public class VDFoodValues {
             .effect(() -> new MobEffectInstance(MobEffects.HUNGER, BRIEF_DURATION), 0.3F).build();
     
     public static final FoodProperties HEART_PIECES = new FoodProperties.Builder()
-            .nutrition(10).saturationModifier(0.8f)    .fast().build();
+            .nutrition(10).saturationModifier(0.8f).fast().build();
     
     public static final FoodProperties HUMAN_EYE = new FoodProperties.Builder()
-            .nutrition(2).saturationModifier(0.1f)    .build();
+            .nutrition(2).saturationModifier(0.1f).build();
     
     public static final FoodProperties RAW_BAT = new FoodProperties.Builder()
             .nutrition(2).saturationModifier(0.3f)    
-            .effect(() -> {
-                if (VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get()) {
-                    return new MobEffectInstance(MobEffects.WITHER, FLEETING_DURATION);
-                } else {
-                    return null;
-                }
-            }, 0.4F).build();
+            .effect(() -> new MobEffectInstance(VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get() ? MobEffects.WITHER : MobEffects.POISON, FLEETING_DURATION), 0.4F).build();
     
     public static final FoodProperties RAW_BAT_CHOPS = new FoodProperties.Builder()
-            .nutrition(1).saturationModifier(0.3f)    .fast()
-            .effect(() -> {
-                if (VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get()) {
-                    return new MobEffectInstance(MobEffects.WITHER, FLEETING_DURATION);
-                } else {
-                    return null;
-                }
-            }, 0.2F).build();
+            .nutrition(1).saturationModifier(0.3f).fast()
+            .effect(() -> new MobEffectInstance(VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get() ? MobEffects.WITHER : MobEffects.POISON, FLEETING_DURATION), 0.2F).build();
     
     public static final FoodProperties GRILLED_BAT_HUMAN = new FoodProperties.Builder()
             .nutrition(6).saturationModifier(0.5f)    
-            .effect(() -> {
-                if (VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get()) {
-                    return new MobEffectInstance(MobEffects.WITHER, FLEETING_DURATION);
-                } else {
-                    return null;
-                }
-            }, 0.2F).build();
+            .effect(() -> new MobEffectInstance(VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get() ? MobEffects.WITHER : MobEffects.POISON, FLEETING_DURATION), 0.2F).build();
     
     public static final FoodProperties GRILLED_BAT_VAMPIRE = new FoodProperties.Builder()
-            .nutrition(6).saturationModifier(0.5f)    .build();
+            .nutrition(6).saturationModifier(0.5f).build();
     
     public static final FoodProperties GRILLED_BAT_CHOPS_HUMAN = new FoodProperties.Builder()
-            .nutrition(3).saturationModifier(0.2f)    .fast()
+            .nutrition(3).saturationModifier(0.2f).fast()
             .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 400), 0.1F)
-            .effect(() -> {
-                if (VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get()) {
-                    return new MobEffectInstance(MobEffects.WITHER, FLEETING_DURATION);
-                } else {
-                    return null;
-                }
-            }, 0.1F).build();
+            .effect(() -> new MobEffectInstance(VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get() ? MobEffects.WITHER : MobEffects.POISON, FLEETING_DURATION), 0.1F).build();
     
     public static final FoodProperties GRILLED_BAT_CHOPS_VAMPIRE = new FoodProperties.Builder()
-            .nutrition(3).saturationModifier(0.2f)    .fast().build();
+            .nutrition(3).saturationModifier(0.2f).fast().build();
     
 
     // Sweets and desserts
@@ -227,13 +203,7 @@ public class VDFoodValues {
     
     public static final FoodProperties BAT_TACO_HUMAN = new FoodProperties.Builder()
             .nutrition(8).saturationModifier(0.5f)
-            .effect(() -> {
-                if (VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get()) {
-                    return new MobEffectInstance(MobEffects.WITHER, FLEETING_DURATION);
-                } else {
-                    return null;
-                }
-            }, 0.2F).build();
+            .effect(() -> new MobEffectInstance(VDConfiguration.BAT_MEAT_WITHERS_HUMANS.get() ? MobEffects.WITHER : MobEffects.POISON, FLEETING_DURATION), 0.2F).build();
     
     public static final FoodProperties HARDTACK_HUMAN = new VDFoodPropertiesBuilder()
             .nutrition(6).saturationModifier(0.9f).eatSeconds(2.4f).build();
