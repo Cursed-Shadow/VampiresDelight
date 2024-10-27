@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10
+
+### Additions
+- Added a new building to hunter outposts - a canteen/kitchen that sometimes spawns at hunter outposts instead of stables;
+- **Rice** and **Cabbage** are now also generated in chests of tents and towers at hunter outposts;
+
 ## 0.1.9c
 
 ### Fixes

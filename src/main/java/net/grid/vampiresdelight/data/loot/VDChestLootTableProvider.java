@@ -51,6 +51,23 @@ public class VDChestLootTableProvider implements LootTableSubProvider {
                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(5))
                 )
         );
+        consumer.accept(VDLootTables.CHEST_COOKING_SPOT, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(10, 24))
+                        .add(LootItem.lootTableItem(Items.BREAD).setWeight(15))
+                        .add(LootItem.lootTableItem(Items.CARROT).setWeight(10))
+                        .add(LootItem.lootTableItem(Items.POTATO).setWeight(15))
+                        .add(LootItem.lootTableItem(Items.BEETROOT).setWeight(10))
+                        .add(LootItem.lootTableItem(ModItems.CABBAGE.get()).setWeight(10))
+                        .add(LootItem.lootTableItem(ModItems.RICE.get()).setWeight(10))
+                        .add(LootItem.lootTableItem(ModBlocks.GARLIC.asItem()).setWeight(15))
+                        .add(LootItem.lootTableItem(Items.CHARCOAL).setWeight(15))
+                )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.IRON_KNIFE.get()).setWeight(5)
+                                .apply(EnchantWithLevelsFunction.enchantWithLevels(provider, UniformGenerator.between(10.0F, 35.0F))))
+                        .add(EmptyLootItem.emptyItem().setWeight(5))
+                )
+        );
     }
 
     public void lootModifiers(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
@@ -79,15 +96,17 @@ public class VDChestLootTableProvider implements LootTableSubProvider {
                 .withPool(vampiresBiteBookLoot(1, 4))
         );
         consumer.accept(VDLootTables.VD_CHEST_HUNTER_OUTPOST_TENT, LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 8))
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 10))
                         .add(LootItem.lootTableItem(VDItems.HARDTACK.get()).setWeight(5))
-                        .add(EmptyLootItem.emptyItem().setWeight(4))
+                        .add(LootItem.lootTableItem(ModItems.CABBAGE.get()).setWeight(5))
+                        .add(LootItem.lootTableItem(ModItems.RICE.get()).setWeight(5))
                 )
         );
         consumer.accept(VDLootTables.VD_CHEST_HUNTER_OUTPOST_TOWER_FOOD, LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 8))
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 10))
                         .add(LootItem.lootTableItem(VDItems.HARDTACK.get()).setWeight(5))
-                        .add(EmptyLootItem.emptyItem().setWeight(4))
+                        .add(LootItem.lootTableItem(ModItems.CABBAGE.get()).setWeight(5))
+                        .add(LootItem.lootTableItem(ModItems.RICE.get()).setWeight(5))
                 )
         );
         consumer.accept(VDLootTables.VD_CHEST_HUNTER_OUTPOST_TOWER_SPECIAL, LootTable.lootTable()

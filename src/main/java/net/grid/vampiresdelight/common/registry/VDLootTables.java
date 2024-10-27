@@ -15,6 +15,7 @@ public class VDLootTables {
     private static final Set<ResourceKey<LootTable>> LOOT_TABLES = Sets.newHashSet();
 
     public static final ResourceKey<LootTable> CHEST_LOST_CARRIAGE = register("chests/lost_carriage");
+    public static final ResourceKey<LootTable> CHEST_COOKING_SPOT = register("chests/cooking_spot");
 
     public static final ResourceKey<LootTable> VD_CHEST_VAMPIRE_DUNGEON = register("chests/vd_vampire_dungeon");
     public static final ResourceKey<LootTable> VD_CHEST_VAMPIRE_HUT = register("chests/vd_vampire_hut");
