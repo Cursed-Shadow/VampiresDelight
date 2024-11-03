@@ -56,6 +56,7 @@
 
   "item.vampiresdelight.silver_knife": "Silver Knife",
   "item.vampiresdelight.alchemical_cocktail": "Alchemical Cocktail",
+  "item.vampiresdelight.weathered_letter": "Weathered Letter",
 
   "item.vampiresdelight.sugared_berries": "Sugared Berries",
   "item.vampiresdelight.dandelion_beer_bottle": "Dandelion Beer Bottle",
@@ -233,6 +234,10 @@
   "vampiresdelight.subtitles.entity.alchemical_cocktail.throw": "Alchemical Cocktail thrown",
 
   "stat.vampiresdelight.disgusting_food_consumed": "Disgusting Food Consumed",
+
+  "weathered_letter.vampiresdelight.dear_marcus": "Breakthrough in blood infusions",
+  "weathered_letter.vampiresdelight.dear_marcus.author": "by Ostap H.",
+  "weathered_letter.vampiresdelight.dear_marcus.text": "Dear Marcus G.,\n\nI am writing to you to inform you of our latest discoveries we made while during your absence. It does appear, even thou we feared the contrary, that the infusion of lightly refined vampire blood made in a right way does indeed yield favorable results.\nUnfortunately, despite our carefulness, one of our volunteers did, regrettably, become sensitive to Sanguinare. Yet, be thou assured, we did inject garlic into him again, thus reversing the disease. Praise God, no one has been either injured or infected as of yet, I hope it stays that way.\nHowever, there is some good news: just as we were considering asking your permission to stop the experiments, two men exhibited rather significant boons after the injection. One has gained markedly improved sight in the dark, while the other one now possesses the ability to breathe beneath the waters. We know not yet if these changes are permanent or transient, but I believe they are promising. Your theory has proven to have a piece of truth, Grid. With further refinement of our formula, we may yet behold advances of great significance.\n\nYours sincerely,\nOstap H.",
 
   "vampiresdelight.jei.pouring": "Pouring",
   "vampiresdelight.jei.spilling_blood": "Spilling Blood",

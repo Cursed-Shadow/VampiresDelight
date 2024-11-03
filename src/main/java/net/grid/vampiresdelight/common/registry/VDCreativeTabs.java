@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.common.registry;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.item.WeatheredLetterItem;
 import net.grid.vampiresdelight.common.utility.VDIntegrationUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -70,6 +71,7 @@ public class VDCreativeTabs {
                         // Tools
                         add(VDItems.SILVER_KNIFE.get(), VDIntegrationUtils.WEREWOLVES, output);
                         add(VDItems.ALCHEMICAL_COCKTAIL.get(), output);
+                        //WeatheredLetterItem.generateCreativeTab(output);
 
                         // Farming
                         add(VDItems.BLACK_MUSHROOM_BLOCK.get(), output);

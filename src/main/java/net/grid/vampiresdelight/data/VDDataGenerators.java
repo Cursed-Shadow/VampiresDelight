@@ -43,7 +43,7 @@ public class VDDataGenerators {
                 .add(Registries.CONFIGURED_FEATURE, VDConfiguredFeatures::createConfiguredFeatures)
                 .add(Registries.PLACED_FEATURE, VDPlacedFeatures::createPlacedFeatures)
                 .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, VDBiomeModifiers::createBiomeModifiers)
-                .add(Registries.ENCHANTMENT, VDEnchantments::createEnchantments);
+                .add(Registries.ENCHANTMENT, VDEnchantments::bootstrap);
 
         VDBlockTagProvider blockTags = new VDBlockTagProvider(output, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTags);

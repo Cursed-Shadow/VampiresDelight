@@ -157,6 +157,9 @@ public class VDItems {
     public static final DeferredItem<AlchemicalCocktailItem> ALCHEMICAL_COCKTAIL = ITEMS.register("alchemical_cocktail",
             () -> new AlchemicalCocktailItem(basicItem()));
 
+    public static final DeferredItem<WeatheredLetterItem> WEATHERED_LETTER = ITEMS.register("weathered_letter",
+            () -> new WeatheredLetterItem(basicItem().rarity(Rarity.UNCOMMON).stacksTo(1)));
+
     // Farming
     public static final DeferredItem<BlockItem> BLACK_MUSHROOM_BLOCK = ITEMS.register("black_mushroom_block",
             () -> new BlockItem(VDBlocks.BLACK_MUSHROOM_BLOCK.get(), basicItem()));

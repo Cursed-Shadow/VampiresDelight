@@ -1,4 +1,4 @@
-package net.grid.vampiresdelight.common.enchantment;
+package net.grid.vampiresdelight.common.event;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.VDConfiguration;
@@ -20,7 +20,24 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class VampireBiteEnchantment {
+@EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
+public class VampireBiteEventHandler {
+    @SubscribeEvent
+    public static void onVampireBite(LivingIncomingDamageEvent event) {
+        if (event.getSource().getEntity() instanceof LivingEntity attacker) {
+            Level level = attacker.level();
+            if (level instanceof ServerLevel) {
+                ItemStack weapon = attacker.getWeaponItem();
+                Holder<Enchantment> vampireBite = attacker.level().registryAccess().holderOrThrow(VDEnchantments.VAMPIRE_BITE);
+                int enchantmentLevel = weapon.getEnchantmentLevel(vampireBite);
+
+                if (!attacker.getCommandSenderWorld().isClientSide && enchantmentLevel != 0) { // 0 = not enchanted with Vampire Bite
+                    healFromDamage(attacker, enchantmentLevel, event.getAmount());
+                }
+            }
+        }
+    }
+
     public static void healFromDamage(LivingEntity user, int level, float damage) {
         RandomSource randomSource = user.getRandom();
         int chance = switch (level) {
@@ -35,25 +52,6 @@ public class VampireBiteEnchantment {
 
             if (!user.getCommandSenderWorld().isClientSide) {
                 player.heal(Math.min(healAmount, maxHealingValue));
-            }
-        }
-    }
-
-    @EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
-    public static class VampireBiteEvent {
-        @SubscribeEvent
-        public static void onVampireBite(LivingIncomingDamageEvent event) {
-            if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-                Level level = attacker.level();
-                if (level instanceof ServerLevel) {
-                    ItemStack weapon = attacker.getWeaponItem();
-                    Holder<Enchantment> vampireBite = attacker.level().registryAccess().holderOrThrow(VDEnchantments.VAMPIRE_BITE);
-                    int enchantmentLevel = weapon.getEnchantmentLevel(vampireBite);
-
-                    if (!attacker.getCommandSenderWorld().isClientSide && enchantmentLevel != 0) { // 0 = not enchanted with Vampire Bite
-                        healFromDamage(attacker, enchantmentLevel, event.getAmount());
-                    }
-                }
             }
         }
     }
