@@ -21,7 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 @EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
-public class VampireBiteEventHandler {
+public class EnchantmentEventHandler {
     @SubscribeEvent
     public static void onVampireBite(LivingIncomingDamageEvent event) {
         if (event.getSource().getEntity() instanceof LivingEntity attacker) {

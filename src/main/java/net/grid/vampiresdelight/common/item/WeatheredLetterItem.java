@@ -25,7 +25,7 @@ public class WeatheredLetterItem extends Item {
 
     public static ResourceLocation[] ALL_LETTERS = new ResourceLocation[] {
             ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "dear_marcus"),
-            ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "martha")
+            ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "borscht_recipe")
     };
 
     public WeatheredLetterItem(Properties properties) {
