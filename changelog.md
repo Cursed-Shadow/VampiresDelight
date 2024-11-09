@@ -6,6 +6,16 @@
 - Added a new building to hunter outposts - a canteen/kitchen that sometimes spawns at hunter outposts instead of stables;
 - **Rice** and **Cabbage** are now also generated in chests of tents and towers at hunter outposts;
 
+### Updates
+- Updated textures:
+  - **Blood Wine Bottle**;
+  - **Dandelion Beer Bottle**;
+  - **Blood Syrup**;
+  - **Blood Hot Dog**;
+
+### Fixes
+- Placing this mod's cabinets no longer crashes the game;
+
 ## 0.1.9c
 
 ### Fixes

@@ -17,8 +17,7 @@
     "MixinPowderSnowBlock",
     "MixinRichSoilFarmlandBlock",
     "MixinSetOilFunction",
-    "accessor.StructurePieceAccessor",
-    "accessor.VampirismItemBloodFoodItemAccessor"
+    "accessor.StructurePieceAccessor"
   ],
   "client": [
   ],

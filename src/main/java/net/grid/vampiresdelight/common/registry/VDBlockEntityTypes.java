@@ -5,16 +5,21 @@ import net.grid.vampiresdelight.common.block.entity.DarkStoneStoveBlockEntity;
 import net.grid.vampiresdelight.common.block.entity.WineShelfBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes;
 
 import java.util.function.Supplier;
 
+@EventBusSubscriber(modid = VampiresDelight.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class VDBlockEntityTypes {
-    public static final DeferredRegister<BlockEntityType<?>> TILES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, VampiresDelight.MODID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, VampiresDelight.MODID);
 
-    public static final Supplier<BlockEntityType<DarkStoneStoveBlockEntity>> DARK_STONE_STOVE = TILES.register("dark_stone_stove",
+    public static final Supplier<BlockEntityType<DarkStoneStoveBlockEntity>> DARK_STONE_STOVE = BLOCK_ENTITIES.register("dark_stone_stove",
             () -> BlockEntityType.Builder.of(DarkStoneStoveBlockEntity::new, VDBlocks.DARK_STONE_STOVE.get()).build(null));
-    public static final Supplier<BlockEntityType<WineShelfBlockEntity>> WINE_SHELF = TILES.register("wine_shelf",
+    public static final Supplier<BlockEntityType<WineShelfBlockEntity>> WINE_SHELF = BLOCK_ENTITIES.register("wine_shelf",
             () -> BlockEntityType.Builder.of(WineShelfBlockEntity::new,
                             VDBlocks.OAK_WINE_SHELF.get(),
                             VDBlocks.SPRUCE_WINE_SHELF.get(),
@@ -32,4 +37,14 @@ public class VDBlockEntityTypes {
                             VDBlocks.JACARANDA_WINE_SHELF.get(),
                             VDBlocks.MAGIC_WINE_SHELF.get())
                     .build(null));
+
+    @SubscribeEvent
+    public static void addCabinetsBlockEntities(BlockEntityTypeAddBlocksEvent event) {
+        event.modify(ModBlockEntityTypes.CABINET.get(),
+                VDBlocks.CURSED_SPRUCE_CABINET.get(),
+                VDBlocks.DARK_SPRUCE_CABINET.get(),
+                VDBlocks.JACARANDA_CABINET.get(),
+                VDBlocks.MAGIC_CABINET.get()
+        );
+    }
 }
