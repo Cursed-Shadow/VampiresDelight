@@ -87,12 +87,12 @@ public class WeatheredLetterScreen extends Screen {
         guiLeft = (this.width - this.xSize) / 2;
         guiTop = (this.height - this.ySize) / 2;
 
-        this.addRenderableWidget(buttonNext = new PageButton(guiLeft + xSize * 4 / 6, guiTop + ySize * 8 / 9, true, (btn) -> {
+        this.addRenderableWidget(buttonNext = new LetterButton(guiLeft + xSize * 4 / 6, guiTop + ySize * 8 / 9, true, (btn) -> {
             if (pageNumber + 1 < content.size()) {
                 nextPage();
             }
         }, true));
-        this.addRenderableWidget(buttonPrev = new PageButton(guiLeft + xSize / 5, guiTop + ySize * 8 / 9, false, (btn) -> {
+        this.addRenderableWidget(buttonPrev = new LetterButton(guiLeft + xSize / 5, guiTop + ySize * 8 / 9, false, (btn) -> {
             if (pageNumber > 0) {
                 prevPage();
             }
