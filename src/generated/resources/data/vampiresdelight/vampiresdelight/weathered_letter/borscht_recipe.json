@@ -1,5 +1,3 @@
 {
-  "background_texture": "vampiresdelight:item/weathered_letter",
-  "id": "vampiresdelight:borscht_recipe",
-  "item_model": "vampiresdelight:textures/gui/weathered_letter.png"
+  "id": "vampiresdelight:borscht_recipe"
 }

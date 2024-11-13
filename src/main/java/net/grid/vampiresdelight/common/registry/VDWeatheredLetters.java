@@ -10,9 +10,9 @@ public class VDWeatheredLetters {
     public static final ResourceKey<WeatheredLetter> DEAR_MARCUS = createKey("dear_marcus");
     public static final ResourceKey<WeatheredLetter> BORSCHT_RECIPE = createKey("borscht_recipe");
 
-    public static final ResourceLocation DEFAULT_ITEM_MODEL = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "textures/gui/weathered_letter.png");
+    public static final ResourceLocation DEFAULT_ITEM_MODEL = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "item/weathered_letter");
 
-    public static final ResourceLocation DEFAULT_BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "item/weathered_letter");
+    public static final ResourceLocation DEFAULT_BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "textures/gui/weathered_letter.png");
 
     public static void createWeatheredLetters(BootstrapContext<WeatheredLetter> context) {
         register(context, DEAR_MARCUS);

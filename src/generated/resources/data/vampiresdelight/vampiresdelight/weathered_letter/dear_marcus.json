@@ -1,5 +1,3 @@
 {
-  "background_texture": "vampiresdelight:item/weathered_letter",
-  "id": "vampiresdelight:dear_marcus",
-  "item_model": "vampiresdelight:textures/gui/weathered_letter.png"
+  "id": "vampiresdelight:dear_marcus"
 }

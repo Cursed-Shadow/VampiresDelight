@@ -12,13 +12,14 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
+// itemModel will be usable after Minecraft updates. They added a data component which allows changing the model of an item. For now, it just exists
 public record WeatheredLetter(ResourceLocation id, ResourceLocation itemModel, ResourceLocation backgroundTexture) {
-    private static final WeatheredLetter EMPTY = new WeatheredLetter(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "unknown_id"), VDWeatheredLetters.DEFAULT_ITEM_MODEL, VDWeatheredLetters.DEFAULT_BACKGROUND_TEXTURE);
+    private static final WeatheredLetter DEFAULT = new WeatheredLetter(ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "unknown_id"), VDWeatheredLetters.DEFAULT_ITEM_MODEL, VDWeatheredLetters.DEFAULT_BACKGROUND_TEXTURE);
 
     public static final Codec<WeatheredLetter> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                     ResourceLocation.CODEC.fieldOf("id").forGetter(WeatheredLetter::id),
-                    ResourceLocation.CODEC.fieldOf("item_model").forGetter(WeatheredLetter::itemModel),
-                    ResourceLocation.CODEC.fieldOf("background_texture").forGetter(WeatheredLetter::backgroundTexture)
+                    ResourceLocation.CODEC.optionalFieldOf("item_model", VDWeatheredLetters.DEFAULT_ITEM_MODEL).forGetter(WeatheredLetter::itemModel),
+                    ResourceLocation.CODEC.optionalFieldOf("background_texture", VDWeatheredLetters.DEFAULT_BACKGROUND_TEXTURE).forGetter(WeatheredLetter::backgroundTexture)
             ).apply(instance, WeatheredLetter::new)
     );
 
@@ -34,7 +35,7 @@ public record WeatheredLetter(ResourceLocation id, ResourceLocation itemModel, R
     }
 
     public static WeatheredLetter get(ItemStack stack) {
-        return stack.getOrDefault(VDDataComponents.WEATHERED_LETTER.get(), EMPTY);
+        return stack.getOrDefault(VDDataComponents.WEATHERED_LETTER.get(), DEFAULT);
     }
 
     public MutableComponent name() {

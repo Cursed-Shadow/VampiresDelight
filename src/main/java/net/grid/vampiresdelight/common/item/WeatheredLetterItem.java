@@ -23,7 +23,6 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 public class WeatheredLetterItem extends Item {
-
     public WeatheredLetterItem(Properties properties) {
         super(properties);
     }

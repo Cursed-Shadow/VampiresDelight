@@ -1,6 +1,5 @@
 package net.grid.vampiresdelight.client.gui;
 
-import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.item.component.WeatheredLetter;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
@@ -11,7 +10,6 @@ import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +25,6 @@ import java.util.Objects;
 @ParametersAreNullableByDefault
 public class WeatheredLetterScreen extends Screen {
 
-    private final static ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "textures/gui/weathered_letter.png");
     private final int xSize = 186;
     private final int ySize = 186;
     private final int textXSize = 130;
@@ -78,7 +75,7 @@ public class WeatheredLetterScreen extends Screen {
     public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         if (guiGraphics == null) return;
         super.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
-        guiGraphics.blit(BACKGROUND_TEXTURE, guiLeft, guiTop, 0, 0, xSize, ySize);
+        guiGraphics.blit(letter.backgroundTexture(), guiLeft, guiTop, 0, 0, xSize, ySize);
     }
 
     @Override
