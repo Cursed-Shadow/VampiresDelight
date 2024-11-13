@@ -2,6 +2,7 @@ package net.grid.vampiresdelight.common.registry;
 
 import com.mojang.serialization.Codec;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.item.component.WeatheredLetter;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
@@ -13,8 +14,8 @@ import vectorwing.farmersdelight.common.item.component.ItemStackWrapper;
 public class VDDataComponents {
     public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister.createDataComponents(VampiresDelight.MODID);
 
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<ResourceLocation>> WEATHERED_LETTER = DATA_COMPONENTS.registerComponentType(
-            "weathered_letter", (builder) -> builder.persistent(ResourceLocation.CODEC).networkSynchronized(ResourceLocation.STREAM_CODEC).cacheEncoding());
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<WeatheredLetter>> WEATHERED_LETTER = DATA_COMPONENTS.registerComponentType(
+            "weathered_letter", (builder) -> builder.persistent(WeatheredLetter.CODEC).networkSynchronized(WeatheredLetter.STREAM_CODEC).cacheEncoding());
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<FoodProperties>> VAMPIRE_FOOD = DATA_COMPONENTS.registerComponentType(
             "vampire_food", (builder) -> builder.persistent(FoodProperties.DIRECT_CODEC).networkSynchronized(FoodProperties.DIRECT_STREAM_CODEC).cacheEncoding());

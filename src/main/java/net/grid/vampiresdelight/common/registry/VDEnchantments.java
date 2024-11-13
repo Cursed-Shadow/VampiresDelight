@@ -14,7 +14,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 public class VDEnchantments {
     public static final ResourceKey<Enchantment> VAMPIRE_BITE = ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "vampire_bite"));
 
-    public static void bootstrap(BootstrapContext<Enchantment> context) {
+    public static void createEnchantments(BootstrapContext<Enchantment> context) {
         HolderGetter<Item> items = context.lookup(Registries.ITEM);
 
         context.register(VAMPIRE_BITE, new Enchantment.Builder(Enchantment.definition(

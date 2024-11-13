@@ -20,6 +20,6 @@ public class PacketDispatcherEvents {
 
     public static void registerPackets(PayloadRegistrar registrar) {
         registrar.playToClient(OpenWeatheredLetterPacket.TYPE, OpenWeatheredLetterPacket.CODEC, (message, context) -> context.enqueueWork(() ->
-                Minecraft.getInstance().setScreen(new WeatheredLetterScreen(message.letterId()))));
+                Minecraft.getInstance().setScreen(new WeatheredLetterScreen(message.letter()))));
     }
 }

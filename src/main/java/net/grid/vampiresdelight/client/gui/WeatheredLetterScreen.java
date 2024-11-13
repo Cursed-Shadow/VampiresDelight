@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.client.gui;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.item.component.WeatheredLetter;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -35,12 +36,12 @@ public class WeatheredLetterScreen extends Screen {
     private PageButton buttonNext;
     private PageButton buttonPrev;
     private int pageNumber;
-    private final ResourceLocation letterId;
+    private final WeatheredLetter letter;
     private List<FormattedText> content;
 
-    public WeatheredLetterScreen(ResourceLocation letterId) {
-        super(Component.translatable("weathered_letter." + Objects.requireNonNull(letterId).toLanguageKey()));
-        this.letterId = letterId;
+    public WeatheredLetterScreen(WeatheredLetter letter) {
+        super(Objects.requireNonNull(letter).name());
+        this.letter = letter;
     }
 
     @Override
@@ -98,7 +99,7 @@ public class WeatheredLetterScreen extends Screen {
             }
         }, true));
 
-        content = prepareForLongText(Component.translatable("weathered_letter." + letterId.toLanguageKey() + ".text"), textXSize, textYSize);
+        content = prepareForLongText(letter.text(), textXSize, textYSize);
     }
 
     @Override

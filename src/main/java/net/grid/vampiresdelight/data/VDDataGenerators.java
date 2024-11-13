@@ -2,6 +2,8 @@ package net.grid.vampiresdelight.data;
 
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDEnchantments;
+import net.grid.vampiresdelight.common.registry.VDRegistries;
+import net.grid.vampiresdelight.common.registry.VDWeatheredLetters;
 import net.grid.vampiresdelight.common.world.VDBiomeModifiers;
 import net.grid.vampiresdelight.common.world.VDConfiguredFeatures;
 import net.grid.vampiresdelight.common.world.VDPlacedFeatures;
@@ -43,7 +45,8 @@ public class VDDataGenerators {
                 .add(Registries.CONFIGURED_FEATURE, VDConfiguredFeatures::createConfiguredFeatures)
                 .add(Registries.PLACED_FEATURE, VDPlacedFeatures::createPlacedFeatures)
                 .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, VDBiomeModifiers::createBiomeModifiers)
-                .add(Registries.ENCHANTMENT, VDEnchantments::bootstrap);
+                .add(Registries.ENCHANTMENT, VDEnchantments::createEnchantments)
+                .add(VDRegistries.WEATHERED_LETTER, VDWeatheredLetters::createWeatheredLetters);
 
         VDBlockTagProvider blockTags = new VDBlockTagProvider(output, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTags);
