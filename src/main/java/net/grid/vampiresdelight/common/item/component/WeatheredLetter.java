@@ -4,13 +4,20 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.grid.vampiresdelight.VampiresDelight;
 import net.grid.vampiresdelight.common.registry.VDDataComponents;
+import net.grid.vampiresdelight.common.registry.VDRegistries;
 import net.grid.vampiresdelight.common.registry.VDWeatheredLetters;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
+
+import javax.annotation.Nullable;
 
 // itemModel will be usable after Minecraft updates. They added a data component which allows changing the model of an item. For now, it just exists
 public record WeatheredLetter(ResourceLocation id, ResourceLocation itemModel, ResourceLocation backgroundTexture) {
@@ -36,6 +43,16 @@ public record WeatheredLetter(ResourceLocation id, ResourceLocation itemModel, R
 
     public static WeatheredLetter get(ItemStack stack) {
         return stack.getOrDefault(VDDataComponents.WEATHERED_LETTER.get(), DEFAULT);
+    }
+
+    public static WeatheredLetter getRandomLetter(RegistryAccess registryAccess, @Nullable TagKey<WeatheredLetter> tag) {
+        Registry<WeatheredLetter> registry = registryAccess.registryOrThrow(VDRegistries.WEATHERED_LETTER);
+
+        if (tag == null) {
+            return registry.stream().findAny().orElse(DEFAULT);
+        }
+
+        return registry.getTag(tag).flatMap(taggedLetters -> taggedLetters.stream().findAny()).map(Holder::value).orElse(DEFAULT);
     }
 
     public MutableComponent name() {

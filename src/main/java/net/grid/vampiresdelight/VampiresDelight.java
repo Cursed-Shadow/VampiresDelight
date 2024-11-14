@@ -41,6 +41,7 @@ public class VampiresDelight {
         VDEntityTypes.ENTITIES.register(modEventBus);
         VDFeatures.FEATURES.register(modEventBus);
         VDBlockEntityTypes.BLOCK_ENTITIES.register(modEventBus);
+        VDLootFunctions.LOOT_FUNCTIONS.register(modEventBus);
         VDLootModifiers.LOOT_MODIFIERS.register(modEventBus);
         VDAdvancementTriggers.TRIGGERS.register(modEventBus);
         VDStats.CUSTOM_STATS.register(modEventBus);

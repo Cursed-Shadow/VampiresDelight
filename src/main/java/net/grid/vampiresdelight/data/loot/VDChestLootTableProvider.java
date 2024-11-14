@@ -1,9 +1,11 @@
 package net.grid.vampiresdelight.data.loot;
 
 import de.teamlapen.vampirism.core.ModBlocks;
+import net.grid.vampiresdelight.common.loot.function.SetLetterFunction;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDLootTables;
 import net.grid.vampiresdelight.common.registry.VDEnchantments;
+import net.grid.vampiresdelight.common.tag.VDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
@@ -67,6 +69,9 @@ public class VDChestLootTableProvider implements LootTableSubProvider {
                                 .apply(EnchantWithLevelsFunction.enchantWithLevels(provider, UniformGenerator.between(10.0F, 35.0F))))
                         .add(EmptyLootItem.emptyItem().setWeight(5))
                 )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(VDItems.WEATHERED_LETTER).setWeight(80).apply(SetLetterFunction.randomTagged(VDTags.HUNTER_RECIPES)))
+                        .add(EmptyLootItem.emptyItem().setWeight(20)))
         );
     }
 
@@ -114,6 +119,9 @@ public class VDChestLootTableProvider implements LootTableSubProvider {
                         .add(LootItem.lootTableItem(VDItems.ALCHEMICAL_COCKTAIL.get()).setWeight(5))
                         .add(EmptyLootItem.emptyItem().setWeight(4))
                 )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(VDItems.WEATHERED_LETTER).setWeight(60).apply(SetLetterFunction.randomTagged(VDTags.HUNTER_WRITINGS)))
+                        .add(EmptyLootItem.emptyItem().setWeight(40)))
         );
     }
 

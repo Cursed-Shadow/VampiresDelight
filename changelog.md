@@ -3,6 +3,7 @@
 ## 0.1.10
 
 ### Additions
+- New item added: **Weathered Letter**. They can sometimes be found in hunter outposts and can either be read or used to craft into paper or vampire books when combined;
 - Added a new building to hunter outposts - a canteen/kitchen that sometimes spawns at hunter outposts instead of stables;
 - **Rice** and **Cabbage** are now also generated in chests of tents and towers at hunter outposts;
 

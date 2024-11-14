@@ -58,6 +58,7 @@ public class VDDataGenerators {
         CompletableFuture<HolderLookup.Provider> builtinLookupProvider = datapackProvider.getRegistryProvider();
         generator.addProvider(event.includeServer(), datapackProvider);
         generator.addProvider(event.includeServer(), new VDEnchantmentTagProvider(output, builtinLookupProvider, helper));
+        generator.addProvider(event.includeServer(), new VDWeatheredLetterTagProvider(output, builtinLookupProvider, helper));
 
         generator.addProvider(event.includeServer(), new VDParticleDescriptionProvider(output, helper));
         generator.addProvider(event.includeServer(), new VDRecipeProvider(output, lookupProvider));

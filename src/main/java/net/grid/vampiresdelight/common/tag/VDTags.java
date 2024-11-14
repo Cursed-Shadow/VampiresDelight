@@ -1,6 +1,8 @@
 package net.grid.vampiresdelight.common.tag;
 
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.item.component.WeatheredLetter;
+import net.grid.vampiresdelight.common.registry.VDRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -58,8 +60,17 @@ public class VDTags {
     // Entities which are considered to be unholy spirits by blessing effect and vanished.
     public static final TagKey<EntityType<?>> UNHOLY_SPIRITS = modEntityTag("unholy_spirits");
 
-    // Human-like entities which are supposed to drop human eyes when killed with
+    // Human-like entities which are supposed to drop human eyes when killed with.
     public static final TagKey<EntityType<?>> DROP_HUMAN_EYE = modEntityTag("drops_human_eye");
+
+    // --Weathered Letters
+
+    // Letters which are generated in the chests of towers of hunter outposts.
+    public static final TagKey<WeatheredLetter> HUNTER_WRITINGS = modWeatheredLetterTag("hunter_writings");
+
+    // Letters which are generated in the chests cooking spots at hunter outposts.
+    public static final TagKey<WeatheredLetter> HUNTER_RECIPES = modWeatheredLetterTag("hunter_recipes");
+
 
 
 
@@ -77,5 +88,9 @@ public class VDTags {
 
     private static TagKey<EntityType<?>> modEntityTag(String path) {
         return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path));
+    }
+
+    private static TagKey<WeatheredLetter> modWeatheredLetterTag(String path) {
+        return TagKey.create(VDRegistries.WEATHERED_LETTER, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, path));
     }
 }

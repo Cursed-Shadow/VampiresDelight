@@ -19,6 +19,27 @@
         "max": 3.0,
         "min": 0.0
       }
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "vampiresdelight:set_letter",
+              "tag": "vampiresdelight:hunter_writings"
+            }
+          ],
+          "name": "vampiresdelight:weathered_letter",
+          "weight": 60
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 40
+        }
+      ],
+      "rolls": 1.0
     }
   ],
   "random_sequence": "vampiresdelight:chests/vd_hunter_outpost_tower_special"
