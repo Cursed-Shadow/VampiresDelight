@@ -3,6 +3,7 @@ package net.grid.vampiresdelight.data.recipe;
 import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModItems;
 import de.teamlapen.vampirism.core.ModTags;
+import net.grid.vampiresdelight.common.crafting.WeaveLettersRecipe;
 import net.grid.vampiresdelight.common.registry.*;
 import net.grid.vampiresdelight.common.tag.VDCommonTags;
 import net.grid.vampiresdelight.VampiresDelight;
@@ -37,6 +38,7 @@ public class VDCraftingRecipeProvider {
         recipesPouring(output);
         recipesFoodBlocks(output);
         recipesCraftedMeals(output);
+        SpecialRecipeBuilder.special(WeaveLettersRecipe::new).save(output, WeaveLettersRecipe.ID);
     }
 
     private static void recipesBlocks(RecipeOutput output) {
@@ -120,6 +122,11 @@ public class VDCraftingRecipeProvider {
     }
 
     private static void recipesMaterials(RecipeOutput output) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PAPER, 1)
+                .requires(VDItems.WEATHERED_LETTER)
+                .unlockedBy(hasItem(VDItems.WEATHERED_LETTER), has(VDItems.WEATHERED_LETTER))
+                .save(output, ResourceLocation.fromNamespaceAndPath(VampiresDelight.MODID, "paper_from_weathered_letter"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModBlocks.GARLIC.asItem(), 9)
                 .requires(VDItems.GARLIC_CRATE.get())
                 .unlockedBy(hasItem(VDItems.GARLIC_CRATE.get()), has(VDItems.GARLIC_CRATE.get()))
@@ -410,8 +417,8 @@ public class VDCraftingRecipeProvider {
         return InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(tag).build());
     }
 
-    private static String hasItem(Item item) {
-        return "has_" + itemName(item);
+    private static String hasItem(ItemLike itemLike) {
+        return "has_" + itemName(itemLike);
     }
 
     private static String hasBlock(Block block) {

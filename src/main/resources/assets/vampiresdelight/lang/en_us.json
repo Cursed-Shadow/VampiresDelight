@@ -235,6 +235,9 @@
 
   "stat.vampiresdelight.disgusting_food_consumed": "Disgusting Food Consumed",
 
+  "weathered_letter.vampiresdelight.unknown_id": "Weathered Letter",
+  "weathered_letter.vampiresdelight.unknown_id.author": "by Unknown",
+  "weathered_letter.vampiresdelight.unknown_id.text": "How did you get this? No, really, if you're in survival mode, please report that to the developer. This letter is broken, if you wonder.",
   "weathered_letter.vampiresdelight.dear_marcus": "Breakthrough in blood infusions",
   "weathered_letter.vampiresdelight.dear_marcus.author": "by Ostap H.",
   "weathered_letter.vampiresdelight.dear_marcus.text": "Dear Marcus G.,\n\nI am writing to you to inform you of the latest discoveries we made in your absence. It seems that, despite our fears to the contrary, that the infusion of properly made refined vampire blood does indeed give favorable results.\nUnfortunately, despite all our carefulness, one of our volunteers did, regrettably, become sensitive to Sanguinare. However, we injected him again with garlic which reversed the disease. Praise God, no one has been either injured or infected so far, and I hope it stays that way.\nHowever, there is some good news: just as we were considering asking your permission to stop the experiments, two men showed quite significant benefits after the injection. One has much improved vision in the dark, while the other now has the ability to breathe underwater. We do not yet know whether these changes are permanent or temporary, but I believe they are promising. Your theory has proven to have some truth to it, Grid. With further refinement of our formula, we may yet behold advances of great significance.\n\nYours sincerely,\nOstap H.",

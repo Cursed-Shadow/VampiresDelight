@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vampiresdelight:weathered_letter"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:paper"
+  }
+}

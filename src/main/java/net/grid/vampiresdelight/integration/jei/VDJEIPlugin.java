@@ -9,6 +9,7 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.grid.vampiresdelight.VampiresDelight;
+import net.grid.vampiresdelight.common.crafting.WeaveLettersRecipe;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.utility.VDTextUtils;
 import net.grid.vampiresdelight.integration.jei.category.VDJEIPouringRecipeCategory;
@@ -16,12 +17,14 @@ import net.grid.vampiresdelight.integration.jei.category.VDJEISpillingBloodRecip
 import net.grid.vampiresdelight.integration.jei.resource.VDJEIPouringRecipe;
 import net.grid.vampiresdelight.integration.jei.resource.VDJEISpillingBloodRecipe;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.*;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
@@ -54,6 +57,8 @@ public class VDJEIPlugin implements IModPlugin {
                 new VDJEISpillingBloodRecipe(new ItemStack(ModItems.RICH_SOIL_FARMLAND.get()), new ItemStack(VDItems.BLOODY_SOIL_FARMLAND.get()))
         };
         registration.addRecipes(VDJEIRecipeTypes.SPILLING_BLOOD, new ArrayList<>(Arrays.asList(spillingBloodRecipes)));
+
+        registration.addRecipes(RecipeTypes.CRAFTING, List.of(new RecipeHolder<>(WeaveLettersRecipe.ID, new ShapelessRecipe("", CraftingBookCategory.MISC, de.teamlapen.vampirism.core.ModItems.VAMPIRE_BOOK.toStack(), NonNullList.of(Ingredient.EMPTY, Ingredient.of(VDItems.WEATHERED_LETTER), Ingredient.of(VDItems.WEATHERED_LETTER), Ingredient.of(VDItems.WEATHERED_LETTER))))));
 
         registerSingleIngredientInfo(VDItems.HUMAN_EYE.get(), registration);
         registerSingleIngredientInfo(VDItems.BLACK_MUSHROOM.get(), registration);

@@ -17,6 +17,9 @@
 ### Fixes
 - Placing this mod's cabinets no longer crashes the game;
 
+### Translations
+- Added new lines for weathered letters;
+
 ## 0.1.9c
 
 ### Fixes

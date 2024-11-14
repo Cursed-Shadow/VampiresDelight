@@ -33,6 +33,7 @@ public class VampiresDelight {
         VDItems.ITEMS.register(modEventBus);
         VDDataComponents.DATA_COMPONENTS.register(modEventBus);
         VDPotions.POTIONS.register(modEventBus);
+        VDRecipes.RECIPE_SERIALIZERS.register(modEventBus);
         VDOils.OILS.register(modEventBus);
         VDBlocks.BLOCKS.register(modEventBus);
         VDCreativeTabs.CREATIVE_TABS.register(modEventBus);
