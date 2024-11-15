@@ -1,6 +1,7 @@
 package net.grid.vampiresdelight.data.loot;
 
 import de.teamlapen.vampirism.core.ModBlocks;
+import net.grid.vampiresdelight.common.item.component.WeatheredLetter;
 import net.grid.vampiresdelight.common.loot.function.SetLetterFunction;
 import net.grid.vampiresdelight.common.registry.VDItems;
 import net.grid.vampiresdelight.common.registry.VDLootTables;
@@ -10,6 +11,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -25,6 +27,7 @@ import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.function.BiConsumer;
 
+// TODO: Increase the chances of generating weathered letter later when more letters are added.
 public class VDChestLootTableProvider implements LootTableSubProvider {
     private final HolderLookup.Provider provider;
 
@@ -69,9 +72,7 @@ public class VDChestLootTableProvider implements LootTableSubProvider {
                                 .apply(EnchantWithLevelsFunction.enchantWithLevels(provider, UniformGenerator.between(10.0F, 35.0F))))
                         .add(EmptyLootItem.emptyItem().setWeight(5))
                 )
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(VDItems.WEATHERED_LETTER).setWeight(80).apply(SetLetterFunction.randomTagged(VDTags.HUNTER_RECIPES)))
-                        .add(EmptyLootItem.emptyItem().setWeight(20)))
+                .withPool(weatheredLetterLoot(VDTags.HUNTER_RECIPES, 40, 60))
         );
     }
 
@@ -119,9 +120,7 @@ public class VDChestLootTableProvider implements LootTableSubProvider {
                         .add(LootItem.lootTableItem(VDItems.ALCHEMICAL_COCKTAIL.get()).setWeight(5))
                         .add(EmptyLootItem.emptyItem().setWeight(4))
                 )
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(VDItems.WEATHERED_LETTER).setWeight(60).apply(SetLetterFunction.randomTagged(VDTags.HUNTER_WRITINGS)))
-                        .add(EmptyLootItem.emptyItem().setWeight(40)))
+                .withPool(weatheredLetterLoot(VDTags.HUNTER_WRITINGS, 40, 60))
         );
     }
 
@@ -130,6 +129,12 @@ public class VDChestLootTableProvider implements LootTableSubProvider {
         return LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(Items.BOOK).setWeight(bookWeight)
                         .apply((new EnchantRandomlyFunction.Builder()).withEnchantment(lookup.getOrThrow(VDEnchantments.VAMPIRE_BITE))))
+                .add(EmptyLootItem.emptyItem().setWeight(emptyWeight));
+    }
+
+    public LootPool.Builder weatheredLetterLoot(TagKey<WeatheredLetter> tag, int letterWeight, int emptyWeight) {
+        return LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(VDItems.WEATHERED_LETTER).setWeight(letterWeight).apply(SetLetterFunction.randomTagged(tag)))
                 .add(EmptyLootItem.emptyItem().setWeight(emptyWeight));
     }
 }

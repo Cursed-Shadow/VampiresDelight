@@ -3,9 +3,12 @@
 ## 0.1.10
 
 ### Additions
-- New item added: **Weathered Letter**. They can sometimes be found in hunter outposts and can either be read or used to craft into paper or vampire books when combined;
+- New item added:
+  - **Weathered Letter**. It can sometimes be found in hunter outposts and can either be read or used to craft paper or vampire books when a few are combined. There are two different letters as of now;
 - Added a new building to hunter outposts - a canteen/kitchen that sometimes spawns at hunter outposts instead of stables;
 - **Rice** and **Cabbage** are now also generated in chests of tents and towers at hunter outposts;
+- New advancement added:
+  - `Centennial fanfics` - Find a Weathered Letter;
 
 ### Updates
 - Updated textures:
@@ -19,6 +22,8 @@
 
 ### Translations
 - Added new lines for weathered letters;
+- Corrected:
+  - en_Us;
 
 ## 0.1.9c
 

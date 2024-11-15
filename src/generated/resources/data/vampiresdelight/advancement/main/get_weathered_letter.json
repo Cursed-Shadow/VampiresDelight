@@ -1,0 +1,33 @@
+{
+  "parent": "vampiresdelight:main/root",
+  "criteria": {
+    "weathered_letter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vampiresdelight:weathered_letter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "vampiresdelight.advancement.get_weathered_letter.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "vampiresdelight:weathered_letter"
+    },
+    "title": {
+      "translate": "vampiresdelight.advancement.get_weathered_letter"
+    }
+  },
+  "requirements": [
+    [
+      "weathered_letter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

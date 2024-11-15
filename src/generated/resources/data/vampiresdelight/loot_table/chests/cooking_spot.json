@@ -89,11 +89,11 @@
             }
           ],
           "name": "vampiresdelight:weathered_letter",
-          "weight": 80
+          "weight": 40
         },
         {
           "type": "minecraft:empty",
-          "weight": 20
+          "weight": 60
         }
       ],
       "rolls": 1.0

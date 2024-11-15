@@ -30,7 +30,7 @@ public class VDAdvancementProvider implements AdvancementProvider.AdvancementGen
     @Override
     public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer, ExistingFileHelper existingFileHelper) {
         AdvancementHolder vampiresDelight = Advancement.Builder.advancement()
-                .display(VDItems.DARK_STONE_STOVE.get(),
+                .display(VDItems.DARK_STONE_STOVE,
                         VDTextUtils.getTranslation("advancement.root"),
                         VDTextUtils.getTranslation("advancement.root.desc"),
                         ResourceLocation.parse("vampiresdelight:textures/block/dark_stone_small_bricks.png"),
@@ -39,51 +39,56 @@ public class VDAdvancementProvider implements AdvancementProvider.AdvancementGen
                 .save(consumer, getNameId("main/root"));
 
         // Eating Branch
-        AdvancementHolder disgusting = getAdvancement(vampiresDelight, ModItems.HUMAN_HEART.get(), "consume_disgusting_food", AdvancementType.TASK, true, false)
+        AdvancementHolder disgusting = getAdvancement(vampiresDelight, ModItems.HUMAN_HEART, "consume_disgusting_food", AdvancementType.TASK, true, false)
                 .addCriterion("disgusting_food", VDAdvancementTriggers.DISGUSTING_FOOD_CONSUMED.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty())))
                 .save(consumer, getNameId("main/consume_disgusting_food"));
 
+        // Exploration Branch
+        AdvancementHolder centennialFanfics = getAdvancement(vampiresDelight, VDItems.WEATHERED_LETTER, "get_weathered_letter", AdvancementType.TASK, true, false)
+                .addCriterion("weathered_letter", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.WEATHERED_LETTER))
+                .save(consumer, getNameId("main/get_weathered_letter"));
+
         // Human Branch
-        AdvancementHolder iKnewYouElves = getAdvancement(vampiresDelight, VDItems.DANDELION_BEER_MUG.get(), "pour_dandelion_beer", AdvancementType.TASK, true, false)
-                .addCriterion("pour_dandelion_beer", DrinkPouredTrigger.TriggerInstance.pouredDrinkBottle( VDItems.DANDELION_BEER_BOTTLE.get()))
+        AdvancementHolder iKnewYouElves = getAdvancement(vampiresDelight, VDItems.DANDELION_BEER_MUG, "pour_dandelion_beer", AdvancementType.TASK, true, false)
+                .addCriterion("pour_dandelion_beer", DrinkPouredTrigger.TriggerInstance.pouredDrinkBottle( VDItems.DANDELION_BEER_BOTTLE))
                 .save(consumer, getNameId("main/pour_dandelion_beer"));
 
-        AdvancementHolder localBrewery = getAdvancement(iKnewYouElves, VDItems.SPRUCE_WINE_SHELF.get(), "place_dandelion_beer_bottle_on_shelf", AdvancementType.TASK, false, false)
+        AdvancementHolder localBrewery = getAdvancement(iKnewYouElves, VDItems.SPRUCE_WINE_SHELF, "place_dandelion_beer_bottle_on_shelf", AdvancementType.TASK, false, false)
                 .addCriterion("wine_shelf", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
                         LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(VDTags.WINE_SHELVES)),
-                        ItemPredicate.Builder.item().of(VDItems.DANDELION_BEER_BOTTLE.get())))
+                        ItemPredicate.Builder.item().of(VDItems.DANDELION_BEER_BOTTLE)))
                 .save(consumer, getNameId("main/place_dandelion_beer_bottle_on_shelf"));
 
         // Hunter Branch
-        AdvancementHolder messiahOfHumanity = getAdvancement(vampiresDelight, VDItems.WILD_GARLIC.get(), "get_garlic", AdvancementType.TASK, false, false)
+        AdvancementHolder messiahOfHumanity = getAdvancement(vampiresDelight, VDItems.WILD_GARLIC, "get_garlic", AdvancementType.TASK, false, false)
                 .addCriterion("garlic", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.GARLIC.asItem()))
                 .save(consumer, getNameId("main/get_garlic"));
 
         // Vampire Branch
-        AdvancementHolder yourBestFriend = getAdvancement(vampiresDelight, ModBlocks.VAMPIRE_ORCHID.get().asItem(), "get_vampire_orchid", AdvancementType.TASK, false, false)
-                .addCriterion("vampire_orchid", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.VAMPIRE_ORCHID.get()))
+        AdvancementHolder yourBestFriend = getAdvancement(vampiresDelight, ModBlocks.VAMPIRE_ORCHID.asItem(), "get_vampire_orchid", AdvancementType.TASK, false, false)
+                .addCriterion("vampire_orchid", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.VAMPIRE_ORCHID))
                 .save(consumer, getNameId("main/get_vampire_orchid"));
 
-        AdvancementHolder bothBeautyAndHealth = getAdvancement(yourBestFriend, VDItems.ORCHID_PETALS.get(), "plant_vampire_orchid_crop", AdvancementType.TASK, false, false)
+        AdvancementHolder bothBeautyAndHealth = getAdvancement(yourBestFriend, VDItems.ORCHID_PETALS, "plant_vampire_orchid_crop", AdvancementType.TASK, false, false)
                 .addCriterion("vampire_orchid", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(VDBlocks.VAMPIRE_ORCHID_CROP.get()))
                 .save(consumer, getNameId("main/plant_vampire_orchid_crop"));
 
-        AdvancementHolder putPepperInTea = getAdvancement(bothBeautyAndHealth, VDItems.ORCHID_TEA.get(), "get_orchid_tea", AdvancementType.TASK, false, false)
-                .addCriterion("orchid_tea", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.ORCHID_TEA.get()))
+        AdvancementHolder putPepperInTea = getAdvancement(bothBeautyAndHealth, VDItems.ORCHID_TEA, "get_orchid_tea", AdvancementType.TASK, false, false)
+                .addCriterion("orchid_tea", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.ORCHID_TEA))
                 .save(consumer, getNameId("main/get_orchid_tea"));
 
-        AdvancementHolder bloodWineTastesTheSameAsIRemember = getAdvancement(yourBestFriend, VDItems.BLOOD_WINE_GLASS.get(), "pour_blood_wine", AdvancementType.TASK, true, false)
-                .addCriterion("pour_blood_wine", DrinkPouredTrigger.TriggerInstance.pouredDrinkBottle(VDItems.BLOOD_WINE_BOTTLE.get()))
+        AdvancementHolder bloodWineTastesTheSameAsIRemember = getAdvancement(yourBestFriend, VDItems.BLOOD_WINE_GLASS, "pour_blood_wine", AdvancementType.TASK, true, false)
+                .addCriterion("pour_blood_wine", DrinkPouredTrigger.TriggerInstance.pouredDrinkBottle(VDItems.BLOOD_WINE_BOTTLE))
                 .save(consumer, getNameId("main/pour_blood_wine"));
 
-        AdvancementHolder localBar = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.DARK_SPRUCE_WINE_SHELF.get(), "place_blood_wine_bottle_on_shelf", AdvancementType.TASK, false, false)
+        AdvancementHolder localBar = getAdvancement(bloodWineTastesTheSameAsIRemember, VDItems.DARK_SPRUCE_WINE_SHELF, "place_blood_wine_bottle_on_shelf", AdvancementType.TASK, false, false)
                 .addCriterion("wine_shelf", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(
                         LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(VDTags.WINE_SHELVES)),
-                        ItemPredicate.Builder.item().of(VDItems.BLOOD_WINE_BOTTLE.get())))
+                        ItemPredicate.Builder.item().of(VDItems.BLOOD_WINE_BOTTLE)))
                 .save(consumer, getNameId("main/place_blood_wine_bottle_on_shelf"));
 
-        AdvancementHolder funnyCutsOfChildren = getAdvancement(yourBestFriend, VDItems.HUMAN_EYE.get(), "get_human_eye", AdvancementType.TASK, true, false)
-                .addCriterion("human_eye", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.HUMAN_EYE.get()))
+        AdvancementHolder funnyCutsOfChildren = getAdvancement(yourBestFriend, VDItems.HUMAN_EYE, "get_human_eye", AdvancementType.TASK, true, false)
+                .addCriterion("human_eye", InventoryChangeTrigger.TriggerInstance.hasItems(VDItems.HUMAN_EYE))
                 .save(consumer, getNameId("main/get_human_eye"));
     }
 
