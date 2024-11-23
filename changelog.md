@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.10b
+
+### Fixes
+- Fixed the weathered letter packet causing the server fail to start;
+
 ## 0.1.10
 
 ### Additions
